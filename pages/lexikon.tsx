@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { ArrowLeft, Home, BookOpen, Calculator, Calendar, Shield, Building, Users } from 'lucide-react';
 
 const Lexikon = () => {

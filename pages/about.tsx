@@ -1,5 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { ArrowLeft, Building, Users, Globe, Award, Heart, Lightbulb, Target, CheckCircle, Star, Shield, Mail } from 'lucide-react';
 
 const About = () => {

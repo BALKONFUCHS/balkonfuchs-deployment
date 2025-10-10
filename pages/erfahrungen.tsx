@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { ArrowRight, ArrowLeft, MessageSquare, CheckCircle, Star, Shield, Users, X, ThumbsUp, Mail, Menu, Calculator, Search, Zap, FileText, Clock, Home } from 'lucide-react';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 
