@@ -136,15 +136,7 @@ const StartseiteFarbtest = () => {
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            {/* Rating Badge */}
-            <div className="flex justify-center mb-8">
-              <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 rounded-2xl p-6">
-                <p className="text-orange-300 font-bold text-lg">
-                  ⭐ 4.8/5 Sterne von über 850 Kunden
-                </p>
-              </div>
-            </div>
-
+            {/* Dynamic Headline - Top Priority */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
               Balkon <span id="rotating-text" className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">kalkulieren</span>
             </h1>
@@ -176,6 +168,15 @@ const StartseiteFarbtest = () => {
                   <Zap className="w-6 h-6 text-purple-400" />
                 </div>
                 <span className="text-lg">In 2 Minuten</span>
+              </div>
+            </div>
+
+            {/* Rating Badge - Below Trust Elements */}
+            <div className="flex justify-center">
+              <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 rounded-2xl p-6">
+                <p className="text-orange-300 font-bold text-lg">
+                  ⭐ 4.8/5 Sterne von über 850 Kunden
+                </p>
               </div>
             </div>
           </div>
