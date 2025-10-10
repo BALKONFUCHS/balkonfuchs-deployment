@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const StartseiteFarbtest = () => {
   return (
@@ -288,66 +289,7 @@ const StartseiteFarbtest = () => {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="bg-gray-900 border-t border-gray-800 py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-4 gap-8">
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Service</h4>
-                <ul className="space-y-2">
-                  <li><a href="/kalkulator/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Kalkulator</a></li>
-                  <li><a href="/planer/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Planer</a></li>
-                  <li><a href="/express-angebot/" className="text-gray-400 hover:text-orange-400 transition-colors">Angebot</a></li>
-                  <li><a href="/genehmigung/" className="text-gray-400 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
-                  <li><a href="/bauzeit-planung/" className="text-gray-400 hover:text-orange-400 transition-colors">Baustart Rechner</a></li>
-                  <li><a href="/konfigurator/" className="text-gray-400 hover:text-orange-400 transition-colors">Konfigurator</a></li>
-                  <li><a href="/erfahrungen/" className="text-gray-400 hover:text-orange-400 transition-colors">Erfahrungen</a></li>
-                  <li><a href="/galerie/" className="text-gray-400 hover:text-orange-400 transition-colors">Galerie</a></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Wissen</h4>
-                <ul className="space-y-2">
-                  <li><a href="/news/" className="text-gray-400 hover:text-orange-400 transition-colors">News</a></li>
-                  <li><a href="/foerderung/" className="text-gray-400 hover:text-orange-400 transition-colors">Förderung</a></li>
-                  <li><a href="/baurecht-balkon/" className="text-gray-400 hover:text-orange-400 transition-colors">Baurecht & Genehmigungen</a></li>
-                  <li><a href="/ratgeber/" className="text-gray-400 hover:text-orange-400 transition-colors">Ratgeber</a></li>
-                  <li><a href="/lexikon/" className="text-gray-400 hover:text-orange-400 transition-colors">Lexikon</a></li>
-                  <li><a href="/faq/" className="text-gray-400 hover:text-orange-400 transition-colors">FAQ</a></li>
-                  <li><a href="/feedback/" className="text-gray-400 hover:text-orange-400 transition-colors">Feedback</a></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Unternehmen</h4>
-                <ul className="space-y-2">
-                  <li><a href="/about/" className="text-gray-400 hover:text-orange-400 transition-colors">Über uns</a></li>
-                  <li><a href="/karriere/" className="text-gray-400 hover:text-orange-400 transition-colors">Karriere</a></li>
-                  <li><a href="/partner-werden/" className="text-gray-400 hover:text-orange-400 transition-colors">Partnerbewerbung</a></li>
-                  <li><a href="/partner-info/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
-                  <li><a href="/kontakt/" className="text-gray-400 hover:text-orange-400 transition-colors">Kontakt</a></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-lg font-semibold text-white mb-4">Rechtliches</h4>
-                <ul className="space-y-2">
-                  <li><a href="/impressum/" className="text-gray-400 hover:text-orange-400 transition-colors">Impressum</a></li>
-                  <li><a href="/datenschutz/" className="text-gray-400 hover:text-orange-400 transition-colors">Datenschutz</a></li>
-                  <li><a href="/agb/" className="text-gray-400 hover:text-orange-400 transition-colors">AGB</a></li>
-                  <li><a href="/disclaimer/" className="text-gray-400 hover:text-orange-400 transition-colors">Haftungsausschluss</a></li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="border-t border-gray-800 pt-8 mt-8 text-center">
-              <p className="text-gray-400">
-                © 2025 BALKONFUCHS GmbH. Alle Rechte vorbehalten.
-              </p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </>
   );
