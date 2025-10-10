@@ -13,7 +13,7 @@ export default function GalerieComingSoon() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <img 
-              src="/logos/balkonfuchs-logo.png" 
+                    src="/images/Balkonfuchs-Logo_white.png"
               alt="BALKONFUCHS Logo" 
               className="h-10 w-auto"
             />

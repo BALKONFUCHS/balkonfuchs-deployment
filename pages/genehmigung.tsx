@@ -4,6 +4,8 @@ import { ArrowRight, ArrowLeft, FileCheck, Home, MapPin, Ruler, Euro, CheckCircl
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import { calculateGenehmigungScore } from '../utils/genehmigung-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const BALKONFUCHSGenehmigungscheckFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);

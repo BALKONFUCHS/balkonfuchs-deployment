@@ -565,7 +565,7 @@ const BALKONFUCHSErfahrungenFunnel = () => {
           <div className="flex items-center">
             <a href="/" className="hover:opacity-80 transition-opacity">
               <img 
-                src="/logos/balkonfuchs-logo.png" 
+                    src="/images/Balkonfuchs-Logo_white.png"
                 alt="BALKONFUCHS Logo" 
                 className="h-10 w-auto"
               />
