@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import Head from 'next/head';
-import { ArrowRight, ArrowLeft, Handshake, CheckCircle, Shield, Users, X, Building, Star, Phone, Menu } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Handshake, CheckCircle, Shield, Users, X, Building, Star, Phone } from 'lucide-react';
 import { calculatePartnerScore } from '../utils/balkon-lead-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import Header from '../components/Header';
@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 
 const PartnerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     partnerType: '',
     companyName: '',
@@ -1633,64 +1632,8 @@ const PartnerFunnel = () => {
       </Head>
       
       {/* Header */}
-      <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <a href="/" className="flex items-center">
-                <img 
-                  src="/logos/balkonfuchs-logo.png" 
-                  alt="BALKONFUCHS Logo" 
-                  className="h-10 w-auto"
-                />
-              </a>
-            </div>
-            
-            <nav className="hidden md:flex space-x-8">
-              <a href="/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Startseite</a>
-              <a href="/partner-info-berlin/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Vorabinfos Partner</a>
-              <a href="partner-werden" className="text-orange-400 hover:text-orange-300 font-medium transition-colors">Partner werden</a>
-            </nav>
+      <Header />
 
-            <div className="hidden md:flex items-center space-x-4">
-              <button 
-                onClick={() => document.getElementById('funnel-start')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm"
-              >
-                🚀 Zum Start
-              </button>
-            </div>
-
-            {/* Mobile menu button */}
-            <button 
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden text-gray-300"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-gray-900 border-t border-gray-800">
-          <div className="px-4 py-3 space-y-3">
-            <a href="/" className="block text-gray-300 font-medium">Startseite</a>
-            <a href="/partner-info-berlin/" className="block text-gray-300 font-medium">Vorabinfos Partner</a>
-            <a href="partner-werden" className="block text-orange-400 font-medium">Partner werden</a>
-            <button 
-              onClick={() => {
-                setMobileMenuOpen(false);
-                document.getElementById('funnel-start')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm mt-3"
-            >
-              🚀 Zum Start
-            </button>
-          </div>
-        </div>
-      )}
 
       {/* Breadcrumb Navigation */}
       <section className="bg-gray-800 border-b border-gray-700 py-4">
@@ -2150,14 +2093,6 @@ const PartnerFunnel = () => {
             </div>
           </div>
           
-          <div className="text-center mt-12">
-            <a href="/partner-info-berlin/" className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2.5c0 0 4.5 2.04 4.5 10.5 0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7 0-8.46 4.5-10.5 4.5-10.5zM10 7h4v2h-4V7zm0 4h4v2h-4v-2zm-2 6h8v2H8v-2z"/>
-              </svg>
-              Jetzt Partner werden
-            </a>
-          </div>
         </div>
         )}
 
