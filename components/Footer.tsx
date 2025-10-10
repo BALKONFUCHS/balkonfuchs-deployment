@@ -11,7 +11,7 @@ const Footer = () => {
             <div>
               <div className="text-2xl font-bold text-orange-500 mb-4">🦊 BALKONFUCHS</div>
               <p className="text-gray-400 mb-4 leading-relaxed">
-                Ihre vertrauensvolle Plattform für Balkon-Projekte. Über 850 zufriedene Kunden vertrauen uns.
+                Deutschlands führende Plattform für Balkon-Projekte. Über 850 zufriedene Kunden vertrauen uns.
               </p>
               <div className="flex space-x-4">
                 <a href="mailto:post@balkonfuchs.de" className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors cursor-pointer">
@@ -21,11 +21,11 @@ const Footer = () => {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Services</h4>
+              <h4 className="text-lg font-semibold text-white mb-4">Service</h4>
               <ul className="space-y-2">
                 <li><a href="/kalkulator/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Kalkulator</a></li>
                 <li><a href="/planer/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Planer</a></li>
-                <li><a href="/express-angebot/" className="text-gray-400 hover:text-orange-400 transition-colors">Express-Angebot</a></li>
+                <li><a href="/express-angebot/" className="text-gray-400 hover:text-orange-400 transition-colors">Angebot</a></li>
                 <li><a href="/genehmigung/" className="text-gray-400 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
                 <li><a href="/bauzeit-planung/" className="text-gray-400 hover:text-orange-400 transition-colors">Baustart Rechner</a></li>
                 <li><a href="/konfigurator/" className="text-gray-400 hover:text-orange-400 transition-colors">Konfigurator</a></li>
@@ -76,21 +76,17 @@ const Footer = () => {
 
             {/* Trust Symbols */}
             <div className="flex flex-wrap justify-center md:justify-end items-center space-x-6">
-              <div className="flex items-center space-x-2 text-green-400">
-                <Shield className="w-4 h-4" />
-                <span className="text-sm font-medium">DSGVO konform</span>
+              <div className="flex items-center space-x-2 text-gray-400">
+                <Shield className="w-4 h-4 text-red-400" />
+                <span className="text-sm">Geprüfte Partner</span>
               </div>
-              <div className="flex items-center space-x-2 text-blue-400">
-                <Lock className="w-4 h-4" />
-                <span className="text-sm font-medium">SSL verschlüsselt</span>
+              <div className="flex items-center space-x-2 text-gray-400">
+                <CheckCircle className="w-4 h-4 text-green-400" />
+                <span className="text-sm">DSGVO konform</span>
               </div>
-              <div className="flex items-center space-x-2 text-orange-400">
-                <Award className="w-4 h-4" />
-                <span className="text-sm font-medium">Zertifiziert</span>
-              </div>
-              <div className="flex items-center space-x-2 text-green-400">
-                <CheckCircle className="w-4 h-4" />
-                <span className="text-sm font-medium">Sicher</span>
+              <div className="flex items-center space-x-2 text-gray-400">
+                <Award className="w-4 h-4 text-yellow-400" />
+                <span className="text-sm">4.8/5 Sterne</span>
               </div>
             </div>
 
