@@ -12,7 +12,7 @@ const StartseiteFarbtest = () => {
         <style jsx>{`
           @keyframes carousel {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            100% { transform: translateX(-85.715%); }
           }
           .animate-carousel {
             animation: carousel 21s linear infinite;
@@ -89,42 +89,42 @@ const StartseiteFarbtest = () => {
               </p>
             </div>
             
-            <div className="relative overflow-hidden rounded-2xl">
-              <div className="flex animate-carousel">
+            <div className="relative overflow-hidden rounded-2xl bg-gray-800">
+              <div className="flex w-[700%] animate-carousel">
                 <img 
                   src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg" 
                   alt="Anlehnbalkon mit Stabgeländer" 
-                  className="w-full h-96 object-cover flex-shrink-0"
+                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
                 />
                 <img 
                   src="/images/carousel/02-fluchtleiter.jpg" 
                   alt="Balkon mit Fluchtleiter" 
-                  className="w-full h-96 object-cover flex-shrink-0"
+                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
                 />
                 <img 
                   src="/images/carousel/03-geschwungenes-gelaender.jpg" 
                   alt="Geschwungenes Balkongeländer" 
-                  className="w-full h-96 object-cover flex-shrink-0"
+                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
                 />
                 <img 
                   src="/images/carousel/04-haengebalkon.jpg" 
                   alt="Hängebalkon" 
-                  className="w-full h-96 object-cover flex-shrink-0"
+                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
                 />
                 <img 
                   src="/images/carousel/05-vorstellbalkon-denkmalschutz.jpg" 
                   alt="Vorstellbalkon im Denkmalschutz" 
-                  className="w-full h-96 object-cover flex-shrink-0"
+                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
                 />
                 <img 
                   src="/images/carousel/06-vorstellbalkon-balkonraum-1.jpg" 
                   alt="Vorstellbalkon Balkonraum" 
-                  className="w-full h-96 object-cover flex-shrink-0"
+                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
                 />
                 <img 
                   src="/images/carousel/07-vorstellbalkon-lisenen.jpg" 
                   alt="Vorstellbalkon mit Lisenen" 
-                  className="w-full h-96 object-cover flex-shrink-0"
+                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
                 />
               </div>
             </div>
