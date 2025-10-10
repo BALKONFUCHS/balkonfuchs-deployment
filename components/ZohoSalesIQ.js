@@ -17,9 +17,16 @@ const ZohoSalesIQ = () => {
                        window.location.hostname === '127.0.0.1' ||
                        window.location.hostname.includes('local');
     
+    const isNetlifyDomain = window.location.hostname.includes('netlify.app');
+    
     if (isLocalhost) {
       console.log('ZOHO Sales IQ skipped on localhost - will load on production domain');
       return;
+    }
+    
+    // Lade auch auf Netlify-Domains für Testing
+    if (isNetlifyDomain) {
+      console.log('ZOHO Sales IQ loading on Netlify domain:', window.location.hostname);
     }
 
     // Warten bis das DOM vollständig geladen ist
