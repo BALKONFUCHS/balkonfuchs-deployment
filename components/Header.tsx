@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Header = () => {
   return (
@@ -6,11 +7,14 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            <a href="/" className="flex items-center">
-              <img 
+            <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+              <Image 
                 src="/images/Balkonfuchs-Logo_white.png" 
                 alt="BALKONFUCHS Logo" 
+                width={120}
+                height={40}
                 className="h-10 w-auto"
+                priority
               />
             </a>
           </div>
