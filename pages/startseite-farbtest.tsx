@@ -6,18 +6,9 @@ const StartseiteFarbtest = () => {
   return (
     <>
       <Head>
-        <title>BALKONFUCHS - Alle Funnel im Überblick (Farbtest)</title>
-        <meta name="description" content="Entdecken Sie alle BALKONFUCHS Funnel: Kalkulator, Planer, Express-Angebot, Genehmigungscheck und mehr. Finden Sie den perfekten Weg zu Ihrem Balkon-Projekt." />
+        <title>BALKONFUCHS - Alle Services im Überblick</title>
+        <meta name="description" content="Entdecken Sie alle BALKONFUCHS Services: Kalkulator, Planer, Express-Angebot, Genehmigungscheck und mehr. Finden Sie den perfekten Weg zu Ihrem Balkon-Projekt." />
         <meta name="robots" content="noindex, nofollow" />
-        <style jsx>{`
-          @keyframes carousel {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-85.715%); }
-          }
-          .animate-carousel {
-            animation: carousel 21s linear infinite;
-          }
-        `}</style>
       </Head>
 
       <div className="min-h-screen bg-gray-900">
@@ -60,7 +51,7 @@ const StartseiteFarbtest = () => {
             <div className="flex justify-center mb-8">
               <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 px-6 py-3 rounded-full">
                 <Star className="w-5 h-5 text-orange-400" />
-                <span className="text-orange-300 font-bold text-lg">ALLE FUNNEL IM ÜBERBLICK</span>
+                <span className="text-orange-300 font-bold text-lg">ALLE SERVICES IM ÜBERBLICK</span>
                 <Zap className="w-5 h-5 text-yellow-400" />
               </div>
             </div>
@@ -68,11 +59,11 @@ const StartseiteFarbtest = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               BALKONFUCHS <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">
-                Alle Funnel
+                Alle Services
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Entdecken Sie alle <span className="text-orange-400 font-bold">BALKONFUCHS Funnel</span> und finden Sie den perfekten Weg zu Ihrem Balkon-Projekt.
+              Entdecken Sie alle <span className="text-orange-400 font-bold">BALKONFUCHS Services</span> und finden Sie den perfekten Weg zu Ihrem Balkon-Projekt.
             </p>
           </div>
         </section>
@@ -89,44 +80,42 @@ const StartseiteFarbtest = () => {
               </p>
             </div>
             
-            <div className="relative overflow-hidden rounded-2xl bg-gray-800">
-              <div className="flex w-[700%] animate-carousel">
-                <img 
-                  src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg" 
-                  alt="Anlehnbalkon mit Stabgeländer" 
-                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
-                />
-                <img 
-                  src="/images/carousel/02-fluchtleiter.jpg" 
-                  alt="Balkon mit Fluchtleiter" 
-                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
-                />
-                <img 
-                  src="/images/carousel/03-geschwungenes-gelaender.jpg" 
-                  alt="Geschwungenes Balkongeländer" 
-                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
-                />
-                <img 
-                  src="/images/carousel/04-haengebalkon.jpg" 
-                  alt="Hängebalkon" 
-                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
-                />
-                <img 
-                  src="/images/carousel/05-vorstellbalkon-denkmalschutz.jpg" 
-                  alt="Vorstellbalkon im Denkmalschutz" 
-                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
-                />
-                <img 
-                  src="/images/carousel/06-vorstellbalkon-balkonraum-1.jpg" 
-                  alt="Vorstellbalkon Balkonraum" 
-                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
-                />
-                <img 
-                  src="/images/carousel/07-vorstellbalkon-lisenen.jpg" 
-                  alt="Vorstellbalkon mit Lisenen" 
-                  className="w-[14.285%] h-96 object-cover flex-shrink-0"
-                />
-              </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <img 
+                src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg" 
+                alt="Anlehnbalkon mit Stabgeländer" 
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <img 
+                src="/images/carousel/02-fluchtleiter.jpg" 
+                alt="Balkon mit Fluchtleiter" 
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <img 
+                src="/images/carousel/03-geschwungenes-gelaender.jpg" 
+                alt="Geschwungenes Balkongeländer" 
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <img 
+                src="/images/carousel/04-haengebalkon.jpg" 
+                alt="Hängebalkon" 
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <img 
+                src="/images/carousel/05-vorstellbalkon-denkmalschutz.jpg" 
+                alt="Vorstellbalkon im Denkmalschutz" 
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <img 
+                src="/images/carousel/06-vorstellbalkon-balkonraum-1.jpg" 
+                alt="Vorstellbalkon Balkonraum" 
+                className="w-full h-48 object-cover rounded-lg"
+              />
+              <img 
+                src="/images/carousel/07-vorstellbalkon-lisenen.jpg" 
+                alt="Vorstellbalkon mit Lisenen" 
+                className="w-full h-48 object-cover rounded-lg"
+              />
             </div>
           </div>
         </section>
