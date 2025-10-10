@@ -537,6 +537,68 @@ const PartnerInfo = () => {
                 </div>
               </section>
 
+              {/* Grüner CTA-Bereich */}
+              <section className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border-2 border-green-500/40 rounded-2xl p-12 text-center mb-8">
+                <div className="max-w-4xl mx-auto">
+                  <div className="inline-flex items-center gap-2 bg-green-500/20 border border-green-500/40 px-6 py-3 rounded-full mb-6">
+                    <span className="text-green-400 text-2xl">💚</span>
+                    <span className="text-green-400 font-bold text-lg">Frei nach dem Motto: "Keine Angst, du kaufst hier noch nichts"</span>
+                  </div>
+                  
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                    Das ist zunächst nur einmal eine <span className="text-green-400">Vorab-Orientierung</span>
+                  </h2>
+                  
+                  <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    <strong className="text-green-400">Welches Paket dich interessieren könnte</strong> - 
+                    ohne Verpflichtung, ohne Druck, ohne sofortige Entscheidung. 
+                    Lernen Sie uns kennen und entscheiden Sie dann.
+                  </p>
+                  
+                  <div className="grid md:grid-cols-3 gap-6 mb-8">
+                    <div className="bg-white/10 backdrop-blur-sm border border-green-500/30 rounded-xl p-6">
+                      <div className="text-green-400 text-3xl mb-3">🤝</div>
+                      <h3 className="text-lg font-semibold text-white mb-2">Kennenlernen</h3>
+                      <p className="text-gray-300 text-sm">Erstmal schauen, ob wir zusammenpassen</p>
+                    </div>
+                    
+                    <div className="bg-white/10 backdrop-blur-sm border border-green-500/30 rounded-xl p-6">
+                      <div className="text-green-400 text-3xl mb-3">💬</div>
+                      <h3 className="text-lg font-semibold text-white mb-2">Austauschen</h3>
+                      <p className="text-gray-300 text-sm">Alle Fragen klären, ohne Zeitdruck</p>
+                    </div>
+                    
+                    <div className="bg-white/10 backdrop-blur-sm border border-green-500/30 rounded-xl p-6">
+                      <div className="text-green-400 text-3xl mb-3">✅</div>
+                      <h3 className="text-lg font-semibold text-white mb-2">Entscheiden</h3>
+                      <p className="text-gray-300 text-sm">Wenn es passt, dann starten wir gemeinsam</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a 
+                      href="/partner-werden/" 
+                      className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2"
+                    >
+                      <span className="text-xl">💬</span>
+                      Jetzt unverbindlich informieren
+                    </a>
+                    
+                    <button 
+                      onClick={() => {
+                        if (window.$zoho && window.$zoho.salesiq) {
+                          window.$zoho.salesiq.floatwindow.visible('show');
+                        }
+                      }}
+                      className="bg-white/10 border-2 border-green-500 text-green-400 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-500 hover:text-white transition-all duration-300 inline-flex items-center justify-center gap-2"
+                    >
+                      <span className="text-xl">💬</span>
+                      Live-Chat starten
+                    </button>
+                  </div>
+                </div>
+              </section>
+
               {/* CTA Section */}
               <section className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border-2 border-indigo-500/40 rounded-2xl p-12 text-center">
                 <div className="max-w-3xl mx-auto">

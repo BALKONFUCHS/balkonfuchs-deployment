@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { ArrowRight, ArrowLeft, Handshake, CheckCircle, Shield, Users, X, Building, Star, Phone, Menu } from 'lucide-react';
 import { calculatePartnerScore } from '../utils/balkon-lead-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 const PartnerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
