@@ -1141,7 +1141,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
          </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <a href="/partner-info/" className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
+            <a href="/partner-info-berlin/" className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
               Partner werden
             </a>
           </div>
@@ -1165,7 +1165,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
                <a href="/angebot/" className="block text-gray-300 font-medium">Angebot</a>
                <a href="/balkon-baugenehmigung-check/" className="block text-gray-300 font-medium">Genehmigungscheck</a>
                <a href="/konfigurator/" className="block text-gray-300 font-medium">Konfigurator</a>
-               <a href="/partner-info/" className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm mt-3 block text-center">
+               <a href="/partner-info-berlin/" className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm mt-3 block text-center">
                  Partner werden
                </a>
              </div>
@@ -1224,7 +1224,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
               <li><a href="/ueber-uns/" className="text-gray-400 hover:text-orange-400 transition-colors">Über uns</a></li>
               <li><a href="/karriere/" className="text-gray-400 hover:text-orange-400 transition-colors">Karriere</a></li>
               <li><a href="/partner-werden/" className="text-gray-400 hover:text-orange-400 transition-colors">Partnerbewerbung</a></li>
-              <li><a href="/partner-info/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
+              <li><a href="/partner-info-berlin/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
               <li><a href="/kontakt/" className="text-gray-400 hover:text-orange-400 transition-colors">Kontakt</a></li>
             </ul>
           </div>

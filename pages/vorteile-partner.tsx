@@ -193,7 +193,7 @@ export default function VorteilePartner() {
                   <p className="text-gray-300 text-lg mb-6">
                     Werden Sie Teil des BALKONFUCHS Netzwerks und profitieren Sie von unserem bewährten System.
                   </p>
-                  <Link href="partner-info" className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition-all hover:scale-105">
+                  <Link href="/partner-info-berlin/" className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition-all hover:scale-105">
                     🚀 Jetzt Partner werden
                   </Link>
                 </div>

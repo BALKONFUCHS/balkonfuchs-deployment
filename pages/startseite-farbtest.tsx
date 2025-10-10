@@ -208,7 +208,7 @@ const StartseiteFarbtest = () => {
                 </p>
                 <div className="text-center">
                   <a 
-                    href="/partner-info/" 
+                    href="/partner-info-berlin/" 
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                   >
                     Partner werden

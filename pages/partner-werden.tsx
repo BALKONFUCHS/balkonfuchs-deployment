@@ -1648,7 +1648,7 @@ const PartnerFunnel = () => {
             
             <nav className="hidden md:flex space-x-8">
               <a href="/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Startseite</a>
-              <a href="partner-info" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Vorabinfos Partner</a>
+              <a href="/partner-info-berlin/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Vorabinfos Partner</a>
               <a href="partner-werden" className="text-orange-400 hover:text-orange-300 font-medium transition-colors">Partner werden</a>
             </nav>
 
@@ -1677,7 +1677,7 @@ const PartnerFunnel = () => {
         <div className="md:hidden bg-gray-900 border-t border-gray-800">
           <div className="px-4 py-3 space-y-3">
             <a href="/" className="block text-gray-300 font-medium">Startseite</a>
-            <a href="partner-info" className="block text-gray-300 font-medium">Vorabinfos Partner</a>
+            <a href="/partner-info-berlin/" className="block text-gray-300 font-medium">Vorabinfos Partner</a>
             <a href="partner-werden" className="block text-orange-400 font-medium">Partner werden</a>
             <button 
               onClick={() => {
@@ -2151,7 +2151,7 @@ const PartnerFunnel = () => {
           </div>
           
           <div className="text-center mt-12">
-            <a href="partner-info" className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105">
+            <a href="/partner-info-berlin/" className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105">
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.5c0 0 4.5 2.04 4.5 10.5 0 2.49-1.04 5.57-1.6 7H9.1c-.56-1.43-1.6-4.51-1.6-7 0-8.46 4.5-10.5 4.5-10.5zM10 7h4v2h-4V7zm0 4h4v2h-4v-2zm-2 6h8v2H8v-2z"/>
               </svg>
@@ -2212,7 +2212,7 @@ const PartnerFunnel = () => {
                 <li><a href="about/" className="text-gray-400 hover:text-orange-400 transition-colors">Über uns</a></li>
                 <li><a href="karriere/" className="text-gray-400 hover:text-orange-400 transition-colors">Karriere</a></li>
                 <li><a href="partner-werden/" className="text-gray-400 hover:text-orange-400 transition-colors">Partnerbewerbung</a></li>
-                <li><a href="partner-info/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
+                <li><a href="/partner-info-berlin/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
                 <li><a href="kontakt/" className="text-gray-400 hover:text-orange-400 transition-colors">Kontakt</a></li>
               </ul>
             </div>

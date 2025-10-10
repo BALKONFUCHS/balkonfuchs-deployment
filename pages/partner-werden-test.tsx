@@ -578,7 +578,7 @@ const PartnerWerdenTest = () => {
                   <li><a href="/about" className="text-gray-400 hover:text-orange-400 transition-colors">Über uns</a></li>
                   <li><a href="/karriere" className="text-gray-400 hover:text-orange-400 transition-colors">Karriere</a></li>
                   <li><a href="/partner-werden" className="text-orange-400 hover:text-orange-300 transition-colors font-semibold">Partnerbewerbung</a></li>
-                  <li><a href="/partner-info" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
+                  <li><a href="/partner-info-berlin/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
                   <li><a href="/kontakt" className="text-gray-400 hover:text-orange-400 transition-colors">Kontakt</a></li>
               </ul>
             </div>
