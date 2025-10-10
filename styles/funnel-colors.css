@@ -1,0 +1,352 @@
+/* 
+ * BALKONFUCHS Funnel-Farbsystem
+ * Implementiert funnel-spezifische Sekundärfarben bei Beibehaltung der Orange-Primärfarbe
+ */
+
+:root {
+  /* Bestehende Orange-Variablen BEHALTEN */
+  --orange-primary: #f97316;
+  --orange-dark: #ea580c;
+  --orange-light: #fb923c;
+  
+  /* Dark Theme BEHALTEN */
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+  --border-color: #4b5563;
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  
+  /* NEUE Funnel-spezifische Sekundärfarben */
+  --funnel-genehmigung: #3b82f6;    /* Blau */
+  --funnel-kalkulator: #10b981;     /* Grün */
+  --funnel-planer: #8b5cf6;         /* Violett */
+  --funnel-express: #ef4444;        /* Rot */
+  --funnel-bauzeit: #f59e0b;        /* Gelb/Amber */
+  --funnel-partner: #14b8a6;        /* Teal */
+  
+  /* RGB-Varianten für rgba() Transparenzen */
+  --funnel-genehmigung-rgb: 59, 130, 246;
+  --funnel-kalkulator-rgb: 16, 185, 129;
+  --funnel-planer-rgb: 139, 92, 246;
+  --funnel-express-rgb: 239, 68, 68;
+  --funnel-bauzeit-rgb: 245, 158, 11;
+  --funnel-partner-rgb: 20, 184, 166;
+}
+
+/* Funnel-Identifikation über body-class oder container-class */
+.funnel-genehmigung { --current-funnel-color: var(--funnel-genehmigung); }
+.funnel-kalkulator { --current-funnel-color: var(--funnel-kalkulator); }
+.funnel-planer { --current-funnel-color: var(--funnel-planer); }
+.funnel-express { --current-funnel-color: var(--funnel-express); }
+.funnel-bauzeit { --current-funnel-color: var(--funnel-bauzeit); }
+.funnel-partner { --current-funnel-color: var(--funnel-partner); }
+
+/* Sekundäre UI-Elemente */
+.funnel-accent {
+  color: var(--current-funnel-color) !important;
+}
+
+.funnel-border {
+  border-color: var(--current-funnel-color) !important;
+}
+
+.funnel-bg {
+  background-color: var(--current-funnel-color) !important;
+}
+
+.funnel-progress {
+  background: var(--current-funnel-color) !important;
+}
+
+.funnel-icon {
+  color: var(--current-funnel-color) !important;
+}
+
+.funnel-badge {
+  background: rgba(var(--current-funnel-color-rgb), 0.1) !important;
+  color: var(--current-funnel-color) !important;
+  border: 1px solid rgba(var(--current-funnel-color-rgb), 0.2) !important;
+}
+
+.secondary-button {
+  border-color: var(--current-funnel-color) !important;
+  color: var(--current-funnel-color) !important;
+}
+
+.secondary-button:hover {
+  background: var(--current-funnel-color) !important;
+  color: white !important;
+}
+
+/* Progress-Bars */
+.progress-bar .progress-fill {
+  background: var(--current-funnel-color) !important;
+}
+
+/* Step-Indicators */
+.step-indicator.active {
+  background: var(--current-funnel-color) !important;
+  border-color: var(--current-funnel-color) !important;
+}
+
+/* Info-Boxen und Highlights */
+.info-box {
+  border-left-color: var(--current-funnel-color) !important;
+}
+
+.highlight-box {
+  background: rgba(var(--current-funnel-color-rgb), 0.1) !important;
+  border: 1px solid rgba(var(--current-funnel-color-rgb), 0.2) !important;
+}
+
+/* Spezifische Funnel-Farben für direkte Verwendung */
+.funnel-genehmigung .funnel-accent { color: var(--funnel-genehmigung) !important; }
+.funnel-kalkulator .funnel-accent { color: var(--funnel-kalkulator) !important; }
+.funnel-planer .funnel-accent { color: var(--funnel-planer) !important; }
+.funnel-express .funnel-accent { color: var(--funnel-express) !important; }
+.funnel-bauzeit .funnel-accent { color: var(--funnel-bauzeit) !important; }
+.funnel-partner .funnel-accent { color: var(--funnel-partner) !important; }
+
+/* Progress Bar spezifische Anpassungen */
+.funnel-genehmigung .progress-fill { background: var(--funnel-genehmigung) !important; }
+.funnel-kalkulator .progress-fill { background: var(--funnel-kalkulator) !important; }
+.funnel-planer .progress-fill { background: var(--funnel-planer) !important; }
+.funnel-express .progress-fill { background: var(--funnel-express) !important; }
+.funnel-bauzeit .progress-fill { background: var(--funnel-bauzeit) !important; }
+.funnel-partner .progress-fill { background: var(--funnel-partner) !important; }
+
+/* ========================================
+   LANDING PAGE TEMPLATE SYSTEM
+   ======================================== */
+
+/* Base Landing Page Template */
+.landing-template {
+  --primary-color: var(--orange-primary);
+  --secondary-color: var(--template-color);
+  --template-rgb: var(--template-color-rgb);
+}
+
+/* Template-Identifikation über body-class */
+.template-genehmigung { 
+  --template-color: var(--funnel-genehmigung); 
+  --template-color-rgb: var(--funnel-genehmigung-rgb);
+}
+.template-kalkulator { 
+  --template-color: var(--funnel-kalkulator); 
+  --template-color-rgb: var(--funnel-kalkulator-rgb);
+}
+.template-planer { 
+  --template-color: var(--funnel-planer); 
+  --template-color-rgb: var(--funnel-planer-rgb);
+}
+.template-express { 
+  --template-color: var(--funnel-express); 
+  --template-color-rgb: var(--funnel-express-rgb);
+}
+.template-bauzeit { 
+  --template-color: var(--funnel-bauzeit); 
+  --template-color-rgb: var(--funnel-bauzeit-rgb);
+}
+.template-partner { 
+  --template-color: var(--funnel-partner); 
+  --template-color-rgb: var(--funnel-partner-rgb);
+}
+
+/* Landing Page spezifische Styles */
+.landing-header {
+  background: linear-gradient(135deg, var(--bg-secondary), rgba(var(--template-color-rgb), 0.15));
+  border-bottom: 3px solid var(--template-color);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.landing-header h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.landing-header .subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.template-badge {
+  background: rgba(var(--template-color-rgb), 0.1);
+  color: var(--template-color);
+  border: 1px solid rgba(var(--template-color-rgb), 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.template-icon {
+  color: var(--template-color);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.feature-highlight {
+  border-left: 4px solid var(--template-color);
+  background: rgba(var(--template-color-rgb), 0.05);
+  padding: 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 2rem 0;
+}
+
+.feature-highlight h2 {
+  color: var(--template-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.city-badge {
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--orange-primary);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* CTAs: Primär Orange, Sekundär Template-Farbe */
+.cta-primary {
+  background: linear-gradient(135deg, var(--orange-primary), var(--orange-dark));
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 1rem;
+  transition: all 0.3s;
+}
+
+.cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+}
+
+.cta-secondary {
+  background: transparent;
+  color: var(--template-color);
+  border: 2px solid var(--template-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.cta-secondary:hover {
+  background: var(--template-color);
+  color: white;
+}
+
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--orange-light);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.feature-item {
+  background: var(--bg-secondary);
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.feature-item h3 {
+  color: var(--template-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+.feature-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Content Sections */
+.content-section {
+  padding: 3rem 0;
+  background: var(--bg-primary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .landing-header {
+    padding: 2rem 1rem;
+  }
+  
+  .landing-header h1 {
+    font-size: 2rem;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .trust-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cta-primary, .cta-secondary {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .feature-highlight {
+    padding: 1rem;
+  }
+}
+
+

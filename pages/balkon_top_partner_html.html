@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BalkonFuchs Top-Partner März 2025 - Hamburg & Umgebung</title>
+    <meta name="description" content="Entdecken Sie ausgezeichnete Balkon-Projekte unseres Top-Partners in Hamburg. Lassen Sie sich inspirieren und finden Sie den perfekten Partner für Ihr Projekt.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Figtree', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #f9fafb 100%); }
+        .live-dot { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .image-gallery { position: relative; overflow: hidden; }
+        .gallery-overlay { 
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    
+    <!-- Header mit Live-Stats -->
+    <div class="bg-white border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-sm text-gray-600 flex items-center">
+                        <span class="mr-1">👁</span>
+                        <span id="viewCounter">1,247</span> Aufrufe heute
+                    </div>
+                    <div class="hidden sm:block w-1 h-1 bg-gray-400 rounded-full"></div>
+                    <div class="hidden sm:block text-sm text-green-600 font-medium flex items-center">
+                        <span class="live-dot w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                        Live • Verfügbar
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-yellow-500">⭐</span>
+                    <span class="font-bold text-gray-900">4.9</span>
+                    <span class="text-sm text-gray-600">(127 Bewertungen)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        
+        <!-- Hero Badge -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-3 rounded-full text-lg font-bold shadow-lg mb-4">
+                <span class="mr-3">🏆</span>
+                BalkonFuchs Top-Partner März 2025
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                Ausgezeichnete Balkon-Projekte
+                <span class="block text-2xl lg:text-3xl text-orange-600 font-normal">
+                    von unseren Premium-Partnern
+                </span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Diese Projekte wurden für außergewöhnliche Qualität und Kundenzufriedenheit ausgezeichnet. 
+                Entdecken Sie realisierte Balkon-Projekte und lassen Sie sich inspirieren.
+            </p>
+        </div>
+
+        <!-- Projekt-Galerie -->
+        <div class="grid lg:grid-cols-2 gap-12 mb-16">
+          
+            <!-- Haupt-Bildergalerie -->
+            <div class="space-y-6">
+                <div class="relative group">
+                    <div class="relative overflow-hidden rounded-2xl shadow-2xl image-gallery">
+                        <img id="mainImage" 
+                             src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80" 
+                             alt="Moderner Vorstellbalkon mit Glasgeländer"
+                             class="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105">
+                        
+                        <!-- Overlay mit Projekt-Info -->
+                        <div class="absolute bottom-0 left-0 right-0 gallery-overlay p-6">
+                            <div class="flex items-center justify-between text-white">
+                                <div>
+                                    <h3 id="imageTitle" class="text-xl font-bold mb-1">Moderner Vorstellbalkon mit Glasgeländer</h3>
+                                    <p id="imageDescription" class="text-gray-200">6m² Balkon mit hochwertigen Materialen</p>
+                                </div>
+                                <div id="imageBadge" class="bg-green-500 px-3 py-1 rounded-full text-sm font-medium">
+                                    Nachher
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <button onclick="prevImage()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all">
+                            <span class="text-gray-800 text-xl">‹</span>
+                        </button>
+                        <button onclick="nextImage()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all">
+                            <span class="text-gray-800 text-xl">›</span>
+                        </button>
+
+                        <!-- Image Counter -->
+                        <div class="absolute top-4 right-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+                            <span id="imageCounter">1 / 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thumbnail Navigation -->
+                <div class="flex space-x-3 overflow-x-auto pb-2" id="thumbnailContainer">
+                    <!-- Thumbnails werden per JavaScript generiert -->
+                </div>
+            </div>
+
+                            <!-- Premium-Partner-Informationen & Stats -->
+            <div class="space-y-8">
+                
+                <!-- Achievement Badge -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-2xl p-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-yellow-500 rounded-full p-3 flex-shrink-0">
+                            <span class="text-white text-2xl">🏆</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">
+                                Premium-Partner Qualität
+                            </h3>
+                            <p class="text-gray-700 mb-3">
+                                Ausgezeichnet für außergewöhnliche Kundenzufriedenheit und hervorragende Projektqualität.
+                            </p>
+                            <div class="flex items-center text-sm text-yellow-700">
+                                <span class="mr-1">✅</span>
+                                Verifiziert durch BalkonFuchs-Qualitätsprüfung
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BalkonFuchs Partner Stats -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 text-center hover-scale">
+                        <div class="text-3xl font-bold text-orange-600 mb-1">250+</div>
+                        <div class="text-sm text-gray-600">Geprüfte Partner</div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 text-center hover-scale">
+                        <div class="text-3xl font-bold text-green-600 mb-1">4.8★</div>
+                        <div class="text-sm text-gray-600">850+ Bewertungen</div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 text-center hover-scale">
+                        <div class="text-3xl font-bold text-blue-600 mb-1">32+</div>
+                        <div class="text-sm text-gray-600">Jahre Erfahrung</div>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-xl p-6 text-center hover-scale">
+                        <div class="text-3xl font-bold text-purple-600 mb-1">98%</div>
+                        <div class="text-sm text-gray-600">Weiterempfehlung</div>
+                    </div>
+                </div>
+
+                <!-- Premium-Partner Spezialisierungen -->
+                <div class="bg-white border border-gray-200 rounded-xl p-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-4">Premium-Partner Spezialisierungen</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Vorstellbalkone</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Anlehn-Balkone</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Glasgeländer</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Überdachungen</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Altbau-Sanierung</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Denkmalschutz</span>
+                        <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">Luxus-Balkone</span>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl p-6">
+                    <h3 class="text-xl font-bold mb-3">Ähnliches Projekt gewünscht?</h3>
+                    <p class="text-orange-100 mb-4">
+                        Lassen Sie sich kostenlos beraten und erhalten Sie ein individuelles Angebot für Ihr Balkon-Projekt.
+                    </p>
+                    <button class="w-full bg-white text-orange-600 font-bold py-3 px-6 rounded-xl hover:bg-orange-50 transition-colors duration-200 flex items-center justify-center hover-scale">
+                        Kostenlose Beratung anfragen
+                        <span class="ml-2">→</span>
+                    </button>
+                    <div class="flex flex-wrap justify-center items-center gap-4 mt-3">
+                        <div class="flex items-center text-orange-100 text-sm">
+                            <span class="mr-2">🛡️</span>
+                            <span>Geprüfte Partner</span>
+                        </div>
+                        <div class="flex items-center text-orange-100 text-sm">
+                            <span class="mr-2">✅</span>
+                            <span>DSGVO konform</span>
+                        </div>
+                        <div class="flex items-center text-orange-100 text-sm">
+                            <span class="mr-2">⭐</span>
+                            <span>4.8/5 Sterne</span>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-center text-orange-100 text-sm">
+                        Über 850 zufriedene Kunden
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kundenbewertungen -->
+        <div class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">
+                Das sagen unsere Kunden
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow hover-scale">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500 mr-2">
+                            <span>⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <span class="text-sm text-gray-500">Februar 2025</span>
+                    </div>
+                    <p class="text-gray-700 mb-4 italic">"Unser Traum-Balkon ist Realität geworden! Die Planung war perfekt und die Umsetzung noch besser."</p>
+                    <div class="border-t pt-4">
+                        <div class="font-semibold text-gray-900">Familie Müller</div>
+                        <div class="text-sm text-gray-600">6m² Vorstellbalkon</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow hover-scale">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500 mr-2">
+                            <span>⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <span class="text-sm text-gray-500">Januar 2025</span>
+                    </div>
+                    <p class="text-gray-700 mb-4 italic">"Professionell, pünktlich, sauber. Kann ich jedem weiterempfehlen!"</p>
+                    <div class="border-t pt-4">
+                        <div class="font-semibold text-gray-900">Thomas K.</div>
+                        <div class="text-sm text-gray-600">Balkon-Sanierung</div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow hover-scale">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500 mr-2">
+                            <span>⭐⭐⭐⭐⭐</span>
+                        </div>
+                        <span class="text-sm text-gray-500">Dezember 2024</span>
+                    </div>
+                    <p class="text-gray-700 mb-4 italic">"Beste Entscheidung! Der neue Balkon hat unser Zuhause komplett verändert."</p>
+                    <div class="border-t pt-4">
+                        <div class="font-semibold text-gray-900">Sandra W.</div>
+                        <div class="text-sm text-gray-600">8m² Anbaubalkon</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust & Security -->
+        <div class="bg-gray-50 rounded-2xl p-8 mb-12">
+            <div class="text-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                    Warum BalkonFuchs Top-Partner?
+                </h3>
+                <p class="text-gray-600">
+                    Höchste Qualitätsstandards für Ihr Balkon-Projekt
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="text-center hover-scale">
+                    <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-green-600 text-2xl">✅</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Qualitätsprüfung</h4>
+                    <p class="text-sm text-gray-600">Regelmäßige Prüfung aller Projekte</p>
+                </div>
+                
+                <div class="text-center hover-scale">
+                    <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-blue-600 text-2xl">🛡️</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Versichert</h4>
+                    <p class="text-sm text-gray-600">Vollversicherung für alle Arbeiten</p>
+                </div>
+                
+                <div class="text-center hover-scale">
+                    <div class="bg-yellow-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-yellow-600 text-2xl">⭐</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Top-Bewertung</h4>
+                    <p class="text-sm text-gray-600">Über 4,5 Sterne Kundenbewertung</p>
+                </div>
+                
+                <div class="text-center hover-scale">
+                    <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <span class="text-purple-600 text-2xl">📈</span>
+                    </div>
+                    <h4 class="font-semibold text-gray-900 mb-2">Erfahrung</h4>
+                    <p class="text-sm text-gray-600">Über 100 realisierte Projekte</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 text-center shadow-lg">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                Bereit für Ihr Balkon-Projekt?
+            </h2>
+            <p class="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+                Lassen Sie sich kostenlos beraten und vergleichen Sie Angebote von geprüften Top-Partnern in Ihrer Region.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-md mx-auto">
+                <button class="w-full sm:flex-1 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 shadow-lg hover-scale">
+                    Jetzt Angebote vergleichen
+                </button>
+                <button class="w-full sm:flex-1 border border-gray-300 text-gray-700 font-semibold py-4 px-8 rounded-xl hover:bg-gray-50 transition-colors hover-scale">
+                    Kostenlose Beratung
+                </button>
+            </div>
+            
+            <div class="flex flex-wrap justify-center items-center gap-4 mt-4">
+                <div class="flex items-center text-gray-500 text-sm">
+                    <span class="mr-2 text-orange-500">🛡️</span>
+                    <span>Geprüfte Partner</span>
+                </div>
+                <div class="flex items-center text-gray-500 text-sm">
+                    <span class="mr-2 text-green-600">✅</span>
+                    <span>DSGVO konform</span>
+                </div>
+                <div class="flex items-center text-gray-500 text-sm">
+                    <span class="mr-2 text-yellow-500">⭐</span>
+                    <span>4.8/5 Sterne</span>
+                </div>
+            </div>
+            <div class="mt-2 text-center text-sm text-gray-500">
+                Über 850 zufriedene Kunden
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Image gallery data
+        const projectImages = [
+            {
+                url: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                title: "Moderner Vorstellbalkon mit Glasgeländer",
+                description: "6m² Balkon mit hochwertigen Materialen",
+                beforeAfter: "after"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                title: "Eleganter Anbaubalkon im Altbau",
+                description: "Denkmalschutz-konform realisiert",
+                beforeAfter: "after"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                title: "Gemütlicher Familienbalkon",
+                description: "8m² mit integrierter Überdachung",
+                beforeAfter: "after"
+            },
+            {
+                url: "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600&q=80",
+                title: "Vorher-Zustand",
+                description: "Ausgangssituation vor dem Umbau",
+                beforeAfter: "before"
+            }
+        ];
+
+        let currentImageIndex = 0;
+        let viewCount = 1247;
+
+        // Initialize gallery
+        function initGallery() {
+            updateMainImage();
+            createThumbnails();
+        }
+
+        // Update main image
+        function updateMainImage() {
+            const image = projectImages[currentImageIndex];
+            document.getElementById('mainImage').src = image.url;
+            document.getElementById('mainImage').alt = image.title;
+            document.getElementById('imageTitle').textContent = image.title;
+            document.getElementById('imageDescription').textContent = image.description;
+            document.getElementById('imageCounter').textContent = `${currentImageIndex + 1} / ${projectImages.length}`;
+            
+            const badge = document.getElementById('imageBadge');
+            if (image.beforeAfter === 'before') {
+                badge.className = 'bg-red-500 px-3 py-1 rounded-full text-sm font-medium';
+                badge.textContent = 'Vorher';
+            } else {
+                badge.className = 'bg-green-500 px-3 py-1 rounded-full text-sm font-medium';
+                badge.textContent = 'Nachher';
+            }
+        }
+
+        // Create thumbnails
+        function createThumbnails() {
+            const container = document.getElementById('thumbnailContainer');
+            container.innerHTML = '';
+            
+            projectImages.forEach((image, index) => {
+                const thumbnail = document.createElement('button');
+                thumbnail.className = `relative flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden transition-all hover:scale-105 ${
+                    currentImageIndex === index 
+                        ? 'ring-3 ring-orange-500 shadow-lg scale-105' 
+                        : 'opacity-70'
+                }`;
+                thumbnail.onclick = () => {
+                    currentImageIndex = index;
+                    updateMainImage();
+                    createThumbnails();
+                };
+                
+                const img = document.createElement('img');
+                img.src = image.url;
+                img.alt = image.title;
+                img.className = 'w-full h-full object-cover';
+                
+                thumbnail.appendChild(img);
+                container.appendChild(thumbnail);
+            });
+        }
+
+        // Navigation functions
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % projectImages.length;
+            updateMainImage();
+            createThumbnails();
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + projectImages.length) % projectImages.length;
+            updateMainImage();
+            createThumbnails();
+        }
+
+        // Simulate live view counter
+        function updateViewCounter() {
+            if (Math.random() > 0.7) {
+                viewCount += Math.floor(Math.random() * 3) + 1;
+                document.getElementById('viewCounter').textContent = viewCount.toLocaleString('de-DE');
+            }
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            initGallery();
+            
+            // Update view counter every 15 seconds
+            setInterval(updateViewCounter, 15000);
+        });
+    </script>
+</body>
+</html>
