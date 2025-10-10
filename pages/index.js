@@ -1,11 +1,6 @@
-import { useEffect } from 'react';
+import StartseiteFarbtest from './startseite-farbtest';
 
 export default function HomePage() {
-  useEffect(() => {
-    // Redirect to the actual index.html in public folder
-    window.location.href = '/index.html';
-  }, []);
-
-  return null; // This component only redirects
+  return <StartseiteFarbtest />;
 }
 
