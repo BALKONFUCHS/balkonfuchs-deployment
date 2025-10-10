@@ -244,7 +244,7 @@ const FAQ = () => {
       color: "green",
       questions: [
         {
-          question: "Wie genau sind die Kostenschätzungen im Funnel?",
+          question: "Wie genau sind die Kostenschätzungen im Service?",
           answer: "Unsere Kostenschätzungen basieren auf über 2.500 realisierten Projekten und sind in der Regel auf ±15% genau. Es ist uns wichtig, Ihnen eine möglichst gute Kostenschätzung zur Verfügung zu stellen. Allerdings sind gerade bei Balkonprojekten (beispielsweise im Denkmalschutz oder schwer zugänglichen Bereichen) häufig zusätzliche Kosten notwendig, die im Vorfeld nicht kalkulierbar sind.",
           keywords: ["Balkon Kosten Genauigkeit", "Kostenschätzung Balkon", "Balkon Preis Genauigkeit"],
           cta: {
@@ -292,7 +292,7 @@ const FAQ = () => {
       questions: [
         {
           question: "Wie schnell erhalte ich die ersten Angebote?",
-          answer: "Die erste Kostenschätzung erhalten Sie sofort im Funnel. Die Vermittlung an passende Fachbetriebe erfolgt innerhalb von 24-48 Stunden. Die Angebotserstellung durch die Partner kann je nach Projektumfang 3-7 Tage dauern.",
+          answer: "Die erste Kostenschätzung erhalten Sie sofort im Service. Die Vermittlung an passende Fachbetriebe erfolgt innerhalb von 24-48 Stunden. Die Angebotserstellung durch die Partner kann je nach Projektumfang 3-7 Tage dauern.",
           keywords: ["Balkon Antwortzeit", "Balkon Antwort schnell", "Balkon Vermittlung Zeit"],
           cta: {
             text: "Schnelle Angebote erhalten",
@@ -397,24 +397,24 @@ const FAQ = () => {
       ]
     },
     {
-      category: "Funnel-Bedienung & Support",
+      category: "Service-Bedienung & Support",
       icon: "📋",
       color: "gray",
       questions: [
         {
-          question: "Ich habe mich im Funnel 'verklickt' - kann ich korrigieren?",
-          answer: "Ja, Sie können jederzeit zurück navigieren und Ihre Angaben korrigieren. Der Funnel speichert Ihre Eingaben automatisch zwischen.",
-          keywords: ["Balkon Funnel korrigieren", "Balkon Eingabe ändern", "Balkon Funnel zurück"],
+          question: "Ich habe mich im Service 'verklickt' - kann ich korrigieren?",
+          answer: "Ja, Sie können jederzeit zurück navigieren und Ihre Angaben korrigieren. Der Service speichert Ihre Eingaben automatisch zwischen.",
+          keywords: ["Balkon Service korrigieren", "Balkon Eingabe ändern", "Balkon Service zurück"],
           cta: {
-            text: "Funnel neu starten",
+            text: "Service neu starten",
             link: "/kalkulator/",
             icon: "🔄"
           }
         },
         {
-          question: "Was passiert wenn der Funnel nicht funktioniert?",
+          question: "Was passiert wenn der Service nicht funktioniert?",
           answer: "Bei technischen Problemen senden Sie uns gerne eine E-Mail an post@balkonfuchs.de oder nutzen Sie unseren Chat. Wir erstellen Ihre Anfrage auch manuell und vermitteln Sie an passende Partner.",
-          keywords: ["Balkon Funnel Problem", "Balkon technischer Fehler", "Balkon Support"],
+          keywords: ["Balkon Service Problem", "Balkon technischer Fehler", "Balkon Support"],
           cta: {
             text: "Technisches Problem melden",
             link: "/kontakt",
