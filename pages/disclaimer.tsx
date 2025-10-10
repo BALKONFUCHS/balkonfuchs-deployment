@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { ArrowLeft, Home, Shield, AlertTriangle, FileText, Mail } from 'lucide-react';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Disclaimer = () => {
@@ -20,27 +21,7 @@ const Disclaimer = () => {
       </Head>
 
       <div className="min-h-screen bg-gray-900">
-        {/* Header */}
-        <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <div className="flex items-center">
-                <a href="/" className="flex items-center">
-                  <img 
-                    src="/logos/balkonfuchs-logo.png" 
-                    alt="BALKONFUCHS Logo" 
-                    className="h-10 w-auto"
-                  />
-                </a>
-              </div>
-              <div className="flex items-center space-x-4">
-                <a href="/" className="text-gray-300 hover:text-orange-400 transition-colors">
-                  <Home className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header />
 
         {/* Main Content */}
         <main className="py-16 bg-gray-900">

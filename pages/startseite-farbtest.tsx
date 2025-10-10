@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown } from 'lucide-react';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const StartseiteFarbtest = () => {
@@ -13,37 +14,7 @@ const StartseiteFarbtest = () => {
       </Head>
 
       <div className="min-h-screen bg-gray-900">
-        {/* Header */}
-        <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16">
-              <div className="flex items-center">
-                <a href="/" className="flex items-center">
-                  <img 
-                    src="/images/Balkonfuchs-Logo_white.png" 
-                    alt="BALKONFUCHS Logo" 
-                    className="h-10 w-auto"
-                  />
-                </a>
-              </div>
-              
-              {/* Desktop Navigation */}
-              <nav className="hidden md:flex space-x-8">
-                <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
-                <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
-                <a href="/express-angebot/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Angebot</a>
-                <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
-                <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
-              </nav>
-              
-              <div className="hidden md:flex items-center space-x-4">
-                <a href="/partner-info/" className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
-                  Partner werden
-                </a>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header />
 
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20">
