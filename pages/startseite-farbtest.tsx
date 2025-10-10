@@ -42,57 +42,6 @@ const StartseiteFarbtest = () => {
           </div>
         </section>
 
-        {/* Image Carousel */}
-        <section className="py-16 bg-gradient-to-br from-gray-800 to-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Unsere <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Projekte</span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                Lassen Sie sich von den erfolgreichen Balkon-Projekten unserer Partner inspirieren
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <img 
-                src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg" 
-                alt="Anlehnbalkon mit Stabgeländer" 
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <img 
-                src="/images/carousel/02-fluchtleiter.jpg" 
-                alt="Balkon mit Fluchtleiter" 
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <img 
-                src="/images/carousel/03-geschwungenes-gelaender.jpg" 
-                alt="Geschwungenes Balkongeländer" 
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <img 
-                src="/images/carousel/04-haengebalkon.jpg" 
-                alt="Hängebalkon" 
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <img 
-                src="/images/carousel/05-vorstellbalkon-denkmalschutz.jpg" 
-                alt="Vorstellbalkon im Denkmalschutz" 
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <img 
-                src="/images/carousel/06-vorstellbalkon-balkonraum-1.jpg" 
-                alt="Vorstellbalkon Balkonraum" 
-                className="w-full h-48 object-cover rounded-lg"
-              />
-              <img 
-                src="/images/carousel/07-vorstellbalkon-lisenen.jpg" 
-                alt="Vorstellbalkon mit Lisenen" 
-                className="w-full h-48 object-cover rounded-lg"
-              />
-            </div>
-          </div>
-        </section>
 
         {/* Main Funnel Cards */}
         <section className="py-16 bg-gray-900">
@@ -276,7 +225,7 @@ const StartseiteFarbtest = () => {
 
             {/* Carousel Container */}
             <div className="relative overflow-hidden rounded-lg">
-              <div className="flex animate-scroll">
+              <div className="flex animate-scroll" style={{ width: '200%' }}>
                 <img
                   src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg"
                   alt="Anlehnbalkon mit Stabgeländer"
@@ -371,6 +320,7 @@ const StartseiteFarbtest = () => {
         
         .animate-scroll {
           animation: scroll 30s linear infinite;
+          width: 200% !important;
         }
         
         .animate-scroll:hover {
