@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import dynamic from 'next/dynamic';
+const ZohoSalesIQ = dynamic(() => import('../components/ZohoSalesIQ.js'), { ssr: false });
 
 const StartseiteFarbtest = () => {
   return (
@@ -351,10 +353,13 @@ const StartseiteFarbtest = () => {
           </div>
         </section>
 
-        <Footer />
-      </div>
+      <Footer />
+      
+      {/* ZOHO Sales IQ Widget */}
+      <ZohoSalesIQ />
+    </div>
 
-      <style jsx>{`
+    <style jsx>{`
         @keyframes scroll {
           0% {
             transform: translateX(0);

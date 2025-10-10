@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { ArrowLeft, Building, Users, Globe, Award, Heart, Lightbulb, Target, CheckCircle, Star, Shield, Mail } from 'lucide-react';
+import dynamic from 'next/dynamic';
+const ZohoSalesIQ = dynamic(() => import('../components/ZohoSalesIQ.js'), { ssr: false });
 
 const About = () => {
   return (
@@ -386,6 +388,9 @@ const About = () => {
           });
         `
       }} />
+      
+      {/* ZOHO Sales IQ Widget */}
+      <ZohoSalesIQ />
     </>
   );
 };

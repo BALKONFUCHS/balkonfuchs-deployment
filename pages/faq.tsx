@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { ArrowLeft, Home, HelpCircle, Calculator, Calendar, Zap, Shield, CheckCircle } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import dynamic from 'next/dynamic';
+const ZohoSalesIQ = dynamic(() => import('../components/ZohoSalesIQ.js'), { ssr: false });
 
 const FAQ = () => {
   const faqData = [
@@ -559,6 +561,9 @@ const FAQ = () => {
         </main>
 
         <Footer />
+        
+        {/* ZOHO Sales IQ Widget */}
+        <ZohoSalesIQ />
       </div>
 
     </>
