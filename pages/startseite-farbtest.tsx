@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown } from 'lucide-react';
+import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown, Shield } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import dynamic from 'next/dynamic';
