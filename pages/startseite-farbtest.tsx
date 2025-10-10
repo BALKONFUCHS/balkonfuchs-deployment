@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown, Shield } from 'lucide-react';
 import Header from '../components/Header';
@@ -7,6 +7,38 @@ import dynamic from 'next/dynamic';
 const ZohoSalesIQ = dynamic(() => import('../components/ZohoSalesIQ.js'), { ssr: false });
 
 const StartseiteFarbtest = () => {
+  useEffect(() => {
+    // Rotating text animation
+    const rotatingTexts = [
+      { text: 'kalkulieren', color: 'text-orange-400' },
+      { text: 'planen', color: 'text-green-400' },
+      { text: 'anbauen', color: 'text-blue-400' },
+      { text: 'Partner finden', color: 'text-purple-400' },
+      { text: 'realisieren', color: 'text-red-400' },
+      { text: 'bauen', color: 'text-yellow-400' },
+      { text: 'sanieren', color: 'text-pink-400' },
+      { text: 'genießen', color: 'text-cyan-400' }
+    ];
+    
+    let currentIndex = 0;
+    const rotatingElement = document.getElementById('rotating-text');
+    
+    function updateRotatingText() {
+      if (rotatingElement) {
+        const current = rotatingTexts[currentIndex];
+        rotatingElement.textContent = current.text;
+        rotatingElement.className = `rotating-text ${current.color}`;
+        currentIndex = (currentIndex + 1) % rotatingTexts.length;
+      }
+    }
+    
+    // Start rotation
+    const interval = setInterval(updateRotatingText, 2000);
+    
+    // Cleanup
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <Head>
@@ -114,7 +146,7 @@ const StartseiteFarbtest = () => {
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-              Balkon <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">kalkulieren</span>
+              Balkon <span id="rotating-text" className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">kalkulieren</span>
             </h1>
             
             <div className="text-xl text-gray-300 max-w-4xl mx-auto mb-8 space-y-2">
