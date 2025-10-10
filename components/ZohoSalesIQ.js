@@ -12,21 +12,20 @@ const ZohoSalesIQ = () => {
     // Nur auf dem Client ausführen
     if (typeof window === 'undefined') return;
 
+    // Globaler Flag um mehrfaches Laden zu verhindern
+    if (window.zohoSalesIQLoaded) {
+      console.log('ZOHO Sales IQ already loaded globally');
+      return;
+    }
+
     // Prüfen ob wir auf der echten Domain sind (nicht localhost)
     const isLocalhost = window.location.hostname === 'localhost' || 
                        window.location.hostname === '127.0.0.1' ||
                        window.location.hostname.includes('local');
     
-    const isNetlifyDomain = window.location.hostname.includes('netlify.app');
-    
     if (isLocalhost) {
-      console.log('ZOHO Sales IQ skipped on localhost - will load on production domain');
+      console.log('ZOHO SalesIQ skipped on localhost - will load on production domain');
       return;
-    }
-    
-    // Lade auch auf Netlify-Domains für Testing
-    if (isNetlifyDomain) {
-      console.log('ZOHO Sales IQ loading on Netlify domain:', window.location.hostname);
     }
 
     // Warten bis das DOM vollständig geladen ist
@@ -36,6 +35,10 @@ const ZohoSalesIQ = () => {
         console.log('ZOHO Sales IQ already loaded');
         return;
       }
+
+      // Globalen Flag setzen
+      window.zohoSalesIQLoaded = true;
+      console.log('ZOHO Sales IQ loading on domain:', window.location.hostname);
 
       console.log('Loading ZOHO Sales IQ widget...');
 
