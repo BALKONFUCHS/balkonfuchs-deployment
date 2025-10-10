@@ -28,7 +28,7 @@ const PartnerInfoBerlin = () => {
               <div className="flex items-center">
                 <a href="/" className="flex items-center">
                   <img 
-                    src="/Balkonfuchs-Logo_white.png" 
+                    src="/images/Balkonfuchs-Logo_white.png" 
                     alt="BALKONFUCHS Logo" 
                     className="h-10 w-auto"
                   />

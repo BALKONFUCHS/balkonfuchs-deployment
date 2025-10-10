@@ -76,7 +76,7 @@ const StartseiteFarbtest = () => {
                 Unsere <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Projekte</span>
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                Lassen Sie sich von unseren erfolgreichen Balkon-Projekten inspirieren
+                Lassen Sie sich von den erfolgreichen Balkon-Projekten unserer Partner inspirieren
               </p>
             </div>
             
