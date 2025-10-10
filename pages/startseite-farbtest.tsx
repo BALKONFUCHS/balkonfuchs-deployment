@@ -260,8 +260,118 @@ const StartseiteFarbtest = () => {
           </div>
         </section>
 
+        {/* Carousel Section */}
+        <section className="py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Unsere <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Projekte</span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                Lassen Sie sich von den erfolgreichen Balkon-Projekten unserer Partner inspirieren
+              </p>
+            </div>
+
+            {/* Carousel Container */}
+            <div className="relative overflow-hidden rounded-lg">
+              <div className="flex animate-scroll">
+                <img
+                  src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg"
+                  alt="Anlehnbalkon mit Stabgeländer"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/02-kragbalkon-glasbrustung.jpg"
+                  alt="Kragbalkon mit Glasbrüstung"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/03-balkon-modern-glas.jpg"
+                  alt="Moderner Balkon mit Glas"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/04-balkon-traditionell-holz.jpg"
+                  alt="Traditioneller Balkon mit Holz"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/05-balkon-kompakt-stadt.jpg"
+                  alt="Kompakter Stadtbalkon"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/06-balkon-luxus-terrasse.jpg"
+                  alt="Luxus-Balkon mit Terrasse"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/07-balkon-familie-spielplatz.jpg"
+                  alt="Familien-Balkon als Spielplatz"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                {/* Duplicate images for seamless loop */}
+                <img
+                  src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg"
+                  alt="Anlehnbalkon mit Stabgeländer"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/02-kragbalkon-glasbrustung.jpg"
+                  alt="Kragbalkon mit Glasbrüstung"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/03-balkon-modern-glas.jpg"
+                  alt="Moderner Balkon mit Glas"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/04-balkon-traditionell-holz.jpg"
+                  alt="Traditioneller Balkon mit Holz"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/05-balkon-kompakt-stadt.jpg"
+                  alt="Kompakter Stadtbalkon"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/06-balkon-luxus-terrasse.jpg"
+                  alt="Luxus-Balkon mit Terrasse"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+                <img
+                  src="/images/carousel/07-balkon-familie-spielplatz.jpg"
+                  alt="Familien-Balkon als Spielplatz"
+                  className="w-[14.285%] h-48 object-cover flex-shrink-0"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         <Footer />
       </div>
+
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        
+        .animate-scroll {
+          animation: scroll 30s linear infinite;
+        }
+        
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </>
   );
 };
