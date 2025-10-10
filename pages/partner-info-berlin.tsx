@@ -2,6 +2,8 @@ import React from 'react';
 import Head from 'next/head';
 import { ArrowLeft, Home, Building, Users, Award, TrendingUp, CheckCircle2, Shield, Star, Phone, Mail, MapPin, AlertCircle, Zap, Target, Rocket, Crown } from 'lucide-react';
 import dynamic from 'next/dynamic';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 const ZohoSalesIQ = dynamic(() => import('../components/ZohoSalesIQ.js'), { ssr: false });
 
 const PartnerInfoBerlin = () => {
@@ -21,27 +23,7 @@ const PartnerInfoBerlin = () => {
       </Head>
 
       <div className="min-h-screen bg-gray-900">
-        {/* Header */}
-        <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
-              <div className="flex items-center">
-                <a href="/" className="flex items-center">
-                  <img 
-                    src="/images/Balkonfuchs-Logo_white.png" 
-                    alt="BALKONFUCHS Logo" 
-                    className="h-10 w-auto"
-                  />
-                </a>
-              </div>
-              <div className="flex items-center space-x-4">
-                <a href="/" className="text-gray-300 hover:text-orange-400 transition-colors">
-                  <Home className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header />
 
         {/* Main Content */}
         <main className="py-16 bg-gray-900">
@@ -720,21 +702,7 @@ const PartnerInfoBerlin = () => {
           </div>
         </main>
 
-        {/* Footer */}
-        <footer className="bg-gray-900 border-t border-gray-800 py-8 mt-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <p className="text-gray-400 mb-4">
-                © 2025 BALKONFUCHS GmbH - Partner Informationen Berlin
-              </p>
-              <div className="flex justify-center space-x-6 text-sm">
-                <a href="/impressum/" className="text-gray-400 hover:text-orange-400 transition-colors">Impressum</a>
-                <a href="/datenschutz/" className="text-gray-400 hover:text-orange-400 transition-colors">Datenschutz</a>
-                <a href="/agb/" className="text-gray-400 hover:text-orange-400 transition-colors">AGB</a>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
         
         {/* ZOHO Sales IQ Chat Widget */}
         <ZohoSalesIQ />
