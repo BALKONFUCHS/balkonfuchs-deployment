@@ -9,6 +9,15 @@ const StartseiteFarbtest = () => {
         <title>BALKONFUCHS - Alle Funnel im Überblick (Farbtest)</title>
         <meta name="description" content="Entdecken Sie alle BALKONFUCHS Funnel: Kalkulator, Planer, Express-Angebot, Genehmigungscheck und mehr. Finden Sie den perfekten Weg zu Ihrem Balkon-Projekt." />
         <meta name="robots" content="noindex, nofollow" />
+        <style jsx>{`
+          @keyframes carousel {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+          }
+          .animate-carousel {
+            animation: carousel 21s linear infinite;
+          }
+        `}</style>
       </Head>
 
       <div className="min-h-screen bg-gray-900">
@@ -65,6 +74,60 @@ const StartseiteFarbtest = () => {
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
               Entdecken Sie alle <span className="text-orange-400 font-bold">BALKONFUCHS Funnel</span> und finden Sie den perfekten Weg zu Ihrem Balkon-Projekt.
             </p>
+          </div>
+        </section>
+
+        {/* Image Carousel */}
+        <section className="py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Unsere <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Projekte</span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                Lassen Sie sich von unseren erfolgreichen Balkon-Projekten inspirieren
+              </p>
+            </div>
+            
+            <div className="relative overflow-hidden rounded-2xl">
+              <div className="flex animate-carousel">
+                <img 
+                  src="/images/carousel/01-anlehnbalkon-stabgelaender.jpg" 
+                  alt="Anlehnbalkon mit Stabgeländer" 
+                  className="w-full h-96 object-cover flex-shrink-0"
+                />
+                <img 
+                  src="/images/carousel/02-fluchtleiter.jpg" 
+                  alt="Balkon mit Fluchtleiter" 
+                  className="w-full h-96 object-cover flex-shrink-0"
+                />
+                <img 
+                  src="/images/carousel/03-geschwungenes-gelaender.jpg" 
+                  alt="Geschwungenes Balkongeländer" 
+                  className="w-full h-96 object-cover flex-shrink-0"
+                />
+                <img 
+                  src="/images/carousel/04-haengebalkon.jpg" 
+                  alt="Hängebalkon" 
+                  className="w-full h-96 object-cover flex-shrink-0"
+                />
+                <img 
+                  src="/images/carousel/05-vorstellbalkon-denkmalschutz.jpg" 
+                  alt="Vorstellbalkon im Denkmalschutz" 
+                  className="w-full h-96 object-cover flex-shrink-0"
+                />
+                <img 
+                  src="/images/carousel/06-vorstellbalkon-balkonraum-1.jpg" 
+                  alt="Vorstellbalkon Balkonraum" 
+                  className="w-full h-96 object-cover flex-shrink-0"
+                />
+                <img 
+                  src="/images/carousel/07-vorstellbalkon-lisenen.jpg" 
+                  alt="Vorstellbalkon mit Lisenen" 
+                  className="w-full h-96 object-cover flex-shrink-0"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
