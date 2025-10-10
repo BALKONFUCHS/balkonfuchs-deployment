@@ -12,7 +12,90 @@ const StartseiteFarbtest = () => {
       <Head>
         <title>BALKONFUCHS - Alle Services im Überblick</title>
         <meta name="description" content="Entdecken Sie alle BALKONFUCHS Services: Kalkulator, Planer, Express-Angebot, Genehmigungscheck und mehr. Finden Sie den perfekten Weg zu Ihrem Balkon-Projekt." />
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="keywords" content="balkon kalkulator, balkon planer, balkon genehmigung, balkon bauzeit, balkon express angebot, balkon partner, balkon kalkulation, balkon planung, balkon genehmigungscheck, balkon baustart rechner" />
+        <meta name="author" content="BALKONFUCHS GmbH" />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="BALKONFUCHS - Alle Services im Überblick" />
+        <meta property="og:description" content="Entdecken Sie alle BALKONFUCHS Services: Kalkulator, Planer, Express-Angebot, Genehmigungscheck und mehr." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://balkonfuchs.de" />
+        <meta property="og:image" content="https://balkonfuchs.de/images/Balkonfuchs-Logo_white.png" />
+        
+        {/* Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Wie viel kostet ein Balkon?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ein Balkon kostet je nach Größe und Ausstattung zwischen 3.000€ und 15.000€. Nutzen Sie unseren Balkon-Kalkulator für eine genaue Kostenschätzung in nur 2 Minuten."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Brauche ich eine Genehmigung für meinen Balkon?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Das hängt von Ihrem Bundesland und der Art des Balkons ab. Nutzen Sie unseren Genehmigungscheck für eine schnelle Antwort in 1 Minute."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Wie lange dauert der Balkonbau?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ein Balkon-Projekt dauert in der Regel 4-8 Wochen. Nutzen Sie unseren Baustart Rechner für einen detaillierten Zeitplan."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Wie finde ich den richtigen Partner?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Wir vermitteln Ihnen geprüfte Partner aus Ihrer Region. Nutzen Sie unseren Balkon-Planer für eine detaillierte Projektplanung."
+                  }
+                }
+              ]
+            })
+          }}
+        />
+        
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "BALKONFUCHS",
+              "url": "https://balkonfuchs.de",
+              "logo": "https://balkonfuchs.de/images/Balkonfuchs-Logo_white.png",
+              "description": "Deutschlands führende Plattform für Balkon-Projekte",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "DE"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+49-XXX-XXXXXXX",
+                "contactType": "customer service",
+                "email": "post@balkonfuchs.de"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "reviewCount": "850"
+              }
+            })
+          }}
+        />
       </Head>
 
       <div className="min-h-screen bg-gray-900">
@@ -337,6 +420,77 @@ const StartseiteFarbtest = () => {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Schnelle Umsetzung</h3>
                 <p className="text-gray-300">Von der Idee bis zur Umsetzung in nur wenigen Wochen.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SEO FAQ Section */}
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Häufige Fragen zu <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Projekten</span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                Hier finden Sie die wichtigsten Antworten auf die häufigsten Fragen rund um Ihr Balkonprojekt
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6 mb-12">
+              <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/30 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">❓ Wie viel kostet ein Balkon?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Ein Balkon kostet je nach Größe und Ausstattung zwischen <strong className="text-orange-400">3.000€ und 15.000€</strong>. 
+                  Nutzen Sie unseren <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a> für eine genaue Kostenschätzung in nur 2 Minuten.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/30 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">❓ Brauche ich eine Genehmigung für meinen Balkon?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Das hängt von Ihrem Bundesland und der Art des Balkons ab. Nutzen Sie unseren <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 underline">Genehmigungscheck</a> für eine schnelle Antwort in 1 Minute.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/30 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">❓ Wie lange dauert der Balkonbau?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Ein Balkon-Projekt dauert in der Regel <strong className="text-orange-400">4-8 Wochen</strong>. Nutzen Sie unseren <a href="/bauzeit-planung/" className="text-orange-400 hover:text-orange-300 underline">Baustart Rechner</a> für einen detaillierten Zeitplan.
+                </p>
+              </div>
+              
+              <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/30 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">❓ Wie finde ich den richtigen Partner?</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  Wir vermitteln Ihnen <strong className="text-orange-400">geprüfte Partner</strong> aus Ihrer Region. Nutzen Sie unseren <a href="/planer/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Planer</a> für eine detaillierte Projektplanung.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Banner */}
+        <section className="py-16 bg-gradient-to-br from-gray-800 to-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 rounded-2xl p-8">
+              <div className="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                  <div className="text-4xl font-bold text-orange-400 mb-2">4.8/5</div>
+                  <div className="text-gray-300">Kundenbewertung</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-orange-400 mb-2">850+</div>
+                  <div className="text-gray-300">Projekte realisiert</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-orange-400 mb-2">98%</div>
+                  <div className="text-gray-300">Weiterempfehlung</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-orange-400 mb-2">85+</div>
+                  <div className="text-gray-300">Partner in Planung</div>
+                </div>
               </div>
             </div>
           </div>
