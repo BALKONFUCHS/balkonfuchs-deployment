@@ -113,19 +113,25 @@ const StartseiteFarbtest = () => {
                 <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
                   <CheckCircle className="w-6 h-6 text-green-400" />
                 </div>
-                <span className="text-lg">Kostenlos</span>
+                <span className="text-lg">Geprüfte Partner</span>
               </div>
               <div className="flex items-center text-gray-400">
                 <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
                   <Shield className="w-6 h-6 text-blue-400" />
                 </div>
-                <span className="text-lg">Unverbindlich</span>
+                <span className="text-lg">DSGVO-konform</span>
               </div>
               <div className="flex items-center text-gray-400">
                 <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center mr-3">
                   <Zap className="w-6 h-6 text-purple-400" />
                 </div>
-                <span className="text-lg">In 2 Minuten</span>
+                <span className="text-lg">In 2 Min. fertig</span>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center mr-3">
+                  <Users className="w-6 h-6 text-orange-400" />
+                </div>
+                <span className="text-lg">85+ Partner</span>
               </div>
             </div>
 
@@ -144,10 +150,10 @@ const StartseiteFarbtest = () => {
         <section className="py-16 bg-gradient-to-br from-gray-800 to-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Ausgewählte <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Referenzen</span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              </h3>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                 Entdecken Sie die Vielfalt der Balkon-Projekte unserer Partner
               </p>
             </div>
@@ -227,6 +233,20 @@ const StartseiteFarbtest = () => {
                   className="w-[14.285%] h-64 object-cover flex-shrink-0 rounded-lg shadow-lg"
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Start Your Project Section */}
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Starten Sie Ihr <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkonprojekt</span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Wählen Sie das passende Tool für Ihren nächsten Schritt von der ersten Kostenschätzung bis zur finalen Umsetzung
+              </p>
             </div>
           </div>
         </section>
