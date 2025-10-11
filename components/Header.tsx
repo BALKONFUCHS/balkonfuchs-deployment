@@ -25,11 +25,11 @@ const Header = () => {
             <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
             <a href="/express-angebot/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Angebot</a>
             <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
-            <a href="/gewerbe/" className="text-gray-300 hover:text-blue-400 font-medium transition-colors">Gewerbe</a>
             <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
           </nav>
           
           <div className="hidden md:flex items-center space-x-4">
+            <a href="/gewerbe/" className="text-gray-300 hover:text-blue-400 font-medium transition-colors">Gewerbe</a>
             <a href="/partner-info-berlin/" className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
               Partner werden
             </a>
