@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { Building2, Users, TrendingUp, Shield, CheckCircle, ArrowRight, Mail, Phone, MapPin, FileText, Clock, Award, Target, Zap, Calculator, Home } from 'lucide-react';
+import { Building2, Users, TrendingUp, Shield, CheckCircle, ArrowRight, Mail, Phone, MapPin, FileText, Clock, Award, Target, Zap, Calculator, Home, Calendar, Star } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ZohoSalesIQ from '../components/ZohoSalesIQ';
@@ -35,6 +35,23 @@ export default function GewerbeFunnel() {
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 5;
+
+  // Rotierende Überschrift
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const texts = [
+    { text: 'Bauträger', color: 'from-blue-400 to-cyan-400' },
+    { text: 'Wohnbaugesellschaften', color: 'from-green-400 to-emerald-400' },
+    { text: 'Großprojekte', color: 'from-purple-400 to-pink-400' },
+    { text: 'Investoren', color: 'from-orange-400 to-red-400' },
+    { text: 'Gewerbeprojekte', color: 'from-yellow-400 to-orange-400' }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % texts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleInputChange = (field: string, value: any) => {
     setFormData(prev => ({
@@ -103,44 +120,47 @@ export default function GewerbeFunnel() {
                 <span className="font-semibold">B2B | Gewerbliche Projekte</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                Professionelle Balkonlösungen für
-                <span className="block text-blue-200 mt-2">Gewerbliche Großprojekte</span>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-4xl mx-auto">
+                Professionelle Balkonlösungen für{' '}
+                <span 
+                  className={`text-transparent bg-clip-text bg-gradient-to-r ${texts[currentTextIndex].color} transition-all duration-500`}
+                  style={{ display: 'inline-block', minWidth: '300px' }}
+                >
+                  {texts[currentTextIndex].text}
+                </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto mb-8">
+              <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">
                 Ihr Partner für Mehrfamilienhäuser, Bauträger-Projekte und institutionelle Bauherren
               </p>
 
-              {/* Trust Indicators */}
+              {/* Trust Indicators - von Startseite übernommen */}
               <div className="flex flex-wrap justify-center gap-8 mt-12">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
                     <CheckCircle className="w-6 h-6 text-green-300" />
                   </div>
                   <div className="text-left">
-                    <div className="font-bold text-lg">500+</div>
-                    <div className="text-blue-200 text-sm">Gewerbeprojekte</div>
+                    <div className="font-bold text-lg">Geprüfte Partner</div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                    <Building2 className="w-6 h-6 text-blue-300" />
+                    <Shield className="w-6 h-6 text-blue-300" />
                   </div>
                   <div className="text-left">
-                    <div className="font-bold text-lg">15.000+</div>
-                    <div className="text-blue-200 text-sm">Wohneinheiten</div>
+                    <div className="font-bold text-lg">DSGVO konform</div>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
-                    <Award className="w-6 h-6 text-purple-300" />
+                  <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center">
+                    <Star className="w-6 h-6 text-yellow-300" />
                   </div>
                   <div className="text-left">
-                    <div className="font-bold text-lg">Zertifiziert</div>
-                    <div className="text-blue-200 text-sm">DIN & Baurecht</div>
+                    <div className="font-bold text-lg">4.8/5 Sterne</div>
+                    <div className="text-blue-200 text-sm">von über 850 Kunden</div>
                   </div>
                 </div>
               </div>
@@ -272,8 +292,10 @@ export default function GewerbeFunnel() {
                       {[
                         { value: 'anbaubalkon', label: 'Anbaubalkon', desc: 'Klassischer Balkonanbau' },
                         { value: 'vorstellbalkon', label: 'Vorstellbalkon', desc: 'Freistehende Konstruktion' },
+                        { value: 'haengebalkon', label: 'Hängebalkon', desc: 'An der Fassade aufgehängte Konstruktion' },
                         { value: 'franzoesisch', label: 'Französischer Balkon', desc: 'Bodentiefes Fenster mit Geländer' },
-                        { value: 'loggia', label: 'Loggia', desc: 'Überdachter Balkon' }
+                        { value: 'loggia', label: 'Loggia', desc: 'Überdachter Balkon' },
+                        { value: 'andere', label: 'Andere / Individuelle Lösung', desc: 'Spezielle Anforderungen' }
                       ].map((typ) => (
                         <button
                           key={typ.value}
