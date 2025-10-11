@@ -740,7 +740,7 @@ export default function GewerbeFunnel() {
                   <div className="grid md:grid-cols-2 gap-6">
                     {/* Firmenname */}
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Firmenname *
                       </label>
                       <input
@@ -748,13 +748,13 @@ export default function GewerbeFunnel() {
                         value={formData.firmenname}
                         onChange={(e) => handleInputChange('firmenname', e.target.value)}
                         placeholder="Ihr Unternehmen"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* Ansprechpartner */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Ansprechpartner *
                       </label>
                       <input
@@ -762,13 +762,13 @@ export default function GewerbeFunnel() {
                         value={formData.ansprechpartner}
                         onChange={(e) => handleInputChange('ansprechpartner', e.target.value)}
                         placeholder="Vor- und Nachname"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* Position */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Position
                       </label>
                       <input
@@ -776,13 +776,13 @@ export default function GewerbeFunnel() {
                         value={formData.position}
                         onChange={(e) => handleInputChange('position', e.target.value)}
                         placeholder="Ihre Position"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* Projektleiter */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Projektleiter (optional)
                       </label>
                       <input
@@ -790,13 +790,13 @@ export default function GewerbeFunnel() {
                         value={formData.projektleiter}
                         onChange={(e) => handleInputChange('projektleiter', e.target.value)}
                         placeholder="Name des Projektleiters"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* E-Mail */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         E-Mail *
                       </label>
                       <input
@@ -804,13 +804,13 @@ export default function GewerbeFunnel() {
                         value={formData.email}
                         onChange={(e) => handleInputChange('email', e.target.value)}
                         placeholder="ihre.email@firma.de"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* Telefon */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Telefon *
                       </label>
                       <input
@@ -818,13 +818,13 @@ export default function GewerbeFunnel() {
                         value={formData.telefon}
                         onChange={(e) => handleInputChange('telefon', e.target.value)}
                         placeholder="+49 123 456789"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* Straße */}
                     <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Straße & Hausnummer
                       </label>
                       <input
@@ -832,13 +832,13 @@ export default function GewerbeFunnel() {
                         value={formData.strasse}
                         onChange={(e) => handleInputChange('strasse', e.target.value)}
                         placeholder="Musterstraße 123"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* PLZ */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         PLZ *
                       </label>
                       <input
@@ -847,13 +847,13 @@ export default function GewerbeFunnel() {
                         onChange={(e) => handleInputChange('plz', e.target.value)}
                         placeholder="12345"
                         maxLength={5}
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
 
                     {/* Ort */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Ort *
                       </label>
                       <input
@@ -861,7 +861,7 @@ export default function GewerbeFunnel() {
                         value={formData.ort}
                         onChange={(e) => handleInputChange('ort', e.target.value)}
                         placeholder="Musterstadt"
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
                   </div>
@@ -878,7 +878,7 @@ export default function GewerbeFunnel() {
 
                   {/* Nachricht */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <label className="block text-sm font-semibold text-gray-300 mb-2">
                       Ihre Nachricht (optional)
                     </label>
                     <textarea
@@ -886,12 +886,12 @@ export default function GewerbeFunnel() {
                       onChange={(e) => handleInputChange('nachricht', e.target.value)}
                       placeholder="Besondere Anforderungen, Fragen oder zusätzliche Informationen zu Ihrem Projekt..."
                       rows={6}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors resize-none"
                     />
                   </div>
 
                   {/* Datenschutz */}
-                  <div className="bg-gray-50 rounded-lg p-6">
+                  <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
                     <label className="flex items-start gap-3 cursor-pointer">
                       <input
                         type="checkbox"
@@ -899,8 +899,8 @@ export default function GewerbeFunnel() {
                         onChange={(e) => handleInputChange('datenschutz', e.target.checked)}
                         className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                       />
-                      <span className="text-sm text-gray-700">
-                        Ich habe die <a href="/datenschutz/" className="text-blue-600 hover:underline" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. Ich bin damit einverstanden, dass BALKONFUCHS mich bezüglich meiner Anfrage kontaktiert. *
+                      <span className="text-sm text-gray-300">
+                        Ich habe die <a href="/datenschutz/" className="text-blue-400 hover:underline" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. Ich bin damit einverstanden, dass BALKONFUCHS mich bezüglich meiner Anfrage kontaktiert. *
                       </span>
                     </label>
                   </div>
@@ -1107,19 +1107,6 @@ export default function GewerbeFunnel() {
         textarea::placeholder {
           color: white !important;
           opacity: 0.7 !important;
-        }
-        
-        /* Für alle Input-Felder im Dark-Theme */
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        textarea {
-          color: white !important;
-        }
-        
-        /* Labels im Dark-Theme */
-        label {
-          color: #d1d5db !important;
         }
       `}</style>
     </>
