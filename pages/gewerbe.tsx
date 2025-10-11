@@ -960,74 +960,152 @@ export default function GewerbeFunnel() {
                     </div>
                   </div>
 
-                  {/* Zusammenfassung */}
-                  <div className="bg-blue-50 rounded-lg p-6 border-2 border-blue-200">
-                    <h3 className="text-lg font-bold text-blue-900 mb-4">Ihre Projektübersicht</h3>
-                    <div className="space-y-2 text-sm">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Projektname:</span>
-                        <span className="font-semibold text-gray-900">{formData.projektname || '-'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Projektort:</span>
-                        <span className="font-semibold text-gray-900">{formData.projektort || '-'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Projektadresse:</span>
-                        <span className="font-semibold text-gray-900">{formData.projektadresse || '-'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Projekttyp:</span>
-                        <span className="font-semibold text-gray-900">{formData.projekttyp || '-'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Anzahl Einheiten:</span>
-                        <span className="font-semibold text-gray-900">{formData.anzahlEinheiten || '-'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Balkontypen:</span>
-                        <span className="font-semibold text-gray-900">{formData.balkontyp.length > 0 ? formData.balkontyp.join(', ') : '-'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Zeitrahmen:</span>
-                        <span className="font-semibold text-gray-900">
-                          {formData.zeitrahmen || 
-                           (formData.startMonat && formData.startJahr ? 
-                            `${formData.startMonat}/${formData.startJahr} - ${formData.endMonat || '?'}/${formData.endJahr || '?'}` : 
-                            '-')}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Budget:</span>
-                        <span className="font-semibold text-gray-900">
-                          {formData.budgetFreitext || formData.budgetrahmen || '-'}
-                        </span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Firma:</span>
-                        <span className="font-semibold text-gray-900">{formData.firmenname || '-'}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Ansprechpartner:</span>
-                        <span className="font-semibold text-gray-900">{formData.ansprechpartner || '-'}</span>
-                      </div>
-                      {formData.projektleiter && (
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">Projektleiter:</span>
-                          <span className="font-semibold text-gray-900">{formData.projektleiter}</span>
+                  {/* Vollständige Zusammenfassung */}
+                  <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
+                    <h3 className="text-xl font-bold text-white mb-6">📋 Vollständige Projektübersicht</h3>
+                    
+                    {/* Projekt-Details */}
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold text-blue-400 mb-3">🏢 Projektdetails</h4>
+                      <div className="grid md:grid-cols-2 gap-4 text-sm">
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Projektname:</span>
+                            <span className="font-semibold text-white">{formData.projektname || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Projektort:</span>
+                            <span className="font-semibold text-white">{formData.projektort || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Projektadresse:</span>
+                            <span className="font-semibold text-white">{formData.projektadresse || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Gebäudetyp:</span>
+                            <span className="font-semibold text-white">{formData.projekttyp || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Anzahl Wohnungen:</span>
+                            <span className="font-semibold text-white">{formData.anzahlEinheiten || '-'}</span>
+                          </div>
                         </div>
-                      )}
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Balkontypen:</span>
+                            <span className="font-semibold text-white">{formData.balkontyp.length > 0 ? formData.balkontyp.join(', ') : '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Zeitrahmen (Range):</span>
+                            <span className="font-semibold text-white">{formData.zeitrahmen || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Exakter Starttermin:</span>
+                            <span className="font-semibold text-white">
+                              {formData.startMonat && formData.startJahr ? `${formData.startMonat}/${formData.startJahr}` : '-'}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Exakter Endtermin:</span>
+                            <span className="font-semibold text-white">
+                              {formData.endMonat && formData.endJahr ? `${formData.endMonat}/${formData.endJahr}` : '-'}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Budget (Range):</span>
+                            <span className="font-semibold text-white">{formData.budgetrahmen || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Exaktes Budget:</span>
+                            <span className="font-semibold text-white">{formData.budgetFreitext || '-'}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Kontakt-Details */}
+                    <div className="mb-6">
+                      <h4 className="text-lg font-semibold text-blue-400 mb-3">👥 Kontaktdetails</h4>
+                      <div className="grid md:grid-cols-2 gap-4 text-sm">
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Unternehmensname:</span>
+                            <span className="font-semibold text-white">{formData.firmenname || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Ansprechpartner:</span>
+                            <span className="font-semibold text-white">{formData.ansprechpartner || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Position:</span>
+                            <span className="font-semibold text-white">{formData.position || '-'}</span>
+                          </div>
+                          {formData.projektleiter && (
+                            <div className="flex justify-between">
+                              <span className="text-gray-300">Projektleiter:</span>
+                              <span className="font-semibold text-white">{formData.projektleiter}</span>
+                            </div>
+                          )}
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">E-Mail:</span>
+                            <span className="font-semibold text-white">{formData.email || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Telefon:</span>
+                            <span className="font-semibold text-white">{formData.telefon || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">PLZ:</span>
+                            <span className="font-semibold text-white">{formData.plz || '-'}</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-gray-300">Ort:</span>
+                            <span className="font-semibold text-white">{formData.ort || '-'}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Zusätzliche Informationen */}
+                    {formData.nachricht && (
+                      <div className="mb-6">
+                        <h4 className="text-lg font-semibold text-blue-400 mb-3">💬 Zusätzliche Nachricht</h4>
+                        <div className="bg-gray-800/50 rounded-lg p-4 border border-gray-600">
+                          <p className="text-gray-300 text-sm leading-relaxed">{formData.nachricht}</p>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Rechtliche Bestätigungen */}
+                    <div>
+                      <h4 className="text-lg font-semibold text-blue-400 mb-3">✅ Rechtliche Bestätigungen</h4>
+                      <div className="grid md:grid-cols-3 gap-4 text-sm">
+                        <div className={`flex items-center gap-2 ${formData.datenschutz ? 'text-green-400' : 'text-red-400'}`}>
+                          <CheckCircle className="w-4 h-4" />
+                          <span>Datenschutz</span>
+                        </div>
+                        <div className={`flex items-center gap-2 ${formData.balkonbrief ? 'text-green-400' : 'text-red-400'}`}>
+                          <CheckCircle className="w-4 h-4" />
+                          <span>Balkonbrief</span>
+                        </div>
+                        <div className={`flex items-center gap-2 ${formData.haftungsausschluss ? 'text-green-400' : 'text-red-400'}`}>
+                          <CheckCircle className="w-4 h-4" />
+                          <span>Haftungsausschluss</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
 
               {/* Navigation Buttons */}
-              <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+              <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-600">
                 {currentStep > 1 && (
                   <button
                     onClick={prevStep}
-                    className="flex items-center gap-2 px-6 py-3 text-gray-700 font-semibold hover:text-gray-900 transition-colors"
+                    className="flex items-center gap-2 px-6 py-3 text-gray-300 font-semibold hover:text-white transition-colors"
                   >
                     <ArrowRight className="w-5 h-5 rotate-180" />
                     Zurück

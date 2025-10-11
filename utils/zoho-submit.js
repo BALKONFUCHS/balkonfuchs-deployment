@@ -122,6 +122,13 @@ export const formatGewerbeData = (formData) => {
       city: formData.ort
     },
 
+    // Erweiterte Unternehmensdaten
+    extendedCompany: {
+      ansprechpartner: formData.ansprechpartner,
+      position: formData.position,
+      projektleiter: formData.projektleiter
+    },
+
     // Lead-Scoring (vereinfacht)
     leadScore: {
       totalScore: calculateGewerbeScore(formData),
