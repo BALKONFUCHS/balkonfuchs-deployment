@@ -421,13 +421,13 @@ export default function GewerbeFunnel() {
               {currentStep === 2 && (
                 <div className="space-y-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Projektdetails</h2>
-                    <p className="text-gray-600">Geben Sie uns mehr Informationen zu Ihrem Vorhaben</p>
+                    <h2 className="text-3xl font-bold text-white mb-4">Projektdetails</h2>
+                    <p className="text-gray-300">Geben Sie uns mehr Informationen zu Ihrem Vorhaben</p>
                   </div>
 
                   {/* Anzahl Wohneinheiten */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                    <label className="block text-sm font-semibold text-gray-300 mb-3">
                       Anzahl der Wohneinheiten / Balkone
                     </label>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -437,8 +437,8 @@ export default function GewerbeFunnel() {
                           onClick={() => handleInputChange('anzahlEinheiten', range)}
                           className={`p-4 rounded-lg border-2 font-semibold transition-all duration-300 ${
                             formData.anzahlEinheiten === range
-                              ? 'border-blue-500 bg-blue-50 text-blue-700'
-                              : 'border-gray-200 hover:border-blue-300 text-gray-700'
+                              ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50 text-blue-400'
+                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md text-white'
                           }`}
                         >
                           {range}
@@ -449,7 +449,7 @@ export default function GewerbeFunnel() {
 
                   {/* Balkontyp (Mehrfachauswahl) */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                    <label className="block text-sm font-semibold text-gray-300 mb-3">
                       Welche Balkontypen sind geplant? (Mehrfachauswahl möglich)
                     </label>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -466,17 +466,17 @@ export default function GewerbeFunnel() {
                           onClick={() => handleBalkonTypToggle(typ.value)}
                           className={`p-4 rounded-lg border-2 text-left transition-all duration-300 ${
                             formData.balkontyp.includes(typ.value)
-                              ? 'border-blue-500 bg-blue-50'
-                              : 'border-gray-200 hover:border-blue-300'
+                              ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50'
+                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
                           }`}
                         >
                           <div className="flex items-start justify-between">
                             <div>
-                              <div className="font-semibold text-gray-900">{typ.label}</div>
-                              <div className="text-sm text-gray-600 mt-1">{typ.desc}</div>
+                              <div className="font-semibold text-white">{typ.label}</div>
+                              <div className="text-sm text-gray-300 mt-1">{typ.desc}</div>
                             </div>
                             {formData.balkontyp.includes(typ.value) && (
-                              <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                              <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
                             )}
                           </div>
                         </button>
@@ -490,13 +490,13 @@ export default function GewerbeFunnel() {
               {currentStep === 3 && (
                 <div className="space-y-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Zeitrahmen & Budget</h2>
-                    <p className="text-gray-600">Helfen Sie uns, Ihr Projekt optimal zu planen</p>
+                    <h2 className="text-3xl font-bold text-white mb-4">Zeitrahmen & Budget</h2>
+                    <p className="text-gray-300">Helfen Sie uns, Ihr Projekt optimal zu planen</p>
                   </div>
 
                   {/* Zeitrahmen */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                    <label className="block text-sm font-semibold text-gray-300 mb-3">
                       Wann soll das Projekt umgesetzt werden?
                     </label>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -514,12 +514,12 @@ export default function GewerbeFunnel() {
                             onClick={() => handleInputChange('zeitrahmen', option.value)}
                             className={`p-4 rounded-lg border-2 flex items-center gap-3 transition-all duration-300 ${
                               formData.zeitrahmen === option.value
-                                ? 'border-blue-500 bg-blue-50'
-                                : 'border-gray-200 hover:border-blue-300'
+                                ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50'
+                                : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
                             }`}
                           >
-                            <Icon className={`w-6 h-6 ${formData.zeitrahmen === option.value ? 'text-blue-600' : 'text-gray-400'}`} />
-                            <span className="font-semibold text-gray-900">{option.label}</span>
+                            <Icon className={`w-6 h-6 ${formData.zeitrahmen === option.value ? 'text-blue-400' : 'text-gray-400'}`} />
+                            <span className="font-semibold text-white">{option.label}</span>
                           </button>
                         );
                       })}
@@ -528,7 +528,7 @@ export default function GewerbeFunnel() {
 
                   {/* Budgetrahmen */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                    <label className="block text-sm font-semibold text-gray-300 mb-3">
                       Geschätzter Budgetrahmen (optional)
                     </label>
                     <div className="grid md:grid-cols-2 gap-4">
@@ -545,8 +545,8 @@ export default function GewerbeFunnel() {
                           onClick={() => handleInputChange('budgetrahmen', budget)}
                           className={`p-4 rounded-lg border-2 font-semibold transition-all duration-300 ${
                             formData.budgetrahmen === budget
-                              ? 'border-blue-500 bg-blue-50 text-blue-700'
-                              : 'border-gray-200 hover:border-blue-300 text-gray-700'
+                              ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50 text-blue-400'
+                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md text-white'
                           }`}
                         >
                           {budget}
@@ -561,8 +561,8 @@ export default function GewerbeFunnel() {
               {currentStep === 4 && (
                 <div className="space-y-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Ihre Kontaktdaten</h2>
-                    <p className="text-gray-600">Damit wir Sie für ein individuelles Angebot kontaktieren können</p>
+                    <h2 className="text-3xl font-bold text-white mb-4">Ihre Kontaktdaten</h2>
+                    <p className="text-gray-300">Damit wir Sie für ein individuelles Angebot kontaktieren können</p>
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
@@ -686,8 +686,8 @@ export default function GewerbeFunnel() {
               {currentStep === 5 && (
                 <div className="space-y-8">
                   <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">Zusätzliche Informationen</h2>
-                    <p className="text-gray-600">Fast geschafft! Gibt es noch etwas, das wir wissen sollten?</p>
+                    <h2 className="text-3xl font-bold text-white mb-4">Zusätzliche Informationen</h2>
+                    <p className="text-gray-300">Fast geschafft! Gibt es noch etwas, das wir wissen sollten?</p>
                   </div>
 
                   {/* Nachricht */}
@@ -882,49 +882,6 @@ export default function GewerbeFunnel() {
         <ZohoSalesIQ />
       </div>
 
-      <style jsx global>{`
-        /* Dark theme für alle Form-Elemente */
-        #formular ~ section h2,
-        #formular ~ section h3,
-        #formular ~ section h4 {
-          color: white !important;
-        }
-        
-        #formular ~ section p,
-        #formular ~ section label,
-        #formular ~ section span {
-          color: #d1d5db !important;
-        }
-        
-        #formular ~ section input,
-        #formular ~ section textarea {
-          background-color: #374151 !important;
-          border-color: #4b5563 !important;
-          color: white !important;
-        }
-        
-        #formular ~ section input:focus,
-        #formular ~ section textarea:focus {
-          border-color: #3b82f6 !important;
-          background-color: #1f2937 !important;
-        }
-        
-        #formular ~ section button {
-          background-color: #374151 !important;
-          border-color: #4b5563 !important;
-          color: white !important;
-        }
-        
-        #formular ~ section button:hover {
-          border-color: #3b82f6 !important;
-        }
-        
-        #formular ~ section button.border-blue-500 {
-          border-color: #3b82f6 !important;
-          background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.2), rgba(6, 182, 212, 0.2)) !important;
-          box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.5) !important;
-        }
-      `}</style>
     </>
   );
 }
