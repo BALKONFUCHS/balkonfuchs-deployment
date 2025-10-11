@@ -142,8 +142,8 @@ const StartseiteFarbtest = () => {
               <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                 Entdecken Sie die Vielfalt der Balkon-Projekte unserer Partner
               </p>
-            </div>
-
+              </div>
+              
             {/* Carousel Container */}
             <div className="relative overflow-hidden rounded-lg">
               <div className="flex animate-scroll gap-4" style={{ width: 'calc(200% + 3rem)' }}>
@@ -227,12 +227,51 @@ const StartseiteFarbtest = () => {
         <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Starten Sie Ihr <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkonprojekt</span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              <div className="flex items-center justify-center mb-6">
+                <span className="text-4xl mr-4">🚀</span>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                  Starten Sie Ihr <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Projekt</span>
+                </h2>
+              </div>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-12">
                 Wählen Sie das passende Tool für Ihren nächsten Schritt von der ersten Kostenschätzung bis zur finalen Umsetzung
               </p>
+              
+              {/* Why BALKONFUCHS Subsection */}
+              <div className="mb-12">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                  Warum <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">BALKONFUCHS</span>?
+                </h3>
+                <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+                  Deutschlands führende Plattform für Balkon-Projekte
+                </p>
+
+                <div className="grid md:grid-cols-3 gap-8">
+                  <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-xl p-6 text-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-3">Präzise Kalkulation</h4>
+                    <p className="text-gray-300">Berechnungen auf Basis aktueller Marktpreise und regionaler Besonderheiten.</p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl p-6 text-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Award className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-3">Geprüfte Partner</h4>
+                    <p className="text-gray-300">Nur qualifizierte und zertifizierte Partner in unserem Netzwerk.</p>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-6 text-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Zap className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-3">Schnelle Umsetzung</h4>
+                    <p className="text-gray-300">Von der Idee bis zur Umsetzung in nur wenigen Wochen.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
