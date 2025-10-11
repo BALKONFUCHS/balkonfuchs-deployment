@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import { Building2, Users, TrendingUp, Shield, CheckCircle, ArrowRight, Mail, Phone, MapPin, FileText, Clock, Award, Target, Zap, Calculator, Home, Calendar, Star } from 'lucide-react';
+import { Building2, Users, TrendingUp, Shield, CheckCircle, ArrowRight, Mail, MapPin, FileText, Clock, Award, Target, Zap, Calculator, Home, Calendar, Star } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ZohoSalesIQ from '../components/ZohoSalesIQ';
@@ -262,7 +262,7 @@ export default function GewerbeFunnel() {
                     <ArrowRight className="w-5 h-5" />
                   </a>
                   <a
-                    href="mailto:business@balkonfuchs.de"
+                    href="mailto:post@balkonfuchs.de"
                     className="inline-flex items-center gap-2 bg-gray-700 text-white px-8 py-4 rounded-lg font-bold hover:bg-gray-600 transition-all duration-300"
                   >
                     <Mail className="w-5 h-5" />
@@ -1211,18 +1211,11 @@ export default function GewerbeFunnel() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a
-                href="tel:+4930123456789"
+                href="mailto:post@balkonfuchs.de"
                 className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
-                <Phone className="w-5 h-5" />
-                +49 30 123 456 789
-              </a>
-              <a
-                href="mailto:business@balkonfuchs.de"
-                className="inline-flex items-center gap-2 bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-400 transition-all duration-300 transform hover:scale-105"
-              >
                 <Mail className="w-5 h-5" />
-                business@balkonfuchs.de
+                post@balkonfuchs.de
               </a>
             </div>
           </div>
