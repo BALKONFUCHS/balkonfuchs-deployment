@@ -12,12 +12,6 @@ const ZohoSalesIQ = () => {
     // Nur auf dem Client ausführen
     if (typeof window === 'undefined') return;
 
-    // Globaler Flag um mehrfaches Laden zu verhindern
-    if (window.zohoSalesIQLoaded) {
-      console.log('ZOHO Sales IQ already loaded globally');
-      return;
-    }
-
     // Prüfen ob wir auf der echten Domain sind (nicht localhost)
     const isLocalhost = window.location.hostname === 'localhost' || 
                        window.location.hostname === '127.0.0.1' ||
@@ -33,6 +27,12 @@ const ZohoSalesIQ = () => {
 
     console.log('ZOHO SalesIQ loading on domain:', window.location.hostname, 'isNetlify:', isNetlifyDomain);
 
+    // Globaler Flag um mehrfaches Laden zu verhindern
+    if (window.zohoSalesIQLoaded) {
+      console.log('ZOHO Sales IQ already loaded globally');
+      return;
+    }
+
     // Warten bis das DOM vollständig geladen ist
     const loadSalesIQ = () => {
       // Prüfen ob das Script bereits geladen ist
@@ -43,7 +43,6 @@ const ZohoSalesIQ = () => {
 
       // Globalen Flag setzen
       window.zohoSalesIQLoaded = true;
-      console.log('ZOHO Sales IQ loading on domain:', window.location.hostname);
 
       console.log('Loading ZOHO Sales IQ widget...');
 
@@ -60,7 +59,8 @@ const ZohoSalesIQ = () => {
               window.$zoho.salesiq.widget.set({
                 position: 'bottomright',
                 theme: 'light',
-                showOnLoad: true
+                showOnLoad: true,
+                hideOffline: false
               });
               console.log('ZOHO Sales IQ widget configured');
             }
@@ -106,6 +106,30 @@ const ZohoSalesIQ = () => {
       
       script.onerror = (error) => {
         console.error('Error loading ZOHO Sales IQ script:', error);
+        
+        // Fallback: Versuche alternative Widget-URL
+        console.log('Trying alternative ZOHO SalesIQ loading method...');
+        const fallbackScript = document.createElement('script');
+        fallbackScript.id = 'zsiqscript-fallback';
+        fallbackScript.innerHTML = `
+          window.$zoho = window.$zoho || {};
+          window.$zoho.salesiq = window.$zoho.salesiq || {
+            ready: function() {
+              console.log('ZOHO Sales IQ fallback ready');
+              setTimeout(() => {
+                try {
+                  if (window.$zoho?.salesiq?.show) {
+                    window.$zoho.salesiq.show();
+                    console.log('ZOHO Sales IQ fallback widget shown');
+                  }
+                } catch (e) {
+                  console.log('ZOHO Sales IQ fallback show error:', e);
+                }
+              }, 2000);
+            }
+          };
+        `;
+        document.head.appendChild(fallbackScript);
       };
       
       // Script zum Head hinzufügen
