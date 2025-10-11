@@ -11,6 +11,9 @@ export default function GewerbeFunnel() {
     projekttyp: '',
     
     // Schritt 2: Projektdetails
+    projektname: '',
+    projektort: '',
+    projektadresse: '',
     anzahlEinheiten: '',
     balkontyp: [],
     
@@ -100,8 +103,9 @@ export default function GewerbeFunnel() {
   };
 
   const canProceedStep1 = formData.projekttyp !== '';
-  const canProceedStep2 = formData.anzahlEinheiten !== '' && formData.balkontyp.length > 0;
-  const canProceedStep3 = formData.zeitrahmen !== '' && formData.budgetrahmen !== '';
+  const canProceedStep2 = formData.projektname && formData.anzahlEinheiten !== '' && formData.balkontyp.length > 0;
+  const canProceedStep3 = (formData.zeitrahmen !== '' || (formData.startMonat && formData.startJahr)) && 
+                         (formData.budgetrahmen !== '' || formData.budgetFreitext !== '');
   const canProceedStep4 = formData.firmenname && formData.ansprechpartner && formData.email && formData.telefon && formData.plz && formData.ort;
   const canSubmit = canProceedStep4 && formData.datenschutz;
 
@@ -431,6 +435,51 @@ export default function GewerbeFunnel() {
                     <p className="text-gray-300">Geben Sie uns mehr Informationen zu Ihrem Vorhaben</p>
                   </div>
 
+                  {/* Projektdetails */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Projektname */}
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
+                        Projektname *
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.projektname}
+                        onChange={(e) => handleInputChange('projektname', e.target.value)}
+                        placeholder="z.B. Wohnpark am See, Bürokomplex Mitte"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
+                      />
+                    </div>
+
+                    {/* Projektort */}
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
+                        Projektort *
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.projektort}
+                        onChange={(e) => handleInputChange('projektort', e.target.value)}
+                        placeholder="z.B. Berlin, München, Hamburg"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Projektadresse */}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-300 mb-2">
+                      Projektadresse (optional)
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.projektadresse}
+                      onChange={(e) => handleInputChange('projektadresse', e.target.value)}
+                      placeholder="z.B. Musterstraße 123, 12345 Musterstadt"
+                      className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
+                    />
+                  </div>
+
                   {/* Anzahl Wohneinheiten */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-300 mb-3">
@@ -511,7 +560,8 @@ export default function GewerbeFunnel() {
                         { value: '3monate', label: 'In den nächsten 3 Monaten', icon: Clock },
                         { value: '6monate', label: 'In 3-6 Monaten', icon: Clock },
                         { value: '12monate', label: 'In 6-12 Monaten', icon: Calendar },
-                        { value: 'planung', label: 'Noch in Planung', icon: FileText }
+                        { value: 'planung', label: 'Noch in Planung', icon: FileText },
+                        { value: 'unbekannt', label: 'Steht noch nicht fest', icon: FileText }
                       ].map((option) => {
                         const Icon = option.icon;
                         return (
@@ -546,7 +596,8 @@ export default function GewerbeFunnel() {
                         '200.000 - 300.000 €',
                         '300.000 - 500.000 €',
                         '500.000 - 1 Mio. €',
-                        '> 1 Mio. €'
+                        '> 1 Mio. €',
+                        'Steht noch nicht fest'
                       ].map((budget) => (
                         <button
                           key={budget}
@@ -859,6 +910,18 @@ export default function GewerbeFunnel() {
                     <h3 className="text-lg font-bold text-blue-900 mb-4">Ihre Projektübersicht</h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
+                        <span className="text-gray-600">Projektname:</span>
+                        <span className="font-semibold text-gray-900">{formData.projektname || '-'}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Projektort:</span>
+                        <span className="font-semibold text-gray-900">{formData.projektort || '-'}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Projektadresse:</span>
+                        <span className="font-semibold text-gray-900">{formData.projektadresse || '-'}</span>
+                      </div>
+                      <div className="flex justify-between">
                         <span className="text-gray-600">Projekttyp:</span>
                         <span className="font-semibold text-gray-900">{formData.projekttyp || '-'}</span>
                       </div>
@@ -872,12 +935,33 @@ export default function GewerbeFunnel() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Zeitrahmen:</span>
-                        <span className="font-semibold text-gray-900">{formData.zeitrahmen || '-'}</span>
+                        <span className="font-semibold text-gray-900">
+                          {formData.zeitrahmen || 
+                           (formData.startMonat && formData.startJahr ? 
+                            `${formData.startMonat}/${formData.startJahr} - ${formData.endMonat || '?'}/${formData.endJahr || '?'}` : 
+                            '-')}
+                        </span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Budget:</span>
-                        <span className="font-semibold text-gray-900">{formData.budgetrahmen || '-'}</span>
+                        <span className="font-semibold text-gray-900">
+                          {formData.budgetFreitext || formData.budgetrahmen || '-'}
+                        </span>
                       </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Firma:</span>
+                        <span className="font-semibold text-gray-900">{formData.firmenname || '-'}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-600">Ansprechpartner:</span>
+                        <span className="font-semibold text-gray-900">{formData.ansprechpartner || '-'}</span>
+                      </div>
+                      {formData.projektleiter && (
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Projektleiter:</span>
+                          <span className="font-semibold text-gray-900">{formData.projektleiter}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -1017,6 +1101,27 @@ export default function GewerbeFunnel() {
         <ZohoSalesIQ />
       </div>
 
+      <style jsx global>{`
+        /* Placeholder-Text Kontrast verbessern */
+        input::placeholder,
+        textarea::placeholder {
+          color: white !important;
+          opacity: 0.7 !important;
+        }
+        
+        /* Für alle Input-Felder im Dark-Theme */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+          color: white !important;
+        }
+        
+        /* Labels im Dark-Theme */
+        label {
+          color: #d1d5db !important;
+        }
+      `}</style>
     </>
   );
 }
