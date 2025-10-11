@@ -1,26 +1,10 @@
-# 🦊 ZOHO DESK SETUP GUIDE - BALKONFUCHS
+# 🦊 VOLLSTÄNDIGE ZOHO DESK CUSTOM FIELDS - ALLE FUNNELS
 
-## 📋 SCHRITT-FÜR-SCHRITT ANLEITUNG
-
----
-
-## **🎯 PHASE 1: ZOHO DESK CUSTOM FIELDS ERSTELLEN**
-
-### **1.1 Zoho Desk öffnen**
-1. Gehen Sie zu [desk.zoho.eu](https://desk.zoho.eu)
-2. Melden Sie sich mit Ihrem Zoho-Account an
-3. Wählen Sie Ihre Organisation aus
-
-### **1.2 Custom Fields erstellen**
-**Navigation:** `Setup` → `Tickets` → `Custom Fields` → `Create Field`
+## 📊 **KOMPLETTE FELDLISTE (75+ FELDER)**
 
 ---
 
-## **📊 ALLE BENÖTIGTEN CUSTOM FIELDS (118+ FELDER)**
-
-> **⚠️ WICHTIG:** Für eine vollständige Integration aller 7 Funnel müssen Sie **alle 118+ Felder** anlegen. Die detaillierte Liste finden Sie in `ZOHO_COMPLETE_CUSTOM_FIELDS.md`.
-
-### **🎯 BASIS-FUNNEL-FELDER (Alle Funnel)**
+## **🎯 BASIS-FUNNEL-FELDER (Alle Funnel)**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -35,7 +19,9 @@
 | `Follow_Up_Stunden` | Number | ✅ Ja | 12, 24, 48, 72 |
 | `Geschaetzter_Wert` | Currency | ✅ Ja | Geschätzter Projektwert |
 
-### **📍 STANDORT-FELDER (Alle Funnel)**
+---
+
+## **📍 STANDORT-FELDER (Alle Funnel)**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -44,7 +30,9 @@
 | `Adresse` | Text | ❌ Nein | Vollständige Adresse |
 | `Bundesland` | Dropdown | ❌ Nein | Bundesland |
 
-### **👤 KONTAKT-FELDER (Alle Funnel)**
+---
+
+## **👤 KONTAKT-FELDER (Alle Funnel)**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -57,7 +45,9 @@
 | `Position` | Text | ❌ Nein | Position im Unternehmen |
 | `Kontaktpraeferenz` | Dropdown | ❌ Nein | E-Mail, Telefon, etc. |
 
-### **📋 RECHTLICHE FELDER (Alle Funnel)**
+---
+
+## **📋 RECHTLICHE FELDER (Alle Funnel)**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -67,7 +57,9 @@
 | `Disclaimer_Zugestimmt` | Dropdown | ❌ Nein | Ja/Nein |
 | `Balkonbrief_Zugestimmt` | Dropdown | ❌ Nein | Ja/Nein (Gewerbe) |
 
-### **🏗️ KALKULATOR-FUNNEL FELDER**
+---
+
+## **🏗️ KALKULATOR-FUNNEL FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -77,7 +69,9 @@
 | `Balkontiefe` | Text | ✅ Ja | Tiefe in Metern |
 | `Zusatzleistungen` | Text | ❌ Nein | Balkontür, Treppe, etc. |
 
-### **📋 PLANER-FUNNEL FELDER**
+---
+
+## **📋 PLANER-FUNNEL FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -96,7 +90,9 @@
 | `Dokumente_Vorhanden` | Text | ❌ Nein | Bestandspläne, Fotos, etc. |
 | `Zusaetzliche_Info_Planer` | Textarea | ❌ Nein | Zusätzliche Informationen |
 
-### **⚡ EXPRESS-ANGEBOT-FUNNEL FELDER**
+---
+
+## **⚡ EXPRESS-ANGEBOT-FUNNEL FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -110,7 +106,9 @@
 | `Regionale_Praeferenz` | Dropdown | ✅ Ja | Lokal, Regional, Bundesweit |
 | `Zusaetzliche_Info_Express` | Textarea | ❌ Nein | Zusätzliche Informationen |
 
-### **📋 GENEHMIGUNGSCHECK-FUNNEL FELDER**
+---
+
+## **📋 GENEHMIGUNGSCHECK-FUNNEL FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -121,14 +119,16 @@
 | `Grenzabstand` | Dropdown | ✅ Ja | Unter 2m, Genau 2m, Genau 3m, Über 3m |
 | `Genehmigungsstatus_Ergebnis` | Dropdown | ❌ Nein | Verfahrensfrei, Genehmigungspflichtig, etc. |
 
-### **🏢 GEWERBE-FUNNEL FELDER**
+---
+
+## **🏢 GEWERBE-FUNNEL FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
 | `Projektname` | Text | ❌ Nein | Name des Projekts |
 | `Projektort` | Text | ❌ Nein | Ort des Projekts |
 | `Projektadresse` | Text | ❌ Nein | Vollständige Adresse |
-| `Gebaeudetyp` | Dropdown | ❌ Nein | Mehrfamilienhaus, etc. |
+| `Gebaeudetyp` | Dropdown | ❌ Nein | Mehrfamilienhaus, Bauträger-Projekt, etc. |
 | `Anzahl_Wohnungen` | Number | ❌ Nein | Anzahl Wohnungen |
 | `Balkontyp_Details` | Text | ❌ Nein | Standbalkon, Hängebalkon, etc. |
 | `Budget_Range` | Dropdown | ❌ Nein | < 50.000 €, 50.000-100.000 €, etc. |
@@ -143,7 +143,9 @@
 | `Mitarbeiterzahl` | Dropdown | ❌ Nein | 1-10, 11-50, etc. |
 | `Zusaetzliche_Nachricht_Gewerbe` | Textarea | ❌ Nein | Zusätzliche Nachricht |
 
-### **⏰ BAUZEIT-PLANUNG-FUNNEL FELDER**
+---
+
+## **⏰ BAUZEIT-PLANUNG-FUNNEL FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -153,7 +155,9 @@
 | `Empfohlener_Starttermin` | Text | ❌ Nein | Berechneter Starttermin |
 | `Vorlaufzeit_Wochen` | Number | ❌ Nein | Empfohlene Vorlaufzeit |
 
-### **🤝 PARTNER-WERDEN-FUNNEL FELDER**
+---
+
+## **🤝 PARTNER-WERDEN-FUNNEL FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
@@ -174,6 +178,23 @@
 | `Spezialisierungen` | Text | ❌ Nein | Vorstellbalkone, Anlehn-Balkone, etc. |
 | `Arbeitsgebiet` | Dropdown | ✅ Ja | Lokal, Regional, Bundesweit |
 | `Versicherungsstatus` | Dropdown | ✅ Ja | Vollversichert, Teilversichert, etc. |
+| `Referenz_1_Beschreibung` | Text | ❌ Nein | Beschreibung Referenz 1 |
+| `Referenz_1_Ort` | Text | ❌ Nein | Ort Referenz 1 |
+| `Referenz_1_Jahr` | Number | ❌ Nein | Jahr Referenz 1 |
+| `Referenz_1_Wert` | Text | ❌ Nein | Wert Referenz 1 |
+| `Referenz_2_Beschreibung` | Text | ❌ Nein | Beschreibung Referenz 2 |
+| `Referenz_2_Ort` | Text | ❌ Nein | Ort Referenz 2 |
+| `Referenz_2_Jahr` | Number | ❌ Nein | Jahr Referenz 2 |
+| `Referenz_2_Wert` | Text | ❌ Nein | Wert Referenz 2 |
+| `Referenz_3_Beschreibung` | Text | ❌ Nein | Beschreibung Referenz 3 |
+| `Referenz_3_Ort` | Text | ❌ Nein | Ort Referenz 3 |
+| `Referenz_3_Jahr` | Number | ❌ Nein | Jahr Referenz 3 |
+| `Referenz_3_Wert` | Text | ❌ Nein | Wert Referenz 3 |
+| `Leuchtturmprojekt_Beschreibung` | Text | ❌ Nein | Beschreibung Leuchtturmprojekt |
+| `Leuchtturmprojekt_Ort` | Text | ❌ Nein | Ort Leuchtturmprojekt |
+| `Leuchtturmprojekt_Jahr` | Number | ❌ Nein | Jahr Leuchtturmprojekt |
+| `Leuchtturmprojekt_Wert` | Text | ❌ Nein | Wert Leuchtturmprojekt |
+| `Leuchtturmprojekt_Besonderheit` | Text | ❌ Nein | Besonderheit Leuchtturmprojekt |
 | `Gewerbeschein` | Dropdown | ❌ Nein | Ja/Nein |
 | `Haftpflichtversicherung` | Dropdown | ❌ Nein | Ja/Nein |
 | `Meisterbrief` | Dropdown | ❌ Nein | Ja/Nein |
@@ -182,232 +203,191 @@
 | `Referenzen_Dateien` | Dropdown | ❌ Nein | Ja/Nein |
 | `Portfolio` | Dropdown | ❌ Nein | Ja/Nein |
 
-### **💬 ALLGEMEINE ZUSÄTZLICHE FELDER**
+---
+
+## **💬 ALLGEMEINE ZUSÄTZLICHE FELDER**
 
 | **Feldname** | **Feldtyp** | **Pflichtfeld** | **Beschreibung** |
 |--------------|-------------|-----------------|------------------|
 | `Zusaetzliche_Nachricht` | Textarea | ❌ Nein | Zusätzliche Nachricht |
 | `Bemerkungen` | Textarea | ❌ Nein | Interne Bemerkungen |
 
-> **📋 VOLLSTÄNDIGE LISTE:** Alle 118+ Felder mit Dropdown-Optionen finden Sie in `ZOHO_COMPLETE_CUSTOM_FIELDS.md`
-
 ---
 
-## **🏢 PHASE 2: DEPARTMENTS EINRICHTEN**
+## **📊 DROPDOWN-OPTIONEN (ALLE FELDER)**
 
-### **2.1 Departments erstellen**
-**Navigation:** `Setup` → `Departments` → `Create Department`
-
-### **2.2 Benötigte Departments:**
-
-| **Department Name** | **Beschreibung** | **ID merken** |
-|---------------------|------------------|---------------|
-| `Gewerbe` | Gewerbeprojekte | `ZOHO_DEPT_GEWERBE` |
-| `Kalkulator` | Balkon-Kalkulator | `ZOHO_DEPT_KALKULATOR` |
-| `Planer` | Balkon-Planer | `ZOHO_DEPT_PLANER` |
-| `Express` | Express-Angebot | `ZOHO_DEPT_EXPRESS` |
-| `Genehmigung` | Genehmigungscheck | `ZOHO_DEPT_GENEHMIGUNG` |
-| `Bauzeit` | Bauzeit-Planung | `ZOHO_DEPT_BAUZEIT` |
-| `Partner` | Partner werden | `ZOHO_DEPT_PARTNER` |
-| `Default` | Allgemeine Anfragen | `ZOHO_DEPT_DEFAULT` |
-
----
-
-## **👥 PHASE 3: ASSIGNEES EINRICHTEN**
-
-### **3.1 Assignees erstellen**
-**Navigation:** `Setup` → `Agents` → `Create Agent`
-
-### **3.2 Benötigte Assignees:**
-
-| **Agent Name** | **Rolle** | **ID merken** |
-|----------------|-----------|---------------|
-| `Senior Team` | High-Priority Leads | `ZOHO_ASSIGNEE_SENIOR` |
-| `Gewerbe Team` | Gewerbeprojekte | `ZOHO_ASSIGNEE_GEWERBE` |
-| `Kalkulator Team` | Kalkulator-Funnel | `ZOHO_ASSIGNEE_KALKULATOR` |
-| `Planer Team` | Planer-Funnel | `ZOHO_ASSIGNEE_PLANER` |
-| `Express Team` | Express-Angebote | `ZOHO_ASSIGNEE_EXPRESS` |
-| `Genehmigung Team` | Genehmigungscheck | `ZOHO_ASSIGNEE_GENEHMIGUNG` |
-| `Bauzeit Team` | Bauzeit-Planung | `ZOHO_ASSIGNEE_BAUZEIT` |
-| `Partner Team` | Partner werden | `ZOHO_ASSIGNEE_PARTNER` |
-| `Default Team` | Allgemeine Anfragen | `ZOHO_ASSIGNEE_DEFAULT` |
-
----
-
-## **🔑 PHASE 4: ZOHO API SETUP**
-
-### **4.1 Zoho Developer Console**
-1. Gehen Sie zu [api-console.zoho.com](https://api-console.zoho.com)
-2. Melden Sie sich mit Ihrem Zoho-Account an
-3. Klicken Sie auf "Add Client"
-
-### **4.2 Client erstellen**
+### **Funnel_Typ:**
 ```
-Client Type: Server-based Application
-Client Name: BALKONFUCHS Integration
-Homepage URL: https://balkonfuchs.de
-Authorized Redirect URIs: https://balkonfuchs.de/callback
+- kalkulator
+- planer
+- express-angebot
+- genehmigung
+- gewerbe
+- bauzeit-planung
+- partner-werden
+- partner
 ```
 
-### **4.3 Scopes hinzufügen**
+### **Lead_Kategorie:**
 ```
-ZohoDesk.tickets.ALL
-ZohoDesk.contacts.ALL
-ZohoDesk.departments.READ
-ZohoDesk.agents.READ
-ZohoCRM.modules.ALL
-ZohoCRM.users.ALL
+- cold
+- warm
+- hot
 ```
 
-### **4.4 Client-Daten notieren**
-- **Client ID**: `ZOHO_CLIENT_ID`
-- **Client Secret**: `ZOHO_CLIENT_SECRET`
-
----
-
-## **🔐 PHASE 5: ACCESS TOKEN GENERIEREN**
-
-### **5.1 Authorization Code erhalten**
+### **Prioritaet:**
 ```
-https://accounts.zoho.eu/oauth/v2/auth?
-scope=ZohoDesk.tickets.ALL,ZohoDesk.contacts.ALL,ZohoCRM.modules.ALL&
-client_id=YOUR_CLIENT_ID&
-response_type=code&
-redirect_uri=https://balkonfuchs.de/callback
+- P1
+- P2
+- P3
+- P4
 ```
 
-### **5.2 Access Token generieren**
-```bash
-curl -X POST \
-  https://accounts.zoho.eu/oauth/v2/token \
-  -d "grant_type=authorization_code&client_id=YOUR_CLIENT_ID&client_secret=YOUR_CLIENT_SECRET&redirect_uri=https://balkonfuchs.de/callback&code=AUTHORIZATION_CODE"
+### **Dringlichkeit:**
+```
+- low
+- medium
+- high
 ```
 
-### **5.3 Tokens notieren**
-- **Access Token**: `ZOHO_ACCESS_TOKEN`
-- **Refresh Token**: `ZOHO_REFRESH_TOKEN`
-
----
-
-## **⚙️ PHASE 6: ORGANIZATION ID FINDEN**
-
-### **6.1 Organization ID ermitteln**
-```bash
-curl -X GET \
-  https://desk.zoho.eu/api/v1/organizations \
-  -H "Authorization: Zoho-oauthtoken YOUR_ACCESS_TOKEN"
+### **Balkontyp_Kalkulator:**
+```
+- haengebalkon
+- anlehnbalkon
+- vorstellbalkon
+- hochterrasse
 ```
 
-### **6.2 ID notieren**
-- **Organization ID**: `ZOHO_ORGANIZATION_ID`
+### **Projektstatus:**
+```
+- erste_ideen
+- machbarkeit_pruefen
+- bauantrag_laeuft
+- genehmigung_da
+- suche_firma
+```
 
----
+### **Budget_Express:**
+```
+- high
+- medium
+- standard
+```
 
-## **🌐 PHASE 7: NETLIFY ENVIRONMENT VARIABLES**
+### **Gebaeudetyp:**
+```
+- Mehrfamilienhaus
+- Bauträger-Projekt
+- Wohnbaugesellschaft
+- Investor-Projekt
+- Andere
+```
 
-### **7.1 Netlify Dashboard öffnen**
-1. Gehen Sie zu [app.netlify.com](https://app.netlify.com)
-2. Wählen Sie Ihr BALKONFUCHS-Projekt
-3. Gehen Sie zu `Site settings` → `Environment variables`
+### **Budget_Range:**
+```
+- < 50.000 €
+- 50.000 - 100.000 €
+- 100.000 - 250.000 €
+- 250.000 - 500.000 €
+- 500.000 - 1 Mio. €
+- > 1 Mio. €
+- Steht noch nicht fest
+```
 
-### **7.2 Alle Variablen hinzufügen:**
+### **Zeitrahmen_Range:**
+```
+- 2024-2025
+- 2025-2026
+- 2026-2027
+- 2027-2028
+- Steht noch nicht fest
+```
 
-```bash
-# Zoho API Zugangsdaten
-ZOHO_ACCESS_TOKEN=your_access_token_here
-ZOHO_REFRESH_TOKEN=your_refresh_token_here
-ZOHO_CLIENT_ID=your_client_id_here
-ZOHO_CLIENT_SECRET=your_client_secret_here
-ZOHO_ORGANIZATION_ID=your_organization_id_here
+### **Rechtsform:**
+```
+- Einzelunternehmen
+- GbR
+- GmbH
+- UG
+- AG
+- KG
+- OHG
+- Andere
+```
 
-# Zoho Desk URLs
-ZOHO_BASE_URL=https://desk.zoho.eu
-ZOHO_CRM_BASE_URL=https://www.zohoapis.eu/crm/v2
+### **Mitarbeiterzahl:**
+```
+- 1-5
+- 6-20
+- 21-50
+- 51-200
+- 200+
+```
 
-# Zoho Desk Departments (IDs aus Phase 2)
-ZOHO_DEPT_DEFAULT=default_department_id
-ZOHO_DEPT_GEWERBE=gewerbe_department_id
-ZOHO_DEPT_KALKULATOR=kalkulator_department_id
-ZOHO_DEPT_PLANER=planer_department_id
-ZOHO_DEPT_EXPRESS=express_department_id
-ZOHO_DEPT_GENEHMIGUNG=genehmigung_department_id
-ZOHO_DEPT_BAUZEIT=bauzeit_department_id
-ZOHO_DEPT_PARTNER=partner_department_id
+### **Erfahrung_Jahre:**
+```
+- beginner
+- experienced
+- professional
+- expert
+```
 
-# Zoho Desk Assignees (IDs aus Phase 3)
-ZOHO_ASSIGNEE_DEFAULT=default_assignee_id
-ZOHO_ASSIGNEE_SENIOR=senior_assignee_id
-ZOHO_ASSIGNEE_GEWERBE=gewerbe_assignee_id
-ZOHO_ASSIGNEE_KALKULATOR=kalkulator_assignee_id
-ZOHO_ASSIGNEE_PLANER=planer_assignee_id
-ZOHO_ASSIGNEE_EXPRESS=express_assignee_id
-ZOHO_ASSIGNEE_GENEHMIGUNG=genehmigung_assignee_id
-ZOHO_ASSIGNEE_BAUZEIT=bauzeit_assignee_id
-ZOHO_ASSIGNEE_PARTNER=partner_assignee_id
+### **Arbeitsgebiet:**
+```
+- lokal
+- regional
+- bundesweit
+- international
 ```
 
 ---
 
-## **🧪 PHASE 8: INTEGRATION TESTEN**
+## **🎯 SETUP-PRIORITÄTEN**
 
-### **8.1 Test-Seite öffnen**
-1. Gehen Sie zu `/test-zoho-integration`
-2. Klicken Sie auf "Zoho Verbindung testen"
-3. Prüfen Sie die Ergebnisse
+### **🔴 PRIORITÄT 1: KRITISCHE FELDER (Sofort anlegen)**
+- Alle Basis-Funnel-Felder (10 Felder)
+- Alle Standort-Felder (4 Felder)
+- Alle Kontakt-Felder (8 Felder)
+- Alle rechtlichen Felder (5 Felder)
 
-### **8.2 Gewerbe-Daten testen**
-1. Klicken Sie auf "Gewerbe-Daten senden"
-2. Prüfen Sie, ob ein Ticket in Zoho Desk erstellt wurde
-3. Prüfen Sie alle Custom Fields
+### **🟡 PRIORITÄT 2: FUNNEL-SPEZIFISCHE FELDER**
+- Kalkulator-Funnel (5 Felder)
+- Planer-Funnel (14 Felder)
+- Express-Angebot-Funnel (9 Felder)
+- Genehmigungscheck-Funnel (6 Felder)
+
+### **🟢 PRIORITÄT 3: ERWEITERTE FELDER**
+- Gewerbe-Funnel (17 Felder)
+- Bauzeit-Planung-Funnel (5 Felder)
+- Partner-werden-Funnel (35+ Felder)
 
 ---
 
-## **✅ PHASE 9: PRODUKTIVE AKTIVIERUNG**
+## **⏱️ ZEITAUFWAND SCHÄTZUNG**
 
-### **9.1 Alle Funnel aktivieren**
-Nach erfolgreichem Test können Sie die Integration in allen Funnels aktivieren:
-- ✅ Gewerbe-Funnel (bereits implementiert)
-- 🔄 Kalkulator-Funnel
-- 🔄 Planer-Funnel
-- 🔄 Express-Angebot-Funnel
-- 🔄 Genehmigungscheck-Funnel
-- 🔄 Bauzeit-Planung-Funnel
-- 🔄 Partner-werden-Funnel
-
-### **9.2 Monitoring einrichten**
-- Überwachen Sie eingehende Tickets
-- Prüfen Sie Lead-Scoring-Genauigkeit
-- Optimieren Sie Assignee-Zuordnungen
+| **Priorität** | **Anzahl Felder** | **Zeitaufwand** |
+|---------------|-------------------|----------------|
+| Priorität 1 | 27 Felder | 2-3 Stunden |
+| Priorität 2 | 34 Felder | 3-4 Stunden |
+| Priorität 3 | 57+ Felder | 4-5 Stunden |
+| **GESAMT** | **118+ Felder** | **9-12 Stunden** |
 
 ---
 
 ## **🚨 WICHTIGE HINWEISE**
 
-### **⚠️ Custom Fields**
-- **Feldnamen exakt** wie in der Tabelle verwenden
+### **✅ RICHTIG:**
+- Feldnamen **exakt** aus Liste kopieren
 - **Keine Leerzeichen** in Feldnamen
-- **Dropdown-Optionen** entsprechend der Funnel-Daten
+- Dropdown-Optionen **exakt** übernehmen
+- **Alle Funnel** berücksichtigen
 
-### **⚠️ API-Limits**
-- **Rate Limits** beachten (1000 Requests/Stunde)
-- **Refresh Tokens** regelmäßig erneuern
-- **Error Handling** implementieren
-
-### **⚠️ Datenschutz**
-- **DSGVO-konforme** Datenverarbeitung
-- **Minimale Datensammlung**
-- **Löschkonzept** implementieren
+### **❌ HÄUFIGE FEHLER:**
+- Feldnamen nicht exakt
+- Falsche Dropdown-Optionen
+- Funnel-spezifische Felder vergessen
+- Rechtschreibfehler in Feldnamen
 
 ---
 
-## **📞 SUPPORT**
-
-Bei Problemen:
-1. **Test-Seite** verwenden: `/test-zoho-integration`
-2. **Browser-Konsole** prüfen (F12)
-3. **Netlify-Logs** überprüfen
-4. **Zoho-API-Dokumentation** konsultieren
-
----
-
-**🎯 Nach Abschluss aller Phasen haben Sie eine vollständige Zoho Desk Integration, die alle Funnel-Daten automatisch als strukturierte Tickets überträgt!**
+**🎯 Nach Abschluss aller Custom Fields haben Sie eine vollständige Integration für alle 7 Funnel-Typen!**

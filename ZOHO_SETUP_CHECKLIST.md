@@ -2,27 +2,28 @@
 
 ## **🎯 PRIORITÄT 1: SOFORT BENÖTIGT**
 
-### **✅ 1. CUSTOM FIELDS ERSTELLEN (45 Felder)**
+### **✅ 1. CUSTOM FIELDS ERSTELLEN (118+ Felder)**
 ```
 Zoho Desk → Setup → Tickets → Custom Fields → Create Field
 
-🔴 KRITISCH (müssen exakt so heißen):
-- Funnel_Typ (Dropdown)
-- Lead_Score (Number) 
-- Prioritaet (Dropdown)
-- Geschaetzter_Wert (Currency)
-- PLZ (Text)
-- Stadt (Text)
-- Vorname (Text)
-- Nachname (Text)
-- E_Mail (Email)
+🔴 PRIORITÄT 1: KRITISCHE FELDER (27 Felder)
+- Alle Basis-Funnel-Felder (10 Felder)
+- Alle Standort-Felder (4 Felder)  
+- Alle Kontakt-Felder (8 Felder)
+- Alle rechtlichen Felder (5 Felder)
 
-🟡 WICHTIG (für vollständige Integration):
-- Projektname, Projektort, Projektadresse
-- Gebaeudetyp, Anzahl_Wohnungen
-- Budget_Range, Exaktes_Budget
-- Zeitrahmen_Range, Exakter_Starttermin, Exakter_Endtermin
-- Unternehmensname, Ansprechpartner, Projektleiter
+🟡 PRIORITÄT 2: FUNNEL-SPEZIFISCHE FELDER (34 Felder)
+- Kalkulator-Funnel (5 Felder)
+- Planer-Funnel (14 Felder)
+- Express-Angebot-Funnel (9 Felder)
+- Genehmigungscheck-Funnel (6 Felder)
+
+🟢 PRIORITÄT 3: ERWEITERTE FELDER (57+ Felder)
+- Gewerbe-Funnel (17 Felder)
+- Bauzeit-Planung-Funnel (5 Felder)
+- Partner-werden-Funnel (35+ Felder)
+
+📋 VOLLSTÄNDIGE LISTE: ZOHO_COMPLETE_CUSTOM_FIELDS.md
 ```
 
 ### **✅ 2. DEPARTMENTS EINRICHTEN (8 Departments)**
@@ -183,14 +184,14 @@ ZOHO_ASSIGNEE_SENIOR=...
 
 | **Phase** | **Zeitaufwand** | **Priorität** |
 |-----------|----------------|---------------|
-| Custom Fields | 2-3 Stunden | 🔴 Kritisch |
+| Custom Fields (118+ Felder) | 9-12 Stunden | 🔴 Kritisch |
 | Departments | 30 Minuten | 🔴 Kritisch |
 | Assignees | 45 Minuten | 🔴 Kritisch |
 | API Setup | 1-2 Stunden | 🟡 Wichtig |
 | Netlify Config | 30 Minuten | 🟡 Wichtig |
 | Testing | 1 Stunde | 🟢 Nice-to-have |
 
-**Gesamt: 5-7 Stunden**
+**Gesamt: 12-16 Stunden**
 
 ---
 
