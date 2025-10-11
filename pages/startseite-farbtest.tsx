@@ -101,7 +101,7 @@ const StartseiteFarbtest = () => {
             
             <div className="text-xl text-gray-300 max-w-4xl mx-auto mb-8 space-y-2">
               <p>
-                Bis zu <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400 font-bold">35% sparen</span> bei deinem Balkon-Projekt
+                Bis zu <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400 font-bold">35% sparen</span> bei Ihrem Balkon-Projekt
               </p>
               <p>
                 Über <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 font-bold">850 Haushalte</span> haben bereits den <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-400 font-bold">perfekten Partner</span> gefunden
@@ -239,7 +239,7 @@ const StartseiteFarbtest = () => {
                 Unsere <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Services im Überblick</span>
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                Wähle den passenden Service für dein Balkon-Projekt
+                Wählen Sie den passenden Service für Ihr Balkon-Projekt
               </p>
             </div>
 
@@ -379,7 +379,7 @@ const StartseiteFarbtest = () => {
                 </h2>
               </div>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                In nur 4 Schritten zu deinem Traum-Balkon
+                In nur 4 Schritten zu Ihrem Traum-Balkon
               </p>
             </div>
 
@@ -389,28 +389,28 @@ const StartseiteFarbtest = () => {
                   <span className="text-2xl font-bold text-white">1</span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Service wählen</h3>
-                <p className="text-gray-300 text-sm">Wähle den passenden Service für dein Projekt</p>
+                <p className="text-gray-300 text-sm">Wählen Sie den passenden Service für Ihr Projekt</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">2</span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Projekt definieren</h3>
-                <p className="text-gray-300 text-sm">Gib deine Projekt-Details ein</p>
+                <p className="text-gray-300 text-sm">Geben Sie Ihre Projekt-Details ein</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">3</span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Kontaktdaten eingeben</h3>
-                <p className="text-gray-300 text-sm">Teile uns deine Kontaktdaten mit</p>
+                <p className="text-gray-300 text-sm">Teilen Sie uns Ihre Kontaktdaten mit</p>
               </div>
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl font-bold text-white">4</span>
                 </div>
                 <h3 className="text-lg font-bold text-white mb-2">Partner erhalten</h3>
-                <p className="text-gray-300 text-sm">Erhalte Kontakt zu qualifizierten Partnern</p>
+                <p className="text-gray-300 text-sm">Erhalten Sie Kontakt zu qualifizierten Partnern</p>
               </div>
             </div>
 
@@ -546,7 +546,7 @@ const StartseiteFarbtest = () => {
                 Häufige Fragen zu <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">Balkon-Projekten</span>
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                Hier findest du die wichtigsten Antworten auf die häufigsten Fragen rund um dein Balkonprojekt
+                Hier finden Sie die wichtigsten Antworten auf die häufigsten Fragen rund um Ihr Balkonprojekt
               </p>
             </div>
             
