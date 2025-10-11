@@ -471,43 +471,46 @@ const StartseiteFarbtest = () => {
           </div>
         </section>
 
-        {/* Why Customers Trust Section */}
-        <section className="py-16 bg-gray-900">
+        {/* Why Customers Trust Section - with visual container */}
+        <section className="py-20 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Warum Kunden <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">BALKONFUCHS vertrauen</span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Star className="w-8 h-8 text-white" />
+            {/* Visual Container with Gradient Background */}
+            <div className="bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 rounded-3xl p-12 border border-gray-600/30 shadow-2xl">
+              <div className="grid md:grid-cols-4 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">4.8/5 Sterne</h3>
+                  <p className="text-gray-300">von über 850 Kunden</p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">4.8/5 Sterne</h3>
-                <p className="text-gray-300">von über 850 Kunden</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-white" />
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Geprüfte Partner</h3>
+                  <p className="text-gray-300">Qualitätsstandards garantiert</p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Geprüfte Partner</h3>
-                <p className="text-gray-300">Qualitätsstandards garantiert</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-8 h-8 text-white" />
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">DSGVO konform</h3>
+                  <p className="text-gray-300">Datenschutz gewährleistet</p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">DSGVO konform</h3>
-                <p className="text-gray-300">Datenschutz gewährleistet</p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-8 h-8 text-white" />
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">85+ Partner</h3>
+                  <p className="text-gray-300">bundesweit verfügbar</p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">85+ Partner</h3>
-                <p className="text-gray-300">bundesweit verfügbar</p>
               </div>
             </div>
           </div>
