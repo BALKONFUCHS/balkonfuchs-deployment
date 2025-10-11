@@ -17,11 +17,17 @@ export default function GewerbeFunnel() {
     // Schritt 3: Zeitrahmen & Budget
     zeitrahmen: '',
     budgetrahmen: '',
+    budgetFreitext: '',
+    startMonat: '',
+    startJahr: '',
+    endMonat: '',
+    endJahr: '',
     
     // Schritt 4: Unternehmensdaten
     firmenname: '',
     ansprechpartner: '',
     position: '',
+    projektleiter: '',
     email: '',
     telefon: '',
     plz: '',
@@ -529,16 +535,18 @@ export default function GewerbeFunnel() {
                   {/* Budgetrahmen */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-300 mb-3">
-                      Geschätzter Budgetrahmen (optional)
+                      Geschätzter Budgetrahmen
                     </label>
-                    <div className="grid md:grid-cols-2 gap-4">
+                    <div className="grid md:grid-cols-2 gap-4 mb-4">
                       {[
-                        '< 100.000 €',
-                        '100.000 - 250.000 €',
-                        '250.000 - 500.000 €',
+                        '< 50.000 €',
+                        '50.000 - 100.000 €',
+                        '100.000 - 150.000 €',
+                        '150.000 - 200.000 €',
+                        '200.000 - 300.000 €',
+                        '300.000 - 500.000 €',
                         '500.000 - 1 Mio. €',
-                        '> 1 Mio. €',
-                        'Noch offen'
+                        '> 1 Mio. €'
                       ].map((budget) => (
                         <button
                           key={budget}
@@ -552,6 +560,119 @@ export default function GewerbeFunnel() {
                           {budget}
                         </button>
                       ))}
+                    </div>
+                    
+                    {/* Budget-Freifeld */}
+                    <div className="mt-4">
+                      <label className="block text-sm font-semibold text-gray-300 mb-2">
+                        Oder genaue Budget-Angabe (optional)
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.budgetFreitext}
+                        onChange={(e) => handleInputChange('budgetFreitext', e.target.value)}
+                        placeholder="z.B. 175.000 € oder 1.2 Mio. €"
+                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Präzise Zeitplanung */}
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-300 mb-3">
+                      Präzise Projektzeitplanung
+                    </label>
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {/* Starttermin */}
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-300 mb-2">
+                          Gewünschter Starttermin
+                        </label>
+                        <div className="grid grid-cols-2 gap-2">
+                          <select
+                            value={formData.startMonat}
+                            onChange={(e) => handleInputChange('startMonat', e.target.value)}
+                            className="px-3 py-2 bg-gray-700 border-2 border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
+                          >
+                            <option value="">Monat</option>
+                            <option value="01">Januar</option>
+                            <option value="02">Februar</option>
+                            <option value="03">März</option>
+                            <option value="04">April</option>
+                            <option value="05">Mai</option>
+                            <option value="06">Juni</option>
+                            <option value="07">Juli</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Dezember</option>
+                          </select>
+                          <select
+                            value={formData.startJahr}
+                            onChange={(e) => handleInputChange('startJahr', e.target.value)}
+                            className="px-3 py-2 bg-gray-700 border-2 border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
+                          >
+                            <option value="">Jahr</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      {/* Endtermin */}
+                      <div>
+                        <label className="block text-sm font-semibold text-gray-300 mb-2">
+                          Gewünschter Endtermin
+                        </label>
+                        <div className="grid grid-cols-2 gap-2">
+                          <select
+                            value={formData.endMonat}
+                            onChange={(e) => handleInputChange('endMonat', e.target.value)}
+                            className="px-3 py-2 bg-gray-700 border-2 border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
+                          >
+                            <option value="">Monat</option>
+                            <option value="01">Januar</option>
+                            <option value="02">Februar</option>
+                            <option value="03">März</option>
+                            <option value="04">April</option>
+                            <option value="05">Mai</option>
+                            <option value="06">Juni</option>
+                            <option value="07">Juli</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">Oktober</option>
+                            <option value="11">November</option>
+                            <option value="12">Dezember</option>
+                          </select>
+                          <select
+                            value={formData.endJahr}
+                            onChange={(e) => handleInputChange('endJahr', e.target.value)}
+                            className="px-3 py-2 bg-gray-700 border-2 border-gray-600 rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
+                          >
+                            <option value="">Jahr</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -604,6 +725,20 @@ export default function GewerbeFunnel() {
                         value={formData.position}
                         onChange={(e) => handleInputChange('position', e.target.value)}
                         placeholder="Ihre Position"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
+                      />
+                    </div>
+
+                    {/* Projektleiter */}
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-2">
+                        Projektleiter (optional)
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.projektleiter}
+                        onChange={(e) => handleInputChange('projektleiter', e.target.value)}
+                        placeholder="Name des Projektleiters"
                         className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
                       />
                     </div>
