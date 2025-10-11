@@ -1,0 +1,38 @@
+# ZOHO DESK & CRM INTEGRATION CONFIGURATION
+# Kopieren Sie diese Datei zu .env.local und füllen Sie die Werte aus
+
+# Zoho API Zugangsdaten
+ZOHO_ACCESS_TOKEN=your_access_token_here
+ZOHO_REFRESH_TOKEN=your_refresh_token_here
+ZOHO_CLIENT_ID=your_client_id_here
+ZOHO_CLIENT_SECRET=your_client_secret_here
+ZOHO_ORGANIZATION_ID=your_organization_id_here
+
+# Zoho Desk URLs
+ZOHO_BASE_URL=https://desk.zoho.eu
+ZOHO_CRM_BASE_URL=https://www.zohoapis.eu/crm/v2
+
+# Zoho Desk Departments (IDs aus Ihrem Zoho Desk)
+ZOHO_DEPT_DEFAULT=default_department_id
+ZOHO_DEPT_KALKULATOR=kalkulator_department_id
+ZOHO_DEPT_PLANER=planer_department_id
+ZOHO_DEPT_EXPRESS=express_department_id
+ZOHO_DEPT_GENEHMIGUNG=genehmigung_department_id
+ZOHO_DEPT_BAUZEIT=bauzeit_department_id
+ZOHO_DEPT_PARTNER=partner_department_id
+
+# Zoho Desk Assignees (IDs aus Ihrem Zoho Desk)
+ZOHO_ASSIGNEE_DEFAULT=default_assignee_id
+ZOHO_ASSIGNEE_SENIOR=senior_assignee_id
+ZOHO_ASSIGNEE_KALKULATOR=kalkulator_assignee_id
+ZOHO_ASSIGNEE_PLANER=planer_assignee_id
+ZOHO_ASSIGNEE_EXPRESS=express_assignee_id
+ZOHO_ASSIGNEE_GENEHMIGUNG=genehmigung_assignee_id
+ZOHO_ASSIGNEE_BAUZEIT=bauzeit_assignee_id
+ZOHO_ASSIGNEE_PARTNER=partner_assignee_id
+
+# E-Mail Integration (optional)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password

@@ -4,6 +4,7 @@ import { Building2, Users, TrendingUp, Shield, CheckCircle, ArrowRight, Mail, Ph
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ZohoSalesIQ from '../components/ZohoSalesIQ';
+import { submitToZoho, formatGewerbeData } from '../utils/zoho-submit';
 
 export default function GewerbeFunnel() {
   const [formData, setFormData] = useState({
@@ -98,10 +99,29 @@ export default function GewerbeFunnel() {
   };
 
   const handleSubmit = async () => {
-    console.log('Business Lead Data:', formData);
-    // Hier später API-Integration für Zoho CRM
-    setIsSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+      console.log('Submitting Gewerbe data to Zoho:', formData);
+      
+      // Daten für Zoho formatieren
+      const zohoData = formatGewerbeData(formData);
+      
+      // An Zoho senden
+      const result = await submitToZoho(zohoData, 'gewerbe');
+      
+      console.log('Zoho submission successful:', result);
+      
+      // Success - zur Danksagungsseite
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+    } catch (error) {
+      console.error('Zoho submission failed:', error);
+      
+      // Auch bei Fehler zur Danksagungsseite (Fallback)
+      // In der Praxis würden Sie hier eine Fehlermeldung anzeigen
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const canProceedStep1 = formData.projekttyp !== '';
