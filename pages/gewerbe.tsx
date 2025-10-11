@@ -39,7 +39,9 @@ export default function GewerbeFunnel() {
     
     // Schritt 5: Zusätzliche Informationen
     nachricht: '',
-    datenschutz: false
+    datenschutz: false,
+    balkonbrief: false,
+    haftungsausschluss: false
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -107,7 +109,7 @@ export default function GewerbeFunnel() {
   const canProceedStep3 = (formData.zeitrahmen !== '' || (formData.startMonat && formData.startJahr)) && 
                          (formData.budgetrahmen !== '' || formData.budgetFreitext !== '');
   const canProceedStep4 = formData.firmenname && formData.ansprechpartner && formData.email && formData.telefon && formData.plz && formData.ort;
-  const canSubmit = canProceedStep4 && formData.datenschutz;
+  const canSubmit = canProceedStep4 && formData.datenschutz && formData.balkonbrief && formData.haftungsausschluss;
 
   return (
     <>
@@ -890,19 +892,52 @@ export default function GewerbeFunnel() {
                     />
                   </div>
 
-                  {/* Datenschutz */}
-                  <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
-                    <label className="flex items-start gap-3 cursor-pointer">
-                      <input
-                        type="checkbox"
-                        checked={formData.datenschutz}
-                        onChange={(e) => handleInputChange('datenschutz', e.target.checked)}
-                        className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                      />
-                      <span className="text-sm text-gray-300">
-                        Ich habe die <a href="/datenschutz/" className="text-blue-400 hover:underline" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. Ich bin damit einverstanden, dass BALKONFUCHS mich bezüglich meiner Anfrage kontaktiert. *
-                      </span>
-                    </label>
+                  {/* Rechtliche Bestätigungen */}
+                  <div className="space-y-4">
+                    {/* Datenschutz */}
+                    <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.datenschutz}
+                          onChange={(e) => handleInputChange('datenschutz', e.target.checked)}
+                          className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        />
+                        <span className="text-sm text-gray-300">
+                          Ich habe die <a href="/datenschutz/" className="text-blue-400 hover:underline" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. Ich bin damit einverstanden, dass BALKONFUCHS mich bezüglich meiner Anfrage kontaktiert. *
+                        </span>
+                      </label>
+                    </div>
+
+                    {/* Balkonbrief */}
+                    <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.balkonbrief}
+                          onChange={(e) => handleInputChange('balkonbrief', e.target.checked)}
+                          className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        />
+                        <span className="text-sm text-gray-300">
+                          Ich habe den <a href="/balkonbrief/" className="text-blue-400 hover:underline" target="_blank">Balkonbrief</a> gelesen und verstanden. *
+                        </span>
+                      </label>
+                    </div>
+
+                    {/* Haftungsausschluss */}
+                    <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
+                      <label className="flex items-start gap-3 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={formData.haftungsausschluss}
+                          onChange={(e) => handleInputChange('haftungsausschluss', e.target.checked)}
+                          className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                        />
+                        <span className="text-sm text-gray-300">
+                          Ich habe die <a href="/disclaimer/" className="text-blue-400 hover:underline" target="_blank">Haftungsausschlusserklärung</a> gelesen und akzeptiere die darin enthaltenen Bedingungen. *
+                        </span>
+                      </label>
+                    </div>
                   </div>
 
                   {/* Zusammenfassung */}
