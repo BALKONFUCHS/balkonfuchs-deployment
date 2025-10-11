@@ -1050,7 +1050,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
       {/* Progress Bar */}
       {currentStep < steps.length && (
         <section className="bg-gray-800 border-b border-gray-700 py-4">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-4">
               <div className="flex-1">
                 <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
@@ -1072,10 +1072,10 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
       )}
       
       {/* Main Content */}
-      <main className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="py-8 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl shadow-lg overflow-hidden">
-            <div className="p-8">
+            <div className="p-4 md:p-8">
               {renderCurrentStep()}
             </div>
           </div>

@@ -362,8 +362,8 @@ export default function GewerbeFunnel() {
 
         {/* Form Section */}
         <section className="py-16 bg-gray-900">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 md:p-12 border-2 border-gray-700">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl shadow-2xl p-4 md:p-8 lg:p-12 border-2 border-gray-700">
               
               {/* Schritt 1: Projektart */}
               {currentStep === 1 && (
