@@ -337,7 +337,7 @@ const StartseiteFarbtest = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4 text-center">Express Angebot</h3>
                 <p className="text-gray-300 text-center mb-6 leading-relaxed">
-                  Ideal für Kunden, die bereits weit in ihrer Entscheidungsfindung sind und eine Finanzierung oder Genehmigung vorliegen haben.
+                  Perfekt, wenn du bereits fortgeschritten bist und Finanzierung oder Genehmigung vorliegen.
                 </p>
                 <div className="text-center">
                   <a 
