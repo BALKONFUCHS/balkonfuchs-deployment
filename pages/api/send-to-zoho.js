@@ -4,10 +4,20 @@
  * Diese API empfängt Funnel-Daten und überträgt sie an Zoho Desk (Tickets) und Zoho CRM (Leads/Kontakte)
  */
 
-const ZohoIntegration = require('../../lib/zoho-integration');
+import ZohoIntegration from '../../lib/zoho-integration';
 
 export default async function handler(req, res) {
-  // Nur POST-Requests erlauben
+  // CORS Headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // OPTIONS Request für CORS
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
+  // Nur POST erlauben
   if (req.method !== 'POST') {
     return res.status(405).json({ 
       success: false, 
@@ -33,7 +43,7 @@ export default async function handler(req, res) {
     const results = await zohoIntegration.processFunnelData(funnelData);
 
     // Erfolgreiche Antwort
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Daten erfolgreich an Zoho übertragen',
       results: results.results,
@@ -44,9 +54,9 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Zoho API Fehler:', error);
     
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      error: 'Interne Server-Fehler',
+      error: 'Interner Server-Fehler',
       message: error.message,
       timestamp: new Date().toISOString()
     });
