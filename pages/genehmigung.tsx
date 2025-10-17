@@ -193,7 +193,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
           // 1. Zoho-Integration
           let zohoResults = null;
           try {
-            const zohoResponse = await fetch('/api/export-to-zoho', {
+            const zohoResponse = await fetch('/.netlify/functions/send-to-zoho', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(exportData)

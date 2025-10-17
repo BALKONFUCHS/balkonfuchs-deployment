@@ -417,7 +417,7 @@ const PartnerFunnel = () => {
     };
 
     try {
-      const response = await fetch('/api/export-to-zoho', {
+      const response = await fetch('/.netlify/functions/send-to-zoho', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submissionData)
