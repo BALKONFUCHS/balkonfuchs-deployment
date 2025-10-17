@@ -8,7 +8,7 @@ export const submitToZoho = async (funnelData, funnelType = 'gewerbe') => {
   try {
     console.log(`Sending ${funnelType} data to Zoho:`, funnelData);
 
-    const response = await fetch('/api/send-to-zoho', {
+    const response = await fetch('/.netlify/functions/send-to-zoho', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
