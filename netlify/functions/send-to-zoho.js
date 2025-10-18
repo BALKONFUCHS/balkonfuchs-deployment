@@ -141,7 +141,7 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
       client_id: clientId,
       client_secret: '[HIDDEN]',
       grant_type: 'refresh_token',
-      scope: 'ZohoCRM.modules.ALL'
+      scope: 'Desk.tickets.ALL Desk.contacts.ALL ZohoCRM.modules.ALL ZohoCRM.users.ALL'
     });
     
     const response = await axios.post(
@@ -151,7 +151,7 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
         client_id: clientId,
         client_secret: clientSecret,
         grant_type: 'refresh_token',
-        scope: 'ZohoCRM.modules.ALL'
+        scope: 'Desk.tickets.ALL Desk.contacts.ALL ZohoCRM.modules.ALL ZohoCRM.users.ALL'
       }),
       {
         headers: {
