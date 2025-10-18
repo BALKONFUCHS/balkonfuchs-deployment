@@ -8,7 +8,6 @@
  * - ZOHO_REFRESH_TOKEN: Zoho Refresh Token
  * - ZOHO_CLIENT_ID: Zoho Client ID
  * - ZOHO_CLIENT_SECRET: Zoho Client Secret
- * - ZOHO_API_DOMAIN: Zoho API Domain (optional, default: desk.zoho.eu)
  */
 
 const axios = require('axios');
@@ -64,7 +63,6 @@ exports.handler = async (event, context) => {
     const refreshToken = process.env.ZOHO_REFRESH_TOKEN;
     const clientId = process.env.ZOHO_CLIENT_ID;
     const clientSecret = process.env.ZOHO_CLIENT_SECRET;
-    const apiDomain = process.env.ZOHO_API_DOMAIN || 'desk.zoho.eu';
 
     if (!orgId || !refreshToken || !clientId || !clientSecret) {
       return {
@@ -92,7 +90,7 @@ exports.handler = async (event, context) => {
     }
 
     // Zoho Desk Ticket erstellen
-    const deskResult = await createZohoDeskTicket(funnelData, orgId, accessToken, apiDomain);
+    const deskResult = await createZohoDeskTicket(funnelData, orgId, accessToken);
     
     // Zoho CRM Lead erstellen
     const crmResult = await createZohoCRMLead(funnelData, accessToken);
@@ -141,7 +139,8 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
         refresh_token: refreshToken,
         client_id: clientId,
         client_secret: clientSecret,
-        grant_type: 'refresh_token'
+        grant_type: 'refresh_token',
+        scope: 'ZohoCRM.modules.ALL'
       }),
       {
         headers: {
@@ -165,7 +164,7 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
 /**
  * Erstellt ein Ticket in Zoho Desk
  */
-async function createZohoDeskTicket(funnelData, orgId, accessToken, apiDomain) {
+async function createZohoDeskTicket(funnelData, orgId, accessToken) {
   try {
     const ticketData = {
       subject: `Balkon-Anfrage von ${funnelData.name || 'Unbekannt'}`,
@@ -189,7 +188,7 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken, apiDomain) {
     };
 
     const response = await axios.post(
-      `https://${apiDomain}/api/v1/tickets`,
+      `https://desk.zoho.eu/api/v1/tickets`,
       ticketData,
       {
         headers: {
