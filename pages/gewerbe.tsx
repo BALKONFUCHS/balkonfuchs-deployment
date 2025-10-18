@@ -129,7 +129,7 @@ export default function GewerbeFunnel() {
   const canProceedStep3 = (formData.zeitrahmen !== '' || (formData.startMonat && formData.startJahr)) && 
                          (formData.budgetrahmen !== '' || formData.budgetFreitext !== '');
   const canProceedStep4 = formData.firmenname && formData.ansprechpartner && formData.email && formData.telefon && formData.plz && formData.ort;
-  const canSubmit = canProceedStep4 && formData.datenschutz && formData.balkonbrief && formData.haftungsausschluss;
+  const canSubmit = canProceedStep4 && formData.datenschutz && formData.haftungsausschluss;
 
   return (
     <>
@@ -939,7 +939,7 @@ export default function GewerbeFunnel() {
                           className="mt-1 w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
                         />
                         <span className="text-sm text-gray-300">
-                          Ich habe den <a href="/balkonbrief/" className="text-blue-400 hover:underline" target="_blank">Balkonbrief</a> gelesen und verstanden. *
+                          Ich möchte den <a href="/balkonbrief/" className="text-blue-400 hover:underline" target="_blank">Balkonbrief</a> kostenlos abonnieren und regelmäßig über Balkon-Trends und Angebote informiert werden.
                         </span>
                       </label>
                     </div>

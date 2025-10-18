@@ -5,7 +5,10 @@
  * 
  * Umgebungsvariablen:
  * - ZOHO_ORG_ID: Zoho Organization ID
- * - ZOHO_ACCESS_TOKEN: Zoho Access Token
+ * - ZOHO_REFRESH_TOKEN: Zoho Refresh Token
+ * - ZOHO_CLIENT_ID: Zoho Client ID
+ * - ZOHO_CLIENT_SECRET: Zoho Client Secret
+ * - ZOHO_API_DOMAIN: Zoho API Domain (optional, default: desk.zoho.eu)
  */
 
 const axios = require('axios');
@@ -58,21 +61,38 @@ exports.handler = async (event, context) => {
 
     // Umgebungsvariablen prüfen
     const orgId = process.env.ZOHO_ORG_ID;
-    const accessToken = process.env.ZOHO_ACCESS_TOKEN;
+    const refreshToken = process.env.ZOHO_REFRESH_TOKEN;
+    const clientId = process.env.ZOHO_CLIENT_ID;
+    const clientSecret = process.env.ZOHO_CLIENT_SECRET;
+    const apiDomain = process.env.ZOHO_API_DOMAIN || 'desk.zoho.eu';
 
-    if (!orgId || !accessToken) {
+    if (!orgId || !refreshToken || !clientId || !clientSecret) {
       return {
         statusCode: 500,
         headers,
         body: JSON.stringify({
           success: false,
-          error: 'Zoho-Konfiguration fehlt. ZOHO_ORG_ID und ZOHO_ACCESS_TOKEN müssen gesetzt sein.',
+          error: 'Zoho-Konfiguration fehlt. ZOHO_ORG_ID, ZOHO_REFRESH_TOKEN, ZOHO_CLIENT_ID und ZOHO_CLIENT_SECRET müssen gesetzt sein.',
+        }),
+      };
+    }
+
+    // Access Token mit Refresh Token generieren
+    const accessToken = await refreshAccessToken(refreshToken, clientId, clientSecret);
+    
+    if (!accessToken) {
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          success: false,
+          error: 'Fehler beim Generieren des Access Tokens',
         }),
       };
     }
 
     // Zoho Desk Ticket erstellen
-    const deskResult = await createZohoDeskTicket(funnelData, orgId, accessToken);
+    const deskResult = await createZohoDeskTicket(funnelData, orgId, accessToken, apiDomain);
     
     // Zoho CRM Lead erstellen
     const crmResult = await createZohoCRMLead(funnelData, accessToken);
@@ -109,9 +129,43 @@ exports.handler = async (event, context) => {
 };
 
 /**
+ * Generiert einen neuen Access Token mit dem Refresh Token
+ */
+async function refreshAccessToken(refreshToken, clientId, clientSecret) {
+  try {
+    console.log('Generiere neuen Access Token...');
+    
+    const response = await axios.post(
+      'https://accounts.zoho.eu/oauth/v2/token',
+      new URLSearchParams({
+        refresh_token: refreshToken,
+        client_id: clientId,
+        client_secret: clientSecret,
+        grant_type: 'refresh_token'
+      }),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    );
+
+    if (response.data && response.data.access_token) {
+      console.log('Access Token erfolgreich generiert');
+      return response.data.access_token;
+    } else {
+      throw new Error('Keine Access Token in der Antwort');
+    }
+  } catch (error) {
+    console.error('Fehler beim Generieren des Access Tokens:', error.response?.data || error.message);
+    throw new Error(`Token-Generierung fehlgeschlagen: ${error.message}`);
+  }
+}
+
+/**
  * Erstellt ein Ticket in Zoho Desk
  */
-async function createZohoDeskTicket(funnelData, orgId, accessToken) {
+async function createZohoDeskTicket(funnelData, orgId, accessToken, apiDomain) {
   try {
     const ticketData = {
       subject: `Balkon-Anfrage von ${funnelData.name || 'Unbekannt'}`,
@@ -135,7 +189,7 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken) {
     };
 
     const response = await axios.post(
-      `https://desk.zoho.eu/api/v1/tickets`,
+      `https://${apiDomain}/api/v1/tickets`,
       ticketData,
       {
         headers: {
