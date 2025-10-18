@@ -131,7 +131,18 @@ exports.handler = async (event, context) => {
  */
 async function refreshAccessToken(refreshToken, clientId, clientSecret) {
   try {
-    console.log('Generiere neuen Access Token...');
+    console.log('=== ZOHO TOKEN REFRESH REQUEST ===');
+    console.log('URL:', 'https://accounts.zoho.eu/oauth/v2/token');
+    console.log('Headers:', {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    console.log('Body:', {
+      refresh_token: refreshToken,
+      client_id: clientId,
+      client_secret: '[HIDDEN]',
+      grant_type: 'refresh_token',
+      scope: 'ZohoCRM.modules.ALL'
+    });
     
     const response = await axios.post(
       'https://accounts.zoho.eu/oauth/v2/token',
@@ -148,6 +159,10 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
         }
       }
     );
+
+    console.log('=== ZOHO TOKEN REFRESH RESPONSE ===');
+    console.log('Response Status:', response.status);
+    console.log('Response Data:', response.data);
 
     if (response.data && response.data.access_token) {
       console.log('Access Token erfolgreich generiert');
@@ -187,6 +202,16 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken) {
       },
     };
 
+    // Detailliertes Logging vor dem API Call
+    console.log('=== ZOHO DESK REQUEST ===');
+    console.log('URL:', 'https://desk.zoho.eu/api/v1/tickets');
+    console.log('Headers:', {
+      'Authorization': `Zoho-oauthtoken ${accessToken}`,
+      'Content-Type': 'application/json',
+      'orgId': orgId,
+    });
+    console.log('Body:', ticketData);
+
     const response = await axios.post(
       `https://desk.zoho.eu/api/v1/tickets`,
       ticketData,
@@ -198,6 +223,11 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken) {
         },
       }
     );
+
+    // Detailliertes Logging nach dem API Call
+    console.log('=== ZOHO DESK RESPONSE ===');
+    console.log('Response Status:', response.status);
+    console.log('Response Data:', response.data);
 
     return {
       success: true,
@@ -237,6 +267,15 @@ async function createZohoCRMLead(funnelData, accessToken) {
       }],
     };
 
+    // Detailliertes Logging vor dem API Call
+    console.log('=== ZOHO CRM REQUEST ===');
+    console.log('URL:', 'https://www.zohoapis.eu/crm/v2/Leads');
+    console.log('Headers:', {
+      'Authorization': `Zoho-oauthtoken ${accessToken}`,
+      'Content-Type': 'application/json',
+    });
+    console.log('Body:', leadData);
+
     const response = await axios.post(
       'https://www.zohoapis.eu/crm/v2/Leads',
       leadData,
@@ -247,6 +286,11 @@ async function createZohoCRMLead(funnelData, accessToken) {
         },
       }
     );
+
+    // Detailliertes Logging nach dem API Call
+    console.log('=== ZOHO CRM RESPONSE ===');
+    console.log('Response Status:', response.status);
+    console.log('Response Data:', response.data);
 
     return {
       success: true,
