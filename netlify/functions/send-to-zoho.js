@@ -110,6 +110,10 @@ exports.handler = async (event, context) => {
       };
     }
 
+    // Log combinedData für Debugging
+    console.log('=== COMBINED DATA ===');
+    console.log('Combined Data:', combinedData);
+
     // Access Token mit Refresh Token generieren
     const accessToken = await refreshAccessToken(refreshToken, clientId, clientSecret);
     
@@ -251,7 +255,6 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken, departmentId
       'orgId': orgId,
     });
     console.log('Body:', ticketData);
-    console.log('Combined Data:', combinedData);
 
     const response = await axios.post(
       `https://desk.zoho.eu/api/v1/tickets`,
@@ -316,7 +319,6 @@ async function createZohoCRMLead(funnelData, accessToken) {
       'Content-Type': 'application/json',
     });
     console.log('Body:', leadData);
-    console.log('Combined Data:', combinedData);
 
     const response = await axios.post(
       'https://www.zohoapis.eu/crm/v2/Leads',
