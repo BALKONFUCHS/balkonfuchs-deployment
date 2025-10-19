@@ -85,16 +85,46 @@ exports.handler = async (event, context) => {
       message: funnelData?.message || body?.message || 'Keine zusätzliche Nachricht',
       calculation: calculation || null,
       
-      // Kalkulator-Zusammenfassung erstellen
+      // Vollständige Kalkulator-Zusammenfassung erstellen
       kalkulatorSummary: calculation ? `
-KALKULATOR-ZUSAMMENFASSUNG:
+VOLLSTÄNDIGE KALKULATOR-ZUSAMMENFASSUNG:
+
+=== KUNDENEINGABEN ===
 - Balkontyp: ${funnelData?.balconyType || 'Nicht angegeben'}
-- Anzahl: ${funnelData?.balconyCount || 1}
-- Maße: ${funnelData?.balconyWidth || ''}m × ${funnelData?.balconyDepth || ''}m
+- Anzahl Balkone: ${funnelData?.balconyCount || 1}
+- Breite: ${funnelData?.balconyWidth || 'Nicht angegeben'}m
+- Tiefe: ${funnelData?.balconyDepth || 'Nicht angegeben'}m
+- Gesamtfläche: ${funnelData?.balconyWidth && funnelData?.balconyDepth ? `${funnelData.balconyWidth} × ${funnelData.balconyDepth}m` : 'Nicht berechnet'}
+
+=== ZUSATZLEISTUNGEN ===
 - Zusatzleistungen: ${funnelData?.extras?.join(', ') || 'Keine'}
+- Premium-Geländer: ${funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein'}
+- Premium-Boden: ${funnelData?.extras?.includes('premium_boden') ? 'Ja' : 'Nein'}
+- Seitenschutz: ${funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein'}
+
+=== STANDORT & REGION ===
+- Postleitzahl: ${contact?.plz || funnelData?.plz || 'Nicht angegeben'}
+- Stadt: ${contact?.city || funnelData?.city || 'Nicht angegeben'}
+- Region: ${body.mappedData?.region || 'Nicht verfügbar'}
+- Regionalfaktor: ${body.mappedData?.regionalfaktor || 'Nicht verfügbar'}
+
+=== PREISBERECHNUNG ===
+- Basispreis: ${body.mappedData?.basispreis || 'Nicht verfügbar'}€
+- Regionalfaktor: ${body.mappedData?.regionalfaktor || '1.0x'}
 - Gesamtpreis: ${calculation}€
+- Geschätzter Wert: ${body._kalkulatorScoring?.estimatedValue || calculation}€
+
+=== LEAD SCORING ===
 - Lead Score: ${body._internalScoring?.leadScore || body._kalkulatorScoring?.finalScore || 'Nicht verfügbar'}
 - Kategorie: ${body._internalScoring?.category || body._kalkulatorScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${body._internalScoring?.priority || body._kalkulatorScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${body._kalkulatorScoring?.estimatedValue || 'Nicht verfügbar'}€
+
+=== FUNNEL-DETAILS ===
+- Funnel-Typ: ${funnelType || funnel?.type || 'Unbekannt'}
+- Quelle: ${source || 'BALKONFUCHS Kalkulator'}
+- Zeitstempel: ${new Date().toISOString()}
+- Vollständig: ${body.isComplete ? 'Ja' : 'Nein'}
       `.trim() : 'Keine Kalkulator-Daten verfügbar',
       
       // Zusätzliche Daten
@@ -138,6 +168,13 @@ KALKULATOR-ZUSAMMENFASSUNG:
     console.log('Contact:', contact);
     console.log('Email:', contact?.email);
     console.log('Phone:', contact?.phone);
+    console.log('=== CUSTOM FIELDS MAPPING ===');
+    console.log('E-Mail Field:', combinedData.email);
+    console.log('Tel. Field:', combinedData.phone);
+    console.log('Postleitzahl:', combinedData.plz);
+    console.log('=== MAPPED DATA ===');
+    console.log('Mapped Data:', body.mappedData);
+    console.log('Extras:', funnelData?.extras);
 
     // Access Token mit Refresh Token generieren
     const accessToken = await refreshAccessToken(refreshToken, clientId, clientSecret);
@@ -280,6 +317,15 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'Zusammenfassung': combinedData.kalkulatorSummary || combinedData.message || 'Keine zusätzliche Nachricht',
         'Kalkulator Ergebnis': combinedData.calculation || '',
         'Gesamtpreis': combinedData.calculation || '',
+        'Postleitzahl': combinedData.plz || '',
+        'Regionalfaktor': body.mappedData?.regionalfaktor || '1.0x',
+        'Basispreis': body.mappedData?.basispreis || '',
+        'Premium Geländer': funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein',
+        'Premium Boden': funnelData?.extras?.includes('premium_boden') ? 'Ja' : 'Nein',
+        'Seitenschutz': funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein',
+        'Anzahl Balkone': funnelData?.balconyCount || 1,
+        'Breite': funnelData?.balconyWidth || '',
+        'Tiefe': funnelData?.balconyDepth || '',
       },
     };
 
