@@ -8,11 +8,17 @@
  * - ZOHO_REFRESH_TOKEN: Zoho Refresh Token
  * - ZOHO_CLIENT_ID: Zoho Client ID
  * - ZOHO_CLIENT_SECRET: Zoho Client Secret
+ * - ZOHO_DEPARTMENT_ID: Zoho Department ID (optional)
  */
 
 const axios = require('axios');
 
 exports.handler = async (event, context) => {
+  // Logging des Raw Requests
+  console.log('=== RAW REQUEST ===');
+  console.log('Body:', event.body);
+  console.log('Parsed data:', JSON.parse(event.body));
+
   // CORS Headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -63,6 +69,7 @@ exports.handler = async (event, context) => {
     const refreshToken = process.env.ZOHO_REFRESH_TOKEN;
     const clientId = process.env.ZOHO_CLIENT_ID;
     const clientSecret = process.env.ZOHO_CLIENT_SECRET;
+    const departmentId = process.env.ZOHO_DEPARTMENT_ID;
 
     if (!orgId || !refreshToken || !clientId || !clientSecret) {
       return {
@@ -90,7 +97,7 @@ exports.handler = async (event, context) => {
     }
 
     // Zoho Desk Ticket erstellen
-    const deskResult = await createZohoDeskTicket(funnelData, orgId, accessToken);
+    const deskResult = await createZohoDeskTicket(funnelData, orgId, accessToken, departmentId);
     
     // Zoho CRM Lead erstellen
     const crmResult = await createZohoCRMLead(funnelData, accessToken);
@@ -179,7 +186,7 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
 /**
  * Erstellt ein Ticket in Zoho Desk
  */
-async function createZohoDeskTicket(funnelData, orgId, accessToken) {
+async function createZohoDeskTicket(funnelData, orgId, accessToken, departmentId) {
   try {
     const ticketData = {
       subject: `Balkon-Anfrage von ${funnelData.name || 'Unbekannt'}`,
@@ -201,6 +208,11 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken) {
         'Funnel_Quelle': funnelData.source || 'Website',
       },
     };
+
+    // DepartmentId nur hinzufügen, wenn es gesetzt ist
+    if (departmentId) {
+      ticketData.departmentId = departmentId;
+    }
 
     // Detailliertes Logging vor dem API Call
     console.log('=== ZOHO DESK REQUEST ===');
