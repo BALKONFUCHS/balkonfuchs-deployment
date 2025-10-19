@@ -85,6 +85,18 @@ exports.handler = async (event, context) => {
       message: funnelData?.message || body?.message || 'Keine zusätzliche Nachricht',
       calculation: calculation || null,
       
+      // Kalkulator-Zusammenfassung erstellen
+      kalkulatorSummary: calculation ? `
+KALKULATOR-ZUSAMMENFASSUNG:
+- Balkontyp: ${funnelData?.balconyType || 'Nicht angegeben'}
+- Anzahl: ${funnelData?.balconyCount || 1}
+- Maße: ${funnelData?.balconyWidth || ''}m × ${funnelData?.balconyDepth || ''}m
+- Zusatzleistungen: ${funnelData?.extras?.join(', ') || 'Keine'}
+- Gesamtpreis: ${calculation}€
+- Lead Score: ${body._internalScoring?.leadScore || body._kalkulatorScoring?.finalScore || 'Nicht verfügbar'}
+- Kategorie: ${body._internalScoring?.category || body._kalkulatorScoring?.category || 'Nicht verfügbar'}
+      `.trim() : 'Keine Kalkulator-Daten verfügbar',
+      
       // Zusätzliche Daten
       funnelType: funnelType || funnel?.type || 'Unbekannt',
       leadScore: body._internalScoring?.leadScore || body._kalkulatorScoring?.finalScore || null,
@@ -117,6 +129,15 @@ exports.handler = async (event, context) => {
     // Log combinedData für Debugging
     console.log('=== COMBINED DATA ===');
     console.log('Combined Data:', combinedData);
+    console.log('=== CALCULATION DETAILS ===');
+    console.log('Calculation:', calculation);
+    console.log('Estimated Value:', body._kalkulatorScoring?.estimatedValue);
+    console.log('Lead Score:', body._internalScoring?.leadScore);
+    console.log('Final Score:', body._kalkulatorScoring?.finalScore);
+    console.log('=== CONTACT DETAILS ===');
+    console.log('Contact:', contact);
+    console.log('Email:', contact?.email);
+    console.log('Phone:', contact?.phone);
 
     // Access Token mit Refresh Token generieren
     const accessToken = await refreshAccessToken(refreshToken, clientId, clientSecret);
@@ -238,7 +259,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       },
       customFields: {
         'Lead Score': combinedData.leadScore || '',
-        'Geschätzter Projektwert': combinedData.estimatedValue || combinedData.calculation || combinedData.budget || '',
+        'Geschätzter Projektwert': combinedData.calculation || '',
         'Funnel-Typ': combinedData.funnelType || 'Unbekannt',
         'Begrüßung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
         'Vorname': combinedData.name?.split(' ')[0] || '',
@@ -254,9 +275,11 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'Dringlichkeit': combinedData.priority || 'P3',
         'Kategorie': combinedData.category || '',
         'Lead Score Kategorie': combinedData.category || '',
-        'Geschätzter Wert': combinedData.estimatedValue || combinedData.calculation || '',
+        'Geschätzter Wert': combinedData.calculation || '',
         'Funnel Name': combinedData.funnelType || 'Unbekannt',
-        'Zusammenfassung': combinedData.message || 'Keine zusätzliche Nachricht',
+        'Zusammenfassung': combinedData.kalkulatorSummary || combinedData.message || 'Keine zusätzliche Nachricht',
+        'Kalkulator Ergebnis': combinedData.calculation || '',
+        'Gesamtpreis': combinedData.calculation || '',
       },
     };
 
