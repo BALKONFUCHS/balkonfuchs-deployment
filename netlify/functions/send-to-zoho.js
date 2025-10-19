@@ -218,26 +218,36 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
 /**
  * Erstellt ein Ticket in Zoho Desk
  */
-async function createZohoDeskTicket(funnelData, orgId, accessToken, departmentId) {
+async function createZohoDeskTicket(combinedData, orgId, accessToken, departmentId) {
   try {
     const ticketData = {
-      subject: `Balkon-Anfrage von ${funnelData.name || 'Unbekannt'}`,
-      description: formatTicketDescription(funnelData),
+      subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
+      description: formatTicketDescription(combinedData),
       priority: 'Medium',
       status: 'Open',
       channel: 'Web',
       contact: {
-        firstName: funnelData.name?.split(' ')[0] || 'Unbekannt',
-        lastName: funnelData.name?.split(' ').slice(1).join(' ') || '',
-        email: funnelData.email,
-        phone: funnelData.phone || '',
+        firstName: combinedData.name?.split(' ')[0] || 'Unbekannt',
+        lastName: combinedData.name?.split(' ').slice(1).join(' ') || '',
+        email: combinedData.email,
+        phone: combinedData.phone || '',
       },
       customFields: {
-        'Balkon_Fläche': funnelData.balkonFlaeche || '',
-        'Balkon_Typ': funnelData.balkonTyp || '',
-        'Budget': funnelData.budget || '',
-        'Zeitplan': funnelData.zeitplan || '',
-        'Funnel_Quelle': funnelData.source || 'Website',
+        'Lead_Score': combinedData.leadScore || '',
+        'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
+        'Funnel_Typ': combinedData.funnelType || 'Unbekannt',
+        'Begrüßung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
+        'Vorname': combinedData.name?.split(' ')[0] || '',
+        'E_Mail': combinedData.email || '',
+        'Tel_': combinedData.phone || '',
+        'Produkt_Name': 'Balkon',
+        'Balkon_Fläche': combinedData.balkonFlaeche || '',
+        'Balkon_Typ': combinedData.balkonTyp || '',
+        'Budget': combinedData.budget || '',
+        'Zeitplan': combinedData.zeitplan || '',
+        'Funnel_Quelle': combinedData.source || 'Website',
+        'Dringlichkeit': combinedData.priority || 'P3',
+        'Kategorie': combinedData.category || '',
       },
     };
 
@@ -290,23 +300,28 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken, departmentId
 /**
  * Erstellt einen Lead in Zoho CRM
  */
-async function createZohoCRMLead(funnelData, accessToken) {
+async function createZohoCRMLead(combinedData, accessToken) {
   try {
     const leadData = {
       data: [{
-        First_Name: funnelData.name?.split(' ')[0] || 'Unbekannt',
-        Last_Name: funnelData.name?.split(' ').slice(1).join(' ') || '',
-        Email: funnelData.email,
-        Phone: funnelData.phone || '',
+        First_Name: combinedData.name?.split(' ')[0] || 'Unbekannt',
+        Last_Name: combinedData.name?.split(' ').slice(1).join(' ') || '',
+        Email: combinedData.email,
+        Phone: combinedData.phone || '',
         Lead_Source: 'Website',
-        Company: funnelData.company || '',
-        Description: formatLeadDescription(funnelData),
+        Company: combinedData.company || '',
+        Description: formatLeadDescription(combinedData),
         Custom_Fields: {
-          'Balkon_Fläche': funnelData.balkonFlaeche || '',
-          'Balkon_Typ': funnelData.balkonTyp || '',
-          'Budget': funnelData.budget || '',
-          'Zeitplan': funnelData.zeitplan || '',
-          'Funnel_Quelle': funnelData.source || 'Website',
+          'Lead_Score': combinedData.leadScore || '',
+          'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
+          'Funnel_Typ': combinedData.funnelType || 'Unbekannt',
+          'Balkon_Fläche': combinedData.balkonFlaeche || '',
+          'Balkon_Typ': combinedData.balkonTyp || '',
+          'Budget': combinedData.budget || '',
+          'Zeitplan': combinedData.zeitplan || '',
+          'Funnel_Quelle': combinedData.source || 'Website',
+          'Dringlichkeit': combinedData.priority || 'P3',
+          'Kategorie': combinedData.category || '',
         },
       }],
     };
@@ -353,40 +368,40 @@ async function createZohoCRMLead(funnelData, accessToken) {
 /**
  * Formatiert die Ticket-Beschreibung
  */
-function formatTicketDescription(funnelData) {
+function formatTicketDescription(combinedData) {
   return `
 Neue Balkon-Anfrage über Website:
 
 Kontaktdaten:
-- Name: ${funnelData.name || 'Nicht angegeben'}
-- E-Mail: ${funnelData.email || 'Nicht angegeben'}
-- Telefon: ${funnelData.phone || 'Nicht angegeben'}
-- Firma: ${funnelData.company || 'Nicht angegeben'}
+- Name: ${combinedData.name || 'Nicht angegeben'}
+- E-Mail: ${combinedData.email || 'Nicht angegeben'}
+- Telefon: ${combinedData.phone || 'Nicht angegeben'}
+- Firma: ${combinedData.company || 'Nicht angegeben'}
 
 Balkon-Details:
-- Balkon-Typ: ${funnelData.balkonTyp || 'Nicht angegeben'}
-- Balkon-Fläche: ${funnelData.balkonFlaeche || 'Nicht angegeben'}
-- Budget: ${funnelData.budget || 'Nicht angegeben'}
-- Zeitplan: ${funnelData.zeitplan || 'Nicht angegeben'}
+- Balkon-Typ: ${combinedData.balkonTyp || 'Nicht angegeben'}
+- Balkon-Fläche: ${combinedData.balkonFlaeche || 'Nicht angegeben'}
+- Budget: ${combinedData.budget || 'Nicht angegeben'}
+- Zeitplan: ${combinedData.zeitplan || 'Nicht angegeben'}
 
 Zusätzliche Informationen:
-- Quelle: ${funnelData.source || 'Website'}
+- Quelle: ${combinedData.source || 'Website'}
 - Zeitstempel: ${new Date().toISOString()}
-- Nachricht: ${funnelData.message || 'Keine zusätzliche Nachricht'}
+- Nachricht: ${combinedData.message || 'Keine zusätzliche Nachricht'}
   `.trim();
 }
 
 /**
  * Formatiert die Lead-Beschreibung
  */
-function formatLeadDescription(funnelData) {
+function formatLeadDescription(combinedData) {
   return `
 Balkon-Projekt Anfrage:
-- Balkon-Typ: ${funnelData.balkonTyp || 'Nicht angegeben'}
-- Balkon-Fläche: ${funnelData.balkonFlaeche || 'Nicht angegeben'}
-- Budget: ${funnelData.budget || 'Nicht angegeben'}
-- Zeitplan: ${funnelData.zeitplan || 'Nicht angegeben'}
-- Quelle: ${funnelData.source || 'Website'}
-- Nachricht: ${funnelData.message || 'Keine zusätzliche Nachricht'}
+- Balkon-Typ: ${combinedData.balkonTyp || 'Nicht angegeben'}
+- Balkon-Fläche: ${combinedData.balkonFlaeche || 'Nicht angegeben'}
+- Budget: ${combinedData.budget || 'Nicht angegeben'}
+- Zeitplan: ${combinedData.zeitplan || 'Nicht angegeben'}
+- Quelle: ${combinedData.source || 'Website'}
+- Nachricht: ${combinedData.message || 'Keine zusätzliche Nachricht'}
   `.trim();
 }
