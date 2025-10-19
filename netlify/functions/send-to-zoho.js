@@ -50,19 +50,47 @@ exports.handler = async (event, context) => {
   try {
     // Parse request body
     const body = JSON.parse(event.body || '{}');
-    const { funnelData } = body;
+    const { contact, funnelData, funnel, source, funnelType, calculation } = body;
 
     // Validierung der eingehenden Daten
-    if (!funnelData) {
+    if (!contact && !funnelData) {
       return {
         statusCode: 400,
         headers,
         body: JSON.stringify({
           success: false,
-          error: 'Funnel-Daten fehlen',
+          error: 'Kontakt- oder Funnel-Daten fehlen',
         }),
       };
     }
+
+    // Kombiniere alle verfügbaren Daten für Zoho
+    const combinedData = {
+      // Kontaktdaten
+      name: contact ? `${contact.firstName} ${contact.lastName}`.trim() : 'Unbekannt',
+      email: contact?.email || '',
+      phone: contact?.phone || '',
+      company: contact?.company || '',
+      plz: contact?.plz || funnelData?.plz || '',
+      city: contact?.city || funnelData?.city || '',
+      
+      // Funnel-Daten
+      balkonTyp: funnelData?.balconyType || funnelData?.balkonTyp || 'Nicht angegeben',
+      balkonFlaeche: funnelData?.balconyWidth && funnelData?.balconyDepth 
+        ? `${funnelData.balconyWidth} x ${funnelData.balconyDepth} m` 
+        : 'Nicht angegeben',
+      budget: funnelData?.budget || 'Nicht angegeben',
+      zeitplan: funnelData?.zeitplan || 'Nicht angegeben',
+      source: source || funnelType || 'Website',
+      message: funnelData?.message || 'Keine zusätzliche Nachricht',
+      calculation: calculation || null,
+      
+      // Zusätzliche Daten
+      funnelType: funnelType || funnel?.type || 'Unbekannt',
+      leadScore: body._internalScoring?.leadScore || null,
+      category: body._internalScoring?.category || null,
+      priority: body._internalScoring?.priority || null,
+    };
 
     // Umgebungsvariablen prüfen
     const orgId = process.env.ZOHO_ORG_ID;
@@ -97,10 +125,10 @@ exports.handler = async (event, context) => {
     }
 
     // Zoho Desk Ticket erstellen
-    const deskResult = await createZohoDeskTicket(funnelData, orgId, accessToken, departmentId);
+    const deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId);
     
     // Zoho CRM Lead erstellen
-    const crmResult = await createZohoCRMLead(funnelData, accessToken);
+    const crmResult = await createZohoCRMLead(combinedData, accessToken);
 
     // Erfolgreiche Antwort
     return {
@@ -223,6 +251,7 @@ async function createZohoDeskTicket(funnelData, orgId, accessToken, departmentId
       'orgId': orgId,
     });
     console.log('Body:', ticketData);
+    console.log('Combined Data:', combinedData);
 
     const response = await axios.post(
       `https://desk.zoho.eu/api/v1/tickets`,
@@ -287,6 +316,7 @@ async function createZohoCRMLead(funnelData, accessToken) {
       'Content-Type': 'application/json',
     });
     console.log('Body:', leadData);
+    console.log('Combined Data:', combinedData);
 
     const response = await axios.post(
       'https://www.zohoapis.eu/crm/v2/Leads',
