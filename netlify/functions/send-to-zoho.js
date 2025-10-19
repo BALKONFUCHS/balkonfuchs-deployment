@@ -82,14 +82,18 @@ exports.handler = async (event, context) => {
       budget: funnelData?.budget || 'Nicht angegeben',
       zeitplan: funnelData?.zeitplan || 'Nicht angegeben',
       source: source || funnelType || 'Website',
-      message: funnelData?.message || 'Keine zusätzliche Nachricht',
+      message: funnelData?.message || body?.message || 'Keine zusätzliche Nachricht',
       calculation: calculation || null,
       
       // Zusätzliche Daten
       funnelType: funnelType || funnel?.type || 'Unbekannt',
-      leadScore: body._internalScoring?.leadScore || null,
-      category: body._internalScoring?.category || null,
-      priority: body._internalScoring?.priority || null,
+      leadScore: body._internalScoring?.leadScore || body._kalkulatorScoring?.finalScore || null,
+      category: body._internalScoring?.category || body._kalkulatorScoring?.category || null,
+      priority: body._internalScoring?.priority || body._kalkulatorScoring?.priority || null,
+      estimatedValue: body._kalkulatorScoring?.estimatedValue || null,
+      
+      // Mapped Data für zusätzliche Informationen
+      mappedData: body.mappedData || {},
     };
 
     // Umgebungsvariablen prüfen
@@ -233,21 +237,26 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         phone: combinedData.phone || '',
       },
       customFields: {
-        'Lead_Score': combinedData.leadScore || '',
-        'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
-        'Funnel_Typ': combinedData.funnelType || 'Unbekannt',
+        'Lead Score': combinedData.leadScore || '',
+        'Geschätzter Projektwert': combinedData.estimatedValue || combinedData.calculation || combinedData.budget || '',
+        'Funnel-Typ': combinedData.funnelType || 'Unbekannt',
         'Begrüßung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
         'Vorname': combinedData.name?.split(' ')[0] || '',
-        'E_Mail': combinedData.email || '',
-        'Tel_': combinedData.phone || '',
-        'Produkt_Name': 'Balkon',
-        'Balkon_Fläche': combinedData.balkonFlaeche || '',
-        'Balkon_Typ': combinedData.balkonTyp || '',
+        'E-Mail': combinedData.email || '',
+        'Tel.': combinedData.phone || '',
+        'Produkt Name': 'Balkon',
+        'Postleitzahl': combinedData.plz || '',
+        'Balkon-Fläche': combinedData.balkonFlaeche || '',
+        'Balkon-Typ': combinedData.balkonTyp || '',
         'Budget': combinedData.budget || '',
         'Zeitplan': combinedData.zeitplan || '',
-        'Funnel_Quelle': combinedData.source || 'Website',
+        'Funnel-Quelle': combinedData.source || 'Website',
         'Dringlichkeit': combinedData.priority || 'P3',
         'Kategorie': combinedData.category || '',
+        'Lead Score Kategorie': combinedData.category || '',
+        'Geschätzter Wert': combinedData.estimatedValue || combinedData.calculation || '',
+        'Funnel Name': combinedData.funnelType || 'Unbekannt',
+        'Zusammenfassung': combinedData.message || 'Keine zusätzliche Nachricht',
       },
     };
 
