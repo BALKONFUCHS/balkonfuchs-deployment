@@ -321,13 +321,13 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         phone: combinedData.phone || '',
       },
       customFields: {
-        // Basis-Felder (wie im Screenshot sichtbar)
+        // Basis-Felder (API-Feldnamen verwenden)
         'Geschätzter Projektwert': combinedData.calculation || '',
         'Funnel-Typ': combinedData.funnelType || 'Unbekannt',
         'Begrüßung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
         'Vorname': combinedData.name?.split(' ')[0] || '',
-        'E-Mail': combinedData.email || '',
-        'Tel.': combinedData.phone || '',
+        'email': combinedData.email || '',
+        'phone': combinedData.phone || '',
         'Produkt Name': 'Balkon',
         'Postleitzahl': combinedData.plz || '',
         
@@ -375,8 +375,8 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
 
     // Log Custom Fields für Debugging
     console.log('=== CUSTOM FIELDS DEBUG ===');
-    console.log('E-Mail Field Value:', ticketData.customFields['E-Mail']);
-    console.log('Tel. Field Value:', ticketData.customFields['Tel.']);
+    console.log('email Field Value:', ticketData.customFields['email']);
+    console.log('phone Field Value:', ticketData.customFields['phone']);
     console.log('Postleitzahl Field Value:', ticketData.customFields['Postleitzahl']);
     console.log('Funnel-Typ Field Value:', ticketData.customFields['Funnel-Typ']);
     console.log('Geschätzter Projektwert Field Value:', ticketData.customFields['Geschätzter Projektwert']);
