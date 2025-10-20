@@ -193,7 +193,7 @@ VOLLSTÄNDIGE KALKULATOR-ZUSAMMENFASSUNG:
     // Zoho Desk Ticket erstellen
     let deskResult = null;
     try {
-      deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId);
+      deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData);
       console.log('=== DESK RESULT ===');
       console.log('Desk Result:', deskResult);
     } catch (deskError) {
@@ -306,7 +306,7 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
 /**
  * Erstellt ein Ticket in Zoho Desk
  */
-async function createZohoDeskTicket(combinedData, orgId, accessToken, departmentId) {
+async function createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData) {
   try {
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
