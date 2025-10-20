@@ -191,10 +191,36 @@ VOLLSTÄNDIGE KALKULATOR-ZUSAMMENFASSUNG:
     }
 
     // Zoho Desk Ticket erstellen
-    const deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId);
+    let deskResult = null;
+    try {
+      deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId);
+      console.log('=== DESK RESULT ===');
+      console.log('Desk Result:', deskResult);
+    } catch (deskError) {
+      console.error('=== DESK ERROR ===');
+      console.error('Desk Error:', deskError);
+      deskResult = {
+        success: false,
+        error: deskError.message,
+        details: deskError
+      };
+    }
     
     // Zoho CRM Lead erstellen
-    const crmResult = await createZohoCRMLead(combinedData, accessToken);
+    let crmResult = null;
+    try {
+      crmResult = await createZohoCRMLead(combinedData, accessToken);
+      console.log('=== CRM RESULT ===');
+      console.log('CRM Result:', crmResult);
+    } catch (crmError) {
+      console.error('=== CRM ERROR ===');
+      console.error('CRM Error:', crmError);
+      crmResult = {
+        success: false,
+        error: crmError.message,
+        details: crmError
+      };
+    }
 
     // Erfolgreiche Antwort
     return {
@@ -334,6 +360,12 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       ticketData.departmentId = departmentId;
     }
 
+    // Log Custom Fields für Debugging
+    console.log('=== CUSTOM FIELDS DEBUG ===');
+    console.log('Custom Fields:', ticketData.customFields);
+    console.log('Department ID:', departmentId);
+    console.log('Org ID:', orgId);
+
     // Detailliertes Logging vor dem API Call
     console.log('=== ZOHO DESK REQUEST ===');
     console.log('URL:', 'https://desk.zoho.eu/api/v1/tickets');
@@ -367,10 +399,17 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       message: 'Ticket erfolgreich erstellt',
     };
   } catch (error) {
-    console.error('Zoho Desk Fehler:', error.response?.data || error.message);
+    console.error('=== ZOHO DESK ERROR DETAILS ===');
+    console.error('Error Message:', error.message);
+    console.error('Error Response:', error.response?.data);
+    console.error('Error Status:', error.response?.status);
+    console.error('Error Headers:', error.response?.headers);
+    console.error('Full Error:', error);
     return {
       success: false,
       error: error.message,
+      details: error.response?.data,
+      status: error.response?.status,
     };
   }
 }
