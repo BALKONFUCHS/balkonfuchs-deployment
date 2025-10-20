@@ -321,7 +321,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         phone: combinedData.phone || '',
       },
       customFields: {
-        'Lead Score': combinedData.leadScore || '',
+        // Basis-Felder (wie im Screenshot sichtbar)
         'Geschätzter Projektwert': combinedData.calculation || '',
         'Funnel-Typ': combinedData.funnelType || 'Unbekannt',
         'Begrüßung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
@@ -330,28 +330,41 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'Tel.': combinedData.phone || '',
         'Produkt Name': 'Balkon',
         'Postleitzahl': combinedData.plz || '',
+        
+        // Balkon-spezifische Felder
         'Balkon-Fläche': combinedData.balkonFlaeche || '',
         'Balkon-Typ': combinedData.balkonTyp || '',
-        'Budget': combinedData.budget || '',
-        'Zeitplan': combinedData.zeitplan || '',
-        'Funnel-Quelle': combinedData.source || 'Website',
-        'Dringlichkeit': combinedData.priority || 'P3',
-        'Kategorie': combinedData.category || '',
-        'Lead Score Kategorie': combinedData.category || '',
-        'Geschätzter Wert': combinedData.calculation || '',
-        'Funnel Name': combinedData.funnelType || 'Unbekannt',
-        'Zusammenfassung': combinedData.kalkulatorSummary || combinedData.message || 'Keine zusätzliche Nachricht',
-        'Kalkulator Ergebnis': combinedData.calculation || '',
-        'Gesamtpreis': combinedData.calculation || '',
-        'Postleitzahl': combinedData.plz || '',
-        'Regionalfaktor': body.mappedData?.regionalfaktor || '1.0x',
-        'Basispreis': body.mappedData?.basispreis || '',
-        'Premium Geländer': funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein',
-        'Premium Boden': funnelData?.extras?.includes('premium_boden') ? 'Ja' : 'Nein',
-        'Seitenschutz': funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein',
         'Anzahl Balkone': funnelData?.balconyCount || 1,
         'Breite': funnelData?.balconyWidth || '',
         'Tiefe': funnelData?.balconyDepth || '',
+        
+        // Extras/Zusatzleistungen
+        'Standard Geländer': funnelData?.extras?.includes('standard_gelaender') ? 'Ja' : 'Nein',
+        'Premium Geländer': funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein',
+        'Seitenschutz': funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein',
+        'Bodenbelag': funnelData?.extras?.includes('bodenbelag') ? 'Ja' : 'Nein',
+        'Balkontür': funnelData?.extras?.includes('balkontuer') ? 'Ja' : 'Nein',
+        'Treppe': funnelData?.extras?.includes('treppe') ? 'Ja' : 'Nein',
+        
+        // Lead Scoring
+        'Lead Score': combinedData.leadScore || '',
+        'Lead Score Kategorie': combinedData.category || '',
+        'Priorität': combinedData.priority || 'P3',
+        'Dringlichkeit': combinedData.priority || 'P3',
+        
+        // Berechnungen
+        'Gesamtpreis': combinedData.calculation || '',
+        'Basispreis': body.mappedData?.basispreis || '',
+        'Regionalfaktor': body.mappedData?.regionalfaktor || '1.0x',
+        
+        // Metadaten
+        'Funnel-Quelle': combinedData.source || 'Website',
+        'Zusammenfassung': combinedData.kalkulatorSummary || combinedData.message || 'Keine zusätzliche Nachricht',
+        'Kalkulator Ergebnis': combinedData.calculation || '',
+        
+        // Budget und Zeitplan (falls vorhanden)
+        'Budget': combinedData.budget || '',
+        'Zeitplan': combinedData.zeitplan || '',
       },
     };
 
@@ -362,7 +375,11 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
 
     // Log Custom Fields für Debugging
     console.log('=== CUSTOM FIELDS DEBUG ===');
-    console.log('Custom Fields:', ticketData.customFields);
+    console.log('E-Mail Field Value:', ticketData.customFields['E-Mail']);
+    console.log('Tel. Field Value:', ticketData.customFields['Tel.']);
+    console.log('Postleitzahl Field Value:', ticketData.customFields['Postleitzahl']);
+    console.log('Funnel-Typ Field Value:', ticketData.customFields['Funnel-Typ']);
+    console.log('Geschätzter Projektwert Field Value:', ticketData.customFields['Geschätzter Projektwert']);
     console.log('Department ID:', departmentId);
     console.log('Org ID:', orgId);
 
