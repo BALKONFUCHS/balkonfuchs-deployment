@@ -321,50 +321,49 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         phone: combinedData.phone || '',
       },
       customFields: {
-        // Basis-Felder (API-Feldnamen verwenden)
-        'Geschätzter Projektwert': combinedData.calculation || '',
-        'Funnel-Typ': combinedData.funnelType || 'Unbekannt',
-        'Begrüßung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
-        'Vorname': combinedData.name?.split(' ')[0] || '',
-        'email': combinedData.email || '',
-        'phone': combinedData.phone || '',
-        'Produkt Name': 'Balkon',
-        'Postleitzahl': combinedData.plz || '',
+        // Basis-Felder (korrekte API-Namen aus cf-Objekt)
+        'cf_geschatzter_projektwerk': combinedData.calculation || '',
+        'cf_funnel_typ': combinedData.funnelType || 'Unbekannt',
+        'cf_begrussung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
+        'cf_vorname': combinedData.name?.split(' ')[0] || '',
+        'cf_email': combinedData.email || '',
+        'cf_telefon': combinedData.phone || '',
+        'cf_produkt_name': 'Balkon',
+        'cf_lieferadresse': combinedData.plz || '',
         
-        // Balkon-spezifische Felder
-        'Balkon-Fläche': combinedData.balkonFlaeche || '',
-        'Balkon-Typ': combinedData.balkonTyp || '',
-        'Anzahl Balkone': funnelData?.balconyCount || 1,
-        'Breite': funnelData?.balconyWidth || '',
-        'Tiefe': funnelData?.balconyDepth || '',
+        // Lead Scoring (bereits vorhandene cf-Felder)
+        'cf_lead_score': combinedData.leadScore || '',
+        'cf_lead_kategorie': combinedData.category || '',
+        'cf_dringlichkeit': combinedData.priority || 'P3',
+        
+        // Balkon-spezifische Felder (neue cf-Felder)
+        'cf_balkon_flaeche': combinedData.balkonFlaeche || '',
+        'cf_balkon_typ': combinedData.balkonTyp || '',
+        'cf_anzahl_balkone': funnelData?.balconyCount || 1,
+        'cf_breite': funnelData?.balconyWidth || '',
+        'cf_tiefe': funnelData?.balconyDepth || '',
         
         // Extras/Zusatzleistungen
-        'Standard Geländer': funnelData?.extras?.includes('standard_gelaender') ? 'Ja' : 'Nein',
-        'Premium Geländer': funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein',
-        'Seitenschutz': funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein',
-        'Bodenbelag': funnelData?.extras?.includes('bodenbelag') ? 'Ja' : 'Nein',
-        'Balkontür': funnelData?.extras?.includes('balkontuer') ? 'Ja' : 'Nein',
-        'Treppe': funnelData?.extras?.includes('treppe') ? 'Ja' : 'Nein',
+        'cf_standard_gelaender': funnelData?.extras?.includes('standard_gelaender') ? 'Ja' : 'Nein',
+        'cf_premium_gelaender': funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein',
+        'cf_seitenschutz': funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein',
+        'cf_bodenbelag': funnelData?.extras?.includes('bodenbelag') ? 'Ja' : 'Nein',
+        'cf_balkontuer': funnelData?.extras?.includes('balkontuer') ? 'Ja' : 'Nein',
+        'cf_treppe': funnelData?.extras?.includes('treppe') ? 'Ja' : 'Nein',
         
-        // Lead Scoring
-        'Lead Score': combinedData.leadScore || '',
-        'Lead Score Kategorie': combinedData.category || '',
-        'Priorität': combinedData.priority || 'P3',
-        'Dringlichkeit': combinedData.priority || 'P3',
-        
-        // Berechnungen
-        'Gesamtpreis': combinedData.calculation || '',
-        'Basispreis': body.mappedData?.basispreis || '',
-        'Regionalfaktor': body.mappedData?.regionalfaktor || '1.0x',
+        // Berechnungen (korrigiert)
+        'cf_gesamtpreis': combinedData.calculation || '',
+        'cf_basispreis': body.mappedData?.basispreis || '',
+        'cf_regionalfaktor': body.mappedData?.regionalfaktor || '1.0x',
         
         // Metadaten
-        'Funnel-Quelle': combinedData.source || 'Website',
-        'Zusammenfassung': combinedData.kalkulatorSummary || combinedData.message || 'Keine zusätzliche Nachricht',
-        'Kalkulator Ergebnis': combinedData.calculation || '',
+        'cf_funnel_quelle': combinedData.source || 'Website',
+        'cf_zusammenfassung': combinedData.kalkulatorSummary || combinedData.message || 'Keine zusätzliche Nachricht',
+        'cf_kalkulator_ergebnis': combinedData.calculation || '',
         
         // Budget und Zeitplan (falls vorhanden)
-        'Budget': combinedData.budget || '',
-        'Zeitplan': combinedData.zeitplan || '',
+        'cf_budget': combinedData.budget || '',
+        'cf_zeitplan': combinedData.zeitplan || '',
       },
     };
 
@@ -375,11 +374,14 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
 
     // Log Custom Fields für Debugging
     console.log('=== CUSTOM FIELDS DEBUG ===');
-    console.log('email Field Value:', ticketData.customFields['email']);
-    console.log('phone Field Value:', ticketData.customFields['phone']);
-    console.log('Postleitzahl Field Value:', ticketData.customFields['Postleitzahl']);
-    console.log('Funnel-Typ Field Value:', ticketData.customFields['Funnel-Typ']);
-    console.log('Geschätzter Projektwert Field Value:', ticketData.customFields['Geschätzter Projektwert']);
+    console.log('cf_email Field Value:', ticketData.customFields['cf_email']);
+    console.log('cf_telefon Field Value:', ticketData.customFields['cf_telefon']);
+    console.log('cf_lieferadresse Field Value:', ticketData.customFields['cf_lieferadresse']);
+    console.log('cf_funnel_typ Field Value:', ticketData.customFields['cf_funnel_typ']);
+    console.log('cf_geschatzter_projektwerk Field Value:', ticketData.customFields['cf_geschatzter_projektwerk']);
+    console.log('cf_regionalfaktor Field Value:', ticketData.customFields['cf_regionalfaktor']);
+    console.log('cf_basispreis Field Value:', ticketData.customFields['cf_basispreis']);
+    console.log('cf_zusammenfassung Field Value:', ticketData.customFields['cf_zusammenfassung']?.substring(0, 100) + '...');
     console.log('Department ID:', departmentId);
     console.log('Org ID:', orgId);
 
