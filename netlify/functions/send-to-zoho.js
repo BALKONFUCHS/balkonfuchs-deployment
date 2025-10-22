@@ -79,11 +79,21 @@ exports.handler = async (event, context) => {
       balkonFlaeche: funnelData?.balconyWidth && funnelData?.balconyDepth 
         ? `${funnelData.balconyWidth} x ${funnelData.balconyDepth} m` 
         : 'Nicht angegeben',
-      budget: funnelData?.budget || 'Nicht angegeben',
-      zeitplan: funnelData?.zeitplan || 'Nicht angegeben',
+      budget: funnelData?.budget || '',
+      zeitplan: funnelData?.zeitplan || '',
       source: source || funnelType || 'Website',
       message: funnelData?.message || body?.message || 'Keine zusätzliche Nachricht',
       calculation: calculation || null,
+      
+      // Zusatzausstattung/Sonderleistungen
+      zusatzausstattung: funnelData?.extras ? funnelData.extras.join(', ') : 'Keine',
+      
+      // Checkbox-Zustände
+      datenschutzConsent: funnelData?.datenschutzConsent || false,
+      newsletterConsent: funnelData?.newsletterConsent || false,
+      
+      // Preisberechnung (falls vorhanden)
+      priceCalculation: body?.priceCalculation || null,
       
       // Vollständige Kalkulator-Zusammenfassung erstellen
       kalkulatorSummary: calculation ? `
@@ -102,6 +112,10 @@ VOLLSTÄNDIGE KALKULATOR-ZUSAMMENFASSUNG:
 - Premium-Boden: ${funnelData?.extras?.includes('premium_boden') ? 'Ja' : 'Nein'}
 - Seitenschutz: ${funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein'}
 
+=== EINWILLIGUNGEN ===
+- Datenschutz-Zustimmung: ${funnelData?.datenschutzConsent ? 'Ja' : 'Nein'}
+- Balkonbrief-Bestellung: ${funnelData?.newsletterConsent ? 'Ja' : 'Nein'}
+
 === STANDORT & REGION ===
 - Postleitzahl: ${contact?.plz || funnelData?.plz || 'Nicht angegeben'}
 - Stadt: ${contact?.city || funnelData?.city || 'Nicht angegeben'}
@@ -109,9 +123,13 @@ VOLLSTÄNDIGE KALKULATOR-ZUSAMMENFASSUNG:
 - Regionalfaktor: ${body.mappedData?.regionalfaktor || 'Nicht verfügbar'}
 
 === PREISBERECHNUNG ===
-- Basispreis: ${body.mappedData?.basispreis || 'Nicht verfügbar'}€
-- Regionalfaktor: ${body.mappedData?.regionalfaktor || '1.0x'}
-- Gesamtpreis: ${calculation}€
+- Basispreis: ${body.priceCalculation?.basePrice || body.mappedData?.basispreis || calculation || 'Nicht verfügbar'}€
+- Regionalfaktor: ${body.priceCalculation?.regionalFactor || body.mappedData?.regionalfaktor || '1.0x'}
+- Regionalkategorie: ${body.priceCalculation?.regionalCategory || 'Standard'}
+- Region: ${body.priceCalculation?.regionalRegion || 'Nicht verfügbar'}
+- Bundesland: ${body.priceCalculation?.regionalBundesland || 'Nicht verfügbar'}
+- Gesamtpreis: ${body.priceCalculation?.finalPrice || calculation}€
+- Ersparnis/Aufschlag: ${body.priceCalculation?.savings || 0}€
 - Geschätzter Wert: ${body._kalkulatorScoring?.estimatedValue || calculation}€
 
 === LEAD SCORING ===
@@ -326,8 +344,10 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_funnel_typ': combinedData.funnelType || 'Unbekannt',
         'cf_begrussung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
         'cf_vorname': combinedData.name?.split(' ')[0] || '',
+        'cf_nachname': combinedData.name?.split(' ').slice(1).join(' ') || '',
         'cf_email': combinedData.email || '',
         'cf_telefon': combinedData.phone || '',
+        'cf_mobil': combinedData.phone || '',
         'cf_produkt_name': 'Balkon',
         'cf_lieferadresse': combinedData.plz || '',
         
@@ -364,6 +384,27 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         // Budget und Zeitplan (falls vorhanden)
         'cf_budget': combinedData.budget || '',
         'cf_zeitplan': combinedData.zeitplan || '',
+        
+        // Zusatzausstattung/Sonderleistungen
+        'cf_zusatzausstattung': combinedData.zusatzausstattung || '',
+        'cf_standard_gelaender': funnelData?.extras?.includes('standard_gelaender') ? 'Ja' : 'Nein',
+        'cf_premium_gelaender': funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein',
+        'cf_seitenschutz': funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein',
+        'cf_bodenbelag': funnelData?.extras?.includes('bodenbelag') ? 'Ja' : 'Nein',
+        'cf_ueberdachung': funnelData?.extras?.includes('ueberdachung') ? 'Ja' : 'Nein',
+        
+        // Einwilligungen
+        'cf_datenschutz_zustimmung': combinedData.datenschutzConsent ? 'Ja' : 'Nein',
+        'cf_balkonbrief_bestellung': combinedData.newsletterConsent ? 'Ja' : 'Nein',
+        
+        // Erweiterte Preisberechnung
+        'cf_basispreis': body.priceCalculation?.basePrice || '',
+        'cf_regionalfaktor': body.priceCalculation?.regionalFactor || '1.0',
+        'cf_regionalkategorie': body.priceCalculation?.regionalCategory || '',
+        'cf_region': body.priceCalculation?.regionalRegion || '',
+        'cf_bundesland': body.priceCalculation?.regionalBundesland || '',
+        'cf_gesamtpreis': body.priceCalculation?.finalPrice || combinedData.calculation || '',
+        'cf_ersparnis_aufschlag': body.priceCalculation?.savings || 0,
       },
     };
 
@@ -517,8 +558,18 @@ Kontaktdaten:
 Balkon-Details:
 - Balkon-Typ: ${combinedData.balkonTyp || 'Nicht angegeben'}
 - Balkon-Fläche: ${combinedData.balkonFlaeche || 'Nicht angegeben'}
-- Budget: ${combinedData.budget || 'Nicht angegeben'}
-- Zeitplan: ${combinedData.zeitplan || 'Nicht angegeben'}
+- Zusatzausstattung: ${combinedData.zusatzausstattung || 'Keine'}
+${combinedData.budget ? `- Budget: ${combinedData.budget}` : ''}
+${combinedData.zeitplan ? `- Zeitplan: ${combinedData.zeitplan}` : ''}
+
+Einwilligungen:
+- Datenschutz-Zustimmung: ${combinedData.datenschutzConsent ? 'Ja' : 'Nein'}
+- Balkonbrief-Bestellung: ${combinedData.newsletterConsent ? 'Ja' : 'Nein'}
+
+Preisberechnung:
+- Basispreis: ${body.priceCalculation?.basePrice || combinedData.calculation || 'Nicht verfügbar'}€
+- Regionalfaktor: ${body.priceCalculation?.regionalFactor || '1.0x'}
+- Gesamtpreis: ${body.priceCalculation?.finalPrice || combinedData.calculation || 'Nicht verfügbar'}€
 
 Zusätzliche Informationen:
 - Quelle: ${combinedData.source || 'Website'}
@@ -535,8 +586,8 @@ function formatLeadDescription(combinedData) {
 Balkon-Projekt Anfrage:
 - Balkon-Typ: ${combinedData.balkonTyp || 'Nicht angegeben'}
 - Balkon-Fläche: ${combinedData.balkonFlaeche || 'Nicht angegeben'}
-- Budget: ${combinedData.budget || 'Nicht angegeben'}
-- Zeitplan: ${combinedData.zeitplan || 'Nicht angegeben'}
+${combinedData.budget ? `- Budget: ${combinedData.budget}` : ''}
+${combinedData.zeitplan ? `- Zeitplan: ${combinedData.zeitplan}` : ''}
 - Quelle: ${combinedData.source || 'Website'}
 - Nachricht: ${combinedData.message || 'Keine zusätzliche Nachricht'}
   `.trim();

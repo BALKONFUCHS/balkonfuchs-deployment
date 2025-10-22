@@ -289,7 +289,8 @@ const BalkonFuchsKalkulatorFunnel = () => {
            formData.contact.lastName !== '' && 
            formData.contact.email !== '' &&
            formData.contact.plz !== '' &&
-           formData.contact.plz.length === 5;
+           formData.contact.plz.length === 5 &&
+           formData.datenschutzConsent === true;
   };
   
   const [formData, setFormData] = useState({
@@ -305,7 +306,10 @@ const BalkonFuchsKalkulatorFunnel = () => {
       phone: '',
       plz: '', // Neue Postleitzahl
       city: '' // Neue Stadt
-    }
+    },
+    // Checkbox-Zustände
+    datenschutzConsent: false,
+    newsletterConsent: false
   });
 
   // Mapping-Funktion für Kalkulator-Scoring
@@ -466,6 +470,13 @@ const BalkonFuchsKalkulatorFunnel = () => {
         ...prev.contact,
         [field]: value
       }
+    }));
+  };
+
+  const handleCheckboxChange = (field, checked) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: checked
     }));
   };
 
@@ -635,6 +646,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
     </div>
   );
 
+
   const renderExtrasStep = () => (
     <div className="space-y-6">
       <div className="text-center space-y-4">
@@ -767,6 +779,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
           </p>
         </div>
 
+
         {/* Preisberechnung */}
         <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
           <h3 className="text-xl font-semibold text-white mb-4">Ihre Preisberechnung</h3>
@@ -874,6 +887,8 @@ const BalkonFuchsKalkulatorFunnel = () => {
               <input
                 type="checkbox"
                 id="datenschutz"
+                checked={formData.datenschutzConsent}
+                onChange={(e) => handleCheckboxChange('datenschutzConsent', e.target.checked)}
                 className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2"
                 required
               />
@@ -886,6 +901,8 @@ const BalkonFuchsKalkulatorFunnel = () => {
               <input
                 type="checkbox"
                 id="newsletter"
+                checked={formData.newsletterConsent}
+                onChange={(e) => handleCheckboxChange('newsletterConsent', e.target.checked)}
                 className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2"
               />
               <label htmlFor="newsletter" className="text-sm text-gray-300">
@@ -986,6 +1003,11 @@ const BalkonFuchsKalkulatorFunnel = () => {
         nurturingSequence: kalkulatorScore.nurturingSequence
       };
 
+      // Berechnung der Preise für die Übertragung
+      const basePrice = calculateBasePrice();
+      const regionalAdjustment = formData.contact.plz ? adjustPrice(basePrice, formData.contact.plz.toString()) : null;
+      const finalPrice = regionalAdjustment ? regionalAdjustment.adjustedPrice : basePrice;
+
       // Prepare data for Zoho export
       const exportData = {
         // Kontaktdaten
@@ -1010,13 +1032,26 @@ const BalkonFuchsKalkulatorFunnel = () => {
           balconyDepth: formData.balconyDepth,
           extras: formData.extras,
           plz: formData.contact.plz,
-          city: formData.contact.city
+          city: formData.contact.city,
+          // Checkbox-Zustände
+          datenschutzConsent: formData.datenschutzConsent,
+          newsletterConsent: formData.newsletterConsent
         },
         // Metadaten
         timestamp: new Date().toISOString(),
         source: 'BALKONFUCHS Kalkulator',
         funnelType: 'Kalkulator',
-        calculation: calculateBasePrice(),
+        calculation: basePrice,
+        // Vollständige Preisberechnung
+        priceCalculation: {
+          basePrice: basePrice,
+          regionalFactor: regionalAdjustment ? regionalAdjustment.factor : 1.0,
+          regionalCategory: regionalAdjustment ? regionalAdjustment.category : 'Standard',
+          regionalRegion: regionalAdjustment ? regionalAdjustment.region : 'Nicht verfügbar',
+          regionalBundesland: regionalAdjustment ? regionalAdjustment.bundesland : 'Nicht verfügbar',
+          finalPrice: finalPrice,
+          savings: regionalAdjustment ? regionalAdjustment.savings : 0
+        },
         // LeadScoring-Daten (Legacy)
         _internalScoring: {
           leadScore: leadScore.totalScore,
