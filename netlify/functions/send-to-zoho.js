@@ -95,61 +95,16 @@ exports.handler = async (event, context) => {
       // Preisberechnung (falls vorhanden)
       priceCalculation: body?.priceCalculation || null,
       
-      // Vollständige Kalkulator-Zusammenfassung erstellen
-      kalkulatorSummary: calculation ? `
-VOLLSTÄNDIGE KALKULATOR-ZUSAMMENFASSUNG:
-
-=== KUNDENEINGABEN ===
-- Balkontyp: ${funnelData?.balconyType || 'Nicht angegeben'}
-- Anzahl Balkone: ${funnelData?.balconyCount || 1}
-- Breite: ${funnelData?.balconyWidth || 'Nicht angegeben'}m
-- Tiefe: ${funnelData?.balconyDepth || 'Nicht angegeben'}m
-- Gesamtfläche: ${funnelData?.balconyWidth && funnelData?.balconyDepth ? `${funnelData.balconyWidth} × ${funnelData.balconyDepth}m` : 'Nicht berechnet'}
-
-=== ZUSATZLEISTUNGEN ===
-- Zusatzleistungen: ${funnelData?.extras?.join(', ') || 'Keine'}
-- Premium-Geländer: ${funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein'}
-- Premium-Boden: ${funnelData?.extras?.includes('premium_boden') ? 'Ja' : 'Nein'}
-- Seitenschutz: ${funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein'}
-
-=== EINWILLIGUNGEN ===
-- Datenschutz-Zustimmung: ${funnelData?.datenschutzConsent ? 'Ja' : 'Nein'}
-- Balkonbrief-Bestellung: ${funnelData?.newsletterConsent ? 'Ja' : 'Nein'}
-
-=== STANDORT & REGION ===
-- Postleitzahl: ${contact?.plz || funnelData?.plz || 'Nicht angegeben'}
-- Stadt: ${contact?.city || funnelData?.city || 'Nicht angegeben'}
-- Region: ${body.mappedData?.region || 'Nicht verfügbar'}
-- Regionalfaktor: ${body.mappedData?.regionalfaktor || 'Nicht verfügbar'}
-
-=== PREISBERECHNUNG ===
-- Basispreis: ${body.priceCalculation?.basePrice || body.mappedData?.basispreis || calculation || 'Nicht verfügbar'}€
-- Regionalfaktor: ${body.priceCalculation?.regionalFactor || body.mappedData?.regionalfaktor || '1.0x'}
-- Regionalkategorie: ${body.priceCalculation?.regionalCategory || 'Standard'}
-- Region: ${body.priceCalculation?.regionalRegion || 'Nicht verfügbar'}
-- Bundesland: ${body.priceCalculation?.regionalBundesland || 'Nicht verfügbar'}
-- Gesamtpreis: ${body.priceCalculation?.finalPrice || calculation}€
-- Ersparnis/Aufschlag: ${body.priceCalculation?.savings || 0}€
-- Geschätzter Wert: ${body._kalkulatorScoring?.estimatedValue || calculation}€
-
-=== LEAD SCORING ===
-- Lead Score: ${body._internalScoring?.leadScore || body._kalkulatorScoring?.finalScore || 'Nicht verfügbar'}
-- Kategorie: ${body._internalScoring?.category || body._kalkulatorScoring?.category || 'Nicht verfügbar'}
-- Priorität: ${body._internalScoring?.priority || body._kalkulatorScoring?.priority || 'Nicht verfügbar'}
-- Geschätzter Wert: ${body._kalkulatorScoring?.estimatedValue || 'Nicht verfügbar'}€
-
-=== FUNNEL-DETAILS ===
-- Funnel-Typ: ${funnelType || funnel?.type || 'Unbekannt'}
-- Quelle: ${source || 'BALKONFUCHS Kalkulator'}
-- Zeitstempel: ${new Date().toISOString()}
-- Vollständig: ${body.isComplete ? 'Ja' : 'Nein'}
-      `.trim() : 'Keine Kalkulator-Daten verfügbar',
+      // Funnel-spezifische Zusammenfassung erstellen
+      funnelSummary: createFunnelSummary(funnelType || funnel?.type, funnelData, contact, body, calculation),
       
-      // Zusätzliche Daten
-      funnelType: funnelType || funnel?.type || 'Unbekannt',
-      leadScore: body._internalScoring?.leadScore || body._kalkulatorScoring?.finalScore || null,
-      category: body._internalScoring?.category || body._kalkulatorScoring?.category || null,
-      priority: body._internalScoring?.priority || body._kalkulatorScoring?.priority || null,
+      // Lead Score aus verschiedenen Scoring-Systemen extrahieren
+      leadScore: extractLeadScore(body),
+      category: extractCategory(body),
+      priority: extractPriority(body),
+      
+      // Funnel-spezifische Scoring-Daten
+      funnelScoring: extractFunnelScoring(funnelType || funnel?.type, body),
       estimatedValue: body._kalkulatorScoring?.estimatedValue || null,
       
       // Mapped Data für zusätzliche Informationen
@@ -351,10 +306,34 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_produkt_name': 'Balkon',
         'cf_lieferadresse': combinedData.plz || '',
         
-        // Lead Scoring (bereits vorhandene cf-Felder)
+        // Lead Scoring (erweitert für alle Funnels)
         'cf_lead_score': combinedData.leadScore || '',
         'cf_lead_kategorie': combinedData.category || '',
-        'cf_dringlichkeit': combinedData.priority || 'P3',
+        'cf_dringlichkeit': combinedData.priority || '',
+        'cf_geschatzter_wert': combinedData.estimatedValue || '',
+        
+        // Funnel-spezifische Scoring-Details
+        'cf_funnel_scoring_details': JSON.stringify(combinedData.funnelScoring || {}),
+        
+        // Kalkulator-spezifische Scoring-Felder
+        'cf_kalkulator_basis_score': combinedData.funnelScoring?.baseScore || '',
+        'cf_kalkulator_completion_bonus': combinedData.funnelScoring?.completionBonus || '',
+        'cf_kalkulator_nurturing_sequence': combinedData.funnelScoring?.nurturingSequence || '',
+        'cf_kalkulator_action': combinedData.funnelScoring?.action || '',
+        
+        // Planer-spezifische Scoring-Felder
+        'cf_planer_block1_score': combinedData.funnelScoring?.block1Score || '',
+        'cf_planer_block2_score': combinedData.funnelScoring?.block2Score || '',
+        'cf_planer_block3_score': combinedData.funnelScoring?.block3Score || '',
+        'cf_planer_block4_score': combinedData.funnelScoring?.block4Score || '',
+        'cf_planer_response_time': combinedData.funnelScoring?.responseTime || '',
+        'cf_planer_beratungs_readiness': combinedData.funnelScoring?.beratungsReadiness || '',
+        
+        // Bauzeit-Planung-spezifische Scoring-Felder
+        'cf_bauzeit_geschatzte_bauzeit': combinedData.funnelScoring?.geschaetzteBauzeit || '',
+        
+        // Genehmigungscheck-spezifische Scoring-Felder
+        'cf_genehmigung_wahrscheinlichkeit': combinedData.funnelScoring?.genehmigungswahrscheinlichkeit || '',
         
         // Balkon-spezifische Felder (neue cf-Felder)
         'cf_balkon_flaeche': combinedData.balkonFlaeche || '',
@@ -397,14 +376,50 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_datenschutz_zustimmung': combinedData.datenschutzConsent ? 'Ja' : 'Nein',
         'cf_balkonbrief_bestellung': combinedData.newsletterConsent ? 'Ja' : 'Nein',
         
-        // Erweiterte Preisberechnung
-        'cf_basispreis': body.priceCalculation?.basePrice || '',
-        'cf_regionalfaktor': body.priceCalculation?.regionalFactor || '1.0',
-        'cf_regionalkategorie': body.priceCalculation?.regionalCategory || '',
-        'cf_region': body.priceCalculation?.regionalRegion || '',
-        'cf_bundesland': body.priceCalculation?.regionalBundesland || '',
-        'cf_gesamtpreis': body.priceCalculation?.finalPrice || combinedData.calculation || '',
-        'cf_ersparnis_aufschlag': body.priceCalculation?.savings || 0,
+        // Funnel-spezifische Custom Fields
+        'cf_funnel_zusammenfassung': combinedData.funnelSummary || '',
+        
+        // Genehmigungscheck-spezifische Felder
+        'cf_bundesland': funnelData?.bundesland || '',
+        'cf_projekttyp': funnelData?.projekttyp || '',
+        'cf_groesse': funnelData?.groesse || '',
+        'cf_tiefe': funnelData?.tiefe || '',
+        'cf_grenzabstand': funnelData?.grenzabstand || '',
+        'cf_genehmigung_ergebnis': funnelData?.ergebnis || '',
+        
+        // Planer-spezifische Felder
+        'cf_projektstatus': funnelData?.projectStatus || '',
+        'cf_zeitrahmen': funnelData?.timeframe || '',
+        'cf_eigentum': funnelData?.ownership || '',
+        'cf_wandmaterial': funnelData?.wallMaterial || '',
+        'cf_keller': funnelData?.basement || '',
+        'cf_etage': funnelData?.floor || '',
+        'cf_zugaenglichkeit': funnelData?.accessibility || '',
+        'cf_balkon_etage': funnelData?.balconyFloor || '',
+        'cf_gelaender': funnelData?.railing || '',
+        'cf_oberflaeche': funnelData?.surface || '',
+        'cf_dokumente': funnelData?.documents || '',
+        'cf_zusaetzliche_info': funnelData?.additionalInfo || '',
+        
+        // Bauzeit-Planung-spezifische Felder
+        'cf_zielmonat': funnelData?.targetMonth || '',
+        'cf_zieljahr': funnelData?.targetYear || '',
+        'cf_projektphase': funnelData?.projectPhase || '',
+        'cf_berechnetes_startdatum': funnelData?.calculation || '',
+        
+        // Partner-spezifische Felder
+        'cf_firmenname': body.company?.name || '',
+        'cf_rechtsform': body.company?.legalForm || '',
+        'cf_gruendungsjahr': body.company?.foundedYear || '',
+        'cf_mitarbeiteranzahl': body.company?.employeeCount || '',
+        'cf_firmenstadt': body.company?.city || '',
+        'cf_partner_typ': body.partnerDetails?.partnerType || '',
+        'cf_erfahrung': body.partnerDetails?.experience || '',
+        'cf_spezialitaeten': body.partnerDetails?.specialties?.join(', ') || '',
+        'cf_arbeitsgebiet': body.partnerDetails?.workingArea || '',
+        'cf_versicherungsstatus': body.partnerDetails?.insuranceStatus || '',
+        'cf_referenzen': body.partnerDetails?.references || '',
+        'cf_leuchtturmprojekt': body.partnerDetails?.lighthouseProject || '',
       },
     };
 
@@ -542,6 +557,277 @@ async function createZohoCRMLead(combinedData, accessToken, body) {
       success: false,
       error: error.message,
     };
+  }
+}
+
+/**
+ * Extrahiert den Lead Score aus verschiedenen Scoring-Systemen
+ */
+function extractLeadScore(body) {
+  // Priorität: Neues System > Legacy System
+  return body._kalkulatorScoring?.finalScore ||
+         body._partnerScoring?.finalScore ||
+         body._planerScoring?.finalScore ||
+         body._bauzeitScoring?.totalScore ||
+         body._genehmigungScoring?.totalScore ||
+         body._internalScoring?.leadScore ||
+         body._internalScoring?.totalScore ||
+         null;
+}
+
+/**
+ * Extrahiert die Kategorie aus verschiedenen Scoring-Systemen
+ */
+function extractCategory(body) {
+  return body._kalkulatorScoring?.category ||
+         body._partnerScoring?.category ||
+         body._planerScoring?.category ||
+         body._bauzeitScoring?.category ||
+         body._genehmigungScoring?.category ||
+         body._internalScoring?.category ||
+         null;
+}
+
+/**
+ * Extrahiert die Priorität aus verschiedenen Scoring-Systemen
+ */
+function extractPriority(body) {
+  return body._kalkulatorScoring?.priority ||
+         body._partnerScoring?.status ||
+         body._planerScoring?.priority ||
+         body._bauzeitScoring?.priority ||
+         body._genehmigungScoring?.priority ||
+         body._internalScoring?.priority ||
+         null;
+}
+
+/**
+ * Extrahiert funnel-spezifische Scoring-Daten
+ */
+function extractFunnelScoring(funnelType, body) {
+  switch (funnelType) {
+    case 'kalkulator':
+      return {
+        baseScore: body._kalkulatorScoring?.baseScore,
+        completionBonus: body._kalkulatorScoring?.completionBonus,
+        estimatedValue: body._kalkulatorScoring?.estimatedValue,
+        nurturingSequence: body._kalkulatorScoring?.nurturingSequence,
+        action: body._kalkulatorScoring?.action
+      };
+    
+    case 'partner':
+      return {
+        baseScore: body._partnerScoring?.baseScore,
+        qualityMultiplier: body._partnerScoring?.qualityMultiplier,
+        status: body._partnerScoring?.status,
+        action: body._partnerScoring?.action,
+        warnings: body._partnerScoring?.warnings
+      };
+    
+    case 'planer':
+      return {
+        block1Score: body._planerScoring?.block1Score,
+        block2Score: body._planerScoring?.block2Score,
+        block3Score: body._planerScoring?.block3Score,
+        block4Score: body._planerScoring?.block4Score,
+        completionBonus: body._planerScoring?.completionBonus,
+        estimatedValue: body._planerScoring?.estimatedValue,
+        responseTime: body._planerScoring?.responseTime,
+        beratungsReadiness: body._planerScoring?.beratungsReadiness
+      };
+    
+    case 'bauzeit-planung':
+      return {
+        estimatedValue: body._bauzeitScoring?.estimatedValue,
+        geschaetzteBauzeit: body._bauzeitScoring?.geschaetzteBauzeit
+      };
+    
+    case 'genehmigung':
+      return {
+        estimatedValue: body._genehmigungScoring?.estimatedValue,
+        genehmigungswahrscheinlichkeit: body._genehmigungScoring?.genehmigungswahrscheinlichkeit
+      };
+    
+    default:
+      return body._internalScoring || {};
+  }
+}
+
+/**
+ * Generiert eine detaillierte Partner-Empfehlung basierend auf dem Scoring
+ */
+function getPartnerRecommendation(scoringData) {
+  if (!scoringData) {
+    return '❌ Keine Scoring-Daten verfügbar';
+  }
+
+  const finalScore = scoringData.finalScore || scoringData.leadScore || 0;
+  const category = scoringData.category || 'Unbekannt';
+  const status = scoringData.status || 'unknown';
+  const warnings = scoringData.warnings || [];
+
+  let recommendation = '';
+  let emoji = '';
+  let priority = '';
+
+  // Emoji und Priorität basierend auf Score
+  if (finalScore >= 80) {
+    emoji = '🟢';
+    priority = 'HOCH';
+    recommendation = '✅ SOFORTIGE FREIGABE EMPFOHLEN\n- Premium Partner-Qualität\n- Sofortiges Onboarding möglich\n- Hohe Erfolgswahrscheinlichkeit';
+  } else if (finalScore >= 60) {
+    emoji = '🟡';
+    priority = 'MITTEL';
+    recommendation = '✅ FREIGABE EMPFOHLEN\n- Standard Partner-Qualität\n- Standard-Onboarding durchführen\n- Gute Erfolgswahrscheinlichkeit';
+  } else if (finalScore >= 40) {
+    emoji = '🟠';
+    priority = 'NIEDRIG';
+    recommendation = '⚠️ MANUELLE PRÜFUNG ERFORDERLICH\n- Review-Status empfohlen\n- Rückfragen an Bewerber stellen\n- Zusätzliche Dokumente anfordern';
+  } else if (finalScore >= 25) {
+    emoji = '🔴';
+    priority = 'SEHR NIEDRIG';
+    recommendation = '⚠️ BEDINGTE ZULASSUNG\n- Nur mit Probeauftrag\n- Engmaschige Begleitung erforderlich\n- Risiko-Monitoring aktivieren';
+  } else {
+    emoji = '❌';
+    priority = 'ABGELEHNT';
+    recommendation = '❌ ABLEHNUNG EMPFOHLEN\n- Nicht qualifiziert als Partner\n- Verbesserungsvorschläge senden\n- Nach 6 Monaten erneut prüfen';
+  }
+
+  // Warnungen hinzufügen
+  let warningText = '';
+  if (warnings.length > 0) {
+    warningText = '\n\n🚨 WARNUNGEN:\n' + warnings.map(w => `- ${w}`).join('\n');
+  }
+
+  return `${emoji} EMPFEHLUNG: ${priority}\n\n${recommendation}${warningText}\n\n📊 SCORE-DETAILS:\n- Final Score: ${finalScore}/100\n- Kategorie: ${category}\n- Status: ${status}`;
+}
+
+/**
+ * Erstellt eine funnel-spezifische Zusammenfassung
+ */
+function createFunnelSummary(funnelType, funnelData, contact, body, calculation) {
+  const baseInfo = `
+=== KONTAKTDATEN ===
+- Name: ${contact?.firstName || ''} ${contact?.lastName || ''}
+- E-Mail: ${contact?.email || 'Nicht angegeben'}
+- Telefon: ${contact?.phone || 'Nicht angegeben'}
+- Postleitzahl: ${contact?.plz || contact?.zipCode || 'Nicht angegeben'}
+
+=== FUNNEL-DETAILS ===
+- Funnel-Typ: ${funnelType || 'Unbekannt'}
+- Zeitstempel: ${new Date().toISOString()}
+`;
+
+  switch (funnelType) {
+    case 'kalkulator':
+      return baseInfo + `
+=== KALKULATOR-DATEN ===
+- Balkontyp: ${funnelData?.balconyType || 'Nicht angegeben'}
+- Anzahl Balkone: ${funnelData?.balconyCount || 1}
+- Breite: ${funnelData?.balconyWidth || 'Nicht angegeben'}m
+- Tiefe: ${funnelData?.balconyDepth || 'Nicht angegeben'}m
+- Zusatzausstattung: ${funnelData?.extras?.join(', ') || 'Keine'}
+- Datenschutz-Zustimmung: ${funnelData?.datenschutzConsent ? 'Ja' : 'Nein'}
+- Balkonbrief-Bestellung: ${funnelData?.newsletterConsent ? 'Ja' : 'Nein'}
+
+=== LEAD SCORING ===
+- Lead Score: ${body._kalkulatorScoring?.finalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${body._kalkulatorScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${body._kalkulatorScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${body._kalkulatorScoring?.estimatedValue || 'Nicht verfügbar'}€
+- Nurturing-Sequenz: ${body._kalkulatorScoring?.nurturingSequence || 'Nicht verfügbar'}
+- Empfohlene Aktion: ${body._kalkulatorScoring?.action || 'Nicht verfügbar'}
+`;
+
+    case 'genehmigung':
+      return baseInfo + `
+=== GENEHMIGUNGSCHECK-DATEN ===
+- Bundesland: ${funnelData?.bundesland || 'Nicht angegeben'}
+- Projekttyp: ${funnelData?.projekttyp || 'Nicht angegeben'}
+- Größe: ${funnelData?.groesse || 'Nicht angegeben'}
+- Tiefe: ${funnelData?.tiefe || 'Nicht angegeben'}
+- Grenzabstand: ${funnelData?.grenzabstand || 'Nicht angegeben'}
+- Ergebnis: ${funnelData?.ergebnis || 'Nicht verfügbar'}
+
+=== LEAD SCORING ===
+- Lead Score: ${body._genehmigungScoring?.totalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${body._genehmigungScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${body._genehmigungScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${body._genehmigungScoring?.estimatedValue || 'Nicht verfügbar'}€
+- Genehmigungswahrscheinlichkeit: ${body._genehmigungScoring?.genehmigungswahrscheinlichkeit || 'Nicht verfügbar'}
+`;
+
+    case 'planer':
+      return baseInfo + `
+=== PLANER-DATEN ===
+- Projektstatus: ${funnelData?.projectStatus || 'Nicht angegeben'}
+- Zeitrahmen: ${funnelData?.timeframe || 'Nicht angegeben'}
+- Eigentum: ${funnelData?.ownership || 'Nicht angegeben'}
+- Balkontyp: ${funnelData?.balconyType || 'Nicht angegeben'}
+- Wandmaterial: ${funnelData?.wallMaterial || 'Nicht angegeben'}
+- Budget: ${funnelData?.budget || 'Nicht angegeben'}
+- Größe: ${funnelData?.size || 'Nicht angegeben'}
+- Etage: ${funnelData?.floor || 'Nicht angegeben'}
+
+=== LEAD SCORING ===
+- Lead Score: ${body._planerScoring?.finalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${body._planerScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${body._planerScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${body._planerScoring?.estimatedValue || 'Nicht verfügbar'}€
+- Response Time: ${body._planerScoring?.responseTime || 'Nicht verfügbar'}
+- Beratungsbereitschaft: ${body._planerScoring?.beratungsReadiness || 'Nicht verfügbar'}
+`;
+
+    case 'bauzeit-planung':
+      return baseInfo + `
+=== BAUZEIT-PLANUNG-DATEN ===
+- Zielmonat: ${funnelData?.targetMonth || 'Nicht angegeben'}
+- Zieljahr: ${funnelData?.targetYear || 'Nicht angegeben'}
+- Projektphase: ${funnelData?.projectPhase || 'Nicht angegeben'}
+- Berechnetes Startdatum: ${funnelData?.calculation || 'Nicht verfügbar'}
+
+=== LEAD SCORING ===
+- Lead Score: ${body._bauzeitScoring?.totalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${body._bauzeitScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${body._bauzeitScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${body._bauzeitScoring?.estimatedValue || 'Nicht verfügbar'}€
+- Geschätzte Bauzeit: ${body._bauzeitScoring?.geschaetzteBauzeit || 'Nicht verfügbar'}
+`;
+
+    case 'partner':
+      return baseInfo + `
+=== PARTNER-DATEN ===
+- Firmenname: ${body.company?.name || 'Nicht angegeben'}
+- Rechtsform: ${body.company?.legalForm || 'Nicht angegeben'}
+- Gründungsjahr: ${body.company?.foundedYear || 'Nicht angegeben'}
+- Mitarbeiteranzahl: ${body.company?.employeeCount || 'Nicht angegeben'}
+- Stadt: ${body.company?.city || 'Nicht angegeben'}
+- Partner-Typ: ${body.partnerDetails?.partnerType || 'Nicht angegeben'}
+- Erfahrung: ${body.partnerDetails?.experience || 'Nicht angegeben'}
+- Spezialitäten: ${body.partnerDetails?.specialties?.join(', ') || 'Keine'}
+- Arbeitsgebiet: ${body.partnerDetails?.workingArea || 'Nicht angegeben'}
+- Versicherungsstatus: ${body.partnerDetails?.insuranceStatus || 'Nicht angegeben'}
+- Referenzen: ${body.partnerDetails?.references?.length || 0} Projekte
+- Leuchtturmprojekt: ${body.partnerDetails?.lighthouseProject?.description || 'Nicht angegeben'}
+
+=== PARTNER-SCORING & EMPFEHLUNG ===
+- Basis-Score: ${body._partnerScoring?.baseScore || body._internalScoring?.baseScore || 'Nicht verfügbar'}/100
+- Qualitäts-Multiplikator: ${body._partnerScoring?.qualityMultiplier || 'Nicht verfügbar'}
+- Final Score: ${body._partnerScoring?.finalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${body._partnerScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Status: ${body._partnerScoring?.status || 'Nicht verfügbar'}
+- Empfehlung: ${body._partnerScoring?.action || 'Nicht verfügbar'}
+- Warnungen: ${body._partnerScoring?.warnings?.join(', ') || 'Keine'}
+
+=== PARTNER-BEWERTUNG ===
+${getPartnerRecommendation(body._partnerScoring || body._internalScoring)}
+`;
+
+    default:
+      return baseInfo + `
+=== ALLGEMEINE FUNNEL-DATEN ===
+- Funnel-spezifische Daten: ${JSON.stringify(funnelData, null, 2)}
+`;
   }
 }
 
