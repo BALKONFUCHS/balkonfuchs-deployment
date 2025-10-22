@@ -227,7 +227,7 @@ VOLLSTÄNDIGE KALKULATOR-ZUSAMMENFASSUNG:
     // Zoho CRM Lead erstellen
     let crmResult = null;
     try {
-      crmResult = await createZohoCRMLead(combinedData, accessToken);
+      crmResult = await createZohoCRMLead(combinedData, accessToken, body);
       console.log('=== CRM RESULT ===');
       console.log('CRM Result:', crmResult);
     } catch (crmError) {
@@ -328,7 +328,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
   try {
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
-      description: formatTicketDescription(combinedData),
+      description: formatTicketDescription(combinedData, body.priceCalculation),
       priority: 'Medium',
       status: 'Open',
       channel: 'Web',
@@ -423,6 +423,9 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
     console.log('cf_regionalfaktor Field Value:', ticketData.customFields['cf_regionalfaktor']);
     console.log('cf_basispreis Field Value:', ticketData.customFields['cf_basispreis']);
     console.log('cf_zusammenfassung Field Value:', ticketData.customFields['cf_zusammenfassung']?.substring(0, 100) + '...');
+    console.log('cf_zusatzausstattung Field Value:', ticketData.customFields['cf_zusatzausstattung']);
+    console.log('cf_datenschutz_zustimmung Field Value:', ticketData.customFields['cf_datenschutz_zustimmung']);
+    console.log('cf_balkonbrief_bestellung Field Value:', ticketData.customFields['cf_balkonbrief_bestellung']);
     console.log('Department ID:', departmentId);
     console.log('Org ID:', orgId);
 
@@ -477,7 +480,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
 /**
  * Erstellt einen Lead in Zoho CRM
  */
-async function createZohoCRMLead(combinedData, accessToken) {
+async function createZohoCRMLead(combinedData, accessToken, body) {
   try {
     const leadData = {
       data: [{
@@ -487,7 +490,7 @@ async function createZohoCRMLead(combinedData, accessToken) {
         Phone: combinedData.phone || '',
         Lead_Source: 'Website',
         Company: combinedData.company || '',
-        Description: formatLeadDescription(combinedData),
+        Description: formatLeadDescription(combinedData, body.priceCalculation),
         Custom_Fields: {
           'Lead_Score': combinedData.leadScore || '',
           'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
@@ -545,7 +548,7 @@ async function createZohoCRMLead(combinedData, accessToken) {
 /**
  * Formatiert die Ticket-Beschreibung
  */
-function formatTicketDescription(combinedData) {
+function formatTicketDescription(combinedData, priceCalculation = null) {
   return `
 Neue Balkon-Anfrage über Website:
 
@@ -567,9 +570,9 @@ Einwilligungen:
 - Balkonbrief-Bestellung: ${combinedData.newsletterConsent ? 'Ja' : 'Nein'}
 
 Preisberechnung:
-- Basispreis: ${body.priceCalculation?.basePrice || combinedData.calculation || 'Nicht verfügbar'}€
-- Regionalfaktor: ${body.priceCalculation?.regionalFactor || '1.0x'}
-- Gesamtpreis: ${body.priceCalculation?.finalPrice || combinedData.calculation || 'Nicht verfügbar'}€
+- Basispreis: ${priceCalculation?.basePrice || combinedData.calculation || 'Nicht verfügbar'}€
+- Regionalfaktor: ${priceCalculation?.regionalFactor || '1.0x'}
+- Gesamtpreis: ${priceCalculation?.finalPrice || combinedData.calculation || 'Nicht verfügbar'}€
 
 Zusätzliche Informationen:
 - Quelle: ${combinedData.source || 'Website'}
@@ -581,13 +584,18 @@ Zusätzliche Informationen:
 /**
  * Formatiert die Lead-Beschreibung
  */
-function formatLeadDescription(combinedData) {
+function formatLeadDescription(combinedData, priceCalculation = null) {
   return `
 Balkon-Projekt Anfrage:
 - Balkon-Typ: ${combinedData.balkonTyp || 'Nicht angegeben'}
 - Balkon-Fläche: ${combinedData.balkonFlaeche || 'Nicht angegeben'}
+- Zusatzausstattung: ${combinedData.zusatzausstattung || 'Keine'}
 ${combinedData.budget ? `- Budget: ${combinedData.budget}` : ''}
 ${combinedData.zeitplan ? `- Zeitplan: ${combinedData.zeitplan}` : ''}
+- Datenschutz-Zustimmung: ${combinedData.datenschutzConsent ? 'Ja' : 'Nein'}
+- Balkonbrief-Bestellung: ${combinedData.newsletterConsent ? 'Ja' : 'Nein'}
+- Basispreis: ${priceCalculation?.basePrice || combinedData.calculation || 'Nicht verfügbar'}€
+- Gesamtpreis: ${priceCalculation?.finalPrice || combinedData.calculation || 'Nicht verfügbar'}€
 - Quelle: ${combinedData.source || 'Website'}
 - Nachricht: ${combinedData.message || 'Keine zusätzliche Nachricht'}
   `.trim();
