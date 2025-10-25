@@ -722,13 +722,6 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
     </div>
   );
 
-  // Form validation
-  const isFormComplete = () => {
-    return formData.contact.firstName && 
-           formData.contact.lastName && 
-           formData.contact.email;
-  };
-
   // Handle form submission
   const handleSubmit = async () => {
     if (!isFormComplete()) return;
