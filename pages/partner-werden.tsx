@@ -599,6 +599,62 @@ const PartnerFunnel = () => {
           </div>
         </div>
         
+        {/* Intelligente Cross-Verlinkungen */}
+        <div className="space-y-6">
+          <h3 className="text-2xl font-bold text-white">Was möchten Sie als nächstes tun?</h3>
+          <p className="text-gray-400">Wir haben diese nächsten Schritte für Sie zusammengestellt:</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Zum Hauptmenü */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">🏠 Zum Hauptmenü</h4>
+              <p className="text-gray-400 mb-4">
+                Entdecken Sie alle unsere Balkonbau-Tools und Services
+              </p>
+              <a href="/" className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all w-full text-center">
+                Hauptmenü öffnen →
+              </a>
+            </div>
+            
+            {/* Balkon-Projekte ansehen */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">⭐ Balkon-Projekte ansehen</h4>
+              <p className="text-gray-400 mb-4">
+                Lassen Sie sich von erfolgreichen Balkonprojekten inspirieren
+              </p>
+              <a href="/empfehlungen" className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all w-full text-center">
+                Projekte ansehen →
+              </a>
+            </div>
+            
+            {/* Kontakt aufnehmen */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">📞 Kontakt aufnehmen</h4>
+              <p className="text-gray-400 mb-4">
+                Sprechen Sie direkt mit unserem Partner-Team
+              </p>
+              <a href="/kontakt" className="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all w-full text-center">
+                Kontakt aufnehmen →
+              </a>
+            </div>
+          </div>
+        </div>
+        
         {/* Kontakt Info */}
         <div className="bg-gray-700/30 rounded-2xl p-6 text-center">
           <h4 className="text-lg font-semibold text-white mb-3">📞 Haben Sie Fragen?</h4>

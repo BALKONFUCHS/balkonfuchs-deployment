@@ -16,7 +16,8 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
     budget: '',
     balconyDetails: {
       type: '',
-      size: { width: '', depth: '' }
+      size: { width: '', depth: '' },
+      count: 1
     },
     additionalInfo: '',
     offerPreferences: {
@@ -166,7 +167,8 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
       case 3: return formData.budget;
       case 4: return formData.balconyDetails.type && formData.balconyDetails.size.width && formData.balconyDetails.size.depth;
       case 5: return true; // Additional info is optional
-      case 6: return formData.contactPreference;
+      case 6: return formData.offerPreferences.count && formData.offerPreferences.region;
+      case 7: return formData.contactPreference;
       default: return true;
     }
   };
@@ -262,7 +264,8 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {[
               { id: 'hanging', title: 'Hängebalkon', icon: '🏗️' },
-              { id: 'standing', title: 'Stehbalkon', icon: '🏠' },
+              { id: 'standing', title: 'Vorstellbalkon', icon: '🏠' },
+              { id: 'leaning', title: 'Anlehnbalkon', icon: '🔗' },
               { id: 'loggia', title: 'Loggia', icon: '🏛️' }
             ].map((type) => (
               <button
@@ -279,6 +282,29 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
               >
                 <div className="text-2xl mb-2">{type.icon}</div>
                 <div className="text-white font-medium">{type.title}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Anzahl der Balkone */}
+        <div className="text-left">
+          <label className="block text-white font-medium mb-3">Anzahl der Balkone</label>
+          <div className="grid grid-cols-4 gap-3 max-w-md mx-auto">
+            {[1, 2, 3, 4].map((count) => (
+              <button
+                key={count}
+                onClick={() => setFormData(prev => ({
+                  ...prev,
+                  balconyDetails: { ...prev.balconyDetails, count: count }
+                }))}
+                className={`p-3 rounded-lg border-2 transition-all ${
+                  formData.balconyDetails.count === count
+                    ? 'border-orange-500 bg-orange-500/10'
+                    : 'border-gray-600 bg-gray-700/50 hover:border-gray-500'
+                }`}
+              >
+                <div className="text-white font-medium">{count}</div>
               </button>
             ))}
           </div>
@@ -614,9 +640,15 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
           </div>
           <div>
             <p className="text-gray-400">Budget: <span className="text-white">{formData.budget === 'high' ? 'Höheres Budget (15.000€+)' : formData.budget === 'medium' ? 'Mittleres Budget (8.000€-15.000€)' : 'Standard-Budget (5.000€-8.000€)'}</span></p>
-            <p className="text-gray-400">Balkon-Typ: <span className="text-white">{formData.balconyDetails.type === 'hanging' ? 'Hängebalkon' : formData.balconyDetails.type === 'standing' ? 'Stehbalkon' : 'Loggia'}</span></p>
+            <p className="text-gray-400">Balkon-Typ: <span className="text-white">{
+              formData.balconyDetails.type === 'hanging' ? 'Hängebalkon' : 
+              formData.balconyDetails.type === 'standing' ? 'Vorstellbalkon' : 
+              formData.balconyDetails.type === 'leaning' ? 'Anlehnbalkon' : 
+              'Loggia'
+            }</span></p>
+            <p className="text-gray-400">Anzahl: <span className="text-white">{formData.balconyDetails.count} Balkon{formData.balconyDetails.count > 1 ? 'e' : ''}</span></p>
             {formData.balconyDetails.size.width && formData.balconyDetails.size.depth && (
-              <p className="text-gray-400">Fläche: <span className="text-white">{(parseFloat(formData.balconyDetails.size.width) * parseFloat(formData.balconyDetails.size.depth)).toFixed(1)} m²</span></p>
+              <p className="text-gray-400">Fläche pro Balkon: <span className="text-white">{(parseFloat(formData.balconyDetails.size.width) * parseFloat(formData.balconyDetails.size.depth)).toFixed(1)} m²</span></p>
             )}
           </div>
         </div>
@@ -631,38 +663,62 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
           <p>3. Bei Fragen kontaktieren wir Sie innerhalb von 24 Stunden</p>
           <p>4. Terminvereinbarung für die detaillierte Planung</p>
         </div>
-      </div>
-
-      {/* Cross-Links */}
-      <div className="space-y-4">
-        <h3 className="text-xl font-semibold text-white">Weitere Balkon-Tools</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button onClick={() => setCurrentStep(0)} className="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-              </svg>
-              Preis-Kalkulator
-            </div>
-          </button>
-          <a href="/balkon-planer/" className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      {/* Intelligente Cross-Verlinkungen */}
+      <div className="space-y-6">
+        <h3 className="text-2xl font-bold text-white">Was möchten Sie als nächstes tun?</h3>
+        <p className="text-gray-400">Wir haben diese nächsten Schritte für Sie zusammengestellt:</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {/* Balkon-Planer */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:scale-105">
+            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
-              Projekt-Planer
             </div>
-          </a>
-          <a href="/balkon-baugenehmigung-check/" className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+            <h4 className="text-xl font-bold text-white mb-3">🎨 Balkon-Planer nutzen</h4>
+            <p className="text-gray-400 mb-4">
+              Visualisieren Sie Ihren Traum-Balkon mit unserem interaktiven Planer
+            </p>
+            <a href="/planer" className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all w-full text-center">
+              Jetzt planen →
+            </a>
+          </div>
+          
+          {/* Empfehlungen ansehen */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300 hover:scale-105">
+            <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
               </svg>
-              Genehmigungs-Check
             </div>
-          </a>
+            <h4 className="text-xl font-bold text-white mb-3">⭐ Empfehlungen ansehen</h4>
+            <p className="text-gray-400 mb-4">
+              Lassen Sie sich von erfolgreichen Balkonprojekten inspirieren
+            </p>
+            <a href="/empfehlungen" className="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all w-full text-center">
+              Empfehlungen ansehen →
+            </a>
+          </div>
+          
+          {/* Partner werden */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.54.37-2.01.99L1 12.5V22h2v-6h2.5l2.54 7.63A1.5 1.5 0 0 0 9.46 24H12c.8 0 1.54-.37 2.01-.99L16 21l1.99 2.01A2.5 2.5 0 0 0 20 24h2.54c.8 0 1.54-.37 2.01-.99L27 16.5V22h2z"/>
+              </svg>
+            </div>
+            <h4 className="text-xl font-bold text-white mb-3">🤝 Partner werden</h4>
+            <p className="text-gray-400 mb-4">
+              Werden Sie Teil unseres Balkonbau-Partnernetzwerks
+            </p>
+            <a href="/partner-werden" className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all w-full text-center">
+              Partner werden →
+            </a>
+          </div>
         </div>
       </div>
+
     </div>
   );
 

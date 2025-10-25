@@ -88,6 +88,54 @@ exports.handler = async (event, context) => {
       // Zusatzausstattung/Sonderleistungen
       zusatzausstattung: funnelData?.extras ? funnelData.extras.join(', ') : 'Keine',
       
+      // Genehmigungsfunnel-spezifische Daten
+      bundesland: funnelData?.bundesland || '',
+      projekttyp: funnelData?.projekttyp || '',
+      groesse: funnelData?.groesse || '',
+      tiefe: funnelData?.tiefe || '',
+      grenzabstand: funnelData?.grenzabstand || '',
+      genehmigungsstatus: funnelData?.ergebnis?.status || '',
+      genehmigungsverfahren: funnelData?.ergebnis?.verfahrenstyp || '',
+      genehmigungsgrund: funnelData?.ergebnis?.grund || '',
+      genehmigungskosten: funnelData?.ergebnis?.kosten || '',
+      genehmigungsdauer: funnelData?.ergebnis?.dauer || '',
+      genehmigungsnaechsteSchritte: funnelData?.ergebnis?.naechsteSchritte ? funnelData.ergebnis.naechsteSchritte.join(', ') : '',
+      
+      // Planer-spezifische Daten
+      projectStatus: funnelData?.projectStatus || '',
+      timeframe: funnelData?.timeframe || '',
+      ownership: funnelData?.ownership || '',
+      wallMaterial: funnelData?.wallMaterial || '',
+      basement: funnelData?.basement || '',
+      floor: funnelData?.floor || '',
+      size: funnelData?.size ? `${funnelData.size.width}x${funnelData.size.depth}` : '',
+      accessibility: funnelData?.accessibility || '',
+      balconyFloor: funnelData?.balconyFloor || '',
+      railing: funnelData?.railing || '',
+      surface: funnelData?.surface || '',
+      documents: funnelData?.documents ? funnelData.documents.join(', ') : '',
+      additionalInfo: funnelData?.additionalInfo || '',
+      
+      // Gewerbefunnel-spezifische Daten
+      projekttyp: funnelData?.projekttyp || '',
+      projektname: funnelData?.projektname || '',
+      projektort: funnelData?.projektort || '',
+      projektadresse: funnelData?.projektadresse || '',
+      anzahlEinheiten: funnelData?.anzahlEinheiten || '',
+      balkontyp: funnelData?.balkontyp ? funnelData.balkontyp.join(', ') : '',
+      zeitrahmen: funnelData?.zeitrahmen || '',
+      budgetrahmen: funnelData?.budgetrahmen || '',
+      budgetFreitext: funnelData?.budgetFreitext || '',
+      startMonat: funnelData?.startMonat || '',
+      startJahr: funnelData?.startJahr || '',
+      endMonat: funnelData?.endMonat || '',
+      endJahr: funnelData?.endJahr || '',
+      firmenname: funnelData?.firmenname || '',
+      ansprechpartner: funnelData?.ansprechpartner || '',
+      position: funnelData?.position || '',
+      projektleiter: funnelData?.projektleiter || '',
+      nachricht: funnelData?.nachricht || '',
+      
       // Checkbox-Zustände
       datenschutzConsent: funnelData?.datenschutzConsent || false,
       newsletterConsent: funnelData?.newsletterConsent || false,
@@ -334,6 +382,26 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         
         // Genehmigungscheck-spezifische Scoring-Felder
         'cf_genehmigung_wahrscheinlichkeit': combinedData.funnelScoring?.genehmigungswahrscheinlichkeit || '',
+        
+        // Gewerbefunnel-spezifische Felder
+        'cf_projekttyp': combinedData.projekttyp || '',
+        'cf_projektname': combinedData.projektname || '',
+        'cf_projektort': combinedData.projektort || '',
+        'cf_projektadresse': combinedData.projektadresse || '',
+        'cf_anzahl_einheiten': combinedData.anzahlEinheiten || '',
+        'cf_balkontyp': combinedData.balkontyp || '',
+        'cf_zeitrahmen': combinedData.zeitrahmen || '',
+        'cf_budgetrahmen': combinedData.budgetrahmen || '',
+        'cf_budget_freitext': combinedData.budgetFreitext || '',
+        'cf_start_monat': combinedData.startMonat || '',
+        'cf_start_jahr': combinedData.startJahr || '',
+        'cf_end_monat': combinedData.endMonat || '',
+        'cf_end_jahr': combinedData.endJahr || '',
+        'cf_firmenname': combinedData.firmenname || '',
+        'cf_ansprechpartner': combinedData.ansprechpartner || '',
+        'cf_position': combinedData.position || '',
+        'cf_projektleiter': combinedData.projektleiter || '',
+        'cf_nachricht': combinedData.nachricht || '',
         
         // Balkon-spezifische Felder (neue cf-Felder)
         'cf_balkon_flaeche': combinedData.balkonFlaeche || '',
@@ -744,10 +812,17 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 === GENEHMIGUNGSCHECK-DATEN ===
 - Bundesland: ${funnelData?.bundesland || 'Nicht angegeben'}
 - Projekttyp: ${funnelData?.projekttyp || 'Nicht angegeben'}
-- Größe: ${funnelData?.groesse || 'Nicht angegeben'}
-- Tiefe: ${funnelData?.tiefe || 'Nicht angegeben'}
+- Größe: ${funnelData?.groesse || 'Nicht angegeben'}m²
+- Tiefe: ${funnelData?.tiefe || 'Nicht angegeben'}m
 - Grenzabstand: ${funnelData?.grenzabstand || 'Nicht angegeben'}
-- Ergebnis: ${funnelData?.ergebnis || 'Nicht verfügbar'}
+
+=== GENEHMIGUNGSERGEBNIS ===
+- Status: ${funnelData?.ergebnis?.status || 'Nicht verfügbar'}
+- Verfahrenstyp: ${funnelData?.ergebnis?.verfahrenstyp || 'Nicht verfügbar'}
+- Grund: ${funnelData?.ergebnis?.grund || 'Nicht verfügbar'}
+- Geschätzte Kosten: ${funnelData?.ergebnis?.kosten || 'Nicht verfügbar'}
+- Verfahrensdauer: ${funnelData?.ergebnis?.dauer || 'Nicht verfügbar'}
+- Nächste Schritte: ${funnelData?.ergebnis?.naechsteSchritte?.join(', ') || 'Nicht verfügbar'}
 
 === LEAD SCORING ===
 - Lead Score: ${body._genehmigungScoring?.totalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
@@ -766,8 +841,14 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Balkontyp: ${funnelData?.balconyType || 'Nicht angegeben'}
 - Wandmaterial: ${funnelData?.wallMaterial || 'Nicht angegeben'}
 - Budget: ${funnelData?.budget || 'Nicht angegeben'}
-- Größe: ${funnelData?.size || 'Nicht angegeben'}
+- Größe: ${funnelData?.size ? `${funnelData.size.width}x${funnelData.size.depth}` : 'Nicht angegeben'}
 - Etage: ${funnelData?.floor || 'Nicht angegeben'}
+- Barrierefreiheit: ${funnelData?.accessibility || 'Nicht angegeben'}
+- Bodenbelag: ${funnelData?.balconyFloor || 'Nicht angegeben'}
+- Geländer: ${funnelData?.railing || 'Nicht angegeben'}
+- Oberfläche: ${funnelData?.surface || 'Nicht angegeben'}
+- Dokumente: ${funnelData?.documents ? funnelData.documents.join(', ') : 'Keine'}
+- Zusätzliche Infos: ${funnelData?.additionalInfo || 'Keine'}
 
 === LEAD SCORING ===
 - Lead Score: ${body._planerScoring?.finalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
@@ -821,6 +902,38 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 
 === PARTNER-BEWERTUNG ===
 ${getPartnerRecommendation(body._partnerScoring || body._internalScoring)}
+`;
+
+    case 'gewerbe':
+      return baseInfo + `
+=== GEWERBEFUNNEL-DATEN ===
+- Projekttyp: ${funnelData?.projekttyp || 'Nicht angegeben'}
+- Projektname: ${funnelData?.projektname || 'Nicht angegeben'}
+- Projektort: ${funnelData?.projektort || 'Nicht angegeben'}
+- Projektadresse: ${funnelData?.projektadresse || 'Nicht angegeben'}
+- Anzahl Einheiten: ${funnelData?.anzahlEinheiten || 'Nicht angegeben'}
+- Balkontypen: ${funnelData?.balkontyp ? funnelData.balkontyp.join(', ') : 'Keine'}
+- Zeitrahmen: ${funnelData?.zeitrahmen || 'Nicht angegeben'}
+- Budgetrahmen: ${funnelData?.budgetrahmen || 'Nicht angegeben'}
+- Budget Freitext: ${funnelData?.budgetFreitext || 'Keine'}
+- Start: ${funnelData?.startMonat || ''} ${funnelData?.startJahr || ''}
+- Ende: ${funnelData?.endMonat || ''} ${funnelData?.endJahr || ''}
+
+=== UNTERNEHMENSDATEN ===
+- Firmenname: ${funnelData?.firmenname || 'Nicht angegeben'}
+- Ansprechpartner: ${funnelData?.ansprechpartner || 'Nicht angegeben'}
+- Position: ${funnelData?.position || 'Nicht angegeben'}
+- Projektleiter: ${funnelData?.projektleiter || 'Nicht angegeben'}
+
+=== ZUSÄTZLICHE INFOS ===
+- Nachricht: ${funnelData?.nachricht || 'Keine'}
+
+=== LEAD SCORING ===
+- Lead Score: ${body.leadScore?.totalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${body.leadScore?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${body.leadScore?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${body.leadScore?.estimatedPrice || body._internalScoring?.estimatedValue || 'Nicht verfügbar'}€
+- Response Time: ${body.leadScore?.followUpHours || 'Nicht verfügbar'} Stunden
 `;
 
     default:

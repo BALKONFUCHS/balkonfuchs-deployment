@@ -705,28 +705,6 @@ const BALKONFUCHSBauzeitPlanungFunnel = () => {
            </p>
          </div>
 
-         {/* Cross-Links zu anderen Funnels */}
-         <div className="bg-gray-700/30 border border-gray-600 rounded-xl p-6 mb-6">
-           <h4 className="text-lg font-semibold text-white mb-4 text-center">
-             🚀 Nächste Schritte für Ihr Balkonprojekt
-           </h4>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-             <button onClick={() => setCurrentStep(0)} className="flex flex-col items-center p-4 bg-gray-700/50 border border-gray-600 rounded-lg hover:bg-gray-700 transition-all group">
-               <Calculator className="w-8 h-8 text-orange-500 mb-2 group-hover:scale-110 transition-transform" />
-               <span className="text-sm font-medium text-white text-center">Kosten kalkulieren</span>
-             </button>
-             
-             <a href="/balkon-planer/" className="flex flex-col items-center p-4 bg-gray-700/50 border border-gray-600 rounded-lg hover:bg-gray-700 transition-all group">
-               <Search className="w-8 h-8 text-orange-500 mb-2 group-hover:scale-110 transition-transform" />
-               <span className="text-sm font-medium text-white text-center">Projekt planen</span>
-             </a>
-             
-             <a href="/angebot/" className="flex flex-col items-center p-4 bg-gray-700/50 border border-gray-600 rounded-lg hover:bg-gray-700 transition-all group">
-               <Zap className="w-8 h-8 text-orange-500 mb-2 group-hover:scale-110 transition-transform" />
-               <span className="text-sm font-medium text-white text-center">Express-Angebot</span>
-             </a>
-           </div>
-         </div>
       </div>
     );
   };
@@ -913,19 +891,6 @@ const BALKONFUCHSBauzeitPlanungFunnel = () => {
           </a>
         </div>
 
-        <div className="text-center">
-          <p className="text-gray-400 mb-4">Weitere hilfreiche Tools für Ihr Balkonprojekt:</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="/balkon-baugenehmigung-check/" className="inline-flex items-center gap-2 px-6 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white hover:bg-gray-700 transition-all hover:scale-105">
-              <FileText className="w-5 h-5 text-orange-500" />
-              Genehmigungscheck
-            </a>
-            <a href="/" className="inline-flex items-center gap-2 px-6 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white hover:bg-gray-700 transition-all hover:scale-105">
-              <Home className="w-5 h-5 text-orange-500" />
-              Alle Tools
-            </a>
-          </div>
-        </div>
       </div>
     );
   };

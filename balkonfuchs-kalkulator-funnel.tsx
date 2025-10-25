@@ -731,6 +731,62 @@ const BalkonFuchsKalkulatorFunnel = () => {
           </div>
         </div>
 
+        {/* Intelligente Cross-Verlinkungen */}
+        <div className="space-y-6">
+          <h3 className="text-2xl font-bold text-white">Was möchten Sie als nächstes tun?</h3>
+          <p className="text-gray-400">Wir haben diese nächsten Schritte für Sie zusammengestellt:</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Baugenehmigung prüfen */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-orange-500/50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">🏗️ Baugenehmigung prüfen</h4>
+              <p className="text-gray-400 mb-4">
+                Finden Sie heraus, ob Sie eine Genehmigung für Ihren Balkon benötigen
+              </p>
+              <a href="/genehmigung" className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all w-full text-center">
+                Jetzt prüfen →
+              </a>
+            </div>
+            
+            {/* Express-Angebot anfordern */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">📋 Express-Angebot anfordern</h4>
+              <p className="text-gray-400 mb-4">
+                Erhalten Sie Ihr individuelles Angebot in nur 24 Stunden
+              </p>
+              <a href="/express-angebot" className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all w-full text-center">
+                Angebot anfordern →
+              </a>
+            </div>
+            
+            {/* Balkon planen */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">🎨 Deinen Balkon planen</h4>
+              <p className="text-gray-400 mb-4">
+                Visualisieren Sie Ihren Traum-Balkon mit unserem Planer
+              </p>
+              <a href="/planer" className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all w-full text-center">
+                Jetzt planen →
+              </a>
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-4">
           <p className="text-gray-300">
             Haben Sie Fragen? Kontaktieren Sie uns gerne unter{' '}
@@ -745,18 +801,6 @@ const BalkonFuchsKalkulatorFunnel = () => {
               className="bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
             >
               Zurück zur Startseite
-            </a>
-            <a 
-              href="/genehmigung" 
-              className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
-            >
-              Genehmigungscheck starten
-            </a>
-            <a 
-              href="/bauzeit-planung" 
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
-            >
-              Terminplanung starten
             </a>
           </div>
         </div>

@@ -1055,42 +1055,57 @@ const BalkonFuchsPlanerFunnel = () => {
           </div>
         </div>
         
-        {/* Cross-Link Recommendations */}
-        <div className="space-y-6 mb-8">
+        {/* Intelligente Cross-Verlinkungen */}
+        <div className="space-y-6">
           <h3 className="text-2xl font-bold text-white">Was möchten Sie als nächstes tun?</h3>
+          <p className="text-gray-400">Wir haben diese nächsten Schritte für Sie zusammengestellt:</p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl mx-auto">
-            {/* Kalkulator Recommendation */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {/* Express-Angebot anfordern */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Calculator className="w-8 h-8 text-white" />
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">💰 Kosten kalkulieren</h4>
+              <h4 className="text-xl font-bold text-white mb-3">📋 Express-Angebot anfordern</h4>
               <p className="text-gray-400 mb-4">
-                Erhalten Sie eine detaillierte Kostenschätzung für Ihren Balkon basierend auf Ihren spezifischen Anforderungen.
+                Erhalten Sie Ihr individuelles Angebot in nur 24 Stunden
               </p>
-              <button 
-                onClick={() => setCurrentStep(0)} 
-                className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all"
-              >
-                Jetzt kalkulieren →
-              </button>
+              <a href="/express-angebot" className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all w-full text-center">
+                Angebot anfordern →
+              </a>
             </div>
             
-            {/* Express-Angebot Recommendation */}
-            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300">
+            {/* Empfehlungen ansehen */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300 hover:scale-105">
               <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Rocket className="w-8 h-8 text-white" />
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">⚡ Express-Angebot</h4>
+              <h4 className="text-xl font-bold text-white mb-3">⭐ Empfehlungen ansehen</h4>
               <p className="text-gray-400 mb-4">
-                Erhalten Sie binnen 24h konkrete Angebote von unseren besten Partnern für eine schnelle Umsetzung.
+                Lassen Sie sich von erfolgreichen Balkonprojekten inspirieren
               </p>
-              <a 
-                href="/express-angebot/" 
-                className="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all"
-              >
-                Angebot anfordern →
+              <a href="/empfehlungen" className="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all w-full text-center">
+                Empfehlungen ansehen →
+              </a>
+            </div>
+            
+            {/* Baugenehmigung prüfen */}
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-orange-500/50 transition-all duration-300 hover:scale-105">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">🏗️ Baugenehmigung prüfen</h4>
+              <p className="text-gray-400 mb-4">
+                Finden Sie heraus, ob Sie eine Genehmigung benötigen
+              </p>
+              <a href="/genehmigung" className="inline-block bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all w-full text-center">
+                Jetzt prüfen →
               </a>
             </div>
           </div>
@@ -1603,55 +1618,6 @@ const BalkonFuchsPlanerFunnel = () => {
           )}
         </div>
 
-        {/* Crossverlinkungen zu anderen Funnels */}
-        <div className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 className="text-2xl font-bold text-white text-center mb-8">
-              Weitere hilfreiche Tools
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              <a href="/kalkulator/" className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-orange-500/50 transition-all group">
-                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-white mb-2 text-center">Kalkulator</h4>
-                <p className="text-gray-400 text-sm text-center">Schnelle Kostenschätzung in 2 Minuten</p>
-              </a>
-              
-              <a href="/express-angebot/" className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-green-500/50 transition-all group">
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-white mb-2 text-center">Express-Angebot</h4>
-                <p className="text-gray-400 text-sm text-center">Schnellstmögliche Angebote von Top-Partnern</p>
-              </a>
-              
-              <a href="/genehmigung/" className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500/50 transition-all group">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-white mb-2 text-center">Genehmigungscheck</h4>
-                <p className="text-gray-400 text-sm text-center">Bundeslandspezifische Genehmigungsinfos</p>
-              </a>
-              
-              <a href="/balkon-baustart-rechner.html" className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-indigo-500/50 transition-all group">
-                <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                  </svg>
-                </div>
-                <h4 className="text-lg font-semibold text-white mb-2 text-center">Baustart-Rechner</h4>
-                <p className="text-gray-400 text-sm text-center">Projektdauer & optimaler Starttermin</p>
-              </a>
-            </div>
-          </div>
-        </div>
 
       </main>
       

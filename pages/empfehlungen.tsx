@@ -808,24 +808,60 @@ const BALKONFUCHSEmpfehlungenFunnel = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <a href="/balkon-kosten-rechner-2026/" className="bg-gray-700/50 border border-gray-600 rounded-xl p-6 hover:bg-gray-700 transition-all group">
-          <Calculator className="w-12 h-12 text-orange-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-          <h4 className="text-lg font-semibold text-white mb-2">Balkon-Kalkulator</h4>
-          <p className="text-gray-400 text-sm">Kosten für Ihren Balkon berechnen</p>
-        </a>
+      {/* Intelligente Cross-Verlinkungen */}
+      <div className="space-y-6">
+        <h3 className="text-2xl font-bold text-white">Was möchten Sie als nächstes tun?</h3>
+        <p className="text-gray-400">Wir haben diese nächsten Schritte für Sie zusammengestellt:</p>
         
-        <a href="/balkon-planer/" className="bg-gray-700/50 border border-gray-600 rounded-xl p-6 hover:bg-gray-700 transition-all group">
-          <Search className="w-12 h-12 text-orange-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-          <h4 className="text-lg font-semibold text-white mb-2">Balkon-Planer</h4>
-          <p className="text-gray-400 text-sm">Detaillierte Planung Ihres Projekts</p>
-        </a>
-        
-        <a href="/angebot/" className="bg-gray-700/50 border border-gray-600 rounded-xl p-6 hover:bg-gray-700 transition-all group">
-          <Zap className="w-12 h-12 text-orange-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-          <h4 className="text-lg font-semibold text-white mb-2">Express-Angebot</h4>
-          <p className="text-gray-400 text-sm">Schnelles Angebot für Ihr Projekt</p>
-        </a>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {/* Express-Angebot anfordern */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+              </svg>
+            </div>
+            <h4 className="text-xl font-bold text-white mb-3">📋 Express-Angebot anfordern</h4>
+            <p className="text-gray-400 mb-4">
+              Erhalten Sie Ihr individuelles Angebot in nur 24 Stunden
+            </p>
+            <a href="/express-angebot" className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all w-full text-center">
+              Angebot anfordern →
+            </a>
+          </div>
+          
+          {/* Balkon planen */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300 hover:scale-105">
+            <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            </div>
+            <h4 className="text-xl font-bold text-white mb-3">🎨 Deinen Balkon planen</h4>
+            <p className="text-gray-400 mb-4">
+              Visualisieren Sie Ihren Traum-Balkon mit unserem Planer
+            </p>
+            <a href="/planer" className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all w-full text-center">
+              Jetzt planen →
+            </a>
+          </div>
+          
+          {/* Partner werden */}
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300 hover:scale-105">
+            <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H16c-.8 0-1.54.37-2.01.99L12 11l-1.99-2.01A2.5 2.5 0 0 0 8 8H5.46c-.8 0-1.54.37-2.01.99L1 12.5V22h2v-6h2.5l2.54 7.63A1.5 1.5 0 0 0 9.46 24H12c.8 0 1.54-.37 2.01-.99L16 21l1.99 2.01A2.5 2.5 0 0 0 20 24h2.54c.8 0 1.54-.37 2.01-.99L27 16.5V22h2z"/>
+              </svg>
+            </div>
+            <h4 className="text-xl font-bold text-white mb-3">🤝 Partner werden</h4>
+            <p className="text-gray-400 mb-4">
+              Werden Sie Teil unseres Balkonbau-Partnernetzwerks
+            </p>
+            <a href="/partner-werden" className="inline-block bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-600 transition-all w-full text-center">
+              Partner werden →
+            </a>
+          </div>
+        </div>
       </div>
 
       <div className="text-center">
