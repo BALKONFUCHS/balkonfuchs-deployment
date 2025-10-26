@@ -663,6 +663,8 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
           <p>3. Bei Fragen kontaktieren wir Sie innerhalb von 24 Stunden</p>
           <p>4. Terminvereinbarung für die detaillierte Planung</p>
         </div>
+      </div>
+
       {/* Intelligente Cross-Verlinkungen */}
       <div className="space-y-6">
         <h3 className="text-2xl font-bold text-white">Was möchten Sie als nächstes tun?</h3>
@@ -721,6 +723,13 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
 
     </div>
   );
+
+  // Form validation
+  const isFormComplete = () => {
+    return formData.contact.firstName && 
+           formData.contact.lastName && 
+           formData.contact.email;
+  };
 
   // Handle form submission
   const handleSubmit = async () => {
