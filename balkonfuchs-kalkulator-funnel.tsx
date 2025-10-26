@@ -933,7 +933,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
                 id="datenschutz"
                 checked={formData.datenschutzConsent}
                 onChange={(e) => handleCheckboxChange('datenschutzConsent', e.target.checked)}
-                className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2"
+                className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
                 required
               />
               <label htmlFor="datenschutz" className="text-sm text-gray-300">
@@ -947,7 +947,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
                 id="newsletter"
                 checked={formData.newsletterConsent}
                 onChange={(e) => handleCheckboxChange('newsletterConsent', e.target.checked)}
-                className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2"
+                className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
               />
               <label htmlFor="newsletter" className="text-sm text-gray-300">
                 Ich möchte den kostenlosen <span className="text-orange-400 font-medium">Balkonbrief</span> erhalten und über aktuelle Angebote und Tipps informiert werden.

@@ -1052,7 +1052,7 @@ const BALKONFUCHSErfahrungenFunnel = () => {
                 id="newsletter"
                 checked={formData.contact.newsletter || false}
                 onChange={(e) => handleContactChange('newsletter', e.target.checked)}
-                className="w-4 h-4 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2"
+                className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
               />
               <label htmlFor="newsletter" className="text-sm text-gray-300">
                 Ich möchte den Balkonbrief erhalten (kostenlos, jederzeit kündbar)
@@ -1064,7 +1064,7 @@ const BALKONFUCHSErfahrungenFunnel = () => {
                 id="privacy"
                 checked={formData.contact.privacy || false}
                 onChange={(e) => handleContactChange('privacy', e.target.checked)}
-                className="w-4 h-4 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 mt-1"
+                className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
               />
               <label htmlFor="privacy" className="text-sm text-gray-300">
                 Ich stimme der <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" className="text-orange-400 hover:underline" target="_blank" rel="noopener noreferrer">Datenschutzerklärung</a> zu *

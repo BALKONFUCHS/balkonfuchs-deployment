@@ -316,7 +316,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
               id="newsletter"
               checked={formData.contact.newsletter}
               onChange={(e) => handleContactChange('newsletter', e.target.checked)}
-              className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2"
+              className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
             />
                           <label htmlFor="newsletter" className="text-gray-300 text-sm">
                 Ich möchte den Balkonbrief erhalten
@@ -329,7 +329,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
               id="privacy"
               checked={formData.contact.privacy}
               onChange={(e) => handleContactChange('privacy', e.target.checked)}
-              className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2"
+              className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
             />
             <label htmlFor="privacy" className="text-gray-300 text-sm">
               Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline">Datenschutzerklärung</a> und die Informationen zum <a href="/disclaimer/" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline">Disclaimer</a> gelesen und zur Kenntnis genommen. *
