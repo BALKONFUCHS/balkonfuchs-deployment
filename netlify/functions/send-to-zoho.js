@@ -64,13 +64,6 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Debug: Logge alle eingehenden Daten
-    console.log('=== FUNNEL DATA ===');
-    console.log('Funnel Type:', funnelType || funnel?.type);
-    console.log('Funnel Data:', JSON.stringify(funnelData, null, 2));
-    console.log('Contact:', JSON.stringify(contact, null, 2));
-    console.log('Body:', JSON.stringify(body, null, 2));
-    
     // Kombiniere alle verfügbaren Daten für Zoho
     const combinedData = {
       // Kontaktdaten
@@ -868,6 +861,9 @@ function translatePlanerData(funnelData) {
  * Erstellt eine funnel-spezifische Zusammenfassung
  */
 function createFunnelSummary(funnelType, funnelData, contact, body, calculation) {
+  // Normalisiere funnelType zu Kleinbuchstaben für case-insensitive Vergleich
+  const normalizedFunnelType = (funnelType || '').toLowerCase();
+  
   const baseInfo = `
 === KONTAKTDATEN ===
 - Name: ${contact?.firstName || ''} ${contact?.lastName || ''}
@@ -880,7 +876,7 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Zeitstempel: ${new Date().toISOString()}
 `;
 
-  switch (funnelType) {
+  switch (normalizedFunnelType) {
     case 'kalkulator':
       return baseInfo + `
 === KALKULATOR-DATEN ===
