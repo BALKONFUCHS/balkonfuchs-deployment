@@ -5,6 +5,7 @@ import { ArrowRight, ArrowLeft, Search, Home, MapPin, Ruler, Euro, CheckCircle, 
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import { calculatePlanerScore } from '../utils/planer-scoring';
+import { generatePDF, downloadPDF } from '../lib/pdf-generator';
 const BalkonFuchsPlanerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -994,7 +995,7 @@ const BalkonFuchsPlanerFunnel = () => {
           Ihr Projektplan wird von unserem Experten-Team erstellt und Sie erhalten ihn innerhalb der nächsten 24 Stunden.
         </p>
         
-        <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-8 max-w-4xl mx-auto">
+        <div id="project-summary" className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-8 max-w-4xl mx-auto">
           <h3 className="text-xl font-bold text-white mb-4">📋 Ihr Projekt im Überblick</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
             <div className="space-y-2">
@@ -1053,6 +1054,27 @@ const BalkonFuchsPlanerFunnel = () => {
               }</span></div>
             </div>
           </div>
+        </div>
+        
+        {/* PDF Download Button */}
+        <div className="mb-8">
+          <button
+            onClick={async () => {
+              try {
+                const summaryElement = document.getElementById('project-summary');
+                if (summaryElement) {
+                  const pdfBlob = await generatePDF(summaryElement, `${formData.contact.firstName || 'project'}-summary`);
+                  downloadPDF(pdfBlob, `balkonfuchs-projekt-summary-${formData.contact.firstName || 'project'}.pdf`);
+                }
+              } catch (error) {
+                console.error('Fehler beim Generieren des PDFs:', error);
+              }
+            }}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all"
+          >
+            <FileText className="w-5 h-5" />
+            Projektübersicht als PDF herunterladen
+          </button>
         </div>
         
         {/* Intelligente Cross-Verlinkungen */}
