@@ -779,6 +779,92 @@ function getPartnerRecommendation(scoringData) {
 }
 
 /**
+ * Übersetzt Planer-Daten ins Deutsche
+ */
+function translatePlanerData(funnelData) {
+  const translations = {
+    // Projekt-Status
+    'erste_ideen': 'Erste Ideen',
+    'machbarkeit_pruefen': 'Machbarkeit prüfen',
+    'bauantrag_laeuft': 'Bauantrag läuft',
+    'genehmigung_da': 'Genehmigung liegt vor',
+    'suche_firma': 'Suche nach Firma',
+    
+    // Zeitrahmen
+    'unklar': 'Noch unklar',
+    '6_monate': '6 Monate',
+    '3_monate': '3 Monate',
+    'asap': 'Möglichst schnell',
+    
+    // Eigentum
+    'miete': 'Miete',
+    'eigentuemer_gemeinschaft': 'Eigentümergemeinschaft',
+    'verwalter': 'Verwalter',
+    'eigentum': 'Eigentum',
+    
+    // Balkontyp
+    'hochterrasse': 'Hochterrasse',
+    'haengebalkon': 'Hängebalkon',
+    'anlehnbalkon': 'Anlehnbalkon',
+    'vorstellbalkon': 'Vorstellbalkon',
+    
+    // Wandmaterial
+    'unbekannt': 'Unbekannt',
+    'holzstaender': 'Holzständer',
+    'hlz': 'HLZ',
+    'stahlbeton': 'Stahlbeton',
+    'mauerwerk': 'Mauerwerk',
+    
+    // Unterkellert
+    'nein': 'Nein',
+    'ja': 'Ja',
+    
+    // Budget
+    '0-10000': '0 - 10.000€',
+    '10000-20000': '10.000 - 20.000€',
+    '20000-30000': '20.000 - 30.000€',
+    '30000+': '30.000€+',
+    
+    // Barrierefreiheit
+    'nicht_benoetigt': 'Nicht benötigt',
+    'barrierefrei': 'Barrierefrei',
+    
+    // Bodenbelag
+    'fliesen': 'Fliesen',
+    'holz': 'Holz',
+    'terrassendielen': 'Terrassendielen',
+    'kies': 'Kies',
+    'wiese': 'Wiese',
+    
+    // Geländer
+    'glas': 'Glas',
+    'stahl': 'Stahl',
+    'holz': 'Holz',
+    'kombination': 'Kombination',
+    
+    // Oberfläche
+    'gruen': 'Grün',
+    'blau': 'Blau',
+    'beige': 'Beige',
+    'schwarz': 'Schwarz'
+  };
+  
+  return {
+    projectStatus: translations[funnelData?.projectStatus] || funnelData?.projectStatus || 'Nicht angegeben',
+    timeframe: translations[funnelData?.timeframe] || funnelData?.timeframe || 'Nicht angegeben',
+    ownership: translations[funnelData?.ownership] || funnelData?.ownership || 'Nicht angegeben',
+    balconyType: translations[funnelData?.balconyType] || funnelData?.balconyType || 'Nicht angegeben',
+    wallMaterial: translations[funnelData?.wallMaterial] || funnelData?.wallMaterial || 'Nicht angegeben',
+    basement: translations[funnelData?.basement] || funnelData?.basement || 'Nicht angegeben',
+    budget: translations[funnelData?.budget] || funnelData?.budget || 'Nicht angegeben',
+    accessibility: translations[funnelData?.accessibility] || funnelData?.accessibility || 'Nicht angegeben',
+    balconyFloor: translations[funnelData?.balconyFloor] || funnelData?.balconyFloor || 'Nicht angegeben',
+    railing: translations[funnelData?.railing] || funnelData?.railing || 'Nicht angegeben',
+    surface: translations[funnelData?.surface] || funnelData?.surface || 'Nicht angegeben'
+  };
+}
+
+/**
  * Erstellt eine funnel-spezifische Zusammenfassung
  */
 function createFunnelSummary(funnelType, funnelData, contact, body, calculation) {
@@ -841,20 +927,21 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 `;
 
     case 'planer':
+      const translatedPlanerData = translatePlanerData(funnelData);
       return baseInfo + `
 === PLANER-DATEN ===
-- Projektstatus: ${funnelData?.projectStatus || 'Nicht angegeben'}
-- Zeitrahmen: ${funnelData?.timeframe || 'Nicht angegeben'}
-- Eigentum: ${funnelData?.ownership || 'Nicht angegeben'}
-- Balkontyp: ${funnelData?.balconyType || 'Nicht angegeben'}
-- Wandmaterial: ${funnelData?.wallMaterial || 'Nicht angegeben'}
-- Budget: ${funnelData?.budget || 'Nicht angegeben'}
+- Projektstatus: ${translatedPlanerData.projectStatus}
+- Zeitrahmen: ${translatedPlanerData.timeframe}
+- Eigentum: ${translatedPlanerData.ownership}
+- Balkontyp: ${translatedPlanerData.balconyType}
+- Wandmaterial: ${translatedPlanerData.wallMaterial}
+- Budget: ${translatedPlanerData.budget}
 - Größe: ${funnelData?.size ? `${funnelData.size.width}x${funnelData.size.depth}` : 'Nicht angegeben'}
 - Etage: ${funnelData?.floor || 'Nicht angegeben'}
-- Barrierefreiheit: ${funnelData?.accessibility || 'Nicht angegeben'}
-- Bodenbelag: ${funnelData?.balconyFloor || 'Nicht angegeben'}
-- Geländer: ${funnelData?.railing || 'Nicht angegeben'}
-- Oberfläche: ${funnelData?.surface || 'Nicht angegeben'}
+- Barrierefreiheit: ${translatedPlanerData.accessibility}
+- Bodenbelag: ${translatedPlanerData.balconyFloor}
+- Geländer: ${translatedPlanerData.railing}
+- Oberfläche: ${translatedPlanerData.surface}
 - Dokumente: ${funnelData?.documents ? funnelData.documents.join(', ') : 'Keine'}
 - Zusätzliche Infos: ${funnelData?.additionalInfo || 'Keine'}
 
