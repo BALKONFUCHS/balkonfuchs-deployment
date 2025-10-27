@@ -182,22 +182,28 @@ function calculatePlanerScore(answers) {
     
     // Gesamt-Score berechnen
     const baseScore = block1Score + block2Score + block3Score + block4Score;
-    const finalScore = baseScore + completionBonus;
+    const rawScore = baseScore + completionBonus;
+    
+    // Score auf 0-100 Skala normalisieren (maximaler theoretischer Score: ~450)
+    // Berechne Max-Score basierend auf allen möglichen Punkten
+    const maxPossibleScore = 170 + 100 + 100 + 95 + 8; // Summe aller max Punkte
+    const normalizedScore = Math.round((rawScore / maxPossibleScore) * 100);
+    const finalScore = Math.min(normalizedScore, 100); // Cap bei 100
 
-    // KATEGORISIERUNG
+    // KATEGORISIERUNG (auf Basis von 0-100 Skala)
     let category, action, priority, responseTime;
     
-    if (finalScore >= 150) {
+    if (finalScore >= 70) {
         category = 'Hot Lead';
         action = 'Beratungstermin binnen 24h + Prioritäts-Betreuung';
         priority = 'high';
         responseTime = '24h';
-    } else if (finalScore >= 80) {
+    } else if (finalScore >= 40) {
         category = 'Warm Lead';
         action = 'Rückruf binnen 48h + Planungsunterlagen';
         priority = 'medium';
         responseTime = '48h';
-    } else if (finalScore >= 50) {
+    } else if (finalScore >= 20) {
         category = 'Cold Lead';
         action = 'Newsletter + Informationsmaterial';
         priority = 'low';
