@@ -159,6 +159,9 @@ exports.handler = async (event, context) => {
       // Mapped Data für zusätzliche Informationen
       mappedData: body.mappedData || {},
     };
+    
+    // Normalisiere funnelType für PDF-Generierung
+    const normalizedFunnelType = ((funnelType || funnel?.type) || '').toLowerCase();
 
     // Umgebungsvariablen prüfen
     const orgId = process.env.ZOHO_ORG_ID;
@@ -218,6 +221,32 @@ exports.handler = async (event, context) => {
       deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData);
       console.log('=== DESK RESULT ===');
       console.log('Desk Result:', deskResult);
+      
+      // PDF generieren und anhängen (nur für Planer Funnel)
+      if (deskResult && deskResult.ticketId && (normalizedFunnelType === 'planer')) {
+        try {
+          console.log('=== GENERATING PDF FOR TICKET ===');
+          console.log('Ticket ID:', deskResult.ticketId);
+          
+          // Rufe interne PDF-Generierung auf
+          const generatePDF = require('./generate-and-attach-pdf').handler;
+          const pdfEvent = {
+            httpMethod: 'POST',
+            body: JSON.stringify({
+              ticketId: deskResult.ticketId,
+              projectData: funnelData,
+              contact: contact,
+              funnelType: funnelType || funnel?.type
+            })
+          };
+          
+          await generatePDF(pdfEvent, context);
+          console.log('PDF erfolgreich generiert und angehängt');
+        } catch (pdfError) {
+          console.error('Fehler beim PDF-Generieren:', pdfError);
+          // Fehler nicht weiterwerfen, da Ticket bereits erstellt wurde
+        }
+      }
     } catch (deskError) {
       console.error('=== DESK ERROR ===');
       console.error('Desk Error:', deskError);
