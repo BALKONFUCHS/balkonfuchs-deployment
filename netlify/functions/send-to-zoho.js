@@ -105,6 +105,7 @@ exports.handler = async (event, context) => {
       projectStatus: funnelData?.projectStatus || '',
       timeframe: funnelData?.timeframe || '',
       ownership: funnelData?.ownership || '',
+      balconyType: funnelData?.balconyType || '',
       wallMaterial: funnelData?.wallMaterial || '',
       basement: funnelData?.basement || '',
       floor: funnelData?.floor || '',
