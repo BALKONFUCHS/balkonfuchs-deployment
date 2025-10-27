@@ -64,6 +64,13 @@ exports.handler = async (event, context) => {
       };
     }
 
+    // Debug: Logge alle eingehenden Daten
+    console.log('=== FUNNEL DATA ===');
+    console.log('Funnel Type:', funnelType || funnel?.type);
+    console.log('Funnel Data:', JSON.stringify(funnelData, null, 2));
+    console.log('Contact:', JSON.stringify(contact, null, 2));
+    console.log('Body:', JSON.stringify(body, null, 2));
+    
     // Kombiniere alle verfügbaren Daten für Zoho
     const combinedData = {
       // Kontaktdaten
@@ -332,7 +339,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
   try {
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
-      description: formatTicketDescription(combinedData, body.priceCalculation),
+      description: combinedData.funnelSummary || formatTicketDescription(combinedData, body.priceCalculation),
       priority: 'Medium',
       status: 'Open',
       channel: 'Web',
