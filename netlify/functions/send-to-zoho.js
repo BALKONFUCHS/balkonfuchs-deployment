@@ -222,31 +222,8 @@ exports.handler = async (event, context) => {
       console.log('=== DESK RESULT ===');
       console.log('Desk Result:', deskResult);
       
-      // PDF generieren und anhängen (nur für Planer Funnel)
-      if (deskResult && deskResult.ticketId && (normalizedFunnelType === 'planer')) {
-        try {
-          console.log('=== GENERATING PDF FOR TICKET ===');
-          console.log('Ticket ID:', deskResult.ticketId);
-          
-          // Rufe interne PDF-Generierung auf
-          const generatePDF = require('./generate-and-attach-pdf').handler;
-          const pdfEvent = {
-            httpMethod: 'POST',
-            body: JSON.stringify({
-              ticketId: deskResult.ticketId,
-              projectData: funnelData,
-              contact: contact,
-              funnelType: funnelType || funnel?.type
-            })
-          };
-          
-          await generatePDF(pdfEvent, context);
-          console.log('PDF erfolgreich generiert und angehängt');
-        } catch (pdfError) {
-          console.error('Fehler beim PDF-Generieren:', pdfError);
-          // Fehler nicht weiterwerfen, da Ticket bereits erstellt wurde
-        }
-      }
+      // PDF-Generierung vorübergehend deaktiviert (Zoho Desk Upload-API noch nicht implementiert)
+      // TODO: Implementiere PDF-Anhang-Funktionalität mit Zoho Desk Upload-API
     } catch (deskError) {
       console.error('=== DESK ERROR ===');
       console.error('Desk Error:', deskError);
@@ -260,7 +237,7 @@ exports.handler = async (event, context) => {
     // Zoho CRM Lead erstellen
     let crmResult = null;
     try {
-      crmResult = await createZohoCRMLead(combinedData, accessToken, body);
+      crmResult = await createZohoCRMLead(combinedData, accessToken, body, contact, funnelData);
       console.log('=== CRM RESULT ===');
       console.log('CRM Result:', crmResult);
     } catch (crmError) {
@@ -593,17 +570,19 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
 /**
  * Erstellt einen Lead in Zoho CRM
  */
-async function createZohoCRMLead(combinedData, accessToken, body) {
+async function createZohoCRMLead(combinedData, accessToken, body, contact, funnelData) {
   try {
     const leadData = {
       data: [{
-        First_Name: combinedData.name?.split(' ')[0] || 'Unbekannt',
-        Last_Name: combinedData.name?.split(' ').slice(1).join(' ') || '',
-        Email: combinedData.email,
-        Phone: combinedData.phone || '',
-        Lead_Source: 'Website',
-        Company: combinedData.company || '',
-        Description: formatLeadDescription(combinedData, body.priceCalculation),
+        First_Name: contact?.firstName || combinedData.name?.split(' ')[0] || 'Unbekannt',
+        Last_Name: contact?.lastName || combinedData.name?.split(' ').slice(1).join(' ') || '',
+        Email: contact?.email || combinedData.email,
+        Phone: contact?.phone || combinedData.phone || '',
+        Lead_Source: 'BALKONFUCHS Website',
+        Company: contact?.company || combinedData.company || '',
+        Mailing_City: contact?.city || funnelData?.city || '',
+        Mailing_Code: contact?.plz || contact?.zipCode || combinedData.plz || '',
+        Description: `Funnel-Details:\n${combinedData.funnelSummary || formatLeadDescription(combinedData, body.priceCalculation)}`,
         Custom_Fields: {
           'Lead_Score': combinedData.leadScore || '',
           'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
