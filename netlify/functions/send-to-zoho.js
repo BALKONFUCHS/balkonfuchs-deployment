@@ -223,7 +223,7 @@ exports.handler = async (event, context) => {
     console.log('Has Access Token:', !!accessToken);
     
     try {
-      deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData, normalizedFunnelType);
+      deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData, normalizedFunnelType, contact);
       console.log('=== DESK RESULT ===');
       console.log('Desk Result Success:', deskResult?.success);
       console.log('Desk Result Ticket ID:', deskResult?.ticketId);
@@ -348,7 +348,7 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
 /**
  * Erstellt ein Ticket in Zoho Desk
  */
-async function createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData, funnelType) {
+async function createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData, funnelType, contact) {
   try {
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
