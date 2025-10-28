@@ -217,10 +217,24 @@ exports.handler = async (event, context) => {
 
     // Zoho Desk Ticket erstellen
     let deskResult = null;
+    console.log('=== STARTING ZOHO DESK TICKET CREATION ===');
+    console.log('Org ID:', orgId);
+    console.log('Department ID:', departmentId);
+    console.log('Has Access Token:', !!accessToken);
+    
     try {
       deskResult = await createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData);
       console.log('=== DESK RESULT ===');
-      console.log('Desk Result:', deskResult);
+      console.log('Desk Result Success:', deskResult?.success);
+      console.log('Desk Result Ticket ID:', deskResult?.ticketId);
+      console.log('Full Desk Result:', JSON.stringify(deskResult, null, 2));
+      
+      if (!deskResult?.success) {
+        console.error('=== DESK RESULT FAILED ===');
+        console.error('Desk Result Error:', deskResult?.error);
+        console.error('Desk Result Details:', deskResult?.details);
+        console.error('Desk Result Status:', deskResult?.status);
+      }
       
       // PDF-Generierung vorübergehend deaktiviert (Zoho Desk Upload-API noch nicht implementiert)
       // TODO: Implementiere PDF-Anhang-Funktionalität mit Zoho Desk Upload-API
