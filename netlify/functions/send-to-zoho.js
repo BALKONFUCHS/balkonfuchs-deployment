@@ -351,13 +351,13 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       customFields: {
         // Basis-Felder (korrekte API-Namen aus cf-Objekt)
         'cf_geschatzter_projektwerk': combinedData.calculation || '',
-        'cf_funnel_typ': combinedData.funnelType || 'Unbekannt',
-        'cf_begrussung': combinedData.name ? `Hallo ${combinedData.name.split(' ')[0]}` : 'Hallo',
-        'cf_vorname': combinedData.name?.split(' ')[0] || '',
-        'cf_nachname': combinedData.name?.split(' ').slice(1).join(' ') || '',
-        'cf_email': combinedData.email || '',
-        'cf_telefon': combinedData.phone || '',
-        'cf_mobil': combinedData.phone || '',
+        'cf_funnel_typ': funnelType || funnel?.type || 'Unbekannt',
+        'cf_begrussung': contact?.salutation || '',
+        'cf_vorname': contact?.firstName || '',
+        'cf_nachname': contact?.lastName || '',
+        'cf_email': contact?.email || combinedData.email || '',
+        'cf_telefon': contact?.phone || combinedData.phone || '',
+        'cf_mobil': contact?.phone || combinedData.phone || '',
         'cf_produkt_name': 'Balkon',
         'cf_lieferadresse': combinedData.plz || '',
         
