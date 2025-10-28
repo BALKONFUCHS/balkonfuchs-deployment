@@ -461,10 +461,13 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_genehmigung_ergebnis': funnelData?.ergebnis || '',
         
         // Planer-spezifische Felder
-        'cf_projektstatus': funnelData?.projectStatus || '',
-        'cf_zeitrahmen': funnelData?.timeframe || '',
-        'cf_eigentum': funnelData?.ownership || '',
-        'cf_wandmaterial': funnelData?.wallMaterial || '',
+        'cf_projektstatus': combinedData.projectStatus || funnelData?.projectStatus || '',
+        'cf_zeitrahmen': combinedData.timeframe || funnelData?.timeframe || '',
+        'cf_eigentum': combinedData.ownership || funnelData?.ownership || '',
+        'cf_wandmaterial': combinedData.wallMaterial || funnelData?.wallMaterial || '',
+        'cf_balkontyp_planer': combinedData.balconyType || funnelData?.balconyType || '',
+        'cf_groesse_planer': combinedData.size || funnelData?.size || '',
+        'cf_budget': combinedData.budget || funnelData?.budget || '',
         'cf_keller': funnelData?.basement || '',
         'cf_etage': funnelData?.floor || '',
         'cf_zugaenglichkeit': funnelData?.accessibility || '',
