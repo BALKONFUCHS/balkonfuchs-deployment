@@ -360,8 +360,6 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_mobil': contact?.phone || combinedData.phone || '',
         'cf_produkt_name': 'Balkon',
         'cf_lieferadresse': combinedData.plz || '',
-        
-        // Lead Scoring (erweitert für alle Funnels)
         'cf_lead_score': combinedData.leadScore || '',
         'cf_lead_kategorie': combinedData.category || '',
         'cf_dringlichkeit': combinedData.priority || '',
