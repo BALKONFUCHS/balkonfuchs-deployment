@@ -52,6 +52,18 @@ exports.handler = async (event, context) => {
     const body = JSON.parse(event.body || '{}');
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
 
+    // Sicherstellen, dass wichtige Preisberechnungswerte für das Zoho-Mapping bereitstehen
+    // Viele Custom Fields erwarten aktuell Werte aus body.mappedData.*
+    // Wir spiegeln daher fehlende Werte aus priceCalculation hinein, falls vorhanden
+    const priceCalc = body.priceCalculation || {};
+    body.mappedData = body.mappedData || {};
+    if (priceCalc.basePrice !== undefined && body.mappedData.basispreis === undefined) {
+      body.mappedData.basispreis = priceCalc.basePrice;
+    }
+    if (priceCalc.regionalFactor !== undefined && body.mappedData.regionalfaktor === undefined) {
+      body.mappedData.regionalfaktor = `${priceCalc.regionalFactor}x`;
+    }
+
     // Validierung der eingehenden Daten
     if (!contact && !funnelData) {
       return {
