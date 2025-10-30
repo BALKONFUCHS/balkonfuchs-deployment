@@ -472,6 +472,11 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_gesamtpreis': combinedData.calculation || '',
         'cf_basispreis': body.mappedData?.basispreis || '',
         'cf_regionalfaktor': body.mappedData?.regionalfaktor || '1.0x',
+
+        // Regionale Details (neue Felder – können in Zoho nachträglich angelegt werden)
+        'cf_regionalCategory': body.priceCalculation?.regionalCategory || '',
+        'cf_regionalRegion': body.priceCalculation?.regionalRegion || '',
+        'cf_regionalBundesland': body.priceCalculation?.regionalBundesland || '',
         
         // Metadaten
         'cf_funnel_quelle': combinedData.source || 'Website',
