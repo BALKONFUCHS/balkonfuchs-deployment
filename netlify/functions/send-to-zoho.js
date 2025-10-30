@@ -942,6 +942,16 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Datenschutz-Zustimmung: ${funnelData?.datenschutzConsent ? 'Ja' : 'Nein'}
 - Balkonbrief-Bestellung: ${funnelData?.newsletterConsent ? 'Ja' : 'Nein'}
 
+=== REGIONALE ANPASSUNG ===
+- Kategorie: ${body?.priceCalculation?.regionalCategory || 'Standard'}
+- Region: ${body?.priceCalculation?.regionalRegion || 'Nicht verfügbar'}
+- Bundesland: ${body?.priceCalculation?.regionalBundesland || 'Nicht verfügbar'}
+- Regionalfaktor: ${body?.priceCalculation?.regionalFactor ?? '1.0'}x
+
+=== PREIS ===
+- Basispreis: ${body?.priceCalculation?.basePrice ?? 'Nicht verfügbar'}€
+- Gesamtpreis: ${body?.priceCalculation?.finalPrice ?? 'Nicht verfügbar'}€
+
 === LEAD SCORING ===
 - Lead Score: ${body._kalkulatorScoring?.finalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
 - Kategorie: ${body._kalkulatorScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}

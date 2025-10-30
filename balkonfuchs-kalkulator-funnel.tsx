@@ -288,6 +288,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
     return formData.contact.firstName !== '' && 
            formData.contact.lastName !== '' && 
            formData.contact.email !== '' &&
+           formData.contact.salutation !== '' &&
            formData.contact.plz !== '' &&
            formData.contact.plz.length === 5 &&
            formData.datenschutzConsent === true;
@@ -300,6 +301,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
     balconyDepth: '',
     extras: [],
     contact: {
+      salutation: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -881,6 +883,20 @@ const BalkonFuchsKalkulatorFunnel = () => {
 
         {/* Kontaktformular */}
         <div className="max-w-2xl mx-auto space-y-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">Anrede *</label>
+            <select
+              value={formData.contact.salutation}
+              onChange={(e) => handleContactChange('salutation', e.target.value)}
+              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+              required
+            >
+              <option value="">Bitte wählen</option>
+              <option value="Herr">Herr</option>
+              <option value="Frau">Frau</option>
+              <option value="Divers">Divers</option>
+            </select>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">Vorname *</label>
@@ -1056,6 +1072,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
       const exportData = {
         // Kontaktdaten
         contact: {
+          salutation: formData.contact.salutation,
           firstName: formData.contact.firstName,
           lastName: formData.contact.lastName,
           email: formData.contact.email,
