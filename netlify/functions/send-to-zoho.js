@@ -50,6 +50,40 @@ exports.handler = async (event, context) => {
   try {
     // Parse request body
     const body = JSON.parse(event.body || '{}');
+
+    // Express-Angebot: eingehendes Payload in Standardform normalisieren
+    if (body.funnel === 'express-angebot' && body.data) {
+      const d = body.data || {};
+      body.contact = {
+        firstName: d.contact?.firstName || '',
+        lastName: d.contact?.lastName || '',
+        email: d.contact?.email || '',
+        phone: d.contact?.phone || '',
+        address: d.contact?.address || '',
+        city: d.contact?.city || '',
+        zipCode: d.contact?.zipCode || ''
+      };
+      body.funnel = { type: 'express-angebot', name: 'Express-Angebot' };
+      body.funnelType = 'Express-Angebot';
+      body.source = 'BALKONFUCHS Express-Angebot';
+      body.funnelData = {
+        approvalStatus: d.approvalStatus,
+        timeframe: d.timeframe,
+        projectData: d.projectData,
+        budget: d.budget,
+        balconyType: d.balconyDetails?.type,
+        balconyWidth: d.balconyDetails?.size?.width,
+        balconyDepth: d.balconyDetails?.size?.depth,
+        balconyCount: d.balconyDetails?.count,
+        additionalInfo: d.additionalInfo,
+        offerCount: d.offerPreferences?.count,
+        offerRegion: d.offerPreferences?.region,
+        contactPreference: d.contactPreference,
+        city: d.contact?.city,
+        plz: d.contact?.zipCode
+      };
+    }
+
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
 
     // Sicherstellen, dass wichtige Preisberechnungswerte für das Zoho-Mapping bereitstehen
@@ -964,6 +998,27 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Geschätzter Wert: ${body._kalkulatorScoring?.estimatedValue || 'Nicht verfügbar'}€
 - Nurturing-Sequenz: ${body._kalkulatorScoring?.nurturingSequence || 'Nicht verfügbar'}
 - Empfohlene Aktion: ${body._kalkulatorScoring?.action || 'Nicht verfügbar'}
+`;
+
+    case 'express-angebot':
+      return baseInfo + `
+=== EXPRESS-ANGEBOT-DATEN ===
+- Genehmigungsstatus: ${funnelData?.approvalStatus || 'Nicht angegeben'}
+- Zeitrahmen: ${funnelData?.timeframe || 'Nicht angegeben'}
+- Projekttyp: ${funnelData?.projectData || 'Nicht angegeben'}
+- Budget: ${funnelData?.budget || 'Nicht angegeben'}
+- Balkon-Typ: ${funnelData?.balconyType || 'Nicht angegeben'}
+- Anzahl Balkone: ${funnelData?.balconyCount || 'Nicht angegeben'}
+- Maße pro Balkon: ${(funnelData?.balconyWidth && funnelData?.balconyDepth) ? `${funnelData.balconyWidth} x ${funnelData.balconyDepth} m` : 'Nicht angegeben'}
+- Angebotsanzahl: ${funnelData?.offerCount || 'Nicht angegeben'}
+- Einzugsgebiet: ${funnelData?.offerRegion || 'Nicht angegeben'}
+- Kontaktpräferenz: ${funnelData?.contactPreference || 'Nicht angegeben'}
+- Zusätzliche Infos: ${funnelData?.additionalInfo || 'Keine'}
+
+=== LEAD SCORING ===
+- Lead Score: ${body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${body._internalScoring?.priority || 'Nicht verfügbar'}
 `;
 
     case 'genehmigung':
