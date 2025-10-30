@@ -83,10 +83,29 @@ exports.handler = async (event, context) => {
       zeitplan: funnelData?.zeitplan || '',
       source: source || funnelType || 'Website',
       message: funnelData?.message || body?.message || 'Keine zusätzliche Nachricht',
-      calculation: calculation || null,
+      // Verwende, wenn vorhanden, den endgültigen Gesamtpreis aus der Preisberechnung
+      // Fallback: bisheriger calculation-Wert
+      calculation: (body?.priceCalculation?.finalPrice ?? calculation) || null,
       
-      // Zusatzausstattung/Sonderleistungen
-      zusatzausstattung: funnelData?.extras ? funnelData.extras.join(', ') : 'Keine',
+      // Zusatzausstattung/Sonderleistungen (vereinheitlicht + gemappt)
+      zusatzausstattung: (() => {
+        const rawExtras = Array.isArray(funnelData?.extras) ? funnelData.extras.slice() : [];
+        const mappedExtras = Array.isArray(body?.mappedData?.zusatzleistungen)
+          ? body.mappedData.zusatzleistungen
+          : [];
+        const all = Array.from(new Set([...(rawExtras || []), ...(mappedExtras || [])]));
+        if (all.length === 0) return 'Keine';
+        const labels = {
+          standard_gelaender: 'Standard-Geländer',
+          premium_gelaender: 'Premium-Geländer',
+          seitenschutz: 'Seitlicher Windschutz',
+          bodenbelag: 'Bodenbelag',
+          balkontuer: 'Balkontür',
+          treppe: 'Treppe',
+          ueberdachung: 'Überdachung'
+        };
+        return all.map(k => labels[k] || k).join(', ');
+      })(),
       
       // Genehmigungsfunnel-spezifische Daten
       bundesland: funnelData?.bundesland || '',
