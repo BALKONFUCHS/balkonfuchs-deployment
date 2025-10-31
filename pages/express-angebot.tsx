@@ -619,8 +619,17 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
                 ...prev,
                 contact: { ...prev.contact, phone: e.target.value }
               }))}
-              className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className={`w-full p-3 bg-gray-700 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 ${
+                formData.contactPreference === 'phone' && !formData.contact.phone
+                  ? 'border-red-500'
+                  : 'border-gray-600'
+              }`}
             />
+            {formData.contactPreference === 'phone' && !formData.contact.phone && (
+              <p className="text-sm text-red-400 mt-2">
+                Bitte geben Sie Ihre Telefonnummer an, da Sie telefonische Kontaktaufnahme gewählt haben.
+              </p>
+            )}
           </div>
         </div>
 
