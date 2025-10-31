@@ -34,6 +34,8 @@ const BalkonFuchsPlanerFunnel = () => {
     floor: '',
     budget: '',
     size: { width: '', depth: '' },
+    balconyCount: 1,
+    offerPreferences: { count: '', region: '' },
     accessibility: '',
     balconyFloor: '',
     railing: '',
@@ -1342,6 +1344,7 @@ const BalkonFuchsPlanerFunnel = () => {
             timeframe: formData.timeframe,
             ownership: formData.ownership,
             balconyType: formData.balconyType,
+            balconyCount: formData.balconyCount,
             wallMaterial: formData.wallMaterial,
             basement: formData.basement,
             floor: formData.floor,
@@ -1353,6 +1356,7 @@ const BalkonFuchsPlanerFunnel = () => {
             surface: formData.surface,
             documents: formData.documents,
             additionalInfo: formData.additionalInfo,
+            offerPreferences: formData.offerPreferences,
             zipCode: formData.contact.zipCode
           },
           // Metadaten
