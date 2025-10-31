@@ -84,6 +84,10 @@ exports.handler = async (event, context) => {
         city: d.contact?.city,
         plz: d.contact?.zipCode
       };
+      // Stelle sicher, dass zusätzliche Info als Nachricht in Zoho angezeigt wird
+      if (!body.message && d.additionalInfo) {
+        body.message = String(d.additionalInfo);
+      }
     }
 
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
@@ -417,10 +421,12 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
  */
 async function createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData, funnelType, contact) {
   try {
-    const deliveryAddress = [
-      contact?.address || '',
-      [contact?.zipCode || combinedData.plz || '', contact?.city || combinedData.city || ''].filter(Boolean).join(' ')
-    ].filter(Boolean).join(', ').trim();
+    const clean = (val) => (val || '').toString().replace(/\s+/g, ' ').replace(/[\s,.]+$/g, '').trim();
+    const street = clean(contact?.address);
+    const zip = clean((contact?.zipCode || combinedData.plz || '').toString().replace(/[^0-9]/g, ''));
+    const city = clean(contact?.city || combinedData.city);
+    const cityLine = [zip, city].filter(Boolean).join(' ').trim();
+    const deliveryAddress = [street, cityLine].filter(Boolean).join(', ');
 
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,

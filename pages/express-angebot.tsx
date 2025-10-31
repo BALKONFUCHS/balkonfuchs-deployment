@@ -102,6 +102,12 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
       subtitle: 'Geben Sie die gewünschten Maße ein'
     },
     {
+      id: 'execution',
+      type: 'execution',
+      title: 'Ausführung',
+      subtitle: 'Welche Ausführungsdetails wünschen Sie?'
+    },
+    {
       id: 'additional_info',
       type: 'additional_info',
       title: 'Zusätzliche Informationen',
@@ -402,6 +408,11 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
                 {(parseFloat(formData.balconyDetails.size.width) * parseFloat(formData.balconyDetails.size.depth)).toFixed(1)} m²
               </span>
             </p>
+            {formData.balconyDetails.type === 'hanging' && (parseFloat(formData.balconyDetails.size.width || '0') * parseFloat(formData.balconyDetails.size.depth || '0') > 4.5) && (
+              <p className="text-red-400 mt-2">
+                Hinweis: Hängebalkone sind aus statischen Gründen in der Regel auf maximal 4,5 m² begrenzt.
+              </p>
+            )}
           </div>
         )}
       </div>
@@ -700,6 +711,9 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
             <p className="text-gray-400">Genehmigungsstatus: <span className="text-white">{formData.approvalStatus === 'approved' ? 'Genehmigung liegt vor' : formData.approvalStatus === 'pending' ? 'Genehmigung beantragt' : 'Noch nicht beantragt'}</span></p>
             <p className="text-gray-400">Zeitplan: <span className="text-white">{formData.timeframe === 'urgent' ? 'Sehr dringend (2-4 Wochen)' : formData.timeframe === 'medium' ? 'Mittlere Dringlichkeit (1-3 Monate)' : 'Flexibel (3-6 Monate)'}</span></p>
             <p className="text-gray-400">Projekttyp: <span className="text-white">{formData.projectData === 'new_building' ? 'Neubau' : formData.projectData === 'renovation' ? 'Renovierung' : 'Anbau'}</span></p>
+            {formData.additionalInfo && (
+              <p className="text-gray-400">Zusätzliche Infos: <span className="text-white">{formData.additionalInfo}</span></p>
+            )}
           </div>
           <div>
             <p className="text-gray-400">Budget: <span className="text-white">{formData.budget === 'high' ? 'Höheres Budget (15.000€+)' : formData.budget === 'medium' ? 'Mittleres Budget (8.000€-15.000€)' : 'Standard-Budget (5.000€-8.000€)'}</span></p>
@@ -712,6 +726,9 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
             <p className="text-gray-400">Anzahl: <span className="text-white">{formData.balconyDetails.count} Balkon{formData.balconyDetails.count > 1 ? 'e' : ''}</span></p>
             {formData.balconyDetails.size.width && formData.balconyDetails.size.depth && (
               <p className="text-gray-400">Fläche pro Balkon: <span className="text-white">{(parseFloat(formData.balconyDetails.size.width) * parseFloat(formData.balconyDetails.size.depth)).toFixed(1)} m²</span></p>
+            )}
+            {(formData.execution && formData.execution.length > 0) && (
+              <p className="text-gray-400">Ausführung/Extras: <span className="text-white">{formData.execution.join(', ')}</span></p>
             )}
           </div>
         </div>
