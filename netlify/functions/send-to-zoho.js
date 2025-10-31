@@ -1177,11 +1177,19 @@ ${funnelData?.offerPreferences?.count ? `- Angebotsanzahl: ${offerCountLabel}` :
 ${funnelData?.offerPreferences?.region ? `- Einzugsgebiet: ${offerRegionLabel}` : ''}
 - Zusätzliche Infos: ${funnelData?.additionalInfo || 'Keine'}
 
+=== PREISBERECHNUNG ===
+- Basispreis (ohne Regionalfaktor): ${body.priceCalculation?.basePrice || 'Nicht verfügbar'}€
+- Regionalfaktor: ${body.priceCalculation?.regionalFactor ? `${body.priceCalculation.regionalFactor}x` : '1.0x'} (${body.priceCalculation?.regionalCategory || 'Standard'})
+- Region: ${body.priceCalculation?.regionalRegion || 'Nicht verfügbar'}
+- Bundesland: ${body.priceCalculation?.regionalBundesland || 'Nicht verfügbar'}
+- Gesamtpreis (mit Regionalfaktor): ${body.priceCalculation?.finalPrice || 'Nicht verfügbar'}€
+${body.priceCalculation?.savings ? `- Preisunterschied: ${body.priceCalculation.savings > 0 ? '+' : ''}${body.priceCalculation.savings}€` : ''}
+
 === LEAD SCORING ===
-- Lead Score: ${body._planerScoring?.finalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
-- Kategorie: ${body._planerScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
-- Priorität: ${body._planerScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
-- Geschätzter Wert: ${body._planerScoring?.estimatedValue || 'Nicht verfügbar'}€
+- Lead Score: ${extractLeadScore(body) || body._planerScoring?.finalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${extractCategory(body) || body._planerScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${extractPriority(body) || body._planerScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${extractEstimatedValue(body, 'planer') || body._planerScoring?.estimatedValue || 'Nicht verfügbar'}€
 - Response Time: ${body._planerScoring?.responseTime || 'Nicht verfügbar'}
 - Beratungsbereitschaft: ${body._planerScoring?.beratungsReadiness || 'Nicht verfügbar'}
 `;
