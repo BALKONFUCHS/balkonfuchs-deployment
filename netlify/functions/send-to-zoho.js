@@ -758,11 +758,14 @@ function extractLeadScore(body) {
          body._internalScoring?.totalScore ||
          null;
   
-  // Boost für seeking/approved Kunden im Planer-Funnel
+  // Aggressiver Boost für seeking/approved Kunden im Planer-Funnel
   if (body.funnelData?.projectStatus === 'seeking' || body.funnelData?.projectStatus === 'approved') {
-    if (baseScore && baseScore < 70) {
-      // Boost für Kunden, die bereits ein Angebot wollen
-      baseScore = Math.max(baseScore, 75);
+    // Wenn Kunde bereits Angebot will + ASAP, dann definitiv Hot Lead
+    if (body.funnelData?.timeframe === 'asap' || body.funnelData?.timeframe === '3months') {
+      baseScore = Math.max(baseScore || 0, 85); // Mindestens 85 für seeking + asap/3months
+    } else {
+      // Mindestens Warm Lead für seeking/approved
+      baseScore = Math.max(baseScore || 0, 75);
     }
   }
   
@@ -783,7 +786,11 @@ function extractCategory(body) {
   
   // Upgrade für seeking/approved Kunden im Planer-Funnel
   if (body.funnelData?.projectStatus === 'seeking' || body.funnelData?.projectStatus === 'approved') {
-    if (category && (category.toLowerCase().includes('cold') || category.toLowerCase() === 'cold lead')) {
+    // Wenn asap oder 3months Zeitrahmen, dann Hot Lead
+    if (body.funnelData?.timeframe === 'asap' || body.funnelData?.timeframe === '3months') {
+      category = 'Hot Lead';
+    } else if (category && (category.toLowerCase().includes('cold') || category.toLowerCase() === 'cold lead')) {
+      // Ansonsten mindestens Warm Lead
       category = 'Warm Lead';
     }
   }
@@ -805,8 +812,10 @@ function extractPriority(body) {
   
   // Upgrade für seeking/approved Kunden im Planer-Funnel
   if (body.funnelData?.projectStatus === 'seeking' || body.funnelData?.projectStatus === 'approved') {
-    // Wenn Priorität niedrig ist, erhöhe sie
-    if (priority && (priority.toLowerCase().includes('low') || priority === 'P3' || priority === 'P4')) {
+    // Wenn asap oder 3months, dann hohe Priorität
+    if (body.funnelData?.timeframe === 'asap' || body.funnelData?.timeframe === '3months') {
+      priority = 'P1'; // High priority für seeking + asap customers
+    } else if (priority && (priority.toLowerCase().includes('low') || priority === 'P3' || priority === 'P4')) {
       priority = 'P2'; // Medium priority für seeking customers
     }
   }

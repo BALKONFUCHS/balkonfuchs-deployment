@@ -59,63 +59,63 @@ const BalkonFuchsPlanerFunnel = () => {
   const mapFormDataToPlanerScoring = () => {
     // Block 1: Projekt-Status
     const statusMap = {
-      'erste_ideen': 'erste_ideen',
-      'machbarkeit_pruefen': 'machbarkeit_pruefen',
-      'bauantrag_laeuft': 'bauantrag_laeuft',
-      'genehmigung_da': 'genehmigung_da',
-      'suche_firma': 'suche_firma'
+      'idea': 'erste_ideen',              // 'Habe noch keine konkrete Idee'
+      'feasibility': 'machbarkeit_pruefen', // 'Möchte Machbarkeit prüfen'
+      'submitted': 'bauantrag_laeuft',     // 'Bauantrag ist eingereicht'
+      'approved': 'genehmigung_da',        // 'Ich habe bereits eine Genehmigung'
+      'seeking': 'suche_firma'            // 'Suche jetzt nach passender Firma'
     };
 
     const zeitrahmenMap = {
-      'unklar': 'unklar',
-      '6_monate': '6_monate',
-      '3_monate': '3_monate',
-      'asap': 'asap'
+      'unclear': 'unklar',         // 'Noch unklar'
+      '6months': '6_monate',       // 'In den nächsten 6 Monaten'
+      '3months': '3_monate',       // 'In den nächsten 3 Monaten'
+      'asap': 'asap'               // 'So schnell wie möglich'
     };
 
     const eigentumMap = {
-      'miete': 'miete',
-      'eigentuemer_gemeinschaft': 'eigentuemer_gemeinschaft',
-      'verwalter': 'verwalter',
-      'eigentum': 'eigentum'
+      'tenant': 'miete',                  // 'Ich wohne dort zur Miete'
+      'condo': 'eigentuemer_gemeinschaft', // 'Teil einer Eigentümergemeinschaft'
+      'manager': 'verwalter',             // 'Wird von mir verwaltet'
+      'owner': 'eigentum'                 // 'Ist mein Eigentum'
     };
 
     // Block 2: Technische Basis
     const balkontypMap = {
-      'hochterrasse': 'hochterrasse',
-      'haengebalkon': 'haengebalkon',
-      'anlehnbalkon': 'anlehnbalkon',
-      'vorstellbalkon': 'vorstellbalkon'
+      'terrace': 'hochterrasse',  // 'Hochterrasse'
+      'hanging': 'haengebalkon',   // 'Hängebalkon (stützenfrei)'
+      'leaning': 'anlehnbalkon',  // 'Anlehnbalkon (2 Stützen)'
+      'standing': 'vorstellbalkon' // 'Vorstellbalkon (4+ Stützen)'
     };
 
     const wandmaterialMap = {
-      'unbekannt': 'unbekannt',
-      'holzstaender': 'holzstaender',
-      'hlz': 'hlz',
-      'stahlbeton': 'stahlbeton',
-      'mauerwerk': 'mauerwerk'
+      'unknown': 'unbekannt',      // 'Weiß ich nicht genau'
+      'wood_frame': 'holzstaender', // 'Holzständerbauweise'
+      'hlz': 'hlz',                // 'Hochloch-Ziegelsteine (HLZ)'
+      'concrete': 'stahlbeton',    // 'Stahlbeton'
+      'masonry': 'mauerwerk'       // 'Mauerwerk'
     };
 
     const unterkellertMap = {
-      'unbekannt': 'unbekannt',
-      'nein': 'nein',
-      'ja': 'ja'
+      'unknown': 'unbekannt', // 'Weiß ich nicht'
+      'no': 'nein',           // 'Nein, nicht unterkellert'
+      'yes': 'ja'             // 'Ja, unterkellert'
     };
 
     const geschossMap = {
-      'hoeher': 'hoeher',
-      '2_og': '2_og',
-      '1_og': '1_og',
-      'eg': 'eg'
+      'higher': 'hoeher',    // 'Höher als 2. OG'
+      'second': '2_og',      // '2. Obergeschoss'
+      'first': '1_og',       // '1. Obergeschoss'
+      'ground': 'eg'         // 'Erdgeschoss'
     };
 
     // Block 3: Projektumfang
     const budgetMap = {
-      'bis_10k': 'bis_10k',
-      'unklar': 'unklar',
-      '10_20k': '10_20k',
-      '20_30k': '20_30k',
-      '30k_plus': '30k_plus'
+      '10k': 'bis_10k',      // 'Bis 10.000 €'
+      'unclear': 'unklar',   // 'Noch unklar'
+      '10_20k': '10_20k',    // '10.000 - 20.000 €'
+      '20_30k': '20_30k',    // '20.000 - 30.000 €'
+      '30k_plus': '30k_plus' // 'Über 30.000 €'
     };
 
     // Balkongröße berechnen
@@ -126,10 +126,10 @@ const BalkonFuchsPlanerFunnel = () => {
     };
 
     const befahrbarkeitMap = {
-      'nicht': 'nicht',
-      'schwer': 'schwer',
-      'eingeschraenkt': 'eingeschraenkt',
-      'gut': 'gut'
+      'impossible': 'nicht',        // 'Nicht erreichbar'
+      'difficult': 'schwer',        // 'Schwer erreichbar'
+      'limited': 'eingeschraenkt',  // 'Eingeschränkt erreichbar'
+      'good': 'gut'                 // 'Gut erreichbar'
     };
 
     // Block 4: Service & Kontakt
@@ -832,6 +832,32 @@ const BalkonFuchsPlanerFunnel = () => {
       
       <div className="max-w-2xl mx-auto space-y-8">
         <div>
+          <h3 className="text-xl font-semibold text-white mb-4">Anzahl der Balkone</h3>
+          <div className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-6">
+            {[1, 2, 3, 4, 5, 'mehr'].map((count) => (
+              <div
+                key={count}
+                className={`p-4 border-2 rounded-lg cursor-pointer transition-all duration-300 ${
+                  formData.balconyCount === count || (count === 'mehr' && formData.balconyCount > 5)
+                    ? 'border-orange-500 bg-orange-500/10 shadow-lg'
+                    : 'border-gray-700 bg-gray-800/50 hover:border-purple-500/50'
+                }`}
+                onClick={() => setFormData(prev => ({ ...prev, balconyCount: count === 'mehr' ? 6 : count }))}
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">
+                    {count === 'mehr' ? '5+' : count}
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">
+                    {count === 'mehr' ? 'mehr' : count === 1 ? 'Balkon' : 'Balkone'}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div>
           <h3 className="text-xl font-semibold text-white mb-4">Balkon-Größe</h3>
           <div className="grid grid-cols-3 gap-4 items-end">
             <div>
@@ -866,7 +892,12 @@ const BalkonFuchsPlanerFunnel = () => {
           {formData.size.width && formData.size.depth && (
             <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 mt-4">
               <p className="text-blue-400 font-semibold">
-                Balkonfläche: {(parseFloat(formData.size.width) * parseFloat(formData.size.depth)).toFixed(1)} m²
+                Balkonfläche pro Balkon: {(parseFloat(formData.size.width) * parseFloat(formData.size.depth)).toFixed(1)} m²
+                {formData.balconyCount > 1 && (
+                  <span className="block mt-2">
+                    Gesamtfläche: {((parseFloat(formData.size.width) || 0) * (parseFloat(formData.size.depth) || 0) * formData.balconyCount).toFixed(1)} m² ({formData.balconyCount} Balkone)
+                  </span>
+                )}
               </p>
             </div>
           )}
