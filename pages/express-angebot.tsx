@@ -268,27 +268,33 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
       <p className="text-xl text-orange-400 bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 mb-8">
         Welche Ausführungsdetails wünschen Sie?
       </p>
-      <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
+      <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
         {[ 
-          { id: 'standard_gelaender', label: 'Standard-Geländer' },
-          { id: 'premium_gelaender', label: 'Premium-Geländer' },
-          { id: 'seitenschutz', label: 'Seitlicher Windschutz' },
-          { id: 'bodenbelag', label: 'Bodenbelag' },
-          { id: 'ueberdachung', label: 'Überdachung' }
+          { id: 'standard_gelaender', label: 'Standard-Geländer', desc: 'Robust und wirtschaftlich – ideal für Standardausführung.', impact: 'ca. +0–500€' },
+          { id: 'premium_gelaender', label: 'Premium-Geländer', desc: 'Hochwertige Optik (z. B. Glas/Design) und Langlebigkeit.', impact: 'ca. +1.000–2.500€' },
+          { id: 'seitenschutz', label: 'Seitlicher Windschutz', desc: 'Besserer Schutz bei Wind & Einsicht; erhöht den Komfort.', impact: 'ca. +600–1.200€' },
+          { id: 'bodenbelag', label: 'Bodenbelag', desc: 'Fertiger Balkonbelag (z. B. WPC/Fliese) – nutzfertig.', impact: 'ca. +800–1.800€' },
+          { id: 'ueberdachung', label: 'Überdachung', desc: 'Schützt vor Regen & Schnee – ganzjährige Nutzbarkeit.', impact: 'ca. +2.500–6.000€' }
         ].map(opt => (
-          <label key={opt.id} className="flex items-center gap-3 p-3 bg-gray-700/50 border border-gray-600 rounded-lg cursor-pointer">
-            <input
-              type="checkbox"
-              checked={(formData.execution || []).includes(opt.id)}
-              onChange={(e) => setFormData(prev => ({
-                ...prev,
-                execution: e.target.checked
-                  ? Array.from(new Set([...(prev.execution || []), opt.id]))
-                  : (prev.execution || []).filter(x => x !== opt.id)
-              }))}
-              className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded"
-            />
-            <span className="text-white">{opt.label}</span>
+          <label key={opt.id} className="p-4 bg-gray-700/50 border border-gray-600 rounded-lg cursor-pointer hover:border-gray-500 transition">
+            <div className="flex items-start gap-3">
+              <input
+                type="checkbox"
+                checked={(formData.execution || []).includes(opt.id)}
+                onChange={(e) => setFormData(prev => ({
+                  ...prev,
+                  execution: e.target.checked
+                    ? Array.from(new Set([...(prev.execution || []), opt.id]))
+                    : (prev.execution || []).filter(x => x !== opt.id)
+                }))}
+                className="mt-1 w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded"
+              />
+              <div>
+                <div className="text-white font-medium">{opt.label}</div>
+                <div className="text-gray-300 text-sm mt-1">{opt.desc}</div>
+                <div className="text-gray-400 text-xs mt-1">Preisindikator: {opt.impact}</div>
+              </div>
+            </div>
           </label>
         ))}
       </div>
@@ -728,7 +734,15 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
               <p className="text-gray-400">Fläche pro Balkon: <span className="text-white">{(parseFloat(formData.balconyDetails.size.width) * parseFloat(formData.balconyDetails.size.depth)).toFixed(1)} m²</span></p>
             )}
             {(formData.execution && formData.execution.length > 0) && (
-              <p className="text-gray-400">Ausführung/Extras: <span className="text-white">{formData.execution.join(', ')}</span></p>
+              <p className="text-gray-400">Ausführung/Extras: <span className="text-white">{
+                formData.execution.map(k => (
+                  k === 'standard_gelaender' ? 'Standard-Geländer' :
+                  k === 'premium_gelaender' ? 'Premium-Geländer' :
+                  k === 'seitenschutz' ? 'Seitlicher Windschutz' :
+                  k === 'bodenbelag' ? 'Bodenbelag' :
+                  k === 'ueberdachung' ? 'Überdachung' : k
+                )).join(', ')
+              }</span></p>
             )}
           </div>
         </div>
