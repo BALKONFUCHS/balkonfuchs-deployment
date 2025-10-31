@@ -12,6 +12,7 @@
  */
 
 const axios = require('axios');
+const { calculatePlanerPrice } = require('./send-to-zoho-regional-helpers');
 
 exports.handler = async (event, context) => {
   // Logging des Raw Requests
@@ -92,6 +93,14 @@ exports.handler = async (event, context) => {
 
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
 
+    // Preisberechnung für Planer-Funnel (wenn noch nicht vorhanden)
+    if ((funnelType === 'planer' || funnel?.type === 'planer') && !body.priceCalculation) {
+      const planerPriceCalc = calculatePlanerPrice(funnelData, contact);
+      if (planerPriceCalc) {
+        body.priceCalculation = planerPriceCalc;
+      }
+    }
+
     // Sicherstellen, dass wichtige Preisberechnungswerte für das Zoho-Mapping bereitstehen
     // Viele Custom Fields erwarten aktuell Werte aus body.mappedData.*
     // Wir spiegeln daher fehlende Werte aus priceCalculation hinein, falls vorhanden
@@ -102,6 +111,15 @@ exports.handler = async (event, context) => {
     }
     if (priceCalc.regionalFactor !== undefined && body.mappedData.regionalfaktor === undefined) {
       body.mappedData.regionalfaktor = `${priceCalc.regionalFactor}x`;
+    }
+    if (priceCalc.regionalCategory !== undefined && body.mappedData.regionalCategory === undefined) {
+      body.mappedData.regionalCategory = priceCalc.regionalCategory;
+    }
+    if (priceCalc.regionalRegion !== undefined && body.mappedData.regionalRegion === undefined) {
+      body.mappedData.regionalRegion = priceCalc.regionalRegion;
+    }
+    if (priceCalc.regionalBundesland !== undefined && body.mappedData.regionalBundesland === undefined) {
+      body.mappedData.regionalBundesland = priceCalc.regionalBundesland;
     }
 
     // Validierung der eingehenden Daten
@@ -228,7 +246,8 @@ exports.handler = async (event, context) => {
       
       // Funnel-spezifische Scoring-Daten
       funnelScoring: extractFunnelScoring(funnelType || funnel?.type, body),
-      estimatedValue: body._kalkulatorScoring?.estimatedValue || null,
+      // Geschätzter Wert aus funnel-spezifischem Scoring extrahieren
+      estimatedValue: extractEstimatedValue(body, funnelType || funnel?.type),
       
       // Mapped Data für zusätzliche Informationen
       mappedData: body.mappedData || {},
@@ -448,7 +467,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       },
       customFields: {
         // Basis-Felder (korrekte API-Namen aus cf-Objekt)
-        'cf_geschatzter_projektwerk': combinedData.calculation || '',
+        'cf_geschatzter_projektwerk': combinedData.estimatedValue || combinedData.calculation || '',
         'cf_funnel_typ': funnelType || body.funnel?.type || 'Unbekannt',
         'cf_begrussung': contact?.salutation || '',
         'cf_vorname': contact?.firstName || '',
@@ -524,13 +543,15 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_balkontuer': funnelData?.extras?.includes('balkontuer') ? 'Ja' : 'Nein',
         'cf_treppe': funnelData?.extras?.includes('treppe') ? 'Ja' : 'Nein',
         
-        // Berechnungen (korrigiert)
-        'cf_gesamtpreis': combinedData.calculation || '',
-        'cf_basispreis': body.mappedData?.basispreis || '',
-        'cf_regionalfaktor': body.mappedData?.regionalfaktor || '1.0x',
+        // Berechnungen (korrigiert - verwende priceCalculation falls vorhanden)
+        'cf_gesamtpreis': body.priceCalculation?.finalPrice || combinedData.calculation || '',
+        'cf_basispreis': body.priceCalculation?.basePrice || body.mappedData?.basispreis || '',
+        'cf_regionalfaktor': body.priceCalculation?.regionalFactor 
+          ? `${body.priceCalculation.regionalFactor}x` 
+          : (body.mappedData?.regionalfaktor || '1.0x'),
 
         // Regionale Details (neue Felder – können in Zoho nachträglich angelegt werden)
-        'cf_regionalCategory': body.priceCalculation?.regionalCategory || '',
+        'cf_regionalCategory': body.priceCalculation?.regionalCategory || body.mappedData?.regionalCategory || '',
         'cf_regionalRegion': body.priceCalculation?.regionalRegion || '',
         'cf_regionalBundesland': body.priceCalculation?.regionalBundesland || '',
         
@@ -821,6 +842,29 @@ function extractPriority(body) {
   }
   
   return priority;
+}
+
+/**
+ * Extrahiert den geschätzten Wert aus funnel-spezifischem Scoring
+ */
+function extractEstimatedValue(body, funnelType) {
+  if (!funnelType) return null;
+  const normalizedType = (funnelType || '').toLowerCase();
+  
+  switch (normalizedType) {
+    case 'kalkulator':
+      return body._kalkulatorScoring?.estimatedValue || null;
+    case 'planer':
+      return body._planerScoring?.estimatedValue || null;
+    case 'bauzeit-planung':
+      return body._bauzeitScoring?.estimatedValue || null;
+    case 'genehmigung':
+      return body._genehmigungScoring?.estimatedValue || null;
+    default:
+      return body._kalkulatorScoring?.estimatedValue || 
+             body._planerScoring?.estimatedValue || 
+             null;
+  }
 }
 
 /**
