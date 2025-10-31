@@ -177,6 +177,7 @@ exports.handler = async (event, context) => {
       timeframe: funnelData?.timeframe || '',
       ownership: funnelData?.ownership || '',
       balconyType: funnelData?.balconyType || '',
+      balconyCount: funnelData?.balconyCount || '',
       wallMaterial: funnelData?.wallMaterial || '',
       basement: funnelData?.basement || '',
       floor: funnelData?.floor || '',
@@ -187,6 +188,8 @@ exports.handler = async (event, context) => {
       surface: funnelData?.surface || '',
       documents: funnelData?.documents ? funnelData.documents.join(', ') : '',
       additionalInfo: funnelData?.additionalInfo || '',
+      offerCount: funnelData?.offerPreferences?.count || '',
+      offerRegion: funnelData?.offerPreferences?.region || '',
       
       // Gewerbefunnel-spezifische Daten
       projekttyp: funnelData?.projekttyp || '',

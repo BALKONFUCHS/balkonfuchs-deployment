@@ -942,6 +942,20 @@ const BalkonFuchsPlanerFunnel = () => {
           value={formData.contact.zipCode}
           onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, zipCode: e.target.value } }))}
         />
+        <input
+          type="text"
+          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+          placeholder="Straße & Hausnummer"
+          value={formData.contact.address || ''}
+          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, address: e.target.value } }))}
+        />
+        <input
+          type="text"
+          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+          placeholder="Stadt"
+          value={formData.contact.city || ''}
+          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, city: e.target.value } }))}
+        />
         
         <input
           type="tel"
@@ -950,6 +964,17 @@ const BalkonFuchsPlanerFunnel = () => {
           value={formData.contact.phone}
           onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
         />
+
+        <select
+          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:border-orange-500 focus:outline-none"
+          value={formData.contact.contactPreference || ''}
+          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, contactPreference: e.target.value } }))}
+        >
+          <option value="">Kontaktpräferenz wählen</option>
+          <option value="email">E-Mail</option>
+          <option value="phone">Telefon</option>
+          <option value="both">Beides</option>
+        </select>
         
         <div className="flex items-start gap-3 text-left">
           <input
@@ -1054,6 +1079,9 @@ const BalkonFuchsPlanerFunnel = () => {
                 formData.balconyFloor === 'powder_coated' ? 'Pulverbeschichtet' : 
                 formData.balconyFloor === 'galvanized' ? 'Verzinkt' : 'Nicht gewählt'
               }</span></div>
+              {formData.additionalInfo && (
+                <div><strong className="text-orange-400">Zusätzliche Infos:</strong> <span className="text-gray-300">{formData.additionalInfo}</span></div>
+              )}
             </div>
           </div>
         </div>
@@ -1277,10 +1305,16 @@ const BalkonFuchsPlanerFunnel = () => {
 
   // Check if form is complete
   const isFormComplete = () => {
+    const wantsOffer = formData.projectStatus === 'seeking' || formData.projectStatus === 'approved';
+    const phoneRequired = wantsOffer && (formData.contact.contactPreference === 'phone' || formData.contact.contactPreference === 'both');
+    const addressRequired = wantsOffer; // Straße und Stadt bei Angebotsabsicht verpflichtend
+    const phoneOk = phoneRequired ? !!formData.contact.phone : true;
+    const addressOk = addressRequired ? (!!formData.contact.address && !!formData.contact.city && !!formData.contact.zipCode) : !!formData.contact.zipCode;
     return formData.contact.firstName && 
            formData.contact.lastName && 
            formData.contact.email && 
-           formData.contact.zipCode && 
+           addressOk &&
+           phoneOk &&
            formData.contact.privacy;
   };
 
@@ -1329,6 +1363,8 @@ const BalkonFuchsPlanerFunnel = () => {
             email: formData.contact.email,
             phone: formData.contact.phone,
             zipCode: formData.contact.zipCode,
+            address: formData.contact.address,
+            city: formData.contact.city,
             contactPreference: formData.contact.contactPreference,
             newsletter: formData.contact.newsletter,
             privacy: formData.contact.privacy
