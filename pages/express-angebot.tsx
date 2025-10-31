@@ -798,23 +798,26 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // Calculate Lead Score
-      let leadScore = LEAD_SCORING_FUNCTIONS.calculateScore('express-angebot', {
-        timeframe: formData.timeframe,
+      // Calculate Lead Score (dynamisch, basierend auf Eingaben)
+      const base = 50;
+      const timeframeScore = formData.timeframe === 'urgent' ? 30 : formData.timeframe === 'medium' ? 15 : 0;
+      const approvalScore = formData.approvalStatus === 'approved' ? 20 : formData.approvalStatus === 'pending' ? 10 : 0;
+      const budgetScore = formData.budget === 'high' ? 10 : formData.budget === 'medium' ? 5 : 0;
+      const offers = String(formData.offerPreferences?.count || '');
+      const offerScore = offers === '5' ? 5 : offers === '4' ? 3 : offers === '3' ? 1 : 0;
+      const totalScore = Math.min(100, base + timeframeScore + approvalScore + budgetScore + offerScore);
+      const category = totalScore >= 80 ? 'hot' : totalScore >= 60 ? 'warm' : 'cold';
+      const priority = totalScore >= 80 ? 'P1' : totalScore >= 60 ? 'P2' : 'P3';
+      const leadScore = {
+        totalScore,
+        category,
+        priority,
+        urgency: formData.timeframe === 'urgent' ? 'high' : formData.timeframe === 'medium' ? 'medium' : 'low',
+        complexity: 'simple',
         budget: formData.budget,
-        approvalStatus: formData.approvalStatus
-      });
-
-      // Express: Hohe Dringlichkeit -> Hot Lead
-      if (formData.timeframe === 'urgent' || formData.approvalStatus === 'approved' || urgencyLevel === 'high') {
-        leadScore = {
-          ...leadScore,
-          totalScore: Math.max(leadScore.totalScore || 0, 90),
-          category: 'hot',
-          priority: 'P1',
-          urgency: 'high'
-        };
-      }
+        timeline: formData.timeframe,
+        followUpHours: totalScore >= 80 ? 4 : totalScore >= 60 ? 12 : 24
+      };
 
       // Export to Zoho
       const response = await fetch('/.netlify/functions/send-to-zoho', {

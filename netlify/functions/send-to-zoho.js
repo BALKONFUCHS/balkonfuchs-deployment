@@ -417,6 +417,11 @@ async function refreshAccessToken(refreshToken, clientId, clientSecret) {
  */
 async function createZohoDeskTicket(combinedData, orgId, accessToken, departmentId, body, funnelData, funnelType, contact) {
   try {
+    const deliveryAddress = [
+      contact?.address || '',
+      [contact?.zipCode || combinedData.plz || '', contact?.city || combinedData.city || ''].filter(Boolean).join(' ')
+    ].filter(Boolean).join(', ').trim();
+
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
       description: combinedData.funnelSummary || formatTicketDescription(combinedData, body.priceCalculation),
@@ -440,7 +445,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_telefon': contact?.phone || combinedData.phone || '',
         'cf_mobil': contact?.phone || combinedData.phone || '',
         'cf_produkt_name': 'Balkon',
-        'cf_lieferadresse': combinedData.plz || '',
+        'cf_lieferadresse': deliveryAddress || undefined,
         'cf_lead_score': combinedData.leadScore || '',
         'cf_lead_kategorie': combinedData.category || '',
         'cf_dringlichkeit': combinedData.priority || '',
@@ -524,7 +529,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_zeitplan': combinedData.zeitplan || '',
         
         // Zusatzausstattung/Sonderleistungen
-        'cf_zusatzausstattung': combinedData.zusatzausstattung || '',
+        'cf_zusatzausstattung': combinedData.zusatzausstattung || (Array.isArray(funnelData?.extras) && funnelData.extras.length ? funnelData.extras.join(', ') : 'Keine'),
         'cf_standard_gelaender': funnelData?.extras?.includes('standard_gelaender') ? 'Ja' : 'Nein',
         'cf_premium_gelaender': funnelData?.extras?.includes('premium_gelaender') ? 'Ja' : 'Nein',
         'cf_seitenschutz': funnelData?.extras?.includes('seitenschutz') ? 'Ja' : 'Nein',
@@ -1015,6 +1020,7 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Angebotsanzahl: ${funnelData?.offerCount || 'Nicht angegeben'}
 - Einzugsgebiet: ${funnelData?.offerRegion || 'Nicht angegeben'}
 - Kontaktpräferenz: ${funnelData?.contactPreference || 'Nicht angegeben'}
+- Ausführung/Extras: ${(Array.isArray(funnelData?.extras) && funnelData.extras.length) ? funnelData.extras.join(', ') : 'Keine'}
 - Zusätzliche Infos: ${funnelData?.additionalInfo || 'Keine'}
 
 === LEAD SCORING ===
