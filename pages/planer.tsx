@@ -890,118 +890,151 @@ const BalkonFuchsPlanerFunnel = () => {
 
 
   // Render contact form (wie beim Kalkulator)
-  const renderContactForm = () => (
-    <div className="text-center">
-      <h2 className="text-3xl font-bold text-white mb-4">Deine Kontaktdaten</h2>
-      <p className="text-xl text-orange-400 bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 mb-8">
-        🎯 Fast geschafft! Wir erstellen dir einen detaillierten Projektplan.
-      </p>
-      
-      <div className="max-w-md mx-auto space-y-4">
-        <select
-          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:border-orange-500 focus:outline-none"
-          value={formData.contact.salutation}
-          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, salutation: e.target.value } }))}
-        >
-          <option value="">Anrede wählen *</option>
-          <option value="Herr">Herr</option>
-          <option value="Frau">Frau</option>
-          <option value="Divers">Divers</option>
-        </select>
+  const renderContactForm = () => {
+    const wantsOffer = formData.projectStatus === 'seeking' || formData.projectStatus === 'approved';
+    const phoneRequired = wantsOffer && (formData.contact.contactPreference === 'phone' || formData.contact.contactPreference === 'both');
+    
+    return (
+      <div className="text-center">
+        <h2 className="text-3xl font-bold text-white mb-4">Deine Kontaktdaten</h2>
+        <p className="text-xl text-orange-400 bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 mb-8">
+          🎯 Fast geschafft! Wir erstellen dir einen detaillierten Projektplan.
+        </p>
         
-        <div className="grid grid-cols-2 gap-4">
+        <div className="max-w-md mx-auto space-y-4">
+          <select
+            className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:border-orange-500 focus:outline-none"
+            value={formData.contact.salutation}
+            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, salutation: e.target.value } }))}
+            required
+          >
+            <option value="">Anrede wählen *</option>
+            <option value="Herr">Herr</option>
+            <option value="Frau">Frau</option>
+            <option value="Divers">Divers</option>
+          </select>
+          
+          <div className="grid grid-cols-2 gap-4">
+            <input
+              type="text"
+              className="p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+              placeholder="Vorname *"
+              value={formData.contact.firstName}
+              onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, firstName: e.target.value } }))}
+              required
+            />
+            <input
+              type="text"
+              className="p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+              placeholder="Nachname *"
+              value={formData.contact.lastName}
+              onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, lastName: e.target.value } }))}
+              required
+            />
+          </div>
+          
+          <input
+            type="email"
+            className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+            placeholder="E-Mail-Adresse *"
+            value={formData.contact.email}
+            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, email: e.target.value } }))}
+            required
+          />
+          
           <input
             type="text"
-            className="p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
-            placeholder="Vorname *"
-            value={formData.contact.firstName}
-            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, firstName: e.target.value } }))}
+            className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+            placeholder="Postleitzahl *"
+            maxLength={5}
+            value={formData.contact.zipCode}
+            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, zipCode: e.target.value } }))}
+            required
           />
+          
+          {/* Adressfelder nur anzeigen, wenn Angebot gewünscht */}
+          {wantsOffer && (
+            <>
+              <input
+                type="text"
+                className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+                placeholder="Straße & Hausnummer *"
+                value={formData.contact.address || ''}
+                onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, address: e.target.value } }))}
+                required
+              />
+              <input
+                type="text"
+                className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
+                placeholder="Stadt *"
+                value={formData.contact.city || ''}
+                onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, city: e.target.value } }))}
+                required
+              />
+            </>
+          )}
+          
           <input
-            type="text"
-            className="p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
-            placeholder="Nachname *"
-            value={formData.contact.lastName}
-            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, lastName: e.target.value } }))}
+            type="tel"
+            className={`w-full p-3 border rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none ${
+              phoneRequired ? 'border-orange-500 focus:border-orange-500' : 'border-gray-700 focus:border-orange-500'
+            }`}
+            placeholder={phoneRequired ? "Telefonnummer *" : "Telefonnummer (optional)"}
+            value={formData.contact.phone}
+            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
+            required={phoneRequired}
           />
-        </div>
-        
-        <input
-          type="email"
-          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
-          placeholder="E-Mail-Adresse *"
-          value={formData.contact.email}
-          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, email: e.target.value } }))}
-        />
-        
-        <input
-          type="text"
-          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
-          placeholder="Postleitzahl *"
-          maxLength={5}
-          value={formData.contact.zipCode}
-          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, zipCode: e.target.value } }))}
-        />
-        <input
-          type="text"
-          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
-          placeholder="Straße & Hausnummer"
-          value={formData.contact.address || ''}
-          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, address: e.target.value } }))}
-        />
-        <input
-          type="text"
-          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
-          placeholder="Stadt"
-          value={formData.contact.city || ''}
-          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, city: e.target.value } }))}
-        />
-        
-        <input
-          type="tel"
-          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:border-orange-500 focus:outline-none"
-          placeholder="Telefonnummer (optional)"
-          value={formData.contact.phone}
-          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
-        />
+          
+          {wantsOffer && (
+            <select
+              className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:border-orange-500 focus:outline-none"
+              value={formData.contact.contactPreference || ''}
+              onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, contactPreference: e.target.value } }))}
+            >
+              <option value="">Kontaktpräferenz wählen</option>
+              <option value="email">E-Mail</option>
+              <option value="phone">Telefon</option>
+              <option value="both">Beides</option>
+            </select>
+          )}
 
-        <select
-          className="w-full p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:border-orange-500 focus:outline-none"
-          value={formData.contact.contactPreference || ''}
-          onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, contactPreference: e.target.value } }))}
-        >
-          <option value="">Kontaktpräferenz wählen</option>
-          <option value="email">E-Mail</option>
-          <option value="phone">Telefon</option>
-          <option value="both">Beides</option>
-        </select>
-        
-        <div className="flex items-start gap-3 text-left">
-          <input
-            type="checkbox"
-            className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
-            checked={formData.contact.newsletter}
-            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, newsletter: e.target.checked } }))}
-          />
-          <label className="text-sm text-gray-300">
-            📧 Ja, ich möchte den kostenlosen Balkonbrief mit Tipps und Inspirationen erhalten
-          </label>
-        </div>
-        
-        <div className="flex items-start gap-3 text-left">
-          <input
-            type="checkbox"
-            className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
-            checked={formData.contact.privacy}
-            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, privacy: e.target.checked } }))}
-          />
-          <label className="text-sm text-gray-300">
-            ✅ Ich stimme der Verarbeitung meiner Daten gemäß <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Datenschutzerklärung</a> zu *
-          </label>
+          {/* Hinweistext wenn Telefon gewählt wurde */}
+          {phoneRequired && !formData.contact.phone && (
+            <div className="bg-orange-500/10 border border-orange-500/20 rounded-lg p-3 text-left">
+              <p className="text-sm text-orange-300">
+                ⚠️ Bitte geben Sie Ihre Telefonnummer ein, da Sie die Kontaktaufnahme per Telefon gewählt haben.
+              </p>
+            </div>
+          )}
+          
+          <div className="flex items-start gap-3 text-left">
+            <input
+              type="checkbox"
+              className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
+              checked={formData.contact.newsletter}
+              onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, newsletter: e.target.checked } }))}
+            />
+            <label className="text-sm text-gray-300">
+              📧 Ja, ich möchte den kostenlosen Balkonbrief mit Tipps und Inspirationen erhalten
+            </label>
+          </div>
+          
+          <div className="flex items-start gap-3 text-left">
+            <input
+              type="checkbox"
+              className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
+              checked={formData.contact.privacy}
+              onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, privacy: e.target.checked } }))}
+              required
+            />
+            <label className="text-sm text-gray-300">
+              ✅ Ich stimme der Verarbeitung meiner Daten gemäß <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Datenschutzerklärung</a> und <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/disclaimer" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Haftungsausschluss</a> zu *
+            </label>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Render success page mit Zusammenfassung
   const renderSuccessPage = () => {
@@ -1180,13 +1213,15 @@ const BalkonFuchsPlanerFunnel = () => {
   const Header = () => (
     <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-                      <div className="flex items-center">
-              <img 
-                    src="/images/Balkonfuchs-Logo_white.png"
-                alt="BALKONFUCHS Logo" 
-                className="h-10 w-auto"
-              />
+          <div className="flex justify-between items-center h-16">
+            <div className="flex items-center">
+              <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
+                <img 
+                  src="/images/Balkonfuchs-Logo_white.png"
+                  alt="BALKONFUCHS Logo" 
+                  className="h-10 w-auto"
+                />
+              </a>
             </div>
           
           {/* Desktop Navigation */}
@@ -1310,7 +1345,8 @@ const BalkonFuchsPlanerFunnel = () => {
     const addressRequired = wantsOffer; // Straße und Stadt bei Angebotsabsicht verpflichtend
     const phoneOk = phoneRequired ? !!formData.contact.phone : true;
     const addressOk = addressRequired ? (!!formData.contact.address && !!formData.contact.city && !!formData.contact.zipCode) : !!formData.contact.zipCode;
-    return formData.contact.firstName && 
+    return formData.contact.salutation &&
+           formData.contact.firstName && 
            formData.contact.lastName && 
            formData.contact.email && 
            addressOk &&
@@ -1663,7 +1699,7 @@ const BalkonFuchsPlanerFunnel = () => {
                     : 'bg-gray-700 text-gray-400 cursor-not-allowed'
                 }`}
               >
-                Projektplan erhalten
+                Zusammenfassung ansehen
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
