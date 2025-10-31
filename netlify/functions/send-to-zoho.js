@@ -57,6 +57,7 @@ exports.handler = async (event, context) => {
       body.contact = {
         firstName: d.contact?.firstName || '',
         lastName: d.contact?.lastName || '',
+        salutation: d.contact?.salutation || '',
         email: d.contact?.email || '',
         phone: d.contact?.phone || '',
         address: d.contact?.address || '',
@@ -75,6 +76,7 @@ exports.handler = async (event, context) => {
         balconyWidth: d.balconyDetails?.size?.width,
         balconyDepth: d.balconyDetails?.size?.depth,
         balconyCount: d.balconyDetails?.count,
+        extras: d.execution || d.extras || [],
         additionalInfo: d.additionalInfo,
         offerCount: d.offerPreferences?.count,
         offerRegion: d.offerPreferences?.region,

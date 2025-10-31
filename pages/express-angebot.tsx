@@ -14,6 +14,7 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
     timeframe: '',
     projectData: '',
     budget: '',
+    execution: [],
     balconyDetails: {
       type: '',
       size: { width: '', depth: '' },
@@ -26,6 +27,7 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
     },
     contactPreference: '',
     contact: {
+      salutation: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -42,6 +44,7 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
     'Projektdaten',
     'Budget',
     'Balkon-Details',
+    'Ausführung',
     'Zusätzliche Informationen',
     'Angebotspräferenzen',
     'Kontaktpräferenz'
@@ -166,9 +169,10 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
       case 2: return formData.projectData;
       case 3: return formData.budget;
       case 4: return formData.balconyDetails.type && formData.balconyDetails.size.width && formData.balconyDetails.size.depth;
-      case 5: return true; // Additional info is optional
-      case 6: return formData.offerPreferences.count && formData.offerPreferences.region;
-      case 7: return formData.contactPreference;
+      case 5: return true; // Ausführung optional
+      case 6: return true; // Additional info optional
+      case 7: return formData.offerPreferences.count && formData.offerPreferences.region;
+      case 8: return formData.contactPreference;
       default: return true;
     }
   };
@@ -198,6 +202,8 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
         return renderOptionsStep(question);
       case 'balcony_details':
         return renderBalconyDetailsStep();
+      case 'execution':
+        return renderExecutionStep();
       case 'additional_info':
         return renderAdditionalInfoStep();
       case 'offer_preferences':
@@ -244,6 +250,40 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
               </div>
             </div>
           </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  // Render execution step (Ausführung)
+  const renderExecutionStep = () => (
+    <div className="text-center">
+      <h2 className="text-3xl font-bold text-white mb-4">Ausführung</h2>
+      <p className="text-xl text-orange-400 bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 mb-8">
+        Welche Ausführungsdetails wünschen Sie?
+      </p>
+      <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-left">
+        {[ 
+          { id: 'standard_gelaender', label: 'Standard-Geländer' },
+          { id: 'premium_gelaender', label: 'Premium-Geländer' },
+          { id: 'seitenschutz', label: 'Seitlicher Windschutz' },
+          { id: 'bodenbelag', label: 'Bodenbelag' },
+          { id: 'ueberdachung', label: 'Überdachung' }
+        ].map(opt => (
+          <label key={opt.id} className="flex items-center gap-3 p-3 bg-gray-700/50 border border-gray-600 rounded-lg cursor-pointer">
+            <input
+              type="checkbox"
+              checked={(formData.execution || []).includes(opt.id)}
+              onChange={(e) => setFormData(prev => ({
+                ...prev,
+                execution: e.target.checked
+                  ? Array.from(new Set([...(prev.execution || []), opt.id]))
+                  : (prev.execution || []).filter(x => x !== opt.id)
+              }))}
+              className="w-5 h-5 text-orange-500 bg-gray-700 border-gray-600 rounded"
+            />
+            <span className="text-white">{opt.label}</span>
+          </label>
         ))}
       </div>
     </div>
@@ -511,6 +551,20 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
       </p>
       
       <div className="max-w-2xl mx-auto space-y-6">
+        <div className="text-left">
+          <label className="block text-white font-medium mb-2">Anrede *</label>
+          <select
+            value={formData.contact.salutation}
+            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, salutation: e.target.value } }))}
+            className="w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+            required
+          >
+            <option value="">Bitte wählen</option>
+            <option value="Herr">Herr</option>
+            <option value="Frau">Frau</option>
+            <option value="Divers">Divers</option>
+          </select>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="text-left">
             <label className="block text-white font-medium mb-2">Vorname *</label>
@@ -726,9 +780,11 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
 
   // Form validation
   const isFormComplete = () => {
-    return formData.contact.firstName && 
-           formData.contact.lastName && 
-           formData.contact.email;
+    const emailOk = !!formData.contact.email; // E-Mail immer Pflicht
+    const phoneRequired = formData.contactPreference === 'phone';
+    const phoneOk = phoneRequired ? !!formData.contact.phone : true;
+    const salutationOk = !!formData.contact.salutation;
+    return salutationOk && emailOk && phoneOk && formData.contact.firstName && formData.contact.lastName;
   };
 
   // Handle form submission
@@ -743,11 +799,22 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       // Calculate Lead Score
-      const leadScore = LEAD_SCORING_FUNCTIONS.calculateScore('express-angebot', {
+      let leadScore = LEAD_SCORING_FUNCTIONS.calculateScore('express-angebot', {
         timeframe: formData.timeframe,
         budget: formData.budget,
         approvalStatus: formData.approvalStatus
       });
+
+      // Express: Hohe Dringlichkeit -> Hot Lead
+      if (formData.timeframe === 'urgent' || formData.approvalStatus === 'approved' || urgencyLevel === 'high') {
+        leadScore = {
+          ...leadScore,
+          totalScore: Math.max(leadScore.totalScore || 0, 90),
+          category: 'hot',
+          priority: 'P1',
+          urgency: 'high'
+        };
+      }
 
       // Export to Zoho
       const response = await fetch('/.netlify/functions/send-to-zoho', {
