@@ -185,6 +185,7 @@ const BalkonFuchsPlanerFunnel = () => {
     { title: 'Oberfläche', description: 'Behandlung der Materialien' },
     { title: 'Unterlagen', description: 'Vorhandene Dokumente' },
     { title: 'Zusatzinfos', description: 'Weitere Details' },
+    { title: 'Angebotspräferenzen', description: 'Anzahl und Region der Angebote' },
     { title: 'Kontakt', description: 'Ihre Kontaktdaten' }
   ];
 
@@ -630,6 +631,13 @@ const BalkonFuchsPlanerFunnel = () => {
       subtitle: '📝 Zusätzliche Informationen helfen bei der optimalen Planung!',
       type: 'text_input',
       placeholder: 'Beschreiben Sie besondere Wünsche, Herausforderungen oder Details...'
+    },
+    {
+      id: 'offerPreferences',
+      title: 'Wie viele Angebote möchten Sie erhalten?',
+      subtitle: '📋 Wählen Sie die Anzahl und den geografischen Bereich Ihrer Angebote!',
+      type: 'offer_selection',
+      conditional: true // Nur anzeigen wenn seeking oder approved
     }
   ];
 
@@ -642,6 +650,8 @@ const BalkonFuchsPlanerFunnel = () => {
       setFormData(prev => ({ ...prev, documents: newDocuments }));
     } else if (field === 'size') {
       setFormData(prev => ({ ...prev, size: { ...prev.size, ...value } }));
+    } else if (field === 'offerPreferences') {
+      setFormData(prev => ({ ...prev, offerPreferences: { ...prev.offerPreferences, ...value } }));
     } else {
       setFormData(prev => ({ ...prev, [field]: value }));
     }
@@ -671,6 +681,12 @@ const BalkonFuchsPlanerFunnel = () => {
     const question = questions[currentStep];
     if (!question) return false;
     
+    // Überspringe offerPreferences wenn nicht seeking/approved
+    if (question.id === 'offerPreferences') {
+      const wantsOffer = formData.projectStatus === 'seeking' || formData.projectStatus === 'approved';
+      if (!wantsOffer) return true; // Kann fortfahren ohne diese Frage
+    }
+    
     switch (question.type) {
       case 'selection':
         return formData[question.id] !== '';
@@ -680,6 +696,8 @@ const BalkonFuchsPlanerFunnel = () => {
         return formData.size.width && formData.size.depth;
       case 'text_input':
         return formData[question.id]?.length >= 10;
+      case 'offer_selection':
+        return formData.offerPreferences.count && formData.offerPreferences.region;
       default:
         return true;
     }
@@ -705,6 +723,18 @@ const BalkonFuchsPlanerFunnel = () => {
       return <div className="text-center text-red-400">Fehler: Schritt nicht gefunden</div>;
     }
 
+    // Conditional questions: Überspringe offerPreferences wenn nicht seeking/approved
+    if (question.id === 'offerPreferences') {
+      const wantsOffer = formData.projectStatus === 'seeking' || formData.projectStatus === 'approved';
+      if (!wantsOffer) {
+        // Überspringe diese Frage und gehe zum nächsten Schritt
+        if (currentStep < questions.length - 1) {
+          setTimeout(() => nextStep(), 100);
+          return <div className="text-center"><p className="text-gray-400">Wird geladen...</p></div>;
+        }
+      }
+    }
+
     console.log('Rendering question:', question.title);
     switch (question.type) {
       case 'selection':
@@ -715,6 +745,8 @@ const BalkonFuchsPlanerFunnel = () => {
         return renderSizeInputStep();
       case 'text_input':
         return renderTextInputStep(question);
+      case 'offer_selection':
+        return renderOfferSelectionStep(question);
       default:
         return null;
     }
@@ -887,6 +919,87 @@ const BalkonFuchsPlanerFunnel = () => {
     </div>
   );
 
+  // Render offer preferences step
+  const renderOfferSelectionStep = (question) => (
+    <div className="text-center">
+      <h2 className="text-3xl font-bold text-white mb-4">{question.title}</h2>
+      <p className="text-xl text-orange-400 bg-orange-500/10 border border-orange-500/20 rounded-lg p-4 mb-8">
+        {question.subtitle}
+      </p>
+      
+      <div className="max-w-2xl mx-auto space-y-6">
+        {/* Anzahl Angebote */}
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-4">Anzahl der Angebote</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {['3', '4', '5', 'mehr'].map((count) => (
+              <div
+                key={count}
+                className={`p-4 border-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                  formData.offerPreferences.count === count
+                    ? 'border-orange-500 bg-orange-500/10 shadow-lg'
+                    : 'border-gray-700 bg-gray-800/50 hover:border-purple-500/50'
+                }`}
+                onClick={() => setFormData(prev => ({ 
+                  ...prev, 
+                  offerPreferences: { ...prev.offerPreferences, count } 
+                }))}
+              >
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white mb-2">
+                    {count === 'mehr' ? '5+' : count}
+                  </div>
+                  <div className="text-sm text-gray-400">
+                    {count === 'mehr' ? '5 oder mehr' : `${count} Angebote`}
+                  </div>
+                </div>
+                {formData.offerPreferences.count === count && (
+                  <Check className="w-5 h-5 text-orange-500 mx-auto mt-2" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Region */}
+        <div>
+          <h3 className="text-xl font-semibold text-white mb-4">Geografischer Bereich</h3>
+          <div className="grid gap-4">
+            {[
+              { value: 'regional', title: 'Regional', subtitle: 'Nur regionale Partner' },
+              { value: 'overregional', title: 'Überregional', subtitle: 'Landesweit verfügbar' },
+              { value: 'bundesweit', title: 'Bundesweit', subtitle: 'Deutschlandweit' }
+            ].map((region) => (
+              <div
+                key={region.value}
+                className={`p-6 border-2 rounded-xl cursor-pointer transition-all duration-300 ${
+                  formData.offerPreferences.region === region.value
+                    ? 'border-orange-500 bg-orange-500/10 shadow-lg'
+                    : 'border-gray-700 bg-gray-800/50 hover:border-purple-500/50'
+                }`}
+                onClick={() => setFormData(prev => ({ 
+                  ...prev, 
+                  offerPreferences: { ...prev.offerPreferences, region: region.value } 
+                }))}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="text-3xl">📍</div>
+                  <div className="text-left flex-1">
+                    <h4 className="text-xl font-semibold text-white">{region.title}</h4>
+                    <p className="text-gray-400">{region.subtitle}</p>
+                  </div>
+                  {formData.offerPreferences.region === region.value && (
+                    <Check className="w-6 h-6 text-orange-500" />
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
 
 
   // Render contact form (wie beim Kalkulator)
@@ -1027,9 +1140,9 @@ const BalkonFuchsPlanerFunnel = () => {
               onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, privacy: e.target.checked } }))}
               required
             />
-            <label className="text-sm text-gray-300">
-              ✅ Ich stimme der Verarbeitung meiner Daten gemäß <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Datenschutzerklärung</a> und <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/disclaimer" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Haftungsausschluss</a> zu *
-            </label>
+          <label className="text-sm text-gray-300">
+            ✅ Ich stimme der Verarbeitung meiner Daten gemäß <a href="/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Datenschutzerklärung</a> und <a href="/disclaimer/" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">Haftungsausschluss</a> zu *
+          </label>
           </div>
         </div>
       </div>

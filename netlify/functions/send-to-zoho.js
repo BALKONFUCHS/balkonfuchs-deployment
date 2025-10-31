@@ -430,6 +430,9 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
     const city = clean(contact?.city || combinedData.city);
     const cityLine = [zip, city].filter(Boolean).join(' ').trim();
     const deliveryAddress = [street, cityLine].filter(Boolean).join(', ');
+    
+    // Normalisiere funnelType für cf_lieferadresse Check
+    const normalizedFunnelType = ((funnelType || body.funnel?.type) || '').toLowerCase();
 
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
@@ -446,7 +449,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       customFields: {
         // Basis-Felder (korrekte API-Namen aus cf-Objekt)
         'cf_geschatzter_projektwerk': combinedData.calculation || '',
-        'cf_funnel_typ': funnelType || funnel?.type || 'Unbekannt',
+        'cf_funnel_typ': funnelType || body.funnel?.type || 'Unbekannt',
         'cf_begrussung': contact?.salutation || '',
         'cf_vorname': contact?.firstName || '',
         'cf_nachname': contact?.lastName || '',
@@ -454,8 +457,8 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_telefon': contact?.phone || combinedData.phone || '',
         'cf_mobil': contact?.phone || combinedData.phone || '',
         'cf_produkt_name': 'Balkon',
-        // Temporär: Lieferadresse für Express-Funnel nicht senden (Zoho-CF-Validierung)
-        ...(funnelType !== 'express-angebot' && deliveryAddress
+        // Temporär: Lieferadresse für Express-Angebot und Planer-Funnel nicht senden (Zoho-CF-Validierung)
+        ...(normalizedFunnelType !== 'express-angebot' && normalizedFunnelType !== 'planer' && deliveryAddress
           ? { 'cf_lieferadresse': deliveryAddress }
           : {}),
         'cf_lead_score': combinedData.leadScore || '',
@@ -746,7 +749,7 @@ async function createZohoCRMLead(combinedData, accessToken, body, contact, funne
  */
 function extractLeadScore(body) {
   // Priorität: Neues System > Legacy System
-  return body._kalkulatorScoring?.finalScore ||
+  let baseScore = body._kalkulatorScoring?.finalScore ||
          body._partnerScoring?.finalScore ||
          body._planerScoring?.finalScore ||
          body._bauzeitScoring?.totalScore ||
@@ -754,32 +757,61 @@ function extractLeadScore(body) {
          body._internalScoring?.leadScore ||
          body._internalScoring?.totalScore ||
          null;
+  
+  // Boost für seeking/approved Kunden im Planer-Funnel
+  if (body.funnelData?.projectStatus === 'seeking' || body.funnelData?.projectStatus === 'approved') {
+    if (baseScore && baseScore < 70) {
+      // Boost für Kunden, die bereits ein Angebot wollen
+      baseScore = Math.max(baseScore, 75);
+    }
+  }
+  
+  return baseScore;
 }
 
 /**
  * Extrahiert die Kategorie aus verschiedenen Scoring-Systemen
  */
 function extractCategory(body) {
-  return body._kalkulatorScoring?.category ||
+  let category = body._kalkulatorScoring?.category ||
          body._partnerScoring?.category ||
          body._planerScoring?.category ||
          body._bauzeitScoring?.category ||
          body._genehmigungScoring?.category ||
          body._internalScoring?.category ||
          null;
+  
+  // Upgrade für seeking/approved Kunden im Planer-Funnel
+  if (body.funnelData?.projectStatus === 'seeking' || body.funnelData?.projectStatus === 'approved') {
+    if (category && (category.toLowerCase().includes('cold') || category.toLowerCase() === 'cold lead')) {
+      category = 'Warm Lead';
+    }
+  }
+  
+  return category;
 }
 
 /**
  * Extrahiert die Priorität aus verschiedenen Scoring-Systemen
  */
 function extractPriority(body) {
-  return body._kalkulatorScoring?.priority ||
+  let priority = body._kalkulatorScoring?.priority ||
          body._partnerScoring?.status ||
          body._planerScoring?.priority ||
          body._bauzeitScoring?.priority ||
          body._genehmigungScoring?.priority ||
          body._internalScoring?.priority ||
          null;
+  
+  // Upgrade für seeking/approved Kunden im Planer-Funnel
+  if (body.funnelData?.projectStatus === 'seeking' || body.funnelData?.projectStatus === 'approved') {
+    // Wenn Priorität niedrig ist, erhöhe sie
+    if (priority && (priority.toLowerCase().includes('low') || priority === 'P3' || priority === 'P4')) {
+      priority = 'P2'; // Medium priority für seeking customers
+    }
+  }
+  
+  return priority;
 }
 
 /**
@@ -1068,12 +1100,17 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 
     case 'planer':
       const translatedPlanerData = translatePlanerData(funnelData);
+      const offerCountLabel = funnelData?.offerPreferences?.count === 'mehr' ? '5 oder mehr' : (funnelData?.offerPreferences?.count || 'Nicht angegeben');
+      const offerRegionLabel = funnelData?.offerPreferences?.region === 'regional' ? 'Regional' : 
+                               funnelData?.offerPreferences?.region === 'overregional' ? 'Überregional' :
+                               funnelData?.offerPreferences?.region === 'bundesweit' ? 'Bundesweit' : 'Nicht angegeben';
       return baseInfo + `
 === PLANER-DATEN ===
 - Projektstatus: ${translatedPlanerData.projectStatus}
 - Zeitrahmen: ${translatedPlanerData.timeframe}
 - Eigentum: ${translatedPlanerData.ownership}
 - Balkontyp: ${translatedPlanerData.balconyType}
+- Anzahl Balkone: ${funnelData?.balconyCount || 'Nicht angegeben'}
 - Wandmaterial: ${translatedPlanerData.wallMaterial}
 - Budget: ${translatedPlanerData.budget}
 - Größe: ${funnelData?.size ? `${funnelData.size.width}x${funnelData.size.depth}` : 'Nicht angegeben'}
@@ -1083,6 +1120,8 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Geländer: ${translatedPlanerData.railing}
 - Oberfläche: ${translatedPlanerData.surface}
 - Dokumente: ${funnelData?.documents ? funnelData.documents.join(', ') : 'Keine'}
+${funnelData?.offerPreferences?.count ? `- Angebotsanzahl: ${offerCountLabel}` : ''}
+${funnelData?.offerPreferences?.region ? `- Einzugsgebiet: ${offerRegionLabel}` : ''}
 - Zusätzliche Infos: ${funnelData?.additionalInfo || 'Keine'}
 
 === LEAD SCORING ===
