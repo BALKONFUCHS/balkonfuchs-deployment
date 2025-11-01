@@ -76,13 +76,13 @@ const blogPosts = [
     category: 'Planung'
   },
   {
-    id: 7,
+    id: 5,
     slug: 'balkon-foerderung-2025',
-    title: 'Balkon-Förderung 2025: Diese Zuschüsse gibt es noch',
-    teaser: 'Welche Förderungen und Zuschüsse stehen Ihnen für Ihren Balkonbau zur Verfügung? Alle aktuellen Programme im Überblick...',
-    date: '2024-12-20',
-    readTime: '6 Min.',
-    author: 'BALKONFUCHS Team',
+    title: 'Balkon-Förderung 2025: Diese Zuschüsse & KfW-Programme gibt es',
+    teaser: 'Balkon-Förderung 2025: KfW-Zuschüsse bis 20%, Länder-Programme & BAFA ✓ Alle Förderprogramme ✓ Antragsstellung ✓',
+    date: '2025-11-01',
+    readTime: '17 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
     thumbnail: '/images/blog/foerderung.jpg',
     category: 'Förderung'
   },
