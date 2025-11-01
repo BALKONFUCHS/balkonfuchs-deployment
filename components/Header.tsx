@@ -27,7 +27,6 @@ const Header = () => {
             <nav className="hidden md:flex space-x-8">
               <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
               <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
-              <a href="/express-angebot/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Angebot</a>
               <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
               <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
             </nav>
@@ -67,13 +66,6 @@ const Header = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               Planer
-            </a>
-            <a 
-              href="/express-angebot/" 
-              className="block text-gray-300 hover:text-orange-500 font-medium py-2 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Express-Angebot
             </a>
             <a 
               href="/genehmigung/" 

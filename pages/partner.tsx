@@ -1283,7 +1283,6 @@ const PartnerFunnel = () => {
               <a href="/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Startseite</a>
               <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
               <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
-              <a href="/express-angebot/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Express-Angebot</a>
               <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
               <a href="/bauzeit-planung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Bauzeit-Planung</a>
             </nav>
@@ -1315,7 +1314,6 @@ const PartnerFunnel = () => {
             <a href="/" className="block text-gray-300 font-medium">Startseite</a>
             <a href="/kalkulator/" className="block text-gray-300 font-medium">Kalkulator</a>
             <a href="/planer/" className="block text-gray-300 font-medium">Planer</a>
-            <a href="/express-angebot/" className="block text-gray-300 font-medium">Express-Angebot</a>
             <a href="/genehmigung/" className="block text-gray-300 font-medium">Genehmigungscheck</a>
             <a href="/bauzeit-planung/" className="block text-gray-300 font-medium">Bauzeit-Planung</a>
             <button 
@@ -1545,7 +1543,6 @@ const PartnerFunnel = () => {
               <ul className="space-y-2">
                 <li><a href="/kalkulator/" className="text-gray-300 hover:text-orange-400 transition-colors">Balkon-Kalkulator</a></li>
                 <li><a href="/planer/" className="text-gray-300 hover:text-orange-400 transition-colors">Balkon-Planer</a></li>
-                <li><a href="/express-angebot/" className="text-gray-300 hover:text-orange-400 transition-colors">Express-Angebot</a></li>
                 <li><a href="/genehmigung/" className="text-gray-300 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
                 <li><a href="/bauzeit-planung/" className="text-gray-300 hover:text-orange-400 transition-colors">Baustart Rechner</a></li>
                 <li><a href="/erfahrungen/" className="text-gray-300 hover:text-orange-400 transition-colors">Erfahrungen</a></li>

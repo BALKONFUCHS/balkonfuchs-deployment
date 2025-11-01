@@ -578,7 +578,6 @@ const BALKONFUCHSErfahrungenFunnel = () => {
                             <nav className="hidden md:flex space-x-8">
            <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
            <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
-           <a href="/express-angebot/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Angebot</a>
            <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
            <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
          </nav>
@@ -606,7 +605,6 @@ const BALKONFUCHSErfahrungenFunnel = () => {
             <a href="/balkon-kosten-rechner-2026/" className="block text-gray-300 font-medium">Kalkulator</a>
             <a href="/balkon-planer/" className="block text-gray-300 font-medium">Planer</a>
             <a href="/balkon-baugenehmigung-check/" className="block text-gray-300 font-medium">Genehmigung</a>
-            <a href="/angebot/" className="block text-gray-300 font-medium">Express-Angebot</a>
             <a href="/balkon-baustart-rechner/" className="block text-gray-300 font-medium">Bauzeit-Planung</a>
 
             <div className="pt-3 border-t border-gray-800">
@@ -642,7 +640,6 @@ const BALKONFUCHSErfahrungenFunnel = () => {
             <ul className="space-y-2">
               <li><a href="/kalkulator/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Kalkulator</a></li>
               <li><a href="/planer/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Planer</a></li>
-              <li><a href="/express-angebot/" className="text-gray-400 hover:text-orange-400 transition-colors">Angebot</a></li>
               <li><a href="/genehmigung/" className="text-gray-400 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
               <li><a href="/bauzeit-planung/" className="text-gray-400 hover:text-orange-400 transition-colors">Baustart Rechner</a></li>
               <li><a href="/konfigurator/" className="text-gray-400 hover:text-orange-400 transition-colors">Konfigurator</a></li>
@@ -1309,12 +1306,6 @@ const BALKONFUCHSErfahrungenFunnel = () => {
           <Search className="w-12 h-12 text-orange-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
           <h4 className="text-lg font-semibold text-white mb-2">Balkon-Planer</h4>
           <p className="text-gray-400 text-sm">Detaillierte Planung Ihres Projekts</p>
-        </a>
-        
-        <a href="/angebot/" className="bg-gray-700/50 border border-gray-600 rounded-xl p-6 hover:bg-gray-700 transition-all group">
-          <Zap className="w-12 h-12 text-orange-500 mx-auto mb-4 group-hover:scale-110 transition-transform" />
-          <h4 className="text-lg font-semibold text-white mb-2">Express-Angebot</h4>
-          <p className="text-gray-400 text-sm">Schnelles Angebot für Ihr Projekt</p>
         </a>
       </div>
 

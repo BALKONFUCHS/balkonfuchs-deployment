@@ -41,7 +41,6 @@ const About = () => {
                 <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
                 <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
                 <a href="/bauzeit-planung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Bauzeit-Planung</a>
-                <a href="/express-angebot/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Express-Angebot</a>
                 <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
               </nav>
 
@@ -67,7 +66,6 @@ const About = () => {
                 <a href="/kalkulator/" className="block text-gray-300 font-medium">Kalkulator</a>
                 <a href="/planer/" className="block text-gray-300 font-medium">Planer</a>
                 <a href="/bauzeit-planung/" className="block text-gray-300 font-medium">Bauzeit-Planung</a>
-                <a href="/express-angebot/" className="block text-gray-300 font-medium">Express-Angebot</a>
                 <a href="/genehmigung/" className="block text-gray-300 font-medium">Genehmigungscheck</a>
                 <a href="/kalkulator/" className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm mt-3 block text-center">
                   Jetzt kalkulieren
@@ -315,7 +313,6 @@ const About = () => {
                 <ul className="space-y-2">
                   <li><a href="/kalkulator/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Kalkulator</a></li>
                   <li><a href="/planer/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Planer</a></li>
-                  <li><a href="/express-angebot/" className="text-gray-400 hover:text-orange-400 transition-colors">Express-Angebot</a></li>
                   <li><a href="/genehmigung/" className="text-gray-400 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
                   <li><a href="/bauzeit-planung/" className="text-gray-400 hover:text-orange-400 transition-colors">Bauzeit-Planung</a></li>
                   <li><a href="/erfahrungen/" className="text-gray-400 hover:text-orange-400 transition-colors">Erfahrungen</a></li>

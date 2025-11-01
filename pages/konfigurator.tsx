@@ -111,18 +111,6 @@ export default function KonfiguratorComingSoon() {
                   </div>
                 </a>
 
-                <a href="/express-angebot/" className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 hover:border-orange-500/50 transition-all group">
-                  <div className="text-3xl mb-3">🚀</div>
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-orange-400 transition-colors">
-                    Express-Angebot
-                  </h3>
-                  <p className="text-gray-400 text-sm">
-                    Schnell Partner finden
-                  </p>
-                  <div className="mt-4 flex items-center text-orange-400 text-sm font-medium">
-                    Angebot holen <ArrowRight className="w-4 h-4 ml-1" />
-                  </div>
-                </a>
               </div>
             </div>
 

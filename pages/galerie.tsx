@@ -25,7 +25,6 @@ export default function GalerieComingSoon() {
          <nav className="hidden md:flex space-x-8">
            <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
            <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
-           <a href="/express-angebot/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Angebot</a>
            <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
            <a href="/balkon-konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
          </nav>
@@ -52,7 +51,6 @@ export default function GalerieComingSoon() {
           <div className="px-4 py-3 space-y-3">
             <a href="/kalkulator/" className="block text-gray-300 font-medium">Kalkulator</a>
             <a href="/planer/" className="block text-gray-300 font-medium">Planer</a>
-            <a href="/express-angebot/" className="block text-gray-300 font-medium">Angebot</a>
             <a href="/genehmigung/" className="block text-gray-300 font-medium">Genehmigungscheck</a>
             <a href="/balkon-konfigurator/" className="block text-gray-300 font-medium">Konfigurator</a>
             <a href="/partner-info-berlin/" className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm mt-3 block text-center">
@@ -83,7 +81,6 @@ export default function GalerieComingSoon() {
             <ul className="space-y-2">
               <li><a href="/kalkulator/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Kalkulator</a></li>
               <li><a href="/planer/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Planer</a></li>
-              <li><a href="/express-angebot/" className="text-gray-400 hover:text-orange-400 transition-colors">Angebot</a></li>
               <li><a href="/genehmigung/" className="text-gray-400 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
               <li><a href="/bauzeit-planung/" className="text-gray-400 hover:text-orange-400 transition-colors">Baustart Rechner</a></li>
               <li><a href="/balkon-konfigurator/" className="text-gray-400 hover:text-orange-400 transition-colors">Konfigurator</a></li>
