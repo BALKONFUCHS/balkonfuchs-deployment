@@ -149,8 +149,9 @@ export default function GewerbeFunnel() {
       <div className="min-h-screen bg-gray-900">
         <Header />
 
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-20 overflow-hidden">
+        {/* Hero Section - nur auf Schritt 1 anzeigen */}
+        {!isSubmitted && currentStep === 1 && (
+          <section className="relative bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white py-20 overflow-hidden">
           <div className="absolute inset-0 bg-black opacity-10"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
@@ -206,6 +207,7 @@ export default function GewerbeFunnel() {
             </div>
           </div>
         </section>
+        )}
 
         {/* Danksagungsseite nach Submit */}
         {isSubmitted ? (
@@ -283,8 +285,9 @@ export default function GewerbeFunnel() {
           </section>
         ) : (
           <>
-            {/* SEO-optimierte Einführung - Gewerbliche Balkon-Anfragen */}
-            <section className="py-16 bg-gray-900">
+            {/* SEO-optimierte Einführung - nur auf Schritt 1 anzeigen */}
+            {currentStep === 1 && (
+              <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -368,6 +371,7 @@ export default function GewerbeFunnel() {
             </div>
           </div>
         </section>
+            )}
 
         {/* Progress Bar */}
         <div id="formular" className="bg-gray-800 border-b border-gray-700 sticky top-16 z-40">

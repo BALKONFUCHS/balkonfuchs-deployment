@@ -165,6 +165,7 @@ exports.handler = async (event, context) => {
       }
     }
 
+    // WICHTIG: contact, funnelData etc. NACH der Normalisierung extrahieren!
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
 
     // Preisberechnung für Planer-Funnel (wenn noch nicht vorhanden)
@@ -534,10 +535,10 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       status: 'Open',
       channel: 'Web',
       contact: {
-        firstName: contact?.firstName || combinedData.name?.split(' ')[0] || 'Unbekannt',
-        lastName: contact?.lastName || combinedData.name?.split(' ').slice(1).join(' ') || (combinedData.email ? 'Kunde' : ''),
-        email: contact?.email || combinedData.email || 'kunde@balkonfuchs.de',
-        phone: contact?.phone || combinedData.phone || '',
+        firstName: (contact?.firstName || combinedData.name?.split(' ')[0] || 'Unbekannt').trim(),
+        lastName: (contact?.lastName || combinedData.name?.split(' ').slice(1).join(' ') || (combinedData.email ? 'Kunde' : '')).trim() || 'Kunde',
+        email: (contact?.email || combinedData.email || '').trim() || 'kunde@balkonfuchs.de',
+        phone: (contact?.phone || combinedData.phone || '').trim() || '',
       },
       customFields: {
         // Basis-Felder (korrekte API-Namen aus cf-Objekt)
