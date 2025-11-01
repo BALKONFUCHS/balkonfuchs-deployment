@@ -169,7 +169,6 @@
                 <nav class="hidden md:flex space-x-8">
                     <a href="balkon-kosten-rechner" class="text-gray-300 hover:text-orange-500 font-medium transition-colors">Balkon-Kosten-Rechner</a>
                     <a href="balkon-planer-online" class="text-gray-300 hover:text-orange-500 font-medium transition-colors">Balkon-Planer</a>
-                    <a href="balkon-angebot-express" class="text-gray-300 hover:text-orange-500 font-medium transition-colors">Express-Angebot</a>
                     <a href="balkon-genehmigung-check" class="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
                     <a href="balkon-baustart-planer" class="text-gray-300 hover:text-orange-500 font-medium transition-colors">Baustart-Rechner</a>
                 </nav>
@@ -312,15 +311,136 @@
                 </div>
             </div>
 
-            <!-- Funnel Grid Introduction -->
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-                    🚀 Starten Sie Ihr Balkon-Projekt
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                    Wählen Sie das passende Tool für Ihren nächsten Schritt. 
-                    Von der ersten Kostenschätzung bis zur finalen Umsetzung.
-                </p>
+            <!-- Warum BALKONFUCHS Section -->
+            <div class="mb-16">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Warum <span class="text-orange-400">BALKONFUCHS</span>?
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        Deutschlands führende Plattform für Balkon-Projekte
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-xl p-6 text-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">🎯</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Präzise Kalkulation</h4>
+                        <p class="text-gray-300">Berechnungen auf Basis aktueller Marktpreise und regionaler Besonderheiten.</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/30 rounded-xl p-6 text-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">👥</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Geprüfte Partner</h4>
+                        <p class="text-gray-300">Nur qualifizierte und zertifizierte Partner in unserem Netzwerk.</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/30 rounded-xl p-6 text-center">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white text-2xl">⚡</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-3">Schnelle Umsetzung</h4>
+                        <p class="text-gray-300">Von der Idee bis zur Umsetzung in nur wenigen Wochen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Qualification Wizard -->
+            <section class="qualification-wizard mb-16">
+                <!-- Progress Indicator -->
+                <div class="text-center mb-6">
+                    <div class="bg-gray-800/50 border border-gray-700 rounded-full px-6 py-2 inline-block">
+                        <span class="text-gray-300 text-sm">Schritt <span id="currentStep">1</span> von 2</span>
+                    </div>
+                </div>
+
+                <!-- Stufe 1: Hauptentscheidung -->
+                <div id="step1" class="wizard-step active">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Was möchtest du tun?
+                        </h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
+                        <!-- Balkon anbauen -->
+                        <button onclick="selectMainOption('anbauen')" class="bg-gray-800/50 backdrop-blur-sm border-2 border-gray-700 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group text-left">
+                            <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-white text-3xl">🏗️</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">
+                                Balkon anbauen
+                            </h3>
+                            <p class="text-gray-400 leading-relaxed">
+                                Für Neubauprojekte und neue Balkone
+                            </p>
+                        </button>
+
+                        <!-- Balkon sanieren -->
+                        <button onclick="selectMainOption('sanieren')" class="bg-gray-800/50 backdrop-blur-sm border-2 border-gray-700 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group text-left">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-white text-3xl">🔧</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">
+                                Balkon sanieren
+                            </h3>
+                            <p class="text-gray-400 leading-relaxed">
+                                Für Renovierung und Modernisierung
+                            </p>
+                        </button>
+                    </div>
+
+                    <!-- Chat Alternative -->
+                    <div class="text-center mb-4">
+                        <p class="text-gray-400 text-sm mb-3">Nicht sicher oder andere Frage?</p>
+                        <button onclick="openChatWithContext('Ich bin mir unsicher, ob ich bauen oder sanieren soll')" class="inline-flex items-center gap-2 border border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+                            <span class="text-xl">💬</span>
+                            Chat mit uns
+                        </button>
+                        <p class="text-gray-500 text-xs mt-3">Oder scrolle runter für alle Optionen</p>
+                    </div>
+                </div>
+
+                <!-- Stufe 2: Bedarfsermittlung -->
+                <div id="step2" class="wizard-step" style="display: none;">
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                            Was ist dein nächster Schritt?
+                        </h2>
+                        <button onclick="goBackToStep1()" class="text-gray-400 hover:text-orange-400 transition-colors text-sm mb-4 inline-flex items-center gap-1">
+                            ← Zurück
+                        </button>
+                    </div>
+
+                    <div id="step2Content" class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
+                        <!-- Options will be dynamically inserted here -->
+                    </div>
+
+                    <!-- Chat Alternative for Step 2 -->
+                    <div class="text-center mb-4">
+                        <p class="text-gray-400 text-sm mb-3" id="chatQuestionText">Andere Frage zum Balkonbau?</p>
+                        <button id="chatButtonStep2" onclick="openChatWithContext('Ich habe eine Frage zum Balkonanbau')" class="inline-flex items-center gap-2 border border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+                            <span class="text-xl">💬</span>
+                            Frag uns direkt
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Unsere Services im Überblick Section -->
+            <div class="mb-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                        Unsere <span class="text-orange-400">Services im Überblick</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        Wählen Sie den passenden Service für Ihr Balkon-Projekt
+                    </p>
+                </div>
             </div>
 
             <!-- Funnel Grid -->
@@ -396,45 +516,6 @@
                     <div class="flex justify-between items-center">
                         <div class="bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm font-medium border border-orange-500/20">
                             ⚡ 5 Min.
-                        </div>
-                        <div class="text-orange-400 font-semibold group-hover:text-orange-300 transition-colors">
-                            →
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Express Angebot -->
-                <a href="balkon-angebot-express" class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group">
-                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <span class="text-white text-2xl">🚀</span>
-                    </div>
-                    
-                    <h3 class="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">
-                        Express Angebot
-                    </h3>
-                    
-                    <p class="text-gray-400 mb-6 leading-relaxed">
-                        Angebote von Top-Partnern für entscheidungsreife Kunden, die direkt starten können
-                    </p>
-                    
-                    <div class="space-y-2 mb-6">
-                        <div class="flex items-center text-sm text-gray-300">
-                            <div class="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-                            Regionale Partner
-                        </div>
-                        <div class="flex items-center text-sm text-gray-300">
-                            <div class="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-                            Ausgewählte Fachbetriebe
-                        </div>
-                        <div class="flex items-center text-sm text-gray-300">
-                            <div class="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-                            Kostenlose Vermittlung
-                        </div>
-                    </div>
-                    
-                    <div class="flex justify-between items-center">
-                        <div class="bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm font-medium border border-orange-500/20">
-                            ⚡ 30 Sek.
                         </div>
                         <div class="text-orange-400 font-semibold group-hover:text-orange-300 transition-colors">
                             →
@@ -795,7 +876,6 @@
                     <ul class="space-y-2">
                         <li><a href="balkon-kosten-rechner" class="text-gray-400 hover:text-orange-400 transition-colors">Kalkulator</a></li>
                         <li><a href="balkon-planer-online" class="text-gray-400 hover:text-orange-400 transition-colors">Planer</a></li>
-                        <li><a href="balkon-angebot-express" class="text-gray-400 hover:text-orange-400 transition-colors">Express-Angebot</a></li>
                         <li><a href="balkon-genehmigung-check" class="text-gray-400 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
                         <li><a href="balkon-baustart-planer" class="text-gray-400 hover:text-orange-400 transition-colors">Baustart-Rechner</a></li>
                     </ul>
@@ -878,6 +958,194 @@
         
         // Start rotation
         setInterval(updateRotatingText, 2000);
+
+        // Qualification Wizard State Management
+        let selectedMainOption = null;
+
+        // Options for Step 2 based on main selection
+        const step2Options = {
+            anbauen: [
+                {
+                    icon: '💰',
+                    title: 'Kosten berechnen',
+                    subtitle: 'Erste Kostenschätzung in 2 Min.',
+                    url: '/balkon-kosten-rechner',
+                    gradient: 'from-orange-500 to-red-500'
+                },
+                {
+                    icon: '✅',
+                    title: 'Genehmigung prüfen',
+                    subtitle: 'Brauche ich eine Genehmigung?',
+                    url: '/balkon-genehmigung-check',
+                    gradient: 'from-red-500 to-red-600'
+                },
+                {
+                    icon: '⏱️',
+                    title: 'Bauzeit planen',
+                    subtitle: 'Wie lange dauert mein Projekt?',
+                    url: '/balkon-baustart-planer',
+                    gradient: 'from-purple-500 to-pink-500'
+                },
+                {
+                    icon: '💼',
+                    title: 'Planung & Angebot',
+                    subtitle: 'Detaillierte Planung + Angebot',
+                    subtitleSmall: 'Für fortgeschrittene Projekte',
+                    url: '/balkon-planer-online',
+                    gradient: 'from-blue-500 to-cyan-500',
+                    special: true
+                }
+            ],
+            sanieren: [
+                {
+                    icon: '💰',
+                    title: 'Sanierungskosten',
+                    subtitle: 'Was kostet meine Sanierung?',
+                    url: '/balkon-kosten-rechner?type=sanierung&source=qualification',
+                    gradient: 'from-orange-500 to-red-500'
+                },
+                {
+                    icon: '✅',
+                    title: 'Genehmigung prüfen',
+                    subtitle: 'Brauche ich eine Genehmigung?',
+                    url: '/balkon-genehmigung-check?type=sanierung&source=qualification',
+                    gradient: 'from-red-500 to-red-600'
+                },
+                {
+                    icon: '⏱️',
+                    title: 'Bauzeit Sanierung',
+                    subtitle: 'Zeitplanung für Sanierung',
+                    url: '/balkon-baustart-planer?type=sanierung&source=qualification',
+                    gradient: 'from-purple-500 to-pink-500'
+                },
+                {
+                    icon: '💼',
+                    title: 'Planung & Angebot',
+                    subtitle: 'Detaillierte Planung + Angebot',
+                    subtitleSmall: 'Für fortgeschrittene Projekte',
+                    url: '/balkon-planer-online?type=sanierung&source=qualification&intent=angebot',
+                    gradient: 'from-blue-500 to-cyan-500',
+                    special: true
+                }
+            ]
+        };
+
+        function selectMainOption(option) {
+            selectedMainOption = option;
+            document.getElementById('currentStep').textContent = '2';
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+            
+            // Update chat button text
+            const chatQuestionText = document.getElementById('chatQuestionText');
+            const chatButton = document.getElementById('chatButtonStep2');
+            
+            if (option === 'anbauen') {
+                chatQuestionText.textContent = 'Andere Frage zum Balkonbau?';
+                chatButton.setAttribute('onclick', "openChatWithContext('Ich habe eine Frage zum Balkonanbau')");
+            } else {
+                chatQuestionText.textContent = 'Andere Frage zur Balkonsanierung?';
+                chatButton.setAttribute('onclick', "openChatWithContext('Ich habe eine Frage zur Balkonsanierung')");
+            }
+
+            // Render Step 2 options
+            renderStep2Options(option);
+            
+            // Track event
+            trackEvent('qualification_step_1', option);
+            
+            // Smooth scroll to step 2
+            document.getElementById('step2').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function renderStep2Options(option) {
+            const options = step2Options[option];
+            const container = document.getElementById('step2Content');
+            container.innerHTML = '';
+
+            options.forEach((opt) => {
+                const card = document.createElement('a');
+                card.href = opt.url;
+                card.className = `bg-gray-800/50 backdrop-blur-sm border-2 ${opt.special ? 'border-orange-500/50' : 'border-gray-700'} rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group`;
+                
+                card.innerHTML = `
+                    <div class="w-16 h-16 bg-gradient-to-r ${opt.gradient} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white text-2xl">${opt.icon}</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+                        ${opt.title}
+                    </h3>
+                    <p class="text-gray-400 mb-2 leading-relaxed text-sm">
+                        ${opt.subtitle}
+                    </p>
+                    ${opt.subtitleSmall ? `<p class="text-gray-500 text-xs italic">${opt.subtitleSmall}</p>` : ''}
+                    <div class="mt-4 flex justify-end">
+                        <span class="text-orange-400 font-semibold group-hover:text-orange-300 transition-colors">→</span>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+                
+                // Track click
+                card.addEventListener('click', () => {
+                    trackEvent('qualification_step_2', opt.title.toLowerCase().replace(/\s+/g, '_'));
+                });
+            });
+        }
+
+        function goBackToStep1() {
+            document.getElementById('currentStep').textContent = '1';
+            document.getElementById('step1').style.display = 'block';
+            document.getElementById('step2').style.display = 'none';
+            selectedMainOption = null;
+            
+            // Smooth scroll to step 1
+            document.getElementById('step1').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Zoho SalesIQ Integration
+        function openChatWithContext(context) {
+            if (typeof $zoho !== 'undefined' && $zoho.salesiq) {
+                $zoho.salesiq.floatwindow.visible('show');
+                // Optional: Vordefinierte Nachricht setzen
+                if ($zoho.salesiq.visitor && $zoho.salesiq.visitor.question) {
+                    $zoho.salesiq.visitor.question(context);
+                }
+                trackEvent('chat_opened', context);
+            } else {
+                // Fallback: Email-Kontakt oder Telefon
+                console.warn('Zoho SalesIQ not available');
+                window.location.href = 'mailto:post@balkonfuchs.de?subject=' + encodeURIComponent(context);
+            }
+        }
+
+        // Analytics Tracking
+        function trackEvent(eventName, eventData) {
+            // Google Analytics 4
+            if (typeof gtag !== 'undefined') {
+                gtag('event', eventName, {
+                    'event_category': 'qualification_wizard',
+                    'event_label': eventData
+                });
+            }
+            
+            // Console log for debugging
+            console.log('Track Event:', eventName, eventData);
+        }
     </script>
+
+    <!-- Zoho SalesIQ Integration -->
+    <script type="text/javascript">
+        var $zoho = $zoho || {};
+        $zoho.salesiq = $zoho.salesiq || {
+            widgetcode: "DEIN_WIDGET_CODE_HIER", // Ersetze mit deinem Widget-Code
+            values: {},
+            ready: function() {
+                // SalesIQ ist geladen und bereit
+                console.log('Zoho SalesIQ loaded');
+            }
+        };
+    </script>
+    <script id="zsiqscript" src="https://salesiq.zoho.eu/widget" defer></script>
 </body>
 </html>
