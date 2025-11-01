@@ -94,6 +94,15 @@ const Blog = () => {
         <meta property="og:description" content="Wissenswertes zum Balkonbau, Genehmigungen, Kosten, Planung und mehr. Praktische Ratgeber von Experten." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://balkonfuchs.de/blog" />
+        <meta property="og:image" content="https://balkonfuchs.de/images/Balkonfuchs-Logo_white.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="BALKONFUCHS Blog - Ratgeber zum Balkonbau" />
+        <meta property="og:site_name" content="BALKONFUCHS" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="BALKONFUCHS Blog - Ratgeber, Tipps & News zum Balkonbau" />
+        <meta name="twitter:description" content="Wissenswertes zum Balkonbau, Genehmigungen, Kosten, Planung und mehr. Praktische Ratgeber von Experten." />
+        <meta name="twitter:image" content="https://balkonfuchs.de/images/Balkonfuchs-Logo_white.png" />
         <link rel="canonical" href="https://balkonfuchs.de/blog" />
         
         {/* Strukturierte Daten */}
@@ -157,25 +166,61 @@ const Blog = () => {
                 >
                   {/* Thumbnail */}
                   <Link href={`/blogs/post/${post.slug}`}>
-                    <a className="block relative h-48 bg-gradient-to-br from-orange-500/20 to-red-500/20 overflow-hidden">
+                    <a className="block relative h-56 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 overflow-hidden group/thumbnail">
+                      {/* Category Icon based on category */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-orange-500/20 rounded-full flex items-center justify-center">
-                          <span className="text-4xl">📝</span>
+                        <div className="relative w-24 h-24">
+                          {/* Gradient Background Circle */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-red-500/30 rounded-full blur-xl"></div>
+                          {/* Icon Container */}
+                          <div className="relative w-24 h-24 bg-gradient-to-br from-orange-500/40 to-red-500/40 rounded-full flex items-center justify-center border-2 border-orange-500/30 group-hover/thumbnail:scale-110 transition-transform duration-300">
+                            {/* Category-specific Icons */}
+                            {post.category === 'Genehmigung' && (
+                              <span className="text-5xl">🏛️</span>
+                            )}
+                            {post.category === 'Kosten' && (
+                              <span className="text-5xl">💰</span>
+                            )}
+                            {post.category === 'Planung' && (
+                              <span className="text-5xl">📐</span>
+                            )}
+                            {post.category === 'Förderung' && (
+                              <span className="text-5xl">💵</span>
+                            )}
+                            {!['Genehmigung', 'Kosten', 'Planung', 'Förderung'].includes(post.category) && (
+                              <span className="text-5xl">📝</span>
+                            )}
+                          </div>
                         </div>
                       </div>
+                      
+                      {/* Thumbnail Image (if available) - overlays the icon */}
                       {post.thumbnail && (
                         <img
                           src={post.thumbnail}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          className="absolute inset-0 w-full h-full object-cover group-hover/thumbnail:scale-105 transition-transform duration-300 opacity-90"
                           loading="lazy"
+                          onError={(e) => {
+                            // Hide image if it fails to load, show icon instead
+                            (e.target as HTMLImageElement).style.display = 'none';
+                          }}
                         />
                       )}
-                      <div className="absolute top-4 right-4">
-                        <span className="bg-orange-500/90 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                      
+                      {/* Gradient Overlay for better text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                      
+                      {/* Category Badge */}
+                      <div className="absolute top-4 right-4 z-10">
+                        <span className="bg-orange-500/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
                           {post.category}
                         </span>
                       </div>
+                      
+                      {/* Decorative Elements */}
+                      <div className="absolute top-0 left-0 w-32 h-32 bg-orange-500/5 rounded-full blur-3xl"></div>
+                      <div className="absolute bottom-0 right-0 w-32 h-32 bg-red-500/5 rounded-full blur-3xl"></div>
                     </a>
                   </Link>
 

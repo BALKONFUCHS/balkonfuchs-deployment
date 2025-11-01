@@ -478,9 +478,29 @@ const BlogPost = () => {
         <meta property="og:description" content={post.metaDescription} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={shareUrl} />
-        {post.thumbnail && <meta property="og:image" content={`https://balkonfuchs.de${post.thumbnail}`} />}
+        {post.thumbnail ? (
+          <>
+            <meta property="og:image" content={`https://balkonfuchs.de${post.thumbnail}`} />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:alt" content={post.title} />
+          </>
+        ) : (
+          <>
+            <meta property="og:image" content="https://balkonfuchs.de/images/Balkonfuchs-Logo_white.png" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:alt" content={`${post.title} | BALKONFUCHS Blog`} />
+          </>
+        )}
+        <meta property="og:site_name" content="BALKONFUCHS" />
         <meta property="article:published_time" content={post.date} />
         <meta property="article:author" content={post.author} />
+        <meta property="article:section" content={post.category} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.metaDescription} />
+        {post.thumbnail && <meta name="twitter:image" content={`https://balkonfuchs.de${post.thumbnail}`} />}
         <link rel="canonical" href={shareUrl} />
         
         {/* Strukturierte Daten - Article Schema */}
