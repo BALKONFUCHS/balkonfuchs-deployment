@@ -53,14 +53,14 @@ const ZohoSalesIQ = () => {
     window.$zoho = window.$zoho || {};
     window.$zoho.salesiq = window.$zoho.salesiq || { ready: function() {} };
 
-    // Initialisierungs-Script hinzufügen
+    // Initialisierungs-Script hinzufügen (Zoho empfiehlt es vor dem schließenden </body>)
     const initScript = document.createElement('script');
     initScript.type = 'text/javascript';
     initScript.innerHTML = 'window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}';
-    document.head.appendChild(initScript);
-    console.log('ZOHO Sales IQ initialization script added');
+    document.body.appendChild(initScript);
+    console.log('ZOHO Sales IQ initialization script added to body');
 
-    // Zweite Script: Haupt-Widget laden (exakt wie im offiziellen Zoho Code)
+    // Zweite Script: Haupt-Widget laden (Zoho empfiehlt es vor dem schließenden </body>)
     const widgetScript = document.createElement('script');
     widgetScript.id = 'zsiqscript';
     widgetScript.src = `https://salesiq.zohopublic.eu/widget?wc=${WIDGET_CODE}`;
@@ -72,13 +72,23 @@ const ZohoSalesIQ = () => {
       // Widget nach kurzer Verzögerung prüfen
       setTimeout(() => {
         try {
+          console.log('ZOHO Sales IQ full object check:', {
+            hasZoho: !!window.$zoho,
+            hasSalesIQ: !!window.$zoho?.salesiq,
+            hasFloatWindow: !!window.$zoho?.salesiq?.floatwindow,
+            hasShow: !!window.$zoho?.salesiq?.show,
+            salesIQ: window.$zoho?.salesiq
+          });
+          
+          // Versuche Widget anzuzeigen
           if (window.$zoho?.salesiq?.floatwindow) {
-            console.log('ZOHO Sales IQ: floatwindow API available');
+            console.log('ZOHO Sales IQ: floatwindow API available, attempting to show');
+            window.$zoho.salesiq.floatwindow.visible('show');
           }
           if (window.$zoho?.salesiq?.show) {
-            console.log('ZOHO Sales IQ: show API available');
+            console.log('ZOHO Sales IQ: show API available, attempting to show');
+            window.$zoho.salesiq.show();
           }
-          console.log('ZOHO Sales IQ object:', window.$zoho?.salesiq);
         } catch (error) {
           console.log('ZOHO Sales IQ widget check error:', error);
         }
@@ -91,9 +101,9 @@ const ZohoSalesIQ = () => {
       window.zohoSalesIQLoaded = false; // Reset flag on error
     };
     
-    // Script zum Head hinzufügen
-    document.head.appendChild(widgetScript);
-    console.log('ZOHO Sales IQ widget script added to head');
+    // Script zum Body hinzufügen (wie Zoho empfiehlt - vor </body>)
+    document.body.appendChild(widgetScript);
+    console.log('ZOHO Sales IQ widget script added to body');
 
     // Cleanup-Funktion
     return () => {
