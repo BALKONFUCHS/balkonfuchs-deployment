@@ -29,28 +29,28 @@ const blogPosts: Record<string, BlogPost> = {
     slug: 'balkonanbau-genehmigung-baurecht-2025',
     title: 'Balkonanbau Genehmigung: Baurecht & Vorschriften 2025 – Der komplette Leitfaden',
     content: `
-      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px;">
-        <p style="margin: 0 0 10px 0;"><strong>📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
-        <p style="margin: 0;">Dieser umfassende Leitfaden wurde vollständig überarbeitet und basiert auf:</p>
-        <ul style="margin: 10px 0 0 0; padding-left: 20px;">
-          <li>✅ <strong>Aktuelle Landesbauordnungen</strong> aller 16 Bundesländer (Stand 2025)</li>
-          <li>✅ <strong>Rechtsprechung 2024/2025</strong> zu nachträglichem Balkonanbau</li>
-          <li>✅ <strong>Praxiserfahrung</strong> aus über 850 begleiteten Balkonprojekten</li>
-          <li>✅ <strong>Expertengeprüft</strong> von Baurechtsberatern und Architekten</li>
+      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
+        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
+        <p style="margin: 0; color: #374151;">Dieser umfassende Leitfaden wurde vollständig überarbeitet und basiert auf:</p>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
+          <li style="color: #374151;">✅ <strong style="color: #111827;">Aktuelle Landesbauordnungen</strong> aller 16 Bundesländer (Stand 2025)</li>
+          <li style="color: #374151;">✅ <strong style="color: #111827;">Rechtsprechung 2024/2025</strong> zu nachträglichem Balkonanbau</li>
+          <li style="color: #374151;">✅ <strong style="color: #111827;">Praxiserfahrung</strong> aus über 850 begleiteten Balkonprojekten</li>
+          <li style="color: #374151;">✅ <strong style="color: #111827;">Expertengeprüft</strong> von Baurechtsberatern und Architekten</li>
         </ul>
       </div>
 
-      <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px;">
-        <h3 style="margin-top: 0;"><strong>In 60 Sekunden zur Antwort:</strong></h3>
-        <p>Unser kostenloser <strong>Baugenehmigungscheck</strong> berücksichtigt automatisch:</p>
-        <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
-          <li>📍 Ihre Bundesland-spezifischen Vorschriften</li>
-          <li>🏠 Ihre Projektsituation (Neubau/Bestand)</li>
-          <li>📏 Größe und Art Ihres geplanten Balkons</li>
-          <li>🗺️ Bebauungsplan-Situation</li>
+      <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
+        <h3 style="margin-top: 0; color: #111827;"><strong style="color: #111827;">In 60 Sekunden zur Antwort:</strong></h3>
+        <p style="color: #374151;">Unser kostenloser <strong style="color: #111827;">Baugenehmigungscheck</strong> berücksichtigt automatisch:</p>
+        <ul style="text-align: left; max-width: 600px; margin: 20px auto; color: #374151;">
+          <li style="color: #374151;">📍 Ihre Bundesland-spezifischen Vorschriften</li>
+          <li style="color: #374151;">🏠 Ihre Projektsituation (Neubau/Bestand)</li>
+          <li style="color: #374151;">📏 Größe und Art Ihres geplanten Balkons</li>
+          <li style="color: #374151;">🗺️ Bebauungsplan-Situation</li>
         </ul>
-        <p><strong>→ <a href="/genehmigung/" style="color: #0066cc; text-decoration: underline;">Jetzt kostenlos prüfen in 60 Sekunden</a></strong></p>
-        <p style="font-size: 0.9em; color: #666;"><em>Über 3.400 Nutzer haben ihre Genehmigungsfrage bereits geklärt.</em></p>
+        <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/genehmigung/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen in 60 Sekunden</a></strong></p>
+        <p style="font-size: 0.9em; color: #6b7280;"><em>Über 3.400 Nutzer haben ihre Genehmigungsfrage bereits geklärt.</em></p>
       </div>
 
       <h2 id="grundlagen">1. Das müssen Sie wissen: Grundlagen der Baugenehmigung</h2>
@@ -78,15 +78,15 @@ const blogPosts: Record<string, BlogPost> = {
       
       <p><strong>Ergo:</strong> Balkone bauen ohne Baugenehmigung ist zwar theoretisch wie praktisch möglich, aber <strong>kein bisschen zulässig</strong>.</p>
 
-      <div style="background: #fff3cd; padding: 20px; margin: 20px 0; border-left: 4px solid #ffc107; border-radius: 4px;">
-        <h4 style="margin-top: 0;">⚖️ Rechtslage eindeutig:</h4>
-        <p>Sie <strong>müssen</strong> den nachträglichen Balkonanbau immer im Vorfeld beim Bauamt mit einem <strong>Bauantrag anzeigen</strong>. Dann entscheiden:</p>
-        <ol>
-          <li>Die äußeren Umstände</li>
-          <li>Das zuständige Bauamt</li>
-          <li>Die Landesbauordnung Ihres Bundeslandes</li>
+      <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
+        <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚖️ Rechtslage eindeutig:</h4>
+        <p style="color: #374151;">Sie <strong style="color: #111827;">müssen</strong> den nachträglichen Balkonanbau immer im Vorfeld beim Bauamt mit einem <strong style="color: #111827;">Bauantrag anzeigen</strong>. Dann entscheiden:</p>
+        <ol style="color: #374151;">
+          <li style="color: #374151;">Die äußeren Umstände</li>
+          <li style="color: #374151;">Das zuständige Bauamt</li>
+          <li style="color: #374151;">Die Landesbauordnung Ihres Bundeslandes</li>
         </ol>
-        <p>...in welcher Form eine Genehmigung für Ihren Balkon erteilt werden kann.</p>
+        <p style="color: #374151;">...in welcher Form eine Genehmigung für Ihren Balkon erteilt werden kann.</p>
       </div>
 
       <h3>Warum sind Balkone genehmigungspflichtig?</h3>
@@ -124,11 +124,11 @@ const blogPosts: Record<string, BlogPost> = {
         </tbody>
       </table>
 
-      <div style="background: #d4edda; padding: 20px; margin: 20px 0; border-left: 4px solid #28a745; border-radius: 4px;">
-        <h4 style="margin-top: 0;">💡 Praxis-Tipp aus 850+ Projekten:</h4>
-        <p>Die häufigste Fehlannahme unserer Kunden: <em>&quot;Das ist doch nur ein kleiner Balkon von 4m²...&quot;</em></p>
-        <p><strong>Tatsache:</strong> Die Größe spielt für die <strong>Grundsatzfrage der Genehmigungspflicht KEINE Rolle</strong>. Auch ein 1m² kleiner Balkon ist genehmigungspflichtig, wenn er nachträglich angebaut wird.</p>
-        <p>Was die Größe beeinflusst: Das <strong>Verfahren</strong> (vereinfacht vs. regulär) und die <strong>Abstandsflächen</strong>.</p>
+      <div style="background: #ecfdf5; padding: 20px; margin: 20px 0; border-left: 4px solid #10b981; border-radius: 4px; color: #111827;">
+        <h4 style="margin-top: 0; color: #065f46; font-weight: bold;">💡 Praxis-Tipp aus 850+ Projekten:</h4>
+        <p style="color: #374151;">Die häufigste Fehlannahme unserer Kunden: <em style="color: #374151;">&quot;Das ist doch nur ein kleiner Balkon von 4m²...&quot;</em></p>
+        <p style="color: #374151;"><strong style="color: #111827;">Tatsache:</strong> Die Größe spielt für die <strong style="color: #111827;">Grundsatzfrage der Genehmigungspflicht KEINE Rolle</strong>. Auch ein 1m² kleiner Balkon ist genehmigungspflichtig, wenn er nachträglich angebaut wird.</p>
+        <p style="color: #374151;">Was die Größe beeinflusst: Das <strong style="color: #111827;">Verfahren</strong> (vereinfacht vs. regulär) und die <strong style="color: #111827;">Abstandsflächen</strong>.</p>
       </div>
 
       <h2 id="genehmigungsfreistellung">2. Genehmigungsfreistellung: Was bedeutet das wirklich?</h2>
@@ -148,18 +148,18 @@ const blogPosts: Record<string, BlogPost> = {
       
       <p><strong>&quot;Das hat mir ein Architekt gesagt.&quot;</strong></p>
       
-      <div style="background: #f8d7da; padding: 20px; margin: 20px 0; border-left: 4px solid #dc3545; border-radius: 4px;">
-        <h4 style="margin-top: 0;">🚨 KRITISCH:</h4>
-        <p><strong>Genehmigungsfreistellung ≠ Keine Genehmigung nötig</strong></p>
-        <p>Eine Genehmigungsfreistellung bedeutet:</p>
-        <p><strong>❌ NICHT:</strong> Sie können ohne Bauamt einfach bauen<br/>
-        <strong>❌ NICHT:</strong> Sie brauchen keine Unterlagen<br/>
-        <strong>❌ NICHT:</strong> Sie sind von allen Vorschriften befreit</p>
-        <p><strong>✅ SONDERN:</strong> Ein vereinfachtes Verfahren mit weniger Prüfung durch das Bauamt, ABER:</p>
-        <ul>
-          <li>Sie müssen ALLE Unterlagen einreichen</li>
-          <li>Sie tragen die VOLLE Verantwortung</li>
-          <li>ALLE Bauvorschriften müssen eingehalten werden</li>
+      <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
+        <h4 style="margin-top: 0; color: #991b1b; font-weight: bold; font-size: 1.125rem;">🚨 KRITISCH:</h4>
+        <p style="color: #111827;"><strong style="color: #111827;">Genehmigungsfreistellung ≠ Keine Genehmigung nötig</strong></p>
+        <p style="color: #374151;">Eine Genehmigungsfreistellung bedeutet:</p>
+        <p style="color: #374151;"><strong style="color: #991b1b;">❌ NICHT:</strong> Sie können ohne Bauamt einfach bauen<br/>
+        <strong style="color: #991b1b;">❌ NICHT:</strong> Sie brauchen keine Unterlagen<br/>
+        <strong style="color: #991b1b;">❌ NICHT:</strong> Sie sind von allen Vorschriften befreit</p>
+        <p style="color: #374151;"><strong style="color: #065f46;">✅ SONDERN:</strong> Ein vereinfachtes Verfahren mit weniger Prüfung durch das Bauamt, ABER:</p>
+        <ul style="color: #374151;">
+          <li style="color: #374151;">Sie müssen ALLE Unterlagen einreichen</li>
+          <li style="color: #374151;">Sie tragen die VOLLE Verantwortung</li>
+          <li style="color: #374151;">ALLE Bauvorschriften müssen eingehalten werden</li>
         </ul>
       </div>
 
@@ -230,10 +230,10 @@ const blogPosts: Record<string, BlogPost> = {
         <li>Ausführliche FAQ-Sektion</li>
       </ul>
 
-      <div style="background: #e3f2fd; padding: 20px; margin: 30px 0; text-align: center; border-radius: 8px;">
-        <h3>🔍 Brauchen Sie Hilfe bei der Genehmigung?</h3>
-        <p>Unser <a href="/genehmigung/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> kennt die Vorschriften ALLER 16 Bundesländer und gibt Ihnen eine präzise Einschätzung für Ihr Projekt.</p>
-        <p><strong>→ <a href="/genehmigung/" style="color: #0066cc; text-decoration: underline;">Jetzt kostenlos prüfen</a></strong></p>
+      <div style="background: #eff6ff; padding: 20px; margin: 30px 0; text-align: center; border-radius: 8px; color: #111827; border: 2px solid #3b82f6;">
+        <h3 style="color: #1e40af; font-weight: bold;">🔍 Brauchen Sie Hilfe bei der Genehmigung?</h3>
+        <p style="color: #374151;">Unser <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> kennt die Vorschriften ALLER 16 Bundesländer und gibt Ihnen eine präzise Einschätzung für Ihr Projekt.</p>
+        <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen</a></strong></p>
       </div>
     `,
     date: '2025-01-15',
