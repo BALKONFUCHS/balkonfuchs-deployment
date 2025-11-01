@@ -18,7 +18,8 @@ const blogPosts = [
     readTime: '25 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     thumbnail: '/images/blog/genehmigung-checkliste.jpg',
-    category: 'Genehmigung'
+    category: 'Genehmigung',
+    published: true
   },
   {
     id: 2,
@@ -29,7 +30,8 @@ const blogPosts = [
     readTime: '18 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     thumbnail: '/images/blog/balkon-groesse.jpg',
-    category: 'Genehmigung'
+    category: 'Genehmigung',
+    published: true
   },
   {
     id: 3,
@@ -40,7 +42,8 @@ const blogPosts = [
     readTime: '16 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     thumbnail: '/images/blog/bauantrag-checkliste.jpg',
-    category: 'Genehmigung'
+    category: 'Genehmigung',
+    published: true
   },
   {
     id: 4,
@@ -51,7 +54,8 @@ const blogPosts = [
     readTime: '8 Min.',
     author: 'BALKONFUCHS Team',
     thumbnail: '/images/blog/genehmigung-checkliste-2.jpg',
-    category: 'Genehmigung'
+    category: 'Genehmigung',
+    published: false
   },
   {
     id: 5,
@@ -62,7 +66,8 @@ const blogPosts = [
     readTime: '12 Min.',
     author: 'BALKONFUCHS Team',
     thumbnail: '/images/blog/balkon-kosten.jpg',
-    category: 'Kosten'
+    category: 'Kosten',
+    published: false
   },
   {
     id: 6,
@@ -73,7 +78,8 @@ const blogPosts = [
     readTime: '10 Min.',
     author: 'BALKONFUCHS Team',
     thumbnail: '/images/blog/balkon-typen.jpg',
-    category: 'Planung'
+    category: 'Planung',
+    published: false
   },
   {
     id: 5,
@@ -84,7 +90,8 @@ const blogPosts = [
     readTime: '17 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     thumbnail: '/images/blog/foerderung.jpg',
-    category: 'Förderung'
+    category: 'Förderung',
+    published: true
   },
   {
     id: 8,
@@ -95,7 +102,8 @@ const blogPosts = [
     readTime: '7 Min.',
     author: 'BALKONFUCHS Team',
     thumbnail: '/images/blog/bauzeit.jpg',
-    category: 'Planung'
+    category: 'Planung',
+    published: false
   }
 ];
 
@@ -183,7 +191,7 @@ const Blog = () => {
         <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...blogPosts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => (
+              {[...blogPosts].filter(post => post.published !== false).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => (
                 <article
                   key={post.id}
                   className="bg-gray-800/50 border border-gray-700 rounded-2xl overflow-hidden hover:border-orange-500/50 transition-all duration-300 group"

@@ -20,6 +20,7 @@ interface BlogPost {
   thumbnail?: string;
   category: string;
   metaDescription: string;
+  published: boolean; // false = ausgeblendet in Übersicht, aber per URL erreichbar
 }
 
 // Blog-Artikel Daten (später aus CMS oder JSON-Datei)
@@ -1204,7 +1205,8 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '25 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     category: 'Genehmigung',
-    metaDescription: 'Balkon nachträglich anbauen: Alles zu Baugenehmigung, Baurecht & Kosten ✓ 16 Bundesländer ✓ Genehmigungsfreistellung erklärt ✓ Aus 850+ Projekten'
+    metaDescription: 'Balkon nachträglich anbauen: Alles zu Baugenehmigung, Baurecht & Kosten ✓ 16 Bundesländer ✓ Genehmigungsfreistellung erklärt ✓ Aus 850+ Projekten',
+    published: true
   },
   'balkon-groesse-ohne-genehmigung': {
     id: 2,
@@ -1215,6 +1217,7 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '18 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     metaDescription: 'Wie groß darf Ihr Balkon ohne Genehmigung sein? Alle 16 Bundesländer im Vergleich + Genehmigungscheck in 60 Sek. ✓ Stand 2025',
+    published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
         <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
@@ -1816,6 +1819,7 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '16 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     metaDescription: 'Balkon Bauantrag 2025: Alle Unterlagen, Schritt-für-Schritt Anleitung & Kosten ✓ Bundesländer-spezifisch ✓ Checkliste zum Download',
+    published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
         <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
@@ -2478,7 +2482,8 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '8 Min.',
     author: 'BALKONFUCHS Team',
     category: 'Genehmigung',
-    metaDescription: 'Erfahren Sie, wann Sie eine Genehmigung für Ihren Balkon benötigen und welche Dokumente Sie einreichen müssen. Schritt-für-Schritt Anleitung für 2025.'
+    metaDescription: 'Erfahren Sie, wann Sie eine Genehmigung für Ihren Balkon benötigen und welche Dokumente Sie einreichen müssen. Schritt-für-Schritt Anleitung für 2025.',
+    published: false
   },
   'balkon-kosten-faktoren': {
     id: 3,
@@ -2507,7 +2512,8 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '12 Min.',
     author: 'BALKONFUCHS Team',
     category: 'Kosten',
-    metaDescription: 'Entdecken Sie die wichtigsten Faktoren, die den Preis Ihres Balkon-Projekts beeinflussen. Von Materialkosten bis hin zu regionalen Unterschieden.'
+    metaDescription: 'Entdecken Sie die wichtigsten Faktoren, die den Preis Ihres Balkon-Projekts beeinflussen. Von Materialkosten bis hin zu regionalen Unterschieden.',
+    published: false
   },
   'balkon-typen-vor-und-nachteile': {
     id: 4,
@@ -2549,7 +2555,8 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '10 Min.',
     author: 'BALKONFUCHS Team',
     category: 'Planung',
-    metaDescription: 'Welcher Balkon-Typ ist der richtige für Ihr Haus? Wir vergleichen alle Varianten und zeigen Ihnen Vor- und Nachteile sowie Preisspannen.'
+    metaDescription: 'Welcher Balkon-Typ ist der richtige für Ihr Haus? Wir vergleichen alle Varianten und zeigen Ihnen Vor- und Nachteile sowie Preisspannen.',
+    published: false
   },
   'balkon-foerderung-2025': {
     id: 5,
@@ -2560,6 +2567,7 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '17 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     metaDescription: 'Balkon-Förderung 2025: KfW-Zuschüsse bis 20%, Länder-Programme & BAFA ✓ Alle Förderprogramme ✓ Antragsstellung ✓',
+    published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
         <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
@@ -3116,7 +3124,8 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '7 Min.',
     author: 'BALKONFUCHS Team',
     category: 'Planung',
-    metaDescription: 'Von der Genehmigung bis zur Fertigstellung: Erfahren Sie, wie lange Ihr Balkon-Projekt wirklich dauert und wie Sie die Bauzeit optimal planen.'
+    metaDescription: 'Von der Genehmigung bis zur Fertigstellung: Erfahren Sie, wie lange Ihr Balkon-Projekt wirklich dauert und wie Sie die Bauzeit optimal planen.',
+    published: false
   }
 };
 
