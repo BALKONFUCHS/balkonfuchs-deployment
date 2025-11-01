@@ -3556,7 +3556,7 @@ const BlogPost = () => {
 
               {/* Sidebar */}
               <aside className="lg:col-span-1">
-                <div className="sticky top-20 space-y-8">
+                <div className="space-y-8">
                   {/* Quick Links */}
                   <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
