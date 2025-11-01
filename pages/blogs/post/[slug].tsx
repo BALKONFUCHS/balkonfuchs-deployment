@@ -165,12 +165,12 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Die 6 Voraussetzungen für Genehmigungsfreistellung:</h3>
 
-      <p style="color: #e5e7eb;">Damit Ihr Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong style="color: #ffffff;">ALLE</strong> dieser Punkte erfüllt sein:</p>
+      <p style="color: #e5e7eb;">Damit dein Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong style="color: #ffffff;">ALLE</strong> dieser Punkte erfüllt sein:</p>
 
       <h4 style="color: #f3f4f6;">✅ 1. Gültiger Bebauungsplan</h4>
-      <p style="color: #e5e7eb;">Ihr Grundstück muss sich innerhalb eines Gebietes mit einem <strong style="color: #ffffff;">rechtskräftigen Bebauungsplan</strong> befinden.</p>
+      <p style="color: #e5e7eb;">Dein Grundstück muss sich innerhalb eines Gebietes mit einem <strong style="color: #ffffff;">rechtskräftigen Bebauungsplan</strong> befinden.</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">So prüfen Sie das:</strong></p>
+      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">So prüfst du das:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Kontakt zum örtlichen Bauamt</li>
         <li style="color: #e5e7eb;">Fragen nach &quot;Bebauungsplan-Geltungsbereich&quot;</li>
@@ -178,7 +178,7 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h4 style="color: #f3f4f6;">✅ 2. Gebäudeklasse 1-3 (manchmal 4)</h4>
-      <p style="color: #e5e7eb;">Ihr Gebäude muss in die richtige Gebäudeklasse fallen:</p>
+      <p style="color: #e5e7eb;">Dein Gebäude muss in die richtige Gebäudeklasse fallen:</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
