@@ -66,6 +66,11 @@ export default function GewerbeFunnel() {
     return () => clearInterval(interval);
   }, []);
 
+  // Scroll to top when step changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentStep]);
+
   const handleInputChange = (field: string, value: any) => {
     setFormData(prev => ({
       ...prev,
@@ -395,7 +400,10 @@ export default function GewerbeFunnel() {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <button
-                      onClick={() => handleInputChange('projekttyp', 'neubau')}
+                      onClick={() => {
+                        handleInputChange('projekttyp', 'neubau');
+                        setTimeout(() => nextStep(), 300);
+                      }}
                       className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
                         formData.projekttyp === 'neubau' 
                           ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50' 
@@ -408,7 +416,10 @@ export default function GewerbeFunnel() {
                     </button>
 
                     <button
-                      onClick={() => handleInputChange('projekttyp', 'sanierung')}
+                      onClick={() => {
+                        handleInputChange('projekttyp', 'sanierung');
+                        setTimeout(() => nextStep(), 300);
+                      }}
                       className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
                         formData.projekttyp === 'sanierung' 
                           ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50' 
@@ -421,7 +432,10 @@ export default function GewerbeFunnel() {
                     </button>
 
                     <button
-                      onClick={() => handleInputChange('projekttyp', 'wohnbaugesellschaft')}
+                      onClick={() => {
+                        handleInputChange('projekttyp', 'wohnbaugesellschaft');
+                        setTimeout(() => nextStep(), 300);
+                      }}
                       className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
                         formData.projekttyp === 'wohnbaugesellschaft' 
                           ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50' 
@@ -434,7 +448,10 @@ export default function GewerbeFunnel() {
                     </button>
 
                     <button
-                      onClick={() => handleInputChange('projekttyp', 'bautraeger')}
+                      onClick={() => {
+                        handleInputChange('projekttyp', 'bautraeger');
+                        setTimeout(() => nextStep(), 300);
+                      }}
                       className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
                         formData.projekttyp === 'bautraeger' 
                           ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50' 
@@ -511,7 +528,13 @@ export default function GewerbeFunnel() {
                       {['1-10', '11-25', '26-50', '51-100', '101-200', '201-500', '500+'].map((range) => (
                         <button
                           key={range}
-                          onClick={() => handleInputChange('anzahlEinheiten', range)}
+                          onClick={() => {
+                            handleInputChange('anzahlEinheiten', range);
+                            // Auto-advance if all required fields are filled
+                            if (formData.projektname && formData.balkontyp.length > 0) {
+                              setTimeout(() => nextStep(), 300);
+                            }
+                          }}
                           className={`p-4 rounded-lg border-2 font-semibold transition-all duration-300 ${
                             formData.anzahlEinheiten === range
                               ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50 text-blue-400'

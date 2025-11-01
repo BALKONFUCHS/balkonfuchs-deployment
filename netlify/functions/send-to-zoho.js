@@ -91,6 +91,80 @@ exports.handler = async (event, context) => {
       }
     }
 
+    // Gewerbe-Funnel: eingehendes Payload in Standardform normalisieren
+    if (body.funnelData && body.funnelData.funnelType === 'gewerbe' && body.funnelData.contact) {
+      const gw = body.funnelData;
+      // Extract contact from nested structure
+      if (gw.contact) {
+        body.contact = {
+          firstName: gw.contact.firstName || '',
+          lastName: gw.contact.lastName || '',
+          salutation: gw.contact.salutation || '',
+          email: gw.contact.email || '',
+          phone: gw.contact.phone || '',
+          address: gw.contact.address || '',
+          city: gw.contact.city || '',
+          zipCode: gw.contact.zipCode || ''
+        };
+      }
+      // Extract funnelData from nested structure (always overwrite if nested)
+      if (gw.funnelData) {
+        body.funnelData = {
+          projekttyp: gw.funnelData.projekttyp || '',
+          projektname: gw.funnelData.projektname || '',
+          projektort: gw.funnelData.projektort || '',
+          projektadresse: gw.funnelData.projektadresse || '',
+          anzahlEinheiten: gw.funnelData.anzahlEinheiten || '',
+          balkontyp: gw.funnelData.balkontyp || [],
+          zeitrahmen: gw.funnelData.zeitrahmen || '',
+          budgetrahmen: gw.funnelData.budgetrahmen || '',
+          budgetFreitext: gw.funnelData.budgetFreitext || '',
+          startMonat: gw.funnelData.startMonat || '',
+          startJahr: gw.funnelData.startJahr || '',
+          endMonat: gw.funnelData.endMonat || '',
+          endJahr: gw.funnelData.endJahr || '',
+          firmenname: gw.funnelData.firmenname || '',
+          ansprechpartner: gw.funnelData.ansprechpartner || '',
+          position: gw.funnelData.position || '',
+          projektleiter: gw.funnelData.projektleiter || '',
+          nachricht: gw.funnelData.nachricht || ''
+        };
+      }
+      // Extract company from nested structure
+      if (gw.company) {
+        body.company = {
+          name: gw.company.name || '',
+          legalForm: gw.company.legalForm || '',
+          employeeCount: gw.company.employeeCount || '',
+          website: gw.company.website || '',
+          address: gw.company.address || '',
+          zipCode: gw.company.zipCode || '',
+          city: gw.company.city || ''
+        };
+      }
+      // Set funnel metadata
+      if (!body.funnel) {
+        body.funnel = { type: 'gewerbe', name: 'Gewerbeprojekte Funnel' };
+      }
+      if (!body.funnelType) {
+        body.funnelType = 'gewerbe';
+      }
+      if (!body.source) {
+        body.source = 'BALKONFUCHS Gewerbeprojekte';
+      }
+      // Extract leadScore and estimatedPrice if available
+      if (gw.leadScore) {
+        body.leadScore = gw.leadScore;
+      }
+      if (gw.estimatedPrice !== undefined) {
+        body.estimatedPrice = gw.estimatedPrice;
+      }
+      // Ensure additional message is set
+      if (!body.message && gw.funnelData?.nachricht) {
+        body.message = String(gw.funnelData.nachricht);
+      }
+    }
+
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
 
     // Preisberechnung für Planer-Funnel (wenn noch nicht vorhanden)
@@ -460,10 +534,10 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
       status: 'Open',
       channel: 'Web',
       contact: {
-        firstName: combinedData.name?.split(' ')[0] || 'Unbekannt',
-        lastName: combinedData.name?.split(' ').slice(1).join(' ') || '',
-        email: combinedData.email,
-        phone: combinedData.phone || '',
+        firstName: contact?.firstName || combinedData.name?.split(' ')[0] || 'Unbekannt',
+        lastName: contact?.lastName || combinedData.name?.split(' ').slice(1).join(' ') || (combinedData.email ? 'Kunde' : ''),
+        email: contact?.email || combinedData.email || 'kunde@balkonfuchs.de',
+        phone: contact?.phone || combinedData.phone || '',
       },
       customFields: {
         // Basis-Felder (korrekte API-Namen aus cf-Objekt)
