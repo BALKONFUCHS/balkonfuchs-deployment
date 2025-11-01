@@ -19,17 +19,28 @@ const ZohoSalesIQ = () => {
     // Nur auf dem Client ausführen
     if (typeof window === 'undefined') return;
 
-    // Prüfen ob wir auf localhost sind (dort nicht laden)
-    const isLocalhost = window.location.hostname === 'localhost' || 
-                       window.location.hostname === '127.0.0.1' ||
-                       window.location.hostname.includes('local');
+    // Prüfen ob wir auf der registrierten Domain sind
+    // Widget läuft nur auf balkonfuchs.de (Domain muss in Zoho SalesIQ Dashboard registriert sein)
+    const hostname = window.location.hostname;
+    const isRegisteredDomain = hostname === 'balkonfuchs.de' || 
+                               hostname === 'www.balkonfuchs.de';
+    
+    // Localhost-Prüfung
+    const isLocalhost = hostname === 'localhost' || 
+                       hostname === '127.0.0.1' ||
+                       hostname.includes('local');
     
     if (isLocalhost) {
       console.log('ZOHO SalesIQ skipped on localhost - will load on production domain');
       return;
     }
+    
+    if (!isRegisteredDomain) {
+      console.log(`ZOHO SalesIQ skipped on ${hostname} - only loads on balkonfuchs.de (must be registered in Zoho SalesIQ Dashboard)`);
+      return;
+    }
 
-    console.log('ZOHO SalesIQ loading on domain:', window.location.hostname);
+    console.log('ZOHO SalesIQ loading on registered domain:', hostname);
 
     // Prüfen ob das Widget bereits geladen ist
     if (document.getElementById('zsiqscript')) {
