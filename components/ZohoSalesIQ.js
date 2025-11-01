@@ -3,9 +3,17 @@
  * 
  * Diese Komponente integriert das ZOHO Sales IQ Chat-Widget
  * auf allen Seiten der BALKONFUCHS-Website
+ * 
+ * WICHTIG: Bitte den korrekten Widget-Code in der Variable WIDGET_CODE unten eintragen!
+ * Den Widget-Code findest du in deinem Zoho SalesIQ Dashboard unter:
+ * Settings → Widget Setup → Website Integration → Embed Code
  */
 
 import { useEffect } from 'react';
+
+// HIER DEN KORREKTEN WIDGET-CODE EINTRAGEN
+// Format: siqXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (lange Zeichenfolge)
+const WIDGET_CODE = 'siq173575c67f7c85d984f3967818623fb6b9c294d4867f05';
 
 const ZohoSalesIQ = () => {
   useEffect(() => {
@@ -30,117 +38,82 @@ const ZohoSalesIQ = () => {
       return;
     }
 
-      // Warten bis das DOM vollständig geladen ist
-      const loadSalesIQ = () => {
-        // Prüfen ob das Script bereits geladen ist
-        if (document.getElementById('zsiqscript') || window.$zoho?.salesiq?.widgetcode) {
-          console.log('ZOHO Sales IQ already loaded');
-          return;
-        }
+    // Widget-Code validieren
+    if (!WIDGET_CODE || !WIDGET_CODE.startsWith('siq')) {
+      console.error('ZOHO SalesIQ: Invalid widget code! Please update WIDGET_CODE in ZohoSalesIQ.js');
+      return;
+    }
 
-        // Globalen Flag setzen
-        window.zohoSalesIQLoaded = true;
+    const loadSalesIQ = () => {
+      // Prüfen ob das Script bereits geladen ist
+      if (document.getElementById('zsiqscript') || window.$zoho?.salesiq?.widgetcode) {
+        console.log('ZOHO Sales IQ already loaded');
+        return;
+      }
 
-        console.log('Loading ZOHO Sales IQ widget...');
+      // Globalen Flag setzen
+      window.zohoSalesIQLoaded = true;
 
-        // ZOHO Sales IQ Konfiguration - Standard Widget Integration
-        window.$zoho = window.$zoho || {};
-        window.$zoho.salesiq = window.$zoho.salesiq || {
-          widgetcode: 'siq173575c67f7c85d984f3967818623fb6b9c294d4867f05',
-          values: {},
-          ready: function() {
-            console.log('ZOHO Sales IQ widget ready');
-            
-            // Widget-Konfiguration
-            try {
-              if (window.$zoho?.salesiq?.floatwindow) {
-                window.$zoho.salesiq.floatwindow.visible('show');
-                console.log('ZOHO Sales IQ floatwindow shown');
-              }
-              
-              // Alternative Widget-API
-              if (window.$zoho?.salesiq?.widget) {
-                window.$zoho.salesiq.widget.set({
-                  position: 'bottomright',
-                  theme: 'light',
-                  showOnLoad: true,
-                  hideOffline: false
-                });
-                console.log('ZOHO Sales IQ widget configured');
-              }
-            } catch (error) {
-              console.log('ZOHO Sales IQ widget configuration error:', error);
-            }
-            
-            // Widget explizit anzeigen nach kurzer Verzögerung
-            setTimeout(() => {
-              try {
-                if (window.$zoho?.salesiq?.floatwindow) {
-                  window.$zoho.salesiq.floatwindow.visible('show');
-                  console.log('ZOHO Sales IQ widget shown via floatwindow');
-                }
-                if (window.$zoho?.salesiq?.show) {
-                  window.$zoho.salesiq.show();
-                  console.log('ZOHO Sales IQ widget shown');
-                }
-              } catch (error) {
-                console.log('ZOHO Sales IQ widget show error:', error);
-              }
-            }, 1000);
-          }
-        };
+      console.log('Loading ZOHO Sales IQ widget with code:', WIDGET_CODE);
 
-        // Hauptscript laden - Standard Zoho SalesIQ Integration
-        const script = document.createElement('script');
-        script.id = 'zsiqscript';
-        script.src = 'https://salesiq.zohopublic.eu/widget?wc=siq173575c67f7c85d984f3967818623fb6b9c294d4867f05';
-        script.defer = true;
-        script.async = true;
-        
-        script.onload = () => {
-          console.log('ZOHO Sales IQ script loaded successfully');
-        };
-        
-        script.onerror = (error) => {
-          console.error('Error loading ZOHO Sales IQ script:', error);
-        };
-        
-        // Script zum Head hinzufügen
-        document.head.appendChild(script);
-
-        // Fallback: Widget nach 3 Sekunden nochmal prüfen und anzeigen
-        setTimeout(() => {
+      // ZOHO Sales IQ Standard Integration - wie im Zoho Dashboard empfohlen
+      window.$zoho = window.$zoho || {};
+      window.$zoho.salesiq = window.$zoho.salesiq || {
+        widgetcode: WIDGET_CODE,
+        values: {},
+        ready: function() {
+          console.log('ZOHO Sales IQ widget ready');
+          
+          // Widget automatisch anzeigen (Zoho Standard-Verhalten)
           try {
+            // Standard-Zoho Methode
             if (window.$zoho?.salesiq?.floatwindow) {
               window.$zoho.salesiq.floatwindow.visible('show');
-              console.log('ZOHO Sales IQ widget shown in fallback');
-            } else if (window.$zoho?.salesiq?.show) {
-              window.$zoho.salesiq.show();
-              console.log('ZOHO Sales IQ widget shown in fallback (alternative)');
-            } else if (!document.getElementById('zsiqscript')) {
-              // Script nochmal laden falls es fehlgeschlagen ist
-              console.log('ZOHO Sales IQ fallback: reloading script...');
-              const fallbackScript = document.createElement('script');
-              fallbackScript.id = 'zsiqscript-fallback';
-              fallbackScript.src = 'https://salesiq.zohopublic.eu/widget?wc=siq173575c67f7c85d984f3967818623fb6b9c294d4867f05';
-              fallbackScript.defer = true;
-              fallbackScript.async = true;
-              document.head.appendChild(fallbackScript);
-              console.log('ZOHO Sales IQ fallback script loaded');
+              console.log('ZOHO Sales IQ floatwindow shown');
             }
           } catch (error) {
-            console.log('ZOHO Sales IQ fallback error:', error);
+            console.log('ZOHO Sales IQ widget configuration error:', error);
           }
-        }, 3000);
+        }
       };
 
-      // Widget laden sofort (keine Verzögerung mehr)
-      loadSalesIQ();
+      // Standard Zoho SalesIQ Script laden
+      const script = document.createElement('script');
+      script.id = 'zsiqscript';
+      script.src = `https://salesiq.zohopublic.eu/widget?wc=${WIDGET_CODE}`;
+      script.defer = true;
+      script.async = true;
+      
+      script.onload = () => {
+        console.log('ZOHO Sales IQ script loaded successfully');
+      };
+      
+      script.onerror = (error) => {
+        console.error('Error loading ZOHO Sales IQ script:', error);
+        console.error('Please check if the widget code is correct:', WIDGET_CODE);
+      };
+      
+      // Script zum Head hinzufügen
+      document.head.appendChild(script);
+
+      // Fallback: Widget nach 3 Sekunden nochmal prüfen
+      setTimeout(() => {
+        try {
+          if (window.$zoho?.salesiq?.floatwindow) {
+            window.$zoho.salesiq.floatwindow.visible('show');
+            console.log('ZOHO Sales IQ widget shown in fallback');
+          }
+        } catch (error) {
+          console.log('ZOHO Sales IQ fallback error:', error);
+        }
+      }, 3000);
+    };
+
+    // Widget laden
+    loadSalesIQ();
 
     // Cleanup-Funktion
     return () => {
-      // Scripts entfernen nur wenn alle Komponenten unmounten
-      // window.zohoSalesIQLoaded = false; // Nicht zurücksetzen, da andere Seiten das Widget brauchen
       // Scripts bleiben geladen für andere Seiten
     };
   }, []);
