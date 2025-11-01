@@ -36,6 +36,7 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-semibold text-white mb-4">Wissen</h4>
               <ul className="space-y-2">
+                <li><a href="/blog" className="text-gray-400 hover:text-orange-400 transition-colors">Blog</a></li>
                 <li><a href="/news/" className="text-gray-400 hover:text-orange-400 transition-colors">News</a></li>
                 <li><a href="/foerderung/" className="text-gray-400 hover:text-orange-400 transition-colors">Förderung</a></li>
                 <li><a href="/baurecht-balkon/" className="text-gray-400 hover:text-orange-400 transition-colors">Baurecht & Genehmigungen</a></li>
