@@ -831,6 +831,14 @@ function extractPriority(body) {
          body._internalScoring?.priority ||
          null;
   
+  // Konvertiere Genehmigungs-Priorität von 'high', 'medium', 'low' zu 'P1', 'P2', 'P3'
+  if (body._genehmigungScoring?.priority) {
+    const genehmigungPriority = body._genehmigungScoring.priority;
+    if (genehmigungPriority === 'high') priority = 'P1';
+    else if (genehmigungPriority === 'medium') priority = 'P2';
+    else if (genehmigungPriority === 'low') priority = 'P3';
+  }
+  
   // Upgrade für seeking/approved Kunden im Planer-Funnel
   if (body.funnelData?.projectStatus === 'seeking' || body.funnelData?.projectStatus === 'approved') {
     // Wenn asap oder 3months, dann hohe Priorität
@@ -1144,10 +1152,10 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Nächste Schritte: ${funnelData?.ergebnis?.naechsteSchritte?.join(', ') || 'Nicht verfügbar'}
 
 === LEAD SCORING ===
-- Lead Score: ${body._genehmigungScoring?.totalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
-- Kategorie: ${body._genehmigungScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
-- Priorität: ${body._genehmigungScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
-- Geschätzter Wert: ${body._genehmigungScoring?.estimatedValue || 'Nicht verfügbar'}€
+- Lead Score: ${extractLeadScore(body) || body._genehmigungScoring?.totalScore || body._internalScoring?.leadScore || 'Nicht verfügbar'}/100
+- Kategorie: ${extractCategory(body) || body._genehmigungScoring?.category || body._internalScoring?.category || 'Nicht verfügbar'}
+- Priorität: ${extractPriority(body) || body._genehmigungScoring?.priority || body._internalScoring?.priority || 'Nicht verfügbar'}
+- Geschätzter Wert: ${extractEstimatedValue(body, 'genehmigung') || body._genehmigungScoring?.estimatedValue || 'Nicht verfügbar'}€
 - Genehmigungswahrscheinlichkeit: ${body._genehmigungScoring?.genehmigungswahrscheinlichkeit || 'Nicht verfügbar'}
 `;
 
