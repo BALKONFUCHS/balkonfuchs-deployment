@@ -797,19 +797,6 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
       'nicht_realisierbar': '❌'
     };
 
-    // Lead Score Kategorien und Farben
-    const categoryColors = {
-      'Hot Lead': 'bg-green-500/20 border-green-500/40 text-green-400',
-      'Warm Lead': 'bg-orange-500/20 border-orange-500/40 text-orange-400',
-      'Cold Lead': 'bg-gray-500/20 border-gray-500/40 text-gray-400'
-    };
-
-    const categoryLabels = {
-      'Hot Lead': '🔥 Hot Lead',
-      'Warm Lead': '🟡 Warm Lead',
-      'Cold Lead': '❄️ Cold Lead'
-    };
-
     return (
       <div className="text-center">
         {/* Plakative Überschrift oberhalb des Ergebnis-Banners */}
