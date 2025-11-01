@@ -13,7 +13,8 @@ import { useEffect } from 'react';
 
 // HIER DEN KORREKTEN WIDGET-CODE EINTRAGEN
 // Format: siqXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (lange Zeichenfolge)
-const WIDGET_CODE = 'siq173575c67f7c85d984f3967818623fb6b9c294d4867f05';
+// Vollständiger Code aus Zoho SalesIQ Dashboard
+const WIDGET_CODE = 'siq173575c67f7c8b4a6c63f3aa6f0affe5d984f3967818623fb6b9c294d4867f05';
 
 const ZohoSalesIQ = () => {
   useEffect(() => {
@@ -56,11 +57,16 @@ const ZohoSalesIQ = () => {
 
       console.log('Loading ZOHO Sales IQ widget with code:', WIDGET_CODE);
 
+      // Erste Script: Initialisierung (wie im offiziellen Zoho Code)
+      // window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}
+      const initScript = document.createElement('script');
+      initScript.innerHTML = 'window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}';
+      document.head.appendChild(initScript);
+      console.log('ZOHO Sales IQ initialization script added');
+
       // ZOHO Sales IQ Standard Integration - wie im Zoho Dashboard empfohlen
       window.$zoho = window.$zoho || {};
       window.$zoho.salesiq = window.$zoho.salesiq || {
-        widgetcode: WIDGET_CODE,
-        values: {},
         ready: function() {
           console.log('ZOHO Sales IQ widget ready');
           
@@ -77,12 +83,12 @@ const ZohoSalesIQ = () => {
         }
       };
 
-      // Standard Zoho SalesIQ Script laden
+      // Zweite Script: Haupt-Widget laden (wie im offiziellen Zoho Code)
+      // <script id="zsiqscript" src="https://salesiq.zohopublic.eu/widget?wc=..." defer></script>
       const script = document.createElement('script');
       script.id = 'zsiqscript';
       script.src = `https://salesiq.zohopublic.eu/widget?wc=${WIDGET_CODE}`;
       script.defer = true;
-      script.async = true;
       
       script.onload = () => {
         console.log('ZOHO Sales IQ script loaded successfully');
