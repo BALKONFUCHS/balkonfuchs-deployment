@@ -96,7 +96,7 @@ const ZohoSalesIQ = () => {
       // Hauptscript laden
       const script = document.createElement('script');
       script.id = 'zsiqscript';
-      script.src = 'https://salesiq.zohopublic.eu/widget?wc=siq173575c67f7c8b4a6c63f3aa6f0affe5d984f3967818623fb6b9c294d4867f05';
+      script.src = 'https://salesiq.zohopublic.eu/widget?wc=siq173575c67f7c85d984f3967818623fb6b9c294d4867f05';
       script.defer = true;
       script.async = true;
       
@@ -143,7 +143,7 @@ const ZohoSalesIQ = () => {
           if (!document.getElementById('zsiqscript')) {
             const fallbackScript = document.createElement('script');
             fallbackScript.id = 'zsiqscript';
-            fallbackScript.src = 'https://salesiq.zohopublic.eu/widget?wc=siq173575c67f7c8b4a6c63f3aa6f0affe5d984f3967818623fb6b9c294d4867f05';
+            fallbackScript.src = 'https://salesiq.zohopublic.eu/widget?wc=siq173575c67f7c85d984f3967818623fb6b9c294d4867f05';
             fallbackScript.defer = true;
             fallbackScript.async = true;
             document.head.appendChild(fallbackScript);

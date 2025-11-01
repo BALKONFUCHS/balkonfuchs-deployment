@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown, Shield, FileCheck, Rocket } from 'lucide-react';
 import Header from '../components/Header';
@@ -7,6 +7,147 @@ import dynamic from 'next/dynamic';
 const ZohoSalesIQ = dynamic(() => import('../components/ZohoSalesIQ.js'), { ssr: false });
 
 const StartseiteFarbtest = () => {
+  const [qualificationStep, setQualificationStep] = useState(1);
+  const [selectedMainOption, setSelectedMainOption] = useState<string | null>(null);
+
+  // Options for Step 2 based on main selection
+  const step2Options = {
+    anbauen: [
+      {
+        icon: '💰',
+        title: 'Kosten berechnen',
+        subtitle: 'Erste Kostenschätzung in 2 Min.',
+        url: '/kalkulator/',
+        gradient: 'from-orange-500 to-red-500'
+      },
+      {
+        icon: '✅',
+        title: 'Genehmigung prüfen',
+        subtitle: 'Brauche ich eine Genehmigung?',
+        url: '/genehmigung/',
+        gradient: 'from-red-500 to-pink-500'
+      },
+      {
+        icon: '⏱️',
+        title: 'Bauzeit planen',
+        subtitle: 'Wie lange dauert mein Projekt?',
+        url: '/bauzeit-planung/',
+        gradient: 'from-purple-500 to-indigo-500'
+      },
+      {
+        icon: '💼',
+        title: 'Planung & Angebot',
+        subtitle: 'Detaillierte Planung + Angebot',
+        subtitleSmall: 'Für fortgeschrittene Projekte',
+        url: '/planer/',
+        gradient: 'from-blue-500 to-cyan-500',
+        special: true
+      }
+    ],
+    sanieren: [
+      {
+        icon: '💰',
+        title: 'Sanierungskosten',
+        subtitle: 'Was kostet meine Sanierung?',
+        url: '/kalkulator/?type=sanierung&source=qualification',
+        gradient: 'from-orange-500 to-red-500'
+      },
+      {
+        icon: '✅',
+        title: 'Genehmigung prüfen',
+        subtitle: 'Brauche ich eine Genehmigung?',
+        url: '/genehmigung/?type=sanierung&source=qualification',
+        gradient: 'from-red-500 to-pink-500'
+      },
+      {
+        icon: '⏱️',
+        title: 'Bauzeit Sanierung',
+        subtitle: 'Zeitplanung für Sanierung',
+        url: '/bauzeit-planung/?type=sanierung&source=qualification',
+        gradient: 'from-purple-500 to-indigo-500'
+      },
+      {
+        icon: '💼',
+        title: 'Planung & Angebot',
+        subtitle: 'Detaillierte Planung + Angebot',
+        subtitleSmall: 'Für fortgeschrittene Projekte',
+        url: '/planer/?type=sanierung&source=qualification&intent=angebot',
+        gradient: 'from-blue-500 to-cyan-500',
+        special: true
+      }
+    ]
+  };
+
+  // Render Step 2 Options
+  const renderStep2Options = (option: string | null) => {
+    if (!option || !step2Options[option as keyof typeof step2Options]) return null;
+    
+    const options = step2Options[option as keyof typeof step2Options];
+    
+    return options.map((opt, index) => (
+      <a
+        key={index}
+        href={opt.url}
+        onClick={() => {
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'qualification_step_2', {
+              event_category: 'qualification_wizard',
+              event_label: opt.title.toLowerCase().replace(/\s+/g, '_')
+            });
+          }
+        }}
+        className={`bg-gray-800/50 backdrop-blur-sm border-2 ${opt.special ? 'border-orange-500/50' : 'border-gray-700'} rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group`}
+      >
+        <div className={`w-16 h-16 bg-gradient-to-r ${opt.gradient} rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
+          <span className="text-white text-2xl">{opt.icon}</span>
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+          {opt.title}
+        </h3>
+        <p className="text-gray-400 mb-2 leading-relaxed text-sm">
+          {opt.subtitle}
+        </p>
+        {opt.subtitleSmall && (
+          <p className="text-gray-500 text-xs italic">
+            {opt.subtitleSmall}
+          </p>
+        )}
+        <div className="mt-4 flex justify-end">
+          <ArrowRight className="text-orange-400 w-5 h-5 group-hover:text-orange-300 transition-colors" />
+        </div>
+      </a>
+    ));
+  };
+
+  // Zoho SalesIQ Integration
+  const openChatWithContext = (context: string) => {
+    if (typeof window !== 'undefined' && (window as any).$zoho && (window as any).$zoho.salesiq) {
+      try {
+        (window as any).$zoho.salesiq.floatwindow.visible('show');
+        // Optional: Vordefinierte Nachricht setzen
+        if ((window as any).$zoho.salesiq.visitor && (window as any).$zoho.salesiq.visitor.question) {
+          (window as any).$zoho.salesiq.visitor.question(context);
+        }
+        
+        // Track event
+        if ((window as any).gtag) {
+          (window as any).gtag('event', 'chat_opened', {
+            event_category: 'qualification_wizard',
+            event_label: context
+          });
+        }
+      } catch (error) {
+        console.warn('Error opening Zoho SalesIQ:', error);
+        // Fallback: Email-Kontakt
+        window.location.href = `mailto:post@balkonfuchs.de?subject=${encodeURIComponent(context)}`;
+      }
+    } else {
+      // Fallback: Email-Kontakt
+      console.warn('Zoho SalesIQ not available');
+      window.location.href = `mailto:post@balkonfuchs.de?subject=${encodeURIComponent(context)}`;
+    }
+  };
+
   useEffect(() => {
     // Rotating text animation
     const rotatingTexts = [
@@ -276,6 +417,139 @@ const StartseiteFarbtest = () => {
           </div>
         </section>
 
+        {/* Interactive Qualification Wizard */}
+        <section className="py-16 bg-gray-900">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Progress Indicator */}
+            <div className="text-center mb-6">
+              <div className="bg-gray-800/50 border border-gray-700 rounded-full px-6 py-2 inline-block">
+                <span className="text-gray-300 text-sm">Schritt {qualificationStep} von 2</span>
+              </div>
+            </div>
+
+            {/* Stufe 1: Hauptentscheidung */}
+            {qualificationStep === 1 && (
+              <div className="wizard-step">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Was möchtest du tun?
+                  </h2>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
+                  {/* Balkon anbauen */}
+                  <button 
+                    onClick={() => {
+                      setSelectedMainOption('anbauen');
+                      setQualificationStep(2);
+                      if (typeof window !== 'undefined' && (window as any).gtag) {
+                        (window as any).gtag('event', 'qualification_step_1', {
+                          event_category: 'qualification_wizard',
+                          event_label: 'anbauen'
+                        });
+                      }
+                    }}
+                    className="bg-gray-800/50 backdrop-blur-sm border-2 border-gray-700 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group text-left"
+                  >
+                    <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white text-3xl">🏗️</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">
+                      Balkon anbauen
+                    </h3>
+                    <p className="text-gray-400 leading-relaxed">
+                      Für Neubauprojekte und neue Balkone
+                    </p>
+                  </button>
+
+                  {/* Balkon sanieren */}
+                  <button 
+                    onClick={() => {
+                      setSelectedMainOption('sanieren');
+                      setQualificationStep(2);
+                      if (typeof window !== 'undefined' && (window as any).gtag) {
+                        (window as any).gtag('event', 'qualification_step_1', {
+                          event_category: 'qualification_wizard',
+                          event_label: 'sanieren'
+                        });
+                      }
+                    }}
+                    className="bg-gray-800/50 backdrop-blur-sm border-2 border-gray-700 rounded-2xl p-8 hover:border-orange-500/50 transition-all duration-300 cursor-pointer group text-left"
+                  >
+                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-white text-3xl">🔧</span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors">
+                      Balkon sanieren
+                    </h3>
+                    <p className="text-gray-400 leading-relaxed">
+                      Für Renovierung und Modernisierung
+                    </p>
+                  </button>
+                </div>
+
+                {/* Chat Alternative */}
+                <div className="text-center mb-4">
+                  <p className="text-gray-400 text-sm mb-3">Nicht sicher oder andere Frage?</p>
+                  <button 
+                    onClick={() => {
+                      openChatWithContext('Ich bin mir unsicher, ob ich bauen oder sanieren soll');
+                    }}
+                    className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300"
+                  >
+                    <span className="text-xl">💬</span>
+                    Chat mit uns
+                  </button>
+                  <p className="text-gray-500 text-xs mt-3">Oder scrolle runter für alle Optionen</p>
+                </div>
+              </div>
+            )}
+
+            {/* Stufe 2: Bedarfsermittlung */}
+            {qualificationStep === 2 && (
+              <div className="wizard-step">
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    Was ist dein nächster Schritt?
+                  </h2>
+                  <button 
+                    onClick={() => {
+                      setQualificationStep(1);
+                      setSelectedMainOption(null);
+                    }}
+                    className="text-gray-400 hover:text-orange-400 transition-colors text-sm mb-4 inline-flex items-center gap-1"
+                  >
+                    ← Zurück
+                  </button>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
+                  {renderStep2Options(selectedMainOption)}
+                </div>
+
+                {/* Chat Alternative for Step 2 */}
+                <div className="text-center mb-4">
+                  <p className="text-gray-400 text-sm mb-3">
+                    {selectedMainOption === 'anbauen' ? 'Andere Frage zum Balkonbau?' : 'Andere Frage zur Balkonsanierung?'}
+                  </p>
+                  <button 
+                    onClick={() => {
+                      const context = selectedMainOption === 'anbauen' 
+                        ? 'Ich habe eine Frage zum Balkonanbau'
+                        : 'Ich habe eine Frage zur Balkonsanierung';
+                      openChatWithContext(context);
+                    }}
+                    className="inline-flex items-center gap-2 border border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300"
+                  >
+                    <span className="text-xl">💬</span>
+                    Frag uns direkt
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
         {/* Services Section */}
         <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -325,26 +599,6 @@ const StartseiteFarbtest = () => {
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                   >
                     Projekt planen
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Express-Angebot */}
-              <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/30 rounded-2xl p-8 hover:border-green-500/50 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <FileText className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4 text-center">Express Angebot</h3>
-                <p className="text-gray-300 text-center mb-6 leading-relaxed">
-                  Perfekt, wenn du bereits fortgeschritten bist und Finanzierung oder Genehmigung vorliegen.
-                </p>
-                <div className="text-center">
-                  <a 
-                    href="/express-angebot/" 
-                    className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-                  >
-                    Angebot erhalten
                     <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
