@@ -315,9 +315,11 @@ exports.handler = async (event, context) => {
       funnelSummary: createFunnelSummary(funnelType || funnel?.type, funnelData, contact, body, calculation),
       
       // Lead Score aus verschiedenen Scoring-Systemen extrahieren
-      leadScore: extractLeadScore(body),
-      category: extractCategory(body),
-      priority: extractPriority(body),
+      // WICHTIG: Gewerbe-Funnel hat leadScore bereits in body.leadScore oder body.funnelData.leadScore
+      // Diese haben Priorität vor extractLeadScore/extractCategory/extractPriority
+      leadScore: body.leadScore?.totalScore || body.funnelData?.leadScore?.totalScore || extractLeadScore(body),
+      category: body.leadScore?.category || body.funnelData?.leadScore?.category || extractCategory(body),
+      priority: body.leadScore?.priority || body.funnelData?.leadScore?.priority || extractPriority(body),
       
       // Funnel-spezifische Scoring-Daten
       funnelScoring: extractFunnelScoring(funnelType || funnel?.type, body),
@@ -326,19 +328,6 @@ exports.handler = async (event, context) => {
       
       // Mapped Data für zusätzliche Informationen
       mappedData: body.mappedData || {},
-      
-      // Gewerbe-Funnel: Lead Score direkt aus body übernehmen (falls vorhanden)
-      // WICHTIG: Muss VOR extractLeadScore/extractCategory/extractPriority kommen!
-      ...(body.leadScore?.totalScore ? {
-        leadScore: body.leadScore.totalScore,
-        category: body.leadScore.category || extractCategory(body),
-        priority: body.leadScore.priority || extractPriority(body)
-      } : {}),
-      ...(body.funnelData?.leadScore?.totalScore ? {
-        leadScore: body.funnelData.leadScore.totalScore,
-        category: body.funnelData.leadScore.category || extractCategory(body),
-        priority: body.funnelData.leadScore.priority || extractPriority(body)
-      } : {}),
     };
     
     // Normalisiere funnelType für PDF-Generierung
