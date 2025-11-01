@@ -139,21 +139,9 @@ const ZohoSalesIQ = () => {
 
     // Cleanup-Funktion
     return () => {
-      clearTimeout(timer);
-      // Scripts entfernen
-      const existingScript = document.getElementById('zsiqscript');
-      if (existingScript) {
-        existingScript.remove();
-      }
-      // Init-Script entfernen
-      const initScripts = document.querySelectorAll('script');
-      initScripts.forEach(script => {
-        if (script.innerHTML && script.innerHTML.includes('$zoho.salesiq')) {
-          script.remove();
-        }
-      });
-      // Globalen Flag zurücksetzen nur wenn alle Komponenten unmounten
+      // Scripts entfernen nur wenn alle Komponenten unmounten
       // window.zohoSalesIQLoaded = false; // Nicht zurücksetzen, da andere Seiten das Widget brauchen
+      // Scripts bleiben geladen für andere Seiten
     };
   }, []);
 
