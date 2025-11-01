@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown, Shield, FileCheck, Rocket } from 'lucide-react';
+import { Calculator, Calendar, FileText, CheckCircle, Clock, Users, ArrowRight, Star, Zap, Target, Award, Crown, Shield, FileCheck, Rocket, Box } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import dynamic from 'next/dynamic';
@@ -418,12 +418,33 @@ const StartseiteFarbtest = () => {
         </section>
 
         {/* Interactive Qualification Wizard */}
-        <section className="py-16 bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Progress Indicator */}
-            <div className="text-center mb-6">
-              <div className="bg-gray-800/50 border border-gray-700 rounded-full px-6 py-2 inline-block">
-                <span className="text-gray-300 text-sm">Schritt {qualificationStep} von 2</span>
+        <section className="py-20 bg-gradient-to-br from-gray-800 via-gray-800 to-gray-900 relative overflow-hidden">
+          {/* Background Decoration */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            {/* Hero Header */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center justify-center mb-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mr-3">
+                  <Target className="w-6 h-6 text-white" />
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                  Finde <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-400">deinen Weg</span> zum perfekten Balkon
+                </h2>
+              </div>
+              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-6">
+                Nutze unsere interaktive Navigation, um schnell zum passenden Service für dein Projekt zu gelangen
+              </p>
+              
+              {/* Progress Indicator */}
+              <div className="inline-block">
+                <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 rounded-full px-6 py-2 shadow-lg">
+                  <span className="text-orange-300 font-semibold text-sm">Schritt {qualificationStep} von 2</span>
+                </div>
               </div>
             </div>
 
@@ -659,6 +680,26 @@ const StartseiteFarbtest = () => {
                     className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                   >
                     Erfahrungen lesen
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+
+              {/* 3D Konfigurator */}
+              <div className="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 border-2 border-indigo-500/30 rounded-2xl p-8 hover:border-indigo-500/50 transition-all duration-300 group">
+                <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Box className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4 text-center">3D Konfigurator</h3>
+                <p className="text-gray-300 text-center mb-6 leading-relaxed">
+                  Erlebe deinen zukünftigen Balkon in 3D. Visualisiere verschiedene Varianten und finde deine Wunschlösung.
+                </p>
+                <div className="text-center">
+                  <a 
+                    href="/konfigurator/" 
+                    className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                  >
+                    3D-Erlebnis starten
                     <ArrowRight className="w-4 h-4" />
                   </a>
                 </div>
