@@ -60,7 +60,7 @@ const blogPosts: Record<string, BlogPost> = {
         <strong>Der Weg zum neuen Balkon führt IMMER über das Bauamt.</strong>
       </blockquote>
 
-      <p>Die Geschichten rund um das Thema "Balkon ohne Baugenehmigung" sind ungefähr so vielfältig wie die Möglichkeiten, einen Balkon zu bepflanzen. Doch was steckt wirklich dahinter?</p>
+      <p>Die Geschichten rund um das Thema &quot;Balkon ohne Baugenehmigung&quot; sind ungefähr so vielfältig wie die Möglichkeiten, einen Balkon zu bepflanzen. Doch was steckt wirklich dahinter?</p>
 
       <h3>Kann man einen Balkon ohne Genehmigung bauen?</h3>
       
@@ -126,7 +126,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <div style="background: #d4edda; padding: 20px; margin: 20px 0; border-left: 4px solid #28a745; border-radius: 4px;">
         <h4 style="margin-top: 0;">💡 Praxis-Tipp aus 850+ Projekten:</h4>
-        <p>Die häufigste Fehlannahme unserer Kunden: <em>"Das ist doch nur ein kleiner Balkon von 4m²..."</em></p>
+        <p>Die häufigste Fehlannahme unserer Kunden: <em>&quot;Das ist doch nur ein kleiner Balkon von 4m²...&quot;</em></p>
         <p><strong>Tatsache:</strong> Die Größe spielt für die <strong>Grundsatzfrage der Genehmigungspflicht KEINE Rolle</strong>. Auch ein 1m² kleiner Balkon ist genehmigungspflichtig, wenn er nachträglich angebaut wird.</p>
         <p>Was die Größe beeinflusst: Das <strong>Verfahren</strong> (vereinfacht vs. regulär) und die <strong>Abstandsflächen</strong>.</p>
       </div>
@@ -135,18 +135,18 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3>Die häufigste Fehlinterpretation im Baurecht</h3>
 
-      <p><strong>Seit 2019</strong> wurden in mehreren Bundesländern (Baden-Württemberg, Hessen, NRW u.a.) die Landesbauordnungen überarbeitet. Dabei tauchte verstärkt der Begriff <strong>"Genehmigungsfreistellung"</strong> auf.</p>
+      <p><strong>Seit 2019</strong> wurden in mehreren Bundesländern (Baden-Württemberg, Hessen, NRW u.a.) die Landesbauordnungen überarbeitet. Dabei tauchte verstärkt der Begriff <strong>&quot;Genehmigungsfreistellung&quot;</strong> auf.</p>
 
       <h3>Echtes Beispiel aus der Praxis:</h3>
       
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #d1d5db;">
         <strong>Zitat eines Schlossermeisters (2024):</strong><br/>
-        <em>"In Baden-Württemberg brauchen wir seit 2019 doch gar keine Baugenehmigung mehr..."</em>
+        <em>&quot;In Baden-Württemberg brauchen wir seit 2019 doch gar keine Baugenehmigung mehr...&quot;</em>
       </blockquote>
 
-      <p>Fast noch erstaunlicher als diese Aussage war der Hinweis, woher er sein "Wissen" hatte:</p>
+      <p>Fast noch erstaunlicher als diese Aussage war der Hinweis, woher er sein &quot;Wissen&quot; hatte:</p>
       
-      <p><strong>"Das hat mir ein Architekt gesagt."</strong></p>
+      <p><strong>&quot;Das hat mir ein Architekt gesagt.&quot;</strong></p>
       
       <div style="background: #f8d7da; padding: 20px; margin: 20px 0; border-left: 4px solid #dc3545; border-radius: 4px;">
         <h4 style="margin-top: 0;">🚨 KRITISCH:</h4>
@@ -173,7 +173,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p><strong>So prüfen Sie das:</strong></p>
       <ul>
         <li>Kontakt zum örtlichen Bauamt</li>
-        <li>Fragen nach "Bebauungsplan-Geltungsbereich"</li>
+        <li>Fragen nach &quot;Bebauungsplan-Geltungsbereich&quot;</li>
         <li>Oder nutzen Sie Online-Geoportale Ihrer Stadt</li>
       </ul>
 
@@ -610,21 +610,7 @@ const BlogPost = () => {
 
                 {/* Article Content */}
                 <div
-                  className="prose prose-invert prose-lg max-w-none
-                    prose-headings:text-white prose-headings:font-bold
-                    prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-                    prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-                    prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3
-                    prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6
-                    prose-ul:text-gray-300 prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
-                    prose-li:my-2 prose-li:leading-relaxed
-                    prose-strong:text-white prose-strong:font-semibold
-                    prose-a:text-orange-400 prose-a:hover:text-orange-300 prose-a:underline
-                    prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-300
-                    prose-img:rounded-lg prose-img:my-8 prose-img:shadow-lg
-                    prose-table:w-full prose-table:border-collapse prose-table:my-8
-                    prose-th:bg-gray-700 prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-gray-600
-                    prose-td:p-3 prose-td:border prose-td:border-gray-600"
+                  className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-ul:text-gray-300 prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6 prose-li:my-2 prose-li:leading-relaxed prose-strong:text-white prose-strong:font-semibold prose-a:text-orange-400 prose-a:hover:text-orange-300 prose-a:underline prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-300 prose-img:rounded-lg prose-img:my-8 prose-img:shadow-lg prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-th:bg-gray-700 prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-gray-600 prose-td:p-3 prose-td:border prose-td:border-gray-600"
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
 
