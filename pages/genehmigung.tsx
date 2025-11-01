@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { ArrowRight, ArrowLeft, FileCheck, Home, MapPin, Ruler, Euro, CheckCircle, Star, Shield, Clock, Users, Phone, Mail, X, Play, ChevronDown, Menu, Building, TrendingUp, Award, Target, Zap, HeadphonesIcon, Rocket, Search, FileText, Check, AlertTriangle, Calendar, User, CheckSquare, Info, AlertCircle, ThumbsUp, Calculator } from 'lucide-react';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 const BALKONFUCHSGenehmigungscheckFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [genehmigungScoring, setGenehmigungScoring] = useState(null);
   const [formData, setFormData] = useState({
     bundesland: '',
     projekttyp: '',
@@ -49,6 +50,18 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
     { title: 'Ergebnis', description: 'Ihr Genehmigungsstatus' },
     { title: 'Kontakt', description: 'Ihre Kontaktdaten' }
   ];
+
+  // Berechne Lead Score automatisch wenn Ergebnis verfügbar ist
+  useEffect(() => {
+    if ((currentStep === 4 || currentStep >= steps.length) && !genehmigungScoring) {
+      const ergebnis = getErgebnis();
+      if (ergebnis) {
+        const scoringData = mapFormDataToGenehmigungScoring();
+        const score = calculateGenehmigungScore(scoringData);
+        setGenehmigungScoring(score);
+      }
+    }
+  }, [currentStep, formData.bundesland, formData.projekttyp, formData.groesse, formData.tiefe, formData.grenzabstand, genehmigungScoring]);
 
   // Bundesländer mit Genehmigungsregeln
   const bundeslaender = [
@@ -310,29 +323,30 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
             className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
           />
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3">
             <input
               type="checkbox"
               id="newsletter"
               checked={formData.contact.newsletter}
               onChange={(e) => handleContactChange('newsletter', e.target.checked)}
-              className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
+              className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
             />
-                          <label htmlFor="newsletter" className="text-gray-300 text-sm">
-                Ich möchte den Balkonbrief erhalten
-              </label>
+            <label htmlFor="newsletter" className="text-gray-300 text-sm">
+              Ich möchte den Balkonbrief erhalten
+            </label>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3">
             <input
               type="checkbox"
               id="privacy"
               checked={formData.contact.privacy}
               onChange={(e) => handleContactChange('privacy', e.target.checked)}
-              className="w-6 h-6 text-orange-500 bg-gray-700 border-gray-600 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
+              className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2 cursor-pointer"
+              required
             />
             <label htmlFor="privacy" className="text-gray-300 text-sm">
-              Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline">Datenschutzerklärung</a> und die Informationen zum <a href="/disclaimer/" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline">Disclaimer</a> gelesen und zur Kenntnis genommen. *
+              Ich habe die <a href="/datenschutz/" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline">Datenschutzerklärung</a> und die Informationen zum <a href="/disclaimer/" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-400 underline">Haftungsausschluss</a> gelesen und zur Kenntnis genommen. *
             </label>
           </div>
 
@@ -365,6 +379,22 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
             Wir haben Ihre Anfrage erhalten und werden uns innerhalb der nächsten 24 Stunden bei Ihnen melden.
           </p>
         </div>
+
+        {/* Lead Score Anzeige */}
+        {genehmigungScoring && (
+          <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full text-lg font-semibold mb-6 ${
+            genehmigungScoring.category === 'Hot Lead' ? 'bg-green-500/20 border-green-500/40 text-green-400' :
+            genehmigungScoring.category === 'Warm Lead' ? 'bg-orange-500/20 border-orange-500/40 text-orange-400' :
+            'bg-gray-500/20 border-gray-500/40 text-gray-400'
+          }`}>
+            <span className="text-xl">
+              {genehmigungScoring.category === 'Hot Lead' ? '🔥' : 
+               genehmigungScoring.category === 'Warm Lead' ? '🟡' : '❄️'}
+            </span>
+            <span className="font-bold">{genehmigungScoring.category}</span>
+            <span className="text-sm opacity-80">({genehmigungScoring.totalScore}/100)</span>
+          </div>
+        )}
 
         <div className="bg-gray-700/50 border border-gray-600 rounded-xl p-6 mb-8">
           <h3 className="text-xl font-semibold text-white mb-4">Ihr Genehmigungsstatus</h3>
@@ -783,12 +813,42 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
       'nicht_realisierbar': '❌'
     };
 
+    // Lead Score Kategorien und Farben
+    const categoryColors = {
+      'Hot Lead': 'bg-green-500/20 border-green-500/40 text-green-400',
+      'Warm Lead': 'bg-orange-500/20 border-orange-500/40 text-orange-400',
+      'Cold Lead': 'bg-gray-500/20 border-gray-500/40 text-gray-400'
+    };
+
+    const categoryLabels = {
+      'Hot Lead': '🔥 Hot Lead',
+      'Warm Lead': '🟡 Warm Lead',
+      'Cold Lead': '❄️ Cold Lead'
+    };
+
     return (
       <div className="text-center">
+        {/* Plakative Überschrift oberhalb des Ergebnis-Banners */}
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+          Hier ist das Ergebnis deines Genehmigungschecks
+        </h2>
+        
         <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full text-xl font-semibold mb-8 ${statusColors[ergebnis.status]}`}>
           <span className="text-2xl">{statusIcons[ergebnis.status]}</span>
           {ergebnis.verfahrenstyp}
         </div>
+
+        {/* Lead Score Anzeige */}
+        {genehmigungScoring && (
+          <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full text-lg font-semibold mb-6 ${categoryColors[genehmigungScoring.category] || categoryColors['Cold Lead']}`}>
+            <span className="text-xl">
+              {genehmigungScoring.category === 'Hot Lead' ? '🔥' : 
+               genehmigungScoring.category === 'Warm Lead' ? '🟡' : '❄️'}
+            </span>
+            <span className="font-bold">{genehmigungScoring.category}</span>
+            <span className="text-sm opacity-80">({genehmigungScoring.totalScore}/100)</span>
+          </div>
+        )}
         
         <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-8 max-w-4xl mx-auto text-left">
           <h3 className="text-xl font-bold text-white mb-4">📋 Ihr Genehmigungsstatus im Detail</h3>
@@ -972,7 +1032,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
                 <a href="/impressum" className="hover:text-orange-400 transition-colors">Impressum</a>
                 <a href="/datenschutz/" className="hover:text-orange-400 transition-colors">Datenschutz</a>
                 <a href="/agb" className="hover:text-orange-400 transition-colors">AGB</a>
-                <a href="/disclaimer/" className="hover:text-orange-400 transition-colors">Disclaimer</a>
+                <a href="/disclaimer/" className="hover:text-orange-400 transition-colors">Haftungsausschluss</a>
                 </div>
             </div>
           </div>
