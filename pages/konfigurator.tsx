@@ -117,22 +117,19 @@ export default function KonfiguratorComingSoon() {
             {/* Contact Option */}
             <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-8 text-center">
               <h3 className="text-xl font-semibold text-white mb-3">
-                Fragen zum Konfigurator?
+                In der Zwischenzeit: Nutzen Sie unseren Planer
               </h3>
               <p className="text-gray-400 mb-6">
-                Sprechen Sie direkt mit uns im Live-Chat – wir informieren Sie gerne über den Status und den Launch-Zeitpunkt!
+                Planen Sie Ihr Balkon-Projekt detailliert mit unserem Planer-Tool – während wir den Konfigurator für Sie fertigstellen!
               </p>
-              <button 
-                onClick={() => {
-                  if (window.$zoho && window.$zoho.salesiq) {
-                    window.$zoho.salesiq.floatwindow.visible('show');
-                  }
-                }}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105"
+              <a 
+                href="/planer/"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-2xl transition-all transform hover:scale-105"
               >
-                <span className="text-2xl">💬</span>
-                Jetzt Live-Chat starten
-              </button>
+                <span className="text-2xl">📐</span>
+                Jetzt Planer nutzen
+                <ArrowRight className="w-5 h-5 ml-1" />
+              </a>
             </div>
           </div>
         </main>
