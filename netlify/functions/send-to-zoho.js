@@ -551,8 +551,8 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_telefon': contact?.phone || combinedData.phone || '',
         'cf_mobil': contact?.phone || combinedData.phone || '',
         'cf_produkt_name': 'Balkon',
-        // Temporär: Lieferadresse für Express-Angebot und Planer-Funnel nicht senden (Zoho-CF-Validierung)
-        ...(normalizedFunnelType !== 'express-angebot' && normalizedFunnelType !== 'planer' && deliveryAddress
+        // Temporär: Lieferadresse für Express-Angebot, Planer- und Gewerbe-Funnel nicht senden (Zoho-CF-Validierung)
+        ...(normalizedFunnelType !== 'express-angebot' && normalizedFunnelType !== 'planer' && normalizedFunnelType !== 'gewerbe' && deliveryAddress
           ? { 'cf_lieferadresse': deliveryAddress }
           : {}),
         'cf_lead_score': combinedData.leadScore || '',
