@@ -33,6 +33,17 @@ const blogPosts = [
   },
   {
     id: 3,
+    slug: 'balkon-bauantrag-genehmigung',
+    title: 'Balkon Bauantrag 2025: Diese Unterlagen brauchen Sie [Komplette Checkliste]',
+    teaser: 'Balkon Bauantrag 2025: Alle Unterlagen, Schritt-für-Schritt Anleitung & Kosten ✓ Bundesländer-spezifisch ✓ Checkliste zum Download',
+    date: '2025-11-01',
+    readTime: '16 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
+    thumbnail: '/images/blog/bauantrag-checkliste.jpg',
+    category: 'Genehmigung'
+  },
+  {
+    id: 4,
     slug: 'balkon-genehmigung-checkliste',
     title: 'Balkon Genehmigung: Die komplette Checkliste für 2025',
     teaser: 'Erfahren Sie, wann Sie eine Genehmigung für Ihren Balkon benötigen und welche Dokumente Sie einreichen müssen. Schritt-für-Schritt Anleitung...',
@@ -43,7 +54,7 @@ const blogPosts = [
     category: 'Genehmigung'
   },
   {
-    id: 4,
+    id: 5,
     slug: 'balkon-kosten-faktoren',
     title: 'Was kostet ein Balkon wirklich? Alle Kostenfaktoren im Überblick',
     teaser: 'Entdecken Sie die wichtigsten Faktoren, die den Preis Ihres Balkon-Projekts beeinflussen. Von Materialkosten bis hin zu regionalen Unterschieden...',
@@ -54,7 +65,7 @@ const blogPosts = [
     category: 'Kosten'
   },
   {
-    id: 5,
+    id: 6,
     slug: 'balkon-typen-vor-und-nachteile',
     title: 'Balkon-Typen im Vergleich: Vorstellbalkon, Hängebalkon & mehr',
     teaser: 'Welcher Balkon-Typ ist der richtige für Ihr Haus? Wir vergleichen alle Varianten und zeigen Ihnen Vor- und Nachteile sowie Preisspannen...',
@@ -65,7 +76,7 @@ const blogPosts = [
     category: 'Planung'
   },
   {
-    id: 6,
+    id: 7,
     slug: 'balkon-foerderung-2025',
     title: 'Balkon-Förderung 2025: Diese Zuschüsse gibt es noch',
     teaser: 'Welche Förderungen und Zuschüsse stehen Ihnen für Ihren Balkonbau zur Verfügung? Alle aktuellen Programme im Überblick...',
@@ -76,7 +87,7 @@ const blogPosts = [
     category: 'Förderung'
   },
   {
-    id: 7,
+    id: 8,
     slug: 'balkon-bauzeit-planung',
     title: 'Bauzeit für Balkon: So planen Sie den optimalen Baustart',
     teaser: 'Von der Genehmigung bis zur Fertigstellung: Erfahren Sie, wie lange Ihr Balkon-Projekt wirklich dauert und wie Sie die Bauzeit optimal planen...',
