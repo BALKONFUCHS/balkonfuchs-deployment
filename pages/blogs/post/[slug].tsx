@@ -53,30 +53,30 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="font-size: 0.9em; color: #6b7280;"><em>Über 3.400 Nutzer haben ihre Genehmigungsfrage bereits geklärt.</em></p>
       </div>
 
-      <h2 id="grundlagen">1. Das müssen Sie wissen: Grundlagen der Baugenehmigung</h2>
+      <h2 id="grundlagen" style="color: #ffffff;">1. Das müssen Sie wissen: Grundlagen der Baugenehmigung</h2>
       
-      <h3>Die wichtigste Regel vorweg:</h3>
-      <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #d1d5db;">
-        <strong>Der Weg zum neuen Balkon führt IMMER über das Bauamt.</strong>
+      <h3 style="color: #f3f4f6;">Die wichtigste Regel vorweg:</h3>
+      <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
+        <strong style="color: #ffffff;">Der Weg zum neuen Balkon führt IMMER über das Bauamt.</strong>
       </blockquote>
 
-      <p>Die Geschichten rund um das Thema &quot;Balkon ohne Baugenehmigung&quot; sind ungefähr so vielfältig wie die Möglichkeiten, einen Balkon zu bepflanzen. Doch was steckt wirklich dahinter?</p>
+      <p style="color: #e5e7eb;">Die Geschichten rund um das Thema &quot;Balkon ohne Baugenehmigung&quot; sind ungefähr so vielfältig wie die Möglichkeiten, einen Balkon zu bepflanzen. Doch was steckt wirklich dahinter?</p>
 
-      <h3>Kann man einen Balkon ohne Genehmigung bauen?</h3>
+      <h3 style="color: #f3f4f6;">Kann man einen Balkon ohne Genehmigung bauen?</h3>
       
-      <p><strong>Die provokante Antwort: Ja, technisch gesehen kann man das.</strong></p>
+      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Die provokante Antwort: Ja, technisch gesehen kann man das.</strong></p>
       
-      <p>Man braucht dazu weder eine gültige Statik noch ein Unternehmen, das wirklich etwas vom Balkonbau versteht...</p>
+      <p style="color: #e5e7eb;">Man braucht dazu weder eine gültige Statik noch ein Unternehmen, das wirklich etwas vom Balkonbau versteht...</p>
       
-      <p><strong>ABER:</strong> Das ist in etwa so erlaubt wie:</p>
-      <ul>
-        <li>🏍️ Mit einem frisierten Mofa ohne Helm durch die Stadt zu rasen</li>
-        <li>🚦 Dabei über rote Ampeln zu fahren</li>
-        <li>↔️ Entgegengesetzt durch eine Einbahnstraße zu brettern</li>
-        <li>📝 Und das alles ohne Versicherungsschutz</li>
+      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">ABER:</strong> Das ist in etwa so erlaubt wie:</p>
+      <ul style="color: #e5e7eb;">
+        <li style="color: #e5e7eb;">🏍️ Mit einem frisierten Mofa ohne Helm durch die Stadt zu rasen</li>
+        <li style="color: #e5e7eb;">🚦 Dabei über rote Ampeln zu fahren</li>
+        <li style="color: #e5e7eb;">↔️ Entgegengesetzt durch eine Einbahnstraße zu brettern</li>
+        <li style="color: #e5e7eb;">📝 Und das alles ohne Versicherungsschutz</li>
       </ul>
       
-      <p><strong>Ergo:</strong> Balkone bauen ohne Baugenehmigung ist zwar theoretisch wie praktisch möglich, aber <strong>kein bisschen zulässig</strong>.</p>
+      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ergo:</strong> Balkone bauen ohne Baugenehmigung ist zwar theoretisch wie praktisch möglich, aber <strong style="color: #ffffff;">kein bisschen zulässig</strong>.</p>
 
       <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚖️ Rechtslage eindeutig:</h4>
@@ -89,37 +89,37 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #374151;">...in welcher Form eine Genehmigung für Ihren Balkon erteilt werden kann.</p>
       </div>
 
-      <h3>Warum sind Balkone genehmigungspflichtig?</h3>
+      <h3 style="color: #f3f4f6;">Warum sind Balkone genehmigungspflichtig?</h3>
       
-      <p>Ein nachträglich angebauter Balkon ist bauaufsichtsrechtlich relevant, weil er:</p>
+      <p style="color: #e5e7eb;">Ein nachträglich angebauter Balkon ist bauaufsichtsrechtlich relevant, weil er:</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
           <tr style="background: #374151;">
-            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563;">Aspekt</th>
-            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563;">Warum genehmigungspflichtig</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563; color: #ffffff;">Aspekt</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563; color: #ffffff;">Warum genehmigungspflichtig</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 12px; border: 1px solid #4b5563;">🏗️ <strong>Bauliche Anlage</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Statische Einwirkung auf das Gebäude</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">🏗️ <strong style="color: #ffffff;">Bauliche Anlage</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Statische Einwirkung auf das Gebäude</td>
           </tr>
           <tr style="background: #1f2937;">
-            <td style="padding: 12px; border: 1px solid #4b5563;">🎨 <strong>Äußeres Erscheinungsbild</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Verändert die Gebäudeansicht</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">🎨 <strong style="color: #ffffff;">Äußeres Erscheinungsbild</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Verändert die Gebäudeansicht</td>
           </tr>
           <tr>
-            <td style="padding: 12px; border: 1px solid #4b5563;">👥 <strong>Nachbarrechte</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Kann Nachbarn beeinträchtigen (Blicke, Schatten)</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">👥 <strong style="color: #ffffff;">Nachbarrechte</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Kann Nachbarn beeinträchtigen (Blicke, Schatten)</td>
           </tr>
           <tr style="background: #1f2937;">
-            <td style="padding: 12px; border: 1px solid #4b5563;">📏 <strong>Abstandsflächen</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Muss Grenzabstände einhalten</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">📏 <strong style="color: #ffffff;">Abstandsflächen</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Muss Grenzabstände einhalten</td>
           </tr>
           <tr>
-            <td style="padding: 12px; border: 1px solid #4b5563;">🔥 <strong>Brandschutz</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Kann Rettungswege oder Brandschutz beeinflussen</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">🔥 <strong style="color: #ffffff;">Brandschutz</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Kann Rettungswege oder Brandschutz beeinflussen</td>
           </tr>
         </tbody>
       </table>
@@ -131,22 +131,22 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #374151;">Was die Größe beeinflusst: Das <strong style="color: #111827;">Verfahren</strong> (vereinfacht vs. regulär) und die <strong style="color: #111827;">Abstandsflächen</strong>.</p>
       </div>
 
-      <h2 id="genehmigungsfreistellung">2. Genehmigungsfreistellung: Was bedeutet das wirklich?</h2>
+      <h2 id="genehmigungsfreistellung" style="color: #ffffff;">2. Genehmigungsfreistellung: Was bedeutet das wirklich?</h2>
 
-      <h3>Die häufigste Fehlinterpretation im Baurecht</h3>
+      <h3 style="color: #f3f4f6;">Die häufigste Fehlinterpretation im Baurecht</h3>
 
-      <p><strong>Seit 2019</strong> wurden in mehreren Bundesländern (Baden-Württemberg, Hessen, NRW u.a.) die Landesbauordnungen überarbeitet. Dabei tauchte verstärkt der Begriff <strong>&quot;Genehmigungsfreistellung&quot;</strong> auf.</p>
+      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Seit 2019</strong> wurden in mehreren Bundesländern (Baden-Württemberg, Hessen, NRW u.a.) die Landesbauordnungen überarbeitet. Dabei tauchte verstärkt der Begriff <strong style="color: #ffffff;">&quot;Genehmigungsfreistellung&quot;</strong> auf.</p>
 
-      <h3>Echtes Beispiel aus der Praxis:</h3>
+      <h3 style="color: #f3f4f6;">Echtes Beispiel aus der Praxis:</h3>
       
-      <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #d1d5db;">
-        <strong>Zitat eines Schlossermeisters (2024):</strong><br/>
-        <em>&quot;In Baden-Württemberg brauchen wir seit 2019 doch gar keine Baugenehmigung mehr...&quot;</em>
+      <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
+        <strong style="color: #ffffff;">Zitat eines Schlossermeisters (2024):</strong><br/>
+        <em style="color: #d1d5db;">&quot;In Baden-Württemberg brauchen wir seit 2019 doch gar keine Baugenehmigung mehr...&quot;</em>
       </blockquote>
 
-      <p>Fast noch erstaunlicher als diese Aussage war der Hinweis, woher er sein &quot;Wissen&quot; hatte:</p>
+      <p style="color: #e5e7eb;">Fast noch erstaunlicher als diese Aussage war der Hinweis, woher er sein &quot;Wissen&quot; hatte:</p>
       
-      <p><strong>&quot;Das hat mir ein Architekt gesagt.&quot;</strong></p>
+      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">&quot;Das hat mir ein Architekt gesagt.&quot;</strong></p>
       
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold; font-size: 1.125rem;">🚨 KRITISCH:</h4>
@@ -163,71 +163,71 @@ const blogPosts: Record<string, BlogPost> = {
         </ul>
       </div>
 
-      <h3>Die 6 Voraussetzungen für Genehmigungsfreistellung:</h3>
+      <h3 style="color: #f3f4f6;">Die 6 Voraussetzungen für Genehmigungsfreistellung:</h3>
 
-      <p>Damit Ihr Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong>ALLE</strong> dieser Punkte erfüllt sein:</p>
+      <p style="color: #e5e7eb;">Damit Ihr Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong style="color: #ffffff;">ALLE</strong> dieser Punkte erfüllt sein:</p>
 
-      <h4>✅ 1. Gültiger Bebauungsplan</h4>
-      <p>Ihr Grundstück muss sich innerhalb eines Gebietes mit einem <strong>rechtskräftigen Bebauungsplan</strong> befinden.</p>
+      <h4 style="color: #f3f4f6;">✅ 1. Gültiger Bebauungsplan</h4>
+      <p style="color: #e5e7eb;">Ihr Grundstück muss sich innerhalb eines Gebietes mit einem <strong style="color: #ffffff;">rechtskräftigen Bebauungsplan</strong> befinden.</p>
       
-      <p><strong>So prüfen Sie das:</strong></p>
-      <ul>
-        <li>Kontakt zum örtlichen Bauamt</li>
-        <li>Fragen nach &quot;Bebauungsplan-Geltungsbereich&quot;</li>
-        <li>Oder nutzen Sie Online-Geoportale Ihrer Stadt</li>
+      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">So prüfen Sie das:</strong></p>
+      <ul style="color: #e5e7eb;">
+        <li style="color: #e5e7eb;">Kontakt zum örtlichen Bauamt</li>
+        <li style="color: #e5e7eb;">Fragen nach &quot;Bebauungsplan-Geltungsbereich&quot;</li>
+        <li style="color: #e5e7eb;">Oder nutzen Sie Online-Geoportale Ihrer Stadt</li>
       </ul>
 
-      <h4>✅ 2. Gebäudeklasse 1-3 (manchmal 4)</h4>
-      <p>Ihr Gebäude muss in die richtige Gebäudeklasse fallen:</p>
+      <h4 style="color: #f3f4f6;">✅ 2. Gebäudeklasse 1-3 (manchmal 4)</h4>
+      <p style="color: #e5e7eb;">Ihr Gebäude muss in die richtige Gebäudeklasse fallen:</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
           <tr style="background: #374151;">
-            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563;">Gebäudeklasse</th>
-            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563;">Beschreibung</th>
-            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563;">Genehmigungsfreistellung?</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563; color: #ffffff;">Gebäudeklasse</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563; color: #ffffff;">Beschreibung</th>
+            <th style="padding: 12px; text-align: left; border: 1px solid #4b5563; color: #ffffff;">Genehmigungsfreistellung?</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 12px; border: 1px solid #4b5563;"><strong>GK 1</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Freistehende Häuser max. 7m Höhe</td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">✅ Meist möglich</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;"><strong style="color: #ffffff;">GK 1</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Freistehende Häuser max. 7m Höhe</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">✅ Meist möglich</td>
           </tr>
           <tr style="background: #1f2937;">
-            <td style="padding: 12px; border: 1px solid #4b5563;"><strong>GK 2</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Hausgruppen max. 7m Höhe</td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">✅ Meist möglich</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;"><strong style="color: #ffffff;">GK 2</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Hausgruppen max. 7m Höhe</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">✅ Meist möglich</td>
           </tr>
           <tr>
-            <td style="padding: 12px; border: 1px solid #4b5563;"><strong>GK 3</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Sonstige Gebäude max. 7m Höhe</td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">✅ Meist möglich</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;"><strong style="color: #ffffff;">GK 3</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Sonstige Gebäude max. 7m Höhe</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">✅ Meist möglich</td>
           </tr>
           <tr style="background: #1f2937;">
-            <td style="padding: 12px; border: 1px solid #4b5563;"><strong>GK 4</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Gebäude 7-13m Höhe</td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">⚠️ Bundesland-abhängig</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;"><strong style="color: #ffffff;">GK 4</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Gebäude 7-13m Höhe</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">⚠️ Bundesland-abhängig</td>
           </tr>
           <tr>
-            <td style="padding: 12px; border: 1px solid #4b5563;"><strong>GK 5</strong></td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">Sonderbauten, Hochhäuser</td>
-            <td style="padding: 12px; border: 1px solid #4b5563;">❌ Nicht möglich</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;"><strong style="color: #ffffff;">GK 5</strong></td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">Sonderbauten, Hochhäuser</td>
+            <td style="padding: 12px; border: 1px solid #4b5563; color: #e5e7eb;">❌ Nicht möglich</td>
           </tr>
         </tbody>
       </table>
 
-      <p><em>Die restlichen Voraussetzungen (3-6) sowie weitere Abschnitte folgen in ähnlicher Formatierung...</em></p>
+      <p style="color: #d1d5db;"><em>Die restlichen Voraussetzungen (3-6) sowie weitere Abschnitte folgen in ähnlicher Formatierung...</em></p>
       
-      <p>Für den vollständigen Artikel mit allen 3.500 Wörtern siehe die vollständige Markdown-Datei. Dieser Artikel enthält umfangreiche Informationen zu:</p>
-      <ul>
-        <li>Praxis-Beispiele aus der Realität</li>
-        <li>Die 6 Schritte zum genehmigten Balkon</li>
-        <li>16 Bundesländer im Vergleich</li>
-        <li>Kosten der Baugenehmigung</li>
-        <li>Was passiert bei Schwarzbau?</li>
-        <li>Häufige Fehler vermeiden</li>
-        <li>Ausführliche FAQ-Sektion</li>
+      <p style="color: #e5e7eb;">Für den vollständigen Artikel mit allen 3.500 Wörtern siehe die vollständige Markdown-Datei. Dieser Artikel enthält umfangreiche Informationen zu:</p>
+      <ul style="color: #e5e7eb;">
+        <li style="color: #e5e7eb;">Praxis-Beispiele aus der Realität</li>
+        <li style="color: #e5e7eb;">Die 6 Schritte zum genehmigten Balkon</li>
+        <li style="color: #e5e7eb;">16 Bundesländer im Vergleich</li>
+        <li style="color: #e5e7eb;">Kosten der Baugenehmigung</li>
+        <li style="color: #e5e7eb;">Was passiert bei Schwarzbau?</li>
+        <li style="color: #e5e7eb;">Häufige Fehler vermeiden</li>
+        <li style="color: #e5e7eb;">Ausführliche FAQ-Sektion</li>
       </ul>
 
       <div style="background: #eff6ff; padding: 20px; margin: 30px 0; text-align: center; border-radius: 8px; color: #111827; border: 2px solid #3b82f6;">
@@ -610,8 +610,9 @@ const BlogPost = () => {
 
                 {/* Article Content */}
                 <div
-                  className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-ul:text-gray-300 prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6 prose-li:my-2 prose-li:leading-relaxed prose-strong:text-white prose-strong:font-semibold prose-a:text-orange-400 prose-a:hover:text-orange-300 prose-a:underline prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-300 prose-img:rounded-lg prose-img:my-8 prose-img:shadow-lg prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-th:bg-gray-700 prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-gray-600 prose-td:p-3 prose-td:border prose-td:border-gray-600"
+                  className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-headings:font-bold prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h4:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-p:text-gray-200 prose-p:leading-relaxed prose-p:mb-6 prose-ul:text-gray-200 prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6 prose-li:text-gray-200 prose-li:my-2 prose-li:leading-relaxed prose-strong:text-white prose-strong:font-semibold prose-a:text-orange-400 prose-a:hover:text-orange-300 prose-a:underline prose-blockquote:border-l-4 prose-blockquote:border-orange-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-200 prose-img:rounded-lg prose-img:my-8 prose-img:shadow-lg prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-th:bg-gray-700 prose-th:text-white prose-th:p-3 prose-th:text-left prose-th:border prose-th:border-gray-600 prose-td:text-gray-200 prose-td:p-3 prose-td:border prose-td:border-gray-600 prose:*:text-gray-200 prose-ol:text-gray-200 prose-ol:my-6"
                   dangerouslySetInnerHTML={{ __html: post.content }}
+                  style={{ color: '#e5e7eb' }}
                 />
 
                 {/* Author Box */}
