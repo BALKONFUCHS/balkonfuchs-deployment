@@ -129,17 +129,82 @@ export const formatGewerbeData = (formData) => {
       projektleiter: formData.projektleiter
     },
 
-    // Lead-Scoring (vereinfacht)
-    leadScore: {
-      totalScore: calculateGewerbeScore(formData),
-      category: 'warm', // Gewerbeprojekte sind meist warm
-      priority: 'P2', // Gewerbeprojekte haben höhere Priorität
-      urgency: 'medium',
-      complexity: 'high', // Gewerbeprojekte sind komplex
-      budget: 'high', // Gewerbeprojekte haben höheres Budget
-      timeline: 'urgent',
-      followUpHours: 12 // Schnellere Reaktion bei Gewerbe
-    },
+    // Lead-Scoring (dynamisch basierend auf Eingaben)
+    leadScore: (() => {
+      const totalScore = calculateGewerbeScore(formData);
+      
+      // Kategorie basierend auf Score
+      let category = 'cold';
+      if (totalScore >= 70) category = 'hot';
+      else if (totalScore >= 40) category = 'warm';
+      else category = 'cold';
+      
+      // Priorität basierend auf Score
+      let priority = 'P3';
+      if (totalScore >= 70) priority = 'P1';
+      else if (totalScore >= 40) priority = 'P2';
+      else priority = 'P3';
+      
+      // Urgency basierend auf Zeitrahmen
+      let urgency = 'low';
+      if (formData.zeitrahmen === 'sofort') urgency = 'high';
+      else if (formData.zeitrahmen === '3monate') urgency = 'high';
+      else if (formData.zeitrahmen === '6monate') urgency = 'medium';
+      else urgency = 'low';
+      
+      // Timeline basierend auf Zeitrahmen
+      let timeline = 'flexible';
+      if (formData.zeitrahmen === 'sofort') timeline = 'urgent';
+      else if (formData.zeitrahmen === '3monate') timeline = 'urgent';
+      else if (formData.zeitrahmen === '6monate') timeline = 'medium';
+      else timeline = 'flexible';
+      
+      // Budget-Level basierend auf Budgetrahmen
+      let budget = 'low';
+      const budgetValue = formData.budgetrahmen || '';
+      if (budgetValue.includes('> 1 Mio.') || budgetValue.includes('500.000 - 1 Mio.')) {
+        budget = 'very-high';
+      } else if (budgetValue.includes('300.000 - 500.000') || budgetValue.includes('200.000 - 300.000')) {
+        budget = 'high';
+      } else if (budgetValue.includes('150.000 - 200.000') || budgetValue.includes('100.000 - 150.000')) {
+        budget = 'medium';
+      } else if (budgetValue.includes('50.000 - 100.000') || budgetValue.includes('< 50.000')) {
+        budget = 'low';
+      } else if (budgetValue === 'Steht noch nicht fest') {
+        budget = 'unknown';
+      }
+      
+      // Complexity basierend auf Anzahl Einheiten und Balkontypen
+      let complexity = 'low';
+      const einheiten = formData.anzahlEinheiten || '';
+      const balkontypCount = Array.isArray(formData.balkontyp) ? formData.balkontyp.length : 0;
+      if (einheiten.includes('500+') || einheiten.includes('201-500')) {
+        complexity = 'very-high';
+      } else if (einheiten.includes('101-200') || einheiten.includes('51-100') || balkontypCount >= 3) {
+        complexity = 'high';
+      } else if (einheiten.includes('26-50') || balkontypCount === 2) {
+        complexity = 'medium';
+      } else {
+        complexity = 'low';
+      }
+      
+      // Follow-Up Hours basierend auf Score und Dringlichkeit
+      let followUpHours = 48; // Standard
+      if (totalScore >= 70 || urgency === 'high') followUpHours = 6;
+      else if (totalScore >= 40 || urgency === 'medium') followUpHours = 12;
+      else followUpHours = 24;
+      
+      return {
+        totalScore,
+        category,
+        priority,
+        urgency,
+        complexity,
+        budget,
+        timeline,
+        followUpHours
+      };
+    })(),
 
     // Geschätzter Wert
     estimatedPrice: estimateGewerbeValue(formData)
@@ -147,26 +212,71 @@ export const formatGewerbeData = (formData) => {
 };
 
 /**
- * Berechnet einen einfachen Score für Gewerbeprojekte
+ * Berechnet einen dynamischen Score für Gewerbeprojekte basierend auf allen Eingaben
  */
 const calculateGewerbeScore = (formData) => {
-  let score = 50; // Basis-Score
+  let score = 0; // Start bei 0, nicht 50!
 
-  // Projekttyp-Bonus
-  if (formData.projekttyp === 'mehrfamilienhaus') score += 20;
-  if (formData.projekttyp === 'bautraeger') score += 25;
-  if (formData.projekttyp === 'investor') score += 30;
+  // 1. Projekttyp-Bonus (0-30 Punkte)
+  const projekttypScores = {
+    'neubau': 25,           // Neubau = hohe Priorität
+    'sanierung': 20,        // Sanierung = gute Priorität
+    'wohnbaugesellschaft': 30, // Wohnbaugesellschaft = sehr hohe Priorität
+    'bautraeger': 30        // Bauträger = sehr hohe Priorität
+  };
+  score += projekttypScores[formData.projekttyp] || 10;
 
-  // Budget-Bonus
-  if (formData.budgetrahmen === '> 1 Mio. €') score += 25;
-  if (formData.budgetrahmen === '500.000 - 1 Mio. €') score += 20;
-  if (formData.budgetrahmen === '250.000 - 500.000 €') score += 15;
+  // 2. Anzahl Einheiten-Bonus (0-25 Punkte)
+  const einheitenScores = {
+    '1-10': 5,
+    '11-25': 15,
+    '26-50': 20,
+    '51-100': 25,
+    '101-200': 25,
+    '201-500': 25,
+    '500+': 25
+  };
+  score += einheitenScores[formData.anzahlEinheiten] || 0;
 
-  // Vollständigkeit-Bonus
-  if (formData.projektname && formData.projektort) score += 10;
-  if (formData.projektleiter) score += 5;
+  // 3. Budget-Bonus (0-30 Punkte)
+  const budgetScores = {
+    '< 50.000 €': 5,
+    '50.000 - 100.000 €': 10,
+    '100.000 - 150.000 €': 15,
+    '150.000 - 200.000 €': 20,
+    '200.000 - 300.000 €': 25,
+    '300.000 - 500.000 €': 30,
+    '500.000 - 1 Mio. €': 30,
+    '> 1 Mio. €': 30,
+    'Steht noch nicht fest': 10 // Auch bei unklarem Budget gibt es Punkte
+  };
+  score += budgetScores[formData.budgetrahmen] || 0;
 
-  return Math.min(score, 100);
+  // 4. Zeitrahmen-Bonus (0-20 Punkte)
+  const zeitrahmenScores = {
+    'sofort': 20,           // Sehr dringend = hohe Priorität
+    '3monate': 15,          // Schnell = gute Priorität
+    '6monate': 10,          // Mittlere Priorität
+    '12monate': 5,          // Niedrige Priorität
+    'planung': 3,           // Sehr niedrige Priorität
+    'unbekannt': 5          // Unklar = niedrige Priorität
+  };
+  score += zeitrahmenScores[formData.zeitrahmen] || 0;
+
+  // 5. Vollständigkeit-Bonus (0-15 Punkte)
+  if (formData.projektname && formData.projektname.trim()) score += 5;
+  if (formData.projektort && formData.projektort.trim()) score += 5;
+  if (formData.projektleiter && formData.projektleiter.trim()) score += 5;
+
+  // 6. Balkontyp-Vielfalt-Bonus (0-10 Punkte)
+  // Mehr verschiedene Balkontypen = höherer Score
+  const balkontypCount = Array.isArray(formData.balkontyp) ? formData.balkontyp.length : 0;
+  if (balkontypCount >= 3) score += 10;
+  else if (balkontypCount === 2) score += 5;
+  else if (balkontypCount === 1) score += 2;
+
+  // Score zwischen 0 und 100 begrenzen
+  return Math.max(0, Math.min(score, 100));
 };
 
 /**

@@ -326,6 +326,19 @@ exports.handler = async (event, context) => {
       
       // Mapped Data für zusätzliche Informationen
       mappedData: body.mappedData || {},
+      
+      // Gewerbe-Funnel: Lead Score direkt aus body übernehmen (falls vorhanden)
+      // WICHTIG: Muss VOR extractLeadScore/extractCategory/extractPriority kommen!
+      ...(body.leadScore?.totalScore ? {
+        leadScore: body.leadScore.totalScore,
+        category: body.leadScore.category || extractCategory(body),
+        priority: body.leadScore.priority || extractPriority(body)
+      } : {}),
+      ...(body.funnelData?.leadScore?.totalScore ? {
+        leadScore: body.funnelData.leadScore.totalScore,
+        category: body.funnelData.leadScore.category || extractCategory(body),
+        priority: body.funnelData.leadScore.priority || extractPriority(body)
+      } : {}),
     };
     
     // Normalisiere funnelType für PDF-Generierung
@@ -845,7 +858,10 @@ async function createZohoCRMLead(combinedData, accessToken, body, contact, funne
  */
 function extractLeadScore(body) {
   // Priorität: Neues System > Legacy System
-  let baseScore = body._kalkulatorScoring?.finalScore ||
+  // Gewerbe-Funnel: leadScore kommt direkt aus body.leadScore oder body.funnelData.leadScore
+  let baseScore = body.leadScore?.totalScore ||
+         body.funnelData?.leadScore?.totalScore ||
+         body._kalkulatorScoring?.finalScore ||
          body._partnerScoring?.finalScore ||
          body._planerScoring?.finalScore ||
          body._bauzeitScoring?.totalScore ||
@@ -872,7 +888,10 @@ function extractLeadScore(body) {
  * Extrahiert die Kategorie aus verschiedenen Scoring-Systemen
  */
 function extractCategory(body) {
-  let category = body._kalkulatorScoring?.category ||
+  // Gewerbe-Funnel: category kommt direkt aus body.leadScore oder body.funnelData.leadScore
+  let category = body.leadScore?.category ||
+         body.funnelData?.leadScore?.category ||
+         body._kalkulatorScoring?.category ||
          body._partnerScoring?.category ||
          body._planerScoring?.category ||
          body._bauzeitScoring?.category ||
@@ -898,7 +917,10 @@ function extractCategory(body) {
  * Extrahiert die Priorität aus verschiedenen Scoring-Systemen
  */
 function extractPriority(body) {
-  let priority = body._kalkulatorScoring?.priority ||
+  // Gewerbe-Funnel: priority kommt direkt aus body.leadScore oder body.funnelData.leadScore
+  let priority = body.leadScore?.priority ||
+         body.funnelData?.leadScore?.priority ||
+         body._kalkulatorScoring?.priority ||
          body._partnerScoring?.status ||
          body._planerScoring?.priority ||
          body._bauzeitScoring?.priority ||
