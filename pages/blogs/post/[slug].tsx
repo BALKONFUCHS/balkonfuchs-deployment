@@ -3126,6 +3126,198 @@ const blogPosts: Record<string, BlogPost> = {
     category: 'Planung',
     metaDescription: 'Von der Genehmigung bis zur Fertigstellung: Erfahren Sie, wie lange Ihr Balkon-Projekt wirklich dauert und wie Sie die Bauzeit optimal planen.',
     published: false
+  },
+  'balkon-statik-standsicherheit': {
+    id: 6,
+    slug: 'balkon-statik-standsicherheit',
+    title: 'Statik beim Balkonanbau 2025: Kosten, Ablauf & häufige Fehler',
+    category: 'Planung',
+    date: '2025-11-01',
+    readTime: '14 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
+    metaDescription: 'Statik beim Balkonanbau: Was kostet der Statiker? Welche Unterlagen braucht man? Alle Infos zu Standsicherheitsnachweis ✓ 2025',
+    published: false,
+    content: `
+      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
+        <p style="margin: 0; color: #111827;"><strong>📝 Dieser Artikel wird derzeit ausgearbeitet.</strong></p>
+        <p style="margin: 10px 0 0 0; color: #374151;">Erscheint in Kürze mit allen wichtigen Informationen zu:</p>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
+          <li style="color: #374151;">Standsicherheitsnachweis: Was ist das?</li>
+          <li style="color: #374151;">Wann brauche ich einen Statiker?</li>
+          <li style="color: #374151;">Kosten für statische Berechnung</li>
+          <li style="color: #374151;">Ablauf der statischen Prüfung</li>
+          <li style="color: #374151;">Häufige Probleme bei Altbauten</li>
+        </ul>
+      </div>
+      
+      <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
+      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit von unseren Experten ausgearbeitet und enthält bald alle wichtigen Informationen zur Statik beim Balkonanbau.</p>
+      
+      <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
+        <h3 style="margin-top: 0; color: #111827;"><strong>In der Zwischenzeit:</strong></h3>
+        <p style="color: #374151;">Nutzen Sie unsere Tools für Ihr Balkon-Projekt:</p>
+        <p style="color: #111827;"><strong>→ <a href="/planer/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Zum BalkonPlaner</a></strong></p>
+        <p style="color: #111827;"><strong>→ <a href="/kalkulator/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Zum Kalkulator</a></strong></p>
+      </div>
+    `,
+    thumbnail: '/images/blog/statik.jpg'
+  },
+  'sturmschaden-balkon-haftung': {
+    id: 7,
+    slug: 'sturmschaden-balkon-haftung',
+    title: 'Sturmschaden am Balkon: Wer haftet? Versicherung & Rechtslage 2025',
+    category: 'Recht & Versicherung',
+    date: '2025-11-01',
+    readTime: '12 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
+    metaDescription: 'Sturmschaden am Balkon: Wer haftet wenn etwas herunterfällt? Versicherung, Rechtslage & Haftung ✓ 2025',
+    published: false,
+    content: `
+      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
+        <p style="margin: 0; color: #111827;"><strong>📝 Dieser Artikel wird derzeit ausgearbeitet.</strong></p>
+        <p style="margin: 10px 0 0 0; color: #374151;">Erscheint in Kürze mit allen wichtigen Informationen zu:</p>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
+          <li style="color: #374151;">Haftung bei Sturmschäden vom Balkon</li>
+          <li style="color: #374151;">Versicherungsschutz (Gebäude & Haftpflicht)</li>
+          <li style="color: #374151;">Verkehrssicherungspflicht des Eigentümers</li>
+          <li style="color: #374151;">Praxis-Fälle und Rechtsprechung</li>
+          <li style="color: #374151;">Präventionsmaßnahmen</li>
+        </ul>
+      </div>
+      
+      <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
+      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+    `,
+    thumbnail: '/images/blog/sturmschaden.jpg'
+  },
+  'balkon-arten-typen-vergleich': {
+    id: 8,
+    slug: 'balkon-arten-typen-vergleich',
+    title: 'Balkon-Arten 2025: Alle Typen im Vergleich [Vorstellbalkon, Anbaubalkon & Co.]',
+    category: 'Planung',
+    date: '2025-11-01',
+    readTime: '15 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
+    metaDescription: 'Welcher Balkontyp passt zu Ihnen? Alle Balkon-Arten im Vergleich: Kosten, Vor-/Nachteile, Eignung ✓ 2025',
+    published: false,
+    content: `
+      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
+        <p style="margin: 0; color: #111827;"><strong>📝 Dieser Artikel wird derzeit ausgearbeitet.</strong></p>
+        <p style="margin: 10px 0 0 0; color: #374151;">Erscheint in Kürze mit allen wichtigen Informationen zu:</p>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
+          <li style="color: #374151;">Vorstellbalkon (selbsttragend)</li>
+          <li style="color: #374151;">Anbaubalkon (teilselbsttragend)</li>
+          <li style="color: #374151;">Kragarmbalkon (freitragend)</li>
+          <li style="color: #374151;">Französischer Balkon</li>
+          <li style="color: #374151;">Loggia & Freisitz</li>
+          <li style="color: #374151;">Kosten-Vergleich aller Typen</li>
+        </ul>
+      </div>
+      
+      <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
+      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+      
+      <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
+        <h3 style="margin-top: 0; color: #111827;"><strong>Mehr Infos im Balkonlexikon:</strong></h3>
+        <p style="color: #374151;">Detaillierte Erklärungen aller Balkontypen finden Sie in unserem Lexikon.</p>
+        <p style="color: #111827;"><strong>→ <a href="/lexikon/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Zum Balkonlexikon</a></strong></p>
+      </div>
+    `,
+    thumbnail: '/images/blog/balkon-typen.jpg'
+  },
+  'balkon-bodenbelag-materialien': {
+    id: 9,
+    slug: 'balkon-bodenbelag-materialien',
+    title: 'Balkonbelag 2025: Alle Materialien im Vergleich [WPC, Holz, Fliesen & mehr]',
+    category: 'Ausstattung',
+    date: '2025-11-01',
+    readTime: '16 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
+    metaDescription: 'Welcher Balkonbelag passt zu Ihnen? WPC, Holz, Fliesen, Stein im Vergleich ✓ Kosten ✓ Pflege ✓ Haltbarkeit ✓ 2025',
+    published: false,
+    content: `
+      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
+        <p style="margin: 0; color: #111827;"><strong>📝 Dieser Artikel wird derzeit ausgearbeitet.</strong></p>
+        <p style="margin: 10px 0 0 0; color: #374151;">Erscheint in Kürze mit allen wichtigen Informationen zu:</p>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
+          <li style="color: #374151;">WPC (Wood-Plastic-Composite)</li>
+          <li style="color: #374151;">Holz (Lärche, Bangkirai, Douglasie)</li>
+          <li style="color: #374151;">Fliesen & Keramik</li>
+          <li style="color: #374151;">Stein (Granit, Schiefer)</li>
+          <li style="color: #374151;">Kunststoff-Fliesen & Gummi-Granulat</li>
+          <li style="color: #374151;">Kosten-Vergleich pro m²</li>
+          <li style="color: #374151;">Pflege & Haltbarkeit</li>
+        </ul>
+      </div>
+      
+      <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
+      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+    `,
+    thumbnail: '/images/blog/bodenbelag.jpg'
+  },
+  'balkongelaender-sichtschutz-varianten': {
+    id: 10,
+    slug: 'balkongelaender-sichtschutz-varianten',
+    title: 'Balkongeländer 2025: Alle Typen, Materialien & Sichtschutz-Optionen',
+    category: 'Ausstattung',
+    date: '2025-11-01',
+    readTime: '18 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
+    metaDescription: 'Balkongeländer-Typen im Vergleich: Glas, Edelstahl, Stabgeländer, Lochblech ✓ Kosten ✓ Sichtschutz ✓ 2025',
+    published: false,
+    content: `
+      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
+        <p style="margin: 0; color: #111827;"><strong>📝 Dieser Artikel wird derzeit ausgearbeitet.</strong></p>
+        <p style="margin: 10px 0 0 0; color: #374151;">Erscheint in Kürze mit allen wichtigen Informationen zu:</p>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
+          <li style="color: #374151;">Stabgeländer (vertikal/horizontal)</li>
+          <li style="color: #374151;">Lochblech & Lochgitter</li>
+          <li style="color: #374151;">Flächige Füllung mit Werzalit</li>
+          <li style="color: #374151;">Glas-Geländer & Ganzglas-Geländer</li>
+          <li style="color: #374151;">Edelstahl & Kortenstahl</li>
+          <li style="color: #374151;">Sichtschutz-Lösungen (Matten, Folien, Pflanzen)</li>
+          <li style="color: #374151;">Kosten-Vergleich pro laufendem Meter</li>
+        </ul>
+      </div>
+      
+      <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
+      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+    `,
+    thumbnail: '/images/blog/gelaender.jpg'
+  },
+  'knut-weihnachtsbaum-balkon-entsorgen': {
+    id: 11,
+    slug: 'knut-weihnachtsbaum-balkon-entsorgen',
+    title: 'Knut 2025: Weihnachtsbaum vom Balkon entsorgen wie die Schweden',
+    category: 'Tipps & Wissenswertes',
+    date: '2025-01-13',
+    readTime: '8 Min.',
+    author: 'BALKONFUCHS Team',
+    metaDescription: 'Knut: Darf man den Weihnachtsbaum vom Balkon werfen wie in Schweden? Rechtslage & sichere Entsorgung ✓ 2025',
+    published: false,
+    content: `
+      <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
+        <p style="margin: 0; color: #111827;"><strong>📝 Dieser Artikel wird derzeit ausgearbeitet.</strong></p>
+        <p style="margin: 10px 0 0 0; color: #374151;">Erscheint in Kürze mit allen wichtigen Informationen zu:</p>
+        <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
+          <li style="color: #374151;">Was ist "Knut" in Schweden?</li>
+          <li style="color: #374151;">Die schwedische Tradition (13. Januar)</li>
+          <li style="color: #374151;">Weihnachtsbaum vom Balkon werfen - erlaubt?</li>
+          <li style="color: #374151;">Rechtslage in Deutschland</li>
+          <li style="color: #374151;">Sichere Alternativen zur Entsorgung</li>
+          <li style="color: #374151;">Kommunale Abholtermine</li>
+        </ul>
+      </div>
+      
+      <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
+      <p style="color: #e5e7eb;">Dieser saisonale Artikel erscheint pünktlich zur Weihnachtszeit.</p>
+      
+      <div style="background: #fff8e1; padding: 20px; margin: 20px 0; border-left: 4px solid #ff9800; border-radius: 4px; color: #111827;">
+        <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">🎄 Saisonaler Content</h4>
+        <p style="color: #374151;">Dieser Artikel wird Anfang Januar besonders stark nachgefragt. Erscheint rechtzeitig zur Weihnachtsbaum-Entsorgungssaison.</p>
+      </div>
+    `,
+    thumbnail: '/images/blog/knut.jpg'
   }
 };
 
