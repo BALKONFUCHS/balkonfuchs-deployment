@@ -131,7 +131,9 @@ const Blog = () => {
                   "@type": "Organization",
                   "name": post.author
                 },
-                "url": `https://balkonfuchs.de/blogs/post/${post.slug}`
+                "url": `https://balkonfuchs.de/blogs/post/${post.slug}`,
+                "image": post.thumbnail ? `https://balkonfuchs.de${post.thumbnail}` : "https://balkonfuchs.de/images/Balkonfuchs-Logo_white.png",
+                "description": post.teaser
               }))
             })
           }}
