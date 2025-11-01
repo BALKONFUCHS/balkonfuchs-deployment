@@ -380,22 +380,6 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
           </p>
         </div>
 
-        {/* Lead Score Anzeige */}
-        {genehmigungScoring && (
-          <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full text-lg font-semibold mb-6 ${
-            genehmigungScoring.category === 'Hot Lead' ? 'bg-green-500/20 border-green-500/40 text-green-400' :
-            genehmigungScoring.category === 'Warm Lead' ? 'bg-orange-500/20 border-orange-500/40 text-orange-400' :
-            'bg-gray-500/20 border-gray-500/40 text-gray-400'
-          }`}>
-            <span className="text-xl">
-              {genehmigungScoring.category === 'Hot Lead' ? '🔥' : 
-               genehmigungScoring.category === 'Warm Lead' ? '🟡' : '❄️'}
-            </span>
-            <span className="font-bold">{genehmigungScoring.category}</span>
-            <span className="text-sm opacity-80">({genehmigungScoring.totalScore}/100)</span>
-          </div>
-        )}
-
         <div className="bg-gray-700/50 border border-gray-600 rounded-xl p-6 mb-8">
           <h3 className="text-xl font-semibold text-white mb-4">Ihr Genehmigungsstatus</h3>
           <div className="text-left space-y-3">
@@ -837,18 +821,6 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
           <span className="text-2xl">{statusIcons[ergebnis.status]}</span>
           {ergebnis.verfahrenstyp}
         </div>
-
-        {/* Lead Score Anzeige */}
-        {genehmigungScoring && (
-          <div className={`inline-flex items-center gap-3 px-6 py-3 rounded-full text-lg font-semibold mb-6 ${categoryColors[genehmigungScoring.category] || categoryColors['Cold Lead']}`}>
-            <span className="text-xl">
-              {genehmigungScoring.category === 'Hot Lead' ? '🔥' : 
-               genehmigungScoring.category === 'Warm Lead' ? '🟡' : '❄️'}
-            </span>
-            <span className="font-bold">{genehmigungScoring.category}</span>
-            <span className="text-sm opacity-80">({genehmigungScoring.totalScore}/100)</span>
-          </div>
-        )}
         
         <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-8 max-w-4xl mx-auto text-left">
           <h3 className="text-xl font-bold text-white mb-4">📋 Ihr Genehmigungsstatus im Detail</h3>
