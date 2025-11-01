@@ -579,6 +579,8 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Aber: Weiterhin Anzeigepflicht beim Bauamt</li>
       </ul>
 
+      <div style="margin-bottom: 30px;"></div>
+
       <h3 style="color: #f3f4f6;">🍷 Baden-Württemberg</h3>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> In den meisten Fällen</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
@@ -591,6 +593,8 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 300-700€</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, bei Erfüllung der Voraussetzungen</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> LBO BW §50: Erweiterte Freistellungsmöglichkeiten für GK 1-3</p>
+
+      <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">🏛️ Berlin</h3>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja, fast immer</p>
@@ -606,6 +610,8 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Nicht verfügbar</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> Neue Online-Portal für Bauanträge (teilweise Beschleunigung)</p>
 
+      <div style="margin-bottom: 30px;"></div>
+
       <h3 style="color: #f3f4f6;">🏰 Nordrhein-Westfalen</h3>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja, in den meisten Fällen</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
@@ -617,6 +623,8 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 300-750€</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, möglich</p>
+
+      <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">🍎 Hessen</h3>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja</p>
@@ -630,6 +638,8 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 250-600€</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, bei Erfüllung der Voraussetzungen</p>
 
+      <div style="margin-bottom: 30px;"></div>
+
       <h3 style="color: #f3f4f6;">🌊 Niedersachsen</h3>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
@@ -641,6 +651,8 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 250-650€</p>
       <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Teilweise möglich</p>
+
+      <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">📍 Weitere Bundesländer (Kurzübersicht):</h3>
       
