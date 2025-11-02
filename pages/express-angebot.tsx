@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { ArrowLeft, ArrowRight, Mail, Menu, Check } from 'lucide-react';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
+import PhoneInput from '../components/PhoneInput';
 
 const BALKONFUCHSExpressAngebotFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -627,7 +628,20 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
             />
           </div>
           
-          <div className="text-left">
+          <PhoneInput
+            value={formData.contact.phone}
+            onChange={(value) => setFormData(prev => ({
+              ...prev,
+              contact: { ...prev.contact, phone: value }
+            }))}
+            required={false}
+            placeholder="123 456789"
+            label="Telefon"
+            className="text-left"
+          />
+          
+          {/* Original input removed - using PhoneInput component */}
+          {/* <div className="text-left">
             <label className="block text-white font-medium mb-2">Telefon</label>
             <input
               type="tel"

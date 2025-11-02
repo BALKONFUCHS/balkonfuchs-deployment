@@ -5,6 +5,7 @@ import { calculatePartnerScore } from '../utils/balkon-lead-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PhoneInput from '../components/PhoneInput';
 
 const PartnerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -1368,21 +1369,22 @@ const PartnerFunnel = () => {
             onChange={(e) => handleContactChange('email', e.target.value)}
             className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
           />
-          <input
-            type="tel"
-            placeholder="Telefonnummer *"
+          <PhoneInput
             value={formData.contact.phone}
-            onChange={(e) => handleContactChange('phone', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            onChange={(value) => handleContactChange('phone', value)}
+            required={true}
+            placeholder="123 456789"
+            className="w-full"
           />
         </div>
 
-        <input
-          type="tel"
-          placeholder="Mobilnummer (optional)"
+        <PhoneInput
           value={formData.contact.mobile}
-          onChange={(e) => handleContactChange('mobile', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+          onChange={(value) => handleContactChange('mobile', value)}
+          required={false}
+          placeholder="123 456789"
+          label="Mobilnummer (optional)"
+          className="w-full"
         />
 
         <div>
