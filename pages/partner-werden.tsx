@@ -285,11 +285,12 @@ const PartnerFunnel = () => {
 
 
   const nextStep = () => {
+    // Kontaktformular-Step (letzter Step) darf nicht automatisch übersprungen werden
+    // Der User muss explizit den Submit-Button klicken
     if (currentStep < questions.length - 1 && isStepValid) {
       setCurrentStep(prev => prev + 1);
-    } else if (currentStep === questions.length - 1 && isStepValid) {
-      submitForm();
     }
+    // submitForm() wird nur vom Submit-Button im Kontaktformular aufgerufen
   };
 
   const prevStep = () => {
@@ -320,7 +321,7 @@ const PartnerFunnel = () => {
       },
       company: {
         name: formData.companyName,
-        legalForm: formData.legalForm,
+        legalForm: formData.legalForm === 'other' ? (formData.legalFormCustom || formData.legalForm) : formData.legalForm,
         foundedYear: formData.foundedYear,
         employeeCount: formData.employeeCount,
         city: formData.city,
@@ -970,18 +971,39 @@ const PartnerFunnel = () => {
         <div>
           <label className="block text-sm font-medium text-gray-200 mb-2">Rechtsform *</label>
           <select
-            value={formData.legalForm}
-            onChange={(e) => handleCompanyChange('legalForm', e.target.value)}
+            value={formData.legalForm === 'other' ? 'other' : formData.legalForm}
+            onChange={(e) => {
+              if (e.target.value === 'other') {
+                handleCompanyChange('legalForm', 'other');
+              } else {
+                handleCompanyChange('legalForm', e.target.value);
+              }
+            }}
             className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
           >
             <option value="">Rechtsform wählen</option>
             <option value="GmbH">GmbH</option>
             <option value="UG">UG (haftungsbeschränkt)</option>
             <option value="GbR">GbR</option>
+            <option value="OHG">OHG</option>
+            <option value="KG">KG</option>
             <option value="Einzelunternehmen">Einzelunternehmen</option>
             <option value="AG">AG</option>
             <option value="eK">e.K.</option>
+            <option value="other">Sonstiges (Freitext)</option>
           </select>
+          {formData.legalForm === 'other' && (
+            <input
+              type="text"
+              placeholder="Bitte Rechtsform eingeben"
+              value={formData.legalFormCustom || ''}
+              onChange={(e) => {
+                setFormData(prev => ({ ...prev, legalFormCustom: e.target.value }));
+                handleCompanyChange('legalForm', e.target.value);
+              }}
+              className="mt-2 w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            />
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-200 mb-2">Gründungsjahr</label>
@@ -1161,26 +1183,17 @@ const PartnerFunnel = () => {
               </div>
             ) : leadScore.finalScore >= 50 ? (
               <div className="space-y-4">
-                <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4">
-                  <h5 className="text-lg font-semibold text-yellow-400 mb-2 flex items-center">
-                    <span className="mr-2">⚠️</span>
-                    Standard Partner - Bedingte Empfehlung
+                <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
+                  <h5 className="text-lg font-semibold text-blue-400 mb-2 flex items-center">
+                    <span className="mr-2">🤝</span>
+                    Hey, deine Partnerschaft hat Potenzial!
                   </h5>
                   <p className="text-gray-300 leading-relaxed">
-                    <strong>Vielen Dank für Ihre Bewerbung!</strong> Sie zeigen grundsätzlich das Potenzial für eine 
-                    erfolgreiche Partnerschaft, aber es gibt noch einige Bereiche mit Verbesserungspotential. 
-                    Wir werden Ihre Bewerbung individuell und sorgfältig prüfen. 
-                    Bei einer positiven Entscheidung können wir Ihnen ein maßgeschneidertes Partnerprogramm anbieten.
+                    <strong>Vielen Dank für deine Bewerbung!</strong> Wir sehen Potenzial in deiner Partnerschaft, 
+                    aber auch noch ein paar Schwachstellen, die wir gemeinsam besprechen sollten, bevor wir die 
+                    Partnerschaft miteinander eingehen. Gib uns ein bis zwei Tage Zeit, dass wir uns bei dir melden 
+                    und gemeinsam die nächsten Schritte besprechen können.
                   </p>
-                </div>
-                <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4">
-                  <h6 className="font-semibold text-orange-400 mb-2">🔍 Punkte zur Verbesserung:</h6>
-                  <ul className="text-gray-300 text-sm space-y-1">
-                    <li>• Erweiterung der Referenzprojekte</li>
-                    <li>• Zusätzliche Qualifikationen empfohlen</li>
-                    <li>• Verstärkung der Unternehmensstruktur</li>
-                    <li>• Spezialisierung auf bestimmte Balkonarten</li>
-                  </ul>
                 </div>
               </div>
             ) : leadScore.finalScore >= 30 ? (
@@ -1854,13 +1867,7 @@ const PartnerFunnel = () => {
                 <button
                   onClick={() => {
                     setFormData(prev => ({ ...prev, partnerType: 'starter' }));
-                    // Auto-advance nach Subscription-Auswahl
-                    setTimeout(() => {
-                      if (currentStep === 0 || !formData.partnerType) {
-                        setCurrentStep(1);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }
-                    }, 300);
+                    // One-Click entfernt für bessere Datengenauigkeit
                   }}
                   className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
                     formData.partnerType === 'starter' 
@@ -1906,13 +1913,7 @@ const PartnerFunnel = () => {
                 <button
                   onClick={() => {
                     setFormData(prev => ({ ...prev, partnerType: 'professional' }));
-                    // Auto-advance nach Subscription-Auswahl
-                    setTimeout(() => {
-                      if (currentStep === 0 || !formData.partnerType) {
-                        setCurrentStep(1);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }
-                    }, 300);
+                    // One-Click entfernt für bessere Datengenauigkeit
                   }}
                   className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
                     formData.partnerType === 'professional' 
@@ -1958,13 +1959,7 @@ const PartnerFunnel = () => {
                 <button
                   onClick={() => {
                     setFormData(prev => ({ ...prev, partnerType: 'enterprise' }));
-                    // Auto-advance nach Subscription-Auswahl
-                    setTimeout(() => {
-                      if (currentStep === 0 || !formData.partnerType) {
-                        setCurrentStep(1);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                      }
-                    }, 300);
+                    // One-Click entfernt für bessere Datengenauigkeit
                   }}
                   className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
                     formData.partnerType === 'enterprise' 
