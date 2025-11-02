@@ -129,8 +129,8 @@ const PartnerFunnel = () => {
     },
     {
       id: 'leadScoring',
-      title: 'Ihr Lead Scoring Ergebnis & Kontaktdaten',
-      subtitle: '📊 Hier ist Ihre Bewertung. Bitte füllen Sie abschließend Ihre Kontaktdaten aus.',
+      title: 'Zusammenfassung & Kontaktdaten',
+      subtitle: '🤝 Vielen Dank für deine Bewerbung! Bitte gib uns noch deine Kontaktdaten, damit wir dich persönlich kontaktieren können.',
       type: 'lead_scoring'
     }
   ];
@@ -1131,168 +1131,49 @@ const PartnerFunnel = () => {
   );
 
   const renderLeadScoring = () => {
+    // Lead Score wird intern berechnet, aber NICHT angezeigt
+    // Das Scoring ist nur für interne Zwecke (Zoho Desk/CRM)
     const leadScore = calculateLeadScore();
     
     return (
       <div className="space-y-8">
-        {/* Lead Score Ergebnis */}
+        {/* Einfache, freundliche Zusammenfassung ohne Bewertung */}
         <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6">
-              <span className="text-3xl font-bold text-white">{leadScore.finalScore}</span>
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-6">
+              <Handshake className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">
-              {leadScore.category}
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Vielen Dank für deine Bewerbung als Balkonbau Partner!
             </h3>
-            <p className="text-lg text-gray-300">
-              Antwortzeit: {leadScore.responseTime}
+            <p className="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
+              Wir haben alle deine Angaben erhalten und werden sie sorgfältig prüfen. 
+              Du hörst in den nächsten Tagen von uns - wir melden uns persönlich bei dir, 
+              um die nächsten Schritte zu besprechen.
             </p>
           </div>
           
-          {/* Empfehlung */}
-          <div className="bg-gray-700/50 rounded-2xl p-6 mb-6">
+          {/* Freundliche Info-Box */}
+          <div className="bg-blue-500/10 border border-blue-500/30 rounded-2xl p-6 mb-6">
             <h4 className="text-xl font-bold text-white mb-4 flex items-center">
-              <span className="text-blue-400 mr-2">📊</span>
-              Unsere detaillierte Bewertung
+              <span className="text-blue-400 mr-2">🤝</span>
+              Was passiert als nächstes?
             </h4>
-            
-            {leadScore.finalScore >= 75 ? (
-              <div className="space-y-4">
-                <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-4">
-                  <h5 className="text-lg font-semibold text-green-400 mb-2 flex items-center">
-                    <span className="mr-2">✅</span>
-                    Premium Partner - Empfehlung für Zusammenarbeit
-                  </h5>
-                  <p className="text-gray-300 leading-relaxed">
-                    <strong>Herzlichen Glückwunsch!</strong> Sie erfüllen alle unsere Kriterien für eine Premium-Partnerschaft. 
-                    Ihre Erfahrung, Qualifikationen und Referenzen überzeugen uns vollständig. 
-                    Wir freuen uns auf eine langfristige, erfolgreiche Zusammenarbeit und können Ihnen bereits jetzt 
-                    eine schnelle Vertragsverhandlung mit exzellenten Konditionen anbieten.
-                  </p>
-                </div>
-                <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
-                  <h6 className="font-semibold text-blue-400 mb-2">🎯 Warum Sie sich qualifiziert haben:</h6>
-                  <ul className="text-gray-300 text-sm space-y-1">
-                    <li>• Ausgezeichnete Erfahrung im Balkonbau</li>
-                    <li>• Vollständige Qualifikationen und Zertifikate</li>
-                    <li>• Überzeugende Referenzprojekte</li>
-                    <li>• Solide Unternehmensstruktur</li>
-                    <li>• Professionelle Arbeitsweise</li>
-                  </ul>
-                </div>
-              </div>
-            ) : leadScore.finalScore >= 50 ? (
-              <div className="space-y-4">
-                <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-4">
-                  <h5 className="text-lg font-semibold text-blue-400 mb-2 flex items-center">
-                    <span className="mr-2">🤝</span>
-                    Hey, deine Partnerschaft hat Potenzial!
-                  </h5>
-                  <p className="text-gray-300 leading-relaxed">
-                    <strong>Vielen Dank für deine Bewerbung!</strong> Wir sehen Potenzial in deiner Partnerschaft, 
-                    aber auch noch ein paar Schwachstellen, die wir gemeinsam besprechen sollten, bevor wir die 
-                    Partnerschaft miteinander eingehen. Gib uns ein bis zwei Tage Zeit, dass wir uns bei dir melden 
-                    und gemeinsam die nächsten Schritte besprechen können.
-                  </p>
-                </div>
-              </div>
-            ) : leadScore.finalScore >= 30 ? (
-              <div className="space-y-6">
-                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/40 rounded-xl p-6">
-                  <h5 className="text-2xl font-bold text-white mb-4 flex items-center">
-                    <span className="mr-3">👋</span>
-                    Hey, erst mal vielen Dank für deine Bewerbung!
-                  </h5>
-                  <p className="text-gray-200 leading-relaxed text-lg mb-4">
-                    Wir haben jetzt nach unserem eigenen Algorithmus eine Art Bewertung vorgenommen, 
-                    die du hier weiter unten dargestellt siehst.
-                  </p>
-                  <p className="text-gray-300 leading-relaxed text-base">
-                    Das hat zunächst nichts zu bedeuten, denn es bedeutet für uns, dass wir Rückfragen 
-                    an dich haben und in der Folge noch mal auf dich zukommen werden. 
-                    <strong className="text-blue-400"> Gib uns dazu ein bis zwei Tage Zeit, dass wir uns bei dir melden.</strong>
-                  </p>
-                  <p className="text-gray-300 leading-relaxed text-base mt-4 font-semibold text-blue-300">
-                    Bis dahin freuen wir uns schon mal sehr über deine Bewerbung als potenzieller Partner bei BALKONFUCHS!
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
-                  <h5 className="text-lg font-semibold text-red-400 mb-2 flex items-center">
-                    <span className="mr-2">❌</span>
-                    Nicht qualifiziert - Aktuell nicht geeignet
-                  </h5>
-                  <p className="text-gray-300 leading-relaxed">
-                    <strong>Vielen Dank für Ihre Bewerbung!</strong> Leider erfüllen Sie aktuell nicht die 
-                    Mindestanforderungen für eine Partnerschaft mit BALKONFUCHS. Das bedeutet jedoch nicht, 
-                    dass wir Sie nicht in Zukunft als Partner begrüßen würden. 
-                    Wir empfehlen Ihnen, sich zunächst weiterzuentwickeln und sich später erneut zu bewerben.
-                  </p>
-                </div>
-                <div className="bg-gray-500/10 border border-gray-500/30 rounded-xl p-4">
-                  <h6 className="font-semibold text-gray-400 mb-2">💡 Entwicklungsempfehlungen:</h6>
-                  <ul className="text-gray-300 text-sm space-y-1">
-                    <li>• Sammeln Sie mehr Erfahrung im Balkonbau</li>
-                    <li>• Erwerben Sie relevante Qualifikationen</li>
-                    <li>• Bauen Sie Referenzprojekte auf</li>
-                    <li>• Stärken Sie Ihr Unternehmen strukturell</li>
-                    <li>• Bewerben Sie sich in 6-12 Monaten erneut</li>
-                  </ul>
-                </div>
-              </div>
-            )}
-          </div>
-          
-          {/* Score Breakdown */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-gray-700/30 rounded-xl p-4">
-              <h5 className="font-semibold text-white mb-3">📈 Score Details</h5>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Basis-Score:</span>
-                  <span className="text-blue-400">{leadScore.baseScore} Punkte</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Abzüge:</span>
-                  <span className="text-red-400">-{leadScore.abzuege} Punkte</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-300">Vollständigkeits-Bonus:</span>
-                  <span className="text-green-400">+{leadScore.completionBonus} Punkte</span>
-                </div>
-                <hr className="border-gray-600"/>
-                <div className="flex justify-between font-semibold">
-                  <span className="text-white">Final Score:</span>
-                  <span className="text-blue-400">{leadScore.finalScore} Punkte</span>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-gray-700/30 rounded-xl p-4">
-              <h5 className="font-semibold text-white mb-3">📋 Nächste Schritte</h5>
-              <div className="space-y-2 text-sm text-gray-300">
-                {leadScore.finalScore >= 75 ? (
-                  <>
-                    <div>• Schnelle Vertragsverhandlung</div>
-                    <div>• Onboarding-Prozess starten</div>
-                    <div>• Erste Leads innerhalb 2 Wochen</div>
-                  </>
-                ) : leadScore.finalScore >= 50 ? (
-                  <>
-                    <div>• Individuelle Prüfung</div>
-                    <div>• Mögliche Nachfragen</div>
-                    <div>• Entscheidung innerhalb 1 Woche</div>
-                  </>
-                ) : (
-                  <>
-                    <div>• Detaillierte Prüfung</div>
-                    <div>• Mögliche Rückfragen</div>
-                    <div>• Entscheidung innerhalb 2 Wochen</div>
-                  </>
-                )}
-              </div>
+            <div className="space-y-3 text-gray-200">
+              <p className="leading-relaxed">
+                <strong className="text-white">1. Prüfung deiner Bewerbung</strong><br/>
+                Unser Partner-Team prüft deine Angaben, Qualifikationen und Referenzen sorgfältig durch.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-white">2. Persönlicher Kontakt</strong><br/>
+                Wir melden uns bei dir zurück - je nach deinem Profil unterschiedlich schnell. 
+                In der Regel innerhalb von 1-3 Werktagen.
+              </p>
+              <p className="leading-relaxed">
+                <strong className="text-white">3. Gemeinsame Besprechung</strong><br/>
+                Im persönlichen Gespräch klären wir alle Details und finden gemeinsam die beste Lösung 
+                für eine erfolgreiche Partnerschaft.
+              </p>
             </div>
           </div>
         </div>
@@ -1300,9 +1181,10 @@ const PartnerFunnel = () => {
         {/* Kontaktformular */}
         <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm mt-8">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-2">Ihre Kontaktdaten</h3>
-            <p className="text-lg text-orange-400">
-              🤝 Abschließend benötigen wir Ihre Kontaktdaten für die weitere Bearbeitung
+            <h3 className="text-2xl font-bold text-white mb-2">Deine Kontaktdaten</h3>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              Um dich persönlich kontaktieren zu können, benötigen wir noch deine Kontaktdaten. 
+              Diese werden selbstverständlich vertraulich behandelt.
             </p>
           </div>
 
@@ -1582,15 +1464,16 @@ const PartnerFunnel = () => {
 
         <div className="space-y-4">
           <h2 className="text-3xl font-bold text-white">
-            🎉 Vielen Dank für Ihre Balkonbau Partner Bewerbung{formData.contact.firstName ? `, ${formData.contact.firstName}` : ''}!
+            🎉 Vielen Dank für deine Bewerbung{formData.contact.firstName ? `, ${formData.contact.firstName}` : ''}!
           </h2>
-          <p className="text-xl text-gray-300">
-            Ihre Balkonbau Partnerschaftsanfrage wurde erfolgreich übermittelt und wird von unserem Team geprüft.
+          <p className="text-xl text-gray-300 leading-relaxed">
+            Deine Bewerbung als Balkonbau Partner wurde erfolgreich übermittelt. 
+            Unser Team prüft sie sorgfältig und meldet sich in den nächsten Tagen persönlich bei dir.
           </p>
         </div>
 
         <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-6 rounded-2xl">
-          <h3 className="text-xl font-bold text-orange-400 mb-4">📋 Ihre Balkonbau Partner Bewerbung:</h3>
+          <h3 className="text-xl font-bold text-orange-400 mb-4">📋 Deine Bewerbung im Überblick:</h3>
           <div className="grid md:grid-cols-2 gap-6 text-gray-300">
                          <div className="text-left space-y-2">
                <div><strong>Lead-Paket:</strong> {getPartnerTypeLabel()}</div>
@@ -1611,22 +1494,22 @@ const PartnerFunnel = () => {
             <div className="flex items-start space-x-3">
               <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
               <div>
-                <div className="font-semibold">Bestätigung per E-Mail (sofort)</div>
-                <div className="text-sm">Sie erhalten eine Bestätigung Ihrer Balkonbau Partner Bewerbung</div>
+                <div className="font-semibold text-white">Bestätigung per E-Mail (sofort)</div>
+                <div className="text-sm text-gray-300">Du erhältst eine Bestätigung deiner Bewerbung</div>
               </div>
             </div>
             <div className="flex items-start space-x-3">
               <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
               <div>
-                <div className="font-semibold">Prüfung durch unser Team (1-3 Werktage)</div>
-                <div className="text-sm">Wir prüfen Ihre Balkonbau Qualifikationen und Erfahrungen</div>
+                <div className="font-semibold text-white">Prüfung durch unser Team (1-3 Werktage)</div>
+                <div className="text-sm text-gray-300">Wir prüfen deine Qualifikationen und Erfahrungen sorgfältig</div>
               </div>
             </div>
             <div className="flex items-start space-x-3">
               <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
               <div>
-                <div className="font-semibold">Persönliches Gespräch (nach Terminabsprache)</div>
-                <div className="text-sm">Video-Call oder Vor-Ort-Termin für Balkonbau Partner Details</div>
+                <div className="font-semibold text-white">Persönliches Gespräch (nach Terminabsprache)</div>
+                <div className="text-sm text-gray-300">Im Gespräch klären wir alle Details und finden gemeinsam die beste Lösung</div>
               </div>
             </div>
           </div>
