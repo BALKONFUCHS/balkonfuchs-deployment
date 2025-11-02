@@ -4,7 +4,7 @@
  * Diese Netlify Function empfängt Funnel-Daten und überträgt sie an Zoho Desk (Tickets) und Zoho CRM (Leads/Kontakte)
  * 
  * Umgebungsvariablen:
- * - ZOHO_ORG_ID: Zoho Organization ID
+ * - ZOHO_ORGANIZATION_ID oder ZOHO_ORG_ID: Zoho Organization ID
  * - ZOHO_REFRESH_TOKEN: Zoho Refresh Token
  * - ZOHO_CLIENT_ID: Zoho Client ID
  * - ZOHO_CLIENT_SECRET: Zoho Client Secret
@@ -505,15 +505,15 @@ exports.handler = async (event, context) => {
     
     console.log('=== VOR UMWELTVARIABLEN PRÜFUNG ===');
 
-    // Umgebungsvariablen prüfen
-    const orgId = process.env.ZOHO_ORG_ID;
+    // Umgebungsvariablen prüfen (unterstützt beide Variablennamen für Org ID)
+    const orgId = process.env.ZOHO_ORGANIZATION_ID || process.env.ZOHO_ORG_ID;
     const refreshToken = process.env.ZOHO_REFRESH_TOKEN;
     const clientId = process.env.ZOHO_CLIENT_ID;
     const clientSecret = process.env.ZOHO_CLIENT_SECRET;
     const departmentId = process.env.ZOHO_DEPARTMENT_ID;
 
     console.log('=== UMWELTVARIABLEN ===');
-    console.log('Org ID vorhanden:', !!orgId);
+    console.log('Org ID vorhanden (ZOHO_ORGANIZATION_ID oder ZOHO_ORG_ID):', !!orgId);
     console.log('Refresh Token vorhanden:', !!refreshToken);
     console.log('Client ID vorhanden:', !!clientId);
     console.log('Client Secret vorhanden:', !!clientSecret);
@@ -525,7 +525,7 @@ exports.handler = async (event, context) => {
         headers,
         body: JSON.stringify({
           success: false,
-          error: 'Zoho-Konfiguration fehlt. ZOHO_ORG_ID, ZOHO_REFRESH_TOKEN, ZOHO_CLIENT_ID und ZOHO_CLIENT_SECRET müssen gesetzt sein.',
+          error: 'Zoho-Konfiguration fehlt. ZOHO_ORGANIZATION_ID (oder ZOHO_ORG_ID), ZOHO_REFRESH_TOKEN, ZOHO_CLIENT_ID und ZOHO_CLIENT_SECRET müssen gesetzt sein.',
         }),
       };
     }
