@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { ArrowLeft, ArrowRight, Mail, Menu, Check } from 'lucide-react';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
+import PhoneInput from '../components/PhoneInput';
 
 const BALKONFUCHSExpressAngebotFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -627,27 +628,17 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
             />
           </div>
           
-          <div className="text-left">
-            <label className="block text-white font-medium mb-2">Telefon</label>
-            <input
-              type="tel"
-              value={formData.contact.phone}
-              onChange={(e) => setFormData(prev => ({
-                ...prev,
-                contact: { ...prev.contact, phone: e.target.value }
-              }))}
-              className={`w-full p-3 bg-gray-700 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-                formData.contactPreference === 'phone' && !formData.contact.phone
-                  ? 'border-red-500'
-                  : 'border-gray-600'
-              }`}
-            />
-            {formData.contactPreference === 'phone' && !formData.contact.phone && (
-              <p className="text-sm text-red-400 mt-2">
-                Bitte geben Sie Ihre Telefonnummer an, da Sie telefonische Kontaktaufnahme gewählt haben.
-              </p>
-            )}
-          </div>
+          <PhoneInput
+            value={formData.contact.phone}
+            onChange={(value) => setFormData(prev => ({
+              ...prev,
+              contact: { ...prev.contact, phone: value }
+            }))}
+            required={false}
+            placeholder="123 456789"
+            label="Telefon"
+            className="text-left"
+          />
         </div>
 
         <div className="text-left">

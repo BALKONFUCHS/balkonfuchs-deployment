@@ -4,6 +4,7 @@ import { ArrowRight, ArrowLeft, Calendar, Clock, Home, MapPin, Ruler, Euro, Chec
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import { calculateBauzeitScore } from '../utils/bauzeit-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
+import PhoneInput from '../components/PhoneInput';
 
 const BALKONFUCHSBauzeitPlanungFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -759,12 +760,12 @@ const BALKONFUCHSBauzeitPlanungFunnel = () => {
           className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
         />
 
-        <input
-          type="tel"
-          placeholder="Telefonnummer (optional)"
+        <PhoneInput
           value={formData.contact.phone}
-          onChange={(e) => handleContactChange('phone', e.target.value)}
-          className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          onChange={(value) => handleContactChange('phone', value)}
+          required={false}
+          placeholder="123 456789"
+          className="w-full"
         />
 
         <input

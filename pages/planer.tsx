@@ -6,6 +6,7 @@ import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import { calculatePlanerScore } from '../utils/planer-scoring';
 import { generatePDF, downloadPDF } from '../lib/pdf-generator';
+import PhoneInput from '../components/PhoneInput';
 const BalkonFuchsPlanerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -1118,15 +1119,14 @@ const BalkonFuchsPlanerFunnel = () => {
             </>
           )}
           
-          <input
-            type="tel"
-            className={`w-full p-3 border rounded-lg bg-gray-800 text-white placeholder-gray-400 focus:outline-none ${
-              phoneRequired ? 'border-orange-500 focus:border-orange-500' : 'border-gray-700 focus:border-orange-500'
-            }`}
-            placeholder={phoneRequired ? "Telefonnummer *" : "Telefonnummer (optional)"}
+          <PhoneInput
             value={formData.contact.phone}
-            onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
+            onChange={(value) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, phone: value } }))}
             required={phoneRequired}
+            placeholder="123 456789"
+            className={`w-full ${
+              phoneRequired ? 'border-orange-500 focus:border-orange-500' : ''
+            }`}
           />
           
           {wantsOffer && (

@@ -5,6 +5,7 @@ import { calculatePartnerScore } from '../utils/balkon-lead-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PhoneInput from '../components/PhoneInput';
 
 const PartnerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -1094,17 +1095,14 @@ const PartnerFunnel = () => {
               <option value="Sonstige">Sonstige</option>
             </select>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-200 mb-2">Handynummer *</label>
-            <input
-              type="tel"
-              placeholder="+49 160 1234567"
-              value={formData.contactPerson.mobile}
-              onChange={(e) => handleContactPersonChange('mobile', e.target.value)}
-              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-            />
-            <p className="text-xs text-gray-400 mt-1">Bitte geben Sie eine Mobilfunknummer mit internationaler Vorwahl ein (z.B. +49 160 1234567, +43 664 1234567, +44 7911 123456)</p>
-          </div>
+          <PhoneInput
+            value={formData.contactPerson.mobile}
+            onChange={(value) => handleContactPersonChange('mobile', value)}
+            required={true}
+            placeholder="160 1234567"
+            label="Handynummer"
+            className="w-full"
+          />
         </div>
       </div>
     </div>
@@ -1368,21 +1366,22 @@ const PartnerFunnel = () => {
             onChange={(e) => handleContactChange('email', e.target.value)}
             className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
           />
-          <input
-            type="tel"
-            placeholder="Telefonnummer *"
+          <PhoneInput
             value={formData.contact.phone}
-            onChange={(e) => handleContactChange('phone', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            onChange={(value) => handleContactChange('phone', value)}
+            required={true}
+            placeholder="123 456789"
+            className="w-full"
           />
         </div>
 
-        <input
-          type="tel"
-          placeholder="Mobilnummer (optional)"
+        <PhoneInput
           value={formData.contact.mobile}
-          onChange={(e) => handleContactChange('mobile', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+          onChange={(value) => handleContactChange('mobile', value)}
+          required={false}
+          placeholder="123 456789"
+          label="Mobilnummer (optional)"
+          className="w-full"
         />
 
         <div>

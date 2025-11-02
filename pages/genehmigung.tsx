@@ -6,6 +6,7 @@ import { calculateGenehmigungScore } from '../utils/genehmigung-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PhoneInput from '../components/PhoneInput';
 
 const BALKONFUCHSGenehmigungscheckFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -307,12 +308,12 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
             className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
           />
 
-          <input
-            type="tel"
-            placeholder="Telefonnummer (optional)"
+          <PhoneInput
             value={formData.contact.phone}
-            onChange={(e) => handleContactChange('phone', e.target.value)}
-            className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+            onChange={(value) => handleContactChange('phone', value)}
+            required={false}
+            placeholder="123 456789"
+            className="w-full"
           />
 
           <input

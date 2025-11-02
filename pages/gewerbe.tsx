@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ZohoSalesIQ from '../components/ZohoSalesIQ';
 import { submitToZoho, formatGewerbeData } from '../utils/zoho-submit';
+import PhoneInput from '../components/PhoneInput';
 
 export default function GewerbeFunnel() {
   const [formData, setFormData] = useState({
@@ -859,15 +860,13 @@ export default function GewerbeFunnel() {
 
                     {/* Telefon */}
                     <div>
-                      <label className="block text-sm font-semibold text-gray-300 mb-2">
-                        Telefon *
-                      </label>
-                      <input
-                        type="tel"
+                      <PhoneInput
                         value={formData.telefon}
-                        onChange={(e) => handleInputChange('telefon', e.target.value)}
-                        placeholder="+49 123 456789"
-                        className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
+                        onChange={(value) => handleInputChange('telefon', value)}
+                        required={true}
+                        placeholder="123 456789"
+                        label="Telefon"
+                        className="w-full"
                       />
                     </div>
 
