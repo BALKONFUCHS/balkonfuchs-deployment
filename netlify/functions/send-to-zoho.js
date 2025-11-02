@@ -165,6 +165,68 @@ exports.handler = async (event, context) => {
       }
     }
 
+    // Partner-Funnel: eingehendes Payload in Standardform normalisieren
+    if ((body.funnel?.type === 'partner' || body.funnelType === 'partner' || body.funnelType === 'Balkonbau Partner')) {
+      // Partner-Funnel kann contact leer sein - dann extrahiere aus company
+      if (!body.contact || (!body.contact.firstName && !body.contact.lastName && !body.contact.email)) {
+        // Wenn contact leer ist, aber company vorhanden, verwende company
+        if (body.company && body.company.name) {
+          const nameParts = body.company.name.trim().split(' ');
+          body.contact = {
+            firstName: nameParts[0] || 'Unbekannt',
+            lastName: nameParts.slice(1).join(' ') || 'Kunde',
+            email: body.contact?.email || '',
+            phone: body.contact?.phone || body.contact?.mobile || '',
+            mobile: body.contact?.mobile || '',
+            address: body.company.address || '',
+            city: body.company.city || '',
+            zipCode: body.company.zipCode || '',
+            position: body.contact?.position || '',
+            privacy: body.contact?.privacy || false
+          };
+        } else {
+          // Fallback: mindestens leeres contact-Objekt erstellen
+          body.contact = {
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            mobile: '',
+            address: '',
+            city: '',
+            zipCode: '',
+            position: '',
+            privacy: false
+          };
+        }
+      }
+      
+      // Partner-Funnel: funnelData aus partnerDetails erstellen falls nicht vorhanden
+      if (!body.funnelData && body.partnerDetails) {
+        body.funnelData = {
+          partnerType: body.partnerDetails.partnerType || '',
+          experience: body.partnerDetails.experience || '',
+          specialties: body.partnerDetails.specialties || [],
+          workingArea: body.partnerDetails.workingArea || '',
+          insuranceStatus: body.partnerDetails.insuranceStatus || '',
+          references: body.partnerDetails.references || [],
+          lighthouseProject: body.partnerDetails.lighthouseProject || {},
+          documents: body.partnerDetails.documents || {}
+        };
+      }
+      
+      // Setze funnel metadata für Partner-Funnel
+      if (!body.funnel) {
+        body.funnel = { type: 'partner', name: 'Balkonbau Partner' };
+      }
+      if (!body.funnelType) {
+        body.funnelType = 'partner';
+      }
+      if (!body.source) {
+        body.source = 'BALKONFUCHS Balkonbau Partner';
+      }
+    }
+    
     // WICHTIG: contact, funnelData etc. NACH der Normalisierung extrahieren!
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
 
@@ -316,10 +378,24 @@ exports.handler = async (event, context) => {
       
       // Lead Score aus verschiedenen Scoring-Systemen extrahieren
       // WICHTIG: Gewerbe-Funnel hat leadScore bereits in body.leadScore oder body.funnelData.leadScore
+      // Partner-Funnel hat leadScore in body._internalScoring oder body._partnerScoring
       // Diese haben Priorität vor extractLeadScore/extractCategory/extractPriority
-      leadScore: body.leadScore?.totalScore || body.funnelData?.leadScore?.totalScore || extractLeadScore(body),
-      category: body.leadScore?.category || body.funnelData?.leadScore?.category || extractCategory(body),
-      priority: body.leadScore?.priority || body.funnelData?.leadScore?.priority || extractPriority(body),
+      leadScore: body.leadScore?.totalScore || 
+                 body.funnelData?.leadScore?.totalScore || 
+                 body._internalScoring?.leadScore ||
+                 body._internalScoring?.totalScore ||
+                 body._partnerScoring?.finalScore ||
+                 extractLeadScore(body),
+      category: body.leadScore?.category || 
+                body.funnelData?.leadScore?.category || 
+                body._internalScoring?.category ||
+                body._partnerScoring?.category ||
+                extractCategory(body),
+      priority: body.leadScore?.priority || 
+                body.funnelData?.leadScore?.priority || 
+                body._internalScoring?.priority ||
+                body._partnerScoring?.priority ||
+                extractPriority(body),
       
       // Funnel-spezifische Scoring-Daten
       funnelScoring: extractFunnelScoring(funnelType || funnel?.type, body),

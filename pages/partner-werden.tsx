@@ -131,6 +131,12 @@ const PartnerFunnel = () => {
       title: 'Ihr Lead Scoring Ergebnis',
       subtitle: '📊 Hier ist Ihre Bewertung und unsere Empfehlung für die Zusammenarbeit',
       type: 'lead_scoring'
+    },
+    {
+      id: 'contact',
+      title: 'Ihre Kontaktdaten',
+      subtitle: '🤝 Abschließend benötigen wir Ihre Kontaktdaten für die weitere Bearbeitung',
+      type: 'contact_form'
     }
   ];
 
@@ -160,7 +166,8 @@ const PartnerFunnel = () => {
           return false;
         }
         const zipCodeRegex = /^\d{5}$/;
-        const mobileRegex = /^\+49\s?1\d{8,10}$/;
+        // Internationale Vorwahl: + gefolgt von 1-4 Ziffern, dann optional Leerzeichen, dann weitere Ziffern
+        const mobileRegex = /^\+\d{1,4}\s?\d{6,14}$/;
         return zipCodeRegex.test(formData.zipCode) && mobileRegex.test(formData.contactPerson.mobile);
       case 'qualifications':
         return formData.insuranceStatus !== '';
@@ -1096,7 +1103,7 @@ const PartnerFunnel = () => {
               onChange={(e) => handleContactPersonChange('mobile', e.target.value)}
               className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
             />
-            <p className="text-xs text-gray-400 mt-1">Bitte geben Sie eine deutsche Mobilfunknummer ein (z.B. +49 160 1234567)</p>
+            <p className="text-xs text-gray-400 mt-1">Bitte geben Sie eine Mobilfunknummer mit internationaler Vorwahl ein (z.B. +49 160 1234567, +43 664 1234567, +44 7911 123456)</p>
           </div>
         </div>
       </div>
@@ -1118,7 +1125,7 @@ const PartnerFunnel = () => {
               {leadScore.category}
             </h3>
             <p className="text-lg text-gray-300">
-              {leadScore.priority} - Antwortzeit: {leadScore.responseTime}
+              Antwortzeit: {leadScore.responseTime}
             </p>
           </div>
           
@@ -1179,28 +1186,24 @@ const PartnerFunnel = () => {
                 </div>
               </div>
             ) : leadScore.finalScore >= 30 ? (
-              <div className="space-y-4">
-                <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4">
-                  <h5 className="text-lg font-semibold text-orange-400 mb-2 flex items-center">
-                    <span className="mr-2">🔄</span>
-                    Basic Partner - Nachfrage erforderlich
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/40 rounded-xl p-6">
+                  <h5 className="text-2xl font-bold text-white mb-4 flex items-center">
+                    <span className="mr-3">👋</span>
+                    Hey, erst mal vielen Dank für deine Bewerbung!
                   </h5>
-                  <p className="text-gray-300 leading-relaxed">
-                    <strong>Vielen Dank für Ihr Interesse!</strong> Wir sehen Potenzial in Ihrer Bewerbung, 
-                    benötigen aber weitere Informationen, um eine fundierte Entscheidung zu treffen. 
-                    Einige wichtige Unterlagen oder Qualifikationen fehlen noch. 
-                    Wir werden uns persönlich mit Ihnen in Verbindung setzen, um die fehlenden Details zu klären.
+                  <p className="text-gray-200 leading-relaxed text-lg mb-4">
+                    Wir haben jetzt nach unserem eigenen Algorithmus eine Art Bewertung vorgenommen, 
+                    die du hier weiter unten dargestellt siehst.
                   </p>
-                </div>
-                <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-4">
-                  <h6 className="font-semibold text-red-400 mb-2">📋 Benötigte Informationen:</h6>
-                  <ul className="text-gray-300 text-sm space-y-1">
-                    <li>• Vollständige Referenzprojekte mit Fotos</li>
-                    <li>• Nachweis aller Qualifikationen</li>
-                    <li>• Detaillierte Unternehmensdaten</li>
-                    <li>• Versicherungsnachweise</li>
-                    <li>• Arbeitsgebiet-Definition</li>
-                  </ul>
+                  <p className="text-gray-300 leading-relaxed text-base">
+                    Das hat zunächst nichts zu bedeuten, denn es bedeutet für uns, dass wir Rückfragen 
+                    an dich haben und in der Folge noch mal auf dich zukommen werden. 
+                    <strong className="text-blue-400"> Gib uns dazu ein bis zwei Tage Zeit, dass wir uns bei dir melden.</strong>
+                  </p>
+                  <p className="text-gray-300 leading-relaxed text-base mt-4 font-semibold text-blue-300">
+                    Bis dahin freuen wir uns schon mal sehr über deine Bewerbung als potenzieller Partner bei BALKONFUCHS!
+                  </p>
                 </div>
               </div>
             ) : (
@@ -1821,34 +1824,44 @@ const PartnerFunnel = () => {
               🤝 Wählen Sie das Lead-Paket für Ihre Kapazität
             </p>
             
-            {/* Beruhigende Information */}
+            {/* Prominenter Hinweis-Box mit gelbem Hintergrund */}
             <div className="mt-8 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border border-green-500/30 rounded-2xl p-6">
+              <div className="bg-gradient-to-r from-yellow-500/30 to-orange-500/30 border-2 border-yellow-400/50 rounded-2xl p-6 shadow-lg shadow-yellow-500/20">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                  <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
+                    <svg className="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                     </svg>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-lg font-semibold text-green-400 mb-2">
-                      💡 Keine Verpflichtung - Nur eine Vorauswahl
+                    <h3 className="text-xl font-bold text-yellow-300 mb-2">
+                      ⚠️ Achtung Hinweis: Du gehst hier aktuell noch keine Verpflichtung ein
                     </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      <strong>Sie schließen hier noch keinen Vertrag ab.</strong> Diese Auswahl hilft uns, 
-                      gemeinsam mit Ihnen die passende Partnerschaft zu finden. Im persönlichen Gespräch 
-                      besprechen wir dann die individuellen Konditionen und schließen einen maßgeschneiderten 
-                      Vertrag ab, der zu Ihrem Unternehmen passt.
+                    <p className="text-gray-200 leading-relaxed font-medium">
+                      <strong className="text-yellow-300">Dies ist nur eine Vorauswahl.</strong> Sie schließen hier noch keinen Vertrag ab. 
+                      Diese Auswahl hilft uns, gemeinsam mit Ihnen die passende Partnerschaft zu finden. 
+                      Im persönlichen Gespräch besprechen wir dann die individuellen Konditionen und 
+                      schließen einen maßgeschneiderten Vertrag ab, der zu Ihrem Unternehmen passt.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            
+            {/* Frame um Infotext und Subscription-Cards */}
+            <div className="mt-8 max-w-6xl mx-auto border-2 border-yellow-400/30 rounded-3xl p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <button
-              onClick={() => setFormData(prev => ({ ...prev, partnerType: 'starter' }))}
+              onClick={() => {
+                setFormData(prev => ({ ...prev, partnerType: 'starter' }));
+                // Auto-advance nach Subscription-Auswahl
+                setTimeout(() => {
+                  if (currentStep === 0 || !formData.partnerType) {
+                    setCurrentStep(1);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }, 300);
+              }}
               className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
                 formData.partnerType === 'starter' 
                   ? 'border-orange-500/50 shadow-2xl shadow-orange-500/25 bg-gradient-to-br from-orange-500/10 to-red-500/10'
@@ -1891,7 +1904,16 @@ const PartnerFunnel = () => {
             </button>
 
             <button
-              onClick={() => setFormData(prev => ({ ...prev, partnerType: 'professional' }))}
+              onClick={() => {
+                setFormData(prev => ({ ...prev, partnerType: 'professional' }));
+                // Auto-advance nach Subscription-Auswahl
+                setTimeout(() => {
+                  if (currentStep === 0 || !formData.partnerType) {
+                    setCurrentStep(1);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }, 300);
+              }}
               className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
                 formData.partnerType === 'professional' 
                   ? 'border-blue-500/50 shadow-2xl shadow-blue-500/25 bg-gradient-to-br from-blue-500/10 to-cyan-500/10'
@@ -1934,7 +1956,16 @@ const PartnerFunnel = () => {
             </button>
 
             <button
-              onClick={() => setFormData(prev => ({ ...prev, partnerType: 'enterprise' }))}
+              onClick={() => {
+                setFormData(prev => ({ ...prev, partnerType: 'enterprise' }));
+                // Auto-advance nach Subscription-Auswahl
+                setTimeout(() => {
+                  if (currentStep === 0 || !formData.partnerType) {
+                    setCurrentStep(1);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }, 300);
+              }}
               className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
                 formData.partnerType === 'enterprise' 
                   ? 'border-purple-500/50 shadow-2xl shadow-purple-500/25 bg-gradient-to-br from-purple-500/10 to-pink-500/10'
@@ -1975,7 +2006,8 @@ const PartnerFunnel = () => {
                 </div>
               </div>
             </button>
-          </div>
+              </div>
+            </div>
           </div>
         )}
 
