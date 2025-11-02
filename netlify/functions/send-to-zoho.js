@@ -218,38 +218,42 @@ exports.handler = async (event, context) => {
 
     // Partner-Funnel: eingehendes Payload in Standardform normalisieren
     if ((body.funnel?.type === 'partner' || body.funnelType === 'partner' || body.funnelType === 'Balkonbau Partner')) {
-      // Partner-Funnel kann contact leer sein - dann extrahiere aus company
-      if (!body.contact || (!body.contact.firstName && !body.contact.lastName && !body.contact.email)) {
-        // Wenn contact leer ist, aber company vorhanden, verwende company
-        if (body.company && body.company.name) {
-          const nameParts = body.company.name.trim().split(' ');
-          body.contact = {
-            firstName: nameParts[0] || 'Unbekannt',
-            lastName: nameParts.slice(1).join(' ') || 'Kunde',
-            email: body.contact?.email || '',
-            phone: body.contact?.phone || body.contact?.mobile || '',
-            mobile: body.contact?.mobile || '',
-            address: body.company.address || '',
-            city: body.company.city || '',
-            zipCode: body.company.zipCode || '',
-            position: body.contact?.position || '',
-            privacy: body.contact?.privacy || false
-          };
-        } else {
-          // Fallback: mindestens leeres contact-Objekt erstellen
-          body.contact = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            mobile: '',
-            address: '',
-            city: '',
-            zipCode: '',
-            position: '',
-            privacy: false
-          };
-        }
+      // Partner-Funnel: contact-Objekt sicherstellen (nur wenn komplett fehlt)
+      if (!body.contact || typeof body.contact !== 'object') {
+        // Wenn contact komplett fehlt, erstelle leeres Objekt
+        // NICHT aus company extrahieren, da Kontaktdaten separat erfasst werden!
+        body.contact = {
+          salutation: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          mobile: '',
+          position: '',
+          preferredContact: '',
+          privacy: false
+        };
+      } else {
+        // Contact existiert bereits - stelle sicher, dass alle Felder vorhanden sind
+        body.contact = {
+          salutation: body.contact.salutation || '',
+          firstName: body.contact.firstName || '',
+          lastName: body.contact.lastName || '',
+          email: body.contact.email || '',
+          phone: body.contact.phone || '',
+          mobile: body.contact.mobile || '',
+          position: body.contact.position || '',
+          preferredContact: body.contact.preferredContact || '',
+          privacy: body.contact.privacy || false
+        };
+      }
+      
+      // Partner-Funnel: Wenn contact leer ist, aber company.address vorhanden, 
+      // verwende company-Adresse für Lieferadresse (nicht für Kontaktperson!)
+      if (body.company && body.company.address && (!body.contact.address || !body.contact.zipCode || !body.contact.city)) {
+        body.contact.address = body.contact.address || body.company.address || '';
+        body.contact.zipCode = body.contact.zipCode || body.company.zipCode || '';
+        body.contact.city = body.contact.city || body.company.city || '';
       }
       
       // Partner-Funnel: funnelData aus partnerDetails erstellen falls nicht vorhanden
@@ -340,14 +344,27 @@ exports.handler = async (event, context) => {
     // Kombiniere alle verfügbaren Daten für Zoho
     let combinedData;
     try {
+      // Partner-Funnel: Wenn Kontaktdaten leer sind, verwende Firmendaten als Fallback
+      const normalizedFunnelType = ((funnelType || funnel?.type) || '').toLowerCase();
+      const isPartnerFunnel = normalizedFunnelType === 'partner';
+      
+      const contactName = contact 
+        ? `${contact.firstName || ''} ${contact.lastName || ''}`.trim() 
+        : (isPartnerFunnel && body.company?.name ? body.company.name : 'Unbekannt');
+      const contactEmail = contact?.email || '';
+      const contactPhone = contact?.phone || contact?.mobile || '';
+      const contactCompany = contact?.company || (isPartnerFunnel ? body.company?.name : '') || '';
+      const contactPlz = contact?.plz || contact?.zipCode || (isPartnerFunnel ? body.company?.zipCode : '') || funnelData?.plz || '';
+      const contactCity = contact?.city || (isPartnerFunnel ? body.company?.city : '') || funnelData?.city || '';
+      
       combinedData = {
       // Kontaktdaten
-      name: contact ? `${contact.firstName} ${contact.lastName}`.trim() : 'Unbekannt',
-      email: contact?.email || '',
-      phone: contact?.phone || '',
-      company: contact?.company || '',
-      plz: contact?.plz || funnelData?.plz || '',
-      city: contact?.city || funnelData?.city || '',
+      name: contactName || 'Unbekannt',
+      email: contactEmail,
+      phone: contactPhone,
+      company: contactCompany,
+      plz: contactPlz,
+      city: contactCity,
       
       // Funnel-Daten
       balkonTyp: funnelData?.balconyType || funnelData?.balkonTyp || 'Nicht angegeben',
@@ -956,30 +973,76 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
  */
 async function createZohoCRMLead(combinedData, accessToken, body, contact, funnelData) {
   try {
+    // Extrahiere Kontaktdaten mit Fallbacks
+    const firstName = contact?.firstName || combinedData.name?.split(' ')[0] || 'Unbekannt';
+    const lastName = contact?.lastName || combinedData.name?.split(' ').slice(1).join(' ') || '';
+    const email = contact?.email || combinedData.email || '';
+    const phone = contact?.phone || contact?.mobile || combinedData.phone || '';
+    
+    // Zoho CRM benötigt mindestens eines dieser Felder: First_Name, Last_Name, Email, Phone
+    // Für Partner-Funnel: Wenn alle leer sind, verwende Firmenname als Fallback
+    const finalFirstName = firstName === 'Unbekannt' && !email && !phone && body.company?.name 
+      ? body.company.name.split(' ')[0] || 'Unbekannt'
+      : firstName;
+    const finalLastName = !lastName && !email && !phone && body.company?.name 
+      ? body.company.name.split(' ').slice(1).join(' ') || 'Partner'
+      : lastName || 'Partner';
+    const finalEmail = email || (body.company?.name ? `partner@${body.company.name.toLowerCase().replace(/\s+/g, '')}.de` : '') || '';
+    const finalPhone = phone || '';
+    
+    // Prüfe, ob mindestens eine Kontaktinformation vorhanden ist
+    if (!finalEmail && !finalPhone && !finalFirstName && !finalLastName) {
+      console.warn('=== CRM LEAD CREATION SKIPPED ===');
+      console.warn('Keine Kontaktinformationen vorhanden. Lead wird nicht erstellt.');
+      return {
+        success: false,
+        message: 'Lead nicht erstellt: Keine Kontaktinformationen vorhanden'
+      };
+    }
+    
+    // Erstelle Lead-Objekt nur mit vorhandenen Feldern
+    const leadPayload = {
+      First_Name: finalFirstName,
+      Last_Name: finalLastName || 'Partner', // Last_Name ist Pflichtfeld für Zoho CRM
+      Lead_Source: 'BALKONFUCHS Website',
+      Company: contact?.company || combinedData.company || body.company?.name || '',
+      Description: `Funnel-Details:\n${combinedData.funnelSummary || formatLeadDescription(combinedData, body.priceCalculation)}`,
+      Custom_Fields: {
+        'Lead_Score': combinedData.leadScore || '',
+        'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
+        'Funnel_Typ': combinedData.funnelType || 'Unbekannt',
+        'Balkon_Fläche': combinedData.balkonFlaeche || '',
+        'Balkon_Typ': combinedData.balkonTyp || '',
+        'Budget': combinedData.budget || '',
+        'Zeitplan': combinedData.zeitplan || '',
+        'Funnel_Quelle': combinedData.source || 'Website',
+        'Dringlichkeit': combinedData.priority || 'P3',
+        'Kategorie': combinedData.category || '',
+      },
+    };
+    
+    // Füge Email hinzu, wenn vorhanden
+    if (finalEmail) {
+      leadPayload.Email = finalEmail;
+    }
+    
+    // Füge Phone hinzu, wenn vorhanden
+    if (finalPhone) {
+      leadPayload.Phone = finalPhone;
+    }
+    
+    // Füge Adressfelder hinzu, wenn vorhanden
+    const mailingCity = contact?.city || funnelData?.city || body.company?.city || '';
+    const mailingCode = contact?.plz || contact?.zipCode || combinedData.plz || body.company?.zipCode || '';
+    if (mailingCity) {
+      leadPayload.Mailing_City = mailingCity;
+    }
+    if (mailingCode) {
+      leadPayload.Mailing_Code = mailingCode;
+    }
+    
     const leadData = {
-      data: [{
-        First_Name: contact?.firstName || combinedData.name?.split(' ')[0] || 'Unbekannt',
-        Last_Name: contact?.lastName || combinedData.name?.split(' ').slice(1).join(' ') || '',
-        Email: contact?.email || combinedData.email,
-        Phone: contact?.phone || combinedData.phone || '',
-        Lead_Source: 'BALKONFUCHS Website',
-        Company: contact?.company || combinedData.company || '',
-        Mailing_City: contact?.city || funnelData?.city || '',
-        Mailing_Code: contact?.plz || contact?.zipCode || combinedData.plz || '',
-        Description: `Funnel-Details:\n${combinedData.funnelSummary || formatLeadDescription(combinedData, body.priceCalculation)}`,
-        Custom_Fields: {
-          'Lead_Score': combinedData.leadScore || '',
-          'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
-          'Funnel_Typ': combinedData.funnelType || 'Unbekannt',
-          'Balkon_Fläche': combinedData.balkonFlaeche || '',
-          'Balkon_Typ': combinedData.balkonTyp || '',
-          'Budget': combinedData.budget || '',
-          'Zeitplan': combinedData.zeitplan || '',
-          'Funnel_Quelle': combinedData.source || 'Website',
-          'Dringlichkeit': combinedData.priority || 'P3',
-          'Kategorie': combinedData.category || '',
-        },
-      }],
+      data: [leadPayload],
     };
 
     // Detailliertes Logging vor dem API Call
@@ -1491,13 +1554,28 @@ ${body.priceCalculation?.savings ? `- Preisunterschied: ${body.priceCalculation.
 `;
 
     case 'partner':
+      const partnerContact = body.contact || {};
       return baseInfo + `
+=== KONTAKTDATEN (PARTNER-BEWERBUNG) ===
+- Anrede: ${partnerContact.salutation || 'Nicht angegeben'}
+- Vorname: ${partnerContact.firstName || 'Nicht angegeben'}
+- Nachname: ${partnerContact.lastName || 'Nicht angegeben'}
+- E-Mail: ${partnerContact.email || 'Nicht angegeben'}
+- Telefon: ${partnerContact.phone || 'Nicht angegeben'}
+- Mobil: ${partnerContact.mobile || 'Nicht angegeben'}
+- Position: ${partnerContact.position || 'Nicht angegeben'}
+- Bevorzugter Kontaktweg: ${partnerContact.preferredContact || 'Nicht angegeben'}
+- Datenschutz-Zustimmung: ${partnerContact.privacy ? 'Ja' : 'Nein'}
+
 === PARTNER-DATEN ===
 - Firmenname: ${body.company?.name || 'Nicht angegeben'}
 - Rechtsform: ${body.company?.legalForm || 'Nicht angegeben'}
 - Gründungsjahr: ${body.company?.foundedYear || 'Nicht angegeben'}
 - Mitarbeiteranzahl: ${body.company?.employeeCount || 'Nicht angegeben'}
+- Adresse: ${body.company?.address || 'Nicht angegeben'}
+- PLZ: ${body.company?.zipCode || 'Nicht angegeben'}
 - Stadt: ${body.company?.city || 'Nicht angegeben'}
+- Website: ${body.company?.website || 'Nicht angegeben'}
 - Partner-Typ: ${body.partnerDetails?.partnerType || 'Nicht angegeben'}
 - Erfahrung: ${body.partnerDetails?.experience || 'Nicht angegeben'}
 - Spezialitäten: ${body.partnerDetails?.specialties?.join(', ') || 'Keine'}

@@ -295,18 +295,26 @@ const PartnerFunnel = () => {
   const submitForm = async () => {
     setIsSubmitting(true);
     
+    // Debug: Log Kontaktdaten vor dem Submit
+    console.log('=== PARTNER-FUNNEL SUBMIT ===');
+    console.log('Current Step:', currentStep);
+    console.log('Contact Data:', formData.contact);
+    console.log('Is Step Valid:', isStepValid);
+    
     // LeadScore-Berechnung mit standardisiertem System
     const leadScore = calculateLeadScore();
     
     const submissionData = {
       contact: {
-        firstName: formData.contact.firstName,
-        lastName: formData.contact.lastName,
-        email: formData.contact.email,
-        phone: formData.contact.phone,
-        mobile: formData.contact.mobile,
-        position: formData.contact.position,
-        privacy: formData.contact.privacy
+        salutation: formData.contact.salutation || '',
+        firstName: formData.contact.firstName || '',
+        lastName: formData.contact.lastName || '',
+        email: formData.contact.email || '',
+        phone: formData.contact.phone || '',
+        mobile: formData.contact.mobile || '',
+        position: formData.contact.position || '',
+        preferredContact: formData.contact.preferredContact || '',
+        privacy: formData.contact.privacy || false
       },
       funnel: {
         type: 'partner',
