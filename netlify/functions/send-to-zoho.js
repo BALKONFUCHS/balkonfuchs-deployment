@@ -250,6 +250,13 @@ exports.handler = async (event, context) => {
     
     // WICHTIG: contact, funnelData etc. NACH der Normalisierung extrahieren!
     const { contact, funnelData, funnel, source, funnelType, calculation } = body;
+    
+    // Debug-Logging nach Normalisierung
+    console.log('=== NACH NORMALISIERUNG ===');
+    console.log('Contact:', contact);
+    console.log('FunnelData:', funnelData ? 'Vorhanden' : 'FEHLT');
+    console.log('FunnelType:', funnelType || funnel?.type);
+    console.log('Source:', source);
 
     // Preisberechnung für Planer-Funnel (wenn noch nicht vorhanden)
     if ((funnelType === 'planer' || funnel?.type === 'planer') && !body.priceCalculation) {
@@ -281,7 +288,13 @@ exports.handler = async (event, context) => {
     }
 
     // Validierung der eingehenden Daten
+    console.log('=== VALIDIERUNG ===');
+    console.log('Contact vorhanden:', !!contact);
+    console.log('FunnelData vorhanden:', !!funnelData);
+    
     if (!contact && !funnelData) {
+      console.error('=== VALIDIERUNG FEHLGESCHLAGEN ===');
+      console.error('Weder contact noch funnelData vorhanden!');
       return {
         statusCode: 400,
         headers,
@@ -292,8 +305,12 @@ exports.handler = async (event, context) => {
       };
     }
 
+    console.log('=== ERSTELLE COMBINED DATA ===');
+    
     // Kombiniere alle verfügbaren Daten für Zoho
-    const combinedData = {
+    let combinedData;
+    try {
+      combinedData = {
       // Kontaktdaten
       name: contact ? `${contact.firstName} ${contact.lastName}`.trim() : 'Unbekannt',
       email: contact?.email || '',
@@ -395,7 +412,16 @@ exports.handler = async (event, context) => {
       priceCalculation: body?.priceCalculation || null,
       
       // Funnel-spezifische Zusammenfassung erstellen
-      funnelSummary: createFunnelSummary(funnelType || funnel?.type, funnelData, contact, body, calculation),
+      funnelSummary: (() => {
+        try {
+          return createFunnelSummary(funnelType || funnel?.type, funnelData, contact, body, calculation);
+        } catch (summaryError) {
+          console.error('=== FEHLER IN createFunnelSummary ===');
+          console.error('Error:', summaryError);
+          console.error('Stack:', summaryError.stack);
+          return `Fehler beim Erstellen der Zusammenfassung: ${summaryError.message}`;
+        }
+      })(),
       
       // Lead Score aus verschiedenen Scoring-Systemen extrahieren
       // WICHTIG: Gewerbe-Funnel hat leadScore bereits in body.leadScore oder body.funnelData.leadScore
@@ -426,9 +452,28 @@ exports.handler = async (event, context) => {
       // Mapped Data für zusätzliche Informationen
       mappedData: body.mappedData || {},
     };
+    } catch (combinedDataError) {
+      console.error('=== FEHLER BEIM ERSTELLEN VON COMBINED DATA ===');
+      console.error('Error:', combinedDataError);
+      console.error('Stack:', combinedDataError.stack);
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({
+          success: false,
+          error: 'Fehler beim Zusammenstellen der Daten',
+          message: combinedDataError.message,
+        }),
+      };
+    }
+    
+    console.log('=== COMBINED DATA ERSTELLT ===');
+    console.log('Combined Data Keys:', Object.keys(combinedData));
     
     // Normalisiere funnelType für PDF-Generierung
     const normalizedFunnelType = ((funnelType || funnel?.type) || '').toLowerCase();
+    
+    console.log('=== VOR UMWELTVARIABLEN PRÜFUNG ===');
 
     // Umgebungsvariablen prüfen
     const orgId = process.env.ZOHO_ORG_ID;
@@ -437,7 +482,14 @@ exports.handler = async (event, context) => {
     const clientSecret = process.env.ZOHO_CLIENT_SECRET;
     const departmentId = process.env.ZOHO_DEPARTMENT_ID;
 
+    console.log('=== UMWELTVARIABLEN ===');
+    console.log('Org ID vorhanden:', !!orgId);
+    console.log('Refresh Token vorhanden:', !!refreshToken);
+    console.log('Client ID vorhanden:', !!clientId);
+    console.log('Client Secret vorhanden:', !!clientSecret);
+    
     if (!orgId || !refreshToken || !clientId || !clientSecret) {
+      console.error('=== ZOHO KONFIGURATION FEHLT ===');
       return {
         statusCode: 500,
         headers,
@@ -1114,14 +1166,15 @@ function extractFunnelScoring(funnelType, body) {
  * Generiert eine detaillierte Partner-Empfehlung basierend auf dem Scoring
  */
 function getPartnerRecommendation(scoringData) {
-  if (!scoringData) {
-    return '❌ Keine Scoring-Daten verfügbar';
-  }
+  try {
+    if (!scoringData) {
+      return '❌ Keine Scoring-Daten verfügbar';
+    }
 
-  const finalScore = scoringData.finalScore || scoringData.leadScore || 0;
-  const category = scoringData.category || 'Unbekannt';
-  const status = scoringData.status || 'unknown';
-  const warnings = scoringData.warnings || [];
+    const finalScore = scoringData.finalScore || scoringData.leadScore || 0;
+    const category = scoringData.category || 'Unbekannt';
+    const status = scoringData.status || 'unknown';
+    const warnings = Array.isArray(scoringData.warnings) ? scoringData.warnings : [];
 
   let recommendation = '';
   let emoji = '';
@@ -1156,7 +1209,13 @@ function getPartnerRecommendation(scoringData) {
     warningText = '\n\n🚨 WARNUNGEN:\n' + warnings.map(w => `- ${w}`).join('\n');
   }
 
-  return `${emoji} EMPFEHLUNG: ${priority}\n\n${recommendation}${warningText}\n\n📊 SCORE-DETAILS:\n- Final Score: ${finalScore}/100\n- Kategorie: ${category}\n- Status: ${status}`;
+    return `${emoji} EMPFEHLUNG: ${priority}\n\n${recommendation}${warningText}\n\n📊 SCORE-DETAILS:\n- Final Score: ${finalScore}/100\n- Kategorie: ${category}\n- Status: ${status}`;
+  } catch (error) {
+    console.error('=== FEHLER IN getPartnerRecommendation ===');
+    console.error('Error:', error);
+    console.error('ScoringData:', scoringData);
+    return `❌ Fehler bei der Bewertungsgenerierung: ${error.message}`;
+  }
 }
 
 /**
@@ -1427,7 +1486,15 @@ ${body.priceCalculation?.savings ? `- Preisunterschied: ${body.priceCalculation.
 - Warnungen: ${body._partnerScoring?.warnings?.join(', ') || 'Keine'}
 
 === PARTNER-BEWERTUNG ===
-${getPartnerRecommendation(body._partnerScoring || body._internalScoring)}
+${(() => {
+  try {
+    return getPartnerRecommendation(body._partnerScoring || body._internalScoring);
+  } catch (error) {
+    console.error('=== FEHLER BEIM AUFRUF VON getPartnerRecommendation ===');
+    console.error('Error:', error);
+    return '❌ Fehler bei der Bewertungsgenerierung';
+  }
+})()}
 `;
 
     case 'gewerbe':
