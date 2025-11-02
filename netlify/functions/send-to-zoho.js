@@ -724,7 +724,21 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
     const deliveryAddress = [street, cityLine].filter(Boolean).join(', ');
     
     // Normalisiere funnelType für cf_lieferadresse Check
-    const normalizedFunnelType = ((funnelType || body.funnel?.type) || '').toLowerCase();
+    const normalizedFunnelType = ((funnelType || body.funnel?.type || body.funnelType) || '').toLowerCase();
+    // Prüfe, ob es ein Partner-Funnel ist (kann 'partner' oder 'balkonbau partner' sein)
+    const isPartnerFunnel = normalizedFunnelType === 'partner' || normalizedFunnelType === 'balkonbau partner' || normalizedFunnelType.includes('partner');
+    // Prüfe, ob cf_lieferadresse NICHT gesendet werden soll
+    const shouldExcludeLieferadresse = normalizedFunnelType === 'express-angebot' || 
+                                       normalizedFunnelType === 'planer' || 
+                                       normalizedFunnelType === 'gewerbe' || 
+                                       isPartnerFunnel;
+    
+    // Debug-Logging für Partner-Funnel
+    console.log('=== CF_LIEFERADRESSE CHECK ===');
+    console.log('Normalized Funnel Type:', normalizedFunnelType);
+    console.log('Is Partner Funnel:', isPartnerFunnel);
+    console.log('Should Exclude Lieferadresse:', shouldExcludeLieferadresse);
+    console.log('Delivery Address:', deliveryAddress);
 
     const ticketData = {
       subject: `Balkon-Anfrage von ${combinedData.name || 'Unbekannt'}`,
@@ -750,7 +764,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_mobil': contact?.phone || combinedData.phone || '',
         'cf_produkt_name': 'Balkon',
         // Temporär: Lieferadresse für Express-Angebot, Planer-, Gewerbe- und Partner-Funnel nicht senden (Zoho-CF-Validierung)
-        ...(normalizedFunnelType !== 'express-angebot' && normalizedFunnelType !== 'planer' && normalizedFunnelType !== 'gewerbe' && normalizedFunnelType !== 'partner' && deliveryAddress
+        ...(!shouldExcludeLieferadresse && deliveryAddress
           ? { 'cf_lieferadresse': deliveryAddress }
           : {}),
         'cf_lead_score': combinedData.leadScore || '',
