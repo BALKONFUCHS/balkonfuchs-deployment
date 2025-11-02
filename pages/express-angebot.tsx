@@ -639,29 +639,6 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
             label="Telefon"
             className="text-left"
           />
-          
-          {/* Original input removed - using PhoneInput component */}
-          {/* <div className="text-left">
-            <label className="block text-white font-medium mb-2">Telefon</label>
-            <input
-              type="tel"
-              value={formData.contact.phone}
-              onChange={(e) => setFormData(prev => ({
-                ...prev,
-                contact: { ...prev.contact, phone: e.target.value }
-              }))}
-              className={`w-full p-3 bg-gray-700 border rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-                formData.contactPreference === 'phone' && !formData.contact.phone
-                  ? 'border-red-500'
-                  : 'border-gray-600'
-              }`}
-            />
-            {formData.contactPreference === 'phone' && !formData.contact.phone && (
-              <p className="text-sm text-red-400 mt-2">
-                Bitte geben Sie Ihre Telefonnummer an, da Sie telefonische Kontaktaufnahme gewählt haben.
-              </p>
-            )}
-          </div>
         </div>
 
         <div className="text-left">
