@@ -23,6 +23,7 @@ const PartnerFunnel = () => {
       firstName: '',
       lastName: '',
       function: '',
+      email: '',
       mobile: ''
     },
     experience: '',
@@ -157,13 +158,16 @@ const PartnerFunnel = () => {
         // Grundlegende Validierung
         if (!formData.companyName || !formData.legalForm || !formData.city || !formData.zipCode || 
             !formData.contactPerson.firstName || !formData.contactPerson.lastName || 
-            !formData.contactPerson.function || !formData.contactPerson.mobile) {
+            !formData.contactPerson.function || !formData.contactPerson.mobile || !formData.contactPerson.email) {
           return false;
         }
         const zipCodeRegex = /^\d{5}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         // Internationale Vorwahl: + gefolgt von 1-4 Ziffern, dann optional Leerzeichen, dann weitere Ziffern
         const mobileRegex = /^\+\d{1,4}\s?\d{6,14}$/;
-        return zipCodeRegex.test(formData.zipCode) && mobileRegex.test(formData.contactPerson.mobile);
+        return zipCodeRegex.test(formData.zipCode) && 
+               emailRegex.test(formData.contactPerson.email) && 
+               mobileRegex.test(formData.contactPerson.mobile);
       case 'qualifications':
         return formData.insuranceStatus !== '';
       case 'references':
@@ -177,10 +181,9 @@ const PartnerFunnel = () => {
                                   formData.lighthouseProject.special;
         return allReferencesComplete && lighthouseComplete;
       case 'lead_scoring':
-        // Lead Scoring + Kontaktformular: Prüfe Kontaktdaten
-        const { salutation, firstName, lastName, email } = formData.contact;
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return salutation && firstName && lastName && emailRegex.test(email) && formData.contact.privacy;
+        // Lead Scoring: Keine Kontaktdaten-Validierung mehr, da diese bereits auf Step 1 abgefragt wurden
+        // Es werden nur die Zusammenfassung und der Submit-Button angezeigt
+        return true;
       default:
         return true;
     }
@@ -304,17 +307,19 @@ const PartnerFunnel = () => {
     // LeadScore-Berechnung mit standardisiertem System
     const leadScore = calculateLeadScore();
     
+    // Kontaktdaten aus Step 1 (companyProfile) verwenden, NICHT aus Step 7!
+    // Step 7 zeigt nur Zusammenfassung, keine Kontaktdaten-Abfrage mehr
     const submissionData = {
       contact: {
-        salutation: formData.contact.salutation || '',
-        firstName: formData.contact.firstName || '',
-        lastName: formData.contact.lastName || '',
-        email: formData.contact.email || '',
-        phone: formData.contact.phone || '',
-        mobile: formData.contact.mobile || '',
-        position: formData.contact.position || '',
-        preferredContact: formData.contact.preferredContact || '',
-        privacy: formData.contact.privacy || false
+        salutation: '', // Wird nicht abgefragt auf Step 1
+        firstName: formData.contactPerson.firstName || '',
+        lastName: formData.contactPerson.lastName || '',
+        email: formData.contactPerson.email || '',
+        phone: formData.contactPerson.mobile || '', // mobile wird als phone verwendet
+        mobile: formData.contactPerson.mobile || '',
+        position: formData.contactPerson.function || '',
+        preferredContact: 'phone', // Standard, da mobile auf Step 1 abgefragt wird
+        privacy: true // Wird als akzeptiert angesehen, da auf Step 1 Teil des Profils
       },
       funnel: {
         type: 'partner',
@@ -1122,9 +1127,19 @@ const PartnerFunnel = () => {
             onChange={(value) => handleContactPersonChange('mobile', value)}
             required={true}
             placeholder="160 1234567"
-            label="Handynummer"
+            label="Handynummer *"
             className="w-full"
           />
+          <div>
+            <label className="block text-sm font-medium text-gray-200 mb-2">E-Mail-Adresse *</label>
+            <input
+              type="email"
+              placeholder="max.mustermann@unternehmen.de"
+              value={formData.contactPerson.email}
+              onChange={(e) => handleContactPersonChange('email', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -1178,124 +1193,7 @@ const PartnerFunnel = () => {
           </div>
         </div>
         
-        {/* Kontaktformular */}
-        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm mt-8">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-2">Deine Kontaktdaten</h3>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              Um dich persönlich kontaktieren zu können, benötigen wir noch deine Kontaktdaten. 
-              Diese werden selbstverständlich vertraulich behandelt.
-            </p>
-          </div>
-
-          <div className="grid gap-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <select
-                value={formData.contact.salutation}
-                onChange={(e) => handleContactChange('salutation', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-              >
-                <option value="">Anrede wählen *</option>
-                <option value="Herr">Herr</option>
-                <option value="Frau">Frau</option>
-                <option value="Divers">Divers</option>
-              </select>
-              <input
-                type="text"
-                placeholder="Vorname *"
-                value={formData.contact.firstName}
-                onChange={(e) => handleContactChange('firstName', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-              />
-              <input
-                type="text"
-                placeholder="Nachname *"
-                value={formData.contact.lastName}
-                onChange={(e) => handleContactChange('lastName', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-              />
-            </div>
-
-            <input
-              type="text"
-              placeholder="Position im Unternehmen"
-              value={formData.contact.position}
-              onChange={(e) => handleContactChange('position', e.target.value)}
-              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-            />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input
-                type="email"
-                placeholder="E-Mail-Adresse *"
-                value={formData.contact.email}
-                onChange={(e) => handleContactChange('email', e.target.value)}
-                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-              />
-              <PhoneInput
-                value={formData.contact.phone}
-                onChange={(value) => handleContactChange('phone', value)}
-                required={true}
-                placeholder="123 456789"
-                className="w-full"
-              />
-            </div>
-
-            <PhoneInput
-              value={formData.contact.mobile}
-              onChange={(value) => handleContactChange('mobile', value)}
-              required={false}
-              placeholder="123 456789"
-              label="Mobilnummer (optional)"
-              className="w-full"
-            />
-
-            <div>
-              <label className="block text-sm font-medium text-gray-200 mb-2">Bevorzugter Kontaktweg</label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                {[
-                  { value: 'email', label: 'E-Mail', icon: '📧' },
-                  { value: 'phone', label: 'Telefon', icon: '📞' },
-                  { value: 'both', label: 'Beides', icon: '🤝' }
-                ].map(option => (
-                  <button
-                    key={option.value}
-                    onClick={() => handleContactChange('preferredContact', option.value)}
-                    type="button"
-                    className={`p-3 border-2 rounded-xl text-center transition-all duration-300 ${
-                      formData.contact.preferredContact === option.value
-                        ? 'border-orange-500 bg-orange-500/20'
-                        : 'border-gray-600 hover:border-orange-300'
-                    }`}
-                  >
-                    <div className="text-2xl mb-1">{option.icon}</div>
-                    <div className="text-sm font-medium text-white">{option.label}</div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <label className="flex items-start space-x-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={formData.contact.privacy}
-                  onChange={(e) => handleContactChange('privacy', e.target.checked)}
-                  className="mt-1 w-4 h-4 text-orange-500 rounded focus:ring-orange-500"
-                />
-                <span className="text-sm text-gray-200">
-                  ✅ Ich stimme der Verarbeitung meiner Daten gemäß{' '}
-                  <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" className="text-orange-500 hover:underline">
-                    Datenschutzerklärung
-                  </a>{' '}
-                  zu *
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-        
-        {/* E-Mail CTA */}
+        {/* Submit Button - Kontaktdaten wurden bereits auf Step 1 abgefragt */}
         <div className="text-center mt-8">
           <button
             onClick={submitForm}
