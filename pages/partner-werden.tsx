@@ -1166,8 +1166,8 @@ const PartnerFunnel = () => {
       categoryBg = 'bg-blue-500/10 border-blue-500/30';
     } else if (leadScore.finalScore >= 30) {
       // Cold Lead
-      categoryMessage = 'Schön, dass du dich bei uns als Partner beworben hast! Wir möchten uns gerne persönlich mit dir austauschen, denn es gibt noch einige wichtige Punkte, die wir dringend besprechen müssen, bevor wir über eine weitergehende Partnerschaft sprechen können. Es gibt einige Kriterien, die uns besonders wichtig sind, und hierüber sollten wir uns zunächst einmal gemeinsam unterhalten. Ein oder zwei Parameter hierbei könnten bei dir noch gegen eine Partnerschaft sprechen, aber wir sind optimistisch, dass wir gemeinsam eine Lösung finden werden.';
       categoryDisplay = 'Cold Lead';
+      categoryMessage = 'Schön, dass du dich bei uns als Partner beworben hast! Wir möchten uns gerne persönlich mit dir austauschen, denn es gibt noch einige wichtige Punkte, die wir dringend besprechen müssen, bevor wir über eine weitergehende Partnerschaft sprechen können. Es gibt einige Kriterien, die uns besonders wichtig sind, und hierüber sollten wir uns zunächst einmal gemeinsam unterhalten. Ein oder zwei Parameter hierbei könnten bei dir noch gegen eine Partnerschaft sprechen, aber wir sind optimistisch, dass wir gemeinsam eine Lösung finden werden.';
       categoryColor = 'from-orange-500 to-amber-500';
       categoryBg = 'bg-orange-500/10 border-orange-500/30';
     } else {
