@@ -705,15 +705,35 @@ function calculateReferenzScore(auftragswert: number): number {
 
 // Minderqualifikations-Checks
 function checkJungesFirmaAbzug(rechtsform: string, gruendungsjahr: number, mitarbeiter: string): number {
-  const isJung = (gruendungsjahr >= 2024);
+  if (!gruendungsjahr || gruendungsjahr <= 0) {
+    return 0; // Kein Gründungsjahr = kein Abzug
+  }
+  
+  const firmenalter = 2025 - gruendungsjahr;
+  const isJung = (firmenalter < 3); // Firma jünger als 3 Jahre
+  const isSehrJung = (firmenalter < 2); // Firma jünger als 2 Jahre (2024 oder später gegründet)
   const isMicro = (mitarbeiter === '1' || mitarbeiter === '2-5');
   const isUG = (rechtsform === 'ug');
   
+  // Sehr junge Firma (< 2 Jahre) + sehr klein + unsichere Rechtsform
+  if (isSehrJung && isMicro && isUG) {
+    return -20; // Sehr starker Abzug: Zu jung, zu klein, unsichere Rechtsform
+  }
+  // Sehr junge Firma (< 2 Jahre) + sehr klein
+  if (isSehrJung && isMicro) {
+    return -15; // Starker Abzug: Zu jung + zu klein
+  }
+  // Junge Firma (< 3 Jahre) + sehr klein + unsichere Rechtsform
   if (isJung && isMicro && isUG) {
     return -15; // Starker Abzug: Zu jung, zu klein, unsichere Rechtsform
   }
+  // Junge Firma (< 3 Jahre) + sehr klein
   if (isJung && isMicro) {
     return -10; // Mittlerer Abzug: Zu jung + zu klein
+  }
+  // Sehr junge Firma (< 2 Jahre) alleine
+  if (isSehrJung) {
+    return -8; // Leichter Abzug: Sehr junges Unternehmen
   }
   return 0;
 }
@@ -804,11 +824,19 @@ function checkQualifikationenAbzug(versicherung: string, dokumente: string[]): n
   }
   // Wenn vollständig versichert (full/vollstaendig), KEIN Abzug!
   
-  // Kein Meisterbrief - weniger kritisch als Versicherung
+  // Kein Meisterbrief - STRENGER bewerten, besonders bei jungen Firmen
   if (!dokumente.includes('meisterbrief') && !dokumente.includes('masterCertificate')) {
-    abzug -= 5; // Fehlende Kernqualifikation (weniger stark)
+    // Prüfe ob andere Qualifikationen vorhanden sind
+    const hatAndereQualifikationen = dokumente.includes('diploma') || 
+                                     dokumente.includes('instructorLicense') ||
+                                     dokumente.length > 2; // Wenn viele andere Dokumente vorhanden
+    
+    if (!hatAndereQualifikationen) {
+      abzug -= 10; // Stärkerer Abzug: Fehlende Kernqualifikation ohne Alternativen
+    } else {
+      abzug -= 6; // Mittlerer Abzug: Fehlende Kernqualifikation, aber andere Qualifikationen vorhanden
+    }
   }
-  // Wenn andere Qualifikationen vorhanden, weniger kritisch
   
   return abzug;
 }
@@ -829,21 +857,44 @@ function checkReferenzenAbzug(referenzen: any[]): number {
     return sum + value;
   }, 0);
   
-  // Keine Abzüge mehr für Projekte - selbst kleine Projekte sind wertvoll!
   // Nur wenn wirklich KEINE Referenzen vorhanden sind
   if (gesamtwert === 0) {
     return -10; // Keine Projekte = Abzug
   }
   
-  // Gute Referenzen bekommen BONUS statt Abzug!
+  // STRENGERE Bewertung: Kleine Referenzen (< 20.000€ gesamt) geben Abzug
+  if (gesamtwert < 20000) {
+    return -8; // Starker Abzug: Nur sehr kleine Projekte
+  }
+  // Mittlere Referenzen (20.000 - 50.000€)
+  if (gesamtwert < 50000) {
+    return -4; // Leichter Abzug: Kleine bis mittlere Projekte
+  }
+  // Gute Referenzen bekommen KEINEN Abzug
   if (gesamtwert >= 100000) {
     return 0; // Kein Abzug für große Projekte
   }
-  if (gesamtwert >= 50000) {
-    return 0; // Kein Abzug für mittlere Projekte
+  
+  return 0; // Kein Abzug für mittlere bis große Projekte
+}
+
+function checkLeuchtturmprojektAbzug(lighthouseProject: any): number {
+  if (!lighthouseProject || !lighthouseProject.special) {
+    return 0; // Kein Leuchtturmprojekt oder kein Kommentar = kein Abzug
   }
   
-  return 0; // Kein Abzug für kleine Projekte - alle sind wertvoll!
+  const special = String(lighthouseProject.special).toLowerCase();
+  
+  // Wenn der Partner angibt, dass er gerade erst begonnen hat
+  if (special.includes('gerade erst begonnen') || 
+      special.includes('erst begonnen') ||
+      special.includes('neu') ||
+      special.includes('anfang') ||
+      special.includes('start')) {
+    return -8; // Starker Abzug: Partner ist noch sehr unerfahren
+  }
+  
+  return 0; // Kein Abzug für erfahrene Partner
 }
 
 // Hauptfunktion für Partner-Scoring
@@ -889,10 +940,11 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
   const arbeitsgebietAbzug = checkArbeitsgebietAbzug(answers.workingArea, answers.employeeCount);
   const qualifikationenAbzug = checkQualifikationenAbzug(answers.insuranceStatus, dokumenteArray);
   const referenzenAbzug = checkReferenzenAbzug(answers.references || []);
+  const leuchtturmprojektAbzug = checkLeuchtturmprojektAbzug(answers.lighthouseProject);
   
   // ABZÜGE NUR anwenden wenn tatsächlich Probleme vorliegen
   // Für gute Profile (expert, viele Referenzen, vollständige Versicherung) KEINE Abzüge!
-  abzuege = Math.min(0, jungesFirmaAbzug + erfahrungAbzug + fokusAbzug + arbeitsgebietAbzug + qualifikationenAbzug + referenzenAbzug);
+  abzuege = Math.min(0, jungesFirmaAbzug + erfahrungAbzug + fokusAbzug + arbeitsgebietAbzug + qualifikationenAbzug + referenzenAbzug + leuchtturmprojektAbzug);
   
   // BONUS für gute Profile statt Abzug!
   // Expert + vollständige Versicherung + gute Referenzen = Bonus statt Abzug
@@ -971,13 +1023,14 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
       versicherung: VERSICHERUNG_SCORES[answers.insuranceStatus] || 0,
       dokumente: Math.min(dokumenteScore, 10),
       referenzen: Math.min(referenzenScore, 20),
-      abzuege: {
+        abzuege: {
         jungesFirma: jungesFirmaAbzug,
         erfahrung: erfahrungAbzug,
         fokus: fokusAbzug,
         arbeitsgebiet: arbeitsgebietAbzug,
         qualifikationen: qualifikationenAbzug,
-        referenzen: referenzenAbzug
+        referenzen: referenzenAbzug,
+        leuchtturmprojekt: leuchtturmprojektAbzug
       },
       completionBonus
     }

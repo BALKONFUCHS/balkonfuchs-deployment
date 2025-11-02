@@ -1149,30 +1149,26 @@ const PartnerFunnel = () => {
     // Lead Score wird intern berechnet, aber NICHT angezeigt (nur für Zoho)
     const leadScore = calculateLeadScore();
     
-    // Bestimme Kategorie und Wording basierend auf Score
-    let categoryDisplay, categoryMessage, categoryColor, categoryBg;
+    // Bestimme Wording basierend auf Score (KEINE Kategorien mehr anzeigen)
+    let categoryMessage, categoryColor, categoryBg;
     
     if (leadScore.finalScore >= 75) {
-      // Premium Partner (Hot Lead)
-      categoryDisplay = 'Premium Partner';
+      // Premium Partner
       categoryMessage = 'Herzlichen Glückwunsch! Wir haben dich als Premium-Partner bewertet und heißen dich herzlich in unseren Reihen willkommen. Deine Erfahrung, Qualifikationen und Referenzen überzeugen uns vollständig. Wir freuen uns sehr auf eine langfristige, erfolgreiche Zusammenarbeit mit dir und können dir bereits jetzt eine schnelle Vertragsverhandlung mit exzellenten Konditionen anbieten.';
       categoryColor = 'from-green-500 to-emerald-500';
       categoryBg = 'bg-green-500/10 border-green-500/30';
     } else if (leadScore.finalScore >= 50) {
-      // Warm Lead
-      categoryDisplay = 'Warm Lead';
+      // Standard Partner
       categoryMessage = 'Herzlichen Dank für deine Bewerbung! Wir freuen uns sehr, dass du dich für eine Partnerschaft mit BALKONFUCHS interessierst. Es gibt noch ein paar kleine Fragen, die wir gerne gemeinsam mit dir klären möchten, bevor wir uns über das Thema Partnerschaft unterhalten. Wir sind sicher, dass wir gemeinsam eine passende Lösung finden werden, die für beide Seiten optimal ist.';
       categoryColor = 'from-blue-500 to-cyan-500';
       categoryBg = 'bg-blue-500/10 border-blue-500/30';
     } else if (leadScore.finalScore >= 30) {
-      // Cold Lead
-      categoryDisplay = 'Cold Lead';
+      // Basic Partner
       categoryMessage = 'Schön, dass du dich bei uns als Partner beworben hast! Wir möchten uns gerne persönlich mit dir austauschen, denn es gibt noch einige wichtige Punkte, die wir dringend besprechen müssen, bevor wir über eine weitergehende Partnerschaft sprechen können. Es gibt einige Kriterien, die uns besonders wichtig sind, und hierüber sollten wir uns zunächst einmal gemeinsam unterhalten. Ein oder zwei Parameter hierbei könnten bei dir noch gegen eine Partnerschaft sprechen, aber wir sind optimistisch, dass wir gemeinsam eine Lösung finden werden.';
       categoryColor = 'from-orange-500 to-amber-500';
       categoryBg = 'bg-orange-500/10 border-orange-500/30';
     } else {
       // Nicht qualifiziert
-      categoryDisplay = 'Nachfrage erforderlich';
       categoryMessage = 'Vielen Dank für deine Bewerbung! Wir haben deine Unterlagen erhalten und benötigen noch einige zusätzliche Informationen, bevor wir eine fundierte Entscheidung treffen können. Es gibt einige wichtige Kriterien für unsere Partnerschaft, die wir gerne persönlich mit dir besprechen möchten. Wir werden uns daher in den nächsten Tagen bei dir melden, um gemeinsam die nächsten Schritte zu klären und offene Fragen zu besprechen.';
       categoryColor = 'from-gray-500 to-slate-500';
       categoryBg = 'bg-gray-500/10 border-gray-500/30';
@@ -1180,18 +1176,15 @@ const PartnerFunnel = () => {
     
     return (
       <div className="space-y-8">
-        {/* Partner-Bewertung (ohne Score-Zahl) */}
+        {/* Partner-Bewertung (ohne Score-Zahl und ohne Kategorien) */}
         <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm">
           <div className="text-center mb-8">
             <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r ${categoryColor} rounded-full mb-6`}>
               <Handshake className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">
-              Deine Partner-Bewertung
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Vielen Dank für deine Bewerbung als Balkonbau Partner!
             </h3>
-            <p className="text-lg text-gray-300">
-              {categoryDisplay}
-            </p>
           </div>
           
           {/* Bewertungsnachricht */}

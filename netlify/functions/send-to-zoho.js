@@ -340,7 +340,7 @@ exports.handler = async (event, context) => {
     }
 
     console.log('=== ERSTELLE COMBINED DATA ===');
-    
+
     // Kombiniere alle verfügbaren Daten für Zoho
     let combinedData;
     try {
@@ -519,7 +519,7 @@ exports.handler = async (event, context) => {
     
     // Normalisiere funnelType für PDF-Generierung
     const normalizedFunnelType = ((funnelType || funnel?.type) || '').toLowerCase();
-    
+
     console.log('=== VOR UMWELTVARIABLEN PRÜFUNG ===');
 
     // Umgebungsvariablen prüfen (unterstützt beide Variablennamen für Org ID)
@@ -534,7 +534,7 @@ exports.handler = async (event, context) => {
     console.log('Refresh Token vorhanden:', !!refreshToken);
     console.log('Client ID vorhanden:', !!clientId);
     console.log('Client Secret vorhanden:', !!clientSecret);
-    
+
     if (!orgId || !refreshToken || !clientId || !clientSecret) {
       console.error('=== ZOHO KONFIGURATION FEHLT ===');
       return {
@@ -767,7 +767,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         ...(!shouldExcludeLieferadresse && deliveryAddress
           ? { 'cf_lieferadresse': deliveryAddress }
           : {}),
-        'cf_lead_score': combinedData.leadScore || '',
+        'cf_lead_score': (combinedData.leadScore !== undefined && combinedData.leadScore !== null && combinedData.leadScore !== '') ? Number(combinedData.leadScore) : null,
         'cf_lead_kategorie': combinedData.category || '',
         'cf_dringlichkeit': combinedData.priority || '',
         'cf_geschatzter_wert': combinedData.estimatedValue || '',
@@ -1018,21 +1018,21 @@ async function createZohoCRMLead(combinedData, accessToken, body, contact, funne
     const leadPayload = {
       First_Name: finalFirstName,
       Last_Name: finalLastName || 'Partner', // Last_Name ist Pflichtfeld für Zoho CRM
-      Lead_Source: 'BALKONFUCHS Website',
+        Lead_Source: 'BALKONFUCHS Website',
       Company: contact?.company || combinedData.company || body.company?.name || '',
-      Description: `Funnel-Details:\n${combinedData.funnelSummary || formatLeadDescription(combinedData, body.priceCalculation)}`,
-      Custom_Fields: {
-        'Lead_Score': combinedData.leadScore || '',
-        'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
-        'Funnel_Typ': combinedData.funnelType || 'Unbekannt',
-        'Balkon_Fläche': combinedData.balkonFlaeche || '',
-        'Balkon_Typ': combinedData.balkonTyp || '',
-        'Budget': combinedData.budget || '',
-        'Zeitplan': combinedData.zeitplan || '',
-        'Funnel_Quelle': combinedData.source || 'Website',
-        'Dringlichkeit': combinedData.priority || 'P3',
-        'Kategorie': combinedData.category || '',
-      },
+        Description: `Funnel-Details:\n${combinedData.funnelSummary || formatLeadDescription(combinedData, body.priceCalculation)}`,
+        Custom_Fields: {
+          'Lead_Score': (combinedData.leadScore !== undefined && combinedData.leadScore !== null && combinedData.leadScore !== '') ? Number(combinedData.leadScore) : null,
+          'Geschätzter_Projektwert': combinedData.calculation || combinedData.budget || '',
+          'Funnel_Typ': combinedData.funnelType || 'Unbekannt',
+          'Balkon_Fläche': combinedData.balkonFlaeche || '',
+          'Balkon_Typ': combinedData.balkonTyp || '',
+          'Budget': combinedData.budget || '',
+          'Zeitplan': combinedData.zeitplan || '',
+          'Funnel_Quelle': combinedData.source || 'Website',
+          'Dringlichkeit': combinedData.priority || 'P3',
+          'Kategorie': combinedData.category || '',
+        },
     };
     
     // Füge Email hinzu, wenn vorhanden
@@ -1274,13 +1274,13 @@ function extractFunnelScoring(funnelType, body) {
  */
 function getPartnerRecommendation(scoringData) {
   try {
-    if (!scoringData) {
-      return '❌ Keine Scoring-Daten verfügbar';
-    }
+  if (!scoringData) {
+    return '❌ Keine Scoring-Daten verfügbar';
+  }
 
-    const finalScore = scoringData.finalScore || scoringData.leadScore || 0;
-    const category = scoringData.category || 'Unbekannt';
-    const status = scoringData.status || 'unknown';
+  const finalScore = scoringData.finalScore || scoringData.leadScore || 0;
+  const category = scoringData.category || 'Unbekannt';
+  const status = scoringData.status || 'unknown';
     const warnings = Array.isArray(scoringData.warnings) ? scoringData.warnings : [];
 
   let recommendation = '';
@@ -1316,7 +1316,7 @@ function getPartnerRecommendation(scoringData) {
     warningText = '\n\n🚨 WARNUNGEN:\n' + warnings.map(w => `- ${w}`).join('\n');
   }
 
-    return `${emoji} EMPFEHLUNG: ${priority}\n\n${recommendation}${warningText}\n\n📊 SCORE-DETAILS:\n- Final Score: ${finalScore}/100\n- Kategorie: ${category}\n- Status: ${status}`;
+  return `${emoji} EMPFEHLUNG: ${priority}\n\n${recommendation}${warningText}\n\n📊 SCORE-DETAILS:\n- Final Score: ${finalScore}/100\n- Kategorie: ${category}\n- Status: ${status}`;
   } catch (error) {
     console.error('=== FEHLER IN getPartnerRecommendation ===');
     console.error('Error:', error);
