@@ -1794,8 +1794,15 @@ const PartnerFunnel = () => {
                 </button>
 
                 <button
-                  onClick={nextStep}
-                  disabled={!isStepValid}
+                  onClick={() => {
+                    // Kontaktformular-Step: submitForm() direkt aufrufen
+                    if (currentStep === questions.length - 1) {
+                      submitForm();
+                    } else {
+                      nextStep();
+                    }
+                  }}
+                  disabled={!isStepValid || isSubmitting}
                   className="flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
                 >
                   {isSubmitting ? (
