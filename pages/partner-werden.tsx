@@ -1095,17 +1095,14 @@ const PartnerFunnel = () => {
               <option value="Sonstige">Sonstige</option>
             </select>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-200 mb-2">Handynummer *</label>
-            <input
-              type="tel"
-              placeholder="+49 160 1234567"
-              value={formData.contactPerson.mobile}
-              onChange={(e) => handleContactPersonChange('mobile', e.target.value)}
-              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-            />
-            <p className="text-xs text-gray-400 mt-1">Bitte geben Sie eine Mobilfunknummer mit internationaler Vorwahl ein (z.B. +49 160 1234567, +43 664 1234567, +44 7911 123456)</p>
-          </div>
+          <PhoneInput
+            value={formData.contactPerson.mobile}
+            onChange={(value) => handleContactPersonChange('mobile', value)}
+            required={true}
+            placeholder="160 1234567"
+            label="Handynummer"
+            className="w-full"
+          />
         </div>
       </div>
     </div>
