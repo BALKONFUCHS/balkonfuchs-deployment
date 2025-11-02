@@ -14,6 +14,27 @@
 const axios = require('axios');
 const { calculatePlanerPrice } = require('./send-to-zoho-regional-helpers');
 
+/**
+ * Konvertiert documents (Array oder Objekt) in einen String
+ * - Array: join(', ')
+ * - Objekt: Extrahiert alle Schlüssel mit true-Werten und verbindet sie
+ */
+function formatDocuments(documents) {
+  if (!documents) return '';
+  
+  if (Array.isArray(documents)) {
+    return documents.join(', ');
+  }
+  
+  if (typeof documents === 'object') {
+    // Extrahiere alle Schlüssel mit true-Werten
+    const trueKeys = Object.keys(documents).filter(key => documents[key] === true);
+    return trueKeys.join(', ');
+  }
+  
+  return String(documents);
+}
+
 exports.handler = async (event, context) => {
   // Logging des Raw Requests
   console.log('=== RAW REQUEST ===');
@@ -341,7 +362,7 @@ exports.handler = async (event, context) => {
       balconyFloor: funnelData?.balconyFloor || '',
       railing: funnelData?.railing || '',
       surface: funnelData?.surface || '',
-      documents: funnelData?.documents ? funnelData.documents.join(', ') : '',
+      documents: formatDocuments(funnelData?.documents),
       additionalInfo: funnelData?.additionalInfo || '',
       offerCount: funnelData?.offerPreferences?.count || '',
       offerRegion: funnelData?.offerPreferences?.region || '',
@@ -1342,7 +1363,7 @@ function createFunnelSummary(funnelType, funnelData, contact, body, calculation)
 - Bodenbelag: ${translatedPlanerData.balconyFloor}
 - Geländer: ${translatedPlanerData.railing}
 - Oberfläche: ${translatedPlanerData.surface}
-- Dokumente: ${funnelData?.documents ? funnelData.documents.join(', ') : 'Keine'}
+- Dokumente: ${funnelData?.documents ? formatDocuments(funnelData.documents) : 'Keine'}
 ${funnelData?.offerPreferences?.count ? `- Angebotsanzahl: ${offerCountLabel}` : ''}
 ${funnelData?.offerPreferences?.region ? `- Einzugsgebiet: ${offerRegionLabel}` : ''}
 - Zusätzliche Infos: ${funnelData?.additionalInfo || 'Keine'}
