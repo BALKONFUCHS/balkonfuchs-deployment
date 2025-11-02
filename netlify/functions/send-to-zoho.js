@@ -38,8 +38,38 @@ function formatDocuments(documents) {
 exports.handler = async (event, context) => {
   // Logging des Raw Requests
   console.log('=== RAW REQUEST ===');
+  console.log('Body Type:', typeof event.body);
   console.log('Body:', event.body);
-  console.log('Parsed data:', JSON.parse(event.body));
+  
+  let parsedBody;
+  try {
+    // Body kann String oder bereits geparstes Objekt sein
+    if (typeof event.body === 'string') {
+      parsedBody = JSON.parse(event.body);
+    } else if (typeof event.body === 'object' && event.body !== null) {
+      parsedBody = event.body;
+    } else {
+      throw new Error('event.body ist weder String noch Objekt');
+    }
+    console.log('Parsed data:', parsedBody);
+  } catch (parseError) {
+    console.error('=== FEHLER BEIM PARSEN DES BODIES ===');
+    console.error('Error:', parseError);
+    console.error('Body:', event.body);
+    return {
+      statusCode: 400,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      },
+      body: JSON.stringify({
+        success: false,
+        error: 'Ungültiges Request-Body-Format',
+        message: parseError.message,
+      }),
+    };
+  }
 
   // CORS Headers
   const headers = {
@@ -70,8 +100,8 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Parse request body
-    const body = JSON.parse(event.body || '{}');
+    // Parse request body (wenn noch nicht geparst)
+    const body = parsedBody || JSON.parse(event.body || '{}');
 
     // Express-Angebot: eingehendes Payload in Standardform normalisieren
     if (body.funnel === 'express-angebot' && body.data) {
