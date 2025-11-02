@@ -1146,30 +1146,63 @@ const PartnerFunnel = () => {
   );
 
   const renderLeadScoring = () => {
-    // Lead Score wird intern berechnet, aber NICHT angezeigt
-    // Das Scoring ist nur für interne Zwecke (Zoho Desk/CRM)
+    // Lead Score wird intern berechnet, aber NICHT angezeigt (nur für Zoho)
     const leadScore = calculateLeadScore();
+    
+    // Bestimme Kategorie und Wording basierend auf Score
+    let categoryDisplay, categoryMessage, categoryColor, categoryBg;
+    
+    if (leadScore.finalScore >= 75) {
+      // Premium Partner (Hot Lead)
+      categoryDisplay = 'Premium Partner';
+      categoryMessage = 'Herzlichen Glückwunsch! Wir haben dich als Premium-Partner bewertet und heißen dich herzlich in unseren Reihen willkommen. Deine Erfahrung, Qualifikationen und Referenzen überzeugen uns vollständig. Wir freuen uns sehr auf eine langfristige, erfolgreiche Zusammenarbeit mit dir und können dir bereits jetzt eine schnelle Vertragsverhandlung mit exzellenten Konditionen anbieten.';
+      categoryColor = 'from-green-500 to-emerald-500';
+      categoryBg = 'bg-green-500/10 border-green-500/30';
+    } else if (leadScore.finalScore >= 50) {
+      // Warm Lead
+      categoryDisplay = 'Warm Lead';
+      categoryMessage = 'Herzlichen Dank für deine Bewerbung! Wir freuen uns sehr, dass du dich für eine Partnerschaft mit BALKONFUCHS interessierst. Es gibt noch ein paar kleine Fragen, die wir gerne gemeinsam mit dir klären möchten, bevor wir uns über das Thema Partnerschaft unterhalten. Wir sind sicher, dass wir gemeinsam eine passende Lösung finden werden, die für beide Seiten optimal ist.';
+      categoryColor = 'from-blue-500 to-cyan-500';
+      categoryBg = 'bg-blue-500/10 border-blue-500/30';
+    } else if (leadScore.finalScore >= 30) {
+      // Cold Lead
+      categoryMessage = 'Schön, dass du dich bei uns als Partner beworben hast! Wir möchten uns gerne persönlich mit dir austauschen, denn es gibt noch einige wichtige Punkte, die wir dringend besprechen müssen, bevor wir über eine weitergehende Partnerschaft sprechen können. Es gibt einige Kriterien, die uns besonders wichtig sind, und hierüber sollten wir uns zunächst einmal gemeinsam unterhalten. Ein oder zwei Parameter hierbei könnten bei dir noch gegen eine Partnerschaft sprechen, aber wir sind optimistisch, dass wir gemeinsam eine Lösung finden werden.';
+      categoryDisplay = 'Cold Lead';
+      categoryColor = 'from-orange-500 to-amber-500';
+      categoryBg = 'bg-orange-500/10 border-orange-500/30';
+    } else {
+      // Nicht qualifiziert
+      categoryDisplay = 'Nachfrage erforderlich';
+      categoryMessage = 'Vielen Dank für deine Bewerbung! Wir haben deine Unterlagen erhalten und benötigen noch einige zusätzliche Informationen, bevor wir eine fundierte Entscheidung treffen können. Es gibt einige wichtige Kriterien für unsere Partnerschaft, die wir gerne persönlich mit dir besprechen möchten. Wir werden uns daher in den nächsten Tagen bei dir melden, um gemeinsam die nächsten Schritte zu klären und offene Fragen zu besprechen.';
+      categoryColor = 'from-gray-500 to-slate-500';
+      categoryBg = 'bg-gray-500/10 border-gray-500/30';
+    }
     
     return (
       <div className="space-y-8">
-        {/* Einfache, freundliche Zusammenfassung ohne Bewertung */}
+        {/* Partner-Bewertung (ohne Score-Zahl) */}
         <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm">
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-orange-500 to-red-500 rounded-full mb-6">
+            <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r ${categoryColor} rounded-full mb-6`}>
               <Handshake className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Vielen Dank für deine Bewerbung als Balkonbau Partner!
+            <h3 className="text-2xl font-bold text-white mb-2">
+              Deine Partner-Bewertung
             </h3>
-            <p className="text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
-              Wir haben alle deine Angaben erhalten und werden sie sorgfältig prüfen. 
-              Du hörst in den nächsten Tagen von uns - wir melden uns persönlich bei dir, 
-              um die nächsten Schritte zu besprechen.
+            <p className="text-lg text-gray-300">
+              {categoryDisplay}
             </p>
           </div>
           
-          {/* Freundliche Info-Box */}
-          <div className="bg-blue-500/10 border border-blue-500/30 rounded-2xl p-6 mb-6">
+          {/* Bewertungsnachricht */}
+          <div className={`${categoryBg} border rounded-2xl p-6 mb-6`}>
+            <p className="text-gray-200 leading-relaxed text-base">
+              {categoryMessage}
+            </p>
+          </div>
+          
+          {/* Nächste Schritte */}
+          <div className="bg-blue-500/10 border border-blue-500/30 rounded-2xl p-6">
             <h4 className="text-xl font-bold text-white mb-4 flex items-center">
               <span className="text-blue-400 mr-2">🤝</span>
               Was passiert als nächstes?
@@ -1189,6 +1222,55 @@ const PartnerFunnel = () => {
                 Im persönlichen Gespräch klären wir alle Details und finden gemeinsam die beste Lösung 
                 für eine erfolgreiche Partnerschaft.
               </p>
+            </div>
+          </div>
+        </div>
+        
+        {/* Zusammenfassung der Partner-Daten */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm">
+          <h3 className="text-2xl font-bold text-white mb-6 text-center">
+            📋 Deine Bewerbung im Überblick
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Firma</div>
+                <div className="text-lg font-semibold text-white">{formData.companyName || 'Nicht angegeben'}</div>
+              </div>
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Rechtsform</div>
+                <div className="text-lg font-semibold text-white">{formData.legalForm === 'other' ? (formData.legalFormCustom || 'Sonstiges') : (formData.legalForm || 'Nicht angegeben')}</div>
+              </div>
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Partner-Paket</div>
+                <div className="text-lg font-semibold text-white">{getPartnerTypeLabel()}</div>
+              </div>
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Erfahrung</div>
+                <div className="text-lg font-semibold text-white">{getExperienceLabel()}</div>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Arbeitsgebiet</div>
+                <div className="text-lg font-semibold text-white">{getWorkingAreaLabel()}</div>
+              </div>
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Spezialitäten</div>
+                <div className="text-lg font-semibold text-white">{formData.specialties?.length || 0} ausgewählt</div>
+              </div>
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Versicherungsstatus</div>
+                <div className="text-lg font-semibold text-white">
+                  {formData.insuranceStatus === 'full' ? 'Vollständig versichert' : 
+                   formData.insuranceStatus === 'partial' ? 'Teilweise versichert' : 
+                   formData.insuranceStatus === 'planning' ? 'In Planung' : 'Nicht angegeben'}
+                </div>
+              </div>
+              <div className="bg-gray-700/30 rounded-xl p-4">
+                <div className="text-sm text-gray-400 mb-1">Standort</div>
+                <div className="text-lg font-semibold text-white">{formData.city || 'Nicht angegeben'}</div>
+              </div>
             </div>
           </div>
         </div>
