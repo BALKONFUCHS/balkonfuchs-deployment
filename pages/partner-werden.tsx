@@ -64,7 +64,7 @@ const PartnerFunnel = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const totalSteps = 8;
+  const totalSteps = 7;
 
   const questions = [
     {
@@ -129,15 +129,9 @@ const PartnerFunnel = () => {
     },
     {
       id: 'leadScoring',
-      title: 'Ihr Lead Scoring Ergebnis',
-      subtitle: '📊 Hier ist Ihre Bewertung und unsere Empfehlung für die Zusammenarbeit',
+      title: 'Ihr Lead Scoring Ergebnis & Kontaktdaten',
+      subtitle: '📊 Hier ist Ihre Bewertung. Bitte füllen Sie abschließend Ihre Kontaktdaten aus.',
       type: 'lead_scoring'
-    },
-    {
-      id: 'contact',
-      title: 'Ihre Kontaktdaten',
-      subtitle: '🤝 Abschließend benötigen wir Ihre Kontaktdaten für die weitere Bearbeitung',
-      type: 'contact_form'
     }
   ];
 
@@ -183,11 +177,10 @@ const PartnerFunnel = () => {
                                   formData.lighthouseProject.special;
         return allReferencesComplete && lighthouseComplete;
       case 'lead_scoring':
-        return true; // Lead Scoring ist immer gültig
-      case 'contact_form':
+        // Lead Scoring + Kontaktformular: Prüfe Kontaktdaten
         const { salutation, firstName, lastName, email } = formData.contact;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return salutation && firstName && lastName && emailRegex.test(email);
+        return salutation && firstName && lastName && emailRegex.test(email) && formData.contact.privacy;
       default:
         return true;
     }
@@ -461,7 +454,6 @@ const PartnerFunnel = () => {
           {question.type === 'qualifications' && renderQualifications()}
           {question.type === 'references' && renderReferences()}
           {question.type === 'lead_scoring' && renderLeadScoring()}
-          {question.type === 'contact_form' && renderContactForm()}
         </div>
       </div>
     );
@@ -1297,12 +1289,128 @@ const PartnerFunnel = () => {
           </div>
         </div>
         
+        {/* Kontaktformular */}
+        <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm mt-8">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-white mb-2">Ihre Kontaktdaten</h3>
+            <p className="text-lg text-orange-400">
+              🤝 Abschließend benötigen wir Ihre Kontaktdaten für die weitere Bearbeitung
+            </p>
+          </div>
+
+          <div className="grid gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <select
+                value={formData.contact.salutation}
+                onChange={(e) => handleContactChange('salutation', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+              >
+                <option value="">Anrede wählen *</option>
+                <option value="Herr">Herr</option>
+                <option value="Frau">Frau</option>
+                <option value="Divers">Divers</option>
+              </select>
+              <input
+                type="text"
+                placeholder="Vorname *"
+                value={formData.contact.firstName}
+                onChange={(e) => handleContactChange('firstName', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+              />
+              <input
+                type="text"
+                placeholder="Nachname *"
+                value={formData.contact.lastName}
+                onChange={(e) => handleContactChange('lastName', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+              />
+            </div>
+
+            <input
+              type="text"
+              placeholder="Position im Unternehmen"
+              value={formData.contact.position}
+              onChange={(e) => handleContactChange('position', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input
+                type="email"
+                placeholder="E-Mail-Adresse *"
+                value={formData.contact.email}
+                onChange={(e) => handleContactChange('email', e.target.value)}
+                className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+              />
+              <PhoneInput
+                value={formData.contact.phone}
+                onChange={(value) => handleContactChange('phone', value)}
+                required={true}
+                placeholder="123 456789"
+                className="w-full"
+              />
+            </div>
+
+            <PhoneInput
+              value={formData.contact.mobile}
+              onChange={(value) => handleContactChange('mobile', value)}
+              required={false}
+              placeholder="123 456789"
+              label="Mobilnummer (optional)"
+              className="w-full"
+            />
+
+            <div>
+              <label className="block text-sm font-medium text-gray-200 mb-2">Bevorzugter Kontaktweg</label>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {[
+                  { value: 'email', label: 'E-Mail', icon: '📧' },
+                  { value: 'phone', label: 'Telefon', icon: '📞' },
+                  { value: 'both', label: 'Beides', icon: '🤝' }
+                ].map(option => (
+                  <button
+                    key={option.value}
+                    onClick={() => handleContactChange('preferredContact', option.value)}
+                    type="button"
+                    className={`p-3 border-2 rounded-xl text-center transition-all duration-300 ${
+                      formData.contact.preferredContact === option.value
+                        ? 'border-orange-500 bg-orange-500/20'
+                        : 'border-gray-600 hover:border-orange-300'
+                    }`}
+                  >
+                    <div className="text-2xl mb-1">{option.icon}</div>
+                    <div className="text-sm font-medium text-white">{option.label}</div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="flex items-start space-x-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={formData.contact.privacy}
+                  onChange={(e) => handleContactChange('privacy', e.target.checked)}
+                  className="mt-1 w-4 h-4 text-orange-500 rounded focus:ring-orange-500"
+                />
+                <span className="text-sm text-gray-200">
+                  ✅ Ich stimme der Verarbeitung meiner Daten gemäß{' '}
+                  <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" className="text-orange-500 hover:underline">
+                    Datenschutzerklärung
+                  </a>{' '}
+                  zu *
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
         {/* E-Mail CTA */}
-        <div className="text-center">
+        <div className="text-center mt-8">
           <button
             onClick={submitForm}
-            disabled={isSubmitting}
-            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={!isStepValid || isSubmitting}
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl font-semibold hover:shadow-2xl hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <>
@@ -1317,7 +1425,7 @@ const PartnerFunnel = () => {
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
-                Bewerbungsunterlagen absenden
+                🤝 Balkonbau Partner Bewerbung absenden
               </>
             )}
           </button>
@@ -1574,8 +1682,8 @@ const PartnerFunnel = () => {
   return (
       <div className="min-h-screen bg-gray-900 funnel-partner">
       <Head>
-        <title>Balkonbau Partner werden 2025 | 8-Schritt Bewerbung | Qualifizierte Leads | BALKONFUCHS</title>
-        <meta name="description" content="✅ Balkonbau Partner werden ✅ 8-Schritt Bewerbungsprozess ✅ Qualifizierte Leads für Handwerker ✅ Starter/Professional/Enterprise Pakete ✅ 8-35+ Leads/Monat ✅ Jetzt bewerben!" />
+        <title>Balkonbau Partner werden 2025 | 7-Schritt Bewerbung | Qualifizierte Leads | BALKONFUCHS</title>
+        <meta name="description" content="✅ Balkonbau Partner werden ✅ 7-Schritt Bewerbungsprozess ✅ Qualifizierte Leads für Handwerker ✅ Starter/Professional/Enterprise Pakete ✅ 8-35+ Leads/Monat ✅ Jetzt bewerben!" />
         <meta name="keywords" content="balkonbau partner werden, balkonbau partner bewerbung, handwerker leads kaufen, balkon partner programm, aufträge balkonbau, balkonbau partner 2025" />
         <meta name="author" content="BALKONFUCHS" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -1586,7 +1694,7 @@ const PartnerFunnel = () => {
         <meta name="ICBM" content="51.1657, 10.4515" />
         
         {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Balkonbau Partner werden 2025 - 8-Schritt Bewerbung" />
+        <meta property="og:title" content="Balkonbau Partner werden 2025 - 7-Schritt Bewerbung" />
         <meta property="og:description" content="Steigern Sie Ihren Umsatz als verifizierter BALKONFUCHS-Partner! Wir liefern Ihnen monatlich qualifizierte, vorselektierte Kunden in Ihrer Region." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://balkonfuchs.de/partner" />
@@ -1597,7 +1705,7 @@ const PartnerFunnel = () => {
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://balkonfuchs.de/partner" />
-        <meta property="twitter:title" content="Balkonbau Partner werden - 8-Schritt Bewerbung" />
+        <meta property="twitter:title" content="Balkonbau Partner werden - 7-Schritt Bewerbung" />
         <meta property="twitter:description" content="Steigern Sie Ihren Umsatz als verifizierter BALKONFUCHS-Partner! Wir liefern Ihnen monatlich qualifizierte, vorselektierte Kunden." />
         <meta property="twitter:image" content="https://balkonfuchs.de/images/twitter-balkonbau-partner.jpg" />
         
@@ -1795,7 +1903,7 @@ const PartnerFunnel = () => {
 
                 <button
                   onClick={() => {
-                    // Kontaktformular-Step: submitForm() direkt aufrufen
+                    // Letzter Step (Lead Scoring + Kontaktformular): submitForm() direkt aufrufen
                     if (currentStep === questions.length - 1) {
                       submitForm();
                     } else {
