@@ -490,6 +490,11 @@ exports.handler = async (event, context) => {
                 body._internalScoring?.priority ||
                 body._partnerScoring?.priority ||
                 extractPriority(body),
+      priorityRank: body.leadScore?.priorityRank || 
+                    body.funnelData?.leadScore?.priorityRank || 
+                    body._internalScoring?.priorityRank ||
+                    body._partnerScoring?.priorityRank ||
+                    '', // P1, P2, P3, P4 für Partner-Funnel
       
       // Funnel-spezifische Scoring-Daten
       funnelScoring: extractFunnelScoring(funnelType || funnel?.type, body),
@@ -773,6 +778,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         // 'Lead Score': (combinedData.leadScore !== undefined && combinedData.leadScore !== null && combinedData.leadScore !== '') ? String(combinedData.leadScore) : '',
         'cf_lead_kategorie': combinedData.category || '',
         'cf_dringlichkeit': combinedData.priority || '',
+        'cf_priority_rank': combinedData.priorityRank || '', // P1, P2, P3, P4
         'cf_geschatzter_wert': combinedData.estimatedValue || '',
         
         // Funnel-spezifische Scoring-Details
