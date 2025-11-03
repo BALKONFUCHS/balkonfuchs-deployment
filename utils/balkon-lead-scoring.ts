@@ -710,28 +710,28 @@ function checkJungesFirmaAbzug(rechtsform: string, gruendungsjahr: number, mitar
   }
   
   const firmenalter = 2025 - gruendungsjahr;
-  const isJung = (firmenalter < 3); // Firma jünger als 3 Jahre
-  const isSehrJung = (firmenalter < 2); // Firma jünger als 2 Jahre (2024 oder später gegründet)
+  const isJung = (firmenalter <= 3); // Firma 3 Jahre oder jünger (inklusive 3 Jahre!)
+  const isSehrJung = (firmenalter <= 2); // Firma 2 Jahre oder jünger (inklusive 2 Jahre!)
   const isMicro = (mitarbeiter === '1' || mitarbeiter === '2-5');
   const isUG = (rechtsform === 'ug');
   
-  // Sehr junge Firma (< 2 Jahre) + sehr klein + unsichere Rechtsform
+  // Sehr junge Firma (<= 2 Jahre) + sehr klein + unsichere Rechtsform
   if (isSehrJung && isMicro && isUG) {
     return -20; // Sehr starker Abzug: Zu jung, zu klein, unsichere Rechtsform
   }
-  // Sehr junge Firma (< 2 Jahre) + sehr klein
+  // Sehr junge Firma (<= 2 Jahre) + sehr klein
   if (isSehrJung && isMicro) {
     return -15; // Starker Abzug: Zu jung + zu klein
   }
-  // Junge Firma (< 3 Jahre) + sehr klein + unsichere Rechtsform
+  // Junge Firma (<= 3 Jahre) + sehr klein + unsichere Rechtsform
   if (isJung && isMicro && isUG) {
     return -15; // Starker Abzug: Zu jung, zu klein, unsichere Rechtsform
   }
-  // Junge Firma (< 3 Jahre) + sehr klein
+  // Junge Firma (<= 3 Jahre) + sehr klein
   if (isJung && isMicro) {
     return -10; // Mittlerer Abzug: Zu jung + zu klein
   }
-  // Sehr junge Firma (< 2 Jahre) alleine
+  // Sehr junge Firma (<= 2 Jahre) alleine
   if (isSehrJung) {
     return -8; // Leichter Abzug: Sehr junges Unternehmen
   }
@@ -795,17 +795,17 @@ function checkArbeitsgebietAbzug(arbeitsgebiet: string, mitarbeiter: string): nu
   const istKlein = (mitarbeiter === '1' || mitarbeiter === '2-5');
   
   // Kleine Firma behauptet deutschlandweite Tätigkeit
-  if (istKlein && arbeitsgebiet === 'deutschlandweit') {
+  if (istKlein && (arbeitsgebiet === 'deutschlandweit' || arbeitsgebiet === 'national')) {
     return -15; // Unrealistisch: 1-5 MA können nicht deutschlandweit arbeiten
   }
   
   // Kleine Firma behauptet landesweite Tätigkeit
-  if (istKlein && arbeitsgebiet === 'landesweit') {
+  if (istKlein && (arbeitsgebiet === 'landesweit' || arbeitsgebiet === 'state')) {
     return -10; // Überschätzung
   }
   
   // Mittlere Firma (6-10 MA) deutschlandweit
-  if (mitarbeiter === '6-10' && arbeitsgebiet === 'deutschlandweit') {
+  if (mitarbeiter === '6-10' && (arbeitsgebiet === 'deutschlandweit' || arbeitsgebiet === 'national')) {
     return -5; // Fragwürdig
   }
   
@@ -900,11 +900,14 @@ function checkLeuchtturmprojektAbzug(lighthouseProject: any): number {
 // Hauptfunktion für Partner-Scoring
 export function calculatePartnerScore(answers: any): PartnerScoreResult {
   // Basis-Scores berechnen
+  // Gründungsjahr als Zahl konvertieren (kann als String übergeben werden)
+  const foundedYearNum = typeof answers.foundedYear === 'string' ? parseInt(answers.foundedYear) : answers.foundedYear;
+  
   let baseScore = 0;
   baseScore += SUBSCRIPTION_SCORES[answers.partnerType] || 0;
   baseScore += RECHTSFORM_SCORES[answers.legalForm] || 0;
   baseScore += MITARBEITER_SCORES[answers.employeeCount] || 0;
-  baseScore += calculateGruendungsjahrScore(answers.foundedYear);
+  baseScore += calculateGruendungsjahrScore(foundedYearNum);
   baseScore += ERFAHRUNG_SCORES[answers.experience] || 0;
   
   // Spezialisierungen (max 25)
@@ -934,8 +937,9 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
   
   // ABZÜGE berechnen (nur bei tatsächlichen Problemen, nicht bei guten Profilen)
   let abzuege = 0;
-  const jungesFirmaAbzug = checkJungesFirmaAbzug(answers.legalForm, answers.foundedYear, answers.employeeCount);
-  const erfahrungAbzug = checkErfahrungAbzug(answers.experience, answers.foundedYear);
+  
+  const jungesFirmaAbzug = checkJungesFirmaAbzug(answers.legalForm, foundedYearNum, answers.employeeCount);
+  const erfahrungAbzug = checkErfahrungAbzug(answers.experience, foundedYearNum);
   const fokusAbzug = checkFokusAbzug(answers.specialties || [], answers.employeeCount);
   const arbeitsgebietAbzug = checkArbeitsgebietAbzug(answers.workingArea, answers.employeeCount);
   const qualifikationenAbzug = checkQualifikationenAbzug(answers.insuranceStatus, dokumenteArray);
@@ -944,7 +948,23 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
   
   // ABZÜGE NUR anwenden wenn tatsächlich Probleme vorliegen
   // Für gute Profile (expert, viele Referenzen, vollständige Versicherung) KEINE Abzüge!
+  // Math.min(0, ...) stellt sicher, dass die Summe nicht positiv wird
   abzuege = Math.min(0, jungesFirmaAbzug + erfahrungAbzug + fokusAbzug + arbeitsgebietAbzug + qualifikationenAbzug + referenzenAbzug + leuchtturmprojektAbzug);
+  
+  // DEBUG: Log alle Abzüge für Problem-Diagnose
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('=== LEAD SCORE ABZÜGE DEBUG ===');
+    console.log('Junges Firma Abzug:', jungesFirmaAbzug);
+    console.log('Erfahrung Abzug:', erfahrungAbzug);
+    console.log('Fokus Abzug:', fokusAbzug);
+    console.log('Arbeitsgebiet Abzug:', arbeitsgebietAbzug);
+    console.log('Qualifikationen Abzug:', qualifikationenAbzug);
+    console.log('Referenzen Abzug:', referenzenAbzug);
+    console.log('Leuchtturmprojekt Abzug:', leuchtturmprojektAbzug);
+    console.log('Gesamt Abzüge:', abzuege);
+    console.log('Base Score:', baseScore);
+    console.log('Final Score:', baseScore + abzuege + 10);
+  }
   
   // BONUS für gute Profile statt Abzug!
   // Expert + vollständige Versicherung + gute Referenzen = Bonus statt Abzug
@@ -1016,7 +1036,7 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
       subscription: SUBSCRIPTION_SCORES[answers.partnerType] || 0,
       rechtsform: RECHTSFORM_SCORES[answers.legalForm] || 0,
       mitarbeiter: MITARBEITER_SCORES[answers.employeeCount] || 0,
-      gruendungsjahr: calculateGruendungsjahrScore(answers.foundedYear),
+      gruendungsjahr: calculateGruendungsjahrScore(foundedYearNum),
       erfahrung: ERFAHRUNG_SCORES[answers.experience] || 0,
       spezialisierungen: Math.min(spezialisierungScore, 25),
       arbeitsgebiet: ARBEITSGEBIET_SCORES[answers.workingArea] || 0,

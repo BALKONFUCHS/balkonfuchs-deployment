@@ -89,17 +89,34 @@
 - "das ist mein Referenzprojekt" → **0 Abzug** (kein "gerade erst begonnen")
 
 ### Abzüge Gesamt:
--10 + 0 + (-5) + (-10) + (-10) + (-8) + 0 = **-43 Abzug**
+-15 + 0 + (-3) + (-15) + (-10) + (-8) + 0 = **-51 Abzug**
 
-*(Hinweis: In den Logs steht abzuege: -17, was darauf hindeutet, dass nicht alle Abzüge angewendet werden oder die Berechnung anders ist)*
+**KORREKTUR:** Nach den Fixes sollten die Abzüge korrekt berechnet werden:
+- **Junges Firma:** -15 (UG + 3 Jahre alt + 2-5 MA) ✓
+- **Erfahrung:** 0 (3 Jahre + Beginner = normal für neue Firmen) ✓
+- **Fokus:** -3 (6 Spezialitäten + 2-5 MA = leichter Fokusverlust) ✓
+- **Arbeitsgebiet:** -15 (national + 2-5 MA = unrealistisch) ✓
+- **Qualifikationen:** -10 (kein Meisterbrief + keine alternativen Qualifikationen) ✓
+- **Referenzen:** -8 (23.331€ < 20.000€ = nur sehr kleine Projekte) ✓
+- **Leuchtturmprojekt:** 0 (nicht "gerade erst begonnen") ✓
+
+*(Hinweis: In den ursprünglichen Logs stand abzuege: -17, was darauf hindeutet, dass nicht alle Abzüge korrekt berechnet wurden - möglicherweise durch String statt Zahl für foundedYear oder falsche Vergleichswerte)*
 
 ### Completion Bonus:
 **+10 Punkte**
 
-### Final Score:
-80 (Base) - 43 (Abzüge) + 10 (Bonus) = **47 Punkte**
+### Final Score (ERWARTET nach Fixes):
+80 (Base) - 51 (Abzüge) + 10 (Bonus) = **39 Punkte**
 
-*(In den Logs steht leadScore: 69, was auf eine andere Berechnung hindeutet - möglicherweise werden die Abzüge anders angewendet oder es gibt einen zusätzlichen Bonus)*
+**Kategorie:** Basic Partner (30-49 Punkte) ✓
+
+*(In den ursprünglichen Logs stand leadScore: 69, was darauf hindeutet, dass die Abzüge nicht korrekt berechnet wurden. Nach den Fixes sollte der Score korrekt bei ~37-39 Punkten liegen.)*
+
+### Mögliche Ursachen für falsche Berechnung (vor Fixes):
+1. **foundedYear als String** statt Zahl → Parsing erforderlich
+2. **workingArea = "national"** statt "deutschlandweit" → Vergleich funktionierte nicht
+3. **lighthouseProject nicht übergeben** → Leuchtturmprojekt-Abzug fehlte
+4. **isJung = (3 < 3) = false** statt `<= 3` → Junge Firma wurde nicht erkannt
 
 ## Kategorisierung:
 

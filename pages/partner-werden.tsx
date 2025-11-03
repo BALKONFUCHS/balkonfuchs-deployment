@@ -215,7 +215,8 @@ const PartnerFunnel = () => {
       workingArea: formData.workingArea,
       insuranceStatus: formData.insuranceStatus,
       documents: formData.documents,
-      references: formData.references
+      references: formData.references,
+      lighthouseProject: formData.lighthouseProject // WICHTIG: lighthouseProject für Abzug-Berechnung übergeben!
     });
   };
 
@@ -306,6 +307,22 @@ const PartnerFunnel = () => {
     
     // LeadScore-Berechnung mit standardisiertem System
     const leadScore = calculateLeadScore();
+    
+    // DEBUG: Log Lead Score Berechnung
+    console.log('=== PARTNER LEAD SCORE CALCULATION DEBUG ===');
+    console.log('Lead Score Result:', leadScore);
+    console.log('Form Data:', {
+      partnerType: formData.partnerType,
+      legalForm: formData.legalForm,
+      foundedYear: formData.foundedYear,
+      employeeCount: formData.employeeCount,
+      experience: formData.experience,
+      workingArea: formData.workingArea,
+      insuranceStatus: formData.insuranceStatus,
+      documents: formData.documents,
+      references: formData.references,
+      lighthouseProject: formData.lighthouseProject
+    });
     
     // Kontaktdaten aus Step 1 (companyProfile) verwenden, NICHT aus Step 7!
     // Step 7 zeigt nur Zusammenfassung, keine Kontaktdaten-Abfrage mehr
