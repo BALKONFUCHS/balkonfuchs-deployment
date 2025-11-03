@@ -767,7 +767,10 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         ...(!shouldExcludeLieferadresse && deliveryAddress
           ? { 'cf_lieferadresse': deliveryAddress }
           : {}),
-        'cf_lead_score': (combinedData.leadScore !== undefined && combinedData.leadScore !== null && combinedData.leadScore !== '') ? Number(combinedData.leadScore) : null,
+        // Lead Score - verschiedene Feldnamen probieren (Zoho Desk API kann unterschiedliche Namen erwarten)
+        'cf_lead_score': (combinedData.leadScore !== undefined && combinedData.leadScore !== null && combinedData.leadScore !== '') ? Number(combinedData.leadScore) : (combinedData.leadScore === 0 ? 0 : null),
+        // Alternativ: Falls cf_lead_score nicht funktioniert, als String probieren
+        // 'Lead Score': (combinedData.leadScore !== undefined && combinedData.leadScore !== null && combinedData.leadScore !== '') ? String(combinedData.leadScore) : '',
         'cf_lead_kategorie': combinedData.category || '',
         'cf_dringlichkeit': combinedData.priority || '',
         'cf_geschatzter_wert': combinedData.estimatedValue || '',
@@ -924,6 +927,10 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
     console.log('cf_telefon Field Value:', ticketData.customFields['cf_telefon']);
     console.log('cf_lieferadresse Field Value:', ticketData.customFields['cf_lieferadresse']);
     console.log('cf_funnel_typ Field Value:', ticketData.customFields['cf_funnel_typ']);
+    console.log('cf_lead_score Field Value:', ticketData.customFields['cf_lead_score'], '| Type:', typeof ticketData.customFields['cf_lead_score']);
+    console.log('cf_lead_score from combinedData:', combinedData.leadScore, '| Type:', typeof combinedData.leadScore);
+    console.log('cf_lead_kategorie Field Value:', ticketData.customFields['cf_lead_kategorie']);
+    console.log('cf_kalkulator_basis_score Field Value:', ticketData.customFields['cf_kalkulator_basis_score']);
     console.log('cf_geschatzter_projektwerk Field Value:', ticketData.customFields['cf_geschatzter_projektwerk']);
     console.log('cf_regionalfaktor Field Value:', ticketData.customFields['cf_regionalfaktor']);
     console.log('cf_basispreis Field Value:', ticketData.customFields['cf_basispreis']);
@@ -960,6 +967,19 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
     console.log('=== ZOHO DESK RESPONSE ===');
     console.log('Response Status:', response.status);
     console.log('Response Data:', response.data);
+    
+    // Prüfe ob cf_lead_score in der Response vorhanden ist
+    if (response.data?.customFields) {
+      console.log('=== CUSTOM FIELDS IN RESPONSE ===');
+      console.log('Lead Score in customFields:', response.data.customFields['Lead Score']);
+      console.log('Lead Score in customFields (cf_lead_score):', response.data.customFields['cf_lead_score']);
+      console.log('All customFields keys:', Object.keys(response.data.customFields || {}));
+    }
+    if (response.data?.cf) {
+      console.log('=== CF OBJECT IN RESPONSE ===');
+      console.log('cf_lead_score:', response.data.cf?.cf_lead_score);
+      console.log('All cf keys:', Object.keys(response.data.cf || {}));
+    }
 
     return {
       success: true,
