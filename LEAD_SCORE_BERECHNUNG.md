@@ -120,10 +120,10 @@
 
 ## Kategorisierung:
 
-- **< 30:** Nicht qualifiziert
-- **30-49:** Basic Partner
-- **50-74:** Standard Partner ← **69 (Beispiel)**
-- **≥ 75:** Premium Partner
+- **< 30:** Nicht qualifiziert (P4-Status)
+- **30-49:** Cold Partner (P3-Status) ← **39 (Beispiel nach Fixes)**
+- **50-74:** Warm Partner (P2-Status)
+- **≥ 75:** Hot Partner (P1-Status)
 
 ## Wichtige Hinweise:
 

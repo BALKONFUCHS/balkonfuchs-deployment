@@ -548,12 +548,12 @@ const PartnerFunnel = () => {
                     : 'text-gray-400'
             }`}>
               {leadScore.finalScore >= 75 
-                ? '🚀 Premium Partner - Schnelle Bearbeitung'
+                ? '🚀 Hot Partner (P1) - Schnelle Bearbeitung'
                 : leadScore.finalScore >= 50 
-                  ? '⚡ Standard Partner - Individuelle Prüfung'
+                  ? '⚡ Warm Partner (P2) - Individuelle Prüfung'
                   : leadScore.finalScore >= 30
-                    ? '📋 Basic Partner - Detaillierte Prüfung'
-                    : '📝 Nachfrage erforderlich'
+                    ? '📋 Cold Partner (P3) - Detaillierte Prüfung'
+                    : '📝 Nicht qualifiziert (P4)'
               }
             </h3>
             
@@ -1170,17 +1170,17 @@ const PartnerFunnel = () => {
     let categoryMessage, categoryColor, categoryBg;
     
     if (leadScore.finalScore >= 75) {
-      // Premium Partner
-      categoryMessage = 'Herzlichen Glückwunsch! Wir haben dich als Premium-Partner bewertet und heißen dich herzlich in unseren Reihen willkommen. Deine Erfahrung, Qualifikationen und Referenzen überzeugen uns vollständig. Wir freuen uns sehr auf eine langfristige, erfolgreiche Zusammenarbeit mit dir und können dir bereits jetzt eine schnelle Vertragsverhandlung mit exzellenten Konditionen anbieten.';
+      // Hot Partner (P1)
+      categoryMessage = 'Herzlichen Glückwunsch! Wir haben dich als Hot Partner bewertet und heißen dich herzlich in unseren Reihen willkommen. Deine Erfahrung, Qualifikationen und Referenzen überzeugen uns vollständig. Wir freuen uns sehr auf eine langfristige, erfolgreiche Zusammenarbeit mit dir und können dir bereits jetzt eine schnelle Vertragsverhandlung mit exzellenten Konditionen anbieten.';
       categoryColor = 'from-green-500 to-emerald-500';
       categoryBg = 'bg-green-500/10 border-green-500/30';
     } else if (leadScore.finalScore >= 50) {
-      // Standard Partner
+      // Warm Partner (P2)
       categoryMessage = 'Herzlichen Dank für deine Bewerbung! Wir freuen uns sehr, dass du dich für eine Partnerschaft mit BALKONFUCHS interessierst. Es gibt noch ein paar kleine Fragen, die wir gerne gemeinsam mit dir klären möchten, bevor wir uns über das Thema Partnerschaft unterhalten. Wir sind sicher, dass wir gemeinsam eine passende Lösung finden werden, die für beide Seiten optimal ist.';
       categoryColor = 'from-blue-500 to-cyan-500';
       categoryBg = 'bg-blue-500/10 border-blue-500/30';
     } else if (leadScore.finalScore >= 30) {
-      // Basic Partner
+      // Cold Partner (P3)
       categoryMessage = 'Schön, dass du dich bei uns als Partner beworben hast! Wir möchten uns gerne persönlich mit dir austauschen, denn es gibt noch einige wichtige Punkte, die wir dringend besprechen müssen, bevor wir über eine weitergehende Partnerschaft sprechen können. Es gibt einige Kriterien, die uns besonders wichtig sind, und hierüber sollten wir uns zunächst einmal gemeinsam unterhalten. Ein oder zwei Parameter hierbei könnten bei dir noch gegen eine Partnerschaft sprechen, aber wir sind optimistisch, dass wir gemeinsam eine Lösung finden werden.';
       categoryColor = 'from-orange-500 to-amber-500';
       categoryBg = 'bg-orange-500/10 border-orange-500/30';

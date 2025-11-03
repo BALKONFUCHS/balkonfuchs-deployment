@@ -556,9 +556,10 @@ export interface PartnerScoreResult {
   abzuege: number;
   completionBonus: number;
   finalScore: number;
-  category: 'Premium Partner' | 'Standard Partner' | 'Basic Partner' | 'Nicht qualifiziert';
+  category: 'Hot Partner' | 'Warm Partner' | 'Cold Partner' | 'Nicht qualifiziert';
   action: string;
   priority: 'high' | 'medium' | 'low' | 'none';
+  priorityRank: 'P1' | 'P2' | 'P3' | 'P4';
   responseTime: string;
   qualified: boolean;
   nachfrageErforderlich: boolean;
@@ -984,31 +985,35 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
   const finalScore = Math.max(baseScore + abzuege + completionBonus, 0);
   
   // Kategorisierung
-  let category: 'Premium Partner' | 'Standard Partner' | 'Basic Partner' | 'Nicht qualifiziert';
+  let category: 'Hot Partner' | 'Warm Partner' | 'Cold Partner' | 'Nicht qualifiziert';
   let action: string;
   let priority: 'high' | 'medium' | 'low' | 'none';
+  let priorityRank: 'P1' | 'P2' | 'P3' | 'P4';
   let responseTime: string;
   let qualified: boolean;
   let nachfrageErforderlich: boolean;
   
   if (finalScore >= 75) {
-    category = 'Premium Partner';
+    category = 'Hot Partner';
     action = 'Bevorzugte Vermittlung + Top-Platzierung';
     priority = 'high';
+    priorityRank = 'P1';
     responseTime = '24 Stunden';
     qualified = true;
     nachfrageErforderlich = false;
   } else if (finalScore >= 50) {
-    category = 'Standard Partner';
+    category = 'Warm Partner';
     action = 'Reguläre Vermittlung';
     priority = 'medium';
+    priorityRank = 'P2';
     responseTime = '48 Stunden';
     qualified = true;
     nachfrageErforderlich = false;
   } else if (finalScore >= 30) {
-    category = 'Basic Partner';
+    category = 'Cold Partner';
     action = 'Aufbau-Phase + Training';
     priority = 'low';
+    priorityRank = 'P3';
     responseTime = '7 Tage';
     qualified = true;
     nachfrageErforderlich = (abzuege < -10);
@@ -1016,6 +1021,7 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
     category = 'Nicht qualifiziert';
     action = 'Bewerbung ablehnen oder Nachfragen stellen';
     priority = 'none';
+    priorityRank = 'P4';
     responseTime = '14 Tage';
     qualified = false;
     nachfrageErforderlich = true;
@@ -1029,6 +1035,7 @@ export function calculatePartnerScore(answers: any): PartnerScoreResult {
     category,
     action,
     priority,
+    priorityRank,
     responseTime,
     qualified,
     nachfrageErforderlich,
