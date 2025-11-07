@@ -51,6 +51,26 @@ function mapBudget(value) {
   return mapping[value] || value;
 }
 
+function mapBudgetCurrency(value) {
+  if (!value) return null;
+
+  const mapping = {
+    'under_10k': 9000,
+    '10_20k': 15000,
+    '20_30k': 25000,
+    '30_50k': 40000,
+    'over_50k': 60000,
+    'flexible': null
+  };
+
+  if (mapping.hasOwnProperty(value)) {
+    return mapping[value];
+  }
+
+  const numeric = parseFloat(String(value).replace(/[^0-9.,]/g, '').replace(',', '.'));
+  return Number.isFinite(numeric) ? numeric : null;
+}
+
 function mapOwnership(value) {
   const mapping = {
     'owner': 'Eigentümer',
@@ -65,8 +85,11 @@ function mapTimeframe(value) {
   const mapping = {
     'asap': 'Sofort',
     '3_months': 'Innerhalb 3 Monate',
+    '3months': 'Innerhalb 3 Monate',
     '6_months': 'Innerhalb 6 Monate',
+    '6months': 'Innerhalb 6 Monate',
     '12_months': 'Innerhalb 12 Monate',
+    '12months': 'Innerhalb 12 Monate',
     'flexible': 'Noch offen'
   };
   return mapping[value] || value;
@@ -87,7 +110,8 @@ function mapFloorMaterial(value) {
     'wood': 'Holz',
     'wpc': 'WPC',
     'tiles': 'Fliesen',
-    'concrete': 'Beton'
+    'concrete': 'Beton',
+    'aluminum': 'Aluminium'
   };
   return mapping[value] || value;
 }
@@ -97,7 +121,8 @@ function mapRailingType(value) {
     'bars': 'Stab',
     'glass': 'Glas',
     'wood': 'Holz',
-    'combined': 'Kombiniert'
+    'combined': 'Kombiniert',
+    'closed': 'Geschlossen'
   };
   return mapping[value] || value;
 }
@@ -120,6 +145,20 @@ function calculateAreaFromSize(sizeObj) {
   if (Number.isNaN(width) || Number.isNaN(depth)) return null;
 
   return Math.round((width * depth) * 100) / 100;
+}
+
+function mapDringlichkeitLabel(value) {
+  const mapping = {
+    'asap': 'Sofort',
+    '3months': 'Innerhalb 3 Monate',
+    '3_months': 'Innerhalb 3 Monate',
+    '6months': 'Innerhalb 6 Monate',
+    '6_months': 'Innerhalb 6 Monate',
+    '12months': 'Innerhalb 12 Monate',
+    '12_months': 'Innerhalb 12 Monate',
+    'flexible': 'Noch offen'
+  };
+  return mapping[value] || mapTimeframe(value) || value;
 }
 
 function calculateLeadScore(requestData) {
@@ -257,37 +296,48 @@ exports.handler = async (event) => {
     const funnelData = requestData.funnelData || {};
     const companyName = requestData.company?.name || requestData.companyName || body.company?.name || null;
 
+    const contactZip = contact.zipCode || requestData.zipCode || funnelData.zipCode || null;
+    const contactCity = contact.city || requestData.city || funnelData.city || deriveCityFromZip(contactZip) || null;
+
     const standardFields = {
       Salutation: contact.salutation || null,
       First_Name: contact.firstName || null,
       Last_Name: contact.lastName || null,
       Email: contact.email || null,
       Phone: contact.phone || null,
-      Zip_Code: contact.zipCode || null,
-      City: contact.city || deriveCityFromZip(contact.zipCode) || null,
+      Zip_Code: contactZip,
+      City: contactCity,
       Company: companyName || null,
       Lead_Source: funnelType || 'Balkon-Kalkulator',
     };
 
     const widthFromSize = parseFloat(funnelData.size?.width ?? requestData.size?.width ?? requestData.balconyWidth);
     const depthFromSize = parseFloat(funnelData.size?.depth ?? requestData.size?.depth ?? requestData.balconyDepth);
+    const finalArea =
+      calculateAreaFromSize(funnelData.size) ||
+      calculateAreaFromSize(requestData.size) ||
+      requestData.calculatedArea ||
+      requestData.balconyArea ||
+      requestData._planerScoring?.mappedData?.balkongroesse_qm ||
+      null;
+
+    const finalPrice =
+      requestData.calculatedPrice?.total ||
+      requestData.calculatedPrice?.finalPrice ||
+      requestData.estimatedPrice ||
+      requestData._planerScoring?.estimatedValue ||
+      null;
+
+    const budgetRaw = funnelData.budget || requestData.budget || requestData.customerBudget;
+    const budgetCurrency = mapBudgetCurrency(budgetRaw) ?? (Number.isFinite(finalPrice) ? finalPrice : null);
 
     const customFields = {
       Score_lead: leadScore,
       Rating: leadCategory,
       Lead_Status: priorityRank,
       Balkontyp: mapBalconyType(funnelData.balconyType || requestData.balconyType || null),
-      Squaremeter_Projekt:
-        calculateAreaFromSize(funnelData.size) ||
-        calculateAreaFromSize(requestData.size) ||
-        requestData.calculatedArea ||
-        requestData.balconyArea ||
-        null,
-      kalkulierte_Summe_Projekt:
-        requestData.calculatedPrice?.total ||
-        requestData.calculatedPrice?.finalPrice ||
-        requestData.estimatedPrice ||
-        null,
+      Squaremeter_Projekt: finalArea,
+      kalkulierte_Summe_Projekt: finalPrice,
       Funnel_Typ: requestData.funnelType || null,
       Balkonbrief_angefordert: Boolean(requestData.contact?.newsletter),
       Balkonbreite: Number.isFinite(widthFromSize) ? widthFromSize : null,
@@ -301,14 +351,10 @@ exports.handler = async (event) => {
         requestData.floorHeight ||
         null,
       Dringlichkeit:
-        mapTimeframe(funnelData.timeframe) ||
+        mapDringlichkeitLabel(funnelData.timeframe) ||
         requestData.urgency ||
         null,
-      Budget:
-        mapBudget(funnelData.budget) ||
-        requestData.budget ||
-        requestData.customerBudget ||
-        null,
+      Budget: budgetCurrency,
       Immobilientyp: requestData.propertyType || null,
       Eigentumsverhaeltnis:
         mapOwnership(funnelData.ownership) ||
