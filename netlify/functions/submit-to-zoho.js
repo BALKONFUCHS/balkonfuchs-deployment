@@ -43,6 +43,8 @@ function mapBudget(value) {
   const mapping = {
     'under_10k': 'Unter 10.000€',
     '10_20k': '10.000€ - 20.000€',
+    '10k': 'Unter 10.000€',
+    'bis_10k': 'Unter 10.000€',
     '20_30k': '20.000€ - 30.000€',
     '30_50k': '30.000€ - 50.000€',
     'over_50k': 'Über 50.000€',
@@ -57,6 +59,8 @@ function mapBudgetCurrency(value) {
   const mapping = {
     'under_10k': 9000,
     '10_20k': 15000,
+    '10k': 9000,
+    'bis_10k': 9000,
     '20_30k': 25000,
     '30_50k': 40000,
     'over_50k': 60000,
@@ -131,7 +135,8 @@ function mapProjectStatus(value) {
   const mapping = {
     'idea': 'Erste Idee',
     'planning': 'Planung läuft',
-    'ready': 'Bereit zum Bauen'
+    'ready': 'Bereit zum Bauen',
+    'feasibility': 'Machbarkeit prüfen'
   };
   return mapping[value] || value;
 }
@@ -159,6 +164,29 @@ function mapDringlichkeitLabel(value) {
     'flexible': 'Noch offen'
   };
   return mapping[value] || mapTimeframe(value) || value;
+}
+
+function mapFloorToInteger(value) {
+  const mapping = {
+    ground: 0,
+    first: 1,
+    second: 2,
+    third: 3,
+    fourth: 4,
+    fourth_plus: 4
+  };
+  return mapping[value] ?? null;
+}
+
+function mapOfferRegion(value) {
+  const mapping = {
+    local: 'Regional',
+    regional: 'Regional',
+    overregional: 'Überregional',
+    bundesweit: 'Bundesweit',
+    national: 'Bundesweit'
+  };
+  return mapping[value] || value;
 }
 
 function calculateLeadScore(requestData) {
@@ -321,6 +349,8 @@ exports.handler = async (event) => {
       requestData._planerScoring?.mappedData?.balkongroesse_qm ||
       null;
 
+    const finalAreaInteger = finalArea != null ? Math.round(Number(finalArea)) : null;
+
     const finalPrice =
       requestData.calculatedPrice?.total ||
       requestData.calculatedPrice?.finalPrice ||
@@ -331,12 +361,26 @@ exports.handler = async (event) => {
     const budgetRaw = funnelData.budget || requestData.budget || requestData.customerBudget;
     const budgetCurrency = mapBudgetCurrency(budgetRaw) ?? (Number.isFinite(finalPrice) ? finalPrice : null);
 
+    const offerCount = funnelData.offerPreferences?.count ?? requestData.offerPreferences?.count;
+    const offerRegion = funnelData.offerPreferences?.region ?? requestData.offerPreferences?.region;
+    const documentsList = Array.isArray(funnelData.documents)
+      ? funnelData.documents.join(', ')
+      : Array.isArray(requestData.documents)
+        ? requestData.documents.join(', ')
+        : null;
+    const combinedDescription = [
+      funnelData.additionalInfo || requestData.additionalInfo || null,
+      documentsList ? `Dokumente: ${documentsList}` : null
+    ]
+      .filter(Boolean)
+      .join('\n');
+
     const customFields = {
       Score_lead: leadScore,
       Rating: leadCategory,
       Lead_Status: priorityRank,
       Balkontyp: mapBalconyType(funnelData.balconyType || requestData.balconyType || null),
-      Squaremeter_Projekt: finalArea,
+      Squaremeter_Projekt: finalAreaInteger,
       kalkulierte_Summe_Projekt: finalPrice,
       Funnel_Typ: requestData.funnelType || null,
       Balkonbrief_angefordert: Boolean(requestData.contact?.newsletter),
@@ -347,8 +391,8 @@ exports.handler = async (event) => {
         requestData.constructionMethod ||
         null,
       Geschosshoehe:
-        mapFloorHeight(funnelData.floor) ||
-        requestData.floorHeight ||
+        mapFloorToInteger(funnelData.floor) ??
+        mapFloorToInteger(requestData.floor) ??
         null,
       Dringlichkeit:
         mapDringlichkeitLabel(funnelData.timeframe) ||
@@ -370,7 +414,9 @@ exports.handler = async (event) => {
       Anzahl_Balkone: funnelData.balconyCount || requestData.balconyCount || null,
       railing_Projekt: mapRailingType(funnelData.railing) || null,
       Bis_wann_Timeline: mapProjectStatus(funnelData.projectStatus) || null,
-      Projektbeschreibung: funnelData.additionalInfo || requestData.additionalInfo || null
+      Projektbeschreibung: combinedDescription || null,
+      Angebote_von: mapOfferRegion(offerRegion) || null,
+      Anzahl_Anbieter: offerCount ? Number.parseInt(offerCount, 10) || null : null
     };
 
     console.log('🔍 Field Mapping Debug:', {
@@ -397,7 +443,18 @@ exports.handler = async (event) => {
       ownership: {
         raw: funnelData.ownership,
         mapped: customFields.Eigentumsverhaeltnis
-      }
+      },
+      floorInteger: {
+        raw: funnelData.floor,
+        mapped: customFields.Geschosshoehe
+      },
+      offers: {
+        countRaw: offerCount,
+        regionRaw: offerRegion,
+        countMapped: customFields.Anzahl_Anbieter,
+        regionMapped: customFields.Angebote_von
+      },
+      documents: documentsList
     });
 
     const leadPayload = {
