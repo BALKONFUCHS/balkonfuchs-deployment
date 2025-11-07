@@ -52,7 +52,7 @@ export default function TestZohoIntegration() {
         haftungsausschluss: true
       };
 
-      const response = await fetch('/.netlify/functions/send-to-zoho', {
+      const response = await fetch('/.netlify/functions/submit-to-zoho', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -494,7 +494,7 @@ const BALKONFUCHSErfahrungenFunnel = () => {
       console.log('Exporting to Zoho:', exportData);
       
       try {
-        const zohoResult = await fetch('/.netlify/functions/send-to-zoho', {
+        const zohoResult = await fetch('/.netlify/functions/submit-to-zoho', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(exportData)
