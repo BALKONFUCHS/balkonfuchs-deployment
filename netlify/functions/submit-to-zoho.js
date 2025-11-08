@@ -53,9 +53,8 @@ function mapBudget(value) {
   return mapping[value] || value;
 }
 
-function mapBudgetCurrency(value) {
+function mapBudgetToNumeric(value) {
   if (!value) return null;
-
   const mapping = {
     'under_10k': 9000,
     '10_20k': 15000,
@@ -64,13 +63,11 @@ function mapBudgetCurrency(value) {
     '20_30k': 25000,
     '30_50k': 40000,
     'over_50k': 60000,
-    'flexible': null
+    '30k_plus': 40000
   };
-
   if (mapping.hasOwnProperty(value)) {
     return mapping[value];
   }
-
   const numeric = parseFloat(String(value).replace(/[^0-9.,]/g, '').replace(',', '.'));
   return Number.isFinite(numeric) ? numeric : null;
 }
@@ -103,8 +100,22 @@ function mapWallMaterial(value) {
   const mapping = {
     'masonry': 'Mauerwerk',
     'concrete': 'Beton',
+    'hlz': 'Hochlochziegel',
+    'wood_frame': 'Holzständer',
     'wood': 'Holz',
-    'steel': 'Stahl'
+    'steel': 'Stahl',
+    'unknown': 'Unbekannt'
+  };
+  return mapping[value] || value;
+}
+
+function mapStructureMaterial(value) {
+  const mapping = {
+    'aluminium': 'Aluminium',
+    'aluminum': 'Aluminium',
+    'steel': 'Stahl',
+    'wood': 'Holz',
+    'flexible': 'Egal / Empfehlung gewünscht'
   };
   return mapping[value] || value;
 }
@@ -141,6 +152,24 @@ function mapProjectStatus(value) {
   return mapping[value] || value;
 }
 
+function mapInsulationStatus(value) {
+  const mapping = {
+    'existing': 'Vorhanden',
+    'planned': 'Geplant',
+    'none': 'Keine Dämmung'
+  };
+  return mapping[value] || value;
+}
+
+function mapBalconyDoorStatus(value) {
+  const mapping = {
+    'existing': 'Ja, vorhanden',
+    'required': 'Nein – erforderlich',
+    'provided': 'Bauseitig'
+  };
+  return mapping[value] || value;
+}
+
 function calculateAreaFromSize(sizeObj) {
   if (!sizeObj) return null;
 
@@ -166,18 +195,6 @@ function mapDringlichkeitLabel(value) {
   return mapping[value] || mapTimeframe(value) || value;
 }
 
-function mapFloorToInteger(value) {
-  const mapping = {
-    ground: 0,
-    first: 1,
-    second: 2,
-    third: 3,
-    fourth: 4,
-    fourth_plus: 4
-  };
-  return mapping[value] ?? null;
-}
-
 function mapOfferRegion(value) {
   const mapping = {
     local: 'Regional',
@@ -187,6 +204,40 @@ function mapOfferRegion(value) {
     national: 'Bundesweit'
   };
   return mapping[value] || value;
+}
+
+function formatDemolitionList(values = []) {
+  if (!Array.isArray(values) || values.length === 0) return null;
+
+  const mapping = {
+    'none': 'Nein',
+    'balcony': 'Balkon',
+    'railing': 'Geländer',
+    'bruestung': 'Brüstung',
+    'heater': 'Heizkörper',
+    'window': 'Fenster',
+    'fence': 'Gartenzaun',
+    'tree': 'Baum',
+    'shrub': 'Strauch'
+  };
+
+  const cleaned = [...new Set(values)].map(item => mapping[item] || item).filter(Boolean);
+  return cleaned.length ? cleaned.join(', ') : null;
+}
+
+function formatDocumentsList(values = []) {
+  if (!Array.isArray(values) || values.length === 0) return null;
+
+  const mapping = {
+    'floorplan': 'Grundriss',
+    'structural': 'Statik',
+    'permit': 'Genehmigung',
+    'planning': 'Planungsunterlagen',
+    'none': 'Keine Unterlagen'
+  };
+
+  const translated = [...new Set(values)].map(item => mapping[item] || item).filter(Boolean);
+  return translated.length ? translated.join(', ') : null;
 }
 
 function calculateLeadScore(requestData) {
@@ -349,8 +400,6 @@ exports.handler = async (event) => {
       requestData._planerScoring?.mappedData?.balkongroesse_qm ||
       null;
 
-    const finalAreaInteger = finalArea != null ? Math.round(Number(finalArea)) : null;
-
     const finalPrice =
       requestData.calculatedPrice?.total ||
       requestData.calculatedPrice?.finalPrice ||
@@ -359,46 +408,54 @@ exports.handler = async (event) => {
       null;
 
     const budgetRaw = funnelData.budget || requestData.budget || requestData.customerBudget;
-    const budgetCurrency = mapBudgetCurrency(budgetRaw) ?? (Number.isFinite(finalPrice) ? finalPrice : null);
+    const budgetLabel = mapBudget(budgetRaw) || requestData.budget || requestData.customerBudget || null;
+    const budgetNumeric = Number.isFinite(finalPrice) ? finalPrice : mapBudgetToNumeric(budgetRaw);
+    const finalAreaText = finalArea != null ? String(finalArea) : null;
 
     const offerCount = funnelData.offerPreferences?.count ?? requestData.offerPreferences?.count;
     const offerRegion = funnelData.offerPreferences?.region ?? requestData.offerPreferences?.region;
-    const documentsList = Array.isArray(funnelData.documents)
-      ? funnelData.documents.join(', ')
+    const documentsRaw = Array.isArray(funnelData.documents)
+      ? funnelData.documents
       : Array.isArray(requestData.documents)
-        ? requestData.documents.join(', ')
-        : null;
+        ? requestData.documents
+        : [];
+    const documentsText = formatDocumentsList(documentsRaw);
     const combinedDescription = [
       funnelData.additionalInfo || requestData.additionalInfo || null,
-      documentsList ? `Dokumente: ${documentsList}` : null
+      documentsText ? `Dokumente: ${documentsText}` : null
     ]
       .filter(Boolean)
       .join('\n');
+    const demolitionText = formatDemolitionList(funnelData.demolition || requestData.demolition);
+    const structureMaterialText = mapStructureMaterial(funnelData.structureMaterial || requestData.structureMaterial);
+    const wallMaterialText = mapWallMaterial(funnelData.wallMaterial || requestData.wallMaterial);
+    const insulationText = mapInsulationStatus(funnelData.insulation || requestData.insulation);
+    const balconyDoorText = mapBalconyDoorStatus(funnelData.balconyDoor || requestData.balconyDoor);
 
     const customFields = {
       Score_lead: leadScore,
       Rating: leadCategory,
       Lead_Status: priorityRank,
       Balkontyp: mapBalconyType(funnelData.balconyType || requestData.balconyType || null),
-      Squaremeter_Projekt: finalAreaInteger,
+      Squaremeter_Projekt: finalAreaText,
       kalkulierte_Summe_Projekt: finalPrice,
       Funnel_Typ: requestData.funnelType || null,
       Balkonbrief_angefordert: Boolean(requestData.contact?.newsletter),
       Balkonbreite: Number.isFinite(widthFromSize) ? widthFromSize : null,
       Balkontiefe: Number.isFinite(depthFromSize) ? depthFromSize : null,
-      Bauweise_Balkon:
-        mapWallMaterial(funnelData.wallMaterial) ||
-        requestData.constructionMethod ||
-        null,
+      Bauweise_Balkon: structureMaterialText || null,
+      Material_Wand: wallMaterialText || null,
+      Insulation_Projekt: insulationText || null,
+      Balkontuer: balconyDoorText || null,
       Geschosshoehe:
-        mapFloorToInteger(funnelData.floor) ??
-        mapFloorToInteger(requestData.floor) ??
+        mapFloorHeight(funnelData.floor) ||
+        mapFloorHeight(requestData.floor) ||
         null,
       Dringlichkeit:
         mapDringlichkeitLabel(funnelData.timeframe) ||
         requestData.urgency ||
         null,
-      Budget: budgetCurrency,
+      Budget: budgetNumeric,
       Immobilientyp: requestData.propertyType || null,
       Eigentumsverhaeltnis:
         mapOwnership(funnelData.ownership) ||
@@ -416,7 +473,9 @@ exports.handler = async (event) => {
       Bis_wann_Timeline: mapProjectStatus(funnelData.projectStatus) || null,
       Projektbeschreibung: combinedDescription || null,
       Angebote_von: mapOfferRegion(offerRegion) || null,
-      Anzahl_Anbieter: offerCount ? Number.parseInt(offerCount, 10) || null : null
+      Anzahl_Anbieter: offerCount ? Number.parseInt(offerCount, 10) || null : null,
+      Rueckbau: demolitionText,
+      Unterlagen: documentsText
     };
 
     console.log('🔍 Field Mapping Debug:', {
@@ -444,17 +503,30 @@ exports.handler = async (event) => {
         raw: funnelData.ownership,
         mapped: customFields.Eigentumsverhaeltnis
       },
-      floorInteger: {
-        raw: funnelData.floor,
-        mapped: customFields.Geschosshoehe
-      },
       offers: {
         countRaw: offerCount,
         regionRaw: offerRegion,
         countMapped: customFields.Anzahl_Anbieter,
         regionMapped: customFields.Angebote_von
       },
-      documents: documentsList
+      structureMaterial: {
+        raw: funnelData.structureMaterial,
+        mapped: customFields.Bauweise_Balkon
+      },
+      wallMaterial: {
+        raw: funnelData.wallMaterial,
+        mapped: customFields.Material_Wand
+      },
+      insulation: {
+        raw: funnelData.insulation,
+        mapped: customFields.Insulation_Projekt
+      },
+      balconyDoor: {
+        raw: funnelData.balconyDoor,
+        mapped: customFields.Balkontuer
+      },
+      demolition: demolitionText,
+      documents: documentsText
     });
 
     const leadPayload = {

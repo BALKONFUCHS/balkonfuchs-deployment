@@ -30,9 +30,12 @@ const BalkonFuchsPlanerFunnel = () => {
     timeframe: '',
     ownership: '',
     balconyType: '',
+    structureMaterial: '',
     wallMaterial: '',
+    insulation: '',
     basement: '',
     floor: '',
+    balconyDoor: '',
     budget: '',
     size: { width: '', depth: '' },
     balconyCount: 1,
@@ -42,6 +45,7 @@ const BalkonFuchsPlanerFunnel = () => {
     railing: '',
     surface: '',
     documents: [],
+    demolition: [],
     additionalInfo: '',
     contact: {
       salutation: '',
@@ -174,10 +178,14 @@ const BalkonFuchsPlanerFunnel = () => {
     { title: 'Projektstatus', description: 'Aktueller Stand Ihres Projekts' },
     { title: 'Zeitrahmen', description: 'Wann soll es losgehen?' },
     { title: 'Eigentumsverhältnis', description: 'Wichtige rechtliche Grundlage' },
+    { title: 'Rückbau', description: 'Muss etwas vorher entfernt werden?' },
     { title: 'Balkontyp', description: 'Welchen Balkontyp möchten Sie?' },
+    { title: 'Tragkonstruktion', description: 'Material für das Balkon-Gestell' },
     { title: 'Wandmaterial', description: 'Befestigungsmöglichkeiten' },
+    { title: 'Dämmung', description: 'Ist eine Dämmung vorhanden oder geplant?' },
     { title: 'Unterkellerung', description: 'Statische Grundlage' },
     { title: 'Geschoss', description: 'Höhe und Zugänglichkeit' },
+    { title: 'Balkontür', description: 'Zugang vom Gebäude' },
     { title: 'Budget', description: 'Kostenrahmen' },
     { title: 'Größe', description: 'Maße des Balkons' },
     { title: 'Zufahrt', description: 'Logistik zur Baustelle' },
@@ -295,6 +303,68 @@ const BalkonFuchsPlanerFunnel = () => {
       ]
     },
     {
+      id: 'demolition',
+      title: 'Muss vorab etwas zurückgebaut oder demontiert werden?',
+      subtitle: '🛠️ Teile uns mit, ob alte Elemente entfernt werden müssen. Mehrfachauswahl möglich (Details kannst du später noch ergänzen).',
+      type: 'multiple',
+      options: [
+        {
+          icon: '⭕️',
+          title: 'Nein',
+          subtitle: 'Kein Rückbau erforderlich',
+          value: 'none'
+        },
+        {
+          icon: '🏚️',
+          title: 'Alter Balkon',
+          subtitle: 'Bestehender Balkon muss entfernt werden',
+          value: 'balcony'
+        },
+        {
+          icon: '🛠️',
+          title: 'Geländer',
+          subtitle: 'Aktuelles Geländer wird ersetzt',
+          value: 'railing'
+        },
+        {
+          icon: '🧱',
+          title: 'Brüstung',
+          subtitle: 'Vorhandene Brüstung steht im Weg',
+          value: 'bruestung'
+        },
+        {
+          icon: '🔥',
+          title: 'Heizkörper',
+          subtitle: 'Heizkörper oder Leitungen müssen entfernt werden',
+          value: 'heater'
+        },
+        {
+          icon: '🪟',
+          title: 'Fenster',
+          subtitle: 'Fenster wird ersetzt oder erweitert',
+          value: 'window'
+        },
+        {
+          icon: '🚧',
+          title: 'Gartenzaun',
+          subtitle: 'Zaun oder Abgrenzung muss weichen',
+          value: 'fence'
+        },
+        {
+          icon: '🌳',
+          title: 'Baum',
+          subtitle: 'Vegetation blockiert den neuen Balkon',
+          value: 'tree'
+        },
+        {
+          icon: '🌿',
+          title: 'Strauch',
+          subtitle: 'Grünpflanzen stehen im Weg',
+          value: 'shrub'
+        }
+      ]
+    },
+    {
       id: 'balconyType',
       title: 'Welcher Balkontyp soll es werden?',
       subtitle: '🏗️ Verschiedene Typen haben unterschiedliche Anforderungen!',
@@ -323,6 +393,38 @@ const BalkonFuchsPlanerFunnel = () => {
           title: 'Hochterrasse', 
           subtitle: 'Große Terrassenfläche',
           value: 'terrace'
+        }
+      ]
+    },
+    {
+      id: 'structureMaterial',
+      title: 'Aus welchem Material soll die Tragkonstruktion sein?',
+      subtitle: '🧱 Wählen Sie das Gestell-Material für Ihren neuen Balkon.',
+      type: 'selection',
+      options: [
+        {
+          icon: '🟧',
+          title: 'Aluminium',
+          subtitle: 'Leicht, langlebig, pflegeleicht',
+          value: 'aluminium'
+        },
+        {
+          icon: '🛠️',
+          title: 'Stahl',
+          subtitle: 'Robust und sehr tragfähig',
+          value: 'steel'
+        },
+        {
+          icon: '🌲',
+          title: 'Holz',
+          subtitle: 'Natürliches Material mit warmem Look',
+          value: 'wood'
+        },
+        {
+          icon: '✅',
+          title: 'Egal / beraten lassen',
+          subtitle: 'Wir empfehlen Ihnen die passende Lösung',
+          value: 'flexible'
         }
       ]
     },
@@ -361,6 +463,32 @@ const BalkonFuchsPlanerFunnel = () => {
           title: 'Weiß ich nicht genau', 
           subtitle: 'Vor-Ort-Prüfung erforderlich',
           value: 'unknown'
+        }
+      ]
+    },
+    {
+      id: 'insulation',
+      title: 'Gibt es eine Dämmung an der Außenwand?',
+      subtitle: '🛡️ Dies beeinflusst Befestigung und Aufbau des Balkons.',
+      type: 'selection',
+      options: [
+        {
+          icon: '✅',
+          title: 'Ja, vorhanden',
+          subtitle: 'Die Wand ist bereits gedämmt',
+          value: 'existing'
+        },
+        {
+          icon: '🛠️',
+          title: 'In Planung',
+          subtitle: 'Die Dämmung wird noch angebracht',
+          value: 'planned'
+        },
+        {
+          icon: '🚫',
+          title: 'Keine Dämmung',
+          subtitle: 'Weder vorhanden noch geplant',
+          value: 'none'
         }
       ]
     },
@@ -419,6 +547,32 @@ const BalkonFuchsPlanerFunnel = () => {
           title: 'Höher als 2. OG', 
           subtitle: 'Besondere Sicherheitsanforderungen',
           value: 'higher'
+        }
+      ]
+    },
+    {
+      id: 'balconyDoor',
+      title: 'Gibt es bereits eine Balkontür?',
+      subtitle: '🚪 Das erleichtert die Planung des Zugangs.',
+      type: 'selection',
+      options: [
+        {
+          icon: '✅',
+          title: 'Ja, vorhanden',
+          subtitle: 'Zugang ist bereits vorhanden',
+          value: 'existing'
+        },
+        {
+          icon: '🚪',
+          title: 'Nein, erforderlich',
+          subtitle: 'Eine neue Tür muss eingeplant werden',
+          value: 'required'
+        },
+        {
+          icon: '🛠️',
+          title: 'Wird bauseitig umgesetzt',
+          subtitle: 'Tür wird vom Auftraggeber gestellt',
+          value: 'provided'
         }
       ]
     },
@@ -649,6 +803,22 @@ const BalkonFuchsPlanerFunnel = () => {
         ? formData.documents.filter(doc => doc !== value)
         : [...formData.documents, value];
       setFormData(prev => ({ ...prev, documents: newDocuments }));
+    } else if (field === 'demolition') {
+      setFormData(prev => {
+        const current = prev.demolition || [];
+        let updated = current;
+
+        if (value === 'none') {
+          updated = current.includes('none') ? [] : ['none'];
+        } else {
+          const withoutNone = current.filter(item => item !== 'none');
+          updated = withoutNone.includes(value)
+            ? withoutNone.filter(item => item !== value)
+            : [...withoutNone, value];
+        }
+
+        return { ...prev, demolition: updated };
+      });
     } else if (field === 'size') {
       setFormData(prev => ({ ...prev, size: { ...prev.size, ...value } }));
     } else if (field === 'offerPreferences') {
@@ -658,7 +828,7 @@ const BalkonFuchsPlanerFunnel = () => {
     }
     
     // Auto-advance for certain fields
-    if (['projectStatus', 'timeframe', 'ownership', 'balconyType', 'wallMaterial', 'basement', 'floor', 'budget', 'accessibility', 'balconyFloor', 'railing', 'surface'].includes(field)) {
+    if (['projectStatus', 'timeframe', 'ownership', 'structureMaterial', 'balconyType', 'wallMaterial', 'insulation', 'basement', 'floor', 'balconyDoor', 'budget', 'accessibility', 'balconyFloor', 'railing', 'surface'].includes(field)) {
       setTimeout(() => nextStep(), 500);
     }
   };
@@ -692,7 +862,10 @@ const BalkonFuchsPlanerFunnel = () => {
       case 'selection':
         return formData[question.id] !== '';
       case 'multiple':
-        return true; // Multiple selection is optional
+        if (question.id === 'demolition') {
+          return Array.isArray(formData.demolition) && formData.demolition.length > 0;
+        }
+        return true; // Multiple selection optional für andere Felder
       case 'size_input':
         return formData.size.width && formData.size.depth;
       case 'text_input':
@@ -1184,7 +1357,114 @@ const BalkonFuchsPlanerFunnel = () => {
   const renderSuccessPage = () => {
     const area = formData.size.width && formData.size.depth ? 
                  (parseFloat(formData.size.width) * parseFloat(formData.size.depth)).toFixed(1) : 'N/A';
-    
+
+    const structureLabel = (() => {
+      switch (formData.structureMaterial) {
+        case 'aluminium':
+        case 'aluminum':
+          return 'Aluminium';
+        case 'steel':
+          return 'Stahl';
+        case 'wood':
+          return 'Holz';
+        case 'flexible':
+          return 'Egal / Beratung gewünscht';
+        default:
+          return 'Nicht angegeben';
+      }
+    })();
+
+    const wallMaterialLabel = (() => {
+      switch (formData.wallMaterial) {
+        case 'masonry':
+          return 'Mauerwerk';
+        case 'concrete':
+          return 'Stahlbeton';
+        case 'hlz':
+          return 'Hochlochziegel (HLZ)';
+        case 'wood_frame':
+          return 'Holzständer';
+        case 'unknown':
+          return 'Unbekannt';
+        default:
+          return formData.wallMaterial || 'Nicht angegeben';
+      }
+    })();
+
+    const insulationLabel = (() => {
+      switch (formData.insulation) {
+        case 'existing':
+          return 'Ja, vorhanden';
+        case 'planned':
+          return 'In Planung';
+        case 'none':
+          return 'Keine Dämmung';
+        default:
+          return 'Nicht angegeben';
+      }
+    })();
+
+    const balconyDoorLabel = (() => {
+      switch (formData.balconyDoor) {
+        case 'existing':
+          return 'Ja, vorhanden';
+        case 'required':
+          return 'Nein – erforderlich';
+        case 'provided':
+          return 'Bauseitig';
+        default:
+          return 'Nicht angegeben';
+      }
+    })();
+
+    const demolitionLabel = (() => {
+      if (!Array.isArray(formData.demolition) || formData.demolition.length === 0) return 'Nicht angegeben';
+      if (formData.demolition.includes('none')) return 'Kein Rückbau erforderlich';
+      const map = {
+        balcony: 'Alter Balkon',
+        railing: 'Geländer',
+        bruestung: 'Brüstung',
+        heater: 'Heizkörper',
+        window: 'Fenster',
+        fence: 'Gartenzaun',
+        tree: 'Baum',
+        shrub: 'Strauch'
+      };
+      const items = formData.demolition.map(item => map[item] || item);
+      return items.join(', ');
+    })();
+
+    const documentsLabel = (() => {
+      if (!Array.isArray(formData.documents) || formData.documents.length === 0) return 'Keine Angaben';
+      const map = {
+        floorplan: 'Grundriss',
+        structural: 'Statik',
+        permit: 'Genehmigung',
+        planning: 'Planungsunterlagen',
+        none: 'Keine Unterlagen'
+      };
+      const items = [...new Set(formData.documents)].map(item => map[item] || item);
+      return items.join(', ');
+    })();
+
+    const offerRegionLabel = (() => {
+      switch (formData.offerPreferences?.region) {
+        case 'regional':
+          return 'Regional';
+        case 'overregional':
+          return 'Überregional';
+        case 'bundesweit':
+        case 'national':
+          return 'Bundesweit';
+        default:
+          return formData.offerPreferences?.region ? formData.offerPreferences.region : 'Nicht angegeben';
+      }
+    })();
+
+    const offerCountLabel = formData.offerPreferences?.count
+      ? (formData.offerPreferences.count === 'mehr' ? 'Mehr als 5' : formData.offerPreferences.count)
+      : 'Nicht angegeben';
+
     return (
       <div className="text-center">
         <div className="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -1224,21 +1504,20 @@ const BalkonFuchsPlanerFunnel = () => {
                 formData.balconyType === 'standing' ? 'Vorstellbalkon' : 
                 formData.balconyType === 'leaning' ? 'Anlehnbalkon' : 'Hochterrasse'
               }</span></div>
-              <div><strong className="text-orange-400">Wandmaterial:</strong> <span className="text-gray-300">{
-                formData.wallMaterial === 'masonry' ? 'Mauerwerk' : 
-                formData.wallMaterial === 'concrete' ? 'Stahlbeton' : 
-                formData.wallMaterial === 'hlz' ? 'HLZ' : 
-                formData.wallMaterial === 'wood_frame' ? 'Holzständer' : 'Unbekannt'
-              }</span></div>
+              <div><strong className="text-orange-400">Tragkonstruktion:</strong> <span className="text-gray-300">{structureLabel}</span></div>
+              <div><strong className="text-orange-400">Wandmaterial:</strong> <span className="text-gray-300">{wallMaterialLabel}</span></div>
+              <div><strong className="text-orange-400">Dämmung:</strong> <span className="text-gray-300">{insulationLabel}</span></div>
             </div>
             <div className="space-y-2">
               {area !== 'N/A' && <div><strong className="text-orange-400">Größe:</strong> <span className="text-gray-300">{formData.size.width}×{formData.size.depth}m ({area}m²)</span></div>}
+              <div><strong className="text-orange-400">Anzahl Balkone:</strong> <span className="text-gray-300">{formData.balconyCount || 1}</span></div>
               <div><strong className="text-orange-400">Budget:</strong> <span className="text-gray-300">{
                 formData.budget === '30k_plus' ? 'Über 30.000€' : 
                 formData.budget === '20_30k' ? '20.000€ - 30.000€' : 
                 formData.budget === '10_20k' ? '10.000€ - 20.000€' : 
                 formData.budget === '10k' ? 'Bis 10.000€' : 'Unklar'
               }</span></div>
+              <div><strong className="text-orange-400">Balkontür:</strong> <span className="text-gray-300">{balconyDoorLabel}</span></div>
               <div><strong className="text-orange-400">Bodenbelag:</strong> <span className="text-gray-300">{
                 formData.balconyFloor === 'wood' ? 'Holz' : 
                 formData.balconyFloor === 'plastic' ? 'Kunststoff (WPC)' : 
@@ -1253,9 +1532,13 @@ const BalkonFuchsPlanerFunnel = () => {
               }</span></div>
               <div><strong className="text-orange-400">Oberfläche:</strong> <span className="text-gray-300">{
                 formData.surface === 'stainless_steel' ? 'Edelstahl' : 
-                formData.balconyFloor === 'powder_coated' ? 'Pulverbeschichtet' : 
-                formData.balconyFloor === 'galvanized' ? 'Verzinkt' : 'Nicht gewählt'
+                formData.surface === 'powder_coated' ? 'Pulverbeschichtet' : 
+                formData.surface === 'galvanized' ? 'Verzinkt' : 'Nicht gewählt'
               }</span></div>
+              <div><strong className="text-orange-400">Rückbau:</strong> <span className="text-gray-300">{demolitionLabel}</span></div>
+              <div><strong className="text-orange-400">Unterlagen:</strong> <span className="text-gray-300">{documentsLabel}</span></div>
+              <div><strong className="text-orange-400">Angebotsregion:</strong> <span className="text-gray-300">{offerRegionLabel}</span></div>
+              <div><strong className="text-orange-400">Anzahl Anbieter:</strong> <span className="text-gray-300">{offerCountLabel}</span></div>
               {formData.additionalInfo && (
                 <div><strong className="text-orange-400">Zusätzliche Infos:</strong> <span className="text-gray-300">{formData.additionalInfo}</span></div>
               )}
@@ -1541,10 +1824,13 @@ const BalkonFuchsPlanerFunnel = () => {
             timeframe: formData.timeframe,
             ownership: formData.ownership,
             balconyType: formData.balconyType,
+            structureMaterial: formData.structureMaterial,
             balconyCount: formData.balconyCount,
             wallMaterial: formData.wallMaterial,
+            insulation: formData.insulation,
             basement: formData.basement,
             floor: formData.floor,
+            balconyDoor: formData.balconyDoor,
             budget: formData.budget,
             size: formData.size,
             accessibility: formData.accessibility,
@@ -1552,6 +1838,7 @@ const BalkonFuchsPlanerFunnel = () => {
             railing: formData.railing,
             surface: formData.surface,
             documents: formData.documents,
+            demolition: formData.demolition,
             additionalInfo: formData.additionalInfo,
             offerPreferences: formData.offerPreferences,
             zipCode: formData.contact.zipCode
