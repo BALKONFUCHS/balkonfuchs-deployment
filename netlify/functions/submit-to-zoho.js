@@ -206,6 +206,113 @@ function mapOfferRegion(value) {
   return mapping[value] || value;
 }
 
+function sanitizeString(value) {
+  if (typeof value !== 'string') return value ?? null;
+  const trimmed = value.trim();
+  return trimmed.length ? trimmed : null;
+}
+
+function splitName(fullName) {
+  if (typeof fullName !== 'string') {
+    return { firstName: null, lastName: null };
+  }
+  const parts = fullName
+    .split(/[,\s]+/)
+    .map(part => part.trim())
+    .filter(Boolean);
+
+  if (!parts.length) {
+    return { firstName: null, lastName: null };
+  }
+
+  if (parts.length === 1) {
+    return { firstName: parts[0], lastName: null };
+  }
+
+  const firstName = parts.shift();
+  const lastName = parts.join(' ') || null;
+
+  return { firstName, lastName };
+}
+
+function truthy(...values) {
+  return values.some(value => {
+    if (typeof value === 'string') {
+      const normalized = value.trim().toLowerCase();
+      return ['true', 'yes', 'ja', '1', 'on'].includes(normalized);
+    }
+    return Boolean(value);
+  });
+}
+
+function normalizeFunnelData(funnelWrapper) {
+  if (!funnelWrapper || typeof funnelWrapper !== 'object') {
+    return {};
+  }
+
+  const nested = (typeof funnelWrapper.funnelData === 'object' && funnelWrapper.funnelData !== null)
+    ? funnelWrapper.funnelData
+    : {};
+
+  const metaKeys = new Set([
+    'contact',
+    'company',
+    'extendedCompany',
+    'leadScore',
+    'lead_score',
+    'leadscore',
+    'funnel',
+    'funnelType',
+    'timestamp',
+    'source',
+    'estimatedPrice',
+    'estimated_price',
+  ]);
+
+  const normalized = { ...nested };
+
+  for (const [key, value] of Object.entries(funnelWrapper)) {
+    if (key === 'funnelData') continue;
+    if (metaKeys.has(key)) continue;
+    normalized[key] = value;
+  }
+
+  return normalized;
+}
+
+function mapFunnelLabel(type, fallbackLabel) {
+  if (fallbackLabel && typeof fallbackLabel === 'string') {
+    const label = fallbackLabel.trim();
+    if (label.length) {
+      return label;
+    }
+  }
+
+  if (!type) {
+    return 'Balkon-Kalkulator';
+  }
+
+  const normalizedType = String(type).trim().toLowerCase();
+  const mapping = {
+    planer: 'Planer',
+    'balkonbau planer': 'Planer',
+    planungsfunnel: 'Planer',
+    genehmigung: 'Genehmigungscheck',
+    genehmigungscheck: 'Genehmigungscheck',
+    kalkulator: 'Balkon-Kalkulator',
+    konfigurator: 'Konfigurator',
+    express: 'Express-Angebot',
+    expressangebot: 'Express-Angebot',
+    partner: 'Partner Funnel',
+    'partner-anfrage': 'Partner Funnel',
+    gewerbe: 'Gewerbeprojekte',
+    'gewerbeprojekte funnel': 'Gewerbeprojekte',
+    kontakt: 'Kontaktformular',
+  };
+
+  return mapping[normalizedType] || type;
+}
+
 function formatDemolitionList(values = []) {
   if (!Array.isArray(values) || values.length === 0) return null;
 
@@ -347,7 +454,45 @@ exports.handler = async (event) => {
       requestData.contact = requestData.contactPerson;
     }
 
-    const funnelType = requestData.funnelType || requestData.funnel?.type || body.funnelType || rawFormData.funnelType || 'Balkon-Kalkulator';
+    const funnelWrapper = requestData.funnelData || {};
+
+    if (!requestData.contact && funnelWrapper.contact) {
+      requestData.contact = funnelWrapper.contact;
+    }
+    if (!requestData.contact && funnelWrapper.kontakt) {
+      requestData.contact = funnelWrapper.kontakt;
+    }
+
+    if (!requestData.company && funnelWrapper.company) {
+      requestData.company = funnelWrapper.company;
+    }
+    if (!requestData.company && funnelWrapper.unternehmen) {
+      requestData.company = funnelWrapper.unternehmen;
+    }
+    if (!requestData.extendedCompany && funnelWrapper.extendedCompany) {
+      requestData.extendedCompany = funnelWrapper.extendedCompany;
+    }
+
+    if (requestData.estimatedPrice == null && funnelWrapper.estimatedPrice != null) {
+      requestData.estimatedPrice = funnelWrapper.estimatedPrice;
+    }
+    if (requestData.estimatedPrice == null && funnelWrapper.estimated_price != null) {
+      requestData.estimatedPrice = funnelWrapper.estimated_price;
+    }
+
+    if (!requestData.funnel && funnelWrapper.funnel) {
+      requestData.funnel = funnelWrapper.funnel;
+    }
+
+    const normalizedFunnelData = normalizeFunnelData(funnelWrapper);
+    requestData.funnelData = normalizedFunnelData;
+
+    const funnelType = requestData.funnelType ||
+      requestData.funnel?.type ||
+      body.funnelType ||
+      rawFormData.funnelType ||
+      funnelWrapper.funnelType ||
+      'Balkon-Kalkulator';
     requestData.funnelType = funnelType;
 
     let leadScoreValue = null;
@@ -362,6 +507,15 @@ exports.handler = async (event) => {
         body._internalScoring?.finalScore ??
         body._partnerScoring?.finalScore ??
         body._kalkulatorScoring?.finalScore ??
+        requestData.leadScore?.totalScore ??
+        requestData.leadScore?.finalScore ??
+        requestData.leadScore?.score ??
+        funnelWrapper.leadScore?.totalScore ??
+        funnelWrapper.leadScore?.finalScore ??
+        funnelWrapper.leadScore?.score ??
+        funnelWrapper.lead_score?.totalScore ??
+        funnelWrapper.lead_score?.finalScore ??
+        funnelWrapper.lead_score?.score ??
         null;
     }
 
@@ -373,21 +527,99 @@ exports.handler = async (event) => {
 
     const contact = requestData.contact || {};
     const funnelData = requestData.funnelData || {};
-    const companyName = requestData.company?.name || requestData.companyName || body.company?.name || null;
+    const companyObject = typeof requestData.company === 'string' ? null : requestData.company;
+    const companyNameRaw = requestData.companyName ||
+      (companyObject && companyObject.name) ||
+      (typeof requestData.company === 'string' ? requestData.company : null) ||
+      body.company?.name ||
+      null;
+    const companyName = sanitizeString(companyNameRaw);
+    const contactZipRaw = contact.zipCode || requestData.zipCode || funnelData.zipCode || funnelWrapper.zipCode || null;
+    const contactZip = sanitizeString(contactZipRaw);
 
-    const contactZip = contact.zipCode || requestData.zipCode || funnelData.zipCode || null;
-    const contactCity = contact.city || requestData.city || funnelData.city || deriveCityFromZip(contactZip) || null;
+    const contactCity = sanitizeString(
+      contact.city ||
+      requestData.city ||
+      funnelData.city ||
+      funnelWrapper.city
+    ) || deriveCityFromZip(contactZip);
+
+    const nameCandidates = [
+      contact.fullName,
+      contact.name,
+      requestData.fullName,
+      requestData.contactName,
+      requestData.ansprechpartner,
+      requestData.extendedCompany?.ansprechpartner,
+      funnelWrapper.extendedCompany?.ansprechpartner,
+      funnelWrapper.contact?.fullName,
+      funnelWrapper.contact?.name,
+      requestData.company?.ansprechpartner,
+      funnelWrapper.ansprechpartner,
+    ];
+
+    let sanitizedFirstName = sanitizeString(contact.firstName);
+    let sanitizedLastName = sanitizeString(contact.lastName);
+
+    for (const candidate of nameCandidates) {
+      if (sanitizedFirstName && sanitizedLastName) break;
+      const { firstName, lastName } = splitName(candidate);
+      if (!sanitizedFirstName && firstName) {
+        sanitizedFirstName = firstName;
+      }
+      if (!sanitizedLastName && lastName) {
+        sanitizedLastName = lastName;
+      }
+    }
+
+    const leadSourceLabel = mapFunnelLabel(funnelType, requestData.funnel?.name || requestData.funnelName || funnelWrapper.funnel?.name);
+    const newsletterOptIn = truthy(
+      contact.newsletter,
+      contact.newsletterOptIn,
+      requestData.newsletter,
+      requestData.subscribeNewsletter,
+      requestData.balkonbrief,
+      funnelWrapper.balkonbrief,
+      funnelWrapper.newsletter,
+      funnelWrapper.contact?.newsletter,
+      funnelData.newsletter,
+      funnelData.balkonbrief
+    );
+
+    const privacyAccepted = truthy(
+      contact.privacy,
+      contact.datenschutz,
+      contact.disclaimer,
+      contact.agb,
+      requestData.datenschutz,
+      requestData.privacy,
+      requestData.disclaimer,
+      requestData.agb,
+      funnelWrapper.datenschutz,
+      funnelWrapper.privacy,
+      funnelWrapper.disclaimer,
+      funnelWrapper.agb,
+      funnelData.datenschutz,
+      funnelData.privacy,
+      funnelData.disclaimer,
+      funnelData.agb
+    );
+
+    if (!sanitizedLastName) {
+      console.warn('⚠️ Last name missing, defaulting to "Unbekannt" for Zoho payload.');
+      sanitizedLastName = 'Unbekannt';
+    }
 
     const standardFields = {
-      Salutation: contact.salutation || null,
-      First_Name: contact.firstName || null,
-      Last_Name: contact.lastName || null,
-      Email: contact.email || null,
-      Phone: contact.phone || null,
+      Salutation: sanitizeString(contact.salutation),
+      First_Name: sanitizedFirstName || null,
+      Last_Name: sanitizedLastName,
+      Email: sanitizeString(contact.email),
+      Phone: sanitizeString(contact.phone),
       Zip_Code: contactZip,
       City: contactCity,
       Company: companyName || null,
-      Lead_Source: funnelType || 'Balkon-Kalkulator',
+      Lead_Source: leadSourceLabel || 'Balkon-Kalkulator',
     };
 
     const widthFromSize = parseFloat(funnelData.size?.width ?? requestData.size?.width ?? requestData.balconyWidth);
@@ -439,8 +671,8 @@ exports.handler = async (event) => {
       Balkontyp: mapBalconyType(funnelData.balconyType || requestData.balconyType || null),
       Squaremeter_Projekt: finalAreaText,
       kalkulierte_Summe_Projekt: finalPrice,
-      Funnel_Typ: requestData.funnelType || null,
-      Balkonbrief_angefordert: Boolean(requestData.contact?.newsletter),
+      Funnel_Typ: leadSourceLabel || requestData.funnelType || null,
+      Balkonbrief_angefordert: newsletterOptIn,
       Balkonbreite: Number.isFinite(widthFromSize) ? widthFromSize : null,
       Balkontiefe: Number.isFinite(depthFromSize) ? depthFromSize : null,
       Bauweise_Balkon: structureMaterialText || null,
@@ -466,7 +698,7 @@ exports.handler = async (event) => {
         requestData.permitNeeded ||
         null,
       Gebaeudetyp: requestData.buildingType || null,
-      Datenschutz_akzeptiert: Boolean(requestData.contact?.privacy),
+      Datenschutz_akzeptiert: privacyAccepted,
       Boden_Projekt: mapFloorMaterial(funnelData.balconyFloor) || null,
       Anzahl_Balkone: funnelData.balconyCount || requestData.balconyCount || null,
       railing_Projekt: mapRailingType(funnelData.railing) || null,

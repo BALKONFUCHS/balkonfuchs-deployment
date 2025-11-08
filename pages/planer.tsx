@@ -1327,7 +1327,7 @@ const BalkonFuchsPlanerFunnel = () => {
           <div className="flex items-start gap-3 text-left">
             <input
               type="checkbox"
-              className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
+              className="mt-1 w-5 h-5 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
               checked={formData.contact.newsletter}
               onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, newsletter: e.target.checked } }))}
             />
@@ -1339,7 +1339,7 @@ const BalkonFuchsPlanerFunnel = () => {
           <div className="flex items-start gap-3 text-left">
             <input
               type="checkbox"
-              className="mt-1 w-4 h-4 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
+              className="mt-1 w-5 h-5 text-orange-500 bg-gray-800 border-gray-700 rounded focus:ring-orange-500 focus:ring-2"
               checked={formData.contact.privacy}
               onChange={(e) => setFormData(prev => ({ ...prev, contact: { ...prev.contact, privacy: e.target.checked } }))}
               required
@@ -1636,14 +1636,18 @@ const BalkonFuchsPlanerFunnel = () => {
             </div>
           
           {/* Desktop Navigation */}
-                           <nav className="hidden md:flex space-x-8">
-           <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
-           <a href="/planer/" className="text-orange-500 font-medium transition-colors border-b-2 border-orange-500 pb-1 hover:text-orange-500 font-medium transition-colors">Planer</a>
-           <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
-           <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
-         </nav>
+          <nav className="hidden md:flex space-x-8">
+            <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
+            <a href="/planer/" className="text-orange-500 border-b-2 border-orange-500 pb-1 font-medium transition-colors hover:text-orange-500">Planer</a>
+            <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
+            <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
+            <a href="/blog" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Blog</a>
+          </nav>
 
           <div className="hidden md:flex items-center space-x-4">
+            <a href="/gewerbe/" className="text-gray-300 hover:text-blue-400 font-medium transition-colors">
+              Gewerbe
+            </a>
             <a href="/partner-werden/" className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300">
               Partner werden
             </a>
@@ -1659,20 +1663,27 @@ const BalkonFuchsPlanerFunnel = () => {
         </div>
       </div>
 
-                {/* Mobile Menu */}
-         {mobileMenuOpen && (
-           <div className="md:hidden bg-gray-900 border-t border-gray-800">
-             <div className="px-4 py-3 space-y-3">
-               <a href="/kalkulator/" className="block text-gray-300 font-medium">Kalkulator</a>
-               <a href="/planer/" className="block text-orange-500 font-medium border-l-4 border-orange-500 pl-3">Planer</a>
-               <a href="/genehmigung/" className="block text-gray-300 font-medium">Genehmigungscheck</a>
-               <a href="/erfahrungen/" className="block text-gray-300 font-medium">Erfahrungen</a>
-               <a href="/kalkulator/" className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 text-sm mt-3 block text-center">
-                 Jetzt kalkulieren
-               </a>
-             </div>
-           </div>
-         )}
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-gray-900 border-t border-gray-800">
+          <div className="px-4 py-3 space-y-3">
+            <a href="/kalkulator/" className="block text-gray-300 font-medium">Kalkulator</a>
+            <a href="/planer/" className="block text-orange-500 font-medium border-l-4 border-orange-500 pl-3">Planer</a>
+            <a href="/genehmigung/" className="block text-gray-300 font-medium">Genehmigungscheck</a>
+            <a href="/konfigurator/" className="block text-gray-300 font-medium">Konfigurator</a>
+            <a href="/blog" className="block text-gray-300 font-medium">Blog</a>
+            <a href="/gewerbe/" className="block text-gray-300 font-medium">Gewerbe</a>
+            <div className="pt-3">
+              <a
+                href="/partner-werden/"
+                className="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 block text-center"
+              >
+                Partner werden
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 
