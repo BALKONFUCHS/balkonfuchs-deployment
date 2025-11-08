@@ -731,6 +731,12 @@ exports.handler = async (event) => {
     const balconyDoorText = mapBalconyDoorStatus(funnelData.balconyDoor || requestData.balconyDoor);
     const gewerbeBalconyTypesText = mapGewerbeBalconyTypes(funnelData.balkontyp || requestData.balkontyp);
 
+    const baseBalconyCount = (() => {
+      const rawValue = funnelData.balconyCount ?? requestData.balconyCount ?? null;
+      if (rawValue == null) return null;
+      return sanitizeString(String(rawValue));
+    })();
+
     const customFields = {
       Score_lead: leadScore,
       Rating: leadCategory,
@@ -767,7 +773,7 @@ exports.handler = async (event) => {
       Gebaeudetyp: requestData.buildingType || null,
       Datenschutz_akzeptiert: privacyAccepted,
       Boden_Projekt: mapFloorMaterial(funnelData.balconyFloor) || null,
-      Anzahl_Balkone: funnelData.balconyCount || requestData.balconyCount || null,
+      Anzahl_Balkone: baseBalconyCount,
       railing_Projekt: mapRailingType(funnelData.railing) || null,
       Bis_wann_Timeline: mapProjectStatus(funnelData.projectStatus) || null,
       Projektbeschreibung: combinedDescription || null,
@@ -777,10 +783,14 @@ exports.handler = async (event) => {
       Unterlagen: documentsText
     };
 
-    const gewerbeAnzahlEinheiten = sanitizeString(funnelData.anzahlEinheiten || requestData.anzahlEinheiten);
-    const parsedUnits = gewerbeAnzahlEinheiten != null ? Number.parseInt(gewerbeAnzahlEinheiten, 10) : NaN;
-    if (!customFields.Anzahl_Balkone && gewerbeAnzahlEinheiten) {
-      customFields.Anzahl_Balkone = Number.isFinite(parsedUnits) ? parsedUnits : gewerbeAnzahlEinheiten;
+    const gewerbeAnzahlBalkone = sanitizeString(
+      funnelData.anzahlBalkone ||
+      funnelData.anzahlEinheiten ||
+      requestData.anzahlBalkone ||
+      requestData.anzahlEinheiten
+    );
+    if (gewerbeAnzahlBalkone) {
+      customFields.Anzahl_Balkone = gewerbeAnzahlBalkone;
     }
 
     if (normalizedFunnelType === 'gewerbe' || normalizedFunnelType === 'gewerbeprojekte funnel') {
@@ -842,7 +852,6 @@ exports.handler = async (event) => {
         Projektort: projektort,
         Projektadresse: projektAdresseText,
         Gebaeudetyp: gebaeudetyp,
-        Anzahl_Wohnungen: Number.isFinite(parsedUnits) ? parsedUnits : gewerbeAnzahlEinheiten,
         Balkontyp_Details: gewerbeBalconyTypesText,
         Budget_Range: budgetRange,
         Exaktes_Budget: exaktesBudget,
@@ -912,7 +921,7 @@ exports.handler = async (event) => {
         projektname: customFields.Projektname,
         projektort: customFields.Projektort,
         projektadresse: customFields.Projektadresse,
-        anzahlWohnungen: customFields.Anzahl_Wohnungen,
+        anzahlBalkone: customFields.Anzahl_Balkone,
         balkontypDetails: customFields.Balkontyp_Details,
         budgetRange: customFields.Budget_Range,
         starttermin: customFields.Exakter_Starttermin,

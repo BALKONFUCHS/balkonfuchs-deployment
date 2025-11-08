@@ -16,7 +16,7 @@ export default function GewerbeFunnel() {
     projektname: '',
     projektort: '',
     projektadresse: '',
-    anzahlEinheiten: '',
+    anzahlBalkone: '',
     balkontyp: [],
     
     // Schritt 3: Zeitrahmen & Budget
@@ -131,7 +131,7 @@ export default function GewerbeFunnel() {
   };
 
   const canProceedStep1 = formData.projekttyp !== '';
-  const canProceedStep2 = formData.projektname && formData.anzahlEinheiten !== '' && formData.balkontyp.length > 0;
+  const canProceedStep2 = formData.projektname && formData.anzahlBalkone !== '' && formData.balkontyp.length > 0;
   const canProceedStep3 = (formData.zeitrahmen !== '' || (formData.startMonat && formData.startJahr)) && 
                          (formData.budgetrahmen !== '' || formData.budgetFreitext !== '');
   const canProceedStep4 = formData.firmenname && formData.ansprechpartner && formData.email && formData.telefon && formData.plz && formData.ort;
@@ -524,24 +524,24 @@ export default function GewerbeFunnel() {
                     />
                   </div>
 
-                  {/* Anzahl Wohneinheiten */}
+                  {/* Anzahl Balkone */}
                   <div>
                     <label className="block text-sm font-semibold text-gray-300 mb-3">
-                      Anzahl der Wohneinheiten / Balkone
+                      Anzahl der Balkone
                     </label>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       {['1-10', '11-25', '26-50', '51-100', '101-200', '201-500', '500+'].map((range) => (
                         <button
                           key={range}
                           onClick={() => {
-                            handleInputChange('anzahlEinheiten', range);
+                            handleInputChange('anzahlBalkone', range);
                             // Auto-advance if all required fields are filled
                             if (formData.projektname && formData.balkontyp.length > 0) {
                               setTimeout(() => nextStep(), 300);
                             }
                           }}
                           className={`p-4 rounded-lg border-2 font-semibold transition-all duration-300 ${
-                            formData.anzahlEinheiten === range
+                            formData.anzahlBalkone === range
                               ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50 text-blue-400'
                               : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md text-white'
                           }`}
@@ -1012,8 +1012,8 @@ export default function GewerbeFunnel() {
                             <span className="font-semibold text-white">{formData.projekttyp || '-'}</span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-gray-300">Anzahl Wohnungen:</span>
-                            <span className="font-semibold text-white">{formData.anzahlEinheiten || '-'}</span>
+                            <span className="text-gray-300">Anzahl Balkone:</span>
+                            <span className="font-semibold text-white">{formData.anzahlBalkone || '-'}</span>
                           </div>
                         </div>
                         <div className="space-y-2">

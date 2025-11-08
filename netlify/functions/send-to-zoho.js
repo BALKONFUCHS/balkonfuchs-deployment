@@ -160,12 +160,14 @@ exports.handler = async (event, context) => {
       }
       // Extract funnelData from nested structure (always overwrite if nested)
       if (gw.funnelData) {
+        const anzahlBalkone = gw.funnelData.anzahlBalkone || gw.funnelData.anzahlEinheiten || '';
         body.funnelData = {
           projekttyp: gw.funnelData.projekttyp || '',
           projektname: gw.funnelData.projektname || '',
           projektort: gw.funnelData.projektort || '',
           projektadresse: gw.funnelData.projektadresse || '',
-          anzahlEinheiten: gw.funnelData.anzahlEinheiten || '',
+          anzahlBalkone,
+          anzahlEinheiten: anzahlBalkone,
           balkontyp: gw.funnelData.balkontyp || [],
           zeitrahmen: gw.funnelData.zeitrahmen || '',
           budgetrahmen: gw.funnelData.budgetrahmen || '',
@@ -436,7 +438,7 @@ exports.handler = async (event, context) => {
       projektname: funnelData?.projektname || '',
       projektort: funnelData?.projektort || '',
       projektadresse: funnelData?.projektadresse || '',
-      anzahlEinheiten: funnelData?.anzahlEinheiten || '',
+      anzahlBalkone: funnelData?.anzahlBalkone || funnelData?.anzahlEinheiten || '',
       balkontyp: funnelData?.balkontyp ? funnelData.balkontyp.join(', ') : '',
       zeitrahmen: funnelData?.zeitrahmen || '',
       budgetrahmen: funnelData?.budgetrahmen || '',
@@ -809,7 +811,7 @@ async function createZohoDeskTicket(combinedData, orgId, accessToken, department
         'cf_projektname': combinedData.projektname || '',
         'cf_projektort': combinedData.projektort || '',
         'cf_projektadresse': combinedData.projektadresse || '',
-        'cf_anzahl_einheiten': combinedData.anzahlEinheiten || '',
+        'cf_anzahl_einheiten': combinedData.anzahlBalkone || '',
         'cf_balkontyp': combinedData.balkontyp || '',
         'cf_zeitrahmen': combinedData.zeitrahmen || '',
         'cf_budgetrahmen': combinedData.budgetrahmen || '',
@@ -1652,7 +1654,7 @@ ${(() => {
 - Projektname: ${funnelData?.projektname || 'Nicht angegeben'}
 - Projektort: ${funnelData?.projektort || 'Nicht angegeben'}
 - Projektadresse: ${funnelData?.projektadresse || 'Nicht angegeben'}
-- Anzahl Einheiten: ${funnelData?.anzahlEinheiten || 'Nicht angegeben'}
+- Anzahl Balkone: ${funnelData?.anzahlBalkone || funnelData?.anzahlEinheiten || 'Nicht angegeben'}
 - Balkontypen: ${funnelData?.balkontyp ? funnelData.balkontyp.join(', ') : 'Keine'}
 - Zeitrahmen: ${funnelData?.zeitrahmen || 'Nicht angegeben'}
 - Budgetrahmen: ${funnelData?.budgetrahmen || 'Nicht angegeben'}

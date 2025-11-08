@@ -37,7 +37,7 @@ export default function TestZohoIntegration() {
         projekttyp: 'mehrfamilienhaus',
         projektname: 'Test-Projekt Berlin',
         projektort: 'Berlin',
-        anzahlEinheiten: '50',
+        anzahlBalkone: '50',
         balkontyp: ['Standbalkon', 'Hängebalkon'],
         zeitrahmen: '2024-2025',
         budgetrahmen: '500.000 - 1 Mio. €',

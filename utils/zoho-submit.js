@@ -60,6 +60,8 @@ const getFunnelName = (funnelType) => {
  * Formatiert Gewerbe-Funnel-Daten für Zoho
  */
 export const formatGewerbeData = (formData) => {
+  const anzahlBalkone = formData.anzahlBalkone || formData.anzahlEinheiten || '';
+
   return {
     // Funnel-Metadaten
     funnelType: 'gewerbe',
@@ -89,7 +91,8 @@ export const formatGewerbeData = (formData) => {
       projektname: formData.projektname,
       projektort: formData.projektort,
       projektadresse: formData.projektadresse,
-      anzahlEinheiten: formData.anzahlEinheiten,
+      anzahlBalkone,
+      anzahlEinheiten: anzahlBalkone, // Legacy alias für ältere Integrationen
       balkontyp: formData.balkontyp,
       
       // Schritt 3: Zeitrahmen & Budget
@@ -176,7 +179,7 @@ export const formatGewerbeData = (formData) => {
       
       // Complexity basierend auf Anzahl Einheiten und Balkontypen
       let complexity = 'low';
-      const einheiten = formData.anzahlEinheiten || '';
+      const einheiten = formData.anzahlBalkone || formData.anzahlEinheiten || '';
       const balkontypCount = Array.isArray(formData.balkontyp) ? formData.balkontyp.length : 0;
       if (einheiten.includes('500+') || einheiten.includes('201-500')) {
         complexity = 'very-high';
@@ -236,7 +239,8 @@ const calculateGewerbeScore = (formData) => {
     '201-500': 25,
     '500+': 25
   };
-  score += einheitenScores[formData.anzahlEinheiten] || 0;
+  const ausgewählteAnzahl = formData.anzahlBalkone || formData.anzahlEinheiten || '';
+  score += einheitenScores[ausgewählteAnzahl] || 0;
 
   // 3. Budget-Bonus (0-30 Punkte)
   const budgetScores = {
@@ -283,14 +287,14 @@ const calculateGewerbeScore = (formData) => {
  * Schätzt den Projektwert für Gewerbeprojekte
  */
 const estimateGewerbeValue = (formData) => {
-  const anzahlEinheiten = parseInt(formData.anzahlEinheiten) || 1;
+  const anzahlAuswahl = parseInt(formData.anzahlBalkone || formData.anzahlEinheiten) || 1;
   const balkonAnzahl = formData.balkontyp.length || 1;
   
   // Basis-Wert pro Balkon (Gewerbe-Preise)
   const basePricePerBalcony = 15000;
   
   // Multiplikator für Anzahl der Einheiten
-  const unitMultiplier = Math.min(anzahlEinheiten, 10); // Max 10x für Schätzung
+  const unitMultiplier = Math.min(anzahlAuswahl, 10); // Max 10x für Schätzung
   
   // Multiplikator für Balkontyp
   const typeMultiplier = formData.balkontyp.includes('Hängebalkon') ? 1.5 : 1.0;
