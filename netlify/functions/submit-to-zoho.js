@@ -778,8 +778,9 @@ exports.handler = async (event) => {
     };
 
     const gewerbeAnzahlEinheiten = sanitizeString(funnelData.anzahlEinheiten || requestData.anzahlEinheiten);
+    const parsedUnits = gewerbeAnzahlEinheiten != null ? Number.parseInt(gewerbeAnzahlEinheiten, 10) : NaN;
     if (!customFields.Anzahl_Balkone && gewerbeAnzahlEinheiten) {
-      customFields.Anzahl_Balkone = gewerbeAnzahlEinheiten;
+      customFields.Anzahl_Balkone = Number.isFinite(parsedUnits) ? parsedUnits : gewerbeAnzahlEinheiten;
     }
 
     if (normalizedFunnelType === 'gewerbe' || normalizedFunnelType === 'gewerbeprojekte funnel') {
@@ -841,7 +842,7 @@ exports.handler = async (event) => {
         Projektort: projektort,
         Projektadresse: projektAdresseText,
         Gebaeudetyp: gebaeudetyp,
-        Anzahl_Wohnungen: gewerbeAnzahlEinheiten,
+        Anzahl_Wohnungen: Number.isFinite(parsedUnits) ? parsedUnits : gewerbeAnzahlEinheiten,
         Balkontyp_Details: gewerbeBalconyTypesText,
         Budget_Range: budgetRange,
         Exaktes_Budget: exaktesBudget,
