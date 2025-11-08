@@ -206,6 +206,62 @@ function mapOfferRegion(value) {
   return mapping[value] || value;
 }
 
+function mapGewerbeBalconyTypes(values) {
+  if (!Array.isArray(values) || values.length === 0) return null;
+
+  const mapping = {
+    anbaubalkon: 'Anbaubalkon',
+    vorstellbalkon: 'Vorstellbalkon',
+    haengebalkon: 'Hängebalkon',
+    franzoesisch: 'Französischer Balkon',
+    französisch: 'Französischer Balkon',
+    loggia: 'Loggia',
+    andere: 'Individuelle Lösung',
+    individuell: 'Individuelle Lösung'
+  };
+
+  const unique = [...new Set(values)]
+    .map(value => {
+      if (typeof value !== 'string') return null;
+      const trimmed = value.trim();
+      if (!trimmed) return null;
+      const key = trimmed.toLowerCase();
+      return mapping[key] || trimmed;
+    })
+    .filter(Boolean);
+
+  return unique.length ? unique.join(', ') : null;
+}
+
+const MONTH_LABELS = {
+  '01': 'Januar',
+  '02': 'Februar',
+  '03': 'März',
+  '04': 'April',
+  '05': 'Mai',
+  '06': 'Juni',
+  '07': 'Juli',
+  '08': 'August',
+  '09': 'September',
+  '10': 'Oktober',
+  '11': 'November',
+  '12': 'Dezember',
+};
+
+function mapMonthLabel(value) {
+  const sanitized = sanitizeString(value);
+  if (!sanitized) return null;
+  const key = sanitized.padStart(2, '0');
+  return MONTH_LABELS[key] || sanitized;
+}
+
+function formatMonthYear(monthValue, yearValue) {
+  const monthLabel = mapMonthLabel(monthValue);
+  const yearLabel = sanitizeString(yearValue);
+  if (!yearLabel) return null;
+  return monthLabel ? `${monthLabel} ${yearLabel}` : `${sanitizeString(monthValue) || ''} ${yearLabel}`.trim() || null;
+}
+
 function sanitizeString(value) {
   if (typeof value !== 'string') return value ?? null;
   const trimmed = value.trim();
@@ -494,6 +550,7 @@ exports.handler = async (event) => {
       funnelWrapper.funnelType ||
       'Balkon-Kalkulator';
     requestData.funnelType = funnelType;
+    const normalizedFunnelType = String(funnelType || '').trim().toLowerCase();
 
     let leadScoreValue = null;
     if (typeof body.leadScore === 'number') {
@@ -536,6 +593,13 @@ exports.handler = async (event) => {
     const companyName = sanitizeString(companyNameRaw);
     const contactZipRaw = contact.zipCode || requestData.zipCode || funnelData.zipCode || funnelWrapper.zipCode || null;
     const contactZip = sanitizeString(contactZipRaw);
+    const companyAddress = sanitizeString(
+      contact.address ||
+      companyObject?.address ||
+      requestData.address ||
+      funnelData.companyAddress ||
+      funnelWrapper.companyAddress
+    );
 
     const contactCity = sanitizeString(
       contact.city ||
@@ -618,6 +682,7 @@ exports.handler = async (event) => {
       Phone: sanitizeString(contact.phone),
       Zip_Code: contactZip,
       City: contactCity,
+      Street: companyAddress,
       Company: companyName || null,
       Lead_Source: leadSourceLabel || 'Balkon-Kalkulator',
     };
@@ -654,6 +719,7 @@ exports.handler = async (event) => {
     const documentsText = formatDocumentsList(documentsRaw);
     const combinedDescription = [
       funnelData.additionalInfo || requestData.additionalInfo || null,
+      funnelData.nachricht || requestData.nachricht || null,
       documentsText ? `Dokumente: ${documentsText}` : null
     ]
       .filter(Boolean)
@@ -663,6 +729,7 @@ exports.handler = async (event) => {
     const wallMaterialText = mapWallMaterial(funnelData.wallMaterial || requestData.wallMaterial);
     const insulationText = mapInsulationStatus(funnelData.insulation || requestData.insulation);
     const balconyDoorText = mapBalconyDoorStatus(funnelData.balconyDoor || requestData.balconyDoor);
+    const gewerbeBalconyTypesText = mapGewerbeBalconyTypes(funnelData.balkontyp || requestData.balkontyp);
 
     const customFields = {
       Score_lead: leadScore,
@@ -709,6 +776,87 @@ exports.handler = async (event) => {
       Rueckbau: demolitionText,
       Unterlagen: documentsText
     };
+
+    const gewerbeAnzahlEinheiten = sanitizeString(funnelData.anzahlEinheiten || requestData.anzahlEinheiten);
+    if (!customFields.Anzahl_Balkone && gewerbeAnzahlEinheiten) {
+      customFields.Anzahl_Balkone = gewerbeAnzahlEinheiten;
+    }
+
+    if (normalizedFunnelType === 'gewerbe' || normalizedFunnelType === 'gewerbeprojekte funnel') {
+      const projektname = sanitizeString(funnelData.projektname || requestData.projektname);
+      const projektort = sanitizeString(funnelData.projektort || requestData.projektort);
+      const projektadresse = sanitizeString(funnelData.projektadresse || requestData.projektadresse);
+      const gebaeudetyp = sanitizeString(funnelData.projekttyp || requestData.projekttyp);
+      const zeitrahmenRange = sanitizeString(funnelData.zeitrahmen || requestData.zeitrahmen);
+      const budgetRange = sanitizeString(funnelData.budgetrahmen || requestData.budgetrahmen);
+      const exaktesBudget = sanitizeString(funnelData.budgetFreitext || requestData.budgetFreitext);
+      const startTermin = formatMonthYear(
+        funnelData.startMonat || requestData.startMonat,
+        funnelData.startJahr || requestData.startJahr
+      );
+      const endTermin = formatMonthYear(
+        funnelData.endMonat || requestData.endMonat,
+        funnelData.endJahr || requestData.endJahr
+      );
+      const ansprechpartner = sanitizeString(
+        funnelData.ansprechpartner ||
+        requestData.ansprechpartner ||
+        requestData.extendedCompany?.ansprechpartner ||
+        funnelWrapper.extendedCompany?.ansprechpartner
+      );
+      const projektleiter = sanitizeString(
+        funnelData.projektleiter ||
+        requestData.projektleiter ||
+        requestData.extendedCompany?.projektleiter ||
+        funnelWrapper.extendedCompany?.projektleiter
+      );
+      const position = sanitizeString(
+        funnelData.position ||
+        requestData.position ||
+        requestData.extendedCompany?.position ||
+        funnelWrapper.extendedCompany?.position
+      );
+      const unternehmensnameFunnel = sanitizeString(
+        funnelData.firmenname ||
+        requestData.firmenname ||
+        requestData.companyName
+      );
+      const rechtsform = sanitizeString(
+        companyObject?.legalForm ||
+        funnelData.legalForm ||
+        requestData.legalForm ||
+        funnelWrapper.legalForm
+      );
+      const mitarbeiterzahl = sanitizeString(
+        companyObject?.employeeCount ||
+        funnelData.employeeCount ||
+        requestData.employeeCount ||
+        funnelWrapper.employeeCount
+      );
+      const projektMessage = sanitizeString(funnelData.nachricht || requestData.nachricht);
+      const projektAdresseText = projektadresse || sanitizeString(companyObject?.address);
+
+      Object.assign(customFields, {
+        Projektname: projektname,
+        Projektort: projektort,
+        Projektadresse: projektAdresseText,
+        Gebaeudetyp: gebaeudetyp,
+        Anzahl_Wohnungen: gewerbeAnzahlEinheiten,
+        Balkontyp_Details: gewerbeBalconyTypesText,
+        Budget_Range: budgetRange,
+        Exaktes_Budget: exaktesBudget,
+        Zeitraum_Range: zeitrahmenRange,
+        Exakter_Starttermin: startTermin,
+        Exakter_Endtermin: endTermin,
+        Unternehmensname: companyName || unternehmensnameFunnel,
+        Ansprechpartner: ansprechpartner,
+        Projektleiter: projektleiter,
+        Position: position,
+        Rechtsform: rechtsform,
+        Mitarbeiterzahl: mitarbeiterzahl,
+        Zusaetzliche_Nachricht_Gewerbe: projektMessage
+      });
+    }
 
     console.log('🔍 Field Mapping Debug:', {
       balconyType: {
@@ -758,7 +906,20 @@ exports.handler = async (event) => {
         mapped: customFields.Balkontuer
       },
       demolition: demolitionText,
-      documents: documentsText
+      documents: documentsText,
+      gewerbe: (normalizedFunnelType === 'gewerbe' || normalizedFunnelType === 'gewerbeprojekte funnel') ? {
+        projektname: customFields.Projektname,
+        projektort: customFields.Projektort,
+        projektadresse: customFields.Projektadresse,
+        anzahlWohnungen: customFields.Anzahl_Wohnungen,
+        balkontypDetails: customFields.Balkontyp_Details,
+        budgetRange: customFields.Budget_Range,
+        starttermin: customFields.Exakter_Starttermin,
+        endtermin: customFields.Exakter_Endtermin,
+        ansprechpartner: customFields.Ansprechpartner,
+        projektleiter: customFields.Projektleiter,
+        mitarbeiterzahl: customFields.Mitarbeiterzahl
+      } : undefined
     });
 
     const leadPayload = {
