@@ -186,11 +186,17 @@ function mapDringlichkeitLabel(value) {
     'asap': 'Sofort',
     '3months': 'Innerhalb 3 Monate',
     '3_months': 'Innerhalb 3 Monate',
+    '3monate': 'Innerhalb 3 Monate',
     '6months': 'Innerhalb 6 Monate',
     '6_months': 'Innerhalb 6 Monate',
+    '6monate': 'Innerhalb 6 Monate',
     '12months': 'Innerhalb 12 Monate',
     '12_months': 'Innerhalb 12 Monate',
-    'flexible': 'Noch offen'
+    '12monate': 'Innerhalb 12 Monate',
+    'flexible': 'Noch offen',
+    'sofort': 'Sofort',
+    'planung': 'Noch offen',
+    'unbekannt': 'Noch offen'
   };
   return mapping[value] || mapTimeframe(value) || value;
 }
@@ -286,10 +292,104 @@ function parseAddressComponents(addressText = '', fallbackZip = null, fallbackCi
     street = normalized;
   }
 
+  if (street && city && street.toLowerCase().endsWith(city.toLowerCase())) {
+    const trimmed = street.slice(0, street.length - city.length).trim();
+    street = trimmed || street;
+  }
+
   return {
     street: street || null,
     zip: zip || null,
     city: city || null,
+  };
+}
+
+function calculateGewerbeLeadInsights(funnelData = {}, contact = {}) {
+  let score = 0;
+
+  const typeScores = {
+    neubau: 25,
+    sanierung: 20,
+    wohnbaugesellschaft: 30,
+    bautraeger: 30,
+  };
+  score += typeScores[funnelData.projekttyp] || 10;
+
+  const selectedRange = funnelData.anzahlBalkone || funnelData.anzahlEinheiten || '';
+  const balconyScores = {
+    '1-10': 5,
+    '11-25': 15,
+    '26-50': 20,
+    '51-100': 25,
+    '101-200': 25,
+    '201-500': 25,
+    '500+': 25,
+  };
+  score += balconyScores[selectedRange] || 0;
+
+  const budgetScores = {
+    '< 50.000 €': 5,
+    '50.000 - 100.000 €': 10,
+    '100.000 - 150.000 €': 15,
+    '150.000 - 200.000 €': 20,
+    '200.000 - 300.000 €': 25,
+    '300.000 - 500.000 €': 30,
+    '500.000 - 1 Mio. €': 30,
+    '> 1 Mio. €': 30,
+    'Steht noch nicht fest': 10,
+  };
+  score += budgetScores[funnelData.budgetrahmen] || 0;
+
+  const timeframeScores = {
+    sofort: 20,
+    '3monate': 15,
+    '3months': 15,
+    '6monate': 10,
+    '6months': 10,
+    '12monate': 5,
+    '12months': 5,
+    planung: 3,
+    unbekannt: 5,
+  };
+  score += timeframeScores[funnelData.zeitrahmen] || 0;
+
+  if (funnelData.projektname?.trim()) score += 5;
+  if (funnelData.projektort?.trim()) score += 5;
+  if (funnelData.projektleiter?.trim()) score += 5;
+
+  const balconyTypeCount = Array.isArray(funnelData.balkontyp) ? funnelData.balkontyp.length : 0;
+  if (balconyTypeCount >= 3) score += 10;
+  else if (balconyTypeCount === 2) score += 5;
+  else if (balconyTypeCount === 1) score += 2;
+
+  score = Math.max(0, Math.min(score, 100));
+
+  const urgencyMap = {
+    sofort: 'high',
+    '3monate': 'medium',
+    '3months': 'medium',
+    '6monate': 'medium',
+    '6months': 'medium',
+    '12monate': 'low',
+    '12months': 'low',
+    planung: 'low',
+    unbekannt: 'low',
+  };
+  const urgency = urgencyMap[funnelData.zeitrahmen] || 'medium';
+
+  let category = 'cold';
+  if (score >= 70) category = 'hot';
+  else if (score >= 40) category = 'warm';
+
+  let followUpHours = 48;
+  if (score >= 70 || urgency === 'high') followUpHours = 6;
+  else if (score >= 40 || urgency === 'medium') followUpHours = 12;
+
+  return {
+    score,
+    category,
+    urgency,
+    followUpHours,
   };
 }
 
@@ -607,11 +707,19 @@ exports.handler = async (event) => {
         null;
     }
 
+    let gewerbeInsights = null;
+    if (normalizedFunnelType === 'gewerbe' || normalizedFunnelType === 'gewerbeprojekte funnel') {
+      gewerbeInsights = calculateGewerbeLeadInsights(normalizedFunnelData, requestData.contact);
+      if (gewerbeInsights?.score != null) {
+        leadScoreValue = gewerbeInsights.score;
+      }
+    }
+
     const leadScore = typeof leadScoreValue === 'number' ? leadScoreValue : calculateLeadScore(requestData);
     const priorityRank = calculatePriorityRank(leadScore);
-    const leadCategory = calculateLeadCategory(requestData, leadScore);
+    const leadCategory = gewerbeInsights?.category || calculateLeadCategory(requestData, leadScore);
 
-    console.log('Calculated metrics:', { leadScore, priorityRank, leadCategory });
+    console.log('Calculated metrics:', { leadScore, priorityRank, leadCategory, gewerbeInsights });
 
     const contact = requestData.contact || {};
     const funnelData = requestData.funnelData || {};
@@ -803,6 +911,14 @@ exports.handler = async (event) => {
         null,
       Gebaeudetyp: requestData.buildingType || null,
       Datenschutz_akzeptiert: privacyAccepted,
+      Haftungsausschluss: truthy(
+        contact.disclaimer,
+        contact.haftungsausschluss,
+        requestData.disclaimer,
+        requestData.haftungsausschluss,
+        funnelData.disclaimer,
+        funnelData.haftungsausschluss
+      ),
       Boden_Projekt: mapFloorMaterial(funnelData.balconyFloor) || null,
       Anzahl_Balkone: baseBalconyCount,
       railing_Projekt: mapRailingType(funnelData.railing) || null,
@@ -948,6 +1064,36 @@ exports.handler = async (event) => {
         Rechtsform: rechtsform,
         Mitarbeiterzahl: mitarbeiterzahl,
         Zusaetzliche_Nachricht_Gewerbe: projektMessage
+      });
+
+      Object.assign(customFields, {
+        cf_projektname: projektname,
+        cf_projektort: projektort,
+        cf_projektadresse: projektAdresseText,
+        cf_strasse_projekt: projectStreet,
+        cf_plz_projekt: projectZip,
+        cf_stadt_projekt: projectCity,
+        cf_balkontyp: gewerbeBalconyTypesText,
+        cf_budgetrahmen: budgetRange,
+        cf_budget_freitext: exaktesBudget,
+        cf_zeitrahmen: zeitrahmenRange,
+        cf_start_monat: funnelData.startMonat || requestData.startMonat || '',
+        cf_start_jahr: funnelData.startJahr || requestData.startJahr || '',
+        cf_end_monat: funnelData.endMonat || requestData.endMonat || '',
+        cf_end_jahr: funnelData.endJahr || requestData.endJahr || '',
+        cf_ansprechpartner: ansprechpartner,
+        cf_projektleiter: projektleiter,
+        cf_position: position,
+        cf_mitarbeiteranzahl: mitarbeiterzahl,
+        cf_nachricht: projektMessage,
+        cf_haftungsausschluss: truthy(
+          contact.disclaimer,
+          contact.haftungsausschluss,
+          requestData.disclaimer,
+          requestData.haftungsausschluss,
+          funnelData.disclaimer,
+          funnelData.haftungsausschluss
+        ) ? 'Ja' : 'Nein'
       });
     }
 
