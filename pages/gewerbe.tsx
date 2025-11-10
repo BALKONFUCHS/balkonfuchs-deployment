@@ -559,7 +559,7 @@ export default function GewerbeFunnel() {
                     </label>
                     <div className="grid md:grid-cols-2 gap-4">
                       {[
-                        { value: 'anbaubalkon', label: 'Anbaubalkon', desc: 'Klassischer Balkonanbau' },
+                        { value: 'anbaubalkon', label: 'Anlehnbalkon', desc: 'Klassischer Balkonanbau' },
                         { value: 'vorstellbalkon', label: 'Vorstellbalkon', desc: 'Freistehende Konstruktion' },
                         { value: 'haengebalkon', label: 'Hängebalkon', desc: 'An der Fassade aufgehängte Konstruktion' },
                         { value: 'franzoesisch', label: 'Französischer Balkon', desc: 'Bodentiefes Fenster mit Geländer' },
@@ -821,13 +821,21 @@ export default function GewerbeFunnel() {
                       <label className="block text-sm font-semibold text-gray-300 mb-2">
                         Position
                       </label>
-                      <input
-                        type="text"
+                      <select
                         value={formData.position}
                         onChange={(e) => handleInputChange('position', e.target.value)}
-                        placeholder="Ihre Position"
                         className="w-full px-4 py-3 bg-gray-700 border-2 border-gray-600 rounded-lg text-white placeholder-gray-400 focus:border-blue-500 focus:outline-none transition-colors"
-                      />
+                      >
+                        <option value="">Position wählen</option>
+                        <option value="Geschäftsführer">Geschäftsführer</option>
+                        <option value="Inhaber">Inhaber</option>
+                        <option value="Prokurist">Prokurist</option>
+                        <option value="Abteilungsleiter">Abteilungsleiter</option>
+                        <option value="Vertriebsleiter">Vertriebsleiter</option>
+                        <option value="Projektleiter">Projektleiter</option>
+                        <option value="Vertriebsmitarbeiter">Vertriebsmitarbeiter</option>
+                        <option value="Sonstige">Sonstige</option>
+                      </select>
                     </div>
 
                     {/* Projektleiter */}

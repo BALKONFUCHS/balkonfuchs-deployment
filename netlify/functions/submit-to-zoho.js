@@ -297,6 +297,10 @@ function parseAddressComponents(addressText = '', fallbackZip = null, fallbackCi
     street = trimmed || street;
   }
 
+  if (street) {
+    street = street.replace(/\s+in$/i, '').trim();
+  }
+
   return {
     street: street || null,
     zip: zip || null,
@@ -308,61 +312,61 @@ function calculateGewerbeLeadInsights(funnelData = {}, contact = {}) {
   let score = 0;
 
   const typeScores = {
-    neubau: 25,
-    sanierung: 20,
-    wohnbaugesellschaft: 30,
-    bautraeger: 30,
+    neubau: 18,
+    sanierung: 15,
+    wohnbaugesellschaft: 20,
+    bautraeger: 20,
   };
   score += typeScores[funnelData.projekttyp] || 10;
 
   const selectedRange = funnelData.anzahlBalkone || funnelData.anzahlEinheiten || '';
   const balconyScores = {
     '1-10': 5,
-    '11-25': 15,
-    '26-50': 20,
-    '51-100': 25,
-    '101-200': 25,
-    '201-500': 25,
-    '500+': 25,
+    '11-25': 9,
+    '26-50': 12,
+    '51-100': 14,
+    '101-200': 16,
+    '201-500': 18,
+    '500+': 18,
   };
   score += balconyScores[selectedRange] || 0;
 
   const budgetScores = {
-    '< 50.000 €': 5,
-    '50.000 - 100.000 €': 10,
-    '100.000 - 150.000 €': 15,
-    '150.000 - 200.000 €': 20,
-    '200.000 - 300.000 €': 25,
-    '300.000 - 500.000 €': 30,
-    '500.000 - 1 Mio. €': 30,
-    '> 1 Mio. €': 30,
-    'Steht noch nicht fest': 10,
+    '< 50.000 €': 4,
+    '50.000 - 100.000 €': 8,
+    '100.000 - 150.000 €': 12,
+    '150.000 - 200.000 €': 15,
+    '200.000 - 300.000 €': 17,
+    '300.000 - 500.000 €': 19,
+    '500.000 - 1 Mio. €': 20,
+    '> 1 Mio. €': 20,
+    'Steht noch nicht fest': 6,
   };
   score += budgetScores[funnelData.budgetrahmen] || 0;
 
   const timeframeScores = {
-    sofort: 20,
-    '3monate': 15,
-    '3months': 15,
-    '6monate': 10,
-    '6months': 10,
+    sofort: 15,
+    '3monate': 12,
+    '3months': 12,
+    '6monate': 8,
+    '6months': 8,
     '12monate': 5,
     '12months': 5,
-    planung: 3,
-    unbekannt: 5,
+    planung: 4,
+    unbekannt: 4,
   };
   score += timeframeScores[funnelData.zeitrahmen] || 0;
 
-  if (funnelData.projektname?.trim()) score += 5;
-  if (funnelData.projektort?.trim()) score += 5;
-  if (funnelData.projektleiter?.trim()) score += 5;
+  if (funnelData.projektname?.trim()) score += 3;
+  if (funnelData.projektort?.trim()) score += 3;
+  if (funnelData.projektleiter?.trim()) score += 3;
 
   const balconyTypeCount = Array.isArray(funnelData.balkontyp) ? funnelData.balkontyp.length : 0;
-  if (balconyTypeCount >= 3) score += 10;
-  else if (balconyTypeCount === 2) score += 5;
-  else if (balconyTypeCount === 1) score += 2;
+  if (balconyTypeCount >= 3) score += 5;
+  else if (balconyTypeCount === 2) score += 3;
+  else if (balconyTypeCount === 1) score += 1;
 
-  score = Math.max(0, Math.min(score, 100));
+  score = Math.max(0, Math.min(score, 90));
 
   const urgencyMap = {
     sofort: 'high',
@@ -378,12 +382,13 @@ function calculateGewerbeLeadInsights(funnelData = {}, contact = {}) {
   const urgency = urgencyMap[funnelData.zeitrahmen] || 'medium';
 
   let category = 'cold';
-  if (score >= 70) category = 'hot';
+  if (score >= 65) category = 'hot';
   else if (score >= 40) category = 'warm';
 
   let followUpHours = 48;
-  if (score >= 70 || urgency === 'high') followUpHours = 6;
+  if (score >= 65 || urgency === 'high') followUpHours = 6;
   else if (score >= 40 || urgency === 'medium') followUpHours = 12;
+  else followUpHours = 24;
 
   return {
     score,
@@ -876,6 +881,8 @@ exports.handler = async (event) => {
       return sanitizeString(String(rawValue));
     })();
 
+    let descriptionText = null;
+
     const customFields = {
       Score_lead: leadScore,
       Rating: leadCategory,
@@ -1038,10 +1045,12 @@ exports.handler = async (event) => {
         Projektadresse: projektAdresseText,
         Titel_Projekt: projektname,
         Strasse_Projekt: projectStreet,
+        Street_Projekt: projectStreet,
         PLZ_Projekt: projectZip,
         Stadt_Projekt: projectCity,
         Bundesland_Projekt: projectState,
         Land_Projekt: projectCountry,
+        Bauvorhaben: projektname,
         Gebaeudetyp: gebaeudetyp,
         Balkontyp: gewerbeBalconyTypesText || customFields.Balkontyp,
         Balkontyp_Details: gewerbeBalconyTypesText,
@@ -1057,23 +1066,46 @@ exports.handler = async (event) => {
         Ansprechpartner_Telefon: verantwortlicherPhone,
         Ansprechpartner_Email: verantwortlicherEmail,
         Ansprechpartner_Position: position,
+        Designation: position,
         Projektleiter: projektleiter,
         Projektleiter_Vorname: projektleiterVorname,
         Projektleiter_Nachname: projektleiterNachname,
         Position: position,
         Rechtsform: rechtsform,
         Mitarbeiterzahl: mitarbeiterzahl,
+        No_of_Employees: mitarbeiterzahl,
+        Projektbeschreibung: projektMessage || combinedDescription || null,
         Zusaetzliche_Nachricht_Gewerbe: projektMessage
       });
 
+      const descriptionLines = [
+        '--- Projekt ---',
+        projektname ? `Projektname: ${projektname}` : null,
+        projektort ? `Ort: ${projektort}` : null,
+        projectStreet || projectZip || projectCity ? `Adresse: ${[projectStreet, projectZip, projectCity].filter(Boolean).join(', ')}` : null,
+        customFields.Anzahl_Balkone ? `Anzahl Balkone: ${customFields.Anzahl_Balkone}` : null,
+        gewerbeBalconyTypesText ? `Balkontypen: ${gewerbeBalconyTypesText}` : null,
+        budgetRange ? `Budget (Range): ${budgetRange}` : null,
+        exaktesBudget ? `Budget (exakt): ${exaktesBudget}` : null,
+        zeitrahmenRange ? `Zeitrahmen: ${mapDringlichkeitLabel(zeitrahmenRange) || zeitrahmenRange}` : null,
+        startTermin ? `Starttermin: ${startTermin}` : null,
+        endTermin ? `Endtermin: ${endTermin}` : null,
+        '',
+        '--- Kontakt ---',
+        (companyName || unternehmensnameFunnel) ? `Unternehmen: ${companyName || unternehmensnameFunnel}` : null,
+        ansprechpartner ? `Ansprechpartner: ${ansprechpartner}` : null,
+        position ? `Position: ${position}` : null,
+        verantwortlicherPhone ? `Telefon: ${verantwortlicherPhone}` : null,
+        verantwortlicherEmail ? `E-Mail: ${verantwortlicherEmail}` : null,
+        projektleiter ? `Projektleiter: ${projektleiter}` : null,
+        '',
+        projektMessage ? `Notiz: ${projektMessage}` : null,
+      ].filter(Boolean);
+      descriptionText = descriptionLines.join('\n');
+
       Object.assign(customFields, {
-        cf_projektname: projektname,
         cf_projektort: projektort,
         cf_projektadresse: projektAdresseText,
-        cf_strasse_projekt: projectStreet,
-        cf_plz_projekt: projectZip,
-        cf_stadt_projekt: projectCity,
-        cf_balkontyp: gewerbeBalconyTypesText,
         cf_budgetrahmen: budgetRange,
         cf_budget_freitext: exaktesBudget,
         cf_zeitrahmen: zeitrahmenRange,
@@ -1082,19 +1114,12 @@ exports.handler = async (event) => {
         cf_end_monat: funnelData.endMonat || requestData.endMonat || '',
         cf_end_jahr: funnelData.endJahr || requestData.endJahr || '',
         cf_ansprechpartner: ansprechpartner,
-        cf_projektleiter: projektleiter,
-        cf_position: position,
-        cf_mitarbeiteranzahl: mitarbeiterzahl,
-        cf_nachricht: projektMessage,
-        cf_haftungsausschluss: truthy(
-          contact.disclaimer,
-          contact.haftungsausschluss,
-          requestData.disclaimer,
-          requestData.haftungsausschluss,
-          funnelData.disclaimer,
-          funnelData.haftungsausschluss
-        ) ? 'Ja' : 'Nein'
+        cf_projektleiter: projektleiter
       });
+    }
+
+    if (descriptionText) {
+      standardFields.Description = descriptionText;
     }
 
     console.log('🔍 Field Mapping Debug:', {
