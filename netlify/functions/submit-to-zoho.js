@@ -262,6 +262,37 @@ function formatMonthYear(monthValue, yearValue) {
   return monthLabel ? `${monthLabel} ${yearLabel}` : `${sanitizeString(monthValue) || ''} ${yearLabel}`.trim() || null;
 }
 
+function parseAddressComponents(addressText = '', fallbackZip = null, fallbackCity = null) {
+  if (!addressText && !fallbackZip && !fallbackCity) {
+    return {};
+  }
+
+  const normalized = sanitizeString(addressText)?.replace(/[\n\r]/g, ' ') || '';
+  const cleaned = normalized.replace(/[,;]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+  const zipMatch = cleaned.match(/\b\d{4,5}\b/);
+  let street = cleaned;
+  let zip = fallbackZip ? sanitizeString(fallbackZip) : null;
+  let city = fallbackCity ? sanitizeString(fallbackCity) : null;
+
+  if (zipMatch) {
+    zip = zipMatch[0];
+    const [beforeZip, afterZip] = cleaned.split(zipMatch[0]);
+    street = sanitizeString(beforeZip);
+    city = sanitizeString(afterZip);
+  }
+
+  if (!street && normalized) {
+    street = normalized;
+  }
+
+  return {
+    street: street || null,
+    zip: zip || null,
+    city: city || null,
+  };
+}
+
 function sanitizeString(value) {
   if (typeof value !== 'string') return value ?? null;
   const trimmed = value.trim();
@@ -796,7 +827,12 @@ exports.handler = async (event) => {
     if (normalizedFunnelType === 'gewerbe' || normalizedFunnelType === 'gewerbeprojekte funnel') {
       const projektname = sanitizeString(funnelData.projektname || requestData.projektname);
       const projektort = sanitizeString(funnelData.projektort || requestData.projektort);
-      const projektadresse = sanitizeString(funnelData.projektadresse || requestData.projektadresse);
+    const projektadresse = sanitizeString(funnelData.projektadresse || requestData.projektadresse);
+    const projectAddressComponents = parseAddressComponents(
+      projektadresse,
+      funnelData.projektPlz || funnelData.zipCode || requestData.projektPlz || requestData.zipCode || companyObject?.zipCode,
+      funnelData.projektort || requestData.projektort || companyObject?.city
+    );
       const gebaeudetyp = sanitizeString(funnelData.projekttyp || requestData.projekttyp);
       const zeitrahmenRange = sanitizeString(funnelData.zeitrahmen || requestData.zeitrahmen);
       const budgetRange = sanitizeString(funnelData.budgetrahmen || requestData.budgetrahmen);
@@ -846,12 +882,52 @@ exports.handler = async (event) => {
       );
       const projektMessage = sanitizeString(funnelData.nachricht || requestData.nachricht);
       const projektAdresseText = projektadresse || sanitizeString(companyObject?.address);
+      const projectStreet = projectAddressComponents.street ||
+        sanitizeString(funnelData.projektStrasse || requestData.projektStrasse || companyObject?.address);
+      const projectZip = projectAddressComponents.zip ||
+        sanitizeString(funnelData.projektPlz || requestData.projektPlz || companyObject?.zipCode);
+      const projectCity = projectAddressComponents.city || projektort || sanitizeString(companyObject?.city);
+      const projectState = sanitizeString(
+        funnelData.projektBundesland ||
+        requestData.projektBundesland ||
+        funnelData.bundesland ||
+        requestData.bundesland
+      );
+      const projectCountry = sanitizeString(
+        funnelData.projektLand ||
+        requestData.projektLand ||
+        funnelData.land ||
+        requestData.land
+      );
+      const verantwortlicherPhone = sanitizeString(
+        contact.phone ||
+        requestData.telefon ||
+        funnelData.telefon ||
+        requestData.contactPhone ||
+        funnelData.contactPhone
+      );
+      const verantwortlicherEmail = sanitizeString(
+        contact.email ||
+        requestData.email ||
+        funnelData.email ||
+        requestData.contactEmail ||
+        funnelData.contactEmail
+      );
+      const { firstName: ansprechpartnerVorname, lastName: ansprechpartnerNachname } = splitName(ansprechpartner);
+      const { firstName: projektleiterVorname, lastName: projektleiterNachname } = splitName(projektleiter);
 
       Object.assign(customFields, {
         Projektname: projektname,
         Projektort: projektort,
         Projektadresse: projektAdresseText,
+        Titel_Projekt: projektname,
+        Strasse_Projekt: projectStreet,
+        PLZ_Projekt: projectZip,
+        Stadt_Projekt: projectCity,
+        Bundesland_Projekt: projectState,
+        Land_Projekt: projectCountry,
         Gebaeudetyp: gebaeudetyp,
+        Balkontyp: gewerbeBalconyTypesText || customFields.Balkontyp,
         Balkontyp_Details: gewerbeBalconyTypesText,
         Budget_Range: budgetRange,
         Exaktes_Budget: exaktesBudget,
@@ -860,7 +936,14 @@ exports.handler = async (event) => {
         Exakter_Endtermin: endTermin,
         Unternehmensname: companyName || unternehmensnameFunnel,
         Ansprechpartner: ansprechpartner,
+        Ansprechpartner_Vorname: ansprechpartnerVorname,
+        Ansprechpartner_Nachname: ansprechpartnerNachname,
+        Ansprechpartner_Telefon: verantwortlicherPhone,
+        Ansprechpartner_Email: verantwortlicherEmail,
+        Ansprechpartner_Position: position,
         Projektleiter: projektleiter,
+        Projektleiter_Vorname: projektleiterVorname,
+        Projektleiter_Nachname: projektleiterNachname,
         Position: position,
         Rechtsform: rechtsform,
         Mitarbeiterzahl: mitarbeiterzahl,
@@ -922,12 +1005,22 @@ exports.handler = async (event) => {
         projektort: customFields.Projektort,
         projektadresse: customFields.Projektadresse,
         anzahlBalkone: customFields.Anzahl_Balkone,
+        balkontyp: customFields.Balkontyp,
         balkontypDetails: customFields.Balkontyp_Details,
         budgetRange: customFields.Budget_Range,
+        projektStrasse: customFields.Strasse_Projekt,
+        projektPLZ: customFields.PLZ_Projekt,
+        projektStadt: customFields.Stadt_Projekt,
         starttermin: customFields.Exakter_Starttermin,
         endtermin: customFields.Exakter_Endtermin,
         ansprechpartner: customFields.Ansprechpartner,
+        ansprechpartnerVorname: customFields.Ansprechpartner_Vorname,
+        ansprechpartnerNachname: customFields.Ansprechpartner_Nachname,
+        ansprechpartnerTelefon: customFields.Ansprechpartner_Telefon,
+        ansprechpartnerEmail: customFields.Ansprechpartner_Email,
         projektleiter: customFields.Projektleiter,
+        projektleiterVorname: customFields.Projektleiter_Vorname,
+        projektleiterNachname: customFields.Projektleiter_Nachname,
         mitarbeiterzahl: customFields.Mitarbeiterzahl
       } : undefined
     });
