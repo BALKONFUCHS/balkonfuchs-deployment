@@ -308,6 +308,23 @@ function parseAddressComponents(addressText = '', fallbackZip = null, fallbackCi
   };
 }
 
+function parseEmployeeCount(value) {
+  if (value == null) return null;
+  if (typeof value === 'number' && Number.isFinite(value)) {
+    return value;
+  }
+
+  const match = String(value).match(/\d+/);
+  if (match) {
+    const parsed = Number.parseInt(match[0], 10);
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+
+  return null;
+}
+
 function calculateGewerbeLeadInsights(funnelData = {}, contact = {}) {
   let score = 0;
 
@@ -1073,7 +1090,7 @@ exports.handler = async (event) => {
         Position: position,
         Rechtsform: rechtsform,
         Mitarbeiterzahl: mitarbeiterzahl,
-        No_of_Employees: mitarbeiterzahl,
+        No_of_Employees: parseEmployeeCount(mitarbeiterzahl),
         Projektbeschreibung: projektMessage || combinedDescription || null,
         Zusaetzliche_Nachricht_Gewerbe: projektMessage
       });
