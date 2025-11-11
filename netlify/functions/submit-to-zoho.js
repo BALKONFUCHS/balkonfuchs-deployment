@@ -1,5 +1,5 @@
 const { getAccessToken } = require('./helpers/zoho-auth');
-const FormData = require('form-data');
+const { Blob } = require('buffer');
 
 function deriveCityFromZip(zipCode) {
   if (!zipCode) {
@@ -1294,6 +1294,7 @@ exports.handler = async (event) => {
       }),
     };
   }
+};
 
 async function uploadLeadAttachment({ leadId, pdfAttachment, accessToken, apiDomain }) {
   if (!pdfAttachment) {
@@ -1330,36 +1331,13 @@ async function uploadLeadAttachment({ leadId, pdfAttachment, accessToken, apiDom
   });
 
   const form = new FormData();
-  form.append('file', buffer, {
-    filename: resolvedFileName,
-    contentType: resolvedContentType,
-    knownLength: buffer.length,
-  });
-
-  const headers = form.getHeaders();
-
-  try {
-    const contentLength = await new Promise((resolve, reject) => {
-      form.getLength((err, length) => {
-        if (err) {
-          reject(err);
-          return;
-        }
-        resolve(length);
-      });
-    });
-    if (Number.isFinite(contentLength)) {
-      headers['Content-Length'] = contentLength;
-    }
-  } catch (lengthError) {
-    console.warn('⚠️ Content-Length konnte nicht ermittelt werden:', lengthError);
-  }
+  const blob = new Blob([buffer], { type: resolvedContentType });
+  form.append('file', blob, resolvedFileName);
 
   const response = await fetch(`${apiDomain}/crm/v6/Leads/${leadId}/Attachments`, {
     method: 'POST',
     headers: {
       Authorization: `Zoho-oauthtoken ${accessToken}`,
-      ...headers,
     },
     body: form,
   });
@@ -1372,6 +1350,5 @@ async function uploadLeadAttachment({ leadId, pdfAttachment, accessToken, apiDom
 
   console.log('PDF-Anhang erfolgreich hinzugefügt:', attachmentResult);
   return attachmentResult;
-  }
-};
+}
 
