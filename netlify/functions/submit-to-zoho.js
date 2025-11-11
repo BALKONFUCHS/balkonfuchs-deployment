@@ -1296,23 +1296,70 @@ exports.handler = async (event) => {
   }
 
 async function uploadLeadAttachment({ leadId, pdfAttachment, accessToken, apiDomain }) {
-  const { base64, fileName, contentType } = pdfAttachment;
-  if (!base64) {
+  if (!pdfAttachment) {
     return;
   }
 
+  let { base64, fileName, contentType } = pdfAttachment;
+  if (!base64) {
+    console.warn('⚠️ Kein Base64-Inhalt für den Anhang vorhanden.');
+    return;
+  }
+
+  if (base64.includes(',')) {
+    base64 = base64.split(',').pop();
+  }
+
+  base64 = base64.replace(/\s/g, '');
+
   const buffer = Buffer.from(base64, 'base64');
+
+  if (!buffer.length) {
+    console.warn('⚠️ Der dekodierte Anhang ist leer und wird nicht an Zoho gesendet.');
+    return;
+  }
+
+  const resolvedContentType = contentType || 'application/pdf';
+  const resolvedFileName = fileName || `balkonfuchs-projekt-${leadId}.pdf`;
+
+  console.log('📎 Uploading attachment to Zoho CRM:', {
+    leadId,
+    byteLength: buffer.length,
+    contentType: resolvedContentType,
+    fileName: resolvedFileName,
+  });
+
   const form = new FormData();
   form.append('file', buffer, {
-    filename: fileName || `balkonfuchs-projekt-${leadId}.pdf`,
-    contentType: contentType || 'application/pdf'
+    filename: resolvedFileName,
+    contentType: resolvedContentType,
+    knownLength: buffer.length,
   });
+
+  const headers = form.getHeaders();
+
+  try {
+    const contentLength = await new Promise((resolve, reject) => {
+      form.getLength((err, length) => {
+        if (err) {
+          reject(err);
+          return;
+        }
+        resolve(length);
+      });
+    });
+    if (Number.isFinite(contentLength)) {
+      headers['Content-Length'] = contentLength;
+    }
+  } catch (lengthError) {
+    console.warn('⚠️ Content-Length konnte nicht ermittelt werden:', lengthError);
+  }
 
   const response = await fetch(`${apiDomain}/crm/v6/Leads/${leadId}/Attachments`, {
     method: 'POST',
     headers: {
       Authorization: `Zoho-oauthtoken ${accessToken}`,
-      ...form.getHeaders(),
+      ...headers,
     },
     body: form,
   });
