@@ -8,22 +8,27 @@ export const submitToZoho = async (funnelData, funnelType = 'gewerbe') => {
   try {
     console.log(`Sending ${funnelType} data to Zoho:`, funnelData);
 
+    const { pdfAttachment, ...restData } = funnelData || {};
+
+    const payload = {
+      funnelData: {
+        ...restData,
+        funnel: {
+          type: funnelType,
+          name: getFunnelName(funnelType)
+        },
+        timestamp: new Date().toISOString(),
+        source: 'website'
+      },
+      pdfAttachment
+    };
+
     const response = await fetch('/.netlify/functions/submit-to-zoho', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        funnelData: {
-          ...funnelData,
-          funnel: {
-            type: funnelType,
-            name: getFunnelName(funnelType)
-          },
-          timestamp: new Date().toISOString(),
-          source: 'website'
-        }
-      }),
+      body: JSON.stringify(payload),
     });
 
     const result = await response.json();
@@ -76,7 +81,7 @@ export const formatGewerbeData = (formData) => {
       zipCode: formData.plz,
       city: formData.ort,
       address: formData.strasse,
-      newsletter: false,
+      newsletter: !!formData.balkonbrief,
       privacy: formData.datenschutz,
       agb: formData.balkonbrief,
       disclaimer: formData.haftungsausschluss

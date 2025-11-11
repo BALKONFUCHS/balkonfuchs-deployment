@@ -1,4 +1,5 @@
 const { getAccessToken } = require('./helpers/zoho-auth');
+const FormData = require('form-data');
 
 function deriveCityFromZip(zipCode) {
   if (!zipCode) {
@@ -654,6 +655,16 @@ exports.handler = async (event) => {
 
     const rawFormData = body.formData || {};
     const requestData = { ...body, ...rawFormData };
+    const pdfAttachment = body.pdfAttachment || rawFormData.pdfAttachment;
+    if (pdfAttachment?.base64) {
+      console.log('Empfangenes PDF Attachment:', {
+        fileName: pdfAttachment.fileName,
+        contentType: pdfAttachment.contentType,
+        size: pdfAttachment.base64.length
+      });
+    } else {
+      console.log('Kein PDF Attachment im Request enthalten.');
+    }
 
     // Stelle sicher, dass wichtige Eigenschaften vorhanden sind
     requestData.funnelData = requestData.funnelData || body.funnelData || rawFormData.funnelData || {};
@@ -1243,13 +1254,28 @@ exports.handler = async (event) => {
       throw new Error(`Zoho API error: ${JSON.stringify(zohoData)}`);
     }
 
+    const leadId = zohoData.data?.[0]?.details?.id;
+
+    if (leadId && pdfAttachment?.base64) {
+      try {
+        await uploadLeadAttachment({
+          leadId,
+          pdfAttachment,
+          accessToken,
+          apiDomain
+        });
+      } catch (attachmentError) {
+        console.error('Anhängen des PDF an den Lead fehlgeschlagen:', attachmentError);
+      }
+    }
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         success: true,
         message: 'Lead erfolgreich in Zoho CRM erstellt',
-        leadId: zohoData.data?.[0]?.details?.id,
+        leadId,
         leadScore,
         priorityRank,
         leadCategory,
@@ -1267,6 +1293,38 @@ exports.handler = async (event) => {
         details: error.message,
       }),
     };
+  }
+
+async function uploadLeadAttachment({ leadId, pdfAttachment, accessToken, apiDomain }) {
+  const { base64, fileName, contentType } = pdfAttachment;
+  if (!base64) {
+    return;
+  }
+
+  const buffer = Buffer.from(base64, 'base64');
+  const form = new FormData();
+  form.append('file', buffer, {
+    filename: fileName || `balkonfuchs-projekt-${leadId}.pdf`,
+    contentType: contentType || 'application/pdf'
+  });
+
+  const response = await fetch(`${apiDomain}/crm/v6/Leads/${leadId}/Attachments`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Zoho-oauthtoken ${accessToken}`,
+      ...form.getHeaders(),
+    },
+    body: form,
+  });
+
+  const attachmentResult = await response.json();
+  console.log('Antwort von Zoho Attachment API:', attachmentResult);
+  if (!response.ok) {
+    throw new Error(`Zoho attachment error: ${JSON.stringify(attachmentResult)}`);
+  }
+
+  console.log('PDF-Anhang erfolgreich hinzugefügt:', attachmentResult);
+  return attachmentResult;
   }
 };
 

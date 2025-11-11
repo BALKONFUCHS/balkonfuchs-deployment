@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import { Building2, Users, TrendingUp, Shield, CheckCircle, ArrowRight, Mail, MapPin, FileText, Clock, Award, Target, Zap, Calculator, Home, Calendar, Star } from 'lucide-react';
 import Header from '../components/Header';
@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import ZohoSalesIQ from '../components/ZohoSalesIQ';
 import { submitToZoho, formatGewerbeData } from '../utils/zoho-submit';
 import PhoneInput from '../components/PhoneInput';
+import html2canvas from 'html2canvas';
 
 export default function GewerbeFunnel() {
   const [formData, setFormData] = useState({
@@ -60,6 +61,8 @@ export default function GewerbeFunnel() {
     { text: 'Gewerbeprojekte', color: 'from-yellow-400 to-orange-400' }
   ];
 
+  const summaryRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % texts.length);
@@ -108,8 +111,35 @@ export default function GewerbeFunnel() {
     try {
       console.log('Submitting Gewerbe data to Zoho:', formData);
       
+      let pdfAttachment = null;
+      if (summaryRef.current) {
+        try {
+          const canvas = await html2canvas(summaryRef.current, {
+            scale: 2,
+            useCORS: true,
+            logging: false,
+            backgroundColor: '#111827'
+          });
+          const dataUrl = canvas.toDataURL('image/png', 0.95);
+          const [meta, base64Data] = dataUrl.split(',');
+          const contentTypeMatch = meta?.match(/data:(.*);base64/);
+          if (base64Data) {
+            pdfAttachment = {
+              fileName: `balkonfuchs-gewerbe-projekt-${Date.now()}.png`,
+              contentType: contentTypeMatch?.[1] || 'image/png',
+              base64: base64Data
+            };
+          }
+        } catch (pdfError) {
+          console.error('Fehler beim Erstellen des Projekt-PDFs:', pdfError);
+        }
+      }
+
       // Daten für Zoho formatieren
-      const zohoData = formatGewerbeData(formData);
+      const zohoData: any = formatGewerbeData(formData);
+      if (pdfAttachment) {
+        zohoData.pdfAttachment = pdfAttachment;
+      }
       
       // An Zoho senden
       const result = await submitToZoho(zohoData, 'gewerbe');
@@ -136,6 +166,15 @@ export default function GewerbeFunnel() {
                          (formData.budgetrahmen !== '' || formData.budgetFreitext !== '');
   const canProceedStep4 = formData.firmenname && formData.ansprechpartner && formData.email && formData.telefon && formData.plz && formData.ort;
   const canSubmit = canProceedStep4 && formData.datenschutz && formData.haftungsausschluss;
+
+  const blobToDataUrl = (blob: Blob): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as string);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+  };
 
   return (
     <>
@@ -995,7 +1034,10 @@ export default function GewerbeFunnel() {
                   </div>
 
                   {/* Vollständige Zusammenfassung */}
-                  <div className="bg-gray-700/50 rounded-lg p-6 border border-gray-600">
+                  <div
+                    ref={summaryRef}
+                    className="bg-gray-700/50 rounded-lg p-6 border border-gray-600"
+                  >
                     <h3 className="text-xl font-bold text-white mb-6">📋 Vollständige Projektübersicht</h3>
                     
                     {/* Projekt-Details */}
