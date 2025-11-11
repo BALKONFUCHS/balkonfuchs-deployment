@@ -6,6 +6,78 @@ import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PhoneInput from '../components/PhoneInput';
+import { captureHtmlToPng, escapeHtml, SummaryRow, buildSectionHtml } from '../utils/summary-capture';
+
+interface PartnerSummaryContext {
+  timestamp: string;
+  companyRows: SummaryRow[];
+  contactRows: SummaryRow[];
+  capabilityRows: SummaryRow[];
+  documentRows: SummaryRow[];
+  lighthouseRows: SummaryRow[];
+  scoringRows: SummaryRow[];
+  referencesHtml: string;
+  statusLabel: string;
+  statusColor: string;
+  leadScoreValue: string;
+}
+
+const createPartnerSummaryHtml = (context: PartnerSummaryContext): string => {
+  const {
+    timestamp,
+    companyRows,
+    contactRows,
+    capabilityRows,
+    documentRows,
+    lighthouseRows,
+    scoringRows,
+    referencesHtml,
+    statusLabel,
+    statusColor,
+    leadScoreValue,
+  } = context;
+
+  return `
+    <div style="font-family: 'Inter', sans-serif; background: #111827; color: #F9FAFB; padding: 32px; border-radius: 20px; width: 100%; box-shadow: 0 25px 50px rgba(15,23,42,0.55);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:24px; margin-bottom:28px;">
+        <div>
+          <div style="font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:#A855F7; margin-bottom:8px;">Balkonfuchs Partnerbewerbung</div>
+          <h1 style="margin:0 0 6px; font-size:28px;">Partner-Zusammenfassung</h1>
+          <p style="margin:0; color:#9CA3AF; font-size:14px;">Erstellt am ${escapeHtml(timestamp)}</p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:13px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.08em;">Lead-Kategorie</div>
+          <div style="margin-top:6px; font-size:20px; font-weight:700; color:${statusColor}; text-transform:capitalize;">
+            ${escapeHtml(statusLabel)}
+          </div>
+          <div style="margin-top:6px; font-size:12px; color:#9CA3AF;">Lead Score: ${escapeHtml(leadScoreValue)}</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Unternehmen', companyRows)}
+        ${buildSectionHtml('Kontaktperson', contactRows)}
+      </div>
+
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Kompetenzen & Fokus', capabilityRows)}
+        ${buildSectionHtml('Dokumente & Qualifikationen', documentRows)}
+      </div>
+
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Leuchtturmprojekt', lighthouseRows)}
+        ${buildSectionHtml('Lead Bewertung', scoringRows)}
+      </div>
+
+      <div style="margin-top:24px;">
+        <div style="background: rgba(17,24,39,0.78); border: 1px solid rgba(168,85,247,0.35); border-radius: 16px; padding: 20px;">
+          <h2 style="margin: 0 0 16px; font-size: 18px; color: #A855F7;">Referenzprojekte</h2>
+          ${referencesHtml}
+        </div>
+      </div>
+    </div>
+  `;
+};
 
 const PartnerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -13,6 +85,7 @@ const PartnerFunnel = () => {
     partnerType: '',
     companyName: '',
     legalForm: '',
+    legalFormCustom: '',
     foundedYear: '',
     employeeCount: '',
     city: '',
@@ -326,7 +399,185 @@ const PartnerFunnel = () => {
     
     // Kontaktdaten aus Step 1 (companyProfile) verwenden, NICHT aus Step 7!
     // Step 7 zeigt nur Zusammenfassung, keine Kontaktdaten-Abfrage mehr
-    const submissionData = {
+    const partnerTypeLabels: Record<string, string> = {
+      starter: 'Starter-Paket',
+      professional: 'Professional-Paket',
+      enterprise: 'Enterprise-Paket',
+    };
+    const experienceLabels: Record<string, string> = {
+      beginner: 'Einsteiger (0-2 Jahre)',
+      experienced: 'Erfahren (3-5 Jahre)',
+      professional: 'Profi (6-10 Jahre)',
+      expert: 'Experte (10+ Jahre)',
+    };
+    const specialtiesLabels: Record<string, string> = {
+      vorstellbalkone: 'Vorstellbalkone',
+      anlehn_balkone: 'Anlehn-Balkone',
+      haenge_balkone: 'Hänge-Balkone',
+      balkontuerme: 'Balkontürme',
+      renovation: 'Balkonsanierung',
+      balkontreppen: 'Balkontreppen',
+      railings: 'Geländer & Absturzsicherung',
+      ganzglasgelaender: 'Rahmenlose Ganzglasgeländer',
+      glasueberdachungen: 'Glasüberdachungen',
+      balkonverglasungen: 'Komplette Balkonverglasungen',
+    };
+    const workingAreaLabels: Record<string, string> = {
+      local: 'Lokal (bis 25 km)',
+      regional: 'Regional (bis 50 km)',
+      state: 'Landesweit',
+      national: 'Deutschlandweit',
+    };
+    const insuranceLabels: Record<string, string> = {
+      full: 'Vollständig versichert',
+      partial: 'Teilweise versichert',
+      planning: 'Versicherung in Planung',
+    };
+    const documentLabels: Record<string, string> = {
+      businessLicense: 'Gewerbeschein',
+      insurance: 'Versicherungsnachweis',
+      masterCertificate: 'Meisterbrief',
+      diploma: 'Diplomzeugnis',
+      instructorLicense: 'Ausbilderschein',
+      references: 'Referenzen',
+      portfolio: 'Arbeitsproben',
+    };
+    const categoryColors: Record<string, string> = {
+      hot: '#F97316',
+      warm: '#FBBF24',
+      cold: '#60A5FA',
+    };
+
+    const documentsSelected = Object.entries(formData.documents || {})
+      .filter(([, value]) => Boolean(value))
+      .map(([key]) => documentLabels[key] || key);
+
+    const legalFormDisplay =
+      formData.legalForm === 'other'
+        ? formData.legalFormCustom || 'Sonstige Rechtsform'
+        : formData.legalForm || '-';
+
+    const referencesHtml = (() => {
+      if (!Array.isArray(formData.references) || formData.references.length === 0) {
+        return `<p style="margin:0; color:#9CA3AF; font-size:14px;">Keine Referenzen angegeben.</p>`;
+      }
+      const items = formData.references
+        .filter(ref => ref.description || ref.location || ref.year || ref.value)
+        .map(ref => {
+          const description = ref.description || 'Ohne Beschreibung';
+          const year = ref.year || 'Jahr unbekannt';
+          const location = ref.location || 'Ort unbekannt';
+          const value = ref.value || 'Wert nicht angegeben';
+          return `<li style="margin-bottom:8px;">
+            <span style="font-weight:600; color:#F9FAFB;">${escapeHtml(description)}</span>
+            <br />
+            <span style="color:#9CA3AF; font-size:13px;">${escapeHtml(year)} • ${escapeHtml(location)} • ${escapeHtml(value)}</span>
+          </li>`;
+        });
+      if (!items.length) {
+        return `<p style="margin:0; color:#9CA3AF; font-size:14px;">Keine Referenzen angegeben.</p>`;
+      }
+      return `<ul style="margin:0; padding-left:18px; color:#F9FAFB; font-size:14px;">${items.join('')}</ul>`;
+    })();
+
+    const specialtiesText = Array.isArray(formData.specialties) && formData.specialties.length
+      ? formData.specialties
+          .map(item => specialtiesLabels[item] || item)
+          .join(', ')
+      : 'Keine Angaben';
+
+    const documentRows: SummaryRow[] = [
+      {
+        label: 'Verfügbare Dokumente',
+        value: documentsSelected.length ? documentsSelected.join(', ') : 'Keine Dokumente ausgewählt',
+      },
+      {
+        label: 'Versicherungsstatus',
+        value: insuranceLabels[formData.insuranceStatus] || formData.insuranceStatus || '-',
+      },
+    ];
+
+    const capabilityRows: SummaryRow[] = [
+      { label: 'Partner-Paket', value: partnerTypeLabels[formData.partnerType] || formData.partnerType || '-' },
+      { label: 'Erfahrung', value: experienceLabels[formData.experience] || formData.experience || '-' },
+      { label: 'Spezialisierungen', value: specialtiesText },
+      { label: 'Arbeitsgebiet', value: workingAreaLabels[formData.workingArea] || formData.workingArea || '-' },
+      {
+        label: 'Mitarbeiterzahl',
+        value: formData.employeeCount || '-',
+      },
+    ];
+
+    const companyRows: SummaryRow[] = [
+      { label: 'Unternehmen', value: formData.companyName || '-' },
+      { label: 'Rechtsform', value: legalFormDisplay },
+      { label: 'Gründungsjahr', value: formData.foundedYear || '-' },
+      { label: 'Adresse', value: formData.address || '-' },
+      { label: 'PLZ / Stadt', value: formData.zipCode && formData.city ? `${formData.zipCode} ${formData.city}` : formData.zipCode || formData.city || '-' },
+      { label: 'Website', value: formData.website || '-' },
+    ];
+
+    const contactRows: SummaryRow[] = [
+      {
+        label: 'Ansprechpartner',
+        value: `${formData.contactPerson.firstName || ''} ${formData.contactPerson.lastName || ''}`.trim() || '-',
+      },
+      { label: 'Funktion', value: formData.contactPerson.function || formData.contact.position || '-' },
+      { label: 'E-Mail', value: formData.contactPerson.email || formData.contact.email || '-' },
+      { label: 'Telefon', value: formData.contactPerson.mobile || formData.contact.phone || '-' },
+    ];
+
+    const lighthouseRows: SummaryRow[] = [
+      { label: 'Projekt', value: formData.lighthouseProject.description || '-' },
+      { label: 'Ort', value: formData.lighthouseProject.location || '-' },
+      { label: 'Jahr', value: formData.lighthouseProject.year || '-' },
+      { label: 'Projektwert', value: formData.lighthouseProject.value || '-' },
+      { label: 'Besonderheit', value: formData.lighthouseProject.special || '-' },
+    ];
+
+    const leadScoreValue = leadScore.finalScore;
+    const scoringRows: SummaryRow[] = [
+      { label: 'Lead Score', value: leadScoreValue ?? '-' },
+      { label: 'Kategorie', value: leadScore.category ?? '-' },
+      { label: 'Priorität', value: leadScore.priority ?? '-' },
+      { label: 'Reaktionszeit', value: leadScore.responseTime ?? '-' },
+      { label: 'Qualifiziert', value: leadScore.qualified ? 'Ja' : 'Nein' },
+      { label: 'Nachkontakt nötig', value: leadScore.nachfrageErforderlich ? 'Ja' : 'Nein' },
+      { label: 'Basispunkte', value: leadScore.baseScore ?? '-' },
+      { label: 'Abzüge', value: leadScore.abzuege ?? '-' },
+      { label: 'Completion Bonus', value: leadScore.completionBonus ?? '-' },
+    ];
+
+    const category =
+      typeof leadScore.category === 'string' ? leadScore.category.toLowerCase() : String(leadScore.category || '');
+    const statusColor = categoryColors[category] ?? '#A855F7';
+    const statusLabel =
+      category && category.length
+        ? category.charAt(0).toUpperCase() + category.slice(1)
+        : 'Unbekannt';
+
+    const partnerSummaryContext: PartnerSummaryContext = {
+      timestamp: new Date().toLocaleString('de-DE'),
+      companyRows,
+      contactRows,
+      capabilityRows,
+      documentRows,
+      lighthouseRows,
+      scoringRows,
+      referencesHtml,
+      statusLabel,
+      statusColor,
+      leadScoreValue: leadScoreValue != null ? String(leadScoreValue) : '-',
+    };
+
+    const partnerSummaryHtml = createPartnerSummaryHtml(partnerSummaryContext);
+    const partnerAttachment = await captureHtmlToPng(partnerSummaryHtml, {
+      fileNamePrefix: 'balkonfuchs-partner',
+      width: 900,
+      backgroundColor: '#111827',
+    });
+
+    const submissionData: any = {
       contact: {
         salutation: '', // Wird nicht abgefragt auf Step 1
         firstName: formData.contactPerson.firstName || '',
@@ -378,6 +629,10 @@ const PartnerFunnel = () => {
         completionBonus: leadScore.completionBonus
       }
     };
+
+    if (partnerAttachment?.base64) {
+      submissionData.pdfAttachment = partnerAttachment;
+    }
 
     try {
       const response = await fetch('/.netlify/functions/submit-to-zoho', {

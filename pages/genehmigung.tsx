@@ -7,6 +7,70 @@ import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PhoneInput from '../components/PhoneInput';
+import { captureHtmlToPng, escapeHtml, SummaryRow, buildRowsHtml, buildSectionHtml } from '../utils/summary-capture';
+
+interface GenehmigungSummaryContext {
+  timestamp: string;
+  contactRows: SummaryRow[];
+  projectRows: SummaryRow[];
+  statusRows: SummaryRow[];
+  steps: string[];
+  leadRows: SummaryRow[];
+  statusColor: string;
+  statusLabel: string;
+}
+
+const createGenehmigungSummaryHtml = (context: GenehmigungSummaryContext): string => {
+  const { timestamp, contactRows, projectRows, statusRows, steps, leadRows, statusColor, statusLabel } = context;
+
+  const stepsHtml = steps?.length
+    ? `<ol style="margin:0; padding-left:20px; color:#F9FAFB; font-size:14px;">${steps
+        .map(step => `<li style="margin-bottom:6px;">${escapeHtml(step)}</li>`)
+        .join('')}</ol>`
+    : `<p style="margin:0; color:#9CA3AF; font-size:14px;">Keine nächsten Schritte angegeben.</p>`;
+
+  const leadScoreDisplay = leadRows?.[0]?.value ?? '-';
+
+  return `
+    <div style="font-family: 'Inter', sans-serif; background: #111827; color: #F9FAFB; padding: 32px; border-radius: 20px; width: 100%; box-shadow: 0 25px 50px rgba(15,23,42,0.55);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:24px; margin-bottom:28px;">
+        <div>
+          <div style="font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:#60A5FA; margin-bottom:8px;">Balkonfuchs Genehmigungscheck</div>
+          <h1 style="margin:0 0 6px; font-size:28px;">Projektzusammenfassung</h1>
+          <p style="margin:0; color:#9CA3AF; font-size:14px;">Erstellt am ${escapeHtml(timestamp)}</p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:13px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.08em;">Status</div>
+          <div style="margin-top:6px; font-size:20px; font-weight:700; color:${statusColor}; text-transform:capitalize;">
+            ${escapeHtml(statusLabel)}
+          </div>
+          <div style="margin-top:6px; font-size:12px; color:#9CA3AF;">Lead Score: ${escapeHtml(leadScoreDisplay ?? '-')}</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Kontakt', contactRows)}
+        ${buildSectionHtml('Projekt', projectRows)}
+      </div>
+
+      <div style="margin-top:24px;">
+        ${buildSectionHtml('Lead Bewertung', leadRows)}
+      </div>
+
+      <div style="margin-top:24px;">
+        <div style="background: rgba(17,24,39,0.78); border: 1px solid rgba(96,165,250,0.35); border-radius: 16px; padding: 20px;">
+          <h2 style="margin: 0 0 16px; font-size: 18px; color: #60A5FA;">Genehmigungsstatus</h2>
+          ${buildRowsHtml(statusRows)}
+          <div style="margin-top:16px;">
+            <div style="color:#9CA3AF; font-size:13px; margin-bottom:8px;">Nächste Schritte</div>
+            ${stepsHtml}
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
 
 const BALKONFUCHSGenehmigungscheckFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -146,8 +210,104 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
             genehmigungswahrscheinlichkeit: genehmigungScore.genehmigungswahrscheinlichkeit
           };
 
+          const ergebnis = getErgebnis();
+
+          const bundeslandName =
+            bundeslaender.find(b => b.id === formData.bundesland)?.name || formData.bundesland || '-';
+          const projekttypName =
+            projekttypen.find(p => p.id === formData.projekttyp)?.title || formData.projekttyp || '-';
+          const grenzabstandName =
+            grenzabstaende.find(g => g.id === formData.grenzabstand)?.title || formData.grenzabstand || '-';
+
+          const stepsList = Array.isArray(ergebnis?.naechsteSchritte)
+            ? (ergebnis?.naechsteSchritte as string[])
+            : [];
+          const statusColorMap: Record<string, string> = {
+            green: '#34D399',
+            red: '#F87171',
+            orange: '#FBBF24',
+          };
+          const statusColor = statusColorMap[ergebnis?.farbe ?? ''] ?? '#60A5FA';
+          const statusLabel = ergebnis?.status ? ergebnis.status.replace(/_/g, ' ') : 'Unbekannt';
+          const urgencyLabels: Record<string, string> = {
+            high: 'Hoch',
+            medium: 'Mittel',
+            low: 'Niedrig',
+          };
+
+          const contactRows: SummaryRow[] = [
+            { label: 'Vorname', value: formData.contact.firstName || '-' },
+            { label: 'Nachname', value: formData.contact.lastName || '-' },
+            { label: 'E-Mail', value: formData.contact.email || '-' },
+            { label: 'Telefon', value: formData.contact.phone || '-' },
+            { label: 'PLZ', value: formData.contact.zipCode || '-' },
+            { label: 'Newsletter', value: formData.contact.newsletter ? 'Ja' : 'Nein' },
+            { label: 'Datenschutz', value: formData.contact.privacy ? 'Bestätigt' : 'Offen' },
+          ];
+
+          const projectRows: SummaryRow[] = [
+            { label: 'Bundesland', value: bundeslandName },
+            { label: 'Projekttyp', value: projekttypName },
+            { label: 'Grundfläche (m²)', value: formData.groesse || '-' },
+            { label: 'Tiefe (m)', value: formData.tiefe || '-' },
+            { label: 'Grenzabstand', value: grenzabstandName },
+          ];
+
+          const statusRows: SummaryRow[] = [
+            { label: 'Verfahren', value: ergebnis?.verfahrenstyp ?? '-' },
+            { label: 'Grund', value: ergebnis?.grund ?? '-' },
+            { label: 'Kosten', value: ergebnis?.kosten ?? '-' },
+            { label: 'Dauer', value: ergebnis?.dauer ?? '-' },
+          ];
+
+          const estimatedValue = genehmigungScore.estimatedValue;
+          const formattedEstimatedValue =
+            typeof estimatedValue === 'number'
+              ? `${estimatedValue.toLocaleString('de-DE')} €`
+              : (estimatedValue as string) || '-';
+          const probability = genehmigungScore.genehmigungswahrscheinlichkeit;
+          const formattedProbability =
+            typeof probability === 'number'
+              ? `${probability}%`
+              : probability && probability !== ''
+              ? probability
+              : '-';
+
+          const responseTime = genehmigungScore.responseTime || (leadScore.followUpHours ? `${leadScore.followUpHours}h` : '-');
+
+          const leadRows: SummaryRow[] = [
+            { label: 'Gesamt-Score', value: leadScore.totalScore ?? genehmigungScore.totalScore ?? '-' },
+            { label: 'Kategorie', value: leadScore.category ?? genehmigungScore.category ?? '-' },
+            { label: 'Priorität', value: leadScore.priority ?? '-' },
+            {
+              label: 'Dringlichkeit',
+              value: urgencyLabels[leadScore.urgency ?? genehmigungScore.priority] ?? (leadScore.urgency || '-'),
+            },
+            { label: 'Genehmigungs-Wahrscheinlichkeit', value: formattedProbability },
+            { label: 'Geschätzter Projektwert', value: formattedEstimatedValue },
+            { label: 'Reaktionszeit', value: responseTime },
+          ];
+
+          const summaryContext: GenehmigungSummaryContext = {
+            timestamp: new Date().toLocaleString('de-DE'),
+            contactRows,
+            projectRows,
+            statusRows,
+            steps: stepsList,
+            leadRows,
+            statusColor,
+            statusLabel,
+          };
+
+          const summaryHtml = createGenehmigungSummaryHtml(summaryContext);
+          const pdfAttachment = await captureHtmlToPng(summaryHtml, {
+            fileNamePrefix: 'balkonfuchs-genehmigung',
+            width: 900,
+            backgroundColor: '#111827',
+          });
+
           // Prepare data for Zoho export
-          const exportData = {
+          const exportData: any = {
             // Kontaktdaten
             contact: {
               salutation: formData.contact.salutation,
@@ -171,7 +331,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
               groesse: formData.groesse,
               tiefe: formData.tiefe,
               grenzabstand: formData.grenzabstand,
-              ergebnis: getErgebnis(),
+              ergebnis,
               zipCode: formData.contact.zipCode
             },
             // Metadaten
@@ -203,6 +363,10 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
               mappedData: genehmigungScoringData // Für Debugging
             }
           };
+
+          if (pdfAttachment?.base64) {
+            exportData.pdfAttachment = pdfAttachment;
+          }
 
           // 1. Zoho-Integration
           let zohoResults = null;

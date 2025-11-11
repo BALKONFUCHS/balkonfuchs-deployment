@@ -6,7 +6,67 @@ import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import { calculatePlanerScore } from '../utils/planer-scoring';
 import { generatePDF, downloadPDF } from '../lib/pdf-generator';
+import { captureHtmlToPng, escapeHtml, SummaryRow, buildSectionHtml, buildRowsHtml } from '../utils/summary-capture';
 import PhoneInput from '../components/PhoneInput';
+interface PlanerSummaryContext {
+  timestamp: string;
+  contactRows: SummaryRow[];
+  projectRows: SummaryRow[];
+  configurationRows: SummaryRow[];
+  additionalRows: SummaryRow[];
+  scoringRows: SummaryRow[];
+  statusLabel: string;
+  statusColor: string;
+  leadScoreValue: string;
+}
+
+const createPlanerSummaryHtml = (context: PlanerSummaryContext): string => {
+  const {
+    timestamp,
+    contactRows,
+    projectRows,
+    configurationRows,
+    additionalRows,
+    scoringRows,
+    statusLabel,
+    statusColor,
+    leadScoreValue,
+  } = context;
+
+  return `
+    <div style="font-family: 'Inter', sans-serif; background: #111827; color: #F9FAFB; padding: 32px; border-radius: 20px; width: 100%; box-shadow: 0 25px 50px rgba(15,23,42,0.55);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:24px; margin-bottom:28px;">
+        <div>
+          <div style="font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:#F59E0B; margin-bottom:8px;">Balkonfuchs Planer</div>
+          <h1 style="margin:0 0 6px; font-size:28px;">Projektzusammenfassung</h1>
+          <p style="margin:0; color:#9CA3AF; font-size:14px;">Erstellt am ${escapeHtml(timestamp)}</p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:13px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.08em;">Lead-Kategorie</div>
+          <div style="margin-top:6px; font-size:20px; font-weight:700; color:${statusColor}; text-transform:capitalize;">
+            ${escapeHtml(statusLabel)}
+          </div>
+          <div style="margin-top:6px; font-size:12px; color:#9CA3AF;">Lead Score: ${escapeHtml(leadScoreValue)}</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Kontakt', contactRows)}
+        ${buildSectionHtml('Projektstatus', projectRows)}
+      </div>
+
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Konfiguration & Technik', configurationRows)}
+        ${buildSectionHtml('Zusatzinformationen', additionalRows)}
+      </div>
+
+      <div style="margin-top:24px;">
+        ${buildSectionHtml('Lead Bewertung & Empfehlungen', scoringRows)}
+      </div>
+    </div>
+  `;
+};
+
 const BalkonFuchsPlanerFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,6 +115,8 @@ const BalkonFuchsPlanerFunnel = () => {
       phone: '',
       zipCode: '',
       contactPreference: '',
+      address: '',
+      city: '',
       newsletter: false,
       privacy: false
     }
@@ -1016,7 +1078,12 @@ const BalkonFuchsPlanerFunnel = () => {
                     ? 'border-orange-500 bg-orange-500/10 shadow-lg'
                     : 'border-gray-700 bg-gray-800/50 hover:border-purple-500/50'
                 }`}
-                onClick={() => setFormData(prev => ({ ...prev, balconyCount: count === 'mehr' ? 6 : count }))}
+                onClick={() =>
+                  setFormData(prev => ({
+                    ...prev,
+                    balconyCount: count === 'mehr' ? 6 : Number(count),
+                  }))
+                }
               >
                 <div className="text-center">
                   <div className="text-2xl font-bold text-white">
@@ -1808,8 +1875,247 @@ const BalkonFuchsPlanerFunnel = () => {
           beratungsReadiness: planerScore.beratungsReadiness
         };
 
+        const salutationLabels: Record<string, string> = {
+          herr: 'Herr',
+          frau: 'Frau',
+          divers: 'Divers',
+        };
+        const projectStatusLabels: Record<string, string> = {
+          idea: 'Erste Orientierung',
+          feasibility: 'Machbarkeitsprüfung',
+          submitted: 'Bauantrag eingereicht',
+          approved: 'Genehmigung vorhanden',
+          seeking: 'Bereit für Angebote',
+        };
+        const timeframeLabels: Record<string, string> = {
+          asap: 'So schnell wie möglich',
+          '3months': 'In den nächsten 3 Monaten',
+          '6months': 'In den nächsten 6 Monaten',
+          flexible: 'Flexibel',
+          unclear: 'Noch offen',
+        };
+        const ownershipLabels: Record<string, string> = {
+          owner: 'Eigentum',
+          condo: 'Eigentümergemeinschaft',
+          manager: 'Verwaltung',
+          tenant: 'Miete',
+        };
+        const balconyTypeLabels: Record<string, string> = {
+          hanging: 'Hängebalkon',
+          standing: 'Vorstellbalkon',
+          leaning: 'Anlehnbalkon',
+          terrace: 'Hochterrasse',
+        };
+        const structureLabels: Record<string, string> = {
+          aluminum: 'Aluminium',
+          steel: 'Stahl',
+          wood: 'Holz',
+          concrete: 'Beton',
+        };
+        const wallMaterialLabels: Record<string, string> = {
+          masonry: 'Mauerwerk',
+          concrete: 'Beton',
+          wood: 'Holz',
+          steel: 'Stahl',
+          hlz: 'Hochlochziegel',
+        };
+        const insulationLabels: Record<string, string> = {
+          existing: 'Vorhanden',
+          planned: 'Geplant',
+          none: 'Keine',
+        };
+        const balconyDoorLabels: Record<string, string> = {
+          existing: 'Vorhanden',
+          required: 'Benötigt',
+          provided: 'Bauseitig',
+        };
+        const balconyFloorLabels: Record<string, string> = {
+          wood: 'Holz',
+          plastic: 'Kunststoff (WPC)',
+          aluminum: 'Aluminium',
+          stone: 'Steinbelag',
+        };
+        const railingLabels: Record<string, string> = {
+          full_glass: 'Ganzglas',
+          glass: 'Glas',
+          bars: 'Stab',
+          closed: 'Geschlossen',
+        };
+        const surfaceLabels: Record<string, string> = {
+          stainless_steel: 'Edelstahl',
+          powder_coated: 'Pulverbeschichtet',
+          galvanized: 'Verzinkt',
+        };
+        const documentsLabels: Record<string, string> = {
+          floorplan: 'Grundriss',
+          structural: 'Statik',
+          permit: 'Genehmigung',
+          planning: 'Planungsunterlagen',
+          none: 'Keine Unterlagen',
+        };
+        const demolitionLabels: Record<string, string> = {
+          balcony: 'Alter Balkon',
+          railing: 'Geländer',
+          bruestung: 'Brüstung',
+          heater: 'Heizkörper',
+          window: 'Fenster',
+          fence: 'Gartenzaun',
+          tree: 'Baum',
+          shrub: 'Strauch',
+          none: 'Kein Rückbau',
+        };
+        const offerRegionLabels: Record<string, string> = {
+          local: 'Lokal (bis 25 km)',
+          regional: 'Regional (bis 50 km)',
+          state: 'Landesweit',
+          national: 'Deutschlandweit',
+        };
+        const offerCountLabels: Record<string, string> = {
+          '1': '1 Anbieter',
+          '2': '2 Anbieter',
+          '3': '3 Anbieter',
+          '4': '4 Anbieter',
+          '5': '5 Anbieter',
+          mehr: 'Mehr als 5',
+        };
+        const contactPreferenceLabels: Record<string, string> = {
+          email: 'E-Mail',
+          phone: 'Telefon',
+          both: 'E-Mail & Telefon',
+        };
+        const budgetLabels: Record<string, string> = {
+          '10k': 'Bis 10.000 €',
+          '10_20k': '10.000 € - 20.000 €',
+          '20_30k': '20.000 € - 30.000 €',
+          '30k_plus': 'Über 30.000 €',
+        };
+
+        const documentsList = Array.isArray(formData.documents)
+          ? formData.documents.map(item => documentsLabels[item] || item)
+          : [];
+        const demolitionList = Array.isArray(formData.demolition)
+          ? formData.demolition.map(item => demolitionLabels[item] || item)
+          : [];
+
+        const contactRows: SummaryRow[] = [
+          { label: 'Anrede', value: salutationLabels[formData.contact.salutation] || formData.contact.salutation || '-' },
+          { label: 'Vorname', value: formData.contact.firstName || '-' },
+          { label: 'Nachname', value: formData.contact.lastName || '-' },
+          { label: 'E-Mail', value: formData.contact.email || '-' },
+          { label: 'Telefon', value: formData.contact.phone || '-' },
+          { label: 'PLZ', value: formData.contact.zipCode || '-' },
+          { label: 'Adresse', value: formData.contact.address || '-' },
+          { label: 'Ort', value: formData.contact.city || '-' },
+          {
+            label: 'Kontaktpräferenz',
+            value: contactPreferenceLabels[formData.contact.contactPreference] || formData.contact.contactPreference || '-',
+          },
+          { label: 'Newsletter', value: formData.contact.newsletter ? 'Ja' : 'Nein' },
+          { label: 'Datenschutz', value: formData.contact.privacy ? 'Bestätigt' : 'Offen' },
+        ];
+
+        const sizeText =
+          formData.size?.width && formData.size?.depth
+            ? `${formData.size.width} × ${formData.size.depth} m`
+            : '-';
+
+        const projectRows: SummaryRow[] = [
+          { label: 'Projektstatus', value: projectStatusLabels[formData.projectStatus] || formData.projectStatus || '-' },
+          { label: 'Zeitrahmen', value: timeframeLabels[formData.timeframe] || formData.timeframe || '-' },
+          { label: 'Eigentumsverhältnis', value: ownershipLabels[formData.ownership] || formData.ownership || '-' },
+          { label: 'Balkontyp', value: balconyTypeLabels[formData.balconyType] || formData.balconyType || '-' },
+          { label: 'Größe', value: sizeText },
+          { label: 'Anzahl Balkone', value: formData.balconyCount != null ? String(formData.balconyCount) : '-' },
+          { label: 'Budget', value: budgetLabels[formData.budget] || formData.budget || '-' },
+          { label: 'Geschosshöhe', value: formData.floor || '-' },
+          { label: 'Barrierefreiheit', value: formData.accessibility || '-' },
+        ];
+
+        const configurationRows: SummaryRow[] = [
+          { label: 'Tragkonstruktion', value: structureLabels[formData.structureMaterial] || formData.structureMaterial || '-' },
+          { label: 'Wandmaterial', value: wallMaterialLabels[formData.wallMaterial] || formData.wallMaterial || '-' },
+          { label: 'Dämmung', value: insulationLabels[formData.insulation] || formData.insulation || '-' },
+          { label: 'Unterkellerung', value: formData.basement || '-' },
+          { label: 'Balkontür', value: balconyDoorLabels[formData.balconyDoor] || formData.balconyDoor || '-' },
+          { label: 'Bodenbelag', value: balconyFloorLabels[formData.balconyFloor] || formData.balconyFloor || '-' },
+          { label: 'Geländer', value: railingLabels[formData.railing] || formData.railing || '-' },
+          { label: 'Oberfläche', value: surfaceLabels[formData.surface] || formData.surface || '-' },
+          {
+            label: 'Geplante Unterlagen',
+            value: documentsList.length ? documentsList.join(', ') : 'Keine Angaben',
+          },
+          {
+            label: 'Rückbau',
+            value: demolitionList.length ? demolitionList.join(', ') : 'Keine Angaben',
+          },
+        ];
+
+        const additionalRows: SummaryRow[] = [
+          {
+            label: 'Angebotsregion',
+            value: offerRegionLabels[formData.offerPreferences?.region] || formData.offerPreferences?.region || '-',
+          },
+          {
+            label: 'Anzahl Anbieter',
+            value: offerCountLabels[String(formData.offerPreferences?.count)] || formData.offerPreferences?.count || '-',
+          },
+          {
+            label: 'Besondere Wünsche',
+            value: formData.additionalInfo ? formData.additionalInfo : 'Keine Angaben',
+          },
+        ];
+
+        const estimatedValue =
+          typeof planerScore.estimatedValue === 'number'
+            ? `${planerScore.estimatedValue.toLocaleString('de-DE')} €`
+            : planerScore.estimatedValue || '-';
+
+        const followUp =
+          leadScore.followUpHours != null ? `${leadScore.followUpHours} Stunden` : planerScore.responseTime || '-';
+
+        const scoringRows: SummaryRow[] = [
+          { label: 'Gesamt-Score', value: leadScore.totalScore ?? planerScore.finalScore ?? '-' },
+          { label: 'Kategorie', value: leadScore.category ?? planerScore.category ?? '-' },
+          { label: 'Priorität', value: leadScore.priority ?? '-' },
+          { label: 'Empfohlene Aktion', value: planerScore.action || '-' },
+          { label: 'Antwortzeit', value: planerScore.responseTime || '-' },
+          { label: 'Geschätzter Projektwert', value: estimatedValue },
+          { label: 'Beratungsbereitschaft', value: planerScore.beratungsReadiness || '-' },
+          { label: 'Follow-up Fenster', value: followUp },
+        ];
+
+        const categoryColors: Record<string, string> = {
+          hot: '#F97316',
+          warm: '#FBBF24',
+          cold: '#60A5FA',
+        };
+        const statusLabel =
+          leadScore.category && typeof leadScore.category === 'string'
+            ? leadScore.category.charAt(0).toUpperCase() + leadScore.category.slice(1)
+            : 'Unbekannt';
+        const statusColor = categoryColors[leadScore.category ?? ''] ?? '#F97316';
+
+        const summaryContext: PlanerSummaryContext = {
+          timestamp: new Date().toLocaleString('de-DE'),
+          contactRows,
+          projectRows,
+          configurationRows,
+          additionalRows,
+          scoringRows,
+          statusLabel,
+          statusColor,
+          leadScoreValue: leadScore.totalScore != null ? String(leadScore.totalScore) : '-',
+        };
+
+        const plannerSummaryHtml = createPlanerSummaryHtml(summaryContext);
+        const plannerAttachment = await captureHtmlToPng(plannerSummaryHtml, {
+          fileNamePrefix: 'balkonfuchs-planer',
+          width: 900,
+          backgroundColor: '#111827',
+        });
+
         // Prepare data for Zoho export
-        const exportData = {
+        const exportData: any = {
           // Kontaktdaten
           contact: {
             salutation: formData.contact.salutation,
@@ -1889,6 +2195,10 @@ const BalkonFuchsPlanerFunnel = () => {
             mappedData: planerScoringData // Für Debugging
           }
         };
+
+        if (plannerAttachment?.base64) {
+          exportData.pdfAttachment = plannerAttachment;
+        }
 
         // Export to Zoho via API
         console.log('Exporting to Zoho:', exportData);

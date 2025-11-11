@@ -4,6 +4,52 @@ import { ArrowLeft, ArrowRight, Mail, Menu, Check } from 'lucide-react';
 import { LEAD_SCORING_FUNCTIONS } from '../utils/balkon-lead-scoring';
 import ZohoSalesIQ from '../components/ZohoSalesIQ.js';
 import PhoneInput from '../components/PhoneInput';
+import { captureHtmlToPng, escapeHtml, SummaryRow, buildSectionHtml } from '../utils/summary-capture';
+
+interface ExpressSummaryContext {
+  timestamp: string;
+  contactRows: SummaryRow[];
+  projectRows: SummaryRow[];
+  preferenceRows: SummaryRow[];
+  scoringRows: SummaryRow[];
+  statusLabel: string;
+  statusColor: string;
+  leadScoreValue: string;
+}
+
+const createExpressSummaryHtml = (context: ExpressSummaryContext): string => {
+  const { timestamp, contactRows, projectRows, preferenceRows, scoringRows, statusLabel, statusColor, leadScoreValue } =
+    context;
+
+  return `
+    <div style="font-family: 'Inter', sans-serif; background: #111827; color: #F9FAFB; padding: 32px; border-radius: 20px; width: 100%; box-shadow: 0 25px 50px rgba(15,23,42,0.55);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:24px; margin-bottom:28px;">
+        <div>
+          <div style="font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:#34D399; margin-bottom:8px;">Balkonfuchs Express-Angebot</div>
+          <h1 style="margin:0 0 6px; font-size:28px;">Projektzusammenfassung</h1>
+          <p style="margin:0; color:#9CA3AF; font-size:14px;">Erstellt am ${escapeHtml(timestamp)}</p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:13px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.08em;">Lead-Kategorie</div>
+          <div style="margin-top:6px; font-size:20px; font-weight:700; color:${statusColor}; text-transform:capitalize;">
+            ${escapeHtml(statusLabel)}
+          </div>
+          <div style="margin-top:6px; font-size:12px; color:#9CA3AF;">Lead Score: ${escapeHtml(leadScoreValue)}</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Kontakt', contactRows)}
+        ${buildSectionHtml('Projektübersicht', projectRows)}
+      </div>
+
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Angebotspräferenzen', preferenceRows)}
+        ${buildSectionHtml('Lead Bewertung', scoringRows)}
+      </div>
+    </div>
+  `;
+};
 
 const BALKONFUCHSExpressAngebotFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -850,27 +896,184 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
         followUpHours: totalScore >= 80 ? 4 : totalScore >= 60 ? 12 : 24
       };
 
+      const approvalLabels: Record<string, string> = {
+        approved: 'Genehmigung liegt vor',
+        pending: 'Genehmigung beantragt',
+        not_applied: 'Noch nicht beantragt',
+      };
+      const timeframeLabels: Record<string, string> = {
+        urgent: 'Sehr dringend (2-4 Wochen)',
+        medium: 'Mittlere Dringlichkeit (1-3 Monate)',
+        flexible: 'Flexibel (3-6 Monate)',
+      };
+      const projectLabels: Record<string, string> = {
+        new_building: 'Neubau',
+        renovation: 'Renovierung',
+        extension: 'Anbau',
+      };
+      const budgetLabels: Record<string, string> = {
+        high: 'Höheres Budget (15.000€+)',
+        medium: 'Mittleres Budget (8.000€-15.000€)',
+        standard: 'Standard-Budget (5.000€-8.000€)',
+      };
+      const balconyTypeLabels: Record<string, string> = {
+        vorstellbalkon: 'Vorstellbalkon',
+        haengebalkon: 'Hängebalkon',
+        anbaubalkon: 'Anbaubalkon',
+        loggia: 'Loggia',
+        terrasse: 'Terrasse',
+      };
+      const offerRegionLabels: Record<string, string> = {
+        local: 'Lokal (bis 25 km)',
+        regional: 'Regional (bis 50 km)',
+        national: 'Deutschlandweit',
+      };
+      const offerCountLabels: Record<string, string> = {
+        '1': '1 Angebot',
+        '2': '2 Angebote',
+        '3': '3 Angebote',
+        mehr: 'Mehr als 3',
+      };
+      const contactPreferenceLabels: Record<string, string> = {
+        email: 'E-Mail',
+        phone: 'Telefon',
+        both: 'E-Mail & Telefon',
+      };
+      const urgencyLabels: Record<string, string> = {
+        premium: 'Express',
+        priority: 'Express',
+        standard: 'Standard',
+      };
+      const leadCategoryColors: Record<string, string> = {
+        hot: '#F97316',
+        warm: '#FBBF24',
+        cold: '#60A5FA',
+      };
+
+      const executionList = Array.isArray(formData.execution) ? formData.execution : [];
+      const executionText = executionList.length ? executionList.join(', ') : 'Keine Angaben';
+
+      const balconySize =
+        formData.balconyDetails?.size?.width && formData.balconyDetails?.size?.depth
+          ? `${formData.balconyDetails.size.width} × ${formData.balconyDetails.size.depth} m`
+          : '-';
+
+      const contactRows: SummaryRow[] = [
+        { label: 'Anrede', value: formData.contact.salutation || '-' },
+        { label: 'Vorname', value: formData.contact.firstName || '-' },
+        { label: 'Nachname', value: formData.contact.lastName || '-' },
+        { label: 'E-Mail', value: formData.contact.email || '-' },
+        { label: 'Telefon', value: formData.contact.phone || '-' },
+        { label: 'Adresse', value: formData.contact.address || '-' },
+        { label: 'Ort', value: formData.contact.city || '-' },
+        { label: 'PLZ', value: formData.contact.zipCode || '-' },
+        {
+          label: 'Kontaktpräferenz',
+          value: contactPreferenceLabels[formData.contactPreference] || formData.contactPreference || '-',
+        },
+      ];
+
+      const projectRows: SummaryRow[] = [
+        { label: 'Genehmigungsstatus', value: approvalLabels[formData.approvalStatus] || formData.approvalStatus || '-' },
+        { label: 'Zeitplan', value: timeframeLabels[formData.timeframe] || formData.timeframe || '-' },
+        { label: 'Projekttyp', value: projectLabels[formData.projectData] || formData.projectData || '-' },
+        { label: 'Budget', value: budgetLabels[formData.budget] || formData.budget || '-' },
+        {
+          label: 'Balkontyp',
+          value:
+            balconyTypeLabels[formData.balconyDetails?.type] || formData.balconyDetails?.type || 'Nicht angegeben',
+        },
+        { label: 'Maße', value: balconySize },
+        {
+          label: 'Anzahl Balkone',
+          value: formData.balconyDetails?.count != null ? String(formData.balconyDetails.count) : '-',
+        },
+        { label: 'Ausführung', value: executionText },
+        {
+          label: 'Zusätzliche Informationen',
+          value: formData.additionalInfo || 'Keine Angaben',
+        },
+      ];
+
+      const preferenceRows: SummaryRow[] = [
+        {
+          label: 'Angebotsregion',
+          value: offerRegionLabels[formData.offerPreferences?.region] || formData.offerPreferences?.region || '-',
+        },
+        {
+          label: 'Anzahl Angebote',
+          value: offerCountLabels[formData.offerPreferences?.count] || formData.offerPreferences?.count || '-',
+        },
+        {
+          label: 'Service-Level',
+          value: urgencyLabels[urgencyLevel] || urgencyLevel,
+        },
+      ];
+
+      const scoringRows: SummaryRow[] = [
+        { label: 'Lead Score', value: leadScore.totalScore ?? '-' },
+        { label: 'Kategorie', value: leadScore.category ?? '-' },
+        { label: 'Priorität', value: leadScore.priority ?? '-' },
+        { label: 'Dringlichkeit', value: leadScore.urgency ?? '-' },
+        { label: 'Komplexität', value: leadScore.complexity ?? '-' },
+        { label: 'Budget', value: leadScore.budget ?? '-' },
+        { label: 'Zeitleiste', value: leadScore.timeline ?? '-' },
+        {
+          label: 'Follow-up (Std.)',
+          value: leadScore.followUpHours != null ? `${leadScore.followUpHours} Stunden` : '-',
+        },
+      ];
+
+      const statusLabel =
+        leadScore.category && typeof leadScore.category === 'string'
+          ? leadScore.category.charAt(0).toUpperCase() + leadScore.category.slice(1)
+          : 'Unbekannt';
+      const statusColor = leadCategoryColors[leadScore.category ?? ''] ?? '#34D399';
+
+      const summaryContext: ExpressSummaryContext = {
+        timestamp: new Date().toLocaleString('de-DE'),
+        contactRows,
+        projectRows,
+        preferenceRows,
+        scoringRows,
+        statusLabel,
+        statusColor,
+        leadScoreValue: leadScore.totalScore != null ? String(leadScore.totalScore) : '-',
+      };
+
+      const expressSummaryHtml = createExpressSummaryHtml(summaryContext);
+      const expressAttachment = await captureHtmlToPng(expressSummaryHtml, {
+        fileNamePrefix: 'balkonfuchs-express',
+        width: 900,
+        backgroundColor: '#111827',
+      });
+
       // Export to Zoho
+      const payload: any = {
+        funnel: 'express-angebot',
+        data: formData,
+        urgencyLevel,
+        funnelType: 'Express-Angebot',
+        _internalScoring: {
+          leadScore: leadScore.totalScore,
+          category: leadScore.category,
+          priority: leadScore.priority,
+          urgency: leadScore.urgency,
+          complexity: leadScore.complexity,
+          budget: leadScore.budget,
+          timeline: leadScore.timeline,
+          followUpHours: leadScore.followUpHours,
+        },
+      };
+
+      if (expressAttachment?.base64) {
+        payload.pdfAttachment = expressAttachment;
+      }
+
       const response = await fetch('/.netlify/functions/submit-to-zoho', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          funnel: 'express-angebot',
-          data: formData,
-          urgencyLevel,
-          funnelType: 'Express-Angebot',
-          // LeadScoring-Daten
-          _internalScoring: {
-            leadScore: leadScore.totalScore,
-            category: leadScore.category,
-            priority: leadScore.priority,
-            urgency: leadScore.urgency,
-            complexity: leadScore.complexity,
-            budget: leadScore.budget,
-            timeline: leadScore.timeline,
-            followUpHours: leadScore.followUpHours
-          }
-        })
+        body: JSON.stringify(payload),
       });
 
       if (response.ok) {
