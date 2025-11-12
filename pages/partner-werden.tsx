@@ -428,6 +428,11 @@ const PartnerFunnel = () => {
       state: 'Landesweit',
       national: 'Deutschlandweit',
     };
+    const preferredContactLabels: Record<string, string> = {
+      email: 'E-Mail',
+      phone: 'Telefon',
+      both: 'E-Mail & Telefon',
+    };
     const insuranceLabels: Record<string, string> = {
       full: 'Vollständig versichert',
       partial: 'Teilweise versichert',
@@ -486,14 +491,32 @@ const PartnerFunnel = () => {
           .join(', ')
       : 'Keine Angaben';
 
+    const additionalDocumentLabels = documentsSelected.filter(label =>
+      !['Versicherungsnachweis', 'Referenzen', 'Arbeitsproben'].includes(label)
+    );
+
     const documentRows: SummaryRow[] = [
-      {
-        label: 'Verfügbare Dokumente',
-        value: documentsSelected.length ? documentsSelected.join(', ') : 'Keine Dokumente ausgewählt',
-      },
       {
         label: 'Versicherungsstatus',
         value: insuranceLabels[formData.insuranceStatus] || formData.insuranceStatus || '-',
+      },
+      {
+        label: 'Versicherungsnachweis',
+        value: formData.documents?.insurance ? 'Vorhanden' : 'Fehlt',
+      },
+      {
+        label: 'Referenzen (Dokumente)',
+        value: formData.documents?.references ? 'Vorhanden' : 'Fehlt',
+      },
+      {
+        label: 'Portfolio / Arbeitsproben',
+        value: formData.documents?.portfolio ? 'Vorhanden' : 'Fehlt',
+      },
+      {
+        label: 'Weitere Dokumente',
+        value: additionalDocumentLabels.length
+          ? additionalDocumentLabels.join(', ')
+          : 'Keine weiteren Dokumente ausgewählt',
       },
     ];
 
@@ -517,14 +540,34 @@ const PartnerFunnel = () => {
       { label: 'Website', value: formData.website || '-' },
     ];
 
+    const contactSalutation = formData.contact?.salutation || '';
+    const contactFirstName = formData.contact?.firstName || formData.contactPerson.firstName || '';
+    const contactLastName = formData.contact?.lastName || formData.contactPerson.lastName || '';
+    const contactPosition = formData.contact?.position || formData.contactPerson.function || '';
+    const contactEmail = formData.contact?.email || formData.contactPerson.email || '';
+    const contactPhone = formData.contact?.phone || formData.contactPerson.mobile || '';
+    const contactMobile = formData.contact?.mobile || formData.contactPerson.mobile || '';
+    const preferredContactValue = formData.contact?.preferredContact || '';
+    const preferredContactDisplay =
+      preferredContactValue && preferredContactLabels[preferredContactValue]
+        ? preferredContactLabels[preferredContactValue]
+        : preferredContactValue || 'Telefon';
+
     const contactRows: SummaryRow[] = [
       {
-        label: 'Ansprechpartner',
-        value: `${formData.contactPerson.firstName || ''} ${formData.contactPerson.lastName || ''}`.trim() || '-',
+        label: 'Anrede',
+        value: contactSalutation || '-',
       },
-      { label: 'Funktion', value: formData.contactPerson.function || formData.contact.position || '-' },
-      { label: 'E-Mail', value: formData.contactPerson.email || formData.contact.email || '-' },
-      { label: 'Telefon', value: formData.contactPerson.mobile || formData.contact.phone || '-' },
+      {
+        label: 'Name',
+        value: `${contactFirstName} ${contactLastName}`.trim() || '-',
+      },
+      { label: 'Funktion', value: contactPosition || '-' },
+      { label: 'E-Mail', value: contactEmail || '-' },
+      { label: 'Telefon', value: contactPhone || '-' },
+      { label: 'Mobil', value: contactMobile || '-' },
+      { label: 'Bevorzugter Kontaktweg', value: preferredContactDisplay || '-' },
+      { label: 'Datenschutz bestätigt', value: formData.contact?.privacy ? 'Ja' : 'Nein' },
     ];
 
     const lighthouseRows: SummaryRow[] = [
@@ -579,15 +622,15 @@ const PartnerFunnel = () => {
 
     const submissionData: any = {
       contact: {
-        salutation: '', // Wird nicht abgefragt auf Step 1
-        firstName: formData.contactPerson.firstName || '',
-        lastName: formData.contactPerson.lastName || '',
-        email: formData.contactPerson.email || '',
-        phone: formData.contactPerson.mobile || '', // mobile wird als phone verwendet
-        mobile: formData.contactPerson.mobile || '',
-        position: formData.contactPerson.function || '',
-        preferredContact: 'phone', // Standard, da mobile auf Step 1 abgefragt wird
-        privacy: true // Wird als akzeptiert angesehen, da auf Step 1 Teil des Profils
+        salutation: contactSalutation || '',
+        firstName: contactFirstName || '',
+        lastName: contactLastName || '',
+        email: contactEmail || '',
+        phone: contactPhone || '',
+        mobile: contactMobile || '',
+        position: contactPosition || '',
+        preferredContact: preferredContactValue || 'phone',
+        privacy: Boolean(formData.contact?.privacy)
       },
       funnel: {
         type: 'partner',
@@ -1569,136 +1612,253 @@ const PartnerFunnel = () => {
     );
   };
 
-  const renderContactForm = () => (
-    <div className="space-y-8">
-      <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold text-white">Ihre Kontaktdaten</h2>
-        <p className="text-lg text-orange-400 bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700">
-          🤝 Abschließend benötigen wir Ihre Kontaktdaten für die weitere Bearbeitung
-        </p>
-      </div>
+  const renderContactForm = () => {
+    const preferredContactMap: Record<string, string> = {
+      email: 'E-Mail',
+      phone: 'Telefon',
+      both: 'E-Mail & Telefon'
+    };
 
-      <div className="grid gap-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <select
-            value={formData.contact.salutation}
-            onChange={(e) => handleContactChange('salutation', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-          >
-            <option value="">Anrede wählen *</option>
-            <option value="Herr">Herr</option>
-            <option value="Frau">Frau</option>
-            <option value="Divers">Divers</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Vorname *"
-            value={formData.contact.firstName}
-            onChange={(e) => handleContactChange('firstName', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-          />
-          <input
-            type="text"
-            placeholder="Nachname *"
-            value={formData.contact.lastName}
-            onChange={(e) => handleContactChange('lastName', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-          />
+    const specialtiesLabels: Record<string, string> = {
+      vorstellbalkone: 'Vorstellbalkone',
+      anlehn_balkone: 'Anlehn-Balkone',
+      haenge_balkone: 'Hänge-Balkone',
+      balkontuerme: 'Balkontürme',
+      renovation: 'Balkonsanierung',
+      balkontreppen: 'Balkontreppen',
+      railings: 'Geländer & Absturzsicherung',
+      ganzglasgelaender: 'Rahmenlose Ganzglasgeländer',
+      glasueberdachungen: 'Glasüberdachungen',
+      balkonverglasungen: 'Komplette Balkonverglasungen'
+    };
+
+    const documentLabels: Record<string, string> = {
+      businessLicense: 'Gewerbeschein',
+      insurance: 'Versicherungsnachweis',
+      masterCertificate: 'Meisterbrief',
+      diploma: 'Diplomzeugnis',
+      instructorLicense: 'Ausbilderschein',
+      references: 'Referenzen',
+      portfolio: 'Arbeitsproben'
+    };
+
+    const insuranceStatusLabel = formData.insuranceStatus === 'full'
+      ? 'Vollständig versichert'
+      : formData.insuranceStatus === 'partial'
+        ? 'Teilweise versichert'
+        : formData.insuranceStatus === 'planning'
+          ? 'Versicherung in Planung'
+          : 'Nicht angegeben';
+
+    const specialtyList = Array.isArray(formData.specialties) && formData.specialties.length
+      ? formData.specialties.map((item) => specialtiesLabels[item] || item)
+      : ['Keine Angaben'];
+
+    const selectedDocuments = Object.entries(formData.documents || {})
+      .filter(([, value]) => Boolean(value))
+      .map(([key]) => documentLabels[key] || key);
+
+    const additionalDocuments = selectedDocuments.filter(label =>
+      !['Versicherungsnachweis', 'Referenzen', 'Arbeitsproben'].includes(label)
+    );
+
+    const referencesList = Array.isArray(formData.references)
+      ? formData.references.filter(ref => ref.description || ref.location || ref.year || ref.value)
+      : [];
+
+    const preferredContactDisplay = formData.contact.preferredContact
+      ? preferredContactMap[formData.contact.preferredContact] || formData.contact.preferredContact
+      : 'Nicht angegeben';
+
+    const contactName = `${formData.contact.salutation ? `${formData.contact.salutation} ` : ''}${(formData.contact.firstName || formData.contactPerson.firstName || '')} ${(formData.contact.lastName || formData.contactPerson.lastName || '')}`.trim();
+
+    return (
+      <div className="space-y-8">
+        <div className="text-center space-y-4">
+          <h2 className="text-3xl font-bold text-white">Ihre Kontaktdaten</h2>
+          <p className="text-lg text-orange-400 bg-gray-800/50 backdrop-blur-sm p-4 rounded-xl border border-gray-700">
+            🤝 Abschließend benötigen wir Ihre Kontaktdaten für die weitere Bearbeitung
+          </p>
         </div>
 
-        <input
-          type="text"
-          placeholder="Position im Unternehmen"
-          value={formData.contact.position}
-          onChange={(e) => handleContactChange('position', e.target.value)}
-          className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
-        />
+        <div className="grid gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <select
+              value={formData.contact.salutation}
+              onChange={(e) => handleContactChange('salutation', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            >
+              <option value="">Anrede wählen *</option>
+              <option value="Herr">Herr</option>
+              <option value="Frau">Frau</option>
+              <option value="Divers">Divers</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Vorname *"
+              value={formData.contact.firstName}
+              onChange={(e) => handleContactChange('firstName', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            />
+            <input
+              type="text"
+              placeholder="Nachname *"
+              value={formData.contact.lastName}
+              onChange={(e) => handleContactChange('lastName', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            />
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
-            type="email"
-            placeholder="E-Mail-Adresse *"
-            value={formData.contact.email}
-            onChange={(e) => handleContactChange('email', e.target.value)}
+            type="text"
+            placeholder="Position im Unternehmen"
+            value={formData.contact.position}
+            onChange={(e) => handleContactChange('position', e.target.value)}
             className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
           />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input
+              type="email"
+              placeholder="E-Mail-Adresse *"
+              value={formData.contact.email}
+              onChange={(e) => handleContactChange('email', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            />
+            <PhoneInput
+              value={formData.contact.phone}
+              onChange={(value) => handleContactChange('phone', value)}
+              required={true}
+              placeholder="123 456789"
+              className="w-full"
+            />
+          </div>
+
           <PhoneInput
-            value={formData.contact.phone}
-            onChange={(value) => handleContactChange('phone', value)}
-            required={true}
+            value={formData.contact.mobile}
+            onChange={(value) => handleContactChange('mobile', value)}
+            required={false}
             placeholder="123 456789"
+            label="Mobilnummer (optional)"
             className="w-full"
           />
-        </div>
 
-        <PhoneInput
-          value={formData.contact.mobile}
-          onChange={(value) => handleContactChange('mobile', value)}
-          required={false}
-          placeholder="123 456789"
-          label="Mobilnummer (optional)"
-          className="w-full"
-        />
+          <div>
+            <label className="block text-sm font-medium text-gray-200 mb-2">Bevorzugter Kontaktweg</label>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {[
+                { value: 'email', label: 'E-Mail', icon: '📧' },
+                { value: 'phone', label: 'Telefon', icon: '📞' },
+                { value: 'both', label: 'Beides', icon: '🤝' }
+              ].map(option => (
+                <button
+                  key={option.value}
+                  onClick={() => handleContactChange('preferredContact', option.value)}
+                  className={`p-3 border-2 rounded-xl text-center transition-all duration-300 ${
+                    formData.contact.preferredContact === option.value
+                      ? 'border-orange-500 bg-orange-50'
+                      : 'border-gray-200 hover:border-teal-300'
+                  }`}
+                >
+                  <div className="text-2xl mb-1">{option.icon}</div>
+                  <div className="text-sm font-medium">{option.label}</div>
+                </button>
+              ))}
+            </div>
+          </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-200 mb-2">Bevorzugter Kontaktweg</label>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {[
-              { value: 'email', label: 'E-Mail', icon: '📧' },
-              { value: 'phone', label: 'Telefon', icon: '📞' },
-              { value: 'both', label: 'Beides', icon: '🤝' }
-            ].map(option => (
-              <button
-                key={option.value}
-                onClick={() => handleContactChange('preferredContact', option.value)}
-                className={`p-3 border-2 rounded-xl text-center transition-all duration-300 ${
-                  formData.contact.preferredContact === option.value
-                    ? 'border-orange-500 bg-orange-50'
-                    : 'border-gray-200 hover:border-teal-300'
-                }`}
-              >
-                <div className="text-2xl mb-1">{option.icon}</div>
-                <div className="text-sm font-medium">{option.label}</div>
-              </button>
-            ))}
+          <div>
+            <label className="flex items-start space-x-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={formData.contact.privacy}
+                onChange={(e) => handleContactChange('privacy', e.target.checked)}
+                className="mt-1 w-4 h-4 text-orange-500 rounded focus:ring-orange-500"
+              />
+              <span className="text-sm text-gray-200">
+                ✅ Ich stimme der Verarbeitung meiner Daten gemäß{' '}
+                <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" className="text-orange-500 hover:underline">
+                  Datenschutzerklärung
+                </a>{' '}
+                zu *
+              </span>
+            </label>
           </div>
         </div>
 
-        <div>
-          <label className="flex items-start space-x-3 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={formData.contact.privacy}
-              onChange={(e) => handleContactChange('privacy', e.target.checked)}
-              className="mt-1 w-4 h-4 text-orange-500 rounded focus:ring-orange-500"
-            />
-            <span className="text-sm text-gray-200">
-              ✅ Ich stimme der Verarbeitung meiner Daten gemäß{' '}
-              <a href="https://www.balkonfuchs.de/Fuchsbau/Impressum/datenschutz" className="text-orange-500 hover:underline">
-                Datenschutzerklärung
-              </a>{' '}
-              zu *
-            </span>
-          </label>
+        <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-6 rounded-xl space-y-6">
+          <div>
+            <h3 className="font-semibold text-orange-400 mb-4">📋 Ihre Balkonbau Partner Bewerbung im Überblick:</h3>
+            <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-200">
+              <div className="space-y-2">
+                <div><strong>Lead-Paket:</strong> {getPartnerTypeLabel()}</div>
+                <div><strong>Erfahrung:</strong> {getExperienceLabel()}</div>
+                <div><strong>Mitarbeiterzahl:</strong> {formData.employeeCount || 'Nicht angegeben'}</div>
+                <div><strong>Arbeitsgebiet:</strong> {getWorkingAreaLabel()}</div>
+                <div><strong>Standort:</strong> {formData.zipCode && formData.city ? `${formData.zipCode} ${formData.city}` : (formData.city || 'Nicht angegeben')}</div>
+              </div>
+              <div className="space-y-2">
+                <div><strong>Unternehmen:</strong> {formData.companyName || 'Nicht angegeben'}</div>
+                <div><strong>Kontakt:</strong> {contactName || 'Nicht angegeben'}</div>
+                <div><strong>E-Mail:</strong> {formData.contact.email || formData.contactPerson.email || 'Nicht angegeben'}</div>
+                <div><strong>Telefon:</strong> {formData.contact.phone || formData.contactPerson.mobile || 'Nicht angegeben'}</div>
+                <div><strong>Bevorzugter Kontaktweg:</strong> {preferredContactDisplay}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">Kompetenzen & Fokus</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li>🌟 Spezialisierungen: {specialtyList.join(', ')}</li>
+                <li>🛡️ Versicherungsstatus: {insuranceStatusLabel}</li>
+                <li>📏 Partner-Typ: {getPartnerTypeLabel()}</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">Dokumente & Nachweise</h4>
+              <ul className="space-y-2 text-sm text-gray-300">
+                <li>🛡️ Versicherungsnachweis: {formData.documents?.insurance ? 'Vorhanden' : 'Fehlt'}</li>
+                <li>📁 Referenz-Dokumente: {formData.documents?.references ? 'Vorhanden' : 'Fehlt'}</li>
+                <li>🖼️ Portfolio / Arbeitsproben: {formData.documents?.portfolio ? 'Vorhanden' : 'Fehlt'}</li>
+                <li>📄 Weitere Dokumente: {additionalDocuments.length ? additionalDocuments.join(', ') : 'Keine weiteren Dokumente ausgewählt'}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">Referenzprojekte</h4>
+            {referencesList.length ? (
+              <ul className="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                {referencesList.map((reference, index) => (
+                  <li key={`reference-${index}`}>
+                    <span className="font-semibold text-white">{reference.description || 'Ohne Titel'}</span>
+                    <div className="text-xs text-gray-400">
+                      {reference.year || 'Jahr unbekannt'} • {reference.location || 'Ort unbekannt'} • {reference.value || 'Wert nicht angegeben'}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm text-gray-400">Keine Referenzprojekte angegeben.</p>
+            )}
+          </div>
+
+          <div>
+            <h4 className="text-sm font-semibold text-gray-200 uppercase tracking-wider mb-3">Leuchtturmprojekt</h4>
+            <ul className="space-y-2 text-sm text-gray-300">
+              <li>📝 Beschreibung: {formData.lighthouseProject.description || 'Nicht angegeben'}</li>
+              <li>📍 Ort: {formData.lighthouseProject.location || 'Nicht angegeben'}</li>
+              <li>📆 Jahr: {formData.lighthouseProject.year || 'Nicht angegeben'}</li>
+              <li>💶 Projektwert: {formData.lighthouseProject.value || 'Nicht angegeben'}</li>
+              <li>✨ Besonderheit: {formData.lighthouseProject.special || 'Nicht angegeben'}</li>
+            </ul>
+          </div>
         </div>
       </div>
-
-              <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-6 rounded-xl">
-          <h3 className="font-semibold text-orange-400 mb-4">📋 Ihre Balkonbau Partner Bewerbung im Überblick:</h3>
-        <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-200">
-          <div>
-            <div><strong>Lead-Paket:</strong> {getPartnerTypeLabel()}</div>
-            <div><strong>Erfahrung:</strong> {getExperienceLabel()}</div>
-            <div><strong>Firma:</strong> {formData.companyName}</div>
-          </div>
-          <div>
-            <div><strong>Arbeitsgebiet:</strong> {getWorkingAreaLabel()}</div>
-            <div><strong>Spezialisierungen:</strong> {formData.specialties?.length || 0} ausgewählt</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
+  };
 
   const renderSuccessPage = () => {
     return (

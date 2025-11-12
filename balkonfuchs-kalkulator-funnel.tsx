@@ -6,6 +6,7 @@ import { calculateKalkulatorScore } from './utils/kalkulator-scoring';
 import ZohoSalesIQ from './components/ZohoSalesIQ.js';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { captureHtmlToPng, escapeHtml, SummaryRow, buildSectionHtml } from './utils/summary-capture';
 
 
 
@@ -276,6 +277,65 @@ function adjustPrice(basePrice, plz) {
     };
 }
 
+interface KalkulatorSummaryContext {
+  timestamp: string;
+  contactRows: SummaryRow[];
+  projectRows: SummaryRow[];
+  pricingRows: SummaryRow[];
+  extrasRows: SummaryRow[];
+  scoringRows: SummaryRow[];
+  statusLabel: string;
+  statusColor: string;
+  leadScoreValue: string;
+}
+
+const createKalkulatorSummaryHtml = (context: KalkulatorSummaryContext): string => {
+  const {
+    timestamp,
+    contactRows,
+    projectRows,
+    pricingRows,
+    extrasRows,
+    scoringRows,
+    statusLabel,
+    statusColor,
+    leadScoreValue,
+  } = context;
+
+  return `
+    <div style="font-family: 'Inter', sans-serif; background: #111827; color: #F9FAFB; padding: 32px; border-radius: 20px; width: 100%; box-shadow: 0 25px 50px rgba(15,23,42,0.55);">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:24px; margin-bottom:28px;">
+        <div>
+          <div style="font-size:14px; letter-spacing:0.08em; text-transform:uppercase; color:#F97316; margin-bottom:8px;">Balkonfuchs Kalkulator</div>
+          <h1 style="margin:0 0 6px; font-size:28px;">Projektzusammenfassung</h1>
+          <p style="margin:0; color:#9CA3AF; font-size:14px;">Erstellt am ${escapeHtml(timestamp)}</p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:13px; color:#9CA3AF; text-transform:uppercase; letter-spacing:0.08em;">Lead-Kategorie</div>
+          <div style="margin-top:6px; font-size:20px; font-weight:700; color:${statusColor}; text-transform:capitalize;">
+            ${escapeHtml(statusLabel)}
+          </div>
+          <div style="margin-top:6px; font-size:12px; color:#9CA3AF;">Lead Score: ${escapeHtml(leadScoreValue)}</div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Kontakt', contactRows)}
+        ${buildSectionHtml('Projekt', projectRows)}
+      </div>
+
+      <div style="margin-top:24px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px;">
+        ${buildSectionHtml('Preisberechnung', pricingRows)}
+        ${buildSectionHtml('Zusatzleistungen & Details', extrasRows)}
+      </div>
+
+      <div style="margin-top:24px;">
+        ${buildSectionHtml('Lead Bewertung', scoringRows)}
+      </div>
+    </div>
+  `;
+};
+
 const BalkonFuchsKalkulatorFunnel = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -361,7 +421,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
       balkongroesse: getBalkongroesse(),
       anzahl_etagen: getAnzahlEtagen(),
       zusatzleistungen: mappedExtras,
-      newsletter: 'ja' // Standardmäßig ja, da sie den Kalkulator nutzen
+      newsletter: formData.newsletterConsent ? 'ja' : 'nein'
     };
   };
 
@@ -1035,11 +1095,32 @@ const BalkonFuchsKalkulatorFunnel = () => {
       });
 
       // Kombiniere beide Scoring-Systeme
+      const mappedPriority =
+        kalkulatorScore.priority === 'high'
+          ? 'P1'
+          : kalkulatorScore.priority === 'medium'
+            ? 'P2'
+            : 'P3';
+      const mappedUrgency =
+        kalkulatorScore.priority === 'high'
+          ? 'high'
+          : kalkulatorScore.priority === 'medium'
+            ? 'medium'
+            : 'low';
+      const followUpHours =
+        kalkulatorScore.priority === 'high'
+          ? 4
+          : kalkulatorScore.priority === 'medium'
+            ? 12
+            : 48;
+
       const leadScore = {
         ...legacyLeadScore,
         totalScore: kalkulatorScore.finalScore,
         category: kalkulatorScore.category.toLowerCase(),
-        priority: kalkulatorScore.priority === 'medium' ? 'P2' : 'P3',
+        priority: mappedPriority,
+        urgency: mappedUrgency,
+        followUpHours,
         kalkulatorScore: kalkulatorScore,
         baseScore: kalkulatorScore.baseScore,
         completionBonus: kalkulatorScore.completionBonus,
@@ -1051,9 +1132,114 @@ const BalkonFuchsKalkulatorFunnel = () => {
       const basePrice = calculateBasePrice();
       const regionalAdjustment = formData.contact.plz ? adjustPrice(basePrice, formData.contact.plz.toString()) : null;
       const finalPrice = regionalAdjustment ? regionalAdjustment.adjustedPrice : basePrice;
+      const priceCalculation = {
+        basePrice,
+        regionalFactor: regionalAdjustment ? regionalAdjustment.factor : 1.0,
+        regionalCategory: regionalAdjustment ? regionalAdjustment.category : 'Standard',
+        regionalRegion: regionalAdjustment ? regionalAdjustment.region || 'Nicht verfügbar' : 'Nicht verfügbar',
+        regionalBundesland: regionalAdjustment ? regionalAdjustment.bundesland || 'Nicht verfügbar' : 'Nicht verfügbar',
+        finalPrice,
+        savings: regionalAdjustment ? regionalAdjustment.savings : 0
+      };
+
+      const widthNum = parseFloat(formData.balconyWidth || '0');
+      const depthNum = parseFloat(formData.balconyDepth || '0');
+      const areaPerBalcony = widthNum && depthNum ? widthNum * depthNum : 0;
+      const totalArea = areaPerBalcony * (formData.balconyCount || 1);
+      const areaPerBalconyDisplay = areaPerBalcony
+        ? `${areaPerBalcony.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} m²`
+        : '-';
+      const totalAreaDisplay = totalArea
+        ? `${totalArea.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} m²`
+        : '-';
+
+      const balconyTypeLabel =
+        questions[0].options.find(opt => opt.id === formData.balconyType)?.title || formData.balconyType || '-';
+      const extrasList = formData.extras
+        .map(extraId => questions[2].options.find(opt => opt.id === extraId)?.title)
+        .filter((item): item is string => Boolean(item));
+      const extrasDisplay = extrasList.length ? extrasList.join(', ') : 'Keine Zusatzleistungen';
+
+      const statusColorMap: Record<string, string> = { hot: '#F97316', warm: '#FBBF24', cold: '#60A5FA' };
+      const statusKey = typeof leadScore.category === 'string' ? leadScore.category.toLowerCase() : '';
+      const statusLabel = statusKey ? statusKey.charAt(0).toUpperCase() + statusKey.slice(1) : 'Unbekannt';
+      const statusColor = statusColorMap[statusKey] || '#F97316';
+      const estimatedValueDisplay =
+        typeof kalkulatorScore.estimatedValue === 'number'
+          ? `${kalkulatorScore.estimatedValue.toLocaleString('de-DE')} €`
+          : kalkulatorScore.estimatedValue || '-';
+      const followUpDisplay =
+        leadScore.followUpHours != null ? `${leadScore.followUpHours}h` : '-';
+
+      const timestamp = new Date();
+      const timestampIso = timestamp.toISOString();
+      const timestampDisplay = timestamp.toLocaleString('de-DE');
+
+      const contactRows: SummaryRow[] = [
+        { label: 'Anrede', value: formData.contact.salutation || '-' },
+        { label: 'Name', value: `${formData.contact.firstName || ''} ${formData.contact.lastName || ''}`.trim() || '-' },
+        { label: 'E-Mail', value: formData.contact.email || '-' },
+        { label: 'Telefon', value: formData.contact.phone || '-' },
+        { label: 'PLZ', value: formData.contact.plz || '-' },
+      ];
+
+      const projectRows: SummaryRow[] = [
+        { label: 'Balkontyp', value: balconyTypeLabel },
+        { label: 'Anzahl Balkone', value: String(formData.balconyCount || 1) },
+        { label: 'Breite', value: formData.balconyWidth ? `${formData.balconyWidth} m` : '-' },
+        { label: 'Tiefe', value: formData.balconyDepth ? `${formData.balconyDepth} m` : '-' },
+        { label: 'Fläche pro Balkon', value: areaPerBalconyDisplay },
+        { label: 'Gesamtfläche', value: totalAreaDisplay },
+      ];
+
+      const pricingRows: SummaryRow[] = [
+        { label: 'Basispreis', value: `${basePrice.toLocaleString('de-DE')} €` },
+        { label: 'Regionaler Faktor', value: priceCalculation.regionalFactor.toFixed(2) },
+        { label: 'Regionale Kategorie', value: priceCalculation.regionalCategory },
+        { label: 'Region', value: priceCalculation.regionalRegion },
+        { label: 'Bundesland', value: priceCalculation.regionalBundesland },
+        { label: 'Endpreis', value: `${finalPrice.toLocaleString('de-DE')} €` },
+        { label: 'Aufpreis gegenüber Basispreis', value: `${priceCalculation.savings.toLocaleString('de-DE')} €` },
+      ];
+
+      const extrasRows: SummaryRow[] = [
+        { label: 'Zusatzleistungen', value: extrasDisplay },
+        { label: 'Anzahl Zusatzleistungen', value: String(formData.extras.length) },
+        { label: 'Newsletter', value: formData.newsletterConsent ? 'Ja' : 'Nein' },
+        { label: 'Datenschutz', value: formData.datenschutzConsent ? 'Bestätigt' : 'Nicht bestätigt' },
+      ];
+
+      const scoringRows: SummaryRow[] = [
+        { label: 'Gesamt-Score', value: leadScore.totalScore ?? '-' },
+        { label: 'Kategorie', value: statusLabel },
+        { label: 'Priorität', value: leadScore.priority ?? '-' },
+        { label: 'Empfohlene Aktion', value: kalkulatorScore.action || '-' },
+        { label: 'Nurturing', value: kalkulatorScore.nurturingSequence || '-' },
+        { label: 'Geschätzter Projektwert', value: estimatedValueDisplay },
+        { label: 'Follow-up Zeit', value: followUpDisplay },
+      ];
+
+      const summaryContext: KalkulatorSummaryContext = {
+        timestamp: timestampDisplay,
+        contactRows,
+        projectRows,
+        pricingRows,
+        extrasRows,
+        scoringRows,
+        statusLabel,
+        statusColor,
+        leadScoreValue: leadScore.totalScore != null ? String(leadScore.totalScore) : '-',
+      };
+
+      const summaryHtml = createKalkulatorSummaryHtml(summaryContext);
+      const pdfAttachment = await captureHtmlToPng(summaryHtml, {
+        fileNamePrefix: 'balkonfuchs-kalkulator',
+        width: 900,
+        backgroundColor: '#111827',
+      });
 
       // Prepare data for Zoho export
-      const exportData = {
+      const exportData: any = {
         // Kontaktdaten
         contact: {
           salutation: formData.contact.salutation,
@@ -1061,8 +1247,13 @@ const BalkonFuchsKalkulatorFunnel = () => {
           lastName: formData.contact.lastName,
           email: formData.contact.email,
           phone: formData.contact.phone,
+          zipCode: formData.contact.plz,
           plz: formData.contact.plz,
-          city: formData.contact.city
+          city: formData.contact.city,
+          newsletter: formData.newsletterConsent,
+          newsletterOptIn: formData.newsletterConsent,
+          privacy: formData.datenschutzConsent,
+          datenschutz: formData.datenschutzConsent
         },
         // Funnel-Informationen
         funnel: {
@@ -1075,37 +1266,37 @@ const BalkonFuchsKalkulatorFunnel = () => {
           balconyCount: formData.balconyCount,
           balconyWidth: formData.balconyWidth,
           balconyDepth: formData.balconyDepth,
+          size: {
+            width: formData.balconyWidth,
+            depth: formData.balconyDepth
+          },
+          areaPerBalcony,
+          totalArea,
           extras: formData.extras,
+          extrasDisplay,
           plz: formData.contact.plz,
           city: formData.contact.city,
           // Checkbox-Zustände
           datenschutzConsent: formData.datenschutzConsent,
-          newsletterConsent: formData.newsletterConsent
+          newsletterConsent: formData.newsletterConsent,
+          priceCalculation
         },
         // Metadaten
-        timestamp: new Date().toISOString(),
+        timestamp: timestampIso,
         source: 'BALKONFUCHS Kalkulator',
         funnelType: 'Kalkulator',
         calculation: basePrice,
         // Vollständige Preisberechnung
-        priceCalculation: {
-          basePrice: basePrice,
-          regionalFactor: regionalAdjustment ? regionalAdjustment.factor : 1.0,
-          regionalCategory: regionalAdjustment ? regionalAdjustment.category : 'Standard',
-          regionalRegion: regionalAdjustment ? regionalAdjustment.region : 'Nicht verfügbar',
-          regionalBundesland: regionalAdjustment ? regionalAdjustment.bundesland : 'Nicht verfügbar',
-          finalPrice: finalPrice,
-          savings: regionalAdjustment ? regionalAdjustment.savings : 0
-        },
+        priceCalculation,
         // LeadScoring-Daten (Legacy)
         _internalScoring: {
           leadScore: leadScore.totalScore,
           category: leadScore.category,
           priority: leadScore.priority,
           urgency: leadScore.urgency,
-          complexity: leadScore.complexity,
-          budget: leadScore.budget,
-          timeline: leadScore.timeline,
+          complexity: leadScore.complexity ?? 'simple',
+          budget: leadScore.budget ?? 'budget',
+          timeline: leadScore.timeline ?? 'flexible',
           followUpHours: leadScore.followUpHours
         },
         // Kalkulator-Scoring-Daten (neues System)
@@ -1124,6 +1315,10 @@ const BalkonFuchsKalkulatorFunnel = () => {
           mappedData: kalkulatorScoringData // Für Debugging
         }
       };
+
+      if (pdfAttachment?.base64) {
+        exportData.pdfAttachment = pdfAttachment;
+      }
       
       // 1. Zoho-Integration
       let zohoResults = null;

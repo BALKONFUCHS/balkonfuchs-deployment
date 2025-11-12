@@ -199,6 +199,19 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
           });
 
           // Kombiniere beide Scoring-Systeme
+          const urgency =
+            genehmigungScore.priority === 'high'
+              ? 'high'
+              : genehmigungScore.priority === 'medium'
+                ? 'medium'
+                : 'low';
+          const followUpHours =
+            genehmigungScore.priority === 'high'
+              ? 6
+              : genehmigungScore.priority === 'medium'
+                ? 12
+                : 24;
+
           const leadScore = {
             ...legacyLeadScore,
             totalScore: genehmigungScore.totalScore,
@@ -207,7 +220,9 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
                       genehmigungScore.priority === 'medium' ? 'P2' : 'P3',
             genehmigungScore: genehmigungScore,
             estimatedValue: genehmigungScore.estimatedValue,
-            genehmigungswahrscheinlichkeit: genehmigungScore.genehmigungswahrscheinlichkeit
+            genehmigungswahrscheinlichkeit: genehmigungScore.genehmigungswahrscheinlichkeit,
+            urgency,
+            followUpHours
           };
 
           const ergebnis = getErgebnis();
@@ -235,22 +250,30 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
             low: 'Niedrig',
           };
 
+          const contactZip = formData.contact.zipCode || '';
+          const contactCity = '';
+          const contactPhone = formData.contact.phone || '';
+          const contactMail = formData.contact.email || '';
+          const contactName =
+            `${formData.contact.firstName || ''} ${formData.contact.lastName || ''}`.trim() || '-';
+
           const contactRows: SummaryRow[] = [
-            { label: 'Vorname', value: formData.contact.firstName || '-' },
-            { label: 'Nachname', value: formData.contact.lastName || '-' },
-            { label: 'E-Mail', value: formData.contact.email || '-' },
-            { label: 'Telefon', value: formData.contact.phone || '-' },
-            { label: 'PLZ', value: formData.contact.zipCode || '-' },
+            { label: 'Name', value: contactName },
+            { label: 'E-Mail', value: contactMail || '-' },
+            { label: 'Telefon', value: contactPhone || '-' },
+            { label: 'PLZ', value: contactZip || '-' },
+            { label: 'Ort', value: contactCity || 'Nicht angegeben' },
             { label: 'Newsletter', value: formData.contact.newsletter ? 'Ja' : 'Nein' },
-            { label: 'Datenschutz', value: formData.contact.privacy ? 'Bestätigt' : 'Offen' },
+            { label: 'Datenschutz', value: formData.contact.privacy ? 'Bestätigt' : 'Nicht bestätigt' },
           ];
 
           const projectRows: SummaryRow[] = [
             { label: 'Bundesland', value: bundeslandName },
             { label: 'Projekttyp', value: projekttypName },
-            { label: 'Grundfläche (m²)', value: formData.groesse || '-' },
-            { label: 'Tiefe (m)', value: formData.tiefe || '-' },
+            { label: 'Grundfläche', value: formData.groesse ? `${formData.groesse} m²` : '-' },
+            { label: 'Tiefe', value: formData.tiefe ? `${formData.tiefe} m` : '-' },
             { label: 'Grenzabstand', value: grenzabstandName },
+            { label: 'Selbsteinschätzung Status', value: ergebnis?.status ? ergebnis.status.replace(/_/g, ' ') : '-' },
           ];
 
           const statusRows: SummaryRow[] = [
@@ -280,6 +303,10 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
             { label: 'Kategorie', value: leadScore.category ?? genehmigungScore.category ?? '-' },
             { label: 'Priorität', value: leadScore.priority ?? '-' },
             {
+              label: 'Empfohlene Aktion',
+              value: genehmigungScore.action || '-',
+            },
+            {
               label: 'Dringlichkeit',
               value: urgencyLabels[leadScore.urgency ?? genehmigungScore.priority] ?? (leadScore.urgency || '-'),
             },
@@ -288,8 +315,12 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
             { label: 'Reaktionszeit', value: responseTime },
           ];
 
+          const now = new Date();
+          const timestampDisplay = now.toLocaleString('de-DE');
+          const timestampIso = now.toISOString();
+
           const summaryContext: GenehmigungSummaryContext = {
-            timestamp: new Date().toLocaleString('de-DE'),
+            timestamp: timestampDisplay,
             contactRows,
             projectRows,
             statusRows,
@@ -313,11 +344,15 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
               salutation: formData.contact.salutation,
               firstName: formData.contact.firstName,
               lastName: formData.contact.lastName,
-              email: formData.contact.email,
-              phone: formData.contact.phone,
-              zipCode: formData.contact.zipCode,
+              email: contactMail,
+              phone: contactPhone,
+              zipCode: contactZip,
+              plz: contactZip,
+              city: contactCity,
               newsletter: formData.contact.newsletter,
-              privacy: formData.contact.privacy
+              newsletterOptIn: formData.contact.newsletter,
+              privacy: formData.contact.privacy,
+              datenschutz: formData.contact.privacy
             },
             // Funnel-Informationen
             funnel: {
@@ -332,10 +367,13 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
               tiefe: formData.tiefe,
               grenzabstand: formData.grenzabstand,
               ergebnis,
-              zipCode: formData.contact.zipCode
+              zipCode: contactZip,
+              city: contactCity,
+              newsletterConsent: formData.contact.newsletter,
+              datenschutzConsent: formData.contact.privacy
             },
             // Metadaten
-            timestamp: new Date().toISOString(),
+            timestamp: timestampIso,
             source: 'BALKONFUCHS Genehmigungscheck',
             funnelType: 'Genehmigungscheck',
             // LeadScoring-Daten (Legacy)
