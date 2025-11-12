@@ -614,8 +614,12 @@ function calculatePriorityRank(leadScore) {
 }
 
 function calculateLeadCategory(requestData, leadScore) {
-  if (requestData.funnelType === 'Partner-Anfrage') {
-    return 'Partner-Anfrage';
+  const normalizedType = String(requestData.funnelType || requestData.funnel?.type || '')
+    .trim()
+    .toLowerCase();
+
+  if (normalizedType.includes('partner')) {
+    return 'Partneranfrage';
   }
 
   if (leadScore >= 70 && (requestData.budget || requestData.calculatedPrice?.total || requestData.funnelData?.budget)) {

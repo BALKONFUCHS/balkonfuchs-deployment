@@ -75,12 +75,12 @@ export const captureHtmlToPng = async (
     const width = `${options.width ?? 900}px`;
 
     Object.assign(container.style, {
-      position: 'fixed',
+      position: 'absolute',
       top: '-10000px',
-      left: '0',
+      left: '-10000px',
       width,
       zIndex: '-1',
-      opacity: '0',
+      opacity: '1',
       pointerEvents: 'none',
       background: options.backgroundColor ?? '#111827',
     });

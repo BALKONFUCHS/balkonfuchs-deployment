@@ -22,6 +22,61 @@ interface PartnerSummaryContext {
   leadScoreValue: string;
 }
 
+const PARTNER_TYPE_LABELS: Record<string, string> = {
+  starter: 'Starter (8 Leads/Monat)',
+  professional: 'Professional (17 Leads/Monat)',
+  enterprise: 'Enterprise (35+ Leads/Monat)'
+};
+
+const EXPERIENCE_LABELS: Record<string, string> = {
+  beginner: 'Einsteiger (0-2 Jahre)',
+  experienced: 'Erfahren (3-5 Jahre)',
+  professional: 'Profi (6-10 Jahre)',
+  expert: 'Experte (10+ Jahre)'
+};
+
+const WORKING_AREA_LABELS: Record<string, string> = {
+  local: 'Lokal (bis 25 km)',
+  regional: 'Regional (bis 50 km)',
+  state: 'Landesweit',
+  national: 'Deutschlandweit'
+};
+
+const PREFERRED_CONTACT_LABELS: Record<string, string> = {
+  email: 'E-Mail',
+  phone: 'Telefon',
+  both: 'E-Mail & Telefon'
+};
+
+const INSURANCE_LABELS: Record<string, string> = {
+  full: 'Vollständig versichert',
+  partial: 'Teilweise versichert',
+  planning: 'Versicherung in Planung'
+};
+
+const DOCUMENT_LABELS: Record<string, string> = {
+  businessLicense: 'Gewerbeschein',
+  insurance: 'Versicherungsnachweis',
+  masterCertificate: 'Meisterbrief',
+  diploma: 'Diplomzeugnis',
+  instructorLicense: 'Ausbilderschein',
+  references: 'Referenzen',
+  portfolio: 'Arbeitsproben'
+};
+
+const SPECIALTY_LABELS: Record<string, string> = {
+  vorstellbalkone: 'Vorstellbalkone',
+  anlehn_balkone: 'Anlehn-Balkone',
+  haenge_balkone: 'Hänge-Balkone',
+  balkontuerme: 'Balkontürme',
+  renovation: 'Balkonsanierung',
+  balkontreppen: 'Balkontreppen',
+  railings: 'Geländer & Absturzsicherung',
+  ganzglasgelaender: 'Rahmenlose Ganzglasgeländer',
+  glasueberdachungen: 'Glasüberdachungen',
+  balkonverglasungen: 'Komplette Balkonverglasungen'
+};
+
 const createPartnerSummaryHtml = (context: PartnerSummaryContext): string => {
   const {
     timestamp,
@@ -93,6 +148,7 @@ const PartnerFunnel = () => {
     address: '',
     website: '',
     contactPerson: {
+      salutation: '',
       firstName: '',
       lastName: '',
       function: '',
@@ -204,7 +260,7 @@ const PartnerFunnel = () => {
     {
       id: 'leadScoring',
       title: 'Zusammenfassung & Kontaktdaten',
-      subtitle: '🤝 Vielen Dank für deine Bewerbung! Bitte gib uns noch deine Kontaktdaten, damit wir dich persönlich kontaktieren können.',
+      subtitle: '🤝 Vielen Dank für Ihre Bewerbung! Bitte geben Sie uns noch Ihre Kontaktdaten, damit wir Sie persönlich kontaktieren können.',
       type: 'lead_scoring'
     }
   ];
@@ -230,7 +286,7 @@ const PartnerFunnel = () => {
       case 'company_profile':
         // Grundlegende Validierung
         if (!formData.companyName || !formData.legalForm || !formData.city || !formData.zipCode || 
-            !formData.contactPerson.firstName || !formData.contactPerson.lastName || 
+            !formData.contactPerson.salutation || !formData.contactPerson.firstName || !formData.contactPerson.lastName || 
             !formData.contactPerson.function || !formData.contactPerson.mobile || !formData.contactPerson.email) {
           return false;
         }
@@ -399,53 +455,10 @@ const PartnerFunnel = () => {
     
     // Kontaktdaten aus Step 1 (companyProfile) verwenden, NICHT aus Step 7!
     // Step 7 zeigt nur Zusammenfassung, keine Kontaktdaten-Abfrage mehr
-    const partnerTypeLabels: Record<string, string> = {
-      starter: 'Starter-Paket',
-      professional: 'Professional-Paket',
-      enterprise: 'Enterprise-Paket',
-    };
-    const experienceLabels: Record<string, string> = {
-      beginner: 'Einsteiger (0-2 Jahre)',
-      experienced: 'Erfahren (3-5 Jahre)',
-      professional: 'Profi (6-10 Jahre)',
-      expert: 'Experte (10+ Jahre)',
-    };
-    const specialtiesLabels: Record<string, string> = {
-      vorstellbalkone: 'Vorstellbalkone',
-      anlehn_balkone: 'Anlehn-Balkone',
-      haenge_balkone: 'Hänge-Balkone',
-      balkontuerme: 'Balkontürme',
-      renovation: 'Balkonsanierung',
-      balkontreppen: 'Balkontreppen',
-      railings: 'Geländer & Absturzsicherung',
-      ganzglasgelaender: 'Rahmenlose Ganzglasgeländer',
-      glasueberdachungen: 'Glasüberdachungen',
-      balkonverglasungen: 'Komplette Balkonverglasungen',
-    };
-    const workingAreaLabels: Record<string, string> = {
-      local: 'Lokal (bis 25 km)',
-      regional: 'Regional (bis 50 km)',
-      state: 'Landesweit',
-      national: 'Deutschlandweit',
-    };
     const preferredContactLabels: Record<string, string> = {
       email: 'E-Mail',
       phone: 'Telefon',
       both: 'E-Mail & Telefon',
-    };
-    const insuranceLabels: Record<string, string> = {
-      full: 'Vollständig versichert',
-      partial: 'Teilweise versichert',
-      planning: 'Versicherung in Planung',
-    };
-    const documentLabels: Record<string, string> = {
-      businessLicense: 'Gewerbeschein',
-      insurance: 'Versicherungsnachweis',
-      masterCertificate: 'Meisterbrief',
-      diploma: 'Diplomzeugnis',
-      instructorLicense: 'Ausbilderschein',
-      references: 'Referenzen',
-      portfolio: 'Arbeitsproben',
     };
     const categoryColors: Record<string, string> = {
       hot: '#F97316',
@@ -455,7 +468,7 @@ const PartnerFunnel = () => {
 
     const documentsSelected = Object.entries(formData.documents || {})
       .filter(([, value]) => Boolean(value))
-      .map(([key]) => documentLabels[key] || key);
+      .map(([key]) => DOCUMENT_LABELS[key] || key);
 
     const legalFormDisplay =
       formData.legalForm === 'other'
@@ -487,7 +500,7 @@ const PartnerFunnel = () => {
 
     const specialtiesText = Array.isArray(formData.specialties) && formData.specialties.length
       ? formData.specialties
-          .map(item => specialtiesLabels[item] || item)
+          .map(item => SPECIALTY_LABELS[item] || item)
           .join(', ')
       : 'Keine Angaben';
 
@@ -498,7 +511,7 @@ const PartnerFunnel = () => {
     const documentRows: SummaryRow[] = [
       {
         label: 'Versicherungsstatus',
-        value: insuranceLabels[formData.insuranceStatus] || formData.insuranceStatus || '-',
+        value: INSURANCE_LABELS[formData.insuranceStatus] || formData.insuranceStatus || '-',
       },
       {
         label: 'Versicherungsnachweis',
@@ -521,10 +534,10 @@ const PartnerFunnel = () => {
     ];
 
     const capabilityRows: SummaryRow[] = [
-      { label: 'Partner-Paket', value: partnerTypeLabels[formData.partnerType] || formData.partnerType || '-' },
-      { label: 'Erfahrung', value: experienceLabels[formData.experience] || formData.experience || '-' },
+      { label: 'Partner-Paket', value: PARTNER_TYPE_LABELS[formData.partnerType] || formData.partnerType || '-' },
+      { label: 'Erfahrung', value: EXPERIENCE_LABELS[formData.experience] || formData.experience || '-' },
       { label: 'Spezialisierungen', value: specialtiesText },
-      { label: 'Arbeitsgebiet', value: workingAreaLabels[formData.workingArea] || formData.workingArea || '-' },
+      { label: 'Arbeitsgebiet', value: WORKING_AREA_LABELS[formData.workingArea] || formData.workingArea || '-' },
       {
         label: 'Mitarbeiterzahl',
         value: formData.employeeCount || '-',
@@ -540,7 +553,8 @@ const PartnerFunnel = () => {
       { label: 'Website', value: formData.website || '-' },
     ];
 
-    const contactSalutation = formData.contact?.salutation || '';
+    const fallbackSalutation = formData.contactPerson?.salutation || '';
+    const contactSalutation = formData.contact?.salutation || fallbackSalutation;
     const contactFirstName = formData.contact?.firstName || formData.contactPerson.firstName || '';
     const contactLastName = formData.contact?.lastName || formData.contactPerson.lastName || '';
     const contactPosition = formData.contact?.position || formData.contactPerson.function || '';
@@ -549,8 +563,8 @@ const PartnerFunnel = () => {
     const contactMobile = formData.contact?.mobile || formData.contactPerson.mobile || '';
     const preferredContactValue = formData.contact?.preferredContact || '';
     const preferredContactDisplay =
-      preferredContactValue && preferredContactLabels[preferredContactValue]
-        ? preferredContactLabels[preferredContactValue]
+      preferredContactValue && PREFERRED_CONTACT_LABELS[preferredContactValue]
+        ? PREFERRED_CONTACT_LABELS[preferredContactValue]
         : preferredContactValue || 'Telefon';
 
     const contactRows: SummaryRow[] = [
@@ -1398,7 +1412,20 @@ const PartnerFunnel = () => {
 
       <div className="border-t border-gray-200 pt-6">
         <h4 className="text-lg font-semibold text-white mb-4">Ansprechpartner</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-200 mb-2">Anrede *</label>
+            <select
+              value={formData.contactPerson.salutation}
+              onChange={(e) => handleContactPersonChange('salutation', e.target.value)}
+              className="w-full px-4 py-3 border border-gray-600 bg-gray-700/50 text-gray-100 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
+            >
+              <option value="">Bitte auswählen</option>
+              <option value="Herr">Herr</option>
+              <option value="Frau">Frau</option>
+              <option value="Divers">Divers</option>
+            </select>
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-200 mb-2">Vorname *</label>
             <input
@@ -1469,26 +1496,65 @@ const PartnerFunnel = () => {
     
     if (leadScore.finalScore >= 75) {
       // Hot Partner (P1)
-      categoryMessage = 'Herzlichen Glückwunsch! Wir haben dich als Hot Partner bewertet und heißen dich herzlich in unseren Reihen willkommen. Deine Erfahrung, Qualifikationen und Referenzen überzeugen uns vollständig. Wir freuen uns sehr auf eine langfristige, erfolgreiche Zusammenarbeit mit dir und können dir bereits jetzt eine schnelle Vertragsverhandlung mit exzellenten Konditionen anbieten.';
+      categoryMessage = 'Herzlichen Glückwunsch! Wir haben Sie als Hot Partner bewertet und heißen Sie herzlich in unseren Reihen willkommen. Ihre Erfahrung, Qualifikationen und Referenzen überzeugen uns vollständig. Wir freuen uns sehr auf eine langfristige, erfolgreiche Zusammenarbeit mit Ihnen und können Ihnen bereits jetzt eine schnelle Vertragsverhandlung mit exzellenten Konditionen anbieten.';
       categoryColor = 'from-green-500 to-emerald-500';
       categoryBg = 'bg-green-500/10 border-green-500/30';
     } else if (leadScore.finalScore >= 50) {
       // Warm Partner (P2)
-      categoryMessage = 'Herzlichen Dank für deine Bewerbung! Wir freuen uns sehr, dass du dich für eine Partnerschaft mit BALKONFUCHS interessierst. Es gibt noch ein paar kleine Fragen, die wir gerne gemeinsam mit dir klären möchten, bevor wir uns über das Thema Partnerschaft unterhalten. Wir sind sicher, dass wir gemeinsam eine passende Lösung finden werden, die für beide Seiten optimal ist.';
+      categoryMessage = 'Herzlichen Dank für Ihre Bewerbung! Wir freuen uns sehr, dass Sie sich für eine Partnerschaft mit BALKONFUCHS interessieren. Es gibt noch ein paar Fragen, die wir gerne gemeinsam mit Ihnen klären möchten, bevor wir über das Thema Partnerschaft sprechen. Wir sind sicher, dass wir gemeinsam eine passende Lösung finden, die für beide Seiten optimal ist.';
       categoryColor = 'from-blue-500 to-cyan-500';
       categoryBg = 'bg-blue-500/10 border-blue-500/30';
     } else if (leadScore.finalScore >= 30) {
       // Cold Partner (P3)
-      categoryMessage = 'Schön, dass du dich bei uns als Partner beworben hast! Wir möchten uns gerne persönlich mit dir austauschen, denn es gibt noch einige wichtige Punkte, die wir dringend besprechen müssen, bevor wir über eine weitergehende Partnerschaft sprechen können. Es gibt einige Kriterien, die uns besonders wichtig sind, und hierüber sollten wir uns zunächst einmal gemeinsam unterhalten. Ein oder zwei Parameter hierbei könnten bei dir noch gegen eine Partnerschaft sprechen, aber wir sind optimistisch, dass wir gemeinsam eine Lösung finden werden.';
+      categoryMessage = 'Schön, dass Sie sich bei uns als Partner beworben haben! Wir möchten uns gerne persönlich mit Ihnen austauschen, denn es gibt noch einige wichtige Punkte, die wir dringend besprechen müssen, bevor wir über eine weitergehende Partnerschaft sprechen können. Einige Kriterien sind uns besonders wichtig, und darüber sollten wir uns zunächst gemeinsam unterhalten. Ein oder zwei Parameter könnten derzeit noch gegen eine Partnerschaft sprechen, aber wir sind optimistisch, dass wir gemeinsam eine Lösung finden.';
       categoryColor = 'from-orange-500 to-amber-500';
       categoryBg = 'bg-orange-500/10 border-orange-500/30';
     } else {
       // Nicht qualifiziert
-      categoryMessage = 'Vielen Dank für deine Bewerbung! Wir haben deine Unterlagen erhalten und benötigen noch einige zusätzliche Informationen, bevor wir eine fundierte Entscheidung treffen können. Es gibt einige wichtige Kriterien für unsere Partnerschaft, die wir gerne persönlich mit dir besprechen möchten. Wir werden uns daher in den nächsten Tagen bei dir melden, um gemeinsam die nächsten Schritte zu klären und offene Fragen zu besprechen.';
+      categoryMessage = 'Vielen Dank für Ihre Bewerbung! Wir haben Ihre Unterlagen erhalten und benötigen noch einige zusätzliche Informationen, bevor wir eine fundierte Entscheidung treffen können. Es gibt einige wichtige Kriterien für unsere Partnerschaft, die wir gerne persönlich mit Ihnen besprechen möchten. Wir melden uns daher in den nächsten Tagen bei Ihnen, um gemeinsam die nächsten Schritte zu klären und offene Fragen zu besprechen.';
       categoryColor = 'from-gray-500 to-slate-500';
       categoryBg = 'bg-gray-500/10 border-gray-500/30';
     }
     
+    const partnerTypeLabel = PARTNER_TYPE_LABELS[formData.partnerType] || 'Nicht ausgewählt';
+    const experienceLabel = EXPERIENCE_LABELS[formData.experience] || 'Nicht ausgewählt';
+    const workingAreaLabel = WORKING_AREA_LABELS[formData.workingArea] || 'Nicht ausgewählt';
+    const insuranceStatusLabel = INSURANCE_LABELS[formData.insuranceStatus] || 'Nicht angegeben';
+
+    const specialtyList = Array.isArray(formData.specialties) && formData.specialties.length
+      ? formData.specialties.map((item) => SPECIALTY_LABELS[item] || item)
+      : [];
+
+    const selectedDocuments = Object.entries(formData.documents || {})
+      .filter(([, value]) => Boolean(value))
+      .map(([key]) => DOCUMENT_LABELS[key] || key);
+    const additionalDocuments = selectedDocuments.filter(label =>
+      !['Versicherungsnachweis', 'Referenzen', 'Arbeitsproben'].includes(label)
+    );
+
+    const referencesList = Array.isArray(formData.references)
+      ? formData.references
+          .filter(ref => ref.description || ref.location || ref.year || ref.value)
+          .map((ref, index) => ({
+            key: `reference-${index}`,
+            description: ref.description || 'Ohne Beschreibung',
+            year: ref.year || 'Jahr unbekannt',
+            location: ref.location || 'Ort unbekannt',
+            value: ref.value || 'Wert nicht angegeben'
+          }))
+      : [];
+
+    const effectiveContactSalutation = formData.contact.salutation || formData.contactPerson.salutation || 'Nicht angegeben';
+    const contactFirstName = formData.contact.firstName || formData.contactPerson.firstName || 'Nicht angegeben';
+    const contactLastName = formData.contact.lastName || formData.contactPerson.lastName || 'Nicht angegeben';
+    const contactPosition = formData.contact.position || formData.contactPerson.function || 'Nicht angegeben';
+    const contactEmail = formData.contact.email || formData.contactPerson.email || 'Nicht angegeben';
+    const contactPhone = formData.contact.phone || formData.contactPerson.mobile || 'Nicht angegeben';
+    const contactMobile = formData.contact.mobile || formData.contactPerson.mobile;
+    const preferredContactValue = formData.contact.preferredContact || 'phone';
+    const preferredContactDisplay = PREFERRED_CONTACT_LABELS[preferredContactValue] || 'Telefon';
+    const contactPrivacy = formData.contact.privacy ? 'Ja' : 'Nein';
+
     return (
       <div className="space-y-8">
         {/* Partner-Bewertung (ohne Score-Zahl und ohne Kategorien) */}
@@ -1498,7 +1564,7 @@ const PartnerFunnel = () => {
               <Handshake className="w-10 h-10 text-white" />
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">
-              Vielen Dank für deine Bewerbung als Balkonbau Partner!
+              Vielen Dank für Ihre Bewerbung als Balkonbau Partner!
             </h3>
           </div>
           
@@ -1517,18 +1583,18 @@ const PartnerFunnel = () => {
             </h4>
             <div className="space-y-3 text-gray-200">
               <p className="leading-relaxed">
-                <strong className="text-white">1. Prüfung deiner Bewerbung</strong><br/>
-                Unser Partner-Team prüft deine Angaben, Qualifikationen und Referenzen sorgfältig durch.
+                <strong className="text-white">1. Prüfung Ihrer Bewerbung</strong><br/>
+                Unser Partner-Team prüft Ihre Angaben, Qualifikationen und Referenzen sorgfältig.
               </p>
               <p className="leading-relaxed">
                 <strong className="text-white">2. Persönlicher Kontakt</strong><br/>
-                Wir melden uns bei dir zurück - je nach deinem Profil unterschiedlich schnell. 
-                In der Regel innerhalb von 1-3 Werktagen.
+                Wir melden uns bei Ihnen zurück – je nach Ihrem Profil unterschiedlich schnell, 
+                in der Regel innerhalb von 1-3 Werktagen.
               </p>
               <p className="leading-relaxed">
                 <strong className="text-white">3. Gemeinsame Besprechung</strong><br/>
                 Im persönlichen Gespräch klären wir alle Details und finden gemeinsam die beste Lösung 
-                für eine erfolgreiche Partnerschaft.
+                für Ihre erfolgreiche Partnerschaft mit uns.
               </p>
             </div>
           </div>
@@ -1537,7 +1603,7 @@ const PartnerFunnel = () => {
         {/* Zusammenfassung der Partner-Daten */}
         <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm">
           <h3 className="text-2xl font-bold text-white mb-6 text-center">
-            📋 Deine Bewerbung im Überblick
+            📋 Ihre Bewerbung im Überblick
           </h3>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-3">
@@ -1551,29 +1617,25 @@ const PartnerFunnel = () => {
               </div>
               <div className="bg-gray-700/30 rounded-xl p-4">
                 <div className="text-sm text-gray-400 mb-1">Partner-Paket</div>
-                <div className="text-lg font-semibold text-white">{getPartnerTypeLabel()}</div>
+                <div className="text-lg font-semibold text-white">{partnerTypeLabel}</div>
               </div>
               <div className="bg-gray-700/30 rounded-xl p-4">
                 <div className="text-sm text-gray-400 mb-1">Erfahrung</div>
-                <div className="text-lg font-semibold text-white">{getExperienceLabel()}</div>
+                <div className="text-lg font-semibold text-white">{experienceLabel}</div>
               </div>
             </div>
             <div className="space-y-3">
               <div className="bg-gray-700/30 rounded-xl p-4">
                 <div className="text-sm text-gray-400 mb-1">Arbeitsgebiet</div>
-                <div className="text-lg font-semibold text-white">{getWorkingAreaLabel()}</div>
+                <div className="text-lg font-semibold text-white">{workingAreaLabel}</div>
               </div>
               <div className="bg-gray-700/30 rounded-xl p-4">
                 <div className="text-sm text-gray-400 mb-1">Spezialitäten</div>
-                <div className="text-lg font-semibold text-white">{formData.specialties?.length || 0} ausgewählt</div>
+                <div className="text-lg font-semibold text-white">{specialtyList.length ? specialtyList.join(', ') : 'Keine Angaben'}</div>
               </div>
               <div className="bg-gray-700/30 rounded-xl p-4">
                 <div className="text-sm text-gray-400 mb-1">Versicherungsstatus</div>
-                <div className="text-lg font-semibold text-white">
-                  {formData.insuranceStatus === 'full' ? 'Vollständig versichert' : 
-                   formData.insuranceStatus === 'partial' ? 'Teilweise versichert' : 
-                   formData.insuranceStatus === 'planning' ? 'In Planung' : 'Nicht angegeben'}
-                </div>
+                <div className="text-lg font-semibold text-white">{insuranceStatusLabel}</div>
               </div>
               <div className="bg-gray-700/30 rounded-xl p-4">
                 <div className="text-sm text-gray-400 mb-1">Standort</div>
@@ -1613,50 +1675,17 @@ const PartnerFunnel = () => {
   };
 
   const renderContactForm = () => {
-    const preferredContactMap: Record<string, string> = {
-      email: 'E-Mail',
-      phone: 'Telefon',
-      both: 'E-Mail & Telefon'
-    };
+    const preferredContactMap = PREFERRED_CONTACT_LABELS;
 
-    const specialtiesLabels: Record<string, string> = {
-      vorstellbalkone: 'Vorstellbalkone',
-      anlehn_balkone: 'Anlehn-Balkone',
-      haenge_balkone: 'Hänge-Balkone',
-      balkontuerme: 'Balkontürme',
-      renovation: 'Balkonsanierung',
-      balkontreppen: 'Balkontreppen',
-      railings: 'Geländer & Absturzsicherung',
-      ganzglasgelaender: 'Rahmenlose Ganzglasgeländer',
-      glasueberdachungen: 'Glasüberdachungen',
-      balkonverglasungen: 'Komplette Balkonverglasungen'
-    };
-
-    const documentLabels: Record<string, string> = {
-      businessLicense: 'Gewerbeschein',
-      insurance: 'Versicherungsnachweis',
-      masterCertificate: 'Meisterbrief',
-      diploma: 'Diplomzeugnis',
-      instructorLicense: 'Ausbilderschein',
-      references: 'Referenzen',
-      portfolio: 'Arbeitsproben'
-    };
-
-    const insuranceStatusLabel = formData.insuranceStatus === 'full'
-      ? 'Vollständig versichert'
-      : formData.insuranceStatus === 'partial'
-        ? 'Teilweise versichert'
-        : formData.insuranceStatus === 'planning'
-          ? 'Versicherung in Planung'
-          : 'Nicht angegeben';
+    const insuranceStatusLabel = INSURANCE_LABELS[formData.insuranceStatus] || 'Nicht angegeben';
 
     const specialtyList = Array.isArray(formData.specialties) && formData.specialties.length
-      ? formData.specialties.map((item) => specialtiesLabels[item] || item)
+      ? formData.specialties.map((item) => SPECIALTY_LABELS[item] || item)
       : ['Keine Angaben'];
 
     const selectedDocuments = Object.entries(formData.documents || {})
       .filter(([, value]) => Boolean(value))
-      .map(([key]) => documentLabels[key] || key);
+      .map(([key]) => DOCUMENT_LABELS[key] || key);
 
     const additionalDocuments = selectedDocuments.filter(label =>
       !['Versicherungsnachweis', 'Referenzen', 'Arbeitsproben'].includes(label)
@@ -1670,7 +1699,8 @@ const PartnerFunnel = () => {
       ? preferredContactMap[formData.contact.preferredContact] || formData.contact.preferredContact
       : 'Nicht angegeben';
 
-    const contactName = `${formData.contact.salutation ? `${formData.contact.salutation} ` : ''}${(formData.contact.firstName || formData.contactPerson.firstName || '')} ${(formData.contact.lastName || formData.contactPerson.lastName || '')}`.trim();
+    const effectiveContactSalutation = formData.contact.salutation || formData.contactPerson.salutation || '';
+    const contactName = `${effectiveContactSalutation ? `${effectiveContactSalutation} ` : ''}${(formData.contact.firstName || formData.contactPerson.firstName || '')} ${(formData.contact.lastName || formData.contactPerson.lastName || '')}`.trim();
 
     return (
       <div className="space-y-8">
@@ -1869,16 +1899,16 @@ const PartnerFunnel = () => {
 
         <div className="space-y-4">
           <h2 className="text-3xl font-bold text-white">
-            🎉 Vielen Dank für deine Bewerbung{formData.contact.firstName ? `, ${formData.contact.firstName}` : ''}!
+            🎉 Vielen Dank für Ihre Bewerbung{formData.contact.firstName ? `, ${formData.contact.firstName}` : ''}!
           </h2>
           <p className="text-xl text-gray-300 leading-relaxed">
-            Deine Bewerbung als Balkonbau Partner wurde erfolgreich übermittelt. 
-            Unser Team prüft sie sorgfältig und meldet sich in den nächsten Tagen persönlich bei dir.
+            Ihre Bewerbung als Balkonbau Partner wurde erfolgreich übermittelt. 
+            Unser Team prüft sie sorgfältig und meldet sich in den nächsten Tagen persönlich bei Ihnen.
           </p>
         </div>
 
         <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-6 rounded-2xl">
-          <h3 className="text-xl font-bold text-orange-400 mb-4">📋 Deine Bewerbung im Überblick:</h3>
+          <h3 className="text-xl font-bold text-orange-400 mb-4">📋 Ihre Bewerbung im Überblick:</h3>
           <div className="grid md:grid-cols-2 gap-6 text-gray-300">
                          <div className="text-left space-y-2">
                <div><strong>Lead-Paket:</strong> {getPartnerTypeLabel()}</div>
@@ -1900,14 +1930,14 @@ const PartnerFunnel = () => {
               <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
               <div>
                 <div className="font-semibold text-white">Bestätigung per E-Mail (sofort)</div>
-                <div className="text-sm text-gray-300">Du erhältst eine Bestätigung deiner Bewerbung</div>
+                <div className="text-sm text-gray-300">Sie erhalten unmittelbar eine Bestätigung Ihrer Bewerbung</div>
               </div>
             </div>
             <div className="flex items-start space-x-3">
               <div className="w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
               <div>
                 <div className="font-semibold text-white">Prüfung durch unser Team (1-3 Werktage)</div>
-                <div className="text-sm text-gray-300">Wir prüfen deine Qualifikationen und Erfahrungen sorgfältig</div>
+                <div className="text-sm text-gray-300">Wir prüfen Ihre Qualifikationen und Erfahrungen sorgfältig</div>
               </div>
             </div>
             <div className="flex items-start space-x-3">
@@ -2258,7 +2288,7 @@ const PartnerFunnel = () => {
                   </div>
                   <div className="text-left">
                     <h3 className="text-xl font-bold text-yellow-300 mb-2">
-                      ⚠️ Achtung Hinweis: Du gehst hier aktuell noch keine Verpflichtung ein
+                      ⚠️ Achtung Hinweis: Sie gehen hier aktuell noch keine Verpflichtung ein
                     </h3>
                     <p className="text-gray-200 leading-relaxed font-medium">
                       <strong className="text-yellow-300">Dies ist nur eine Vorauswahl.</strong> Sie schließen hier noch keinen Vertrag ab. 
@@ -2428,7 +2458,7 @@ const PartnerFunnel = () => {
             </div>
             <h2 className="text-4xl font-bold text-white mb-4">
               <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                Deine expliziten Vorteile als Partner
+                Ihre expliziten Vorteile als Partner
               </span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
