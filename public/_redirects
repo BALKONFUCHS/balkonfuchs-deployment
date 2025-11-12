@@ -1,0 +1,94 @@
+# ============================================
+# BALKONFUCHS.DE - NETLIFY REDIRECTS
+# Domain Migration: old -> new
+# Created: November 2025
+# ============================================
+
+# --------------------------------------------
+# PRIORITY 1: TOP TRAFFIC PAGES
+# These articles generate 2000+ visits/month
+# --------------------------------------------
+
+# Main baurecht article (top performer: ~450-960 visits/month)
+/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
+/blogs/post/Der-nachtr%C3%BCgliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
+/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
+
+# Balkongroesse without permit (~250-793 visits/month)
+/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet2  /blogs/post/balkon-groesse-ohne-genehmigung/  301
+/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2  /blogs/post/balkon-groesse-ohne-genehmigung/  301
+/blogs/post/Darf-ich-meinen-balkon-ohne-genehmigung*  /blogs/post/balkon-groesse-ohne-genehmigung/  301
+
+# Konfigurator -> Kalkulator (~200-944 visits/month)
+/konfigurator  /kalkulator/  301
+/konfigurator/*  /kalkulator/  301
+
+# Balkongelaender landing
+/balkongelaender  /kalkulator/  301
+/balkongelaender/*  /kalkulator/  301
+
+# --------------------------------------------
+# PRIORITY 2: BAUANTRAG & GENEHMIGUNG
+# --------------------------------------------
+
+# Bauantrag article -> new genehmigung article
+/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten  /blogs/post/balkon-bauantrag-genehmigung/  301
+/blogs/post/balkon-bauantrag-baugenehmigung*  /blogs/post/balkon-bauantrag-genehmigung/  301
+
+# Genehmigungsarten
+/blogs/post/Die-Unterschiedliche-Genehmigungsarten-f%C3%BCr-deinen-nachtraeglichen-Balkonanbau  /blogs/post/balkon-bauantrag-genehmigung/  301
+/blogs/post/Die-Unterschiedliche-Genehmigungsarten*  /blogs/post/balkon-bauantrag-genehmigung/  301
+
+# --------------------------------------------
+# PRIORITY 3: COST ARTICLES
+# -> Redirect to the calculator
+# --------------------------------------------
+
+/blogs/post/Wieviel-kostet-Balkon-anbauen-was-kostet-Balkon  /kalkulator/  301
+/blogs/post/Wieviel-kostet-Balkon-anbauen*  /kalkulator/  301
+/blogs/post/balkon-nachtraeglich-anbauen-kosten-architekt-was-kostet-ein-bauantrag  /kalkulator/  301
+/blogs/post/balkon-nachtraeglich-anbauen-kosten-architekt*  /kalkulator/  301
+
+# --------------------------------------------
+# PRIORITY 4: BALCONY TYPES
+# -> Redirect to baurecht pillar page
+# --------------------------------------------
+
+/blogs/post/Vorstellbalkon-der-Balkon-auf-Stuetzen  /baurecht-balkon/  301
+/blogs/post/Vorstellbalkon*  /baurecht-balkon/  301
+/blogs/post/Anlehnbalkon-dieser-Balkon-hat-nur-vorne-Stuetzen  /baurecht-balkon/  301
+/blogs/post/Anlehnbalkon*  /baurecht-balkon/  301
+/blogs/post/balkon-oder-terrasse-oder-balkonterrasse  /baurecht-balkon/  301
+/blogs/post/balkon-oder-terrasse*  /baurecht-balkon/  301
+
+# --------------------------------------------
+# PRIORITY 5: SPECIAL BAURECHT TOPICS
+# -> Redirect to baurecht pillar page
+# --------------------------------------------
+
+/blogs/post/balkone-und-denkmalschutz-was-ist-moeglich  /baurecht-balkon/  301
+/blogs/post/balkone-und-denkmalschutz*  /baurecht-balkon/  301
+/blogs/post/balkon-und-brandschutz-balkon-an-einer-brandwand  /baurecht-balkon/  301
+/blogs/post/balkon-und-brandschutz*  /baurecht-balkon/  301
+/blogs/post/Balkon-Entwaesserung-Die-Tuecke-steckt-im-Abfluss  /baurecht-balkon/  301
+/blogs/post/Balkon-Entwaesserung*  /baurecht-balkon/  301
+
+# --------------------------------------------
+# OTHER IMPORTANT PAGES
+# --------------------------------------------
+
+/express-angebot  /planer/  301
+/express-angebot/*  /planer/  301
+/genehmigung  /genehmigung/  301
+/check-genehmigung  /genehmigung/  301
+/blogs  /  301
+/blog  /  301
+
+# --------------------------------------------
+# CATCH-ALL (fallback)
+# --------------------------------------------
+# /blogs/post/*  /  301
+
+# --------------------------------------------
+# WWW handling is automatic in Netlify
+# --------------------------------------------

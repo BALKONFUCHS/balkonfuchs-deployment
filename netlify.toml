@@ -7,6 +7,21 @@
   NPM_FLAGS = "--production=false"
 
 [[redirects]]
+  from = "/konfigurator"
+  to = "/kalkulator/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1"
+  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
+  status = 301
+
+[[redirects]]
+  from = "/express-angebot"
+  to = "/planer/"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
