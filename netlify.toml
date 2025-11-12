@@ -6,6 +6,99 @@
   NODE_VERSION = "18"
   NPM_FLAGS = "--production=false"
 
+# ============================================
+# PRIORITY 1: TOP TRAFFIC PAGES
+# ============================================
+
+# Main baurecht article (top performer: ~450-960 visits/month)
+[[redirects]]
+  from = "/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1"
+  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Der-nachtr%C3%BCgliche-Balkonanbau-baurechtlich-bewertet1"
+  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1"
+  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
+  status = 301
+
+# Balkongroesse without permit (~250-793 visits/month)
+[[redirects]]
+  from = "/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet2"
+  to = "/blogs/post/balkon-groesse-ohne-genehmigung/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2"
+  to = "/blogs/post/balkon-groesse-ohne-genehmigung/"
+  status = 301
+
+# Bauantrag article
+[[redirects]]
+  from = "/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten"
+  to = "/blogs/post/balkon-bauantrag-genehmigung/"
+  status = 301
+
+# ============================================
+# PRIORITY 2: COST ARTICLES
+# ============================================
+
+[[redirects]]
+  from = "/blogs/post/Wieviel-kostet-Balkon-anbauen-was-kostet-Balkon"
+  to = "/kalkulator/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/balkon-nachtraeglich-anbauen-kosten-architekt-was-kostet-ein-bauantrag"
+  to = "/kalkulator/"
+  status = 301
+
+# ============================================
+# PRIORITY 3: BALCONY TYPES
+# ============================================
+
+[[redirects]]
+  from = "/blogs/post/Vorstellbalkon-der-Balkon-auf-Stuetzen"
+  to = "/baurecht-balkon/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Anlehnbalkon-dieser-Balkon-hat-nur-vorne-Stuetzen"
+  to = "/baurecht-balkon/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/balkon-oder-terrasse-oder-balkonterrasse"
+  to = "/baurecht-balkon/"
+  status = 301
+
+# ============================================
+# PRIORITY 4: SPECIAL BAURECHT TOPICS
+# ============================================
+
+[[redirects]]
+  from = "/blogs/post/balkone-und-denkmalschutz-was-ist-moeglich"
+  to = "/baurecht-balkon/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/balkon-und-brandschutz-balkon-an-einer-brandwand"
+  to = "/baurecht-balkon/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Balkon-Entwaesserung-Die-Tuecke-steckt-im-Abfluss"
+  to = "/baurecht-balkon/"
+  status = 301
+
+# ============================================
+# OTHER IMPORTANT PAGES
+# ============================================
+
 [[redirects]]
   from = "/konfigurator"
   to = "/kalkulator/"
@@ -17,11 +110,6 @@
   status = 301
 
 [[redirects]]
-  from = "/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1"
-  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
-  status = 301
-
-[[redirects]]
   from = "/express-angebot"
   to = "/planer/"
   status = 301
@@ -30,6 +118,10 @@
   from = "/express-angebot/"
   to = "/planer/"
   status = 301
+
+# ============================================
+# SPA FALLBACK (must be last)
+# ============================================
 
 [[redirects]]
   from = "/*"
