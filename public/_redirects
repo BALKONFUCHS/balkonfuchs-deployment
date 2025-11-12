@@ -21,10 +21,12 @@
 
 # Konfigurator -> Kalkulator (~200-944 visits/month)
 /konfigurator  /kalkulator/  301
+/konfigurator/  /kalkulator/  301
 /konfigurator/*  /kalkulator/  301
 
 # Balkongelaender landing
 /balkongelaender  /kalkulator/  301
+/balkongelaender/  /kalkulator/  301
 /balkongelaender/*  /kalkulator/  301
 
 # --------------------------------------------
@@ -78,11 +80,16 @@
 # --------------------------------------------
 
 /express-angebot  /planer/  301
+/express-angebot/  /planer/  301
 /express-angebot/*  /planer/  301
 /genehmigung  /genehmigung/  301
+/genehmigung/  /genehmigung/  301
 /check-genehmigung  /genehmigung/  301
+/check-genehmigung/  /genehmigung/  301
 /blogs  /  301
+/blogs/  /  301
 /blog  /  301
+/blog/  /  301
 
 # --------------------------------------------
 # CATCH-ALL (fallback)
