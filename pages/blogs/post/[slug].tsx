@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -3342,9 +3342,25 @@ const getRelatedPosts = (currentSlug: string, category: string): BlogPost[] => {
 
 const BlogPost = () => {
   const router = useRouter();
-  const { slug } = router.query;
+  const { slug: querySlug } = router.query;
+  const [slug, setSlug] = useState<string | null>(null);
   
-  const post = slug ? blogPosts[slug as string] : null;
+  // Bei Static Export funktioniert router.query.slug manchmal nicht
+  // Extrahiere den Slug direkt aus der URL als Fallback
+  useEffect(() => {
+    if (querySlug) {
+      setSlug(querySlug as string);
+    } else if (typeof window !== 'undefined') {
+      const pathname = window.location.pathname;
+      // Entferne trailing slash und extrahiere den Slug
+      const match = pathname.match(/\/blogs\/post\/([^\/]+)/);
+      if (match && match[1]) {
+        setSlug(match[1]);
+      }
+    }
+  }, [querySlug]);
+  
+  const post = slug ? blogPosts[slug] : null;
   const relatedPosts = post ? getRelatedPosts(post.slug, post.category) : [];
 
   if (!post) {
