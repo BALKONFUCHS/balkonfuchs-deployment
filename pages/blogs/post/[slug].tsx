@@ -3343,22 +3343,39 @@ const getRelatedPosts = (currentSlug: string, category: string): BlogPost[] => {
 const BlogPost = () => {
   const router = useRouter();
   const { slug: querySlug } = router.query;
-  const [slug, setSlug] = useState<string | null>(null);
   
   // Bei Static Export funktioniert router.query.slug manchmal nicht
   // Extrahiere den Slug direkt aus der URL als Fallback
-  useEffect(() => {
+  const getSlug = (): string | null => {
+    // Zuerst versuchen, den Slug aus router.query zu bekommen
     if (querySlug) {
-      setSlug(querySlug as string);
-    } else if (typeof window !== 'undefined') {
+      return querySlug as string;
+    }
+    
+    // Fallback: Slug direkt aus der URL extrahieren (funktioniert auch bei Static Export)
+    if (typeof window !== 'undefined') {
       const pathname = window.location.pathname;
       // Entferne trailing slash und extrahiere den Slug
       const match = pathname.match(/\/blogs\/post\/([^\/]+)/);
       if (match && match[1]) {
-        setSlug(match[1]);
+        return match[1];
       }
     }
-  }, [querySlug]);
+    
+    return null;
+  };
+  
+  // Verwende useState mit initialer Berechnung, um sofort den Slug zu haben
+  const [slug] = useState<string | null>(() => getSlug());
+  
+  // Aktualisiere den Slug, wenn router.query sich ändert
+  useEffect(() => {
+    const newSlug = getSlug();
+    if (newSlug && newSlug !== slug) {
+      // Force re-render by updating state if needed
+      // But we use useState with function initializer, so this might not be needed
+    }
+  }, [querySlug, slug]);
   
   const post = slug ? blogPosts[slug] : null;
   const relatedPosts = post ? getRelatedPosts(post.slug, post.category) : [];

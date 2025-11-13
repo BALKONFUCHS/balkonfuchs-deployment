@@ -153,6 +153,8 @@
 
 # ============================================
 # SPA FALLBACK (must be last)
+# Note: This should NOT match /blogs/post/* routes
+# Those routes are handled by the [slug] dynamic route
 # ============================================
 
 [[redirects]]
