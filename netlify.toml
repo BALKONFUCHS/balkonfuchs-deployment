@@ -11,8 +11,14 @@
 # ============================================
 
 # Main baurecht article (top performer: ~450-960 visits/month)
+# Handle all variants: URL-encoded (%C3%A4 = ä), with/without trailing slash
 [[redirects]]
   from = "/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1"
+  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1/"
   to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
   status = 301
 
@@ -22,7 +28,17 @@
   status = 301
 
 [[redirects]]
+  from = "/blogs/post/Der-nachtr%C3%BCgliche-Balkonanbau-baurechtlich-bewertet1/"
+  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
+  status = 301
+
+[[redirects]]
   from = "/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1"
+  to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1/"
   to = "/blogs/post/balkonanbau-genehmigung-baurecht-2025/"
   status = 301
 
@@ -33,13 +49,28 @@
   status = 301
 
 [[redirects]]
+  from = "/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet2/"
+  to = "/blogs/post/balkon-groesse-ohne-genehmigung/"
+  status = 301
+
+[[redirects]]
   from = "/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2"
+  to = "/blogs/post/balkon-groesse-ohne-genehmigung/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2/"
   to = "/blogs/post/balkon-groesse-ohne-genehmigung/"
   status = 301
 
 # Bauantrag article
 [[redirects]]
   from = "/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten"
+  to = "/blogs/post/balkon-bauantrag-genehmigung/"
+  status = 301
+
+[[redirects]]
+  from = "/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten/"
   to = "/blogs/post/balkon-bauantrag-genehmigung/"
   status = 301
 
