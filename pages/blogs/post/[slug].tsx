@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { Clock, Calendar, User, ArrowRight, ArrowLeft, Share2, Calculator, Calendar as CalendarIcon, CheckCircle, FileText } from 'lucide-react';
 import Header from '../../../components/Header';
 import Footer from '../../../components/Footer';
 import dynamic from 'next/dynamic';
+import { GetStaticPaths, GetStaticProps } from 'next';
 const ZohoSalesIQ = dynamic(() => import('../../../components/ZohoSalesIQ.js'), { ssr: false });
 
 // Blog-Artikel Interface
@@ -3340,44 +3340,44 @@ const getRelatedPosts = (currentSlug: string, category: string): BlogPost[] => {
     .slice(0, 3);
 };
 
-const BlogPost = () => {
-  const router = useRouter();
-  const { slug: querySlug } = router.query;
+// GetStaticPaths: Definiere alle Blog-Post-Slugs für statische Generierung
+export const getStaticPaths: GetStaticPaths = async () => {
+  // Extrahiere alle Slugs aus blogPosts
+  const posts = Object.keys(blogPosts);
   
-  // Bei Static Export funktioniert router.query.slug manchmal nicht
-  // Extrahiere den Slug direkt aus der URL als Fallback
-  const getSlug = (): string | null => {
-    // Zuerst versuchen, den Slug aus router.query zu bekommen
-    if (querySlug) {
-      return querySlug as string;
-    }
-    
-    // Fallback: Slug direkt aus der URL extrahieren (funktioniert auch bei Static Export)
-    if (typeof window !== 'undefined') {
-      const pathname = window.location.pathname;
-      // Entferne trailing slash und extrahiere den Slug
-      const match = pathname.match(/\/blogs\/post\/([^\/]+)/);
-      if (match && match[1]) {
-        return match[1];
-      }
-    }
-    
-    return null;
+  return {
+    paths: posts.map((slug) => ({
+      params: { slug },
+    })),
+    fallback: false, // Nur die definierten Slugs erlauben - keine dynamischen Routen
   };
+};
+
+// GetStaticProps: Übergebe den Slug an die Komponente
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const slug = params?.slug as string;
   
-  // Verwende useState mit initialer Berechnung, um sofort den Slug zu haben
-  const [slug] = useState<string | null>(() => getSlug());
+  // Prüfe ob der Slug existiert
+  if (!slug || !blogPosts[slug]) {
+    return {
+      notFound: true,
+    };
+  }
   
-  // Aktualisiere den Slug, wenn router.query sich ändert
-  useEffect(() => {
-    const newSlug = getSlug();
-    if (newSlug && newSlug !== slug) {
-      // Force re-render by updating state if needed
-      // But we use useState with function initializer, so this might not be needed
-    }
-  }, [querySlug, slug]);
-  
-  const post = slug ? blogPosts[slug] : null;
+  return {
+    props: {
+      slug,
+    },
+  };
+};
+
+// Komponente: Erhält slug aus props (von getStaticProps)
+interface BlogPostProps {
+  slug: string;
+}
+
+const BlogPost = ({ slug }: BlogPostProps) => {
+  const post = blogPosts[slug] || null;
   const relatedPosts = post ? getRelatedPosts(post.slug, post.category) : [];
 
   if (!post) {
