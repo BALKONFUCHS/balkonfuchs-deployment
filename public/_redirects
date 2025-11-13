@@ -11,19 +11,20 @@
 
 # Main baurecht article (top performer: ~450-960 visits/month)
 # Handle all variants: URL-encoded (%C3%A4 = ä), with/without trailing slash
-/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
-/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1/  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
-/blogs/post/Der-nachtr%C3%BCgliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
-/blogs/post/Der-nachtr%C3%BCgliche-Balkonanbau-baurechtlich-bewertet1/  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
-/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
-/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1/  /blogs/post/balkonanbau-genehmigung-baurecht-2025/  301
+# Redirect to URLs WITHOUT trailing slash for better compatibility
+/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025  301
+/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet1/  /blogs/post/balkonanbau-genehmigung-baurecht-2025  301
+/blogs/post/Der-nachtr%C3%BCgliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025  301
+/blogs/post/Der-nachtr%C3%BCgliche-Balkonanbau-baurechtlich-bewertet1/  /blogs/post/balkonanbau-genehmigung-baurecht-2025  301
+/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1  /blogs/post/balkonanbau-genehmigung-baurecht-2025  301
+/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet1/  /blogs/post/balkonanbau-genehmigung-baurecht-2025  301
 
 # Balkongroesse without permit (~250-793 visits/month)
-/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet2  /blogs/post/balkon-groesse-ohne-genehmigung/  301
-/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet2/  /blogs/post/balkon-groesse-ohne-genehmigung/  301
-/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2  /blogs/post/balkon-groesse-ohne-genehmigung/  301
-/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2/  /blogs/post/balkon-groesse-ohne-genehmigung/  301
-/blogs/post/Darf-ich-meinen-balkon-ohne-genehmigung*  /blogs/post/balkon-groesse-ohne-genehmigung/  301
+/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet2  /blogs/post/balkon-groesse-ohne-genehmigung  301
+/blogs/post/Der-nachtr%C3%A4gliche-Balkonanbau-baurechtlich-bewertet2/  /blogs/post/balkon-groesse-ohne-genehmigung  301
+/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2  /blogs/post/balkon-groesse-ohne-genehmigung  301
+/blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2/  /blogs/post/balkon-groesse-ohne-genehmigung  301
+/blogs/post/Darf-ich-meinen-balkon-ohne-genehmigung*  /blogs/post/balkon-groesse-ohne-genehmigung  301
 
 # Konfigurator -> Kalkulator (~200-944 visits/month)
 /konfigurator  /kalkulator/  301
@@ -40,13 +41,13 @@
 # --------------------------------------------
 
 # Bauantrag article -> new genehmigung article
-/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten  /blogs/post/balkon-bauantrag-genehmigung/  301
-/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten/  /blogs/post/balkon-bauantrag-genehmigung/  301
-/blogs/post/balkon-bauantrag-baugenehmigung*  /blogs/post/balkon-bauantrag-genehmigung/  301
+/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten  /blogs/post/balkon-bauantrag-genehmigung  301
+/blogs/post/balkon-bauantrag-baugenehmigung-diese-unterlagen-brauchst-du-hierauf-solltest-du-achten/  /blogs/post/balkon-bauantrag-genehmigung  301
+/blogs/post/balkon-bauantrag-baugenehmigung*  /blogs/post/balkon-bauantrag-genehmigung  301
 
 # Genehmigungsarten
-/blogs/post/Die-Unterschiedliche-Genehmigungsarten-f%C3%BCr-deinen-nachtraeglichen-Balkonanbau  /blogs/post/balkon-bauantrag-genehmigung/  301
-/blogs/post/Die-Unterschiedliche-Genehmigungsarten*  /blogs/post/balkon-bauantrag-genehmigung/  301
+/blogs/post/Die-Unterschiedliche-Genehmigungsarten-f%C3%BCr-deinen-nachtraeglichen-Balkonanbau  /blogs/post/balkon-bauantrag-genehmigung  301
+/blogs/post/Die-Unterschiedliche-Genehmigungsarten*  /blogs/post/balkon-bauantrag-genehmigung  301
 
 # --------------------------------------------
 # PRIORITY 3: COST ARTICLES
