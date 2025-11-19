@@ -1,4 +1,4 @@
-Danke dir für die Info und[build]
+[build]
   publish = "out"
   command = "npm run build:export"
 
