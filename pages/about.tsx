@@ -114,7 +114,7 @@ const About = () => {
                 <div className="mb-8 text-center">
                   <div className="inline-block bg-gray-700/50 rounded-xl p-6">
                     <img 
-                      src="/images/Martin Beyer (1).png" 
+                      src="/images/Martin%20Beyer%20(1).png" 
                       alt="Martin Beyer - Gründer von BALKONFUCHS" 
                       className="w-48 h-48 object-cover rounded-full mx-auto mb-4 border-4 border-orange-400"
                     />
