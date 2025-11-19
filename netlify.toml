@@ -1,4 +1,4 @@
-[build]
+Danke dir für die Info und[build]
   publish = "out"
   command = "npm run build:export"
 
@@ -133,12 +133,12 @@
 
 [[redirects]]
   from = "/konfigurator"
-  to = "/kalkulator/"
+  to = "/balkon-konfigurator/"
   status = 301
 
 [[redirects]]
   from = "/konfigurator/"
-  to = "/kalkulator/"
+  to = "/balkon-konfigurator/"
   status = 301
 
 [[redirects]]

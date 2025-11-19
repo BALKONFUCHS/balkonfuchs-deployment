@@ -1707,7 +1707,7 @@ const BalkonFuchsPlanerFunnel = () => {
             <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
             <a href="/planer/" className="text-orange-500 border-b-2 border-orange-500 pb-1 font-medium transition-colors hover:text-orange-500">Planer</a>
             <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
-            <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
+            <a href="/balkon-konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
             <a href="/blog" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Blog</a>
           </nav>
 
@@ -1737,7 +1737,7 @@ const BalkonFuchsPlanerFunnel = () => {
             <a href="/kalkulator/" className="block text-gray-300 font-medium">Kalkulator</a>
             <a href="/planer/" className="block text-orange-500 font-medium border-l-4 border-orange-500 pl-3">Planer</a>
             <a href="/genehmigung/" className="block text-gray-300 font-medium">Genehmigungscheck</a>
-            <a href="/konfigurator/" className="block text-gray-300 font-medium">Konfigurator</a>
+            <a href="/balkon-konfigurator/" className="block text-gray-300 font-medium">Konfigurator</a>
             <a href="/blog" className="block text-gray-300 font-medium">Blog</a>
             <a href="/gewerbe/" className="block text-gray-300 font-medium">Gewerbe</a>
             <div className="pt-3">
@@ -1775,7 +1775,7 @@ const BalkonFuchsPlanerFunnel = () => {
               <li><a href="/planer/" className="text-gray-400 hover:text-orange-400 transition-colors">Balkon-Planer</a></li>
               <li><a href="/genehmigung/" className="text-gray-400 hover:text-orange-400 transition-colors">Genehmigungscheck</a></li>
               <li><a href="/bauzeit-planung/" className="text-gray-400 hover:text-orange-400 transition-colors">Baustart Rechner</a></li>
-              <li><a href="/konfigurator/" className="text-gray-400 hover:text-orange-400 transition-colors">Konfigurator</a></li>
+              <li><a href="/balkon-konfigurator/" className="text-gray-400 hover:text-orange-400 transition-colors">Konfigurator</a></li>
               <li><a href="/erfahrungen/" className="text-gray-400 hover:text-orange-400 transition-colors">Erfahrungen</a></li>
               <li><a href="/galerie/" className="text-gray-400 hover:text-orange-400 transition-colors">Galerie</a></li>
             </ul>

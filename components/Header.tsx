@@ -28,7 +28,7 @@ const Header = () => {
               <a href="/kalkulator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Kalkulator</a>
               <a href="/planer/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Planer</a>
               <a href="/genehmigung/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Genehmigungscheck</a>
-              <a href="/konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
+              <a href="/balkon-konfigurator/" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Konfigurator</a>
               <a href="/blog" className="text-gray-300 hover:text-orange-500 font-medium transition-colors">Blog</a>
             </nav>
             
@@ -76,7 +76,7 @@ const Header = () => {
               Genehmigungscheck
             </a>
             <a 
-              href="/konfigurator/" 
+              href="/balkon-konfigurator/" 
               className="block text-gray-300 hover:text-orange-500 font-medium py-2 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
