@@ -23,9 +23,9 @@ interface PartnerSummaryContext {
 }
 
 const PARTNER_TYPE_LABELS: Record<string, string> = {
-  starter: 'Starter (8 Leads/Monat)',
-  professional: 'Professional (17 Leads/Monat)',
-  enterprise: 'Enterprise (35+ Leads/Monat)'
+  gruendungspartner_berlin: '🎁 Gründungspartner Berlin',
+  regular_partner: '🔧 Regulärer Partner',
+  enterprise: '🏢 Großunternehmen / Kette'
 };
 
 const EXPERIENCE_LABELS: Record<string, string> = {
@@ -534,7 +534,7 @@ const PartnerFunnel = () => {
     ];
 
     const capabilityRows: SummaryRow[] = [
-      { label: 'Partner-Paket', value: PARTNER_TYPE_LABELS[formData.partnerType] || formData.partnerType || '-' },
+      { label: 'Partnertyp', value: PARTNER_TYPE_LABELS[formData.partnerType] || formData.partnerType || '-' },
       { label: 'Erfahrung', value: EXPERIENCE_LABELS[formData.experience] || formData.experience || '-' },
       { label: 'Spezialisierungen', value: specialtiesText },
       { label: 'Arbeitsgebiet', value: WORKING_AREA_LABELS[formData.workingArea] || formData.workingArea || '-' },
@@ -1616,7 +1616,7 @@ const PartnerFunnel = () => {
                 <div className="text-lg font-semibold text-white">{formData.legalForm === 'other' ? (formData.legalFormCustom || 'Sonstiges') : (formData.legalForm || 'Nicht angegeben')}</div>
               </div>
               <div className="bg-gray-700/30 rounded-xl p-4">
-                <div className="text-sm text-gray-400 mb-1">Partner-Paket</div>
+                <div className="text-sm text-gray-400 mb-1">Partnertyp</div>
                 <div className="text-lg font-semibold text-white">{partnerTypeLabel}</div>
               </div>
               <div className="bg-gray-700/30 rounded-xl p-4">
@@ -1821,7 +1821,7 @@ const PartnerFunnel = () => {
             <h3 className="font-semibold text-orange-400 mb-4">📋 Ihre Balkonbau Partner Bewerbung im Überblick:</h3>
             <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-200">
               <div className="space-y-2">
-                <div><strong>Lead-Paket:</strong> {getPartnerTypeLabel()}</div>
+                <div><strong>Partnertyp:</strong> {getPartnerTypeLabel()}</div>
                 <div><strong>Erfahrung:</strong> {getExperienceLabel()}</div>
                 <div><strong>Mitarbeiterzahl:</strong> {formData.employeeCount || 'Nicht angegeben'}</div>
                 <div><strong>Arbeitsgebiet:</strong> {getWorkingAreaLabel()}</div>
@@ -1968,9 +1968,9 @@ const PartnerFunnel = () => {
   // Helper functions
   const getPartnerTypeLabel = () => {
     switch(formData.partnerType) {
-      case 'starter': return 'Starter (8 Leads/Monat)';
-      case 'professional': return 'Professional (17 Leads/Monat)';
-      case 'enterprise': return 'Enterprise (35+ Leads/Monat)';
+      case 'gruendungspartner_berlin': return '🎁 Gründungspartner Berlin';
+      case 'regular_partner': return '🔧 Regulärer Partner';
+      case 'enterprise': return '🏢 Großunternehmen / Kette';
       default: return 'Nicht ausgewählt';
     }
   };
@@ -2117,10 +2117,10 @@ const PartnerFunnel = () => {
               },
               {
                 "@type": "Question", 
-                "name": "Welche Lead-Pakete gibt es?",
+                "name": "Welche Partner-Optionen gibt es?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Es gibt drei Pakete: Starter (8 Leads/Monat), Professional (17 Leads/Monat) und Enterprise (35+ Leads/Monat). Alle Pakete sind bis Ende 2025 kostenlos."
+                  "text": "Es gibt drei Optionen: Gründungspartner Berlin (eine der ersten 10 Partner mit Lifetime-Vorteilen), Regulärer Partner (Teilnahme am Auktionssystem) und Großunternehmen/Kette (individuelle Lösung für mehrere Standorte)."
                 }
               },
               {
@@ -2128,7 +2128,7 @@ const PartnerFunnel = () => {
                 "name": "Was kostet die Partnerschaft?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Alle Partnerschaften sind bis Ende 2025 kostenlos. Ab 2026 gelten die regulären Preise: Starter 649€/Monat, Professional 1.199€/Monat, Enterprise 2.199€/Monat."
+                  "text": "Das Auktionsmodell hat keine monatlichen Fixkosten. Sie zahlen nur, wenn Sie einen Lead gewinnen (Pay-per-Win). Gründungspartner können bis Ende 2025 kostenlos starten. Voraussichtlich ab Q2 2026 werden optionale Subscription-Modelle eingeführt, für die Gründungspartner einen Lifetime-Rabatt von 30% erhalten."
                 }
               }
             ]
@@ -2151,19 +2151,74 @@ const PartnerFunnel = () => {
         </div>
       </section>
 
-      {/* SEO Content Section */}
+      {/* Hero Section - Auktionsmodell */}
       {!formData.partnerType && (
-        <section className="bg-gray-800 border-b border-gray-700 py-12">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              <span className="text-blue-400">Balkonbau Partner</span> werden - 8-Schritt Bewerbung
+        <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800">
+          <div className="max-w-4xl mx-auto text-center">
+            
+            {/* Badge */}
+            <div className="inline-flex items-center gap-3 bg-orange-500/10 border border-orange-500/30 rounded-full px-6 py-3 mb-8 animate-pulse">
+              <span className="text-2xl">🎁</span>
+              <div className="text-left">
+                <div className="text-orange-400 font-bold text-sm">GRÜNDUNGSPARTNER GESUCHT</div>
+                <div className="text-white text-xs">Nur noch 4 von 10 Plätzen in Berlin</div>
+              </div>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight">
+              Werden Sie Teil des<br/>
+              <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">BalkonFuchs-Netzwerks</span>
             </h1>
-            <h2 className="text-xl md:text-2xl text-gray-300 mb-6">
-              Qualifizierte Balkonbau-Leads für Ihr Handwerksunternehmen
-            </h2>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto">
-              Steigern Sie Ihren <span className="text-blue-400 font-semibold">Umsatz</span> als verifizierter <span className="text-blue-400 font-semibold">BALKONFUCHS-Partner</span>! Wir liefern Ihnen monatlich <span className="text-blue-400 font-semibold">qualifizierte, vorselektierte Balkonbau-Kunden</span> in Ihrer Region, die konkret einen <span className="text-blue-400 font-semibold">Balkonbau</span> möchten. Unsere <span className="text-blue-400 font-semibold">Balkonbau-Leads</span> sind bereits durch unsere Tools <span className="text-blue-400 font-semibold">vor-qualifiziert</span> und haben ein echtes <span className="text-blue-400 font-semibold">Kaufinteresse</span>. Wählen Sie zwischen verschiedenen <span className="text-blue-400 font-semibold">Balkonbau-Paket-Größen (8-35+ Leads/Monat)</span> und profitieren Sie von unserem <span className="text-blue-400 font-semibold">spezialisierten Balkonbau-Vermittlungssystem</span>. Zeigen Sie ihre herausragenden <span className="text-blue-400 font-semibold">Balkonbau-Projekte</span> und erhalten Sie <span className="text-blue-400 font-semibold">exklusive Zugang</span> zu besonderen Balkonbau-Projekten.
+
+            {/* Subheadline */}
+            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
+              Keine monatlichen Fixkosten. Keine Lead-Gebühren für Müll.<br/>
+              <strong className="text-white">Nur pay-per-win</strong> für kaufbereite Kunden.
             </p>
+
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10 max-w-3xl mx-auto">
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                <div className="text-3xl font-black text-orange-400 mb-1">0€</div>
+                <div className="text-sm text-gray-400">Fixkosten</div>
+              </div>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                <div className="text-3xl font-black text-orange-400 mb-1">94%</div>
+                <div className="text-sm text-gray-400">Kaufbereit</div>
+              </div>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                <div className="text-3xl font-black text-orange-400 mb-1">3-5</div>
+                <div className="text-sm text-gray-400">Partner/Lead</div>
+              </div>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                <div className="text-3xl font-black text-orange-400 mb-1">24h</div>
+                <div className="text-sm text-gray-400">Entscheidung</div>
+              </div>
+            </div>
+
+            {/* Trust Elements */}
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                </svg>
+                <span>⏰ 5 Minuten Bewerbung</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                </svg>
+                <span>🔒 Unverbindlich & kostenlos</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                </svg>
+                <span>💰 Gratis bis Ende 2025</span>
+              </div>
+            </div>
+
           </div>
         </section>
       )}
@@ -2269,175 +2324,132 @@ const PartnerFunnel = () => {
               </svg>
             </div>
             <h2 className="text-4xl font-bold text-white mb-4">
-              <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                Welches Partnerschaftsmodell passt zu Ihnen?
+              <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
+                Als was möchten Sie sich bewerben?
               </span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              🤝 Wählen Sie das Lead-Paket für Ihre Kapazität
+              🏆 Wählen Sie Ihre Einstiegsmöglichkeit bei BalkonFuchs
             </p>
-            
-            {/* Prominenter Hinweis-Box mit gelbem Hintergrund */}
-            <div className="mt-8 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-r from-yellow-500/30 to-orange-500/30 border-2 border-yellow-400/50 rounded-2xl p-6 shadow-lg shadow-yellow-500/20">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md">
-                    <svg className="w-6 h-6 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                    </svg>
-                  </div>
-                  <div className="text-left">
-                    <h3 className="text-xl font-bold text-yellow-300 mb-2">
-                      ⚠️ Achtung Hinweis: Sie gehen hier aktuell noch keine Verpflichtung ein
-                    </h3>
-                    <p className="text-gray-200 leading-relaxed font-medium">
-                      <strong className="text-yellow-300">Dies ist nur eine Vorauswahl.</strong> Sie schließen hier noch keinen Vertrag ab. 
-                      Diese Auswahl hilft uns, gemeinsam mit Ihnen die passende Partnerschaft zu finden. 
-                      Im persönlichen Gespräch besprechen wir dann die individuellen Konditionen und 
-                      schließen einen maßgeschneiderten Vertrag ab, der zu Ihrem Unternehmen passt.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
             
-            {/* Frame um Infotext und Subscription-Cards */}
-            <div className="mt-8 max-w-6xl mx-auto border-2 border-yellow-400/30 rounded-3xl p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Frame um Infotext und Auktionsmodell-Optionen */}
+            <div className="mt-8 max-w-6xl mx-auto border-2 border-orange-400/30 rounded-3xl p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm">
+              <div className="grid md:grid-cols-3 gap-8">
+                {/* Gründungspartner Berlin */}
                 <button
                   onClick={() => {
-                    setFormData(prev => ({ ...prev, partnerType: 'starter' }));
-                    // One-Click entfernt für bessere Datengenauigkeit
+                    setFormData(prev => ({ ...prev, partnerType: 'gruendungspartner_berlin' }));
                   }}
-                  className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
-                    formData.partnerType === 'starter' 
+                  className={`relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-2 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group flex flex-col ${
+                    formData.partnerType === 'gruendungspartner_berlin' 
+                      ? 'border-orange-500 shadow-2xl shadow-orange-500/25 bg-gradient-to-br from-orange-500/10 to-red-500/10'
+                      : 'border-gray-700/50 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10'
+                  }`}
+                >
+                  {/* Badge */}
+                  <div className="absolute -top-3 -right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+                    🔥 NUR NOCH 4 PLÄTZE FREI
+                  </div>
+                  
+                  <div className="text-center">
+                    <div className="text-5xl mb-4">🎁</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Gründungspartner Berlin</h3>
+                    <p className="text-sm text-gray-400 mb-6">Eine der ersten 10 Partner mit Lifetime-Vorteilen</p>
+                    
+                    {/* Benefits */}
+                    <div className="space-y-3 text-left">
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Kostenlos bis Ende 2025</span>
+                      </div>
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Nur 10 Partner = Minimale Konkurrenz</span>
+                      </div>
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Lifetime 30% Rabatt auf Subscriptions (voraussichtlich ab Q2 2026)</span>
+                      </div>
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Gründungspartner-Badge auf Profil</span>
+                      </div>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Regulärer Partner */}
+                <button
+                  onClick={() => {
+                    setFormData(prev => ({ ...prev, partnerType: 'regular_partner' }));
+                  }}
+                  className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group flex flex-col ${
+                    formData.partnerType === 'regular_partner' 
                       ? 'border-orange-500/50 shadow-2xl shadow-orange-500/25 bg-gradient-to-br from-orange-500/10 to-red-500/10'
                       : 'hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10'
                   }`}
                 >
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-white mb-4">Starter-Paket</h3>
-                
-                {/* Preis */}
-                <div className="mb-4">
-                  <div className="text-sm text-gray-400 line-through mb-2">
-                    649€/M
-                  </div>
-                  <div className="text-sm bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full font-bold mb-3">
-                    🎁 Gratis bis Ende 2025
-                  </div>
-                </div>
-                
-                <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                  <span className="text-orange-400 font-semibold">8 qualifizierte Leads pro Monat</span>
-                </p>
-                
-                {/* Features */}
-                <div className="space-y-2">
-                  <div className="text-sm text-gray-300 flex items-center justify-center">
-                    <span className="text-green-400 mr-2">✓</span>
-                    8 Leads/Monat
-                  </div>
-                  <div className="text-sm text-gray-300 flex items-center justify-center">
-                    <span className="text-green-400 mr-2">✓</span>
-                    Perfekt für Einsteiger
-                  </div>
-                  <div className="text-sm text-gray-300 flex items-center justify-center">
-                    <span className="text-green-400 mr-2">✓</span>
-                    Planbare Auslastung
-                  </div>
-                </div>
-              </div>
-                </button>
-
-                <button
-                  onClick={() => {
-                    setFormData(prev => ({ ...prev, partnerType: 'professional' }));
-                    // One-Click entfernt für bessere Datengenauigkeit
-                  }}
-                  className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
-                    formData.partnerType === 'professional' 
-                      ? 'border-blue-500/50 shadow-2xl shadow-blue-500/25 bg-gradient-to-br from-blue-500/10 to-cyan-500/10'
-                      : 'hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/10'
-                  }`}
-                >
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold text-white mb-4">Professional-Paket</h3>
-                
-                    {/* Preis */}
-                    <div className="mb-4">
-                      <div className="text-sm text-gray-400 line-through mb-2">
-                        1.199€/M
-                      </div>
-                      <div className="text-sm bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full font-bold mb-3">
-                        🎁 Gratis bis Ende 2025
-                      </div>
-                    </div>
+                    <div className="text-5xl mb-4">🔧</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Regulärer Partner</h3>
+                    <p className="text-sm text-gray-400 mb-6">Teilnahme am Auktionssystem ohne Gründungspartner-Status</p>
                     
-                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                      <span className="text-blue-400 font-semibold">17 qualifizierte Leads pro Monat</span>
-                    </p>
-                    
-                    {/* Features */}
-                    <div className="space-y-2">
-                      <div className="text-sm text-gray-300 flex items-center justify-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        17 Leads/Monat
+                    {/* Benefits */}
+                    <div className="space-y-3 text-left">
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Keine monatlichen Fixkosten</span>
                       </div>
-                      <div className="text-sm text-gray-300 flex items-center justify-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        Ideale Grundauslastung
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Pay-per-Win-Modell (nur bei Gewinn zahlen)</span>
                       </div>
-                      <div className="text-sm text-gray-300 flex items-center justify-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        Bewährtes System
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Volle Kontrolle über Lead-Auswahl</span>
+                      </div>
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Start sofort nach Onboarding möglich</span>
                       </div>
                     </div>
                   </div>
                 </button>
 
+                {/* Großunternehmen / Kette */}
                 <button
                   onClick={() => {
                     setFormData(prev => ({ ...prev, partnerType: 'enterprise' }));
-                    // One-Click entfernt für bessere Datengenauigkeit
                   }}
-                  className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group aspect-square flex flex-col justify-center ${
+                  className={`bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700/50 rounded-3xl p-8 backdrop-blur-sm transition-all duration-300 group flex flex-col ${
                     formData.partnerType === 'enterprise' 
-                      ? 'border-purple-500/50 shadow-2xl shadow-purple-500/25 bg-gradient-to-br from-purple-500/10 to-pink-500/10'
-                      : 'hover:border-purple-500/50 hover:shadow-2xl hover:shadow-purple-500/10'
+                      ? 'border-orange-500/50 shadow-2xl shadow-orange-500/25 bg-gradient-to-br from-orange-500/10 to-red-500/10'
+                      : 'hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10'
                   }`}
                 >
                   <div className="text-center">
-                    <h3 className="text-2xl font-bold text-white mb-4">Enterprise-Paket</h3>
-                
-                    {/* Preis */}
-                    <div className="mb-4">
-                      <div className="text-sm text-gray-400 line-through mb-2">
-                        2.199€/M
-                      </div>
-                      <div className="text-sm bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-full font-bold mb-3">
-                        🎁 Gratis bis Ende 2025
-                      </div>
-                    </div>
+                    <div className="text-5xl mb-4">🏢</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">Großunternehmen / Kette</h3>
+                    <p className="text-sm text-gray-400 mb-6">Individuelle Lösung für mehrere Standorte</p>
                     
-                    <p className="text-lg text-gray-300 leading-relaxed mb-4">
-                      <span className="text-purple-400 font-semibold">35+ qualifizierte Leads pro Monat</span>
-                    </p>
-                    
-                    {/* Features */}
-                    <div className="space-y-2">
-                      <div className="text-sm text-gray-300 flex items-center justify-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        35+ Leads/Monat
+                    {/* Benefits */}
+                    <div className="space-y-3 text-left">
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Multi-Standort-Support</span>
                       </div>
-                      <div className="text-sm text-gray-300 flex items-center justify-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        Maximale Flexibilität
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Dedizierter Account Manager</span>
                       </div>
-                      <div className="text-sm text-gray-300 flex items-center justify-center">
-                        <span className="text-green-400 mr-2">✓</span>
-                        Premium Support
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Custom API-Integrationen</span>
+                      </div>
+                      <div className="text-sm text-white flex items-start gap-2">
+                        <span className="text-green-400 flex-shrink-0">✓</span>
+                        <span>Volume-Konditionen nach Vereinbarung</span>
                       </div>
                     </div>
                   </div>
