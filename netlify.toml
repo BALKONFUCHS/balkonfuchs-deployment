@@ -145,15 +145,24 @@
   force = true
 
 # Konfigurator -> Balkon-Konfigurator
+# force = true ist wichtig, da die Seite /konfigurator/ existiert
 [[redirects]]
   from = "/konfigurator"
   to = "/balkon-konfigurator/"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/konfigurator/"
   to = "/balkon-konfigurator/"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/konfigurator/*"
+  to = "/balkon-konfigurator/"
+  status = 301
+  force = true
 
 [[redirects]]
   from = "/express-angebot"
