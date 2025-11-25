@@ -23,6 +23,7 @@ export default function Document() {
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                var widgetCode = '${WIDGET_CODE}';
                 // Nur auf registrierter Domain laden
                 var hostname = window.location.hostname;
                 var isRegisteredDomain = hostname === 'balkonfuchs.de' || hostname === 'www.balkonfuchs.de';
@@ -35,7 +36,7 @@ export default function Document() {
                 // KRITISCH: Initialisierung MUSS VOR dem Widget-Script erfolgen für Visitor-Tracking
                 window.$zoho = window.$zoho || {};
                 window.$zoho.salesiq = window.$zoho.salesiq || {
-                  widgetcode: "${WIDGET_CODE}",
+                  widgetcode: widgetCode,
                   values: {},
                   ready: function() {
                     console.log('ZOHO Sales IQ ready - Visitor tracking aktiviert');
@@ -46,12 +47,12 @@ export default function Document() {
                 if (!document.getElementById('zsiqscript')) {
                   var script = document.createElement('script');
                   script.id = 'zsiqscript';
-                  script.src = 'https://salesiq.zohopublic.eu/widget?wc=${WIDGET_CODE}';
+                  script.src = 'https://salesiq.zohopublic.eu/widget?wc=' + widgetCode;
                   script.async = true;
                   document.body.appendChild(script);
                 }
               })();
-            `.replace(/\$\{WIDGET_CODE\}/g, WIDGET_CODE),
+            `,
           }}
         />
       </body>
