@@ -80,7 +80,7 @@ const ZohoSalesIQ = () => {
     widgetScript.onload = () => {
       console.log('ZOHO Sales IQ script loaded successfully');
       
-      // Widget nach kurzer Verzögerung prüfen
+      // Widget-Verfügbarkeit prüfen (nur für Debugging, keine automatische Öffnung)
       setTimeout(() => {
         try {
           console.log('ZOHO Sales IQ full object check:', {
@@ -91,14 +91,12 @@ const ZohoSalesIQ = () => {
             salesIQ: window.$zoho?.salesiq
           });
           
-          // Versuche Widget anzuzeigen
+          // Widget ist geladen und als Icon sichtbar - öffnet sich nur bei User-Klick
           if (window.$zoho?.salesiq?.floatwindow) {
-            console.log('ZOHO Sales IQ: floatwindow API available, attempting to show');
-            window.$zoho.salesiq.floatwindow.visible('show');
+            console.log('ZOHO Sales IQ: floatwindow API available - Widget wird nur bei User-Klick geöffnet');
           }
           if (window.$zoho?.salesiq?.show) {
-            console.log('ZOHO Sales IQ: show API available, attempting to show');
-            window.$zoho.salesiq.show();
+            console.log('ZOHO Sales IQ: show API available - Widget wird nur bei User-Klick geöffnet');
           }
         } catch (error) {
           console.log('ZOHO Sales IQ widget check error:', error);
