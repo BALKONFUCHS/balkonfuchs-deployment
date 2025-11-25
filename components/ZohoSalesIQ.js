@@ -59,17 +59,24 @@ const ZohoSalesIQ = () => {
 
     console.log('Loading ZOHO Sales IQ widget with code:', WIDGET_CODE);
 
-    // Erste Script: Initialisierung (exakt wie im offiziellen Zoho Code)
-    // Dieses Script muss ZUERST geladen werden, bevor das Widget-Script geladen wird
+    // KRITISCH: Initialisierung MUSS widgetcode und values enthalten für Visitor-Tracking!
+    // Siehe homepage.html Zeile 1140-1147 für die funktionierende Version
     window.$zoho = window.$zoho || {};
-    window.$zoho.salesiq = window.$zoho.salesiq || { ready: function() {} };
+    window.$zoho.salesiq = window.$zoho.salesiq || {
+      widgetcode: WIDGET_CODE,
+      values: {},
+      ready: function() {
+        console.log('ZOHO Sales IQ ready - Visitor tracking aktiviert');
+      }
+    };
 
     // Initialisierungs-Script hinzufügen (Zoho empfiehlt es vor dem schließenden </body>)
+    // WICHTIG: widgetcode und values müssen auch hier gesetzt werden!
     const initScript = document.createElement('script');
     initScript.type = 'text/javascript';
-    initScript.innerHTML = 'window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}';
+    initScript.innerHTML = `window.$zoho=window.$zoho || {};window.$zoho.salesiq=window.$zoho.salesiq || {widgetcode:"${WIDGET_CODE}",values:{},ready:function(){console.log('ZOHO Sales IQ ready - Visitor tracking aktiviert');}};`;
     document.body.appendChild(initScript);
-    console.log('ZOHO Sales IQ initialization script added to body');
+    console.log('ZOHO Sales IQ initialization script added to body with widgetcode for visitor tracking');
 
     // Zweite Script: Haupt-Widget laden (Zoho empfiehlt es vor dem schließenden </body>)
     // WICHTIG: defer = true war in der funktionierenden Version - für Visitor-Tracking wichtig!
