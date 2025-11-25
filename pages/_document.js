@@ -16,45 +16,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        
-        {/* ZOHO Sales IQ Widget - Direkt im HTML für frühes Visitor-Tracking */}
-        {/* WICHTIG: Muss VOR dem schließenden </body> Tag sein für korrektes Visitor-Tracking */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var widgetCode = '${WIDGET_CODE}';
-                // Nur auf registrierter Domain laden
-                var hostname = window.location.hostname;
-                var isRegisteredDomain = hostname === 'balkonfuchs.de' || hostname === 'www.balkonfuchs.de';
-                var isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.includes('local');
-                
-                if (isLocalhost || !isRegisteredDomain) {
-                  return; // Widget nicht auf localhost oder nicht-registrierten Domains laden
-                }
-                
-                // KRITISCH: Initialisierung MUSS VOR dem Widget-Script erfolgen für Visitor-Tracking
-                window.$zoho = window.$zoho || {};
-                window.$zoho.salesiq = window.$zoho.salesiq || {
-                  widgetcode: widgetCode,
-                  values: {},
-                  ready: function() {
-                    console.log('ZOHO Sales IQ ready - Visitor tracking aktiviert');
-                  }
-                };
-                
-                // Widget-Script laden (OHNE defer für frühes Tracking)
-                if (!document.getElementById('zsiqscript')) {
-                  var script = document.createElement('script');
-                  script.id = 'zsiqscript';
-                  script.src = 'https://salesiq.zohopublic.eu/widget?wc=' + widgetCode;
-                  script.async = true;
-                  document.body.appendChild(script);
-                }
-              })();
-            `,
-          }}
-        />
       </body>
     </Html>
   )
