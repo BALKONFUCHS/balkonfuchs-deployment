@@ -16,6 +16,28 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        
+        {/* ZOHO Sales IQ Widget - Direkt im HTML wie in homepage.html für Visitor-Tracking */}
+        {/* WICHTIG: Muss EXAKT wie in homepage.html sein - direkt im HTML, nicht in React */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.$zoho = window.$zoho || {};
+              window.$zoho.salesiq = window.$zoho.salesiq || {
+                widgetcode: "${WIDGET_CODE}",
+                values: {},
+                ready: function() {
+                  console.log('Zoho SalesIQ loaded');
+                }
+              };
+            `,
+          }}
+        />
+        <script
+          id="zsiqscript"
+          src={`https://salesiq.zohopublic.eu/widget?wc=${WIDGET_CODE}`}
+          defer
+        />
       </body>
     </Html>
   )
