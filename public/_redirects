@@ -26,9 +26,10 @@
 /blogs/post/Der-nachtragliche-Balkonanbau-baurechtlich-bewertet2/  /blogs/post/balkon-groesse-ohne-genehmigung  301
 /blogs/post/Darf-ich-meinen-balkon-ohne-genehmigung*  /blogs/post/balkon-groesse-ohne-genehmigung  301
 
-# Konfigurator -> Balkon-Konfigurator (wird in netlify.toml gehandhabt)
-# Die Redirects sind in netlify.toml definiert:
-# /konfigurator -> /balkon-konfigurator/ (301)
+# Konfigurator -> Balkon-Konfigurator (~200-944 Besucher/Monat)
+/konfigurator  /balkon-konfigurator/  301
+/konfigurator/  /balkon-konfigurator/  301
+/konfigurator/*  /balkon-konfigurator/  301
 
 # Balkongelaender landing
 /balkongelaender  /kalkulator/  301
