@@ -131,6 +131,20 @@
 # OTHER IMPORTANT PAGES
 # ============================================
 
+# Fuchsbau/Service/balkon-kalkulieren -> Kalkulator
+[[redirects]]
+  from = "/Fuchsbau/Service/balkon-kalkulieren"
+  to = "/kalkulator/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Fuchsbau/Service/balkon-kalkulieren/*"
+  to = "/kalkulator/"
+  status = 301
+  force = true
+
+# Konfigurator -> Balkon-Konfigurator
 [[redirects]]
   from = "/konfigurator"
   to = "/balkon-konfigurator/"
