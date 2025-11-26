@@ -9,6 +9,11 @@
 # These articles generate 2000+ visits/month
 # --------------------------------------------
 
+# Konfigurator -> Balkon-Konfigurator (HIGH PRIORITY - must be before catch-all)
+/konfigurator  /balkon-konfigurator/  301
+/konfigurator/  /balkon-konfigurator/  301
+/konfigurator/*  /balkon-konfigurator/  301
+
 # Main baurecht article (top performer: ~450-960 visits/month)
 # Handle all variants: URL-encoded (%C3%A4 = ä), with/without trailing slash
 # Redirect to URLs WITHOUT trailing slash for better compatibility
@@ -30,11 +35,6 @@
 /Fuchsbau/Service/balkon-kalkulieren  /kalkulator/  301
 /Fuchsbau/Service/balkon-kalkulieren/  /kalkulator/  301
 /Fuchsbau/Service/balkon-kalkulieren/*  /kalkulator/  301
-
-# Konfigurator -> Balkon-Konfigurator (~200-944 Besucher/Monat)
-/konfigurator  /balkon-konfigurator/  301
-/konfigurator/  /balkon-konfigurator/  301
-/konfigurator/*  /balkon-konfigurator/  301
 
 # Balkongelaender landing
 /balkongelaender  /kalkulator/  301
