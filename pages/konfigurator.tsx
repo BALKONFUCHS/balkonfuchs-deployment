@@ -31,13 +31,14 @@ export default function Konfigurator() {
         <meta property="og:url" content="https://balkonfuchs.de/konfigurator" />
         <meta property="og:title" content="Balkon in 3D planen – Kostenloser Konfigurator | BalkonFuchs" />
         <meta property="og:description" content="Traumbalkon online gestalten mit Echtzeit-Vorschau. Kostenlose Angebote von geprüften Fachbetrieben vergleichen." />
-        <meta property="og:image" content="https://balkonfuchs.de/images/og-konfigurator.jpg" />
+        <meta property="og:image" content="https://balkonfuchs.de/images/og-balkonfuchs-3d-balkon-konfigurator.jpg" />
         
         {/* Twitter Card */}
         <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://balkonfuchs.de/konfigurator" />
         <meta property="twitter:title" content="3D-Balkon-Konfigurator | BalkonFuchs" />
         <meta property="twitter:description" content="Balkon in 3 Minuten planen: Material, Größe & Preis kalkulieren." />
-        <meta property="twitter:image" content="https://balkonfuchs.de/images/og-konfigurator.jpg" />
+        <meta property="twitter:image" content="https://balkonfuchs.de/images/og-balkonfuchs-3d-balkon-konfigurator.jpg" />
         
         {/* Structured Data für Voice Search */}
         <script
@@ -145,19 +146,6 @@ export default function Konfigurator() {
             </p>
           </div>
         </section>
-        
-        {/* Hier kommt der eigentliche 3D-Konfigurator */}
-        <div id="konfigurator" className="min-h-screen bg-gray-900 flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-white text-xl mb-4">Weiterleitung zum Balkon-Konfigurator...</p>
-            <p className="text-gray-400">
-              Falls die Weiterleitung nicht automatisch funktioniert,{' '}
-              <a href="/balkon-konfigurator/" className="text-orange-400 hover:underline">
-                klicken Sie hier
-              </a>
-            </p>
-          </div>
-        </div>
       </main>
       
       <style jsx>{`
