@@ -3349,9 +3349,9 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 style="color: #ffffff;">Warum überhaupt einen Balkonkonfigurator nutzen?</h2>
 
-      <p style="color: #e5e7eb;">Stellen Sie sich vor: Sie möchten einen Balkon an Ihr Haus anbauen. Vor 10 Jahren bedeutete das: Architekt beauftragen (Kosten: 1.500-3.000€), 4-6 Wochen auf Entwürfe warten, und selbst dann nur eine statische 2D-Zeichnung in der Hand halten, bei der Sie sich kaum vorstellen können, wie der Balkon wirklich aussehen wird.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Stellen Sie sich vor: Sie möchten einen Balkon an Ihr Haus anbauen. Vor 10 Jahren bedeutete das: Architekt beauftragen (Kosten: 1.500-3.000€), 4-6 Wochen auf Entwürfe warten, und selbst dann nur eine statische 2D-Zeichnung in der Hand halten, bei der Sie sich kaum vorstellen können, wie der Balkon wirklich aussehen wird.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">2026 geht das anders.</strong> Mit einem professionellen 3D-Balkonkonfigurator planen Sie online Ihren Wunschbalkon – in Echtzeit, mit 3D-Visualisierung, automatischer Kostenkalkulation und direktem Angebot von Fachfirmen. Klingt zu gut? Wir zeigen Ihnen die 10 konkreten Vorteile.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">2026 geht das anders.</strong> Mit einem professionellen 3D-Balkonkonfigurator planen Sie online Ihren Wunschbalkon – in Echtzeit, mit 3D-Visualisierung, automatischer Kostenkalkulation und direktem Angebot von Fachfirmen. Klingt zu gut? Wir zeigen Ihnen die 10 konkreten Vorteile.</p>
 
       <div style="background: #fff8e1; padding: 20px; margin: 20px 0; border-left: 4px solid #ff9800; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; font-weight: bold; color: #111827;">💡 Schnellstart</h4>
@@ -3362,9 +3362,9 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">1. Sofortige 3D-Visualisierung: "So sieht mein Balkon wirklich aus!"</h3>
 
-      <p style="color: #e5e7eb;">Der größte Vorteil: Sie sehen <strong style="color: #ffffff;">sofort in 3D</strong>, wie Ihr geplanter Balkon an Ihrem Haus aussieht. Keine abstrakten Grundrisse mehr, keine Fantasie nötig.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Der größte Vorteil: Sie sehen <strong style="color: #ffffff;">sofort in 3D</strong>, wie Ihr geplanter Balkon an Ihrem Haus aussieht. Keine abstrakten Grundrisse mehr, keine Fantasie nötig.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Konkret bedeutet das:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Konkret bedeutet das:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">360°-Ansicht aus allen Perspektiven</li>
         <li style="color: #e5e7eb;">Realistische Materialtexturen (Holz, Stahl, Glas, etc.)</li>
@@ -3372,13 +3372,13 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Größenverhältnisse zur Hausfassade korrekt dargestellt</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Praxisbeispiel:</strong> Familie Müller aus Potsdam war unsicher, ob ein Glasgeländer oder ein Stabgeländer besser zu ihrer Fassade passt. Mit dem 3D-Konfigurator haben sie beide Varianten in 5 Minuten durchgespielt – und sich für Glas entschieden, weil es in der 3D-Ansicht viel moderner wirkte als gedacht.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Praxisbeispiel:</strong> Familie Müller aus Potsdam war unsicher, ob ein Glasgeländer oder ein Stabgeländer besser zu ihrer Fassade passt. Mit dem 3D-Konfigurator haben sie beide Varianten in 5 Minuten durchgespielt – und sich für Glas entschieden, weil es in der 3D-Ansicht viel moderner wirkte als gedacht.</p>
 
       <h3 style="color: #f3f4f6;">2. Live-Preisberechnung: "Was kostet mein Balkon exakt?"</h3>
 
-      <p style="color: #e5e7eb;">Während Sie konfigurieren, berechnet der Konfigurator <strong style="color: #ffffff;">automatisch den Preis</strong> – in Echtzeit.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Während Sie konfigurieren, berechnet der Konfigurator <strong style="color: #ffffff;">automatisch den Preis</strong> – in Echtzeit.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was wird kalkuliert?</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was wird kalkuliert?</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Grundkonstruktion (Material, Größe, Typ)</li>
         <li style="color: #e5e7eb;">Geländer (Typ, Höhe, Füllung)</li>
@@ -3388,7 +3388,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Montagekosten</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Vorteil:</strong> Keine versteckten Kosten, keine bösen Überraschungen. Sie wissen <em style="color: #e5e7eb;">vorher</em>, was Ihr Balkon kostet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Vorteil:</strong> Keine versteckten Kosten, keine bösen Überraschungen. Sie wissen <em style="color: #e5e7eb;">vorher</em>, was Ihr Balkon kostet.</p>
 
       <div style="background: #e8f5e9; padding: 20px; margin: 20px 0; border-left: 4px solid #4caf50; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; font-weight: bold; color: #111827;">💰 Kostentransparenz</h4>
@@ -3397,7 +3397,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">3. Zeitersparnis: 15 Minuten statt 6 Wochen</h3>
 
-      <p style="color: #e5e7eb;">Traditionelle Planung mit Architekt:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Traditionelle Planung mit Architekt:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Woche 1: Erstgespräch vereinbaren</li>
         <li style="color: #e5e7eb;">Woche 2-3: Architekt erstellt Entwurf</li>
@@ -3405,30 +3405,30 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Woche 6: Finaler Entwurf</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Mit 3D-Konfigurator:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Mit 3D-Konfigurator:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Tag 1, 15 Minuten: Balkon konfiguriert, visualisiert, Preis bekommen</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Das bedeutet:</strong> Sie können <em style="color: #e5e7eb;">heute Abend</em> anfangen, Ihren Balkon zu planen – nicht erst in 6 Wochen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Das bedeutet:</strong> Sie können <em style="color: #e5e7eb;">heute Abend</em> anfangen, Ihren Balkon zu planen – nicht erst in 6 Wochen.</p>
 
       <h3 style="color: #f3f4f6;">4. Unendlich viele Varianten testen – kostenlos</h3>
 
-      <p style="color: #e5e7eb;">Möchten Sie wissen, wie Ihr Balkon mit Holzgeländer statt Glas aussieht? Oder ob 8m² besser sind als 10m²? Oder ob ein Vorstellbalkon günstiger ist als ein Anbaubalkon?</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Möchten Sie wissen, wie Ihr Balkon mit Holzgeländer statt Glas aussieht? Oder ob 8m² besser sind als 10m²? Oder ob ein Vorstellbalkon günstiger ist als ein Anbaubalkon?</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Mit einem Konfigurator testen Sie beliebig viele Varianten – ohne Zusatzkosten.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Mit einem Konfigurator testen Sie beliebig viele Varianten – ohne Zusatzkosten.</strong></p>
 
-      <p style="color: #e5e7eb;">Bei einem Architekten würde jede Änderung bedeuten: Neue Zeichnung, neue Kosten, neue Wartezeit.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Bei einem Architekten würde jede Änderung bedeuten: Neue Zeichnung, neue Kosten, neue Wartezeit.</p>
 
       <h3 style="color: #f3f4f6;">5. Familien-Feedback einholen: Gemeinsam entscheiden</h3>
 
-      <p style="color: #e5e7eb;">Ein unterschätzter Vorteil: Sie können die Konfiguration <strong style="color: #ffffff;">teilen</strong>.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein unterschätzter Vorteil: Sie können die Konfiguration <strong style="color: #ffffff;">teilen</strong>.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Praxisbeispiel:</strong> Herr Schmidt aus Berlin-Prenzlauer Berg hat 3 Balkon-Varianten konfiguriert und den Link an seine Frau und Tochter geschickt. Gemeinsam haben sie dann am Abend entschieden – ohne dass alle gleichzeitig am Computer sitzen mussten.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Praxisbeispiel:</strong> Herr Schmidt aus Berlin-Prenzlauer Berg hat 3 Balkon-Varianten konfiguriert und den Link an seine Frau und Tochter geschickt. Gemeinsam haben sie dann am Abend entschieden – ohne dass alle gleichzeitig am Computer sitzen mussten.</p>
 
       <h3 style="color: #f3f4f6;">6. Keine Planungsfehler mehr: Automatische Prüfung</h3>
 
-      <p style="color: #e5e7eb;">Der Konfigurator prüft automatisch:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Der Konfigurator prüft automatisch:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Statische Machbarkeit</li>
         <li style="color: #e5e7eb;">✅ Baurecht-Konformität</li>
@@ -3436,26 +3436,26 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">✅ Mindest- und Maximalgrößen</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Beispiel:</strong> Sie möchten einen 15m² freitragenden Balkon? Der Konfigurator warnt Sie sofort, dass das statisch kritisch ist und schlägt Alternativen vor (z.B. Vorstellbalkon mit Stützen).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Beispiel:</strong> Sie möchten einen 15m² freitragenden Balkon? Der Konfigurator warnt Sie sofort, dass das statisch kritisch ist und schlägt Alternativen vor (z.B. Vorstellbalkon mit Stützen).</p>
 
       <h3 style="color: #f3f4f6;">7. Kostenlos & unverbindlich: Erst planen, dann entscheiden</h3>
 
-      <p style="color: #e5e7eb;">Die Nutzung eines professionellen 3D-Konfigurators ist <strong style="color: #ffffff;">komplett kostenlos</strong>.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Nutzung eines professionellen 3D-Konfigurators ist <strong style="color: #ffffff;">komplett kostenlos</strong>.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Das bedeutet:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Das bedeutet:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Keine Registrierung nötig</li>
         <li style="color: #e5e7eb;">Keine Vorabkosten</li>
         <li style="color: #e5e7eb;">Keine Verpflichtung</li>
       </ul>
 
-      <p style="color: #e5e7eb;">Sie können in Ruhe planen, verschiedene Varianten durchspielen, und sich erst dann für ein Angebot entscheiden, wenn Sie zu 100% zufrieden sind.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Sie können in Ruhe planen, verschiedene Varianten durchspielen, und sich erst dann für ein Angebot entscheiden, wenn Sie zu 100% zufrieden sind.</p>
 
       <h3 style="color: #f3f4f6;">8. Direkter Kontakt zu Fachfirmen: Vom Plan zum Angebot</h3>
 
-      <p style="color: #e5e7eb;">Nach der Konfiguration können Sie direkt <strong style="color: #ffffff;">Angebote von Fachfirmen</strong> in Ihrer Region anfordern.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nach der Konfiguration können Sie direkt <strong style="color: #ffffff;">Angebote von Fachfirmen</strong> in Ihrer Region anfordern.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">So funktioniert's:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">So funktioniert's:</strong></p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Balkon im Konfigurator planen</li>
         <li style="color: #e5e7eb;">Konfiguration absenden</li>
@@ -3463,7 +3463,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Sie bekommen verbindliche Angebote</li>
       </ol>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Vorteil:</strong> Die Firmen sehen <em style="color: #e5e7eb;">exakt</em>, was Sie wollen – keine Missverständnisse mehr.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Vorteil:</strong> Die Firmen sehen <em style="color: #e5e7eb;">exakt</em>, was Sie wollen – keine Missverständnisse mehr.</p>
 
       <div style="background: #fff8e1; padding: 20px; margin: 20px 0; border-left: 4px solid #ff9800; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; font-weight: bold; color: #111827;">⚡ Express-Angebot</h4>
@@ -3472,7 +3472,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">9. Mobile-optimiert: Auf dem Sofa planen</h3>
 
-      <p style="color: #e5e7eb;">Moderne 3D-Konfiguratoren funktionieren auf <strong style="color: #ffffff;">allen Geräten</strong>:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Moderne 3D-Konfiguratoren funktionieren auf <strong style="color: #ffffff;">allen Geräten</strong>:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Desktop-PC</li>
         <li style="color: #e5e7eb;">Laptop</li>
@@ -3480,18 +3480,18 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Smartphone</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Das bedeutet:</strong> Sie können abends auf dem Sofa Ihren Balkon planen, während Sie fernsehen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Das bedeutet:</strong> Sie können abends auf dem Sofa Ihren Balkon planen, während Sie fernsehen.</p>
 
       <h3 style="color: #f3f4f6;">10. Baugenehmigung & Statik inklusive: Rundum-Service</h3>
 
-      <p style="color: #e5e7eb;">Die meisten professionellen Konfiguratoren bieten direkt an:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die meisten professionellen Konfiguratoren bieten direkt an:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Statikprüfung durch Ingenieur</li>
         <li style="color: #e5e7eb;">Baugenehmigung (Antragsstellung)</li>
         <li style="color: #e5e7eb;">Bauvorlagenservice</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Das spart Ihnen:</strong> Wochen der Recherche, welche Unterlagen Sie wo einreichen müssen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Das spart Ihnen:</strong> Wochen der Recherche, welche Unterlagen Sie wo einreichen müssen.</p>
 
       <h2 style="color: #ffffff;">Balkon konfigurieren vs. Architekt: Der direkte Vergleich</h2>
 
@@ -3539,7 +3539,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 style="color: #ffffff;">Für wen lohnt sich ein 3D-Balkonkonfigurator?</h2>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Perfekt geeignet für:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Perfekt geeignet für:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Standardbalkon-Projekte (Vorstellbalkon, Anbaubalkon, freitragend)</li>
         <li style="color: #e5e7eb;">✅ Hausbesitzer, die Kosten sparen möchten</li>
@@ -3548,39 +3548,39 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">✅ Technik-affine Menschen</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Weniger geeignet für:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Weniger geeignet für:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">❌ Extrem komplexe Sonderkonstruktionen</li>
         <li style="color: #e5e7eb;">❌ Denkmalgeschützte Gebäude</li>
         <li style="color: #e5e7eb;">❌ Spezielle statische Anforderungen (z.B. Hanglage)</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Aber:</strong> Selbst in diesen Fällen können Sie mit einem Konfigurator eine <em style="color: #e5e7eb;">erste Planung</em> erstellen und diese dann einem Architekten als Basis vorlegen – das spart Zeit und Kosten.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Aber:</strong> Selbst in diesen Fällen können Sie mit einem Konfigurator eine <em style="color: #e5e7eb;">erste Planung</em> erstellen und diese dann einem Architekten als Basis vorlegen – das spart Zeit und Kosten.</p>
 
       <h2 style="color: #ffffff;">So starten Sie: Balkon konfigurieren in 4 Schritten</h2>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Schritt 1: Haustyp & Grunddaten</strong> (2 Min)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Schritt 1: Haustyp & Grunddaten</strong> (2 Min)</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Haustyp auswählen (Einfamilienhaus, Reihenhaus, etc.)</li>
         <li style="color: #e5e7eb;">Geschoss angeben</li>
         <li style="color: #e5e7eb;">Optional: Hausfoto hochladen</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Schritt 2: Balkontyp & Größe</strong> (3 Min)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Schritt 2: Balkontyp & Größe</strong> (3 Min)</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Vorstellbalkon, Anbaubalkon oder freitragend?</li>
         <li style="color: #e5e7eb;">Breite und Tiefe festlegen</li>
         <li style="color: #e5e7eb;">3D-Ansicht prüfen</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Schritt 3: Material & Ausstattung</strong> (5 Min)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Schritt 3: Material & Ausstattung</strong> (5 Min)</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Geländertyp wählen (Glas, Stab, Lochblech, etc.)</li>
         <li style="color: #e5e7eb;">Bodenbelag auswählen (Holz, WPC, Fliesen)</li>
         <li style="color: #e5e7eb;">Farbe festlegen</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Schritt 4: Preis & Angebot</strong> (5 Min)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Schritt 4: Preis & Angebot</strong> (5 Min)</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Live-Preis prüfen</li>
         <li style="color: #e5e7eb;">Optional: Baugenehmigung hinzufügen</li>
@@ -3596,25 +3596,25 @@ const blogPosts: Record<string, BlogPost> = {
       <h2 style="color: #ffffff;">Häufige Fragen zum Balkon konfigurieren</h2>
 
       <h3 style="color: #f3f4f6;">Ist die Nutzung wirklich kostenlos?</h3>
-      <p style="color: #e5e7eb;">Ja, die Nutzung des BalkonFuchs 3D-Konfigurators ist komplett kostenlos und unverbindlich. Sie zahlen nur, wenn Sie sich für ein Angebot einer Fachfirma entscheiden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja, die Nutzung des BalkonFuchs 3D-Konfigurators ist komplett kostenlos und unverbindlich. Sie zahlen nur, wenn Sie sich für ein Angebot einer Fachfirma entscheiden.</p>
 
       <h3 style="color: #f3f4f6;">Wie genau ist der berechnete Preis?</h3>
-      <p style="color: #e5e7eb;">Der Preis basiert auf über 1.000 realisierten Projekten und ist auf ca. ±10% genau. Das finale Angebot der Fachfirma kann minimal abweichen (z.B. bei besonderen Gegebenheiten vor Ort).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Der Preis basiert auf über 1.000 realisierten Projekten und ist auf ca. ±10% genau. Das finale Angebot der Fachfirma kann minimal abweichen (z.B. bei besonderen Gegebenheiten vor Ort).</p>
 
       <h3 style="color: #f3f4f6;">Funktioniert der Konfigurator auch auf dem Handy?</h3>
-      <p style="color: #e5e7eb;">Ja, der Konfigurator ist voll responsive und funktioniert auf allen Geräten. Für die beste 3D-Erfahrung empfehlen wir aber einen Tablet oder Laptop.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja, der Konfigurator ist voll responsive und funktioniert auf allen Geräten. Für die beste 3D-Erfahrung empfehlen wir aber einen Tablet oder Laptop.</p>
 
       <h3 style="color: #f3f4f6;">Was passiert nach der Konfiguration?</h3>
-      <p style="color: #e5e7eb;">Sie erhalten eine Zusammenfassung per E-Mail und können dann entscheiden, ob Sie Angebote von Fachfirmen anfordern möchten. Es besteht keine Verpflichtung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Sie erhalten eine Zusammenfassung per E-Mail und können dann entscheiden, ob Sie Angebote von Fachfirmen anfordern möchten. Es besteht keine Verpflichtung.</p>
 
       <h3 style="color: #f3f4f6;">Kann ich die Konfiguration speichern und später weitermachen?</h3>
-      <p style="color: #e5e7eb;">Ja, Sie erhalten einen Link zu Ihrer Konfiguration, den Sie jederzeit wieder aufrufen können.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja, Sie erhalten einen Link zu Ihrer Konfiguration, den Sie jederzeit wieder aufrufen können.</p>
 
       <h2 style="color: #ffffff;">Fazit: Balkon konfigurieren 2026 – schneller, günstiger, besser</h2>
 
-      <p style="color: #e5e7eb;">Die Zeiten, in denen Balkonplanung kompliziert, teuer und langwierig war, sind vorbei. Mit einem modernen 3D-Konfigurator wie dem von BalkonFuchs planen Sie Ihren Traumbalkon in 15 Minuten – mit 3D-Visualisierung, Live-Preisberechnung und direktem Zugang zu Fachfirmen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Zeiten, in denen Balkonplanung kompliziert, teuer und langwierig war, sind vorbei. Mit einem modernen 3D-Konfigurator wie dem von BalkonFuchs planen Sie Ihren Traumbalkon in 15 Minuten – mit 3D-Visualisierung, Live-Preisberechnung und direktem Zugang zu Fachfirmen.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Die 10 Vorteile auf einen Blick:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Die 10 Vorteile auf einen Blick:</strong></p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">3D-Visualisierung in Echtzeit</li>
         <li style="color: #e5e7eb;">Live-Preisberechnung</li>
@@ -3628,16 +3628,8 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Baugenehmigung inklusive</li>
       </ol>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Starten Sie jetzt</strong> und erleben Sie, wie einfach Balkonplanung im Jahr 2026 sein kann.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Starten Sie jetzt</strong> und erleben Sie, wie einfach Balkonplanung im Jahr 2026 sein kann.</p>
 
-      <div style="background: #f3f4f6; padding: 20px; margin: 30px 0; border-radius: 8px; color: #111827;">
-        <h4 style="margin-top: 0; color: #111827;">📚 Weiterführende Artikel:</h4>
-        <ul style="margin-bottom: 0; color: #374151;">
-          <li style="color: #374151;"><a href="/blogs/post/balkon-kosten-rechner-2026" style="color: #2563eb; text-decoration: underline;">Balkon Kostenrechner 2026: Sofort-Kalkulation</a></li>
-          <li style="color: #374151;"><a href="/blogs/post/balkon-visualisieren" style="color: #2563eb; text-decoration: underline;">Balkon visualisieren: 3D vs. Architekt</a></li>
-          <li style="color: #374151;"><a href="/blogs/post/balkon-timing-planung-2026" style="color: #2563eb; text-decoration: underline;">Balkon anbauen: Timing & Planung</a></li>
-        </ul>
-      </div>
     `,
     thumbnail: '/images/blog/konfigurator.jpg'
   }
