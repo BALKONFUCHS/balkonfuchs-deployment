@@ -61,15 +61,15 @@ const blogPosts: Record<string, BlogPost> = {
         <strong style="color: #ffffff;">Der Weg zum neuen Balkon führt IMMER über das Bauamt.</strong>
       </blockquote>
 
-      <p style="color: #e5e7eb;">Die Geschichten rund um das Thema &quot;Balkon ohne Baugenehmigung&quot; sind ungefähr so vielfältig wie die Möglichkeiten, einen Balkon zu bepflanzen. Doch was steckt wirklich dahinter?</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Geschichten rund um das Thema &quot;Balkon ohne Baugenehmigung&quot; sind ungefähr so vielfältig wie die Möglichkeiten, einen Balkon zu bepflanzen. Doch was steckt wirklich dahinter?</p>
 
       <h3 style="color: #f3f4f6;">Kann man einen Balkon ohne Genehmigung bauen?</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Die provokante Antwort: Ja, technisch gesehen kann man das.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Die provokante Antwort: Ja, technisch gesehen kann man das.</strong></p>
       
-      <p style="color: #e5e7eb;">Man braucht dazu weder eine gültige Statik noch ein Unternehmen, das wirklich etwas vom Balkonbau versteht...</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Man braucht dazu weder eine gültige Statik noch ein Unternehmen, das wirklich etwas vom Balkonbau versteht...</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">ABER:</strong> Das ist in etwa so erlaubt wie:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">ABER:</strong> Das ist in etwa so erlaubt wie:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">🏍️ Mit einem frisierten Mofa ohne Helm durch die Stadt zu rasen</li>
         <li style="color: #e5e7eb;">🚦 Dabei über rote Ampeln zu fahren</li>
@@ -77,7 +77,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">📝 Und das alles ohne Versicherungsschutz</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ergo:</strong> Balkone bauen ohne Baugenehmigung ist zwar theoretisch wie praktisch möglich, aber <strong style="color: #ffffff;">kein bisschen zulässig</strong>.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ergo:</strong> Balkone bauen ohne Baugenehmigung ist zwar theoretisch wie praktisch möglich, aber <strong style="color: #ffffff;">kein bisschen zulässig</strong>.</p>
 
       <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚖️ Rechtslage eindeutig:</h4>
@@ -92,7 +92,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Warum sind Balkone genehmigungspflichtig?</h3>
       
-      <p style="color: #e5e7eb;">Ein nachträglich angebauter Balkon ist bauaufsichtsrechtlich relevant, weil er:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein nachträglich angebauter Balkon ist bauaufsichtsrechtlich relevant, weil er:</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
@@ -136,7 +136,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Die häufigste Fehlinterpretation im Baurecht</h3>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Seit 2019</strong> wurden in mehreren Bundesländern (Baden-Württemberg, Hessen, NRW u.a.) die Landesbauordnungen überarbeitet. Dabei tauchte verstärkt der Begriff <strong style="color: #ffffff;">&quot;Genehmigungsfreistellung&quot;</strong> auf.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Seit 2019</strong> wurden in mehreren Bundesländern (Baden-Württemberg, Hessen, NRW u.a.) die Landesbauordnungen überarbeitet. Dabei tauchte verstärkt der Begriff <strong style="color: #ffffff;">&quot;Genehmigungsfreistellung&quot;</strong> auf.</p>
 
       <h3 style="color: #f3f4f6;">Echtes Beispiel aus der Praxis:</h3>
       
@@ -145,9 +145,9 @@ const blogPosts: Record<string, BlogPost> = {
         <em style="color: #d1d5db;">&quot;In Baden-Württemberg brauchen wir seit 2019 doch gar keine Baugenehmigung mehr...&quot;</em>
       </blockquote>
 
-      <p style="color: #e5e7eb;">Fast noch erstaunlicher als diese Aussage war der Hinweis, woher er sein &quot;Wissen&quot; hatte:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Fast noch erstaunlicher als diese Aussage war der Hinweis, woher er sein &quot;Wissen&quot; hatte:</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">&quot;Das hat mir ein Architekt gesagt.&quot;</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">&quot;Das hat mir ein Architekt gesagt.&quot;</strong></p>
       
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold; font-size: 1.125rem;">🚨 KRITISCH:</h4>
@@ -166,12 +166,12 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Die 6 Voraussetzungen für Genehmigungsfreistellung:</h3>
 
-      <p style="color: #e5e7eb;">Damit dein Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong style="color: #ffffff;">ALLE</strong> dieser Punkte erfüllt sein:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Damit dein Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong style="color: #ffffff;">ALLE</strong> dieser Punkte erfüllt sein:</p>
 
       <h4 style="color: #f3f4f6;">✅ 1. Gültiger Bebauungsplan</h4>
-      <p style="color: #e5e7eb;">Dein Grundstück muss sich innerhalb eines Gebietes mit einem <strong style="color: #ffffff;">rechtskräftigen Bebauungsplan</strong> befinden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dein Grundstück muss sich innerhalb eines Gebietes mit einem <strong style="color: #ffffff;">rechtskräftigen Bebauungsplan</strong> befinden.</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">So prüfst du das:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">So prüfst du das:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Kontakt zum örtlichen Bauamt</li>
         <li style="color: #e5e7eb;">Fragen nach &quot;Bebauungsplan-Geltungsbereich&quot;</li>
@@ -179,7 +179,7 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h4 style="color: #f3f4f6;">✅ 2. Gebäudeklasse 1-3 (manchmal 4)</h4>
-      <p style="color: #e5e7eb;">Dein Gebäude muss in die richtige Gebäudeklasse fallen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dein Gebäude muss in die richtige Gebäudeklasse fallen:</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
@@ -219,7 +219,7 @@ const blogPosts: Record<string, BlogPost> = {
       </table>
 
       <h4 style="color: #f3f4f6;">✅ 3. Übereinstimmung mit Bebauungsplan</h4>
-      <p style="color: #e5e7eb;">Dein Balkon muss <strong style="color: #ffffff;">exakt</strong> den Vorgaben des B-Plans entsprechen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dein Balkon muss <strong style="color: #ffffff;">exakt</strong> den Vorgaben des B-Plans entsprechen:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauweise (offen/geschlossen)</li>
         <li style="color: #e5e7eb;">Baugrenzen und Baulinien</li>
@@ -229,7 +229,7 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h4 style="color: #f3f4f6;">✅ 4. Erschließung gesichert</h4>
-      <p style="color: #e5e7eb;">(Bei Balkonen meist automatisch erfüllt):</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">(Bei Balkonen meist automatisch erfüllt):</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Wasser-/Abwasserversorgung</li>
         <li style="color: #e5e7eb;">Stromversorgung</li>
@@ -237,7 +237,7 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h4 style="color: #f3f4f6;">✅ 5. Landesbauordnung erfüllt</h4>
-      <p style="color: #e5e7eb;">ALLE Anforderungen der jeweiligen Landesbauordnung müssen berücksichtigt werden:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">ALLE Anforderungen der jeweiligen Landesbauordnung müssen berücksichtigt werden:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Abstandsflächen</li>
         <li style="color: #e5e7eb;">Brandschutz</li>
@@ -246,8 +246,8 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h4 style="color: #f3f4f6;">✅ 6. Keine Widerspruch vom Bauamt (4-Wochen-Frist)</h4>
-      <p style="color: #e5e7eb;">Das Bauamt darf <strong style="color: #ffffff;">innerhalb von 4 Wochen</strong> nach Einreichung NICHT erklären, dass doch ein vollständiges Genehmigungsverfahren durchzuführen ist.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Achtung:</strong> Das Bauamt kann JEDERZEIT widersprechen und ein reguläres Verfahren anordnen!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Das Bauamt darf <strong style="color: #ffffff;">innerhalb von 4 Wochen</strong> nach Einreichung NICHT erklären, dass doch ein vollständiges Genehmigungsverfahren durchzuführen ist.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Achtung:</strong> Das Bauamt kann JEDERZEIT widersprechen und ein reguläres Verfahren anordnen!</p>
 
       <h3 style="color: #f3f4f6;">Was bringt die Genehmigungsfreistellung?</h3>
 
@@ -320,28 +320,28 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">📖 Geschichte 1: &quot;Ohne Baugenehmigung in Berlin&quot;</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Situation:</strong></p>
-      <p style="color: #e5e7eb;">Ein Kunde rief mich an, nachdem er ein &quot;ausgesprochen günstiges&quot; Angebot von einem Metallbauer erhalten hatte.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Situation:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein Kunde rief mich an, nachdem er ein &quot;ausgesprochen günstiges&quot; Angebot von einem Metallbauer erhalten hatte.</p>
       
-      <p style="color: #e5e7eb;">Bei meiner Rückfrage nach der Bau- und Lieferzeit kam die Frage:</p>
-      <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;Haben Sie denn schon eine Baugenehmigung?&quot;</em></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Bei meiner Rückfrage nach der Bau- und Lieferzeit kam die Frage:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;Haben Sie denn schon eine Baugenehmigung?&quot;</em></p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Seine Antwort:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Seine Antwort:</strong></p>
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
-        <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;Wieso Baugenehmigung? Dieses Unternehmen hat mir gesagt, dass sie unsere Balkone genau so angeboten haben, dass die Balkone <strong style="color: #ffffff;">ohne eine Baugenehmigung</strong> (IN BERLIN!) gebaut werden könnten und dass wir direkt loslegen können!&quot;</em></p>
+        <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;Wieso Baugenehmigung? Dieses Unternehmen hat mir gesagt, dass sie unsere Balkone genau so angeboten haben, dass die Balkone <strong style="color: #ffffff;">ohne eine Baugenehmigung</strong> (IN BERLIN!) gebaut werden könnten und dass wir direkt loslegen können!&quot;</em></p>
       </blockquote>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ausgerechnet in Berlin...</strong> 🙄</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ausgerechnet in Berlin...</strong> 🙄</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was ich dann tat:</strong></p>
-      <p style="color: #e5e7eb;">Nach längerem Hin und Her versprach ich dem Kunden, ihn kurzfristig zurückzurufen, und rief selbst beim zuständigen <strong style="color: #ffffff;">Bezirksbauamt in Berlin</strong> an.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was ich dann tat:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nach längerem Hin und Her versprach ich dem Kunden, ihn kurzfristig zurückzurufen, und rief selbst beim zuständigen <strong style="color: #ffffff;">Bezirksbauamt in Berlin</strong> an.</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Die Antwort des Sachbearbeiters (im breitesten Berlinerisch):</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Die Antwort des Sachbearbeiters (im breitesten Berlinerisch):</strong></p>
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
-        <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;Neeee - soo jeht det nich! Wir brauchen da eenen ordenlichen Antrag für dee Balkonee, sonst kieken de Kunden bald recht blöde aus de Wäsche, wenn wir denen ihre Balkone wieder <strong style="color: #ffffff;">abbauen lassen</strong>...&quot;</em></p>
+        <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;Neeee - soo jeht det nich! Wir brauchen da eenen ordenlichen Antrag für dee Balkonee, sonst kieken de Kunden bald recht blöde aus de Wäsche, wenn wir denen ihre Balkone wieder <strong style="color: #ffffff;">abbauen lassen</strong>...&quot;</em></p>
       </blockquote>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ergebnis:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ergebnis:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Ich hatte recht behalten</li>
         <li style="color: #e5e7eb;">✅ Bauantrag wurde von uns kurzfristig erstellt</li>
@@ -350,37 +350,37 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">✅ Balkone wurden im Frühjahr 2024 gebaut</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">💸 Was der Kunde gespart hat:</strong></p>
-      <p style="color: #e5e7eb;">Durch frühzeitige Klärung: ~15.000€ (verhinderte Rückbaukosten) + Ärger + Zeit</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">💸 Was der Kunde gespart hat:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Durch frühzeitige Klärung: ~15.000€ (verhinderte Rückbaukosten) + Ärger + Zeit</p>
 
       <h3 style="color: #f3f4f6;">📖 Geschichte 2: &quot;Genehmigungsfreistellung in Baden-Württemberg&quot;</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Situation:</strong></p>
-      <p style="color: #e5e7eb;">Ein befreundetes Schlossereiunternehmen teilte mir mit:</p>
-      <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;In Baden-Württemberg brauchen wir seit 2019 doch gar keine Baugenehmigung mehr...&quot;</em></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Situation:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein befreundetes Schlossereiunternehmen teilte mir mit:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;In Baden-Württemberg brauchen wir seit 2019 doch gar keine Baugenehmigung mehr...&quot;</em></p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Woher hatte er das?</strong></p>
-      <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;Das hat mir ein Architekt gesagt.&quot;</em></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Woher hatte er das?</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;Das hat mir ein Architekt gesagt.&quot;</em></p>
       
-      <p style="color: #e5e7eb;">⚠️ <strong style="color: #ffffff;">Hier glänzt gefährliches Halbwissen durch!</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">⚠️ <strong style="color: #ffffff;">Hier glänzt gefährliches Halbwissen durch!</strong></p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was ich bei der Architektenkammer BW erfuhr:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was ich bei der Architektenkammer BW erfuhr:</strong></p>
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
-        <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;Nein - eine Genehmigungsfreistellung entbindet <strong style="color: #ffffff;">NICHT</strong> von der Einreichung richtiger und vollständiger Unterlagen. Eine Genehmigungsfreistellung ist nur möglich, wenn sich das Bauvorhaben innerhalb eines Gebietes mit gültigem B-Plan befindet, der Landesbauordnung entspricht und den öffentlichen Bauvorschriften entspricht. Der Bauherr muss ALLE erforderlichen Unterlagen beim Bauamt einreichen und ist für Vollständigkeit und Richtigkeit verantwortlich!&quot;</em></p>
+        <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;Nein - eine Genehmigungsfreistellung entbindet <strong style="color: #ffffff;">NICHT</strong> von der Einreichung richtiger und vollständiger Unterlagen. Eine Genehmigungsfreistellung ist nur möglich, wenn sich das Bauvorhaben innerhalb eines Gebietes mit gültigem B-Plan befindet, der Landesbauordnung entspricht und den öffentlichen Bauvorschriften entspricht. Der Bauherr muss ALLE erforderlichen Unterlagen beim Bauamt einreichen und ist für Vollständigkeit und Richtigkeit verantwortlich!&quot;</em></p>
       </blockquote>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Die Gefahr:</strong></p>
-      <p style="color: #e5e7eb;">Viele Handwerker und sogar Architekten interpretieren &quot;Genehmigungsfreistellung&quot; als &quot;keine Genehmigung nötig&quot; – <strong style="color: #ffffff;">fatal falsch!</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Die Gefahr:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Viele Handwerker und sogar Architekten interpretieren &quot;Genehmigungsfreistellung&quot; als &quot;keine Genehmigung nötig&quot; – <strong style="color: #ffffff;">fatal falsch!</strong></p>
 
       <h3 style="color: #f3f4f6;">📖 Geschichte 3: &quot;Der Hilferuf – 3 Monate Stillstand&quot;</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Situation:</strong></p>
-      <p style="color: #e5e7eb;">Ein verzweifelter Bauherr rief an:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Situation:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein verzweifelter Bauherr rief an:</p>
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
-        <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;Wissen Sie, Herr Beyer - seit <strong style="color: #ffffff;">3 Monaten</strong> liegen die Unterlagen nun schon bei diesem Architekten... Und der hat noch <strong style="color: #ffffff;">keinen Strich geplant</strong>... Wann sollen wir denn den Balkon für unsere Mieter bauen? Wenn das so weitergeht, wird das dieses Jahr nichts mehr!&quot;</em></p>
+        <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;Wissen Sie, Herr Beyer - seit <strong style="color: #ffffff;">3 Monaten</strong> liegen die Unterlagen nun schon bei diesem Architekten... Und der hat noch <strong style="color: #ffffff;">keinen Strich geplant</strong>... Wann sollen wir denn den Balkon für unsere Mieter bauen? Wenn das so weitergeht, wird das dieses Jahr nichts mehr!&quot;</em></p>
       </blockquote>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Das Problem:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Das Problem:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Architekt überlastet</li>
         <li style="color: #e5e7eb;">Balkonplanung hatte keine Priorität</li>
@@ -388,10 +388,10 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Mieter wurden ungeduldig</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Unsere Lösung:</strong></p>
-      <p style="color: #e5e7eb;">Wir haben daraufhin begonnen, auch Bauanträge anzubieten – nicht um Architekten Konkurrenz zu machen, sondern als <strong style="color: #ffffff;">schnelle Alternative</strong> für zeitkritische Projekte.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Unsere Lösung:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wir haben daraufhin begonnen, auch Bauanträge anzubieten – nicht um Architekten Konkurrenz zu machen, sondern als <strong style="color: #ffffff;">schnelle Alternative</strong> für zeitkritische Projekte.</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ergebnis:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ergebnis:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Bauantrag in 10 Tagen fertig</li>
         <li style="color: #e5e7eb;">✅ Genehmigung nach 6 Wochen</li>
@@ -409,7 +409,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 1: Projekt definieren ⏱️ 1-2 Tage</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was du tun musst:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was du tun musst:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Balkontyp festlegen (Vorstellbalkon, Anbaubalkon, Kragarmbalkon)</li>
         <li style="color: #e5e7eb;">Größe bestimmen</li>
@@ -423,7 +423,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 2: Genehmigungspflicht prüfen ⏱️ 5 Minuten</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was du tun musst:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was du tun musst:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bundesland prüfen</li>
         <li style="color: #e5e7eb;">Gebäudesituation einschätzen</li>
@@ -436,14 +436,14 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 3: Planer beauftragen ⏱️ 1-2 Wochen</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wen du brauchst:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wen du brauchst:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Architekt (mit Bauvorlageberechtigung) ODER</li>
         <li style="color: #e5e7eb;">Bauingenieur (mit Bauvorlageberechtigung) ODER</li>
         <li style="color: #e5e7eb;">Statiker (für kleinere Projekte, je nach Bundesland)</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was der Planer macht:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was der Planer macht:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Entwurfsplanung</li>
         <li style="color: #e5e7eb;">Bauzeichnungen (Grundriss, Ansicht, Schnitt)</li>
@@ -452,7 +452,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Koordination mit Statiker</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Architekt: 1.500-4.000€ (je nach Honorarzone und Projektgröße)</li>
         <li style="color: #e5e7eb;">Statiker: 500-1.500€</li>
@@ -460,25 +460,25 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 4: Statik berechnen lassen ⏱️ 1-2 Wochen</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was gebraucht wird:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was gebraucht wird:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Standsicherheitsnachweis</li>
         <li style="color: #e5e7eb;">Berechnung der Lasten</li>
         <li style="color: #e5e7eb;">Nachweis der Befestigung</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wer das macht:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wer das macht:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Tragwerksplaner / Statiker</li>
         <li style="color: #e5e7eb;">Oft vom Architekten beauftragt</li>
         <li style="color: #e5e7eb;">Manchmal vom Balkonfertiger (wenn System-Balkon)</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten:</strong> 500-1.500€ je nach Komplexität</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten:</strong> 500-1.500€ je nach Komplexität</p>
 
       <h3 style="color: #f3f4f6;">Schritt 5: Bauantrag einreichen ⏱️ 1-3 Tage</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Benötigte Unterlagen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Benötigte Unterlagen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">☐ Ausgefülltes Bauantragsformular</li>
         <li style="color: #e5e7eb;">☐ Bauzeichnungen (Grundrisse, Ansichten, Schnitte) im Maßstab 1:100 oder 1:50</li>
@@ -491,7 +491,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">☐ Bei Denkmalschutz: Stellungnahme der Denkmalschutzbehörde</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wo einreichen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wo einreichen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Zuständiges Bauamt deiner Stadt/Gemeinde</li>
         <li style="color: #e5e7eb;">Oft online möglich</li>
@@ -500,7 +500,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 6: Genehmigung abwarten ⏱️ 4-16 Wochen</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Bearbeitungszeiten nach Bundesland:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Bearbeitungszeiten nach Bundesland:</strong></p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
@@ -545,7 +545,7 @@ const blogPosts: Record<string, BlogPost> = {
         </tbody>
       </table>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was passiert währenddessen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was passiert währenddessen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Formale Prüfung durch Bauamt</li>
         <li style="color: #e5e7eb;">Ggf. Anhörung der Nachbarn</li>
@@ -553,7 +553,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Prüfung durch Fachbehörden (Brandschutz, Denkmalschutz)</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Mögliche Ergebnisse:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Mögliche Ergebnisse:</strong></p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Genehmigung wird erteilt → Du darfst bauen</li>
         <li style="color: #e5e7eb;">⚠️ Genehmigung mit Auflagen → Nachbesserung, dann bauen</li>
@@ -563,17 +563,17 @@ const blogPosts: Record<string, BlogPost> = {
       <h2 id="bundeslaender" style="color: #ffffff;">5. 16 Bundesländer im Vergleich (Stand 2025)</h2>
 
       <h3 style="color: #f3f4f6;">🏔️ Bayern</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Fast immer erforderlich</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Fast immer erforderlich</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Strenge Vorgaben, besonders bei Denkmalschutz</li>
         <li style="color: #e5e7eb;">Oft aufwendige Gestaltungssatzungen</li>
         <li style="color: #e5e7eb;">Nachbaranhörung obligatorisch</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 8-12 Wochen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 350-800€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Möglich bei Erfüllung aller Kriterien</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 8-12 Wochen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 350-800€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Möglich bei Erfüllung aller Kriterien</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">BayBO Art. 57: Vereinfachungen für kleinere Anbauten unter 30m²</li>
         <li style="color: #e5e7eb;">Aber: Weiterhin Anzeigepflicht beim Bauamt</li>
@@ -582,75 +582,75 @@ const blogPosts: Record<string, BlogPost> = {
       <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">🍷 Baden-Württemberg</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> In den meisten Fällen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> In den meisten Fällen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Genehmigungsfreistellung seit 2019 erweitert</li>
         <li style="color: #e5e7eb;">Umweltverträglichkeitsprüfung bei größeren Projekten möglich</li>
         <li style="color: #e5e7eb;">Städtebauliche Verträge oft üblich</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen (mit Freistellung: 4 Wochen)</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 300-700€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, bei Erfüllung der Voraussetzungen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> LBO BW §50: Erweiterte Freistellungsmöglichkeiten für GK 1-3</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen (mit Freistellung: 4 Wochen)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 300-700€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, bei Erfüllung der Voraussetzungen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> LBO BW §50: Erweiterte Freistellungsmöglichkeiten für GK 1-3</p>
 
       <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">🏛️ Berlin</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja, fast immer</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja, fast immer</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Sehr strenge Prüfung, überlastete Bauämter</li>
         <li style="color: #e5e7eb;">Lange Bearbeitungszeiten</li>
         <li style="color: #e5e7eb;">Besondere Vorgaben bei Altbau und Denkmalschutz</li>
         <li style="color: #e5e7eb;">Nachbarrechte sehr wichtig</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 12-20 Wochen (!!)</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 400-900€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Nicht verfügbar</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> Neue Online-Portal für Bauanträge (teilweise Beschleunigung)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 12-20 Wochen (!!)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 400-900€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Nicht verfügbar</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> Neue Online-Portal für Bauanträge (teilweise Beschleunigung)</p>
 
       <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">🏰 Nordrhein-Westfalen</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja, in den meisten Fällen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja, in den meisten Fällen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bebauungsplan-Überprüfung sehr wichtig</li>
         <li style="color: #e5e7eb;">Nachbarschaftsrecht beachten</li>
         <li style="color: #e5e7eb;">Stadt-spezifische Gestaltungssatzungen</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 300-750€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, möglich</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 300-750€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, möglich</p>
 
       <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">🍎 Hessen</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Hessische Bauordnung (HBO) maßgeblich</li>
         <li style="color: #e5e7eb;">Brandschutz spielt große Rolle</li>
         <li style="color: #e5e7eb;">Relativ zügige Bearbeitung</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-8 Wochen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 250-600€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, bei Erfüllung der Voraussetzungen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-8 Wochen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 250-600€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, bei Erfüllung der Voraussetzungen</p>
 
       <div style="margin-bottom: 30px;"></div>
 
       <h3 style="color: #f3f4f6;">🌊 Niedersachsen</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Ja</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Ländliche Gebiete oft weniger streng</li>
         <li style="color: #e5e7eb;">Küstenregionen: Besondere Wind-/Wettervorgaben</li>
         <li style="color: #e5e7eb;">Niedersächsische Bauordnung (NBauO)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 250-650€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Teilweise möglich</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 250-650€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Teilweise möglich</p>
 
       <div style="margin-bottom: 30px;"></div>
 
@@ -791,18 +791,18 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">Detaillierte Kostenaufschlüsselung:</h3>
 
       <h4 style="color: #f3f4f6;">1️⃣ Bauantragsgebühren (Bauamt)</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Berechnung:</strong> Nach Baukosten und Gebührenordnung des jeweiligen Bundeslandes</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Beispielrechnung für Balkon 6m² (ca. 8.000€ Baukosten):</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Berechnung:</strong> Nach Baukosten und Gebührenordnung des jeweiligen Bundeslandes</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Beispielrechnung für Balkon 6m² (ca. 8.000€ Baukosten):</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bayern: ~450€</li>
         <li style="color: #e5e7eb;">Berlin: ~550€</li>
         <li style="color: #e5e7eb;">NRW: ~350€</li>
         <li style="color: #e5e7eb;">Hessen: ~320€</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Bei Genehmigungsfreistellung:</strong> ~30% günstiger</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Bei Genehmigungsfreistellung:</strong> ~30% günstiger</p>
 
       <h4 style="color: #f3f4f6;">2️⃣ Statische Berechnung</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Abhängig von:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Abhängig von:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Größe des Balkons</li>
         <li style="color: #e5e7eb;">Balkontyp (Vorstellbalkon günstiger, Kragarm teurer)</li>
@@ -810,7 +810,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Aufwand der Berechnung</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten nach Balkontyp:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten nach Balkontyp:</strong></p>
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
           <tr style="background: #374151;">
@@ -835,14 +835,14 @@ const blogPosts: Record<string, BlogPost> = {
       </table>
 
       <h4 style="color: #f3f4f6;">3️⃣ Architektenleistungen</h4>
-      <p style="color: #e5e7eb;">Architekten rechnen üblicherweise nach <strong style="color: #ffffff;">Leistungsphasen</strong> ab:</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Für Bauantrag benötigte Leistungsphasen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Architekten rechnen üblicherweise nach <strong style="color: #ffffff;">Leistungsphasen</strong> ab:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Für Bauantrag benötigte Leistungsphasen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">LP 2: Vorplanung</li>
         <li style="color: #e5e7eb;">LP 3: Entwurfsplanung</li>
         <li style="color: #e5e7eb;">LP 4: Genehmigungsplanung</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten-Beispiel für 10m² Balkon (15.000€ Baukosten):</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten-Beispiel für 10m² Balkon (15.000€ Baukosten):</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Honorarzone II, Mindestsatz: ~1.800€</li>
         <li style="color: #e5e7eb;">Honorarzone III, Mittelsatz: ~2.500€</li>
@@ -889,17 +889,17 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">Die 3 Stufen der Konsequenzen:</h3>
 
       <h4 style="color: #f3f4f6;">Stufe 1: 🔴 Baueinstellung & Nutzungsverbot</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was passiert:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was passiert:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Sofortige Baustop-Anordnung</li>
         <li style="color: #e5e7eb;">Nutzungsverbot für den Balkon</li>
         <li style="color: #e5e7eb;">Versiegelung des Balkons (Zutritt verboten)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Dauer:</strong> Bis zur nachträglichen Genehmigung oder Rückbau</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten:</strong> Verwaltungsgebühren 200-500€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> Bis zur nachträglichen Genehmigung oder Rückbau</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten:</strong> Verwaltungsgebühren 200-500€</p>
 
       <h4 style="color: #f3f4f6;">Stufe 2: 💰 Bußgeld</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Höhe nach Bundesland:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Höhe nach Bundesland:</strong></p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
@@ -939,14 +939,14 @@ const blogPosts: Record<string, BlogPost> = {
       </table>
 
       <h4 style="color: #f3f4f6;">Stufe 3: 🏗️ Rückbau-Anordnung</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was das bedeutet:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was das bedeutet:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Kompletter Abriss des Balkons</li>
         <li style="color: #e5e7eb;">Wiederherstellung des Ursprungszustands</li>
         <li style="color: #e5e7eb;">Alle Kosten trägt der Bauherr</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Reale Kosten eines Rückbaus:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Reale Kosten eines Rückbaus:</strong></p>
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
           <tr style="background: #374151;">
@@ -982,7 +982,7 @@ const blogPosts: Record<string, BlogPost> = {
         </tbody>
       </table>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Plus:</strong> Der ursprüngliche Balkonbau (10.000-30.000€) ist komplett verloren!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Plus:</strong> Der ursprüngliche Balkonbau (10.000-30.000€) ist komplett verloren!</p>
 
       <div style="background: #fff3cd; padding: 20px; margin: 20px 0; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">🏠 Probleme beim Immobilienverkauf</h4>
@@ -1053,45 +1053,45 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">🔍 Allgemeine Fragen</h3>
 
       <h4 style="color: #f3f4f6;">❓ Brauche ich für jeden Balkon eine Baugenehmigung?</h4>
-      <p style="color: #e5e7eb;">Ja, für <strong style="color: #ffffff;">nachträglich angebaute</strong> Balkone benötigst du in den allermeisten Fällen eine Baugenehmigung bzw. musst den Balkon beim Bauamt anzeigen.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ausnahmen sind extrem selten</strong> und betreffen meist:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja, für <strong style="color: #ffffff;">nachträglich angebaute</strong> Balkone benötigst du in den allermeisten Fällen eine Baugenehmigung bzw. musst den Balkon beim Bauamt anzeigen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ausnahmen sind extrem selten</strong> und betreffen meist:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Balkone in Neubauten (bereits im Bauantrag des Hauses enthalten)</li>
         <li style="color: #e5e7eb;">Winzige Balkone unter 1m² (in manchen Bundesländern)</li>
         <li style="color: #e5e7eb;">Reine Instandsetzung bestehender Balkone (ohne Vergrößerung)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Prüfe dein Projekt kostenlos</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Prüfe dein Projekt kostenlos</a></strong></p>
 
       <h4 style="color: #f3f4f6;">❓ Wie lange dauert das Genehmigungsverfahren?</h4>
-      <p style="color: #e5e7eb;">Die Dauer variiert nach Bundesland und Verfahrensart:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Dauer variiert nach Bundesland und Verfahrensart:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Reguläres Verfahren:</strong> 6-16 Wochen</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Vereinfachtes Verfahren:</strong> 4-8 Wochen</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> 4 Wochen (wenn keine Rückmeldung = Start erlaubt)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Tipp:</strong> Plane immer 2-3 Monate ein für die komplette Vorlaufzeit (Planung + Genehmigung).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Plane immer 2-3 Monate ein für die komplette Vorlaufzeit (Planung + Genehmigung).</p>
 
       <h4 style="color: #f3f4f6;">❓ Was kostet eine Baugenehmigung für einen Balkon?</h4>
-      <p style="color: #e5e7eb;">Die Gesamtkosten für die Genehmigung setzen sich zusammen aus:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Gesamtkosten für die Genehmigung setzen sich zusammen aus:</p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauantragsgebühren: 200-900€</li>
         <li style="color: #e5e7eb;">Statik: 500-1.800€</li>
         <li style="color: #e5e7eb;">Architekt/Planer: 1.500-4.500€</li>
         <li style="color: #e5e7eb;">Sonstiges: 200-500€</li>
       </ol>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Durchschnittlich:</strong> 3.000-5.000€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wichtig:</strong> Diese Kosten kommen zu den reinen Baukosten (8.000-30.000€) hinzu!</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Gesamtkosten mit Kalkulator berechnen</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Durchschnittlich:</strong> 3.000-5.000€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wichtig:</strong> Diese Kosten kommen zu den reinen Baukosten (8.000-30.000€) hinzu!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Gesamtkosten mit Kalkulator berechnen</a></strong></p>
 
       <h3 style="color: #f3f4f6;">📋 Fragen zum Genehmigungsverfahren</h3>
 
       <h4 style="color: #f3f4f6;">❓ Kann ich den Bauantrag selbst stellen?</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Theoretisch ja, praktisch meist nein.</strong></p>
-      <p style="color: #e5e7eb;">Bauanträge erfordern Unterschrift eines &quot;Bauvorlageberechtigten&quot; (Architekten, Bauingenieure, bestimmte Handwerksmeister). Ohne diese Qualifikation wird der Antrag nicht angenommen.</p>
-      <p style="color: #e5e7eb;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> kannst du dein Projekt strukturieren und hast alle Unterlagen bereits vorbereitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Theoretisch ja, praktisch meist nein.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Bauanträge erfordern Unterschrift eines &quot;Bauvorlageberechtigten&quot; (Architekten, Bauingenieure, bestimmte Handwerksmeister). Ohne diese Qualifikation wird der Antrag nicht angenommen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> kannst du dein Projekt strukturieren und hast alle Unterlagen bereits vorbereitet.</p>
 
       <h4 style="color: #f3f4f6;">❓ Was ist, wenn mein Balkon abgelehnt wird?</h4>
-      <p style="color: #e5e7eb;">Eine Ablehnung ist selten, aber möglich. Deine Optionen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Eine Ablehnung ist selten, aber möglich. Deine Optionen:</p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Überarbeitung:</strong> Planung anpassen und neu einreichen</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Nachbarvereinbarung:</strong> Zustimmung der Nachbarn einholen</li>
@@ -1100,37 +1100,37 @@ const blogPosts: Record<string, BlogPost> = {
       </ol>
 
       <h4 style="color: #f3f4f6;">❓ Brauche ich die Zustimmung meiner Nachbarn?</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Rechtlich:</strong> In den meisten Fällen nein (außer bei Abstandsunterschreitungen)</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Praktisch:</strong> Trotzdem sehr empfehlenswert! Nachbarn können Einspruch einlegen, Widerspruch gegen Genehmigung einlegen und Verfahren verzögern.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #065f46;">✅ Unser Tipp:</strong> Informiere Nachbarn frühzeitig, zeige Pläne und hole schriftliche Zustimmung ein.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Rechtlich:</strong> In den meisten Fällen nein (außer bei Abstandsunterschreitungen)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Praktisch:</strong> Trotzdem sehr empfehlenswert! Nachbarn können Einspruch einlegen, Widerspruch gegen Genehmigung einlegen und Verfahren verzögern.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #065f46;">✅ Unser Tipp:</strong> Informiere Nachbarn frühzeitig, zeige Pläne und hole schriftliche Zustimmung ein.</p>
 
       <h3 style="color: #f3f4f6;">🏗️ Fragen zu Balkontypen</h3>
 
       <h4 style="color: #f3f4f6;">❓ Welcher Balkontyp braucht keine Genehmigung?</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Keiner.</strong> Alle nachträglich angebauten Balkontypen sind genehmigungspflichtig:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Keiner.</strong> Alle nachträglich angebauten Balkontypen sind genehmigungspflichtig:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">❌ Vorstellbalkon (selbsttragend) → Genehmigung nötig</li>
         <li style="color: #e5e7eb;">❌ Anbaubalkon (teilselbsttragend) → Genehmigung nötig</li>
         <li style="color: #e5e7eb;">❌ Kragarmbalkon (freitragend) → Genehmigung nötig</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Leichteste Genehmigung:</strong> Vorstellbalkon (keine Eingriffe ins Gebäude)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Leichteste Genehmigung:</strong> Vorstellbalkon (keine Eingriffe ins Gebäude)</p>
 
       <h3 style="color: #f3f4f6;">💰 Fragen zu Kosten & Förderung</h3>
 
       <h4 style="color: #f3f4f6;">❓ Gibt es Förderungen für Balkonanbau?</h4>
-      <p style="color: #e5e7eb;">Ja! Es gibt verschiedene Fördermöglichkeiten:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja! Es gibt verschiedene Fördermöglichkeiten:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">KfW 261:</strong> Energetische Sanierung (bis 20% Zuschuss)</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">KfW 159:</strong> Denkmalschutz (bis 25% Zuschuss)</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">KfW 124:</strong> Wohnraum modernisieren (günstiger Kredit)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Voraussetzungen:</strong> Antrag VOR Baubeginn, Fachplaner einbinden</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/foerderung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Alle Förderungen im Überblick</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Voraussetzungen:</strong> Antrag VOR Baubeginn, Fachplaner einbinden</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/foerderung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Alle Förderungen im Überblick</a></strong></p>
 
       <h3 style="color: #f3f4f6;">🚨 Fragen zu Problemen</h3>
 
       <h4 style="color: #f3f4f6;">❓ Was passiert, wenn ich ohne Genehmigung baue?</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Schwarzbau hat harte Konsequenzen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Schwarzbau hat harte Konsequenzen:</strong></p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Baueinstellung: Sofortiger Baustopp</li>
         <li style="color: #e5e7eb;">Bußgeld: 2.000-50.000€ (je nach Bundesland)</li>
@@ -1139,14 +1139,14 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Versicherungsprobleme: Kein Schutz bei Schäden</li>
         <li style="color: #e5e7eb;">Immobilienverkauf: Massive Wertminderung</li>
       </ol>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Gesamtkosten im Worst Case:</strong> Bußgeld (10.000€) + Rückbau (8.000€) + Ursprüngliche Baukosten (20.000€) + Anwaltskosten (5.000€) = <strong style="color: #ffffff;">43.000€ Totalverlust</strong></p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="#schwarzbau" style="color: #f97316; text-decoration: underline; font-weight: bold;">Details zu Schwarzbau-Folgen</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Gesamtkosten im Worst Case:</strong> Bußgeld (10.000€) + Rückbau (8.000€) + Ursprüngliche Baukosten (20.000€) + Anwaltskosten (5.000€) = <strong style="color: #ffffff;">43.000€ Totalverlust</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="#schwarzbau" style="color: #f97316; text-decoration: underline; font-weight: bold;">Details zu Schwarzbau-Folgen</a></strong></p>
 
       <h4 style="color: #f3f4f6;">❓ Kann ich einen bestehenden Schwarzbau nachträglich genehmigen lassen?</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Manchmal ja, manchmal nein.</strong></p>
-      <p style="color: #e5e7eb;">Nachträgliche Genehmigung möglich, wenn alle Bauvorschriften eingehalten wurden, Abstandsflächen passen, Statik nachweisbar ist und Nachbarn nicht widersprechen.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten:</strong> Wie reguläre Genehmigung (3.000-5.000€) PLUS Bußgeld (2.000-15.000€) PLUS evtl. Nachrüstungen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Unser Rat:</strong> Lieber von Anfang an richtig machen!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Manchmal ja, manchmal nein.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nachträgliche Genehmigung möglich, wenn alle Bauvorschriften eingehalten wurden, Abstandsflächen passen, Statik nachweisbar ist und Nachbarn nicht widersprechen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten:</strong> Wie reguläre Genehmigung (3.000-5.000€) PLUS Bußgeld (2.000-15.000€) PLUS evtl. Nachrüstungen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Unser Rat:</strong> Lieber von Anfang an richtig machen!</p>
 
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 40px 0; border-radius: 10px;">
         <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Du hast jetzt das komplette Wissen. Zeit für die Umsetzung!</h3>
@@ -1371,7 +1371,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="was-bedeutet-ohne-genehmigung" style="color: #ffffff;">2. Was bedeutet &quot;ohne Genehmigung&quot; wirklich?</h2>
 
-      <p style="color: #e5e7eb;">Die Begriffe werden oft verwechselt. Hier die klaren Definitionen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Begriffe werden oft verwechselt. Hier die klaren Definitionen:</p>
 
       <h3 style="color: #f3f4f6;">Verfahrensfrei vs. Genehmigungsfrei</h3>
 
@@ -1418,9 +1418,9 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Die häufigste Fehlannahme</h3>
       
-      <p style="color: #e5e7eb;">Die meisten Menschen denken: <em style="color: #d1d5db;">&quot;Verfahrensfrei = Ich kann einfach bauen ohne Bauamt.&quot;</em></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die meisten Menschen denken: <em style="color: #d1d5db;">&quot;Verfahrensfrei = Ich kann einfach bauen ohne Bauamt.&quot;</em></p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Das ist falsch!</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Das ist falsch!</strong></p>
       
       <div style="background: #ecfdf5; padding: 20px; margin: 20px 0; border-left: 4px solid #10b981; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #065f46; font-weight: bold;">💡 Praxis-Tipp aus 850+ Projekten:</h4>
@@ -1431,41 +1431,41 @@ const blogPosts: Record<string, BlogPost> = {
       <h2 id="16-bundeslaender-detail" style="color: #ffffff;">3. Die 16 Bundesländer im Detail</h2>
 
       <h3 style="color: #f3f4f6;">🏔️ Bayern</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 10m² Grundfläche oder 30m³ Volumen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 10m² Grundfläche oder 30m³ Volumen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Nur in Bebauungsplan-Gebiet</li>
         <li style="color: #e5e7eb;">Gebäudeklasse 1-3</li>
         <li style="color: #e5e7eb;">Abstandsflächen müssen eingehalten werden</li>
         <li style="color: #e5e7eb;">Statik muss trotzdem nachgewiesen werden</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> BayBO Art. 57 wurde angepasst, aber weiterhin strenge Regelung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> BayBO Art. 57 wurde angepasst, aber weiterhin strenge Regelung.</p>
       
       <div style="background: #f0f9ff; padding: 15px; margin: 15px 0; border-radius: 4px; color: #111827;">
         <p style="color: #374151; margin: 0;"><strong style="color: #111827;">Beispiel:</strong> Ein 8m² Balkon in München mit Bebauungsplan = verfahrensfrei, aber trotzdem Anzeige beim Bauamt nötig!</p>
       </div>
 
       <h3 style="color: #f3f4f6;">🍷 Baden-Württemberg</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 8m² Grundfläche oder 25m³ Volumen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 8m² Grundfläche oder 25m³ Volumen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Nur Gebäudeklasse 1-3 (teilweise GK 4)</li>
         <li style="color: #e5e7eb;">Bebauungsplan vorhanden</li>
         <li style="color: #e5e7eb;">Landesbauordnung erfüllt</li>
         <li style="color: #e5e7eb;">Alle Unterlagen müssen trotzdem eingereicht werden</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> LBO BW §50 erweitert Freistellungsmöglichkeiten, aber strenge Bedingungen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> LBO BW §50 erweitert Freistellungsmöglichkeiten, aber strenge Bedingungen.</p>
 
       <h3 style="color: #f3f4f6;">🏛️ Berlin</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> ❌ Keine</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> ❌ Keine</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Berlin hat die strengste Regelung aller Bundesländer</li>
         <li style="color: #e5e7eb;">Jeder Balkon, auch 1m², braucht eine vollständige Baugenehmigung</li>
         <li style="color: #e5e7eb;">Keine Ausnahmen für kleine Balkone</li>
         <li style="color: #e5e7eb;">Bearbeitungszeit: 12-20 Wochen (!)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> Neue Online-Portal für Bauanträge, aber keine Erleichterungen für Balkone.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> Neue Online-Portal für Bauanträge, aber keine Erleichterungen für Balkone.</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">⚠️ Warnung für Berlin:</h4>
@@ -1473,34 +1473,34 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
 
       <h3 style="color: #f3f4f6;">🏰 Nordrhein-Westfalen</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 12m² Grundfläche oder 35m³ Volumen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 12m² Grundfläche oder 35m³ Volumen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Nur in Bebauungsplan-Gebiet</li>
         <li style="color: #e5e7eb;">Nachbarschaftsrecht beachten</li>
         <li style="color: #e5e7eb;">Stadt-spezifische Gestaltungssatzungen können abweichen</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Beispiel:</strong> Ein 10m² Balkon in Köln mit Bebauungsplan = verfahrensfrei, aber Anzeige beim Bauamt nötig.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Beispiel:</strong> Ein 10m² Balkon in Köln mit Bebauungsplan = verfahrensfrei, aber Anzeige beim Bauamt nötig.</p>
 
       <h3 style="color: #f3f4f6;">🍎 Hessen</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 10m² Grundfläche oder 30m³ Volumen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 10m² Grundfläche oder 30m³ Volumen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Voraussetzungen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Nur Gebäudeklasse 1-3</li>
         <li style="color: #e5e7eb;">Hessische Bauordnung (HBO) erfüllt</li>
         <li style="color: #e5e7eb;">Brandschutz beachten</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheit:</strong> Hessen hat relativ zügige Bearbeitung (6-8 Wochen), auch bei vollständiger Genehmigung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheit:</strong> Hessen hat relativ zügige Bearbeitung (6-8 Wochen), auch bei vollständiger Genehmigung.</p>
 
       <h3 style="color: #f3f4f6;">🌊 Niedersachsen</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 15m² Grundfläche oder 50m³ Volumen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> Bis 15m² Grundfläche oder 50m³ Volumen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Besonderheiten:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Niedersachsen hat die liberalste Regelung aller Bundesländer</li>
         <li style="color: #e5e7eb;">Ländliche Gebiete oft noch großzügiger</li>
         <li style="color: #e5e7eb;">Küstenregionen: Besondere Wind-/Wettervorgaben beachten</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Beispiel:</strong> Ein 14m² Balkon in Hannover = verfahrensfrei, aber trotzdem alle Unterlagen beim Bauamt einreichen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Beispiel:</strong> Ein 14m² Balkon in Hannover = verfahrensfrei, aber trotzdem alle Unterlagen beim Bauamt einreichen.</p>
 
       <h3 style="color: #f3f4f6;">📍 Weitere Bundesländer (Kurzübersicht):</h3>
       
@@ -1581,10 +1581,10 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="voraussetzungen-immer" style="color: #ffffff;">4. Diese Voraussetzungen gelten IMMER</h2>
 
-      <p style="color: #e5e7eb;">Auch wenn dein Balkon unter der verfahrensfreien Größe liegt, musst du <strong style="color: #ffffff;">ALLE</strong> diese Punkte beachten:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Auch wenn dein Balkon unter der verfahrensfreien Größe liegt, musst du <strong style="color: #ffffff;">ALLE</strong> diese Punkte beachten:</p>
 
       <h3 style="color: #f3f4f6;">✅ 1. Abstandsflächen einhalten</h3>
-      <p style="color: #e5e7eb;">Der Grenzabstand muss eingehalten werden. In den meisten Bundesländern gilt:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Der Grenzabstand muss eingehalten werden. In den meisten Bundesländern gilt:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Mindestens 3 Meter zur Grundstücksgrenze</li>
         <li style="color: #e5e7eb;">Bei geringerem Abstand: Genehmigung nötig (auch bei verfahrensfreien Größen!)</li>
@@ -1599,7 +1599,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
 
       <h3 style="color: #f3f4f6;">✅ 2. Statik nachweisen</h3>
-      <p style="color: #e5e7eb;">Auch verfahrensfreie Balkone brauchen einen statischen Nachweis:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Auch verfahrensfreie Balkone brauchen einen statischen Nachweis:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Standsicherheitsnachweis muss erstellt werden</li>
         <li style="color: #e5e7eb;">Berechnung der Lasten erforderlich</li>
@@ -1608,8 +1608,8 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h3 style="color: #f3f4f6;">✅ 3. Bauamt informieren</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Auch verfahrensfreie Balkone müssen beim Bauamt angezeigt werden!</strong></p>
-      <p style="color: #e5e7eb;">Du musst:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Auch verfahrensfreie Balkone müssen beim Bauamt angezeigt werden!</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Du musst:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauantrag stellen (auch wenn vereinfacht)</li>
         <li style="color: #e5e7eb;">Alle Unterlagen einreichen</li>
@@ -1618,7 +1618,7 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h3 style="color: #f3f4f6;">✅ 4. Baugesetzbuch beachten</h3>
-      <p style="color: #e5e7eb;">Unabhängig von der Größe gilt immer:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Unabhängig von der Größe gilt immer:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauordnungsrecht muss eingehalten werden</li>
         <li style="color: #e5e7eb;">Brandschutz beachten</li>
@@ -1630,13 +1630,13 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">📖 Geschichte 1: &quot;Der 8m² Balkon in München&quot;</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Situation:</strong></p>
-      <p style="color: #e5e7eb;">Ein Bauherr in München plante einen 8m² Balkon. Er las in einem Forum: <em style="color: #d1d5db;">&quot;In Bayern sind Balkone bis 10m² verfahrensfrei.&quot;</em></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Situation:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein Bauherr in München plante einen 8m² Balkon. Er las in einem Forum: <em style="color: #d1d5db;">&quot;In Bayern sind Balkone bis 10m² verfahrensfrei.&quot;</em></p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was er daraus schloss:</strong></p>
-      <p style="color: #e5e7eb;"><em style="color: #d1d5db;">&quot;Perfekt! Mein Balkon ist 8m², also kann ich einfach bauen, ohne Bauamt!&quot;</em></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was er daraus schloss:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><em style="color: #d1d5db;">&quot;Perfekt! Mein Balkon ist 8m², also kann ich einfach bauen, ohne Bauamt!&quot;</em></p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was er NICHT wusste:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was er NICHT wusste:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Verfahrensfrei = Vereinfachtes Verfahren, NICHT ohne Bauamt</li>
         <li style="color: #e5e7eb;">Bebauungsplan muss vorhanden sein</li>
@@ -1644,8 +1644,8 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Alle Unterlagen müssen eingereicht werden</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was passierte:</strong></p>
-      <p style="color: #e5e7eb;">Er baute den Balkon ohne Bauamt zu informieren. Nachbar beschwerte sich. Bauamt ordnete Rückbau an. Kosten: ~8.000€ (Rückbau + neue Genehmigung + Statik).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was passierte:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Er baute den Balkon ohne Bauamt zu informieren. Nachbar beschwerte sich. Bauamt ordnete Rückbau an. Kosten: ~8.000€ (Rückbau + neue Genehmigung + Statik).</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">💸 Die Kosten des Fehlers:</h4>
@@ -1662,10 +1662,10 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">📖 Geschichte 2: &quot;Der 12m² Balkon in Niedersachsen&quot;</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Situation:</strong></p>
-      <p style="color: #e5e7eb;">Ein Bauherr in Hannover plante einen 12m² Balkon. Niedersachsen erlaubt bis 15m² verfahrensfrei. Er informierte das Bauamt korrekt.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Situation:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein Bauherr in Hannover plante einen 12m² Balkon. Niedersachsen erlaubt bis 15m² verfahrensfrei. Er informierte das Bauamt korrekt.</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was er richtig machte:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was er richtig machte:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Bauamt vor Baubeginn kontaktiert</li>
         <li style="color: #e5e7eb;">✅ Alle Unterlagen eingereicht (Bauantrag, Pläne, Statik)</li>
@@ -1673,7 +1673,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">✅ Nachbarn informiert</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ergebnis:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ergebnis:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Verfahrensfreie Genehmigung nach 4 Wochen</li>
         <li style="color: #e5e7eb;">✅ Keine Probleme</li>
@@ -1681,7 +1681,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">✅ Balkon gebaut im Frühjahr 2024</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">💸 Gesamtkosten:</strong> ~2.200€ (Bauantrag 350€ + Statik 850€ + Architekt 1.000€)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">💸 Gesamtkosten:</strong> ~2.200€ (Bauantrag 350€ + Statik 850€ + Architekt 1.000€)</p>
 
       <div style="background: #ecfdf5; padding: 20px; margin: 20px 0; border-left: 4px solid #10b981; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #065f46; font-weight: bold;">✅ So machst du es richtig:</h4>
@@ -1696,13 +1696,13 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">📖 Geschichte 3: &quot;Der 6m² Balkon in Berlin&quot;</h3>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Situation:</strong></p>
-      <p style="color: #e5e7eb;">Ein Bauherr in Berlin plante einen 6m² Balkon. Er dachte: <em style="color: #d1d5db;">&quot;So klein, das braucht doch keine Genehmigung!&quot;</em></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Situation:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein Bauherr in Berlin plante einen 6m² Balkon. Er dachte: <em style="color: #d1d5db;">&quot;So klein, das braucht doch keine Genehmigung!&quot;</em></p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Die Realität:</strong></p>
-      <p style="color: #e5e7eb;">Berlin hat <strong style="color: #ffffff;">KEINE verfahrensfreien Balkone</strong>. Auch 1m² braucht eine vollständige Baugenehmigung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Die Realität:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Berlin hat <strong style="color: #ffffff;">KEINE verfahrensfreien Balkone</strong>. Auch 1m² braucht eine vollständige Baugenehmigung.</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was passierte:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was passierte:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauherr baute ohne Genehmigung</li>
         <li style="color: #e5e7eb;">Nachbar beschwerte sich nach 2 Monaten</li>
@@ -1711,9 +1711,9 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Rückbau-Anordnung (Kosten: 6.000€)</li>
       </ul>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">💸 Gesamtkosten des Fehlers:</strong> ~20.000€ (Bußgeld + Rückbau + ursprüngliche Baukosten)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">💸 Gesamtkosten des Fehlers:</strong> ~20.000€ (Bußgeld + Rückbau + ursprüngliche Baukosten)</p>
       
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Hätte er es richtig gemacht:</strong> ~3.500€ (vollständige Genehmigung + Statik + Architekt)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Hätte er es richtig gemacht:</strong> ~3.500€ (vollständige Genehmigung + Statik + Architekt)</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">🚨 Wichtige Regel:</h4>
@@ -1724,7 +1724,7 @@ const blogPosts: Record<string, BlogPost> = {
       <h2 id="faq" style="color: #ffffff;">6. FAQ: Deine Fragen beantwortet</h2>
 
       <h3 style="color: #f3f4f6;">❓ Wie groß darf ein Balkon ohne Genehmigung sein?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Das hängt von deinem Bundesland ab:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Das hängt von deinem Bundesland ab:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Berlin, Hamburg, Bremen:</strong> ❌ Keine verfahrensfreie Größe</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Bayern, Hessen, Brandenburg:</strong> Bis 10m²</li>
@@ -1732,13 +1732,13 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">NRW, Thüringen, Sachsen-Anhalt, Schleswig-Holstein, Saarland:</strong> Bis 12m²</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Niedersachsen, Sachsen:</strong> Bis 15m² (liberalste Regelung)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">⚠️ Wichtig:</strong> &quot;Ohne Genehmigung&quot; bedeutet hier &quot;verfahrensfrei&quot;. Du musst trotzdem beim Bauamt anzeigen!</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Jetzt für dein Bundesland prüfen</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">⚠️ Wichtig:</strong> &quot;Ohne Genehmigung&quot; bedeutet hier &quot;verfahrensfrei&quot;. Du musst trotzdem beim Bauamt anzeigen!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Jetzt für dein Bundesland prüfen</a></strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Bedeutet verfahrensfrei, dass ich ohne Bauamt bauen kann?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort: NEIN!</strong></p>
-      <p style="color: #e5e7eb;">Verfahrensfrei bedeutet nur, dass das <strong style="color: #ffffff;">Verfahren vereinfacht</strong> ist, nicht dass du ohne Bauamt bauen kannst.</p>
-      <p style="color: #e5e7eb;">Du musst trotzdem:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort: NEIN!</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Verfahrensfrei bedeutet nur, dass das <strong style="color: #ffffff;">Verfahren vereinfacht</strong> ist, nicht dass du ohne Bauamt bauen kannst.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Du musst trotzdem:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Beim Bauamt anzeigen</li>
         <li style="color: #e5e7eb;">✅ Bauantrag stellen</li>
@@ -1746,30 +1746,30 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">✅ Abstandsflächen beachten</li>
         <li style="color: #e5e7eb;">✅ Statik nachweisen</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Der Unterschied:</strong> Das Verfahren ist schneller (4 Wochen statt 8-16 Wochen) und weniger aufwendig.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Der Unterschied:</strong> Das Verfahren ist schneller (4 Wochen statt 8-16 Wochen) und weniger aufwendig.</p>
 
       <h3 style="color: #f3f4f6;">❓ Gilt die Größe für alle Balkontypen?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Grundsätzlich ja, aber es gibt Unterschiede:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Grundsätzlich ja, aber es gibt Unterschiede:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Vorstellbalkon:</strong> Meist einfacher, da keine Eingriffe ins Gebäude</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Anbaubalkon:</strong> Standard-Regelung</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Kragarmbalkon:</strong> Komplexer, da Eingriff ins Gebäude</li>
       </ul>
-      <p style="color: #e5e7eb;">Die Größen-Grenzen gelten für alle Typen gleich, aber das <strong style="color: #ffffff;">Verfahren</strong> kann bei komplexeren Typen schwieriger sein.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Größen-Grenzen gelten für alle Typen gleich, aber das <strong style="color: #ffffff;">Verfahren</strong> kann bei komplexeren Typen schwieriger sein.</p>
 
       <h3 style="color: #f3f4f6;">❓ Was passiert, wenn mein Balkon größer ist?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Dann brauchst du eine vollständige Baugenehmigung:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Dann brauchst du eine vollständige Baugenehmigung:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Normales Genehmigungsverfahren (8-16 Wochen)</li>
         <li style="color: #e5e7eb;">Alle Unterlagen müssen vollständig sein</li>
         <li style="color: #e5e7eb;">Bauamt prüft alles genau</li>
         <li style="color: #e5e7eb;">Kosten: ~3.000-5.000€ (Bauantrag + Statik + Architekt)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Gesamtkosten berechnen</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Gesamtkosten berechnen</a></strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Kann ich einen Balkon unter der Grenze einfach bauen?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort: NEIN!</strong></p>
-      <p style="color: #e5e7eb;">Auch verfahrensfreie Balkone müssen beim Bauamt angezeigt werden. Wenn du einfach baust ohne Anzeige, ist das <strong style="color: #ffffff;">Schwarzbau</strong> und hat harte Konsequenzen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort: NEIN!</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Auch verfahrensfreie Balkone müssen beim Bauamt angezeigt werden. Wenn du einfach baust ohne Anzeige, ist das <strong style="color: #ffffff;">Schwarzbau</strong> und hat harte Konsequenzen:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bußgeld: 2.000-50.000€ (je nach Bundesland)</li>
         <li style="color: #e5e7eb;">Rückbau-Anordnung möglich</li>
@@ -1778,31 +1778,31 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <h3 style="color: #f3f4f6;">❓ Wie lange dauert das verfahrensfreie Verfahren?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Bei Genehmigungsfreistellung: 4 Wochen</p>
-      <p style="color: #e5e7eb;">Wenn du innerhalb von 4 Wochen nichts vom Bauamt hörst, darfst du bauen. ABER: Du musst trotzdem <strong style="color: #ffffff;">vor Baubeginn</strong> alle Unterlagen eingereicht haben!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Bei Genehmigungsfreistellung: 4 Wochen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wenn du innerhalb von 4 Wochen nichts vom Bauamt hörst, darfst du bauen. ABER: Du musst trotzdem <strong style="color: #ffffff;">vor Baubeginn</strong> alle Unterlagen eingereicht haben!</p>
 
       <h3 style="color: #f3f4f6;">❓ Was kostet ein verfahrensfreier Balkon?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Auch verfahrensfreie Balkone kosten bei der Genehmigung:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Auch verfahrensfreie Balkone kosten bei der Genehmigung:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauantragsgebühren: ~200-400€ (ca. 30% weniger als regulär)</li>
         <li style="color: #e5e7eb;">Statik: 500-1.500€ (gleich wie regulär)</li>
         <li style="color: #e5e7eb;">Architekt/Planer: 1.500-3.000€ (gleich wie regulär)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Gesamt:</strong> ~2.200-4.900€ (ca. 500-1.000€ günstiger als regulär)</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Detaillierte Kostenberechnung</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Gesamt:</strong> ~2.200-4.900€ (ca. 500-1.000€ günstiger als regulär)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Detaillierte Kostenberechnung</a></strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Welches Bundesland ist am liberalsten?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Niedersachsen und Sachsen mit bis zu 15m².</p>
-      <p style="color: #e5e7eb;">Die strengsten Bundesländer sind Berlin, Hamburg und Bremen, wo es keine verfahrensfreien Balkone gibt.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Niedersachsen und Sachsen mit bis zu 15m².</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die strengsten Bundesländer sind Berlin, Hamburg und Bremen, wo es keine verfahrensfreien Balkone gibt.</p>
 
       <h3 style="color: #f3f4f6;">❓ Was, wenn mein Balkon genau an der Grenze liegt?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Wenn dein Balkon <strong style="color: #ffffff;">genau</strong> an der Grenze liegt (z.B. genau 10m² in Bayern), gilt er meist noch als verfahrensfrei.</p>
-      <p style="color: #e5e7eb;">ABER: Bei <strong style="color: #ffffff;">10,1m²</strong> gilt er als zu groß und braucht eine vollständige Genehmigung!</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Tipp:</strong> Plane lieber 5-10% kleiner, um auf der sicheren Seite zu sein.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Wenn dein Balkon <strong style="color: #ffffff;">genau</strong> an der Grenze liegt (z.B. genau 10m² in Bayern), gilt er meist noch als verfahrensfrei.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">ABER: Bei <strong style="color: #ffffff;">10,1m²</strong> gilt er als zu groß und braucht eine vollständige Genehmigung!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Plane lieber 5-10% kleiner, um auf der sicheren Seite zu sein.</p>
 
       <h3 style="color: #f3f4f6;">❓ Gilt die Größe auch für Loggien?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Ja, die gleichen Regeln gelten für Loggien. Eine Loggia ist rechtlich ein Balkon.</p>
-      <p style="color: #e5e7eb;">ABER: Bei geschlossenen Loggien kann das Volumen wichtiger sein als die Grundfläche. Prüfe deshalb beides!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Ja, die gleichen Regeln gelten für Loggien. Eine Loggia ist rechtlich ein Balkon.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">ABER: Bei geschlossenen Loggien kann das Volumen wichtiger sein als die Grundfläche. Prüfe deshalb beides!</p>
 
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 40px 0; border-radius: 10px;">
         <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Du willst sichergehen? Lass es prüfen!</h3>
@@ -1855,7 +1855,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Wann brauchst du einen Bauantrag?</h3>
 
-      <p style="color: #e5e7eb;">Für nachträglich angebaute Balkone benötigst du in den allermeisten Fällen einen Bauantrag. Es gibt nur sehr wenige Ausnahmen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Für nachträglich angebaute Balkone benötigst du in den allermeisten Fällen einen Bauantrag. Es gibt nur sehr wenige Ausnahmen.</p>
 
       <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚖️ Rechtliche Grundlage:</h4>
@@ -1910,7 +1910,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="checkliste" style="color: #ffffff;">2. Die komplette Unterlagen-Checkliste</h2>
 
-      <p style="color: #e5e7eb;">Diese Unterlagen benötigst du für einen vollständigen Bauantrag:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Diese Unterlagen benötigst du für einen vollständigen Bauantrag:</p>
 
       <h3 style="color: #f3f4f6;">Pflicht-Unterlagen (IMMER erforderlich)</h3>
 
@@ -2044,25 +2044,25 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">Phase 1: Vorbereitung (Woche 1-2)</h3>
 
       <h4 style="color: #f3f4f6;">Schritt 1: Planer beauftragen</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Architekt oder Bauingenieur mit Bauvorlageberechtigung finden</li>
         <li style="color: #e5e7eb;">Erstgespräch führen (Projektbesichtigung, Anforderungen)</li>
         <li style="color: #e5e7eb;">Angebot einholen (3-5 Angebote vergleichen)</li>
         <li style="color: #e5e7eb;">Vertrag abschließen (Leistungsphasen 2-4)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten:</strong> 1.500-4.000€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Dauer:</strong> 1-2 Wochen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten:</strong> 1.500-4.000€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> 1-2 Wochen</p>
 
       <h4 style="color: #f3f4f6;">Schritt 2: Genehmigungspflicht prüfen</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauamt kontaktieren (Vorgespräch vereinbaren)</li>
         <li style="color: #e5e7eb;">Genehmigungspflicht klären</li>
         <li style="color: #e5e7eb;">Verfahrensart bestimmen (regulär / vereinfacht / Freistellung)</li>
         <li style="color: #e5e7eb;">Bauantragsformular besorgen</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Dauer:</strong> 1 Tag</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> 1 Tag</p>
 
       <div style="background: #eff6ff; padding: 15px; margin: 15px 0; border-radius: 4px; color: #111827;">
         <p style="color: #374151; margin: 0;"><strong style="color: #111827;">🛠️ Hilfreich:</strong> <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> — Prüfe in 60 Sekunden, welches Verfahren für dich gilt</p>
@@ -2071,30 +2071,30 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">Phase 2: Planung & Dokumentation (Woche 3-5)</h3>
 
       <h4 style="color: #f3f4f6;">Schritt 3: Planer erstellt Unterlagen</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Planer erstellt Bauzeichnungen</li>
         <li style="color: #e5e7eb;">Statiker erstellt Statische Berechnung</li>
         <li style="color: #e5e7eb;">Baubeschreibung wird geschrieben</li>
         <li style="color: #e5e7eb;">Alle Unterlagen werden vervollständigt</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Dauer:</strong> 2-4 Wochen</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten:</strong> 2.000-5.500€ (Planer + Statik)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> 2-4 Wochen</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten:</strong> 2.000-5.500€ (Planer + Statik)</p>
 
       <h4 style="color: #f3f4f6;">Schritt 4: Unterlagen prüfen lassen</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Alle Unterlagen gegen Checkliste prüfen</li>
         <li style="color: #e5e7eb;">Bauamt-Vorgespräch führen (falls möglich)</li>
         <li style="color: #e5e7eb;">Fehlende Dokumente nachfordern (Grundbuchauszug, etc.)</li>
         <li style="color: #e5e7eb;">Finale Prüfung vor Einreichung</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Dauer:</strong> 3-5 Tage</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> 3-5 Tage</p>
 
       <h3 style="color: #f3f4f6;">Phase 3: Einreichung (Woche 6)</h3>
 
       <h4 style="color: #f3f4f6;">Schritt 5: Bauantrag einreichen</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was zu tun ist:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Alle Unterlagen vollständig zusammenstellen (in 2-facher Ausfertigung)</li>
         <li style="color: #e5e7eb;">Bauantragsformular ausfüllen und unterschreiben</li>
@@ -2102,8 +2102,8 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Eingangsbestätigung erhalten</li>
         <li style="color: #e5e7eb;">Bearbeitungsgebühr entrichten</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Dauer:</strong> 1-3 Tage</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Kosten Gebühren:</strong> 200-900€ (je nach Bundesland und Baukosten)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> 1-3 Tage</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Gebühren:</strong> 200-900€ (je nach Bundesland und Baukosten)</p>
 
       <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚠️ Wichtig:</h4>
@@ -2114,7 +2114,7 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">Phase 4: Bearbeitung (Woche 7-14)</h3>
 
       <h4 style="color: #f3f4f6;">Schritt 6: Wartezeit & Rückfragen</h4>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Was passiert:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was passiert:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauamt prüft formale Vollständigkeit (1-2 Wochen)</li>
         <li style="color: #e5e7eb;">Fachbehörden werden beteiligt (Brandschutz, etc.)</li>
@@ -2122,9 +2122,9 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Rückfragen können kommen (dann Nachreichen nötig)</li>
         <li style="color: #e5e7eb;">Genehmigung wird erteilt oder Auflagen gestellt</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Dauer:</strong> 4-16 Wochen (je nach Verfahrensart und Bundesland)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> 4-16 Wochen (je nach Verfahrensart und Bundesland)</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Mögliche Ergebnisse:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Mögliche Ergebnisse:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Genehmigung wird erteilt → Du darfst bauen</li>
         <li style="color: #e5e7eb;">⚠️ Genehmigung mit Auflagen → Nachbesserung nötig, dann erneut einreichen</li>
@@ -2186,7 +2186,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Bauantragsgebühren nach Bundesland</h3>
 
-      <p style="color: #e5e7eb;">Die Gebühren richten sich nach den Baukosten. Hier eine Übersicht für typische Balkon-Größen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Gebühren richten sich nach den Baukosten. Hier eine Übersicht für typische Balkon-Größen:</p>
 
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
@@ -2352,32 +2352,32 @@ const blogPosts: Record<string, BlogPost> = {
       <h2 id="faq" style="color: #ffffff;">6. FAQ: Bauantrag für Balkon</h2>
 
       <h3 style="color: #f3f4f6;">❓ Kann ich den Bauantrag selbst stellen?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Theoretisch ja, praktisch meist nein.</p>
-      <p style="color: #e5e7eb;">Bauanträge erfordern die Unterschrift eines &quot;Bauvorlageberechtigten&quot; (Architekten, Bauingenieure, bestimmte Handwerksmeister). Ohne diese Qualifikation wird der Antrag nicht angenommen.</p>
-      <p style="color: #e5e7eb;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> kannst du dein Projekt strukturieren und hast alle Unterlagen bereits vorbereitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Theoretisch ja, praktisch meist nein.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Bauanträge erfordern die Unterschrift eines &quot;Bauvorlageberechtigten&quot; (Architekten, Bauingenieure, bestimmte Handwerksmeister). Ohne diese Qualifikation wird der Antrag nicht angenommen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> kannst du dein Projekt strukturieren und hast alle Unterlagen bereits vorbereitet.</p>
 
       <h3 style="color: #f3f4f6;">❓ Wie lange dauert das Bauantragsverfahren?</h3>
-      <p style="color: #e5e7eb;">Die Dauer variiert nach Bundesland und Verfahrensart:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Dauer variiert nach Bundesland und Verfahrensart:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Reguläres Verfahren:</strong> 8-16 Wochen</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Vereinfachtes Verfahren:</strong> 6-10 Wochen</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> 4 Wochen</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Tipp:</strong> Plane immer 3-4 Monate ein für die komplette Vorlaufzeit (Planung + Genehmigung).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Plane immer 3-4 Monate ein für die komplette Vorlaufzeit (Planung + Genehmigung).</p>
 
       <h3 style="color: #f3f4f6;">❓ Was kostet ein Bauantrag?</h3>
-      <p style="color: #e5e7eb;">Die Gesamtkosten für den Bauantrag setzen sich zusammen aus:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Gesamtkosten für den Bauantrag setzen sich zusammen aus:</p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauantragsgebühren: 200-900€ (je nach Bundesland und Baukosten)</li>
         <li style="color: #e5e7eb;">Statik: 500-1.800€</li>
         <li style="color: #e5e7eb;">Architekt/Planer: 1.500-4.500€</li>
         <li style="color: #e5e7eb;">Sonstiges: 200-800€</li>
       </ol>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Durchschnittlich:</strong> 3.000-5.000€</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Gesamtkosten mit Kalkulator berechnen</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Durchschnittlich:</strong> 3.000-5.000€</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/kalkulator/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Gesamtkosten mit Kalkulator berechnen</a></strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Welche Unterlagen brauche ich genau?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Pflicht-Unterlagen:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Pflicht-Unterlagen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauantragsformular (ausgefüllt und unterschrieben)</li>
         <li style="color: #e5e7eb;">Bauzeichnungen (Lageplan 1:500, Grundrisse 1:100, Ansichten, Schnitte)</li>
@@ -2385,20 +2385,20 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Baubeschreibung</li>
         <li style="color: #e5e7eb;">Grundbuchauszug (nicht älter als 6 Monate)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ Siehe <a href="#checkliste" style="color: #f97316; text-decoration: underline; font-weight: bold;">komplette Checkliste oben</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ Siehe <a href="#checkliste" style="color: #f97316; text-decoration: underline; font-weight: bold;">komplette Checkliste oben</a></strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Wo stelle ich den Bauantrag?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Beim zuständigen Bauamt deiner Stadt/Gemeinde.</p>
-      <p style="color: #e5e7eb;">Du kannst den Antrag einreichen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Beim zuständigen Bauamt deiner Stadt/Gemeinde.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Du kannst den Antrag einreichen:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Persönlich (im Bauamt vor Ort)</li>
         <li style="color: #e5e7eb;">Per Post (Einschreiben mit Rückschein empfohlen)</li>
         <li style="color: #e5e7eb;">Online (wenn dein Bauamt das anbietet – immer häufiger 2025)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Tipp:</strong> Ruf vorher an und frage, wie viele Ausfertigungen nötig sind (meist 2-fach).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Ruf vorher an und frage, wie viele Ausfertigungen nötig sind (meist 2-fach).</p>
 
       <h3 style="color: #f3f4f6;">❓ Was passiert, wenn mein Antrag abgelehnt wird?</h3>
-      <p style="color: #e5e7eb;">Eine Ablehnung ist selten, aber möglich. Deine Optionen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Eine Ablehnung ist selten, aber möglich. Deine Optionen:</p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Überarbeitung:</strong> Planung anpassen und neu einreichen</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Nachbarvereinbarung:</strong> Zustimmung der Nachbarn einholen (bei Abstandsunterschreitung)</li>
@@ -2407,38 +2407,38 @@ const blogPosts: Record<string, BlogPost> = {
       </ol>
 
       <h3 style="color: #f3f4f6;">❓ Kann ich den Bauantrag online stellen?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Immer mehr Bauämter bieten Online-Einreichung an (2025).</p>
-      <p style="color: #e5e7eb;">Vorteile:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Immer mehr Bauämter bieten Online-Einreichung an (2025).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Vorteile:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Kurze Bearbeitungszeiten (kein Postweg)</li>
         <li style="color: #e5e7eb;">Digitaler Workflow</li>
         <li style="color: #e5e7eb;">Status-Tracking möglich</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Nachteil:</strong> Noch nicht alle Bauämter bieten es an. Frage beim Bauamt nach!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Nachteil:</strong> Noch nicht alle Bauämter bieten es an. Frage beim Bauamt nach!</p>
 
       <h3 style="color: #f3f4f6;">❓ Was bedeutet &quot;Bauvorlageberechtigung&quot;?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Eine Bauvorlageberechtigung ist eine Qualifikation, die bestimmten Personen erlaubt, Bauanträge zu stellen.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wer ist berechtigt:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Eine Bauvorlageberechtigung ist eine Qualifikation, die bestimmten Personen erlaubt, Bauanträge zu stellen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wer ist berechtigt:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Architekten (in Architektenkammer eingetragen)</li>
         <li style="color: #e5e7eb;">Bauingenieure (in Ingenieurskammer eingetragen)</li>
         <li style="color: #e5e7eb;">Bestimmte Handwerksmeister (z.B. Zimmerermeister bei Holzbalkonen)</li>
         <li style="color: #e5e7eb;">Staatlich anerkannte Sachverständige</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Einfache Handwerker reichen meist nicht!</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Einfache Handwerker reichen meist nicht!</strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Wie viele Ausfertigungen brauche ich?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Meist 2-fach (Original + Kopie), manche Bauämter verlangen 3-fach.</p>
-      <p style="color: #e5e7eb;">Frage beim Bauamt nach, BEVOR du druckst. Das spart Geld!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Meist 2-fach (Original + Kopie), manche Bauämter verlangen 3-fach.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Frage beim Bauamt nach, BEVOR du druckst. Das spart Geld!</p>
 
       <h3 style="color: #f3f4f6;">❓ Was kostet es, wenn ich Unterlagen nachreichen muss?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Keine zusätzlichen Gebühren, aber:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Keine zusätzlichen Gebühren, aber:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Verzögerung um mehrere Wochen</li>
         <li style="color: #e5e7eb;">Handwerker-Termine müssen verschoben werden</li>
         <li style="color: #e5e7eb;">Planer-Kosten für Nachbesserungen (50-200€)</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Tipp:</strong> Reiche NUR vollständige Anträge ein. Nutze unsere Checkliste!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Reiche NUR vollständige Anträge ein. Nutze unsere Checkliste!</p>
 
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 40px 0; border-radius: 10px;">
         <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Bauantrag professionell vorbereiten</h3>
@@ -2608,7 +2608,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="uebersicht" style="color: #ffffff;">1. Die wichtigsten Förderprogramme 2025 im Überblick</h2>
 
-      <p style="color: #e5e7eb;">Für Balkonprojekte kommen verschiedene Förderprogramme infrage. Hier die komplette Übersicht:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Für Balkonprojekte kommen verschiedene Förderprogramme infrage. Hier die komplette Übersicht:</p>
 
       <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; color: #111827;">
         <h3 style="color: #111827;">💶 Schnell-Übersicht: Diese Förderungen gibt es</h3>
@@ -2667,9 +2667,9 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Was wird gefördert?</h3>
 
-      <p style="color: #e5e7eb;">Das KfW 261-Programm fördert die energetische Sanierung von Wohngebäuden zum Effizienzhaus oder Einzelmaßnahmen zur Energieeinsparung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Das KfW 261-Programm fördert die energetische Sanierung von Wohngebäuden zum Effizienzhaus oder Einzelmaßnahmen zur Energieeinsparung.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Für Balkone relevant bei:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Für Balkone relevant bei:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Balkonanbau im Rahmen einer Gesamtsanierung zum Effizienzhaus</li>
         <li style="color: #e5e7eb;">✅ Verbesserung der Gebäudehülle (neue Balkone ersetzen alte, undichte)</li>
@@ -2756,7 +2756,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="kfw-262" style="color: #ffffff;">3. KfW 262: Einzelmaßnahmen – 15% Zuschuss ohne Kredit</h2>
 
-      <p style="color: #e5e7eb;">Das KfW 262-Programm ist ein <strong style="color: #ffffff;">reiner Zuschuss</strong> (kein Kredit!) für energetische Einzelmaßnahmen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Das KfW 262-Programm ist ein <strong style="color: #ffffff;">reiner Zuschuss</strong> (kein Kredit!) für energetische Einzelmaßnahmen.</p>
 
       <h3 style="color: #f3f4f6;">Wann kommt KfW 262 für Balkone infrage?</h3>
 
@@ -2809,7 +2809,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="laender-programme" style="color: #ffffff;">4. Bundesländer-spezifische Förderungen</h2>
 
-      <p style="color: #e5e7eb;">Zusätzlich zu den KfW-Programmen bieten viele Bundesländer eigene Förderprogramme für energetische Sanierungen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Zusätzlich zu den KfW-Programmen bieten viele Bundesländer eigene Förderprogramme für energetische Sanierungen:</p>
 
       <h3 style="color: #f3f4f6;">Übersicht nach Bundesland</h3>
 
@@ -3008,13 +3008,13 @@ const blogPosts: Record<string, BlogPost> = {
       <h2 id="faq" style="color: #ffffff;">7. FAQ: Förderung Balkonanbau</h2>
 
       <h3 style="color: #f3f4f6;">❓ Kann ich mehrere Förderungen kombinieren?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Ja, in vielen Fällen können KfW-Förderung und Länder-Programme kombiniert werden.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Beispiel:</strong> KfW 261 (bis 30.000€) + Bayern 10.000-Häuser-Programm (bis 5.000€) = bis zu 35.000€ Förderung möglich.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wichtig:</strong> Informieren Sie sich bei Ihrer Förderbank, welche Kombinationen möglich sind.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Ja, in vielen Fällen können KfW-Förderung und Länder-Programme kombiniert werden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Beispiel:</strong> KfW 261 (bis 30.000€) + Bayern 10.000-Häuser-Programm (bis 5.000€) = bis zu 35.000€ Förderung möglich.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wichtig:</strong> Informieren Sie sich bei Ihrer Förderbank, welche Kombinationen möglich sind.</p>
 
       <h3 style="color: #f3f4f6;">❓ Werde ich die Förderung sofort ausgezahlt?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Nein. Die Förderung wird erst NACH Fertigstellung und Prüfung ausgezahlt.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Ablauf:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Nein. Die Förderung wird erst NACH Fertigstellung und Prüfung ausgezahlt.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ablauf:</strong></p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Förderzusage erhalten</li>
         <li style="color: #e5e7eb;">Bau durchführen</li>
@@ -3022,46 +3022,46 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Prüfung durch KfW</li>
         <li style="color: #e5e7eb;">Auszahlung (4-8 Wochen nach Einreichung)</li>
       </ol>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Tipp:</strong> Planen Sie die Finanzierung so, dass Sie die Förderung nicht für die Bezahlung der Rechnungen benötigen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Planen Sie die Finanzierung so, dass Sie die Förderung nicht für die Bezahlung der Rechnungen benötigen.</p>
 
       <h3 style="color: #f3f4f6;">❓ Wie lange dauert es, bis ich die Förderzusage erhalte?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> 2-4 Wochen nach Antragstellung.</p>
-      <p style="color: #e5e7eb;">Wenn Sie alle Unterlagen vollständig einreichen, erfolgt die Prüfung schneller. Fehlende Unterlagen verzögern die Bearbeitung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> 2-4 Wochen nach Antragstellung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wenn Sie alle Unterlagen vollständig einreichen, erfolgt die Prüfung schneller. Fehlende Unterlagen verzögern die Bearbeitung.</p>
 
       <h3 style="color: #f3f4f6;">❓ Was kostet ein Energieberater?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> 1.500-3.000€, ABER:</p>
-      <p style="color: #e5e7eb;">BAFA fördert die Energieberatung zu <strong style="color: #ffffff;">80%</strong>! Sie zahlen also nur 300-600€ selbst.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">→ <a href="/foerderung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Energieberater-Förderung beantragen</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> 1.500-3.000€, ABER:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">BAFA fördert die Energieberatung zu <strong style="color: #ffffff;">80%</strong>! Sie zahlen also nur 300-600€ selbst.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/foerderung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Energieberater-Förderung beantragen</a></strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Muss ich alle Balkone gleichzeitig sanieren, um Förderung zu erhalten?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Nein, bei KfW 262 können auch Einzelmaßnahmen gefördert werden.</p>
-      <p style="color: #e5e7eb;">ABER: Bei KfW 261 (Effizienzhaus) ist meist eine Gesamtsanierung erforderlich, um die Effizienzhaus-Stufe zu erreichen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Nein, bei KfW 262 können auch Einzelmaßnahmen gefördert werden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">ABER: Bei KfW 261 (Effizienzhaus) ist meist eine Gesamtsanierung erforderlich, um die Effizienzhaus-Stufe zu erreichen.</p>
 
       <h3 style="color: #f3f4f6;">❓ Bekomme ich Förderung auch für neue Balkone (nicht nur Sanierung)?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Ja, wenn der neue Balkon Teil einer energetischen Sanierung ist.</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Beispiel:</strong> Sie bauen einen neuen Balkon an, der Wärmebrücken beseitigt oder die Gebäudehülle verbessert → förderfähig!</p>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">ABER:</strong> Ein reiner &quot;Luxus-Balkon&quot; ohne energetische Verbesserung wird NICHT gefördert.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Ja, wenn der neue Balkon Teil einer energetischen Sanierung ist.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Beispiel:</strong> Sie bauen einen neuen Balkon an, der Wärmebrücken beseitigt oder die Gebäudehülle verbessert → förderfähig!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">ABER:</strong> Ein reiner &quot;Luxus-Balkon&quot; ohne energetische Verbesserung wird NICHT gefördert.</p>
 
       <h3 style="color: #f3f4f6;">❓ Kann ich die Förderung steuerlich absetzen?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Nein, Zuschüsse sind steuerfrei und können nicht zusätzlich abgesetzt werden.</p>
-      <p style="color: #e5e7eb;">ABER: Wenn Sie einen KfW-Kredit nehmen, können Sie die Zinsen steuerlich absetzen (Steuerberater fragen).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Nein, Zuschüsse sind steuerfrei und können nicht zusätzlich abgesetzt werden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">ABER: Wenn Sie einen KfW-Kredit nehmen, können Sie die Zinsen steuerlich absetzen (Steuerberater fragen).</p>
 
       <h3 style="color: #f3f4f6;">❓ Was passiert, wenn ich die Förderung nicht vollständig ausschöpfe?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Die Förderung wird nur für tatsächlich entstandene Kosten gezahlt.</p>
-      <p style="color: #e5e7eb;">Wenn Sie beispielsweise 15.000€ Förderung beantragt haben, aber nur 12.000€ kosten entstanden sind, erhalten Sie nur 15% von 12.000€ = 1.800€ (bei KfW 262).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Die Förderung wird nur für tatsächlich entstandene Kosten gezahlt.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wenn Sie beispielsweise 15.000€ Förderung beantragt haben, aber nur 12.000€ kosten entstanden sind, erhalten Sie nur 15% von 12.000€ = 1.800€ (bei KfW 262).</p>
 
       <h3 style="color: #f3f4f6;">❓ Kann ich die Förderung auch für Mietwohnungen beantragen?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Als Mieter nein, als Vermieter ja.</p>
-      <p style="color: #e5e7eb;">Nur Eigentümer oder berechtigte Nutzer (z.B. Erbbaurecht) können Förderung beantragen. Als Mieter können Sie nur den Eigentümer motivieren, die Förderung zu nutzen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Als Mieter nein, als Vermieter ja.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nur Eigentümer oder berechtigte Nutzer (z.B. Erbbaurecht) können Förderung beantragen. Als Mieter können Sie nur den Eigentümer motivieren, die Förderung zu nutzen.</p>
 
       <h3 style="color: #f3f4f6;">❓ Welche Balkon-Typen werden gefördert?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Antwort:</strong> Grundsätzlich alle, die energetisch relevant sind:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Grundsätzlich alle, die energetisch relevant sind:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Vorstellbalkon mit wärmedämmender Konstruktion</li>
         <li style="color: #e5e7eb;">✅ Anbaubalkon mit thermischer Trennung</li>
         <li style="color: #e5e7eb;">✅ Kragarmbalkon als Teil einer Fassadensanierung</li>
       </ul>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Nicht förderfähig:</strong> Reine &quot;Luxus-Balkone&quot; ohne energetische Verbesserung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Nicht förderfähig:</strong> Reine &quot;Luxus-Balkone&quot; ohne energetische Verbesserung.</p>
 
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 40px 0; border-radius: 10px;">
         <h3 style="margin-top: 0; color: #ffffff; font-weight: bold; font-size: 28px; text-align: center;">Finden Sie Ihre optimale Förderung</h3>
@@ -3163,7 +3163,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
       
       <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
-      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit von unseren Experten ausgearbeitet und enthält bald alle wichtigen Informationen zur Statik beim Balkonanbau.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dieser Artikel wird derzeit von unseren Experten ausgearbeitet und enthält bald alle wichtigen Informationen zur Statik beim Balkonanbau.</p>
       
       <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
         <h3 style="margin-top: 0; color: #111827;"><strong>In der Zwischenzeit:</strong></h3>
@@ -3198,7 +3198,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
       
       <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
-      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dieser Artikel wird derzeit ausgearbeitet.</p>
     `,
     thumbnail: '/images/blog/sturmschaden.jpg'
   },
@@ -3227,7 +3227,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
       
       <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
-      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dieser Artikel wird derzeit ausgearbeitet.</p>
       
       <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
         <h3 style="margin-top: 0; color: #111827;"><strong>Mehr Infos im Balkonlexikon:</strong></h3>
@@ -3263,7 +3263,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
       
       <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
-      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dieser Artikel wird derzeit ausgearbeitet.</p>
     `,
     thumbnail: '/images/blog/bodenbelag.jpg'
   },
@@ -3293,7 +3293,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
       
       <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
-      <p style="color: #e5e7eb;">Dieser Artikel wird derzeit ausgearbeitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dieser Artikel wird derzeit ausgearbeitet.</p>
     `,
     thumbnail: '/images/blog/gelaender.jpg'
   },
@@ -3322,7 +3322,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
       
       <h2 style="color: #ffffff;">Inhalt folgt in Kürze</h2>
-      <p style="color: #e5e7eb;">Dieser saisonale Artikel erscheint pünktlich zur Weihnachtszeit.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Dieser saisonale Artikel erscheint pünktlich zur Weihnachtszeit.</p>
       
       <div style="background: #fff8e1; padding: 20px; margin: 20px 0; border-left: 4px solid #ff9800; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">🎄 Saisonaler Content</h4>
@@ -3638,59 +3638,59 @@ const blogPosts: Record<string, BlogPost> = {
     slug: 'knut-2026-weihnachtsbaum-balkon-werfen-mythos-recht-haftung',
     title: 'Knut 2026: Weihnachtsbaum vom Balkon werfen – Der IKEA-Mythos, Rechtslage & Haftung',
     category: 'Tipps & Wissenswertes',
-    date: '2026-01-06',
+    date: '2025-12-27',
     readTime: '10 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     metaDescription: 'Knut am 13. Januar: Warum der schwedische Brauch ein IKEA-Mythos ist wie Coca-Colas Weihnachtsmann. Die wahre Rechtslage in Deutschland + Haftung & Versicherung ✓',
     published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
-        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Veröffentlicht: 6. Januar 2026</strong></p>
+        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Veröffentlicht: 27. Dezember 2025</strong></p>
         <p style="margin: 0; color: #374151;">Ein kritischer Blick auf einen viralen Mythos – und was die Rechtslage in Deutschland wirklich sagt.</p>
       </div>
 
       <h2 id="einleitung" style="color: #ffffff;">EINLEITUNG: DIE VIRAL-WERBUNG, DIE EINEN MYTHOS SCHUF</h2>
 
-      <p style="color: #e5e7eb;">Jedes Jahr im Januar geht das gleiche Video viral: Schwedische Familien öffnen ihre Fenster und werfen Weihnachtsbäume auf die Straße. Tannenbäume segeln durch die Luft, landen auf Schneehaufen, und die Menschen jubeln. "Knut!" rufen sie. "Lebewohl, Weihnachtsbaum!"</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Jedes Jahr im Januar geht das gleiche Video viral: Schwedische Familien öffnen ihre Fenster und werfen Weihnachtsbäume auf die Straße. Tannenbäume segeln durch die Luft, landen auf Schneehaufen, und die Menschen jubeln. "Knut!" rufen sie. "Lebewohl, Weihnachtsbaum!"</p>
 
-      <p style="color: #e5e7eb;">Die Szenen sind ikonisch. Sie sind charmant. Sie sind schwedisch.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Szenen sind ikonisch. Sie sind charmant. Sie sind schwedisch.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Und sie sind ein Marketing-Märchen.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Und sie sind ein Marketing-Märchen.</strong></p>
 
-      <p style="color: #e5e7eb;">Genau wie der rot-weiße Weihnachtsmann von Coca-Cola hat IKEA einen harmlosen Brauch genommen und ihn zu einem globalen Mythos transformiert – mit Werbekampagnen, die so clever sind, dass Millionen Menschen heute glauben, in Schweden würden Weihnachtsbäume wirklich aus Fenstern fliegen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Genau wie der rot-weiße Weihnachtsmann von Coca-Cola hat IKEA einen harmlosen Brauch genommen und ihn zu einem globalen Mythos transformiert – mit Werbekampagnen, die so clever sind, dass Millionen Menschen heute glauben, in Schweden würden Weihnachtsbäume wirklich aus Fenstern fliegen.</p>
 
-      <p style="color: #e5e7eb;">Die Wahrheit ist komplexer. Und für deutsche Hausbesitzer mit Balkon deutlich relevanter.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Wahrheit ist komplexer. Und für deutsche Hausbesitzer mit Balkon deutlich relevanter.</p>
 
-      <p style="color: #e5e7eb;">Denn während IKEA lacht, stellt sich die Frage: <strong style="color: #ffffff;">Darf ich meinen Weihnachtsbaum in Deutschland vom Balkon werfen? Wer haftet, wenn etwas schiefgeht? Und warum ist dieser Mythos überhaupt so hartnäckig?</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Denn während IKEA lacht, stellt sich die Frage: <strong style="color: #ffffff;">Darf ich meinen Weihnachtsbaum in Deutschland vom Balkon werfen? Wer haftet, wenn etwas schiefgeht? Und warum ist dieser Mythos überhaupt so hartnäckig?</strong></p>
 
-      <p style="color: #e5e7eb;">Wir klären auf – mit einem Blick auf die wahre Geschichte von Knut, die rechtliche Lage in Deutschland und die oft übersehenen Haftungsrisiken.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wir klären auf – mit einem Blick auf die wahre Geschichte von Knut, die rechtliche Lage in Deutschland und die oft übersehenen Haftungsrisiken.</p>
 
       <h2 id="wahre-geschichte" style="color: #ffffff;">KAPITEL 1: DIE WAHRE GESCHICHTE VON KNUT – EIN SCHWEDISCHER BRAUCH WIRD ZUM GLOBALEN MYTHOS</h2>
 
       <h3 style="color: #f3f4f6;">Was ist Knut eigentlich?</h3>
 
-      <p style="color: #e5e7eb;">Knut (ausgesprochen "Knuut") ist tatsächlich ein schwedischer Feiertag. Am 13. Januar endet in Schweden traditionell die Weihnachtszeit – 20 Tage nach dem 24. Dezember. Der Tag ist nach dem Heiligen Knut (König Knut IV. von Dänemark) benannt, der im 11. Jahrhundert lebte.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Knut (ausgesprochen "Knuut") ist tatsächlich ein schwedischer Feiertag. Am 13. Januar endet in Schweden traditionell die Weihnachtszeit – 20 Tage nach dem 24. Dezember. Der Tag ist nach dem Heiligen Knut (König Knut IV. von Dänemark) benannt, der im 11. Jahrhundert lebte.</p>
 
-      <p style="color: #e5e7eb;">An Knut wird der Weihnachtsbaum abgeschmückt, die Dekoration weggeräumt, und die Weihnachtszeit offiziell beendet. "Tjugondag Knut" heißt es auf Schwedisch – der 20. Tag nach Weihnachten.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">An Knut wird der Weihnachtsbaum abgeschmückt, die Dekoration weggeräumt, und die Weihnachtszeit offiziell beendet. "Tjugondag Knut" heißt es auf Schwedisch – der 20. Tag nach Weihnachten.</p>
 
-      <p style="color: #e5e7eb;">So weit, so traditionell.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">So weit, so traditionell.</p>
 
       <h3 style="color: #f3f4f6;">Aber werfen Schweden wirklich ihre Bäume aus dem Fenster?</h3>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Nein.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Nein.</strong></p>
 
-      <p style="color: #e5e7eb;">Die überwiegende Mehrheit der Schweden entsorgt ihre Weihnachtsbäume ganz normal:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die überwiegende Mehrheit der Schweden entsorgt ihre Weihnachtsbäume ganz normal:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Zu kommunalen Sammelstellen bringen</li>
         <li style="color: #e5e7eb;">Im eigenen Garten kompostieren</li>
         <li style="color: #e5e7eb;">Von städtischen Diensten abholen lassen</li>
       </ul>
 
-      <p style="color: #e5e7eb;">Der Fenster-Wurf ist eine <strong style="color: #ffffff;">urban legend</strong>, die durch cleveres Marketing entstanden ist.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Der Fenster-Wurf ist eine <strong style="color: #ffffff;">urban legend</strong>, die durch cleveres Marketing entstanden ist.</p>
 
       <h3 style="color: #f3f4f6;">Wie IKEA den Mythos erschuf (und warum wir alle drauf reinfallen)</h3>
 
-      <p style="color: #e5e7eb;">In den 2000er Jahren startete IKEA eine Werbekampagne, die den schwedischen Knut-Brauch weltweit bekannt machte. Die Kampagne zeigte:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">In den 2000er Jahren startete IKEA eine Werbekampagne, die den schwedischen Knut-Brauch weltweit bekannt machte. Die Kampagne zeigte:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Familien, die Weihnachtsbäume aus Fenstern werfen</li>
         <li style="color: #e5e7eb;">Jubelnde Kinder</li>
@@ -3698,13 +3698,13 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Den Slogan: "So machen es die Schweden!"</li>
       </ul>
 
-      <p style="color: #e5e7eb;">Die Kampagne war brilliant. Sie war visuell stark. Sie war teilbar (perfekt für Social Media). Und sie verband IKEA mit schwedischer Kultur auf eine humorvolle, einprägsame Weise.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die Kampagne war brilliant. Sie war visuell stark. Sie war teilbar (perfekt für Social Media). Und sie verband IKEA mit schwedischer Kultur auf eine humorvolle, einprägsame Weise.</p>
 
-      <p style="color: #e5e7eb;">Das Problem? <strong style="color: #ffffff;">Es war eine kreative Übertreibung.</strong> Ähnlich wie Coca-Cola den modernen Weihnachtsmann nicht "erfunden", aber definitiv <strong style="color: #ffffff;">standardisiert und globalisiert</strong> hat, nahm IKEA einen harmlosen Brauch (Knut) und fügte ein Element hinzu, das es nie in dieser Form gab: das massenhafte Fenster-Werfen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Das Problem? <strong style="color: #ffffff;">Es war eine kreative Übertreibung.</strong> Ähnlich wie Coca-Cola den modernen Weihnachtsmann nicht "erfunden", aber definitiv <strong style="color: #ffffff;">standardisiert und globalisiert</strong> hat, nahm IKEA einen harmlosen Brauch (Knut) und fügte ein Element hinzu, das es nie in dieser Form gab: das massenhafte Fenster-Werfen.</p>
 
       <h3 style="color: #f3f4f6;">Der Vergleich: IKEA's Knut = Coca-Cola's Weihnachtsmann</h3>
 
-      <p style="color: #e5e7eb;">Schauen wir uns die Parallelen an:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Schauen wir uns die Parallelen an:</p>
 
       <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; color: #111827; font-weight: bold;">Coca-Cola & der Weihnachtsmann:</h4>
@@ -3722,11 +3722,11 @@ const blogPosts: Record<string, BlogPost> = {
         </ul>
       </div>
 
-      <p style="color: #e5e7eb;">In beiden Fällen: <strong style="color: #ffffff;">Ein Unternehmen nimmt einen echten Brauch, übertreibt ein Element, und schafft einen globalen Mythos.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">In beiden Fällen: <strong style="color: #ffffff;">Ein Unternehmen nimmt einen echten Brauch, übertreibt ein Element, und schafft einen globalen Mythos.</strong></p>
 
       <h3 style="color: #f3f4f6;">Warum ist der Mythos so hartnäckig?</h3>
 
-      <p style="color: #e5e7eb;">Drei Gründe:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Drei Gründe:</p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Visueller Impact:</strong> Videos von fliegenden Weihnachtsbäumen sind unterhaltsam, teilbar, einprägsam.</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Kulturelle Exotik:</strong> "Die Schweden machen das so!" klingt authentisch und charmant – wir WOLLEN, dass es wahr ist.</li>
@@ -3735,28 +3735,28 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Die Realität in Schweden 2026:</h3>
 
-      <p style="color: #e5e7eb;">In Schweden gibt es vereinzelt private "Knut-Partys", bei denen Freunde gemeinsam ihre Bäume in den Garten werfen (nicht aus dem Fenster!). Aber das ist:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">In Schweden gibt es vereinzelt private "Knut-Partys", bei denen Freunde gemeinsam ihre Bäume in den Garten werfen (nicht aus dem Fenster!). Aber das ist:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Eine kleine Minderheit</li>
         <li style="color: #e5e7eb;">Im eigenen Garten (nicht auf öffentliche Straßen)</li>
         <li style="color: #e5e7eb;">Kein offizieller Brauch</li>
       </ul>
 
-      <p style="color: #e5e7eb;">Die meisten Schweden schmunzeln über den IKEA-Mythos – ähnlich wie Deutsche über Klischees wie "alle tragen Lederhosen" schmunzeln.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die meisten Schweden schmunzeln über den IKEA-Mythos – ähnlich wie Deutsche über Klischees wie "alle tragen Lederhosen" schmunzeln.</p>
 
       <h2 id="rechtslage" style="color: #ffffff;">KAPITEL 2: RECHTSLAGE IN DEUTSCHLAND – WARUM DER BALKON-WURF KEINE GUTE IDEE IST</h2>
 
-      <p style="color: #e5e7eb;">Jetzt wird es ernst. Selbst wenn der Mythos charmant ist – in Deutschland ist das Werfen von Weihnachtsbäumen vom Balkon <strong style="color: #ffffff;">illegal, gefährlich und teuer</strong>.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Jetzt wird es ernst. Selbst wenn der Mythos charmant ist – in Deutschland ist das Werfen von Weihnachtsbäumen vom Balkon <strong style="color: #ffffff;">illegal, gefährlich und teuer</strong>.</p>
 
       <h3 style="color: #f3f4f6;">Rechtliche Einordnung: 4 Verstöße auf einmal</h3>
 
       <h4 style="color: #f3f4f6;">1. Gefährdung von Personen (Strafrechtlich)</h4>
 
-      <p style="color: #e5e7eb;">Ein 2-Meter-Tannenbaum, der aus dem 3. Stock fällt, wiegt ca. 15-20 kg und erreicht beim Aufprall eine Geschwindigkeit von ca. 35-40 km/h.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ein 2-Meter-Tannenbaum, der aus dem 3. Stock fällt, wiegt ca. 15-20 kg und erreicht beim Aufprall eine Geschwindigkeit von ca. 35-40 km/h.</p>
 
-      <p style="color: #e5e7eb;">Das entspricht der Wucht eines geworfenen Steins.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Das entspricht der Wucht eines geworfenen Steins.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Mögliche Folgen bei Personenschaden:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Mögliche Folgen bei Personenschaden:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Platzwunden</li>
         <li style="color: #e5e7eb;">Gehirnerschütterung</li>
@@ -3780,7 +3780,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h4 style="color: #f3f4f6;">2. Sachbeschädigung (Zivilrechtlich & Strafrechtlich)</h4>
 
-      <p style="color: #e5e7eb;">Der Baum könnte beim Fall beschädigen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Der Baum könnte beim Fall beschädigen:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Parkende Autos (Delle, zerkratzte Lackierung, zerbrochene Scheibe)</li>
         <li style="color: #e5e7eb;">Fahrräder</li>
@@ -3799,7 +3799,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h4 style="color: #f3f4f6;">3. Verstoß gegen die Hausordnung (Mietrechtlich)</h4>
 
-      <p style="color: #e5e7eb;">Fast alle Mietwohnungen und WEGs haben in der Hausordnung einen Passus wie:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Fast alle Mietwohnungen und WEGs haben in der Hausordnung einen Passus wie:</p>
 
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
         "Es ist untersagt, Gegenstände aus Fenstern oder von Balkonen zu werfen."
@@ -3821,7 +3821,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h4 style="color: #f3f4f6;">4. Ordnungswidrigkeit – Wilde Müllentsorgung (Öffentlich-rechtlich)</h4>
 
-      <p style="color: #e5e7eb;">Weihnachtsbäume gehören nicht auf die Straße (außer zu den offiziellen Abholzeiten).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Weihnachtsbäume gehören nicht auf die Straße (außer zu den offiziellen Abholzeiten).</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">⚖️ Rechtliche Konsequenzen:</h4>
@@ -3847,11 +3847,11 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="haftung" style="color: #ffffff;">KAPITEL 3: HAFTUNG & VERSICHERUNG – WER ZAHLT, WENN ETWAS SCHIEFGEHT?</h2>
 
-      <p style="color: #e5e7eb;">Hier wird es richtig teuer. Viele Menschen unterschätzen die Haftungsrisiken beim Balkon-Wurf massiv.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Hier wird es richtig teuer. Viele Menschen unterschätzen die Haftungsrisiken beim Balkon-Wurf massiv.</p>
 
       <h3 style="color: #f3f4f6;">Szenario 1: Beschädigtes Auto</h3>
 
-      <p style="color: #e5e7eb;">Ihr geworfener Weihnachtsbaum landet auf dem Dach eines parkenden Autos. Delle im Dach, zerkratzte Lackierung, zerbrochene Heckscheibe.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ihr geworfener Weihnachtsbaum landet auf dem Dach eines parkenden Autos. Delle im Dach, zerkratzte Lackierung, zerbrochene Heckscheibe.</p>
 
       <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; color: #111827; font-weight: bold;">Kosten:</h4>
@@ -3864,8 +3864,8 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #111827; margin-top: 10px; font-weight: bold;">Gesamtkosten: 2.250-5.050€</p>
       </div>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wer zahlt?</strong></p>
-      <p style="color: #e5e7eb;">Sie. Vollständig. Aus eigener Tasche.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wer zahlt?</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Sie. Vollständig. Aus eigener Tasche.</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">🚨 Ihre Privathaftpflichtversicherung greift NICHT, weil:</h4>
@@ -3880,7 +3880,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Szenario 2: Verletzte Person</h3>
 
-      <p style="color: #e5e7eb;">Ihr Weihnachtsbaum trifft eine Passantin am Kopf. Sie erleidet eine Platzwunde und Gehirnerschütterung. Sie fällt um, bricht sich dabei noch den Arm.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ihr Weihnachtsbaum trifft eine Passantin am Kopf. Sie erleidet eine Platzwunde und Gehirnerschütterung. Sie fällt um, bricht sich dabei noch den Arm.</p>
 
       <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; color: #111827; font-weight: bold;">Kosten:</h4>
@@ -3893,13 +3893,13 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #111827; margin-top: 10px; font-weight: bold;">Gesamtkosten: 8.500-23.000€</p>
       </div>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Wer zahlt?</strong></p>
-      <p style="color: #e5e7eb;">Wieder Sie. Privat.</p>
-      <p style="color: #e5e7eb;">Ihre Privathaftpflicht wird den Fall ablehnen (siehe oben).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wer zahlt?</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wieder Sie. Privat.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ihre Privathaftpflicht wird den Fall ablehnen (siehe oben).</p>
 
       <h3 style="color: #f3f4f6;">Szenario 3: Schwerer Personenschaden (worst case)</h3>
 
-      <p style="color: #e5e7eb;">Der Baum trifft ein Kleinkind. Schwere Kopfverletzung, monatelange Reha, bleibende Schäden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Der Baum trifft ein Kleinkind. Schwere Kopfverletzung, monatelange Reha, bleibende Schäden.</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">Kosten:</h4>
@@ -3917,7 +3917,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Kann ich in die Privatinsolvenz gehen?</h3>
 
-      <p style="color: #e5e7eb;">Theoretisch ja. Aber:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Theoretisch ja. Aber:</p>
       <ol style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Forderungen aus vorsätzlicher Körperverletzung sind <strong style="color: #ffffff;">nicht insolvenzhemmend</strong> – d.h. sie bleiben auch nach Privatinsolvenz bestehen.</li>
         <li style="color: #e5e7eb;">Sie zahlen potenziell lebenslang ab.</li>
@@ -3925,11 +3925,11 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Was, wenn ich beweisen kann, dass es ein "Brauch" ist?</h3>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Irrelevant.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Irrelevant.</strong></p>
 
-      <p style="color: #e5e7eb;">Gerichte urteilen: "Ein gefährlicher Brauch bleibt gefährlich – auch wenn andere ihn praktizieren."</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Gerichte urteilen: "Ein gefährlicher Brauch bleibt gefährlich – auch wenn andere ihn praktizieren."</p>
 
-      <p style="color: #e5e7eb;">Vergleich: Wenn in einer Straße alle 100 km/h in der 30er-Zone fahren, macht das 100 km/h nicht legal.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Vergleich: Wenn in einer Straße alle 100 km/h in der 30er-Zone fahren, macht das 100 km/h nicht legal.</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">⚠️ WICHTIGER HINWEIS FÜR MIETER:</h4>
@@ -3939,7 +3939,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="gemeinschaftsaktionen" style="color: #ffffff;">KAPITEL 4: SONDERFALL – GEMEINSCHAFTLICHE "BALKON-KNUT-AKTIONEN"</h2>
 
-      <p style="color: #e5e7eb;">Manche Hausverwaltungen hatten in der Vergangenheit experimentiert:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Manche Hausverwaltungen hatten in der Vergangenheit experimentiert:</p>
 
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
         "Alle Bewohner werfen am 13. Januar um 14 Uhr ihre Bäume vom Balkon in einen abgesperrten Bereich."
@@ -3947,7 +3947,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Ist das legal?</h3>
 
-      <p style="color: #e5e7eb;">Nur unter SEHR engen Voraussetzungen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nur unter SEHR engen Voraussetzungen:</p>
 
       <div style="background: #ecfdf5; padding: 20px; margin: 20px 0; border-left: 4px solid #10b981; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #065f46; font-weight: bold;">✅ Voraussetzungen für eine legale Gemeinschaftsaktion:</h4>
@@ -3984,13 +3984,13 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="alternativen" style="color: #ffffff;">KAPITEL 5: SICHERE ALTERNATIVEN ZUR WEIHNACHTSBAUM-ENTSORGUNG</h2>
 
-      <p style="color: #e5e7eb;">Wenn Sie Ihren Weihnachtsbaum loswerden möchten, gibt es viele legale, sichere und kostenlose Wege:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wenn Sie Ihren Weihnachtsbaum loswerden möchten, gibt es viele legale, sichere und kostenlose Wege:</p>
 
       <h3 style="color: #f3f4f6;">1. Kommunale Abholtermine (KOSTENLOS)</h3>
 
-      <p style="color: #e5e7eb;">Die meisten deutschen Städte bieten Anfang Januar kostenlose Abholungen an.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Die meisten deutschen Städte bieten Anfang Januar kostenlose Abholungen an.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">So funktioniert's:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">So funktioniert's:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Baum vollständig abschmücken (KEIN Lametta, kein Schmuck)</li>
         <li style="color: #e5e7eb;">Zu festgelegter Zeit an die Straße stellen</li>
@@ -4016,16 +4016,16 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">2. Wertstoffhöfe (KOSTENLOS)</h3>
 
-      <p style="color: #e5e7eb;">Sie können den Baum jederzeit selbst zum Wertstoffhof bringen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Sie können den Baum jederzeit selbst zum Wertstoffhof bringen.</p>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Vorteile:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Vorteile:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Keine Wartezeit</li>
         <li style="color: #e5e7eb;">Sofort loswerden</li>
         <li style="color: #e5e7eb;">Meist 7 Tage die Woche geöffnet</li>
       </ul>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Nachteile:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Nachteile:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Eigener Transport nötig (Auto, Anhänger)</li>
         <li style="color: #e5e7eb;">Baum passt oft nicht in Kleinwagen</li>
@@ -4033,7 +4033,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">3. Eigener Garten (KOSTENLOS + UMWELTFREUNDLICH)</h3>
 
-      <p style="color: #e5e7eb;">Wenn Sie einen Garten haben:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wenn Sie einen Garten haben:</p>
 
       <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; color: #111827; font-weight: bold;">Option A: Kompostieren</h4>
@@ -4081,7 +4081,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="fazit" style="color: #ffffff;">KAPITEL 6: FAZIT – KNUT IST EIN MYTHOS, DIE HAFTUNG IST REAL</h2>
 
-      <p style="color: #e5e7eb;">Fassen wir zusammen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Fassen wir zusammen:</p>
 
       <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; color: #111827; font-weight: bold;">Der Mythos:</h4>
@@ -4107,7 +4107,7 @@ const blogPosts: Record<string, BlogPost> = {
         </ul>
       </div>
 
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Der Knut-Brauch ist charmant – aber er gehört in IKEA-Werbespots, nicht auf deutsche Balkone.</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Der Knut-Brauch ist charmant – aber er gehört in IKEA-Werbespots, nicht auf deutsche Balkone.</strong></p>
 
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 40px 0; border-radius: 10px; text-align: center;">
         <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Und wenn Sie 2026 über Ihren Balkon nachdenken...</h3>
@@ -4119,13 +4119,13 @@ const blogPosts: Record<string, BlogPost> = {
       <h2 id="faq" style="color: #ffffff;">HÄUFIG GESTELLTE FRAGEN</h2>
 
       <h3 style="color: #f3f4f6;">1. Ist der Knut-Brauch wirklich schwedisch?</h3>
-      <p style="color: #e5e7eb;">Ja, Knut (13. Januar) ist ein echter schwedischer Feiertag zum Ende der Weihnachtszeit. Aber das massenhafte Werfen von Bäumen aus Fenstern ist ein Marketing-Mythos von IKEA.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja, Knut (13. Januar) ist ein echter schwedischer Feiertag zum Ende der Weihnachtszeit. Aber das massenhafte Werfen von Bäumen aus Fenstern ist ein Marketing-Mythos von IKEA.</p>
 
       <h3 style="color: #f3f4f6;">2. Hat Coca-Cola den Weihnachtsmann wirklich erfunden?</h3>
-      <p style="color: #e5e7eb;">Nein. Der Weihnachtsmann existierte vorher in vielen Formen. Coca-Cola hat 1931 das moderne Bild (rot-weißer Anzug, freundliches Gesicht) standardisiert und globalisiert. Ähnlich wie IKEA mit dem Knut-Mythos.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nein. Der Weihnachtsmann existierte vorher in vielen Formen. Coca-Cola hat 1931 das moderne Bild (rot-weißer Anzug, freundliches Gesicht) standardisiert und globalisiert. Ähnlich wie IKEA mit dem Knut-Mythos.</p>
 
       <h3 style="color: #f3f4f6;">3. Gibt es in Deutschland Städte, die Balkon-Würfe erlauben?</h3>
-      <p style="color: #e5e7eb;">Nein. Es gibt sehr vereinzelt Hausverwaltungen, die in streng abgesperrten Bereichen gemeinschaftliche Aktionen organisiert haben. Aber selbst dann haften SIE persönlich bei Schäden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nein. Es gibt sehr vereinzelt Hausverwaltungen, die in streng abgesperrten Bereichen gemeinschaftliche Aktionen organisiert haben. Aber selbst dann haften SIE persönlich bei Schäden.</p>
 
       <h3 style="color: #f3f4f6;">4. Was passiert, wenn ich erwischt werde?</h3>
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
@@ -4138,22 +4138,22 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
 
       <h3 style="color: #f3f4f6;">5. Zahlt meine Privathaftpflicht bei Schäden?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Nein.</strong> Grobe Fahrlässigkeit (bewusstes Werfen vom Balkon) ist nicht versichert.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Nein.</strong> Grobe Fahrlässigkeit (bewusstes Werfen vom Balkon) ist nicht versichert.</p>
 
       <h3 style="color: #f3f4f6;">6. Kann ich in Privatinsolvenz gehen, wenn die Schadenskosten zu hoch sind?</h3>
-      <p style="color: #e5e7eb;">Theoretisch ja, aber Forderungen aus vorsätzlicher Körperverletzung bleiben auch nach Privatinsolvenz bestehen. Sie zahlen potenziell lebenslang ab.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Theoretisch ja, aber Forderungen aus vorsätzlicher Körperverletzung bleiben auch nach Privatinsolvenz bestehen. Sie zahlen potenziell lebenslang ab.</p>
 
       <h3 style="color: #f3f4f6;">7. Darf ich den Baum auf den Bürgersteig legen?</h3>
-      <p style="color: #e5e7eb;">Nur zu den offiziellen kommunalen Abholzeiten (meist Mitte Januar). Sonst ist es wilde Müllentsorgung (Bußgeld).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nur zu den offiziellen kommunalen Abholzeiten (meist Mitte Januar). Sonst ist es wilde Müllentsorgung (Bußgeld).</p>
 
       <h3 style="color: #f3f4f6;">8. Ist die Versicherung meiner WEG/Hausverwaltung ausreichend?</h3>
-      <p style="color: #e5e7eb;"><strong style="color: #ffffff;">Nein.</strong> Die zivilrechtliche Haftung bei Schäden durch SIE verursachte Handlungen liegt bei IHNEN persönlich.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Nein.</strong> Die zivilrechtliche Haftung bei Schäden durch SIE verursachte Handlungen liegt bei IHNEN persönlich.</p>
 
       <h3 style="color: #f3f4f6;">9. Was, wenn viele Nachbarn mitmachen?</h3>
-      <p style="color: #e5e7eb;">"Alle machen es" ist keine Rechtsgrundlage. Jeder haftet einzeln für seine Handlungen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">"Alle machen es" ist keine Rechtsgrundlage. Jeder haftet einzeln für seine Handlungen.</p>
 
       <h3 style="color: #f3f4f6;">10. Gibt es eine Möglichkeit, legal vom Balkon zu werfen?</h3>
-      <p style="color: #e5e7eb;">Nur auf privatem Grundstück (eigener Garten, nicht öffentlicher Raum), bei völliger Absicherung gegen jegliche Personengefährdung, und mit Zustimmung aller Beteiligten. In 99,9% der Fälle: Nein.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Nur auf privatem Grundstück (eigener Garten, nicht öffentlicher Raum), bei völliger Absicherung gegen jegliche Personengefährdung, und mit Zustimmung aller Beteiligten. In 99,9% der Fälle: Nein.</p>
     `
   }
 };

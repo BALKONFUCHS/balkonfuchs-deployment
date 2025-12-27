@@ -122,7 +122,7 @@ const blogPosts = [
     slug: 'knut-2026-weihnachtsbaum-balkon-werfen-mythos-recht-haftung',
     title: 'Knut 2026: Weihnachtsbaum vom Balkon werfen – Der IKEA-Mythos, Rechtslage & Haftung',
     teaser: 'Knut am 13. Januar: Warum der schwedische Brauch ein IKEA-Mythos ist wie Coca-Colas Weihnachtsmann. Die wahre Rechtslage in Deutschland + Haftung & Versicherung ✓',
-    date: '2026-01-06',
+    date: '2025-12-27',
     readTime: '10 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
     thumbnail: '/images/blog/knut.jpg',
@@ -291,7 +291,15 @@ const Blog = () => {
         <section className="py-16 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...blogPosts].filter(post => post.published !== false).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => (
+              {[...blogPosts].filter(post => {
+                const isPublished = post.published !== false;
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const postDate = new Date(post.date);
+                postDate.setHours(0, 0, 0, 0);
+                const isDateValid = postDate <= today;
+                return isPublished && isDateValid;
+              }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => (
                 <article
                   key={post.id}
                   className="bg-gray-800/50 border border-gray-700 rounded-2xl overflow-hidden hover:border-orange-500/50 transition-all duration-300 group"
