@@ -116,6 +116,18 @@ const blogPosts = [
     thumbnail: '/images/blog/konfigurator.jpg',
     category: 'Planung',
     published: true
+  },
+  {
+    id: 13,
+    slug: 'knut-2026-weihnachtsbaum-balkon-werfen-mythos-recht-haftung',
+    title: 'Knut 2026: Weihnachtsbaum vom Balkon werfen – Der IKEA-Mythos, Rechtslage & Haftung',
+    teaser: 'Knut am 13. Januar: Warum der schwedische Brauch ein IKEA-Mythos ist wie Coca-Colas Weihnachtsmann. Die wahre Rechtslage in Deutschland + Haftung & Versicherung ✓',
+    date: '2026-01-06',
+    readTime: '10 Min.',
+    author: 'Martin Beyer, BALKONFUCHS',
+    thumbnail: '/images/blog/knut.jpg',
+    category: 'Tipps & Wissenswertes',
+    published: true
   }
 ];
 
@@ -307,7 +319,10 @@ const Blog = () => {
                             {post.category === 'Förderung' && (
                               <span className="text-5xl">💵</span>
                             )}
-                            {!['Genehmigung', 'Kosten', 'Planung', 'Förderung'].includes(post.category) && (
+                            {post.category === 'Tipps & Wissenswertes' && (
+                              <span className="text-5xl">💡</span>
+                            )}
+                            {!['Genehmigung', 'Kosten', 'Planung', 'Förderung', 'Tipps & Wissenswertes'].includes(post.category) && (
                               <span className="text-5xl">📝</span>
                             )}
                           </div>
