@@ -1012,7 +1012,7 @@ export default function BalkonKonfigurator() {
             
             {/* Subheadline */}
             <p className="text-xl md:text-2xl text-gray-300">
-              3D-Konfiguration für Ihren individuellen Balkonanbau 2025
+              3D-Konfiguration für Ihren individuellen Balkonanbau 2026
             </p>
             
             {/* SEO-Beschreibung Zeile 1 */}
