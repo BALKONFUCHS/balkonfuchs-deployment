@@ -181,11 +181,6 @@ const Blog = () => {
                   "url": "https://balkonfuchs.de/images/Balkonfuchs-Logo_white.png"
                 }
               },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "reviewCount": "850"
-              },
               "blogPost": blogPosts.map(post => ({
                 "@type": "BlogPosting",
                 "headline": post.title,
