@@ -11,12 +11,12 @@ const PartnerInfoBerlin = () => {
     <>
       <Head>
         <title>Partner werden - Exklusiver Berlin-Launch mit 10 Partnern | BALKONFUCHS</title>
-        <meta name="description" content="Exklusiver BALKONFUCHS Launch in Berlin! Nur 10 Partner-Plätze für den Start. Werden Sie einer der ersten Partner. Gratis bis Ende 2025, lebenslang -30% ab 2026." />
+        <meta name="description" content="Exklusiver BALKONFUCHS Launch in Berlin! Nur 10 Partner-Plätze für den Start. Werden Sie einer der ersten Partner. Gratis bis zum 15. Februar 2026, lebenslang -30% ab 2026." />
         <meta name="keywords" content="BALKONFUCHS Partner, Balkonbau Partner Berlin, Handwerker Partner, Balkonbau Partner werden, Gründungspartner" />
         <meta name="author" content="BALKONFUCHS GmbH" />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Partner werden - Exklusiver Berlin-Launch | BALKONFUCHS" />
-        <meta property="og:description" content="Exklusiver BALKONFUCHS Launch in Berlin! Nur 10 Partner-Plätze. Gratis bis Ende 2025, lebenslang -30% ab 2026." />
+        <meta property="og:description" content="Exklusiver BALKONFUCHS Launch in Berlin! Nur 10 Partner-Plätze. Gratis bis zum 15. Februar 2026, lebenslang -30% ab 2026." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://balkonfuchs.de/partner-info-berlin" />
         <link rel="canonical" href="https://balkonfuchs.de/partner-info-berlin" />
@@ -67,7 +67,7 @@ const PartnerInfoBerlin = () => {
                   Jetzt als Gründungspartner bewerben
                 </a>
                 <p className="text-gray-400 text-sm mt-3">
-                  ⚡ Nur 10 Plätze verfügbar • 🎁 Gratis bis Ende 2025 • ♾️ Lebenslang -30%
+                  ⚡ Nur 10 Plätze verfügbar • 🎁 Gratis bis zum 15. Februar 2026 • ♾️ Lebenslang -30%
                 </p>
               </div>
               
@@ -83,7 +83,7 @@ const PartnerInfoBerlin = () => {
                   <div className="grid md:grid-cols-3 gap-4 mb-6">
                     <div className="bg-gray-900/50 rounded-xl p-4 border border-green-500/30">
                       <div className="text-3xl font-bold text-green-400 mb-2">100% GRATIS</div>
-                      <div className="text-gray-300">Bis Ende 2025</div>
+                      <div className="text-gray-300">Bis zum 15. Februar 2026</div>
                     </div>
                     <div className="bg-gray-900/50 rounded-xl p-4 border border-indigo-500/30">
                       <div className="text-3xl font-bold text-indigo-400 mb-2">∞ Lebenslang</div>
@@ -97,7 +97,7 @@ const PartnerInfoBerlin = () => {
                   
                   <p className="text-lg text-gray-200 leading-relaxed">
                     <strong className="text-green-400">Jetzt einsteigen, kostenlos testen!</strong> Als Gründungspartner nutzen Sie 
-                    die Plattform bis Ende 2025 <strong className="text-green-400">komplett kostenfrei</strong> und sichern sich 
+                    die Plattform bis zum 15. Februar 2026 <strong className="text-green-400">komplett kostenfrei</strong> und sichern sich 
                     <strong className="text-indigo-400"> lebenslang vergünstigte Konditionen</strong> ab 2026.
                   </p>
                 </div>
@@ -155,7 +155,7 @@ const PartnerInfoBerlin = () => {
                   <div className="grid md:grid-cols-3 gap-6 mb-8">
                     <div className="bg-gray-900/80 rounded-xl p-6 text-center border border-green-500/30">
                       <div className="text-5xl mb-3">🎁</div>
-                      <h3 className="text-2xl font-bold text-green-400 mb-2">Jetzt - Ende 2025</h3>
+                      <h3 className="text-2xl font-bold text-green-400 mb-2">Jetzt - 15. Februar 2026</h3>
                       <p className="text-xl font-bold text-white mb-2">100% GRATIS</p>
                       <p className="text-gray-300 text-sm">
                         Kompletter Plattform-Zugang ohne Kosten während der Launch-Phase
@@ -230,7 +230,7 @@ const PartnerInfoBerlin = () => {
                     <ul className="space-y-3 text-gray-300">
                       <li className="flex items-start">
                         <CheckCircle2 className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
-                        <span><strong className="text-white">Jetzt - Ende 2025 (Launch-Phase):</strong> 10 Gründungspartner starten kostenlos in Berlin</span>
+                        <span><strong className="text-white">Jetzt - 15. Februar 2026 (Launch-Phase):</strong> 10 Gründungspartner starten kostenlos in Berlin</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle2 className="w-5 h-5 text-green-400 mr-3 mt-1 flex-shrink-0" />
@@ -285,7 +285,7 @@ const PartnerInfoBerlin = () => {
                         <span className="text-2xl">🎁</span>
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-white mb-3">Gratis bis Ende 2025</h3>
+                        <h3 className="text-xl font-bold text-white mb-3">Gratis bis zum 15. Februar 2026</h3>
                         <p className="text-gray-300 leading-relaxed">
                           <strong className="text-green-400">100% kostenfrei</strong> während der gesamten Launch-Phase. 
                           Testen Sie die Plattform ohne jedes Risiko.
@@ -380,7 +380,7 @@ const PartnerInfoBerlin = () => {
                     Als dynamischste Stadt Deutschlands mit hohem Modernisierungsbedarf bietet Berlin ideale Voraussetzungen.
                   </p>
                   <p>
-                    <strong className="text-green-400">Bis Ende 2025</strong> perfektionieren wir gemeinsam mit unseren Gründungspartnern 
+                    <strong className="text-green-400">Bis zum 15. Februar 2026</strong> perfektionieren wir gemeinsam mit unseren Gründungspartnern 
                     alle Prozesse. <strong className="text-indigo-400">Ab 2026</strong> startet die Plattform offiziell – und Sie sind 
                     bereits etabliert, bekannt und profitieren von vergünstigten Konditionen.
                   </p>
@@ -627,7 +627,7 @@ const PartnerInfoBerlin = () => {
                   <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/30 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-white mb-3">💰 Welche Kosten kommen auf mich zu?</h3>
                     <p className="text-gray-300 leading-relaxed mb-4">
-                      <strong className="text-green-400 text-lg">Bis Ende 2025: 100% GRATIS!</strong><br/>
+                      <strong className="text-green-400 text-lg">Bis zum 15. Februar 2026: 100% GRATIS!</strong><br/>
                       Sie nutzen die komplette Plattform kostenfrei während der Launch-Phase.
                     </p>
                     <p className="text-gray-300 leading-relaxed">
