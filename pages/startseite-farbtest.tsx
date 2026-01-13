@@ -924,14 +924,10 @@ const StartseiteFarbtest = () => {
         <section className="py-16 bg-gradient-to-br from-gray-800 to-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 rounded-2xl p-8">
-              <div className="grid md:grid-cols-4 gap-8 text-center">
+              <div className="grid md:grid-cols-3 gap-8 text-center">
                 <div>
                   <div className="text-4xl font-bold text-orange-400 mb-2">{'>850'}</div>
                   <div className="text-gray-300">glückliche Balkonkunden</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-orange-400 mb-2">850+</div>
-                  <div className="text-gray-300">Projekte realisiert</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-orange-400 mb-2">98%</div>
