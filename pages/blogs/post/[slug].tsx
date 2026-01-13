@@ -28,14 +28,14 @@ const blogPosts: Record<string, BlogPost> = {
   'balkonanbau-genehmigung-baurecht-2025': {
     id: 1,
     slug: 'balkonanbau-genehmigung-baurecht-2025',
-    title: 'Balkonanbau Genehmigung: Baurecht & Vorschriften 2025 – Der komplette Leitfaden',
+    title: 'Balkonanbau Genehmigung: Baurecht & Vorschriften 2026 – Der komplette Leitfaden',
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
-        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
+        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. Januar 2026</strong></p>
         <p style="margin: 0; color: #374151;">Dieser umfassende Leitfaden wurde vollständig überarbeitet und basiert auf:</p>
         <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
-          <li style="color: #374151;">✅ <strong style="color: #111827;">Aktuelle Landesbauordnungen</strong> aller 16 Bundesländer (Stand 2025)</li>
-          <li style="color: #374151;">✅ <strong style="color: #111827;">Rechtsprechung 2024/2025</strong> zu nachträglichem Balkonanbau</li>
+          <li style="color: #374151;">✅ <strong style="color: #111827;">Aktuelle Landesbauordnungen</strong> aller 16 Bundesländer (Stand 2026)</li>
+          <li style="color: #374151;">✅ <strong style="color: #111827;">Rechtsprechung 2025/2026</strong> zu nachträglichem Balkonanbau</li>
           <li style="color: #374151;">✅ <strong style="color: #111827;">Praxiserfahrung</strong> aus über 850 begleiteten Balkonprojekten</li>
           <li style="color: #374151;">✅ <strong style="color: #111827;">Expertengeprüft</strong> von Baurechtsberatern und Architekten</li>
         </ul>
@@ -560,7 +560,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">❌ Ablehnung → Überarbeitung oder anderes Konzept</li>
       </ol>
 
-      <h2 id="bundeslaender" style="color: #ffffff;">5. 16 Bundesländer im Vergleich (Stand 2025)</h2>
+      <h2 id="bundeslaender" style="color: #ffffff;">5. 16 Bundesländer im Vergleich (Stand 2026)</h2>
 
       <h3 style="color: #f3f4f6;">🏔️ Bayern</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungspflicht:</strong> Fast immer erforderlich</p>
@@ -573,7 +573,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 8-12 Wochen</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 350-800€</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Möglich bei Erfüllung aller Kriterien</p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2025/2026:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">BayBO Art. 57: Vereinfachungen für kleinere Anbauten unter 30m²</li>
         <li style="color: #e5e7eb;">Aber: Weiterhin Anzeigepflicht beim Bauamt</li>
@@ -592,7 +592,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 6-10 Wochen (mit Freistellung: 4 Wochen)</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 300-700€</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Ja, bei Erfüllung der Voraussetzungen</p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> LBO BW §50: Erweiterte Freistellungsmöglichkeiten für GK 1-3</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2025/2026:</strong> LBO BW §50: Erweiterte Freistellungsmöglichkeiten für GK 1-3</p>
 
       <div style="margin-bottom: 30px;"></div>
 
@@ -608,7 +608,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Typische Bearbeitungszeit:</strong> 12-20 Wochen (!!)</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Kosten Bauantrag:</strong> 400-900€</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Genehmigungsfreistellung:</strong> Nicht verfügbar</p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> Neue Online-Portal für Bauanträge (teilweise Beschleunigung)</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2025/2026:</strong> Neue Online-Portal für Bauanträge (teilweise Beschleunigung)</p>
 
       <div style="margin-bottom: 30px;"></div>
 
@@ -735,7 +735,7 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen</a></strong></p>
       </div>
 
-      <h2 id="kosten" style="color: #ffffff;">6. Kosten der Baugenehmigung (Realistische Übersicht 2025)</h2>
+      <h2 id="kosten" style="color: #ffffff;">6. Kosten der Baugenehmigung (Realistische Übersicht 2026)</h2>
 
       <h3 style="color: #f3f4f6;">Gesamtkosten im Überblick:</h3>
       
@@ -1171,7 +1171,7 @@ const blogPosts: Record<string, BlogPost> = {
         
         <h4 style="color: #111827; font-weight: bold; margin-top: 20px;">📖 Ausführliche Ratgeber:</h4>
         <ul style="color: #374151;">
-          <li style="color: #374151;"><a href="/baurecht-balkon/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Kompletter Baurecht-Guide 2025</a> — Alle Bundesländer im Detail</li>
+          <li style="color: #374151;"><a href="/baurecht-balkon/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Kompletter Baurecht-Guide 2026</a> — Alle Bundesländer im Detail</li>
           <li style="color: #374151;"><a href="/foerderung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">KfW-Förderung für Balkonprojekte</a> — Bis zu 20% sparen</li>
         </ul>
       </div>
@@ -1193,12 +1193,12 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #374151;"><strong style="color: #111827;">Dieser Artikel basiert auf:</strong></p>
         <ul style="color: #374151;">
           <li style="color: #374151;">Realen Projekterfahrungen aus ganz Deutschland</li>
-          <li style="color: #374151;">Aktueller Rechtsprechung (Stand 2025)</li>
+          <li style="color: #374151;">Aktueller Rechtsprechung (Stand 2026)</li>
           <li style="color: #374151;">Feedback von Kunden, Architekten und Bauämtern</li>
           <li style="color: #374151;">Kontinuierlicher Recherche zu Gesetzesänderungen</li>
         </ul>
         
-        <p style="color: #374151;"><strong style="color: #111827;">Letzte umfassende Aktualisierung:</strong> 1. November 2025</p>
+        <p style="color: #374151;"><strong style="color: #111827;">Letzte umfassende Aktualisierung:</strong> 1. Januar 2026</p>
         <p style="color: #374151;"><strong style="color: #111827;">Nächste geplante Aktualisierung:</strong> April 2026</p>
 
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
@@ -1209,7 +1209,7 @@ const blogPosts: Record<string, BlogPost> = {
             <li style="color: #374151;">Kontaktiere dein zuständiges Bauamt</li>
             <li style="color: #374151;">Nutze unsere Tools für eine erste Einschätzung</li>
           </ul>
-          <p style="color: #374151;"><strong style="color: #111827;">Alle Angaben ohne Gewähr. Stand: November 2025.</strong></p>
+          <p style="color: #374151;"><strong style="color: #111827;">Alle Angaben ohne Gewähr. Stand: Januar 2026.</strong></p>
         </div>
       </div>
     `,
@@ -1223,17 +1223,17 @@ const blogPosts: Record<string, BlogPost> = {
   'balkon-groesse-ohne-genehmigung': {
     id: 2,
     slug: 'balkon-groesse-ohne-genehmigung',
-    title: 'Balkon ohne Genehmigung 2025: Wie groß darf er sein? [16 Bundesländer-Guide]',
+    title: 'Balkon ohne Genehmigung 2026: Wie groß darf er sein? [16 Bundesländer-Guide]',
     category: 'Genehmigung',
     date: '2025-11-01',
     readTime: '18 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Wie groß darf Ihr Balkon ohne Genehmigung sein? Alle 16 Bundesländer im Vergleich + Genehmigungscheck in 60 Sek. ✓ Stand 2025',
+    metaDescription: 'Wie groß darf Ihr Balkon ohne Genehmigung sein? Alle 16 Bundesländer im Vergleich + Genehmigungscheck in 60 Sek. ✓ Stand 2026',
     published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
-        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
-        <p style="margin: 0; color: #374151;">Stand: Alle 16 Landesbauordnungen 2025</p>
+        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. Januar 2026</strong></p>
+        <p style="margin: 0; color: #374151;">Stand: Alle 16 Landesbauordnungen 2026</p>
       </div>
 
       <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
@@ -1439,7 +1439,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Abstandsflächen müssen eingehalten werden</li>
         <li style="color: #e5e7eb;">Statik muss trotzdem nachgewiesen werden</li>
       </ul>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> BayBO Art. 57 wurde angepasst, aber weiterhin strenge Regelung.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2025/2026:</strong> BayBO Art. 57 wurde angepasst, aber weiterhin strenge Regelung.</p>
       
       <div style="background: #f0f9ff; padding: 15px; margin: 15px 0; border-radius: 4px; color: #111827;">
         <p style="color: #374151; margin: 0;"><strong style="color: #111827;">Beispiel:</strong> Ein 8m² Balkon in München mit Bebauungsplan = verfahrensfrei, aber trotzdem Anzeige beim Bauamt nötig!</p>
@@ -1454,7 +1454,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Landesbauordnung erfüllt</li>
         <li style="color: #e5e7eb;">Alle Unterlagen müssen trotzdem eingereicht werden</li>
       </ul>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> LBO BW §50 erweitert Freistellungsmöglichkeiten, aber strenge Bedingungen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2025/2026:</strong> LBO BW §50 erweitert Freistellungsmöglichkeiten, aber strenge Bedingungen.</p>
 
       <h3 style="color: #f3f4f6;">🏛️ Berlin</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Verfahrensfreie Größe:</strong> ❌ Keine</p>
@@ -1465,7 +1465,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Keine Ausnahmen für kleine Balkone</li>
         <li style="color: #e5e7eb;">Bearbeitungszeit: 12-20 Wochen (!)</li>
       </ul>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2024/2025:</strong> Neue Online-Portal für Bauanträge, aber keine Erleichterungen für Balkone.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">🆕 Änderungen 2025/2026:</strong> Neue Online-Portal für Bauanträge, aber keine Erleichterungen für Balkone.</p>
 
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">⚠️ Warnung für Berlin:</h4>
@@ -1626,7 +1626,7 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;">Nachbarrechte respektieren</li>
       </ul>
 
-      <h2 id="praxis-beispiele" style="color: #ffffff;">5. Praxis-Beispiele 2024/2025</h2>
+      <h2 id="praxis-beispiele" style="color: #ffffff;">5. Praxis-Beispiele 2025/2026</h2>
 
       <h3 style="color: #f3f4f6;">📖 Geschichte 1: &quot;Der 8m² Balkon in München&quot;</h3>
       
@@ -1825,22 +1825,22 @@ const blogPosts: Record<string, BlogPost> = {
   'balkon-bauantrag-genehmigung': {
     id: 3,
     slug: 'balkon-bauantrag-genehmigung',
-    title: 'Balkon Bauantrag 2025: Diese Unterlagen brauchen Sie [Komplette Checkliste]',
+    title: 'Balkon Bauantrag 2026: Diese Unterlagen brauchen Sie [Komplette Checkliste]',
     category: 'Genehmigung',
     date: '2025-11-01',
     readTime: '16 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Balkon Bauantrag 2025: Alle Unterlagen, Schritt-für-Schritt Anleitung & Kosten ✓ Bundesländer-spezifisch ✓ Checkliste zum Download',
+    metaDescription: 'Balkon Bauantrag 2026: Alle Unterlagen, Schritt-für-Schritt Anleitung & Kosten ✓ Bundesländer-spezifisch ✓ Checkliste zum Download',
     published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
-        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
+        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. Januar 2026</strong></p>
         <p style="margin: 0; color: #374151;">Dieser Leitfaden basiert auf:</p>
         <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
           <li style="color: #374151;">✅ Aktuellen Bauantragsformularen aller 16 Bundesländer</li>
           <li style="color: #374151;">✅ Praxiserfahrung aus über 850 erfolgreichen Bauanträgen</li>
           <li style="color: #374151;">✅ Feedback von Bauämtern und Architekten</li>
-          <li style="color: #374151;">✅ Neuen Digitalisierungs-Optionen 2025</li>
+          <li style="color: #374151;">✅ Neuen Digitalisierungs-Optionen 2026</li>
         </ul>
       </div>
 
@@ -2393,7 +2393,7 @@ const blogPosts: Record<string, BlogPost> = {
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Persönlich (im Bauamt vor Ort)</li>
         <li style="color: #e5e7eb;">Per Post (Einschreiben mit Rückschein empfohlen)</li>
-        <li style="color: #e5e7eb;">Online (wenn dein Bauamt das anbietet – immer häufiger 2025)</li>
+        <li style="color: #e5e7eb;">Online (wenn dein Bauamt das anbietet – immer häufiger 2026)</li>
       </ul>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Ruf vorher an und frage, wie viele Ausfertigungen nötig sind (meist 2-fach).</p>
 
@@ -2407,7 +2407,7 @@ const blogPosts: Record<string, BlogPost> = {
       </ol>
 
       <h3 style="color: #f3f4f6;">❓ Kann ich den Bauantrag online stellen?</h3>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Immer mehr Bauämter bieten Online-Einreichung an (2025).</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Immer mehr Bauämter bieten Online-Einreichung an (2026).</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Vorteile:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Kurze Bearbeitungszeiten (kein Postweg)</li>
@@ -2457,7 +2457,7 @@ const blogPosts: Record<string, BlogPost> = {
   'balkon-genehmigung-checkliste': {
     id: 99, // Placeholder - wird später durch Artikel 3 ersetzt
     slug: 'balkon-genehmigung-checkliste',
-    title: 'Balkon Genehmigung: Die komplette Checkliste für 2025',
+    title: 'Balkon Genehmigung: Die komplette Checkliste für 2026',
     content: `
       <h2>Wann benötigen Sie eine Genehmigung?</h2>
       <p>Die Genehmigungspflicht für Balkone hängt von verschiedenen Faktoren ab. In der Regel benötigen Sie eine Genehmigung, wenn:</p>
@@ -2494,7 +2494,7 @@ const blogPosts: Record<string, BlogPost> = {
     readTime: '8 Min.',
     author: 'BALKONFUCHS Team',
     category: 'Genehmigung',
-    metaDescription: 'Erfahren Sie, wann Sie eine Genehmigung für Ihren Balkon benötigen und welche Dokumente Sie einreichen müssen. Schritt-für-Schritt Anleitung für 2025.',
+    metaDescription: 'Erfahren Sie, wann Sie eine Genehmigung für Ihren Balkon benötigen und welche Dokumente Sie einreichen müssen. Schritt-für-Schritt Anleitung für 2026.',
     published: false
   },
   'balkon-kosten-faktoren': {
@@ -2573,19 +2573,19 @@ const blogPosts: Record<string, BlogPost> = {
   'balkon-foerderung-2025': {
     id: 5,
     slug: 'balkon-foerderung-2025',
-    title: 'Balkon-Förderung 2025: Diese Zuschüsse & KfW-Programme gibt es',
+    title: 'Balkon-Förderung 2026: Diese Zuschüsse & KfW-Programme gibt es',
     category: 'Förderung',
     date: '2025-11-01',
     readTime: '17 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Balkon-Förderung 2025: KfW-Zuschüsse bis 20%, Länder-Programme & BAFA ✓ Alle Förderprogramme ✓ Antragsstellung ✓',
+    metaDescription: 'Balkon-Förderung 2026: KfW-Zuschüsse bis 20%, Länder-Programme & BAFA ✓ Alle Förderprogramme ✓ Antragsstellung ✓',
     published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
-        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. November 2025</strong></p>
+        <p style="margin: 0 0 10px 0; color: #111827;"><strong style="color: #111827;">📅 Zuletzt aktualisiert: 1. Januar 2026</strong></p>
         <p style="margin: 0; color: #374151;">Dieser Förderungsguide basiert auf:</p>
         <ul style="margin: 10px 0 0 0; padding-left: 20px; color: #374151;">
-          <li style="color: #374151;">✅ <strong style="color: #111827;">Aktuellen KfW-Programmen 2025</strong></li>
+          <li style="color: #374151;">✅ <strong style="color: #111827;">Aktuellen KfW-Programmen 2026</strong></li>
           <li style="color: #374151;">✅ <strong style="color: #111827;">Bundesländer-spezifischen Förderungen</strong></li>
           <li style="color: #374151;">✅ <strong style="color: #111827;">BAFA-Zuschüssen</strong></li>
           <li style="color: #374151;">✅ <strong style="color: #111827;">Praxiserfahrung</strong> aus über 200 geförderten Projekten</li>
@@ -2606,7 +2606,7 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="font-size: 0.9em; color: #6b7280;"><em>Über 850 Nutzer haben ihre Förderung bereits gefunden.</em></p>
       </div>
 
-      <h2 id="uebersicht" style="color: #ffffff;">1. Die wichtigsten Förderprogramme 2025 im Überblick</h2>
+      <h2 id="uebersicht" style="color: #ffffff;">1. Die wichtigsten Förderprogramme 2026 im Überblick</h2>
 
       <p style="color: #e5e7eb; margin-bottom: 16px;">Für Balkonprojekte kommen verschiedene Förderprogramme infrage. Hier die komplette Übersicht:</p>
 
@@ -3091,16 +3091,16 @@ const blogPosts: Record<string, BlogPost> = {
           <a href="/foerderung/" style="display: inline-block; background: #ffd700; color: #111827; padding: 20px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
             Jetzt Förderung finden →
           </a>
-          <p style="color: #ffffff; font-size: 14px; margin-top: 15px; opacity: 0.9;">Kostenlos • In 3 Minuten • Aktuell 2025</p>
+          <p style="color: #ffffff; font-size: 14px; margin-top: 15px; opacity: 0.9;">Kostenlos • In 3 Minuten • Aktuell 2026</p>
         </div>
       </div>
 
       <div style="background: #f5f5f5; padding: 20px; margin: 20px 0; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; color: #111827;">📚 Weiterführende Artikel:</h4>
         <ul style="color: #374151;">
-          <li style="color: #374151;"><a href="/blogs/post/balkonanbau-genehmigung-baurecht-2025/" style="color: #2563eb; text-decoration: underline;">Balkon Genehmigung: Der komplette Leitfaden 2025</a></li>
+          <li style="color: #374151;"><a href="/blogs/post/balkonanbau-genehmigung-baurecht-2025/" style="color: #2563eb; text-decoration: underline;">Balkon Genehmigung: Der komplette Leitfaden 2026</a></li>
           <li style="color: #374151;"><a href="/blogs/post/balkon-bauantrag-genehmigung/" style="color: #2563eb; text-decoration: underline;">Bauantrag Checkliste: Diese Unterlagen brauchen Sie</a></li>
-          <li style="color: #374151;"><a href="/blogs/post/balkon-anbauen-kosten/" style="color: #2563eb; text-decoration: underline;">Was kostet ein Balkon 2025? Komplette Kostenübersicht</a></li>
+          <li style="color: #374151;"><a href="/blogs/post/balkon-anbauen-kosten/" style="color: #2563eb; text-decoration: underline;">Was kostet ein Balkon 2026? Komplette Kostenübersicht</a></li>
         </ul>
       </div>
     `,
@@ -3142,12 +3142,12 @@ const blogPosts: Record<string, BlogPost> = {
   'balkon-statik-standsicherheit': {
     id: 6,
     slug: 'balkon-statik-standsicherheit',
-    title: 'Statik beim Balkonanbau 2025: Kosten, Ablauf & häufige Fehler',
+    title: 'Statik beim Balkonanbau 2026: Kosten, Ablauf & häufige Fehler',
     category: 'Planung',
     date: '2025-11-01',
     readTime: '14 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Statik beim Balkonanbau: Was kostet der Statiker? Welche Unterlagen braucht man? Alle Infos zu Standsicherheitsnachweis ✓ 2025',
+    metaDescription: 'Statik beim Balkonanbau: Was kostet der Statiker? Welche Unterlagen braucht man? Alle Infos zu Standsicherheitsnachweis ✓ 2026',
     published: false,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
@@ -3177,12 +3177,12 @@ const blogPosts: Record<string, BlogPost> = {
   'sturmschaden-balkon-haftung': {
     id: 7,
     slug: 'sturmschaden-balkon-haftung',
-    title: 'Sturmschaden am Balkon: Wer haftet? Versicherung & Rechtslage 2025',
+    title: 'Sturmschaden am Balkon: Wer haftet? Versicherung & Rechtslage 2026',
     category: 'Recht & Versicherung',
     date: '2025-11-01',
     readTime: '12 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Sturmschaden am Balkon: Wer haftet wenn etwas herunterfällt? Versicherung, Rechtslage & Haftung ✓ 2025',
+    metaDescription: 'Sturmschaden am Balkon: Wer haftet wenn etwas herunterfällt? Versicherung, Rechtslage & Haftung ✓ 2026',
     published: false,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
@@ -3205,12 +3205,12 @@ const blogPosts: Record<string, BlogPost> = {
   'balkon-arten-typen-vergleich': {
     id: 8,
     slug: 'balkon-arten-typen-vergleich',
-    title: 'Balkon-Arten 2025: Alle Typen im Vergleich [Vorstellbalkon, Anbaubalkon & Co.]',
+    title: 'Balkon-Arten 2026: Alle Typen im Vergleich [Vorstellbalkon, Anbaubalkon & Co.]',
     category: 'Planung',
     date: '2025-11-01',
     readTime: '15 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Welcher Balkontyp passt zu Ihnen? Alle Balkon-Arten im Vergleich: Kosten, Vor-/Nachteile, Eignung ✓ 2025',
+    metaDescription: 'Welcher Balkontyp passt zu Ihnen? Alle Balkon-Arten im Vergleich: Kosten, Vor-/Nachteile, Eignung ✓ 2026',
     published: false,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
@@ -3240,12 +3240,12 @@ const blogPosts: Record<string, BlogPost> = {
   'balkon-bodenbelag-materialien': {
     id: 9,
     slug: 'balkon-bodenbelag-materialien',
-    title: 'Balkonbelag 2025: Alle Materialien im Vergleich [WPC, Holz, Fliesen & mehr]',
+    title: 'Balkonbelag 2026: Alle Materialien im Vergleich [WPC, Holz, Fliesen & mehr]',
     category: 'Ausstattung',
     date: '2025-11-01',
     readTime: '16 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Welcher Balkonbelag passt zu Ihnen? WPC, Holz, Fliesen, Stein im Vergleich ✓ Kosten ✓ Pflege ✓ Haltbarkeit ✓ 2025',
+    metaDescription: 'Welcher Balkonbelag passt zu Ihnen? WPC, Holz, Fliesen, Stein im Vergleich ✓ Kosten ✓ Pflege ✓ Haltbarkeit ✓ 2026',
     published: false,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
@@ -3270,12 +3270,12 @@ const blogPosts: Record<string, BlogPost> = {
   'balkongelaender-sichtschutz-varianten': {
     id: 10,
     slug: 'balkongelaender-sichtschutz-varianten',
-    title: 'Balkongeländer 2025: Alle Typen, Materialien & Sichtschutz-Optionen',
+    title: 'Balkongeländer 2026: Alle Typen, Materialien & Sichtschutz-Optionen',
     category: 'Ausstattung',
     date: '2025-11-01',
     readTime: '18 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
-    metaDescription: 'Balkongeländer-Typen im Vergleich: Glas, Edelstahl, Stabgeländer, Lochblech ✓ Kosten ✓ Sichtschutz ✓ 2025',
+    metaDescription: 'Balkongeländer-Typen im Vergleich: Glas, Edelstahl, Stabgeländer, Lochblech ✓ Kosten ✓ Sichtschutz ✓ 2026',
     published: false,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
@@ -3300,12 +3300,12 @@ const blogPosts: Record<string, BlogPost> = {
   'knut-weihnachtsbaum-balkon-entsorgen': {
     id: 11,
     slug: 'knut-weihnachtsbaum-balkon-entsorgen',
-    title: 'Knut 2025: Weihnachtsbaum vom Balkon entsorgen wie die Schweden',
+    title: 'Knut 2026: Weihnachtsbaum vom Balkon entsorgen wie die Schweden',
     category: 'Tipps & Wissenswertes',
     date: '2025-01-13',
     readTime: '8 Min.',
     author: 'BALKONFUCHS Team',
-    metaDescription: 'Knut: Darf man den Weihnachtsbaum vom Balkon werfen wie in Schweden? Rechtslage & sichere Entsorgung ✓ 2025',
+    metaDescription: 'Knut: Darf man den Weihnachtsbaum vom Balkon werfen wie in Schweden? Rechtslage & sichere Entsorgung ✓ 2026',
     published: false,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
@@ -3343,7 +3343,7 @@ const blogPosts: Record<string, BlogPost> = {
     published: true,
     content: `
       <div style="background: #e8f4f8; padding: 20px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 8px; color: #111827;">
-        <p style="margin: 0; color: #111827;"><strong style="color: #111827;">📅 Aktualisiert: Dezember 2025</strong></p>
+        <p style="margin: 0; color: #111827;"><strong style="color: #111827;">📅 Aktualisiert: Dezember 2026</strong></p>
         <p style="margin: 10px 0 0 0; color: #374151;">Die Balkonplanung hat sich revolutioniert: Mit modernen 3D-Konfiguratoren planen Sie Ihren Traumbalkon in 15 Minuten – ohne Architekt, ohne Vorkenntnisse, mit Live-Preisberechnung.</p>
       </div>
 

@@ -12,7 +12,7 @@ const blogPosts = [
   {
     id: 1,
     slug: 'balkonanbau-genehmigung-baurecht-2025',
-    title: 'Balkonanbau Genehmigung: Baurecht & Vorschriften 2025 – Der komplette Leitfaden',
+    title: 'Balkonanbau Genehmigung: Baurecht & Vorschriften 2026 – Der komplette Leitfaden',
     teaser: 'Balkon nachträglich anbauen: Alles zu Baugenehmigung, Baurecht & Kosten ✓ 16 Bundesländer ✓ Genehmigungsfreistellung erklärt ✓ Aus 850+ Projekten',
     date: '2025-01-15',
     readTime: '25 Min.',
@@ -24,8 +24,8 @@ const blogPosts = [
   {
     id: 2,
     slug: 'balkon-groesse-ohne-genehmigung',
-    title: 'Balkon ohne Genehmigung 2025: Wie groß darf er sein? [16 Bundesländer-Guide]',
-    teaser: 'Wie groß darf Ihr Balkon ohne Genehmigung sein? Alle 16 Bundesländer im Vergleich + Genehmigungscheck in 60 Sek. ✓ Stand 2025',
+    title: 'Balkon ohne Genehmigung 2026: Wie groß darf er sein? [16 Bundesländer-Guide]',
+    teaser: 'Wie groß darf Ihr Balkon ohne Genehmigung sein? Alle 16 Bundesländer im Vergleich + Genehmigungscheck in 60 Sek. ✓ Stand 2026',
     date: '2025-11-01',
     readTime: '18 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
@@ -36,8 +36,8 @@ const blogPosts = [
   {
     id: 3,
     slug: 'balkon-bauantrag-genehmigung',
-    title: 'Balkon Bauantrag 2025: Diese Unterlagen brauchen Sie [Komplette Checkliste]',
-    teaser: 'Balkon Bauantrag 2025: Alle Unterlagen, Schritt-für-Schritt Anleitung & Kosten ✓ Bundesländer-spezifisch ✓ Checkliste zum Download',
+    title: 'Balkon Bauantrag 2026: Diese Unterlagen brauchen Sie [Komplette Checkliste]',
+    teaser: 'Balkon Bauantrag 2026: Alle Unterlagen, Schritt-für-Schritt Anleitung & Kosten ✓ Bundesländer-spezifisch ✓ Checkliste zum Download',
     date: '2025-11-01',
     readTime: '16 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
@@ -48,7 +48,7 @@ const blogPosts = [
   {
     id: 4,
     slug: 'balkon-genehmigung-checkliste',
-    title: 'Balkon Genehmigung: Die komplette Checkliste für 2025',
+    title: 'Balkon Genehmigung: Die komplette Checkliste für 2026',
     teaser: 'Erfahren Sie, wann Sie eine Genehmigung für Ihren Balkon benötigen und welche Dokumente Sie einreichen müssen. Schritt-für-Schritt Anleitung...',
     date: '2025-01-14',
     readTime: '8 Min.',
@@ -84,8 +84,8 @@ const blogPosts = [
   {
     id: 5,
     slug: 'balkon-foerderung-2025',
-    title: 'Balkon-Förderung 2025: Diese Zuschüsse & KfW-Programme gibt es',
-    teaser: 'Balkon-Förderung 2025: KfW-Zuschüsse bis 20%, Länder-Programme & BAFA ✓ Alle Förderprogramme ✓ Antragsstellung ✓',
+    title: 'Balkon-Förderung 2026: Diese Zuschüsse & KfW-Programme gibt es',
+    teaser: 'Balkon-Förderung 2026: KfW-Zuschüsse bis 20%, Länder-Programme & BAFA ✓ Alle Förderprogramme ✓ Antragsstellung ✓',
     date: '2025-11-01',
     readTime: '17 Min.',
     author: 'Martin Beyer, BALKONFUCHS',
@@ -171,7 +171,7 @@ const Blog = () => {
               "url": "https://balkonfuchs.de/blog/",
               "inLanguage": "de-DE",
               "datePublished": "2018-01-01",
-              "dateModified": "2025-01-15",
+                "dateModified": "2026-01-15",
               "publisher": {
                 "@type": "Organization",
                 "name": "BALKONFUCHS GmbH",
@@ -280,7 +280,7 @@ const Blog = () => {
             {/* Update-Hinweis */}
             <div style={{textAlign: 'center', background: 'rgba(249, 115, 22, 0.1)', border: '1px solid rgba(249, 115, 22, 0.2)', borderRadius: '0.75rem', padding: '1rem', maxWidth: '48rem', margin: '0 auto'}}>
               <p style={{color: '#fb923c', fontSize: '0.875rem', margin: 0}}>
-                ✨ <strong>Neu überarbeitet 2025:</strong> Unsere Artikel werden kontinuierlich aktualisiert, damit Sie immer die neuesten Informationen zu Baurecht, Kosten und Technologien erhalten.
+                ✨ <strong>Neu überarbeitet 2026:</strong> Unsere Artikel werden kontinuierlich aktualisiert, damit Sie immer die neuesten Informationen zu Baurecht, Kosten und Technologien erhalten.
               </p>
             </div>
             
