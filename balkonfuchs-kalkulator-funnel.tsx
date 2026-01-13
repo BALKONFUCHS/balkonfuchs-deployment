@@ -1454,7 +1454,7 @@ const BalkonFuchsKalkulatorFunnel = () => {
             <div className="flex space-x-6 text-sm text-gray-400">
               <div className="flex items-center"><span className="text-orange-400 mr-2">🛡️</span><span>Geprüfte Partner</span></div>
               <div className="flex items-center"><span className="text-orange-400 mr-2">✅</span><span>DSGVO konform</span></div>
-              <div className="flex items-center"><span className="text-orange-400 mr-2">⭐</span><span>>850 glückliche Balkonkunden</span></div>
+              <div className="flex items-center"><span className="text-orange-400 mr-2">⭐</span><span>{'>850 glückliche Balkonkunden'}</span></div>
               <div className="flex space-x-4">
                 <a href="/impressum/" className="hover:text-orange-400 transition-colors">Impressum</a>
                 <a href="/datenschutz/" className="hover:text-orange-400 transition-colors">Datenschutz</a>

@@ -278,7 +278,7 @@ const About = () => {
                   </div>
                   
                   <div className="text-center bg-gray-700/50 rounded-lg p-6">
-                    <div className="text-3xl font-bold text-orange-400 mb-2">>850</div>
+                    <div className="text-3xl font-bold text-orange-400 mb-2">{'>850'}</div>
                     <div className="text-gray-300">glückliche Balkonkunden</div>
                   </div>
                   
@@ -356,7 +356,7 @@ const About = () => {
                   </div>
                   <div className="flex items-center">
                     <Star className="w-4 h-4 mr-2 text-orange-400 fill-current" />
-                    <span>>850 glückliche Balkonkunden</span>
+                    <span>{'>850 glückliche Balkonkunden'}</span>
                   </div>
                   <div className="flex space-x-4">
                     <a href="/impressum" className="hover:text-orange-400 transition-colors">Impressum</a>
