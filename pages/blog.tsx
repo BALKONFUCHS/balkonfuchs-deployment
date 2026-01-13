@@ -230,10 +230,6 @@ const Blog = () => {
                 <div style={{fontSize: '0.875rem', color: '#9ca3af'}}>Expertenartikel</div>
               </div>
               <div style={{textAlign: 'center'}}>
-                <div style={{fontSize: '2rem', fontWeight: 'bold', color: '#fb923c', marginBottom: '0.5rem'}}>850+</div>
-                <div style={{fontSize: '0.875rem', color: '#9ca3af'}}>Realisierte Projekte</div>
-              </div>
-              <div style={{textAlign: 'center'}}>
                 <div style={{fontSize: '2rem', fontWeight: 'bold', color: '#fb923c', marginBottom: '0.5rem'}}>{'>850'}</div>
                 <div style={{fontSize: '0.875rem', color: '#9ca3af'}}>glückliche Balkonkunden</div>
               </div>
