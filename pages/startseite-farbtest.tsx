@@ -218,11 +218,6 @@ const StartseiteFarbtest = () => {
                 "telephone": "+49-XXX-XXXXXXX",
                 "contactType": "customer service",
                 "availableLanguage": "German"
-              },
-              "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "reviewCount": "850"
               }
             })
           }}
