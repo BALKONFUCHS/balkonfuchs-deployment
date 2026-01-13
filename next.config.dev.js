@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
-  output: 'export',
+  // output: 'export' entfernt für Dev-Server
   trailingSlash: true,
   images: {
     unoptimized: true,

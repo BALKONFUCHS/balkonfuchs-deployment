@@ -492,8 +492,8 @@ const BalkonFuchsKalkulatorFunnel = () => {
     },
     {
       type: 'extras',
-      title: 'Welche Zusatzausstattung wünschst du?',
-      subtitle: '✨ Diese Details machen deinen Balkon besonders!',
+      title: 'Welche Zusatzausstattung wünschen Sie?',
+      subtitle: '✨ Diese Details machen Ihren Balkon besonders!',
       options: [
         { id: 'standard_gelaender', title: 'Standard-Geländer (Stahl)', subtitle: 'Pulverbeschichtet, langlebig', icon: '🛡️', price: 400 },
         { id: 'premium_gelaender', title: 'Premium-Geländer (Edelstahl/Glas)', subtitle: 'Hochwertige Optik (+1.000-2.000€)', icon: '✨', price: 1500 },
@@ -712,9 +712,9 @@ const BalkonFuchsKalkulatorFunnel = () => {
   const renderExtrasStep = () => (
     <div className="space-y-6">
       <div className="text-center space-y-4">
-        <h2 className="text-3xl font-bold text-white">Welche Zusatzausstattung wünschst du?</h2>
+        <h2 className="text-3xl font-bold text-white">Welche Zusatzausstattung wünschen Sie?</h2>
         <p className="text-lg text-orange-400 bg-orange-500/10 p-4 rounded-xl border border-orange-500/20">
-          ✨ Diese Details machen deinen Balkon besonders!
+          ✨ Diese Details machen Ihren Balkon besonders!
         </p>
       </div>
 
@@ -1473,9 +1473,9 @@ const BalkonFuchsKalkulatorFunnel = () => {
     <div className="min-h-screen bg-gray-900 funnel-kalkulator">
       <Head>
         {/* Primary Meta Tags */}
-        <title>Balkon Kalkulator - Kostenlos & sofort | BalkonFuchs</title>
-        <meta name="title" content="Balkon Kalkulator - Kostenlos & sofort | BalkonFuchs" />
-        <meta name="description" content="Balkon Kalkulator: Berechnen Sie kostenlos und sofort die Kosten für Ihren Balkon. Vorstellbalkon, Anlehnbalkon oder Hängebalkon - in 2 Minuten zur ersten Kostenschätzung. Regional angepasste Preise für ganz Deutschland." />
+        <title>Balkon-Kalkulator: Balkonkosten berechnen & Preisfaktoren</title>
+        <meta name="title" content="Balkon-Kalkulator: Balkonkosten berechnen & Preisfaktoren" />
+        <meta name="description" content="Berechnen Sie die Balkonkosten online: Balkontyp, Maße und Ausstattungen als Grundlage für eine erste Kostenschätzung. Inklusive Preisfaktoren und nächster Schritte (Genehmigung, Planung, 3D-Konfigurator)." />
         <meta name="keywords" content="Balkon kalkulator, Balkon preise, Balkon kosten, Balkon kalkulation, Vorstellbalkon preis, Anlehnbalkon kosten, Hängebalkon preise, Balkonbau kalkulator, Balkon preisrechner" />
         <meta name="author" content="BalkonFuchs GmbH" />
         <meta name="robots" content="index, follow" />
@@ -1600,20 +1600,16 @@ const BalkonFuchsKalkulatorFunnel = () => {
       <section id="funnel-start" className="bg-gray-800 border-b border-gray-700 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-orange-400">Balkon-Kosten berechnen</span>
-            <span className="text-white"> in 3 Minuten</span>
+            <span className="text-orange-400">Balkon-Kalkulator:</span> <span className="text-white">Balkonkosten berechnen</span>
           </h1>
-          <h2 className="text-xl md:text-2xl text-gray-300 mb-6">
-            Sofortige Kostenschätzung für Ihren Balkonanbau 2026
-          </h2>
-          <h3 className="text-lg text-orange-400 mb-4 font-semibold">
-            Balkon Kosten Rechner 2026 - Präzise Kalkulation für alle Balkontypen und Materialien
-          </h3>
-          <p className="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto">
-            <span className="text-orange-400 font-semibold">Was kostet ein Balkon?</span> Unser intelligenter <span className="text-orange-400 font-semibold">Balkon-Kalkulator</span> analysiert über 
-            <span className="text-orange-400 font-semibold"> 40 Kostenfaktoren</span> und erstellt Ihnen eine <span className="text-orange-400 font-semibold">präzise Kostenschätzung</span>. 
-            Perfekt für die erste <span className="text-orange-400 font-semibold">Budgetplanung</span>!
-          </p>
+          <div className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-6 space-y-3">
+            <p>
+              Mit dem Balkon-Kalkulator erhalten Sie eine erste Kostenschätzung auf Basis Ihrer Angaben. Sie können Balkontyp, Maße und Ausstattungen variieren und so unterschiedliche Varianten vergleichen.
+            </p>
+            <p>
+              Für die Detailkalkulation sind projektspezifische Faktoren wie Montageaufwand, Anschlussdetails und örtliche Anforderungen entscheidend.
+            </p>
+          </div>
         </div>
       </section>
       
@@ -1699,6 +1695,249 @@ const BalkonFuchsKalkulatorFunnel = () => {
           )}
         </div>
       </main>
+
+      {/* Content Sections für SEO */}
+      <div className="max-w-7xl mx-auto px-4 py-16 space-y-16 bg-gray-900">
+        
+        {/* A) Section: Preisfaktoren */}
+        <section id="preisfaktoren">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Preisfaktoren: Wovon hängen Balkonkosten ab?</h2>
+          <p className="text-gray-300 leading-relaxed mb-6 max-w-3xl">
+            Die Kosten für einen Balkon werden von verschiedenen Faktoren beeinflusst. Je nach Projekt können einzelne Faktoren stärker oder schwächer ins Gewicht fallen. Eine erste Kostenschätzung hilft Ihnen, die wichtigsten Einflussgrößen zu identifizieren.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Balkontyp</h3>
+              <p className="text-gray-300 text-sm">Vorstell-, Anlehn- oder Hängebalkon haben unterschiedliche Konstruktionsanforderungen und Kosten.</p>
+            </div>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Größe</h3>
+              <p className="text-gray-300 text-sm">Breite und Tiefe beeinflussen Materialbedarf und Montageaufwand direkt.</p>
+            </div>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Material</h3>
+              <p className="text-gray-300 text-sm">Stahl, Aluminium oder Holz sowie Oberflächenbehandlung wirken sich auf die Kosten aus.</p>
+            </div>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Geländer</h3>
+              <p className="text-gray-300 text-sm">Standard-Geländer, Premium-Varianten oder Glasfüllungen haben unterschiedliche Preise.</p>
+            </div>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Unterkonstruktion</h3>
+              <p className="text-gray-300 text-sm">Fundament, Abhängung oder Anbindung an Gebäude beeinflussen die Kosten.</p>
+            </div>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Montage & Zugang</h3>
+              <p className="text-gray-300 text-sm">Erschwerte Zugänglichkeit oder Straßensperrungen können die Montagekosten erhöhen.</p>
+            </div>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Anschlussdetails</h3>
+              <p className="text-gray-300 text-sm">Entwässerung, Anschlüsse an Gebäude und Sonderlösungen wirken sich auf die Kosten aus.</p>
+            </div>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+              <h3 className="text-lg font-semibold text-white mb-2">Region</h3>
+              <p className="text-gray-300 text-sm">Örtliche Gegebenheiten, Lohnkosten und Materialpreise variieren regional.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* B) Section: Kosten nach Balkontyp */}
+        <section id="balkontypen">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Kosten nach Balkontyp</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Vorstellbalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Vorstellbalkon steht auf eigenen Stützen und ist unabhängig von der Gebäudestruktur. Ideal für Gebäude ohne tragende Außenwand oder bei besonderen architektonischen Anforderungen.</p>
+              <p className="text-gray-300 text-sm mb-4">Die vier Stützen und das Fundament führen in der Regel zu höheren Kosten als bei Anlehnbalkonen.</p>
+              <a href="/balkon-konfigurator/#vorstellbalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+            
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Anlehnbalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Anlehnbalkon wird an der Gebäudewand befestigt und benötigt nur zwei Stützen vorne. Die kostengünstigste Variante für den nachträglichen Balkonanbau.</p>
+              <p className="text-gray-300 text-sm mb-4">Durch die Anbindung an die Wand und weniger Stützen sind die Material- und Montagekosten in der Regel niedriger.</p>
+              <a href="/balkon-konfigurator/#anlehnbalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+            
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Hängebalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Hängebalkon wird vollständig von der Gebäudestruktur getragen, ohne sichtbare Stützen. Maximale Ästhetik, erfordert jedoch eine entsprechende Statik.</p>
+              <p className="text-gray-300 text-sm mb-4">Die komplexere Konstruktion und statischen Anforderungen führen meist zu höheren Kosten.</p>
+              <a href="/balkon-konfigurator/#haengebalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+            
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Anbaubalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Anbaubalkon wird direkt an die Gebäudefassade angebaut und benötigt zwei Stützen. Klassische Lösung für den nachträglichen Balkonanbau.</p>
+              <p className="text-gray-300 text-sm mb-4">Gutes Preis-Leistungs-Verhältnis durch einfache Konstruktion und moderate Materialkosten.</p>
+              <a href="/balkon-konfigurator/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* C) Section: So nutzen Sie die Kostenschätzung sinnvoll */}
+        <section>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">So nutzen Sie die Kostenschätzung sinnvoll</h2>
+          <div className="space-y-4 max-w-3xl">
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-white text-sm font-bold">1</span>
+              </div>
+              <div>
+                <p className="text-gray-300 leading-relaxed">
+                  <strong className="text-white">Varianten vergleichen:</strong> Testen Sie verschiedene Balkontypen, Materialien und Ausstattungen, um Optik und Kostenrahmen zu vergleichen.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-white text-sm font-bold">2</span>
+              </div>
+              <div>
+                <p className="text-gray-300 leading-relaxed">
+                  <strong className="text-white">Annahmen prüfen:</strong> Überprüfen Sie Ihre Eingaben zu Maßen, Material und Geländer, um realistische Schätzungen zu erhalten.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-white text-sm font-bold">3</span>
+              </div>
+              <div>
+                <p className="text-gray-300 leading-relaxed">
+                  <strong className="text-white">Genehmigung und Statik früh berücksichtigen:</strong> Prüfen Sie frühzeitig, ob eine Genehmigung erforderlich ist und welche statischen Anforderungen bestehen.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="text-white text-sm font-bold">4</span>
+              </div>
+              <div>
+                <p className="text-gray-300 leading-relaxed">
+                  <strong className="text-white">Nächster Schritt:</strong> Nutzen Sie die visuelle Planung im Balkonkonfigurator und stellen Sie bei Bedarf eine Anfrage für detaillierte Angebote.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* D) Section: Nächste Schritte */}
+        <section>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Nächste Schritte</h2>
+          <div className="flex flex-wrap gap-4">
+            <a href="/balkon-konfigurator/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Balkon in 3D planen
+            </a>
+            <a href="/genehmigung/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Genehmigung prüfen
+            </a>
+          </div>
+        </section>
+
+        {/* E) FAQ Section */}
+        <section>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">FAQ zum Balkon-Kalkulator</h2>
+          <div className="space-y-4">
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6" open>
+              <summary className="text-lg font-bold text-white cursor-pointer">Wie funktioniert der Balkon-Kalkulator?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Der Balkon-Kalkulator nutzt Ihre Angaben (z. B. Balkontyp, Maße und Ausstattungen), um einen ersten Kostenrahmen abzuleiten. Sie können Parameter anpassen und Varianten direkt vergleichen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Angaben brauche ich für eine Kostenschätzung?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Hilfreich sind Balkontyp, Breite/Tiefe, gewünschte Ausführung (z. B. Material, Geländer) und ggf. Besonderheiten zur Montage. Wenn Sie noch unsicher sind, starten Sie mit einer Standard-Variante und verfeinern später.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Was beeinflusst die Balkonkosten am stärksten?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Meist haben Balkontyp, Größe, Materialwahl, Geländer, Montageaufwand und Anschlussdetails den größten Einfluss. Auch örtliche Gegebenheiten können den Aufwand verändern.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Kann ich die Kosten für verschiedene Balkontypen vergleichen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Ja. Sie können beispielsweise Vorstell-, Anlehn- oder Hängebalkon als Variante anlegen und die Parameter Schritt für Schritt verändern. Für die visuelle Planung können Sie anschließend den <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a> nutzen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Sind im Kostenrahmen Montage und Lieferung enthalten?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Das hängt vom Modell des Kalkulators ab. In vielen Fällen ist die Schätzung eine Orientierung, während Lieferung/Montage je nach Region, Zugang und Aufwand genauer kalkuliert werden. Ergänzen Sie fehlende Angaben, sobald sie vorliegen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Wie genau ist die Kostenschätzung?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Die Schätzung ist eine Orientierung auf Basis typischer Annahmen. Für eine genaue Kalkulation sind projektspezifische Details nötig (Gebäudezustand, Statik, Anschlüsse, Fundament/Abhängung, Montagebedingungen).
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Was kostet ein Balkon „im Durchschnitt"?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Pauschale Durchschnittswerte sind selten zuverlässig, weil Balkontyp, Größe, Material, Geländer und Montage stark variieren. Der Kalkulator hilft, für Ihre Situation einen realistischeren Kostenrahmen abzuleiten.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Kosten können zusätzlich entstehen (z. B. Statik oder Genehmigung)?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Je nach Projekt können Kosten für Statik, Planung, Untergrundarbeiten sowie Genehmigungen entstehen. Für eine erste Einschätzung empfiehlt sich ein <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 underline">Genehmigungscheck</a>.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Kann ich mit dem Balkon-Kalkulator auch Sanierungskosten einschätzen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Wenn der Kalkulator Sanierung als Option anbietet, können Sie damit einen ersten Rahmen ableiten. Falls nicht, ist eine separate Sanierungs-Kalkulation sinnvoll, weil Aufwand und Positionen (z. B. Abdichtung, Beläge, Geländer) stark abweichen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Wie kann ich Balkonkosten reduzieren, ohne Qualität zu verlieren?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Oft helfen eine klare Priorisierung (z. B. Material, Geländer), eine passende Standardlösung sowie die Reduktion komplexer Sonderwünsche. Variantenvergleich im Kalkulator zeigt schnell, welche Entscheidungen den größten Preishebel haben.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Kann ich meine Kalkulation speichern oder später weiterbearbeiten?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Wenn eine Speicherfunktion vorhanden ist, können Sie Varianten sichern und später fortsetzen. Falls nicht, empfiehlt es sich, Ihre Parameter zu notieren oder Screenshots zu erstellen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Was ist der nächste Schritt nach der Kostenschätzung?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Im nächsten Schritt lohnt sich die visuelle Planung im <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a> und – je nach Projekt – die Prüfung der Rahmenbedingungen über den <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 underline">Genehmigungscheck</a>.
+              </p>
+            </details>
+          </div>
+        </section>
+
+      </div>
       
       <Footer />
       

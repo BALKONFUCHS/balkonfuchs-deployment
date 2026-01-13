@@ -955,10 +955,10 @@ export default function BalkonKonfigurator() {
   return (
     <>
       <Head>
-        <title>3D Balkon-Konfigurator | Balkon online planen & visualisieren | BalkonFuchs</title>
+        <title>Balkonkonfigurator: Balkon online konfigurieren & in 3D visualisieren</title>
         <meta 
           name="description" 
-          content="Gestalten Sie Ihren Traumbalkon im 3D-Konfigurator. Wählen Sie aus 5 Balkontypen, Materialien und Farben. Sofortige Preisberechnung. Kostenlos & unverbindlich." 
+          content="Konfigurieren Sie Ihren Balkon online: Balkontyp, Maße, Materialien und Farben. Erhalten Sie eine erste Kostenschätzung und planen Sie Vorstell-, Anlehn- oder Hängebalkon in 3D." 
         />
         <meta name="keywords" content="balkon konfigurator, 3d balkon planer, balkon online gestalten, balkonanbau visualisieren, balkon kosten berechnen" />
         <meta name="robots" content="index, follow" />
@@ -1006,14 +1006,13 @@ export default function BalkonKonfigurator() {
           <div className="max-w-4xl mx-auto text-center space-y-6">
             {/* Hauptüberschrift */}
             <h1 className="text-4xl md:text-5xl font-bold">
-              <span className="text-orange-500">Traumbalkon visualisieren</span>
-              {' '}in 3 Minuten
+              Balkonkonfigurator: <span className="text-orange-500">Traumbalkon in 3 Minuten visualisieren</span>
             </h1>
             
             {/* Subheadline */}
-            <p className="text-xl md:text-2xl text-gray-300">
+            <h2 className="text-xl md:text-2xl text-gray-300">
               3D-Konfiguration für Ihren individuellen Balkonanbau 2026
-            </p>
+            </h2>
             
             {/* SEO-Beschreibung Zeile 1 */}
             <p className="text-orange-400 font-medium">
@@ -1641,6 +1640,278 @@ export default function BalkonKonfigurator() {
             </div>
           </div>
         </main>
+
+        {/* Content Sections für SEO */}
+        <div className="max-w-7xl mx-auto px-4 py-16 space-y-16">
+          
+          {/* A) Section: Balkon konfigurieren – so funktioniert's */}
+          <section>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Balkon konfigurieren – so funktioniert's</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mb-4">
+                  <span className="text-xl font-bold text-white">1</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Genehmigung prüfen</h3>
+                <p className="text-gray-300 mb-4">Prüfen Sie, ob Sie eine Genehmigung für Ihr Balkon-Projekt benötigen.</p>
+                <a href="/genehmigung/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                  Genehmigung prüfen
+                  <span>→</span>
+                </a>
+              </div>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mb-4">
+                  <span className="text-xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Kosten berechnen</h3>
+                <p className="text-gray-300 mb-4">Erhalten Sie eine erste Kostenschätzung für Ihr Balkon-Projekt.</p>
+                <a href="/kalkulator/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                  Kosten berechnen
+                  <span>→</span>
+                </a>
+              </div>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mb-4">
+                  <span className="text-xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3">Anbieter finden</h3>
+                <p className="text-gray-300 mb-4">Finden Sie qualifizierte Partner in Ihrer Region für die Umsetzung.</p>
+                <a href="/planer/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                  Partner finden
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* B) Section: Balkontypen, die Sie konfigurieren können */}
+          <section>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Balkontypen, die Sie konfigurieren können</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">Vorstellbalkon</h3>
+                <p className="text-gray-300 text-sm mb-4">Ein Vorstellbalkon wird von vier Stützen getragen und bietet maximale Flexibilität bei der Planung.</p>
+                <p className="text-gray-300 text-sm mb-4">Ideal für Gebäude ohne tragende Außenwand oder bei besonderen architektonischen Anforderungen.</p>
+                <a href="#vorstellbalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                  Details ansehen
+                  <span>→</span>
+                </a>
+              </div>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">Anlehnbalkon</h3>
+                <p className="text-gray-300 text-sm mb-4">Ein Anlehnbalkon wird an der Gebäudewand befestigt und benötigt nur zwei Stützen vorne.</p>
+                <p className="text-gray-300 text-sm mb-4">Die kostengünstigste Variante für den nachträglichen Balkonanbau.</p>
+                <a href="#anlehnbalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                  Details ansehen
+                  <span>→</span>
+                </a>
+              </div>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">Hängebalkon</h3>
+                <p className="text-gray-300 text-sm mb-4">Ein Hängebalkon wird vollständig von der Gebäudestruktur getragen, ohne sichtbare Stützen.</p>
+                <p className="text-gray-300 text-sm mb-4">Maximale Ästhetik, erfordert jedoch eine entsprechende Statik des Gebäudes.</p>
+                <a href="#haengebalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                  Details ansehen
+                  <span>→</span>
+                </a>
+              </div>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h3 className="text-xl font-bold text-white mb-3">Anbaubalkon</h3>
+                <p className="text-gray-300 text-sm mb-4">Ein Anbaubalkon wird direkt an die Gebäudefassade angebaut und benötigt zwei Stützen.</p>
+                <p className="text-gray-300 text-sm mb-4">Klassische Lösung für den nachträglichen Balkonanbau mit gutem Preis-Leistungs-Verhältnis.</p>
+                <a href="#anbaubalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                  Details ansehen
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* C) Section: Vorstellbalkon */}
+          <section id="vorstellbalkon">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Vorstellbalkon</h2>
+            <div className="space-y-6 text-gray-300 leading-relaxed">
+              <p>
+                Ein Vorstellbalkon wird von vier Stützen getragen und ist damit vollständig unabhängig von der Gebäudestruktur. Diese Konstruktion bietet maximale Flexibilität bei der Planung und eignet sich besonders für Gebäude ohne tragende Außenwand oder bei besonderen architektonischen Anforderungen.
+              </p>
+              <p>
+                Vorstellbalkone können in verschiedenen Größen und Ausführungen konfiguriert werden. Die vier Stützen ermöglichen eine gleichmäßige Lastverteilung und erlauben größere Spannweiten als andere Balkontypen. Sie eignen sich sowohl für Neubauten als auch für nachträgliche Anbauten.
+              </p>
+              <p>
+                Bei der Planung eines Vorstellbalkons sollten Sie die statischen Anforderungen, die Bodenbeschaffenheit und die örtlichen Baubestimmungen berücksichtigen. Eine Genehmigung ist in den meisten Fällen erforderlich, da es sich um eine bauliche Anlage handelt.
+              </p>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 transition-colors">Genehmigung prüfen</a>
+              <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 transition-colors">Kosten berechnen</a>
+              <a href="/planer/" className="text-orange-400 hover:text-orange-300 transition-colors">Planung starten</a>
+            </div>
+          </section>
+
+          {/* D) Section: Anlehnbalkon */}
+          <section id="anlehnbalkon">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Anlehnbalkon</h2>
+            <div className="space-y-6">
+              <p className="text-gray-300 leading-relaxed">
+                Ein Anlehnbalkon wird an der Gebäudewand befestigt und benötigt nur zwei Stützen vorne. Diese Konstruktion ist die kostengünstigste Variante für den nachträglichen Balkonanbau und eignet sich besonders für Gebäude mit tragender Außenwand.
+              </p>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 space-y-4">
+                <h3 className="text-xl font-bold text-white mb-4">Häufige Fragen zum Anlehnbalkon</h3>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Brauche ich eine Genehmigung für einen Anlehnbalkon?</h4>
+                  <p className="text-gray-300">Das hängt von der Größe und Ihrem Bundesland ab. In den meisten Fällen ist eine Genehmigung erforderlich, wenn der Balkon eine bestimmte Größe überschreitet. Nutzen Sie unseren <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 underline">Genehmigungscheck</a> für eine schnelle Antwort.</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Wie viel kostet ein Anlehnbalkon?</h4>
+                  <p className="text-gray-300">Die Kosten für einen Anlehnbalkon liegen in der Regel zwischen 3.000€ und 8.000€, abhängig von Größe, Materialien und Ausstattung. Nutzen Sie unseren <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">BalkonKalkulator</a> für eine detaillierte Kostenschätzung.</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Welche Materialien eignen sich für einen Anlehnbalkon?</h4>
+                  <p className="text-gray-300">Anlehnbalkone werden typischerweise aus Stahl oder Aluminium gefertigt. Die Stützen können verzinkt oder pulverbeschichtet sein. Das Geländer kann aus verschiedenen Materialien wie Stahl, Aluminium oder Glas bestehen.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Anbaubalkon Section */}
+          <section id="anbaubalkon">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Anbaubalkon</h2>
+            <div className="space-y-6">
+              <p className="text-gray-300 leading-relaxed">
+                Ein Anbaubalkon wird direkt an die Gebäudefassade angebaut und benötigt zwei Stützen vorne. Diese Konstruktion ist eine klassische Lösung für den nachträglichen Balkonanbau und bietet ein gutes Preis-Leistungs-Verhältnis. Anbaubalkone eignen sich besonders für Gebäude mit tragender Außenwand.
+              </p>
+            </div>
+          </section>
+
+          {/* E) Section: Hängebalkon */}
+          <section id="haengebalkon">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Hängebalkon</h2>
+            <div className="space-y-6">
+              <p className="text-gray-300 leading-relaxed">
+                Ein Hängebalkon wird vollständig von der Gebäudestruktur getragen, ohne sichtbare Stützen. Diese Konstruktion bietet maximale Ästhetik und eignet sich besonders für moderne Architektur. Hängebalkone erfordern jedoch eine entsprechende Statik des Gebäudes und sind daher häufig bei Neubauten oder umfangreichen Sanierungen zu finden.
+              </p>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 space-y-4">
+                <h3 className="text-xl font-bold text-white mb-4">Häufige Fragen zum Hängebalkon</h3>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Kann ich einen Hängebalkon nachträglich anbauen?</h4>
+                  <p className="text-gray-300">Ein nachträglicher Anbau ist möglich, erfordert jedoch eine umfassende statische Prüfung des Gebäudes. Die Gebäudestruktur muss die zusätzlichen Lasten tragen können. Eine detaillierte Planung mit einem Statiker ist in der Regel erforderlich.</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Wie viel kostet ein Hängebalkon?</h4>
+                  <p className="text-gray-300">Hängebalkone sind aufgrund der komplexeren Konstruktion in der Regel teurer als andere Balkontypen. Die Kosten liegen zwischen 5.000€ und 15.000€, abhängig von Größe und Ausführung. Nutzen Sie unseren <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">BalkonKalkulator</a> für eine erste Kostenschätzung.</p>
+                </div>
+                
+                <div>
+                  <h4 className="text-lg font-semibold text-white mb-2">Welche Vorteile hat ein Hängebalkon?</h4>
+                  <p className="text-gray-300">Hängebalkone bieten eine maximale Ästhetik ohne sichtbare Stützen, mehr Flexibilität bei der Gestaltung des Außenbereichs und eine ungestörte Sicht. Sie eignen sich besonders für moderne Architektur und hochwertige Immobilien.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* F) FAQ Section */}
+          <section>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">FAQ zum Balkonkonfigurator</h2>
+            <div className="space-y-4">
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6" open>
+                <summary className="text-lg font-bold text-white cursor-pointer">Was kann ich im Balkonkonfigurator konfigurieren?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Im Balkonkonfigurator können Sie Ihren Balkon Schritt für Schritt planen – zum Beispiel Balkontyp, Maße, Materialien, Farben und Geländer-Varianten. So erhalten Sie eine erste Visualisierung und eine belastbare Orientierung für die weitere Planung.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Welche Balkontypen kann ich konfigurieren?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Sie können je nach Auswahl unter anderem <a href="#vorstellbalkon" className="text-orange-400 hover:text-orange-300 underline">Vorstellbalkon</a>, <a href="#anlehnbalkon" className="text-orange-400 hover:text-orange-300 underline">Anlehnbalkon</a> und <a href="#haengebalkon" className="text-orange-400 hover:text-orange-300 underline">Hängebalkon</a> konfigurieren. Die verfügbaren Typen hängen von den Optionen im Konfigurator und den Voraussetzungen Ihres Gebäudes ab.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie lange dauert es, einen Balkon zu konfigurieren?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Für eine erste Konfiguration reichen meist wenige Minuten. Wenn Sie mehrere Varianten vergleichen (z. B. Materialien oder Geländer), dauert es entsprechend länger – Sie können aber jederzeit anpassen.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Muss ich „3D" können, um den Konfigurator zu nutzen?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Nein. Die 3D-Ansicht dient der einfachen Orientierung. Sie wählen Optionen aus – der Konfigurator visualisiert das Ergebnis automatisch.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie genau ist die Visualisierung?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Die Visualisierung ist eine erste Orientierung und zeigt typische Proportionen und Varianten. Die finale Ausführung wird in der Praxis immer an Ihr Gebäude und die statischen Anforderungen angepasst.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie erhalte ich eine Kostenschätzung?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Auf Basis Ihrer Auswahl kann der Konfigurator einen ersten Kostenrahmen ableiten. Für eine genaue Kalkulation sind zusätzliche Details nötig (z. B. Gebäudezustand, Anschlussdetails, Montageaufwand, örtliche Anforderungen). Nutzen Sie für eine detaillierte Kalkulation unseren <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">BalkonKalkulator</a>.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Welche Angaben brauche ich, um meinen Balkon zu konfigurieren?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Hilfreich sind grobe Maße (Breite/Tiefe), die gewünschte Balkonart, die Anzahl der Ebenen (falls relevant) sowie Material-/Designwünsche. Wenn Sie nicht alles wissen, können Sie mit einer Standard-Variante starten und später verfeinern.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Ist ein Balkon immer genehmigungspflichtig?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Das hängt von Bundesland, Gebäudesituation und Bauart ab. Der Konfigurator ersetzt keine Behördenprüfung – für eine erste Einschätzung sollten Sie zusätzlich einen <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 underline">Genehmigungscheck</a> nutzen und bei Bedarf fachliche Beratung einholen.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Was ist der Unterschied zwischen Vorstellbalkon, Anlehnbalkon und Hängebalkon?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  <a href="#vorstellbalkon" className="text-orange-400 hover:text-orange-300 underline">Vorstellbalkon</a>: steht auf Stützen/Fundamenten vor dem Gebäude. <a href="#anlehnbalkon" className="text-orange-400 hover:text-orange-300 underline">Anlehnbalkon</a>: liegt konstruktiv am Gebäude an und wird je nach System zusätzlich abgestützt. <a href="#haengebalkon" className="text-orange-400 hover:text-orange-300 underline">Hängebalkon</a>: wird überwiegend über eine Tragkonstruktion/Abhängung gehalten und benötigt geeignete Anbindungspunkte. Welche Lösung passt, hängt von Statik, Fassade und Nutzung ab.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Kann ich mehrere Varianten vergleichen?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Ja. Es lohnt sich, Varianten zu testen (z. B. Balkontyp, Material, Geländer), um Optik und Kostenrahmen zu vergleichen. So gehen Sie vorbereitet in die nächste Planungsstufe.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Kann ich meine Konfiguration speichern oder später weiterbearbeiten?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Wenn eine Speicherfunktion vorhanden ist, können Sie Ihre Planung sichern und später fortsetzen. Falls nicht, empfiehlt es sich, Ihre Auswahl zu notieren oder Screenshots zu erstellen, damit Sie später gezielt weiterarbeiten können.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Was passiert nach der Konfiguration?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Nach der Konfiguration haben Sie eine klare Basis für die nächsten Schritte: <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 underline">Genehmigung prüfen</a>, <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Kosten</a> konkretisieren und die Umsetzung planen. Je nach Angebot können Sie anschließend eine Anfrage stellen oder mit einem passenden Fachbetrieb die Detailplanung starten.
+                </p>
+              </details>
+            </div>
+          </section>
+
+        </div>
 
         <Footer />
         <ZohoSalesIQ />

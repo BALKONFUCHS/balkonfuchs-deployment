@@ -105,6 +105,18 @@
 /blog/  /  301
 
 # --------------------------------------------
+# BERLIN EDITION REDIRECTS (to unified city page)
+# --------------------------------------------
+
+/partner-info-berlin  /partner/berlin/  301
+/partner-info-berlin/  /partner/berlin/  301
+/partner-info-berlin/*  /partner/berlin/  301
+/partner-info  /partner/berlin/  301
+/partner-info/  /partner/berlin/  301
+/berlin-balkonbau-partner-werden  /partner/berlin/  301
+/berlin-balkonbau-partner-werden/  /partner/berlin/  301
+
+# --------------------------------------------
 # CATCH-ALL (fallback)
 # --------------------------------------------
 # /blogs/post/*  /  301

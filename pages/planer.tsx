@@ -2247,8 +2247,9 @@ const BalkonFuchsPlanerFunnel = () => {
 
   return (
     <>
-      <Head>e i        <title>Balkon Planer Tool - Detaillierte Projektplanung für präzise Angebote | BALKONFUCHS</title>
-        <meta name="description" content="Unser intelligenter Balkon-Planer führt Sie durch alle wichtigen Projektdetails für maßgeschneiderte Balkonlösungen. Geführte Abfrage zu allen Projektdetails für präzise Angebote." />
+      <Head>
+        <title>Balkon planen: Balkon-Planer für Maße, Varianten & Vorbereitung</title>
+        <meta name="description" content="Planen Sie Ihren Balkon Schritt für Schritt: Maße, Balkontyp, Ausstattungen und Voraussetzungen als Basis für Angebot, Genehmigung und Umsetzung. Inklusive Checkliste, typischen Planungsfehlern und nächsten Schritten." />
         <meta name="keywords" content="balkon planer detailliert, balkon projekt planen, balkonbau anforderungen, balkon angebot präzise, balkon planer tool, balkon projektplanung, balkon maßgeschneidert" />
         <meta name="author" content="BALKONFUCHS GmbH" />
         <meta name="robots" content="index, follow" />
@@ -2325,19 +2326,17 @@ const BalkonFuchsPlanerFunnel = () => {
       <section id="funnel-start" className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl sm:rounded-2xl mx-2 sm:mx-4 lg:mx-8 mb-6 sm:mb-8">
         <div className="p-4 sm:p-6 lg:p-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
-            <span className="text-blue-400">Perfekte Balkon-Planung</span>
-            <span className="text-white"> in 5 Minuten</span>
+            <span className="text-blue-400">Balkon planen</span>
+            <span className="text-white"> mit dem Balkon-Planer</span>
           </h1>
-          <h2 className="text-lg sm:text-xl text-blue-400 mb-4 sm:mb-6">
-            Detaillierte Projektplanung für präzise Angebote
-          </h2>
-          <h3 className="text-base sm:text-lg text-blue-400 mb-3 sm:mb-4 font-semibold">
-            Balkon Planer Tool - Intelligente Projektplanung für maßgeschneiderte Balkonlösungen
-          </h3>
-          <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto text-sm sm:text-base">
-            Unser intelligenter <strong className="text-blue-400">Balkon-Planer</strong> führt Sie durch alle wichtigen Projektdetails. 
-            Erhalten Sie <strong className="text-blue-400">maßgeschneiderte Lösungen</strong> von unseren Partnern.
-          </p>
+          <div className="text-gray-300 leading-relaxed max-w-3xl mx-auto text-sm sm:text-base mb-4 space-y-3">
+            <p>
+              Mit dem Balkon-Planer strukturieren Sie Ihr Projekt und sammeln die wichtigsten Angaben für Planung, Angebot und Umsetzung. Der Balkon-Planer (Balkonplaner) hilft Ihnen, Varianten vorzubereiten und die nächsten Schritte sauber zu planen.
+            </p>
+            <p>
+              Für Kosten und Visualisierung nutzen Sie ergänzend den <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a> und den <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a>.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -2449,8 +2448,268 @@ const BalkonFuchsPlanerFunnel = () => {
           )}
         </div>
 
-
       </main>
+
+      {/* Content Sections für SEO */}
+      <div className="max-w-7xl mx-auto px-4 py-16 space-y-16 bg-gray-900">
+        
+        {/* A) Section: Checkliste */}
+        <section id="checkliste">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Welche Angaben brauchen Sie für die Balkonplanung?</h2>
+          <div className="space-y-4 mb-6">
+            <p className="text-gray-300 leading-relaxed max-w-3xl">
+              Für eine strukturierte Balkonplanung sollten Sie die wichtigsten Projektangaben zusammenstellen. Diese Checkliste hilft Ihnen, alle relevanten Punkte zu erfassen und eine belastbare Grundlage für Angebot, Genehmigung und Umsetzung zu schaffen.
+            </p>
+            <p className="text-gray-300 leading-relaxed max-w-3xl">
+              Nicht alle Angaben müssen von Anfang an vollständig sein – Sie können die Planung schrittweise verfeinern, sobald mehr Details vorliegen.
+            </p>
+          </div>
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Balkontyp:</strong> Vorstell-, Anlehn-, Hänge- oder Anbaubalkon</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Maße:</strong> Breite/Tiefe und Position am Gebäude</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Austritt / Türsituation:</strong> Grobe Ausgangslage für den Balkonzugang</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Nutzungsanforderungen:</strong> Personenanzahl, Möblierung, geplante Nutzung</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Material-/Designwünsche:</strong> Grundidee zu Materialien und Optik</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Geländer/Handlauf:</strong> Grundidee zur Geländerausführung</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Montagezugang:</strong> Gerüst, Zufahrt, Durchgang</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Anschlussdetails/Untergrund:</strong> Grobe Situation zu Fundament, Anschlüssen</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">WEG/Denkmalschutz:</strong> Falls relevant für Ihr Projekt</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Zieltermin:</strong> Gewünschter Umsetzungszeitraum</span>
+              </li>
+            </ul>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <a href="/kalkulator/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+              Kosten berechnen
+              <span>→</span>
+            </a>
+            <a href="/genehmigung/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+              Genehmigung prüfen
+              <span>→</span>
+            </a>
+          </div>
+        </section>
+
+        {/* B) Section: Planung nach Balkontyp */}
+        <section id="balkontypen">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Planung nach Balkontyp</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Vorstellbalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Vorstellbalkon steht auf eigenen Stützen und ist unabhängig von der Gebäudestruktur. Bei der Planung stehen die vier Stützen, das Fundament und die statischen Anforderungen im Fokus.</p>
+              <p className="text-gray-300 text-sm mb-4">Die Planung sollte frühzeitig die Fundamentierung, Lastverteilung und Anbindung an das Gebäude berücksichtigen.</p>
+              <a href="/balkon-konfigurator/#vorstellbalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+            
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Anlehnbalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Anlehnbalkon wird an der Gebäudewand befestigt und benötigt nur zwei Stützen vorne. Bei der Planung steht die Anbindung an die Wand und die Tragfähigkeit der Außenwand im Fokus.</p>
+              <p className="text-gray-300 text-sm mb-4">Wichtig ist die frühzeitige Klärung der Wandtragfähigkeit und der Anbindungsdetails.</p>
+              <a href="/balkon-konfigurator/#anlehnbalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+            
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Hängebalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Hängebalkon wird vollständig von der Gebäudestruktur getragen. Bei der Planung stehen die statischen Anforderungen und die Anbindungspunkte im Gebäude im Fokus.</p>
+              <p className="text-gray-300 text-sm mb-4">Die Planung sollte frühzeitig eine statische Prüfung des Gebäudes und die Machbarkeit der Abhängung klären.</p>
+              <a href="/balkon-konfigurator/#haengebalkon" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+            
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <h3 className="text-xl font-bold text-white mb-3">Anbaubalkon</h3>
+              <p className="text-gray-300 text-sm mb-3">Ein Anbaubalkon wird direkt an die Gebäudefassade angebaut. Bei der Planung stehen die Anbindung an die Fassade, die zwei Stützen und die Montagebedingungen im Fokus.</p>
+              <p className="text-gray-300 text-sm mb-4">Wichtig ist die Klärung der Fassadenbeschaffenheit und der Montagezugänglichkeit.</p>
+              <a href="/balkon-konfigurator/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                In 3D planen
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* C) Section: Häufige Planungsfehler */}
+        <section id="fehler">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Häufige Planungsfehler vermeiden</h2>
+          <div className="space-y-4 max-w-3xl">
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+              <p className="text-gray-300 leading-relaxed">
+                <strong className="text-white">Maße ohne Bezug auf Tür/Fassade planen:</strong> Die Position des Balkons sollte frühzeitig in Bezug zur Türöffnung und Fassadenstruktur geplant werden.
+              </p>
+            </div>
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+              <p className="text-gray-300 leading-relaxed">
+                <strong className="text-white">Montagezugang und Baustellensituation unterschätzen:</strong> Erschwerte Zugänglichkeit oder Straßensperrungen können die Montagekosten deutlich erhöhen.
+              </p>
+            </div>
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+              <p className="text-gray-300 leading-relaxed">
+                <strong className="text-white">Geländer/Abstände und Nutzung früh nicht mitdenken:</strong> Geländeranforderungen, Absturzhöhen und geplante Nutzung sollten bereits in der Planungsphase berücksichtigt werden.
+              </p>
+            </div>
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+              <p className="text-gray-300 leading-relaxed">
+                <strong className="text-white">Fundament/Abhängung/Anschlussdetails zu spät klären:</strong> Statische Anforderungen, Fundamentierung und Anschlussdetails sollten frühzeitig geklärt werden.
+              </p>
+            </div>
+            <div className="flex items-start gap-4">
+              <AlertTriangle className="w-5 h-5 text-orange-400 flex-shrink-0 mt-0.5" />
+              <p className="text-gray-300 leading-relaxed">
+                <strong className="text-white">Genehmigung/WEG-Abstimmung erst am Ende starten:</strong> Genehmigungsverfahren und WEG-Abstimmungen können Zeit in Anspruch nehmen und sollten parallel zur Planung initiiert werden.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* D) Section: Nächste Schritte */}
+        <section id="naechste-schritte">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Nächste Schritte</h2>
+          <div className="flex flex-wrap gap-4">
+            <a href="/kalkulator/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Kosten berechnen
+            </a>
+            <a href="/balkon-konfigurator/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Balkon in 3D konfigurieren
+            </a>
+            <a href="/genehmigung/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Genehmigung prüfen
+            </a>
+          </div>
+        </section>
+
+        {/* E) FAQ Section */}
+        <section>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">FAQ zum Balkon-Planer</h2>
+          <div className="space-y-4">
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6" open>
+              <summary className="text-lg font-bold text-white cursor-pointer">Wofür ist der Balkon-Planer gedacht?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Der Balkon-Planer hilft Ihnen, Ihr Projekt strukturiert vorzubereiten: wichtige Maße, Varianten und Voraussetzungen. So schaffen Sie eine belastbare Grundlage für Angebot, Genehmigung und Umsetzung.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Angaben brauche ich, um einen Balkon zu planen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Für eine gute Planung reichen oft Balkontyp, grobe Maße, Material-/Designwünsche und Rahmenbedingungen zur Montage. Details können Sie später ergänzen, sobald Sie mehr Informationen haben.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Balkontypen kann ich im Planer berücksichtigen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Je nach Auswahl können Sie unter anderem Vorstellbalkon, Anlehnbalkon, Hängebalkon und Anbaubalkon planen. Wenn Sie Varianten visuell vergleichen möchten, nutzen Sie ergänzend den <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a>.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Wie finde ich die richtigen Maße für die Planung?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Starten Sie mit Breite und Tiefe sowie der Position am Gebäude. Wenn Sie unsicher sind, wählen Sie eine Standard-Variante und passen Sie die Maße später an – wichtig ist, dass Sie mit einer plausiblen Ausgangsbasis arbeiten.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Worin unterscheidet sich der Balkon-Planer vom Balkonkonfigurator?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Der Balkon-Planer unterstützt die strukturierte Projektvorbereitung und Datensammlung. Der <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a> dient stärker dem Variantenvergleich und der Visualisierung in 3D.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Worin unterscheidet sich der Balkon-Planer vom Balkon-Kalkulator?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Der <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a> ist auf eine erste Kostenschätzung ausgerichtet. Der Balkon-Planer hilft Ihnen, die Planungsdaten zu strukturieren.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Muss ich die Genehmigung bereits geklärt haben, bevor ich plane?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Nicht zwingend. Für viele Projekte ist es sinnvoll, parallel zu planen und frühzeitig eine erste Einschätzung zur Genehmigung einzuholen. Nutzen Sie dafür einen <a href="/genehmigung/" className="text-orange-400 hover:text-orange-300 underline">Genehmigungscheck</a>, wenn verfügbar.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Wie detailliert sollte ich zu Beginn planen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                So detailliert wie nötig, so schlank wie möglich: Starten Sie mit Typ, groben Maßen und Prioritäten. Verfeinern Sie die Planung, sobald Statik, Anschlüsse oder Montagebedingungen klarer sind.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Punkte werden bei der Planung oft vergessen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Häufig werden Montagezugang, Anschlussdetails, Geländeranforderungen und die Abstimmung im WEG-Umfeld unterschätzt. Eine kurze Checkliste hilft, diese Punkte früh mitzudenken.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Kann ich mehrere Varianten im Planer vergleichen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Ja. Variantenvergleich ist sinnvoll (z. B. Balkontyp, Maße, Ausstattungen). Für die visuelle Entscheidung nutzen viele zusätzlich den <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a>.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Kann ich meine Planung speichern oder später weiterbearbeiten?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Wenn eine Speicherfunktion vorhanden ist, können Sie Ihre Planung sichern und später fortsetzen. Falls nicht, empfiehlt es sich, Ihre wichtigsten Parameter zu notieren oder Screenshots zu erstellen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Was ist der nächste Schritt nach der Planung?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Nach der Planung empfiehlt sich eine Kostenschätzung im <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a> und – für die visuelle Entscheidung – die Konfiguration im <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a>. Je nach Projekt sollte außerdem die Genehmigung früh geprüft werden.
+              </p>
+            </details>
+          </div>
+        </section>
+
+      </div>
       
       <Footer />
       

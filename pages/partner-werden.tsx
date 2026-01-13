@@ -2008,8 +2008,8 @@ const PartnerFunnel = () => {
   return (
       <div className="min-h-screen bg-gray-900 funnel-partner">
       <Head>
-        <title>Balkonbau Partner werden 2025 | 7-Schritt Bewerbung | Qualifizierte Leads | BALKONFUCHS</title>
-        <meta name="description" content="✅ Balkonbau Partner werden ✅ 7-Schritt Bewerbungsprozess ✅ Qualifizierte Leads für Handwerker ✅ Starter/Professional/Enterprise Pakete ✅ 8-35+ Leads/Monat ✅ Jetzt bewerben!" />
+        <title>Partner werden: BalkonFuchs – als Balkonbau-Partner zusammenarbeiten</title>
+        <meta name="description" content="Werden Sie Partner von BalkonFuchs: strukturierte Projektanfragen, klare Abläufe und eine transparente Zusammenarbeit. Jetzt unverbindlich informieren und als Partner starten." />
         <meta name="keywords" content="balkonbau partner werden, balkonbau partner bewerbung, handwerker leads kaufen, balkon partner programm, aufträge balkonbau, balkonbau partner 2025" />
         <meta name="author" content="BALKONFUCHS" />
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -2058,7 +2058,7 @@ const PartnerFunnel = () => {
         {/* Sitemap */}
         <link rel="sitemap" type="application/xml" href="https://balkonfuchs.de/sitemap.xml" />
         
-        <link rel="canonical" href="https://balkonfuchs.de/partner" />
+        <link rel="canonical" href="https://balkonfuchs.de/partner-werden/" />
         
         {/* Structured Data JSON-LD */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{
@@ -2120,7 +2120,7 @@ const PartnerFunnel = () => {
                 "name": "Welche Partner-Optionen gibt es?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Es gibt drei Optionen: Gründungspartner Berlin (eine der ersten 10 Partner mit Lifetime-Vorteilen), Regulärer Partner (Teilnahme am Auktionssystem) und Großunternehmen/Kette (individuelle Lösung für mehrere Standorte)."
+                  "text": "Es gibt drei Optionen: Gründungspartner (frühe Partner mit besonderen Vorteilen), Regulärer Partner (Teilnahme am Auktionssystem) und Großunternehmen/Kette (individuelle Lösung für mehrere Standorte)."
                 }
               },
               {
@@ -2128,7 +2128,7 @@ const PartnerFunnel = () => {
                 "name": "Was kostet die Partnerschaft?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Das Auktionsmodell hat keine monatlichen Fixkosten. Sie zahlen nur, wenn Sie einen Lead gewinnen (Pay-per-Win). Gründungspartner können bis Ende 2025 kostenlos starten. Voraussichtlich ab Q2 2026 werden optionale Subscription-Modelle eingeführt, für die Gründungspartner einen Lifetime-Rabatt von 30% erhalten."
+                  "text": "Das Auktionsmodell hat keine monatlichen Fixkosten. Sie zahlen nur, wenn Sie einen Lead gewinnen (Pay-per-Win). Gründungspartner erhalten besondere Konditionen. Voraussichtlich ab Q2 2026 werden optionale Subscription-Modelle eingeführt, für die Gründungspartner vergünstigte Konditionen erhalten."
                 }
               }
             ]
@@ -2156,26 +2156,43 @@ const PartnerFunnel = () => {
         <section className="py-16 px-4 bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800">
           <div className="max-w-4xl mx-auto text-center">
             
-            {/* Badge */}
-            <div className="inline-flex items-center gap-3 bg-orange-500/10 border border-orange-500/30 rounded-full px-6 py-3 mb-8 animate-pulse">
-              <span className="text-2xl">🎁</span>
-              <div className="text-left">
-                <div className="text-orange-400 font-bold text-sm">GRÜNDUNGSPARTNER GESUCHT</div>
-                <div className="text-white text-xs">Nur noch 4 von 10 Plätzen in Berlin</div>
-              </div>
-            </div>
-
             {/* Headline */}
-            <h1 className="text-4xl md:text-6xl font-black mb-6 text-white leading-tight">
-              Werden Sie Teil des<br/>
-              <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">BalkonFuchs-Netzwerks</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+              Partner werden: <span className="text-orange-400">Als Balkonbau-Partner mit BalkonFuchs zusammenarbeiten</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">
-              Keine monatlichen Fixkosten. Keine Lead-Gebühren für Müll.<br/>
-              <strong className="text-white">Nur pay-per-win</strong> für kaufbereite Kunden.
+            {/* Lead-Text */}
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Als Partner erhalten Sie strukturierte Projektanfragen und einen klaren Prozess – von der ersten Bedarfsklärung bis zur Übergabe in die Umsetzung. Sie entscheiden, welche Projekte zu Ihren Kapazitäten passen. Starten Sie unverbindlich und lernen Sie den Ablauf kennen.
             </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
+              <button
+                onClick={() => {
+                  const formElement = document.getElementById('partneranfrage');
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  } else {
+                    // Fallback: scroll zum Formular-Start
+                    const formStart = document.querySelector('[data-form-start]') || document.querySelector('main');
+                    if (formStart) {
+                      formStart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+              >
+                Partneranfrage stellen
+                <ArrowRight className="w-5 h-5" />
+              </button>
+              <a 
+                href="#ablauf" 
+                className="inline-flex items-center gap-2 border-2 border-white/30 text-white hover:border-white/50 px-6 py-3 rounded-lg font-medium transition-all duration-300"
+              >
+                Ablauf ansehen
+              </a>
+            </div>
 
             {/* Quick Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10 max-w-3xl mx-auto">
@@ -2215,7 +2232,7 @@ const PartnerFunnel = () => {
                 <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                 </svg>
-                <span>💰 Gratis bis Ende 2025</span>
+                <span>✅ Unverbindlich</span>
               </div>
             </div>
 
@@ -2347,33 +2364,28 @@ const PartnerFunnel = () => {
                       : 'border-gray-700/50 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10'
                   }`}
                 >
-                  {/* Badge */}
-                  <div className="absolute -top-3 -right-3 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
-                    🔥 NUR NOCH 4 PLÄTZE FREI
-                  </div>
-                  
                   <div className="text-center">
                     <div className="text-5xl mb-4">🎁</div>
-                    <h3 className="text-2xl font-bold text-white mb-2">Gründungspartner Berlin</h3>
-                    <p className="text-sm text-gray-400 mb-6">Eine der ersten 10 Partner mit Lifetime-Vorteilen</p>
+                    <h3 className="text-2xl font-bold text-white mb-2">Gründungspartner</h3>
+                    <p className="text-sm text-gray-400 mb-6">Frühe Partner mit besonderen Vorteilen</p>
                     
                     {/* Benefits */}
                     <div className="space-y-3 text-left">
                       <div className="text-sm text-white flex items-start gap-2">
                         <span className="text-green-400 flex-shrink-0">✓</span>
-                        <span>Kostenlos bis Ende 2025</span>
+                        <span>Besondere Konditionen für frühe Partner</span>
                       </div>
                       <div className="text-sm text-white flex items-start gap-2">
                         <span className="text-green-400 flex-shrink-0">✓</span>
-                        <span>Nur 10 Partner = Minimale Konkurrenz</span>
+                        <span>Vergünstigte Konditionen</span>
                       </div>
                       <div className="text-sm text-white flex items-start gap-2">
                         <span className="text-green-400 flex-shrink-0">✓</span>
-                        <span>Lifetime 30% Rabatt auf Subscriptions (voraussichtlich ab Q2 2026)</span>
+                        <span>Früher Zugang zu neuen Funktionen</span>
                       </div>
                       <div className="text-sm text-white flex items-start gap-2">
                         <span className="text-green-400 flex-shrink-0">✓</span>
-                        <span>Gründungspartner-Badge auf Profil</span>
+                        <span>Besonderer Status im Partnerprofil</span>
                       </div>
                     </div>
                   </div>
@@ -2634,6 +2646,304 @@ const PartnerFunnel = () => {
 
       </main>
 
+      {/* Content Sections für SEO - nur anzeigen wenn noch kein PartnerType ausgewählt */}
+      {!formData.partnerType && (
+        <div className="max-w-7xl mx-auto px-4 py-16 space-y-16 bg-gray-900">
+          
+          {/* A) Section: Für wen eignet sich die Partnerschaft? */}
+          <section id="zielgruppe">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Für wen eignet sich die Partnerschaft?</h2>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Metallbau / Balkonbau:</strong> Betriebe mit Erfahrung im Balkonbau</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Montagebetriebe:</strong> Betriebe, die Montage und Installation durchführen</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Schlosser / Handwerksbetriebe:</strong> Betriebe mit Kapazitäten für Balkonprojekte</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Betriebe mit CNC/Serienfertigung:</strong> Falls zutreffend für Ihre Ausrichtung</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Betriebe mit Erfahrung in Bestand/WEG:</strong> Falls zutreffend für Ihre Projekte</span>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          {/* B) Section: Was Sie erhalten */}
+          <section id="nutzen">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Was Sie erhalten</h2>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-4">
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Strukturierte Anfragen mit Eckdaten:</strong> Projektanfragen mit den wichtigsten Informationen</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Weniger Vorqualifizierungsaufwand:</strong> Vorgefilterte Anfragen reduzieren Ihren Aufwand</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Klare Übergabe / Dokumentation:</strong> Strukturierte Projektübergabe mit allen relevanten Daten</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Tools für Kosten/Planung/3D:</strong> Optional als Gesprächsgrundlage nutzbar</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Transparente Kommunikation:</strong> Klare nächste Schritte und Abläufe</span>
+                </li>
+              </ul>
+            </div>
+            <p className="text-gray-300 text-sm italic">
+              Die genaue Ausgestaltung hängt von Region und Kapazitäten ab.
+            </p>
+          </section>
+
+          {/* C) Section: So läuft die Zusammenarbeit ab */}
+          <section id="ablauf">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">So läuft die Zusammenarbeit ab</h2>
+            <div className="space-y-6 max-w-3xl">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-white">1</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Partnerprofil & Qualifikation</h3>
+                  <p className="text-gray-300 leading-relaxed">Sie erstellen Ihr Partnerprofil und geben Ihre Qualifikationen an. Wir prüfen Ihre Angaben und aktivieren Ihr Profil.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-white">2</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Projektanfrage & Vorprüfung</h3>
+                  <p className="text-gray-300 leading-relaxed">Sie erhalten strukturierte Projektanfragen mit den wichtigsten Eckdaten. Sie entscheiden, welche Projekte zu Ihnen passen.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-white">3</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Abstimmung / Angebot / Planung</h3>
+                  <p className="text-gray-300 leading-relaxed">Sie stimmen sich mit dem Kunden ab, erstellen ein Angebot und planen die Umsetzung.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-xl font-bold text-white">4</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">Umsetzung & Feedback</h3>
+                  <p className="text-gray-300 leading-relaxed">Sie setzen das Projekt um und geben Feedback zum Ablauf. Dies hilft uns, den Prozess kontinuierlich zu verbessern.</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-8">
+              <button
+                onClick={() => {
+                  const formElement = document.getElementById('partneranfrage');
+                  if (formElement) {
+                    formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  } else {
+                    const formStart = document.querySelector('main');
+                    if (formStart) {
+                      formStart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+              >
+                Partneranfrage stellen
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </section>
+
+          {/* D) Section: Welche Informationen benötigen wir? */}
+          <section id="anforderungen">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Welche Informationen benötigen wir?</h2>
+            <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-4">
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Region/Einzugsgebiet:</strong> In welcher Region sind Sie aktiv?</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Gewerk / Leistungen:</strong> Welche Leistungen bieten Sie an?</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Kapazitäten / Vorlaufzeiten:</strong> Wie viele Projekte können Sie parallel bearbeiten?</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Referenzen / Beispiele:</strong> Optional: Beispiele Ihrer bisherigen Projekte</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Montage/Produktion:</strong> Was können Sie selbst durchführen?</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Materialien/Typen:</strong> Optional: Mit welchen Materialien arbeiten Sie?</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Building className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                  <span><strong className="text-white">Kontakt & Erreichbarkeit:</strong> Wie können wir Sie erreichen?</span>
+                </li>
+              </ul>
+            </div>
+            <p className="text-gray-300 text-sm italic">
+              Wenn Sie nicht alles direkt haben, reichen die wichtigsten Eckdaten.
+            </p>
+          </section>
+
+          {/* E) Section: Regionen */}
+          <section id="regionen">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Regionen</h2>
+            <p className="text-gray-300 mb-6 max-w-3xl">
+              Wählen Sie Ihre Region oder stellen Sie direkt eine Partneranfrage.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="/partner/berlin/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                Berlin
+                <span>→</span>
+              </a>
+              <a href="/partner/hamburg/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                Hamburg
+                <span>→</span>
+              </a>
+              <a href="/partner/muenchen/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                München
+                <span>→</span>
+              </a>
+              <a href="/partner/frankfurt/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                Frankfurt
+                <span>→</span>
+              </a>
+              <a href="/partner/koeln/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                Köln
+                <span>→</span>
+              </a>
+            </div>
+          </section>
+
+          {/* F) FAQ Section */}
+          <section id="faq">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">FAQ</h2>
+            <div className="space-y-4">
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6" open>
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie läuft die Partneranfrage ab?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Sie füllen das Partnerformular aus und geben Ihre wichtigsten Informationen an. Wir prüfen Ihre Angaben und melden uns bei Ihnen zurück, um die nächsten Schritte zu besprechen.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Welche Regionen werden abgedeckt?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Wir starten regional und erweitern sukzessive. Aktuell suchen wir Partner in verschiedenen Regionen. Weitere Regionen folgen schrittweise.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie werden Anfragen qualifiziert?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Projektanfragen werden vorab geprüft und mit den wichtigsten Eckdaten versehen. Sie erhalten strukturierte Informationen, die Ihnen die Entscheidung erleichtern.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Bin ich exklusiv gebunden?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Nein. Die Partnerschaft ist nicht exklusiv. Sie können weiterhin andere Wege zur Akquise nutzen.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie schnell erhalte ich Anfragen?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Die Anzahl der Anfragen hängt von Ihrer Region, Ihren Kapazitäten und der Nachfrage ab. Nach der Aktivierung Ihres Profils erhalten Sie passende Projektanfragen.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Welche Unterlagen sind hilfreich?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Hilfreich sind Informationen zu Ihrer Region, Ihren Leistungen, Kapazitäten und Kontaktdaten. Referenzen und Beispiele sind optional, aber hilfreich.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie wird die Zusammenarbeit koordiniert?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Die Zusammenarbeit erfolgt über strukturierte Projektanfragen und klare Kommunikation. Sie entscheiden, welche Projekte Sie übernehmen möchten.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Welche Erwartungen gibt es an Reaktionszeiten?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Wir erwarten eine zeitnahe Rückmeldung zu Projektanfragen, damit Kunden schnell eine Antwort erhalten. Die genauen Erwartungen werden im Partnerprofil definiert.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie wird Feedback und Qualität gehandhabt?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Feedback von Kunden und Partnern hilft uns, den Prozess kontinuierlich zu verbessern. Qualität steht im Fokus der Zusammenarbeit.
+                </p>
+              </details>
+              
+              <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <summary className="text-lg font-bold text-white cursor-pointer">Wie starte ich konkret?</summary>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  Füllen Sie das Partnerformular aus und geben Sie Ihre wichtigsten Informationen an. Wir melden uns bei Ihnen zurück, um die nächsten Schritte zu besprechen.
+                </p>
+              </details>
+            </div>
+          </section>
+
+          {/* G) Section: Partneranfrage stellen */}
+          <section id="partneranfrage">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Partneranfrage stellen</h2>
+            <p className="text-gray-300 mb-8 max-w-2xl">
+              Starten Sie Ihre Partneranfrage und erhalten Sie eine strukturierte Bearbeitung Ihrer Angaben.
+            </p>
+            <div className="text-center">
+              <button
+                onClick={() => {
+                  const formStart = document.querySelector('main');
+                  if (formStart) {
+                    formStart.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+              >
+                Partneranfrage stellen
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </section>
+
+        </div>
+      )}
+
       {/* Footer */}
       <footer className="bg-gray-900 border-t border-gray-800 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2682,7 +2992,7 @@ const PartnerFunnel = () => {
                 <li><a href="about/" className="text-gray-400 hover:text-orange-400 transition-colors">Über uns</a></li>
                 <li><a href="karriere/" className="text-gray-400 hover:text-orange-400 transition-colors">Karriere</a></li>
                 <li><a href="partner-werden/" className="text-gray-400 hover:text-orange-400 transition-colors">Partnerbewerbung</a></li>
-                <li><a href="/partner-info-berlin/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Vorabinfos</a></li>
+                <li><a href="/partner/berlin/" className="text-gray-400 hover:text-orange-400 transition-colors">Partner Berlin</a></li>
                 <li><a href="kontakt/" className="text-gray-400 hover:text-orange-400 transition-colors">Kontakt</a></li>
               </ul>
             </div>

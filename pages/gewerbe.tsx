@@ -179,8 +179,8 @@ export default function GewerbeFunnel() {
   return (
     <>
       <Head>
-        <title>Gewerbeprojekte | Mehrfamilienhäuser | BALKONFUCHS Business</title>
-        <meta name="description" content="Professionelle Balkonlösungen für Wohnbaugesellschaften, Bauträger und institutionelle Bauherren. Individuelle Angebote für Großprojekte." />
+        <title>Gewerbe: Balkonprojekte für Unternehmen – Anfrage & Zusammenarbeit</title>
+        <meta name="description" content="Balkonprojekte für Gewerbe, Hausverwaltungen und Bestandshalter: strukturiert anfragen, Anforderungen klären und Umsetzung planen. Transparent, effizient und mit klaren nächsten Schritten." />
         <meta name="keywords" content="gewerbliche balkone, mehrfamilienhaus balkon, bauträger balkon, wohnbaugesellschaft, großprojekte balkon" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -201,48 +201,42 @@ export default function GewerbeFunnel() {
               </div>
               
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 max-w-4xl mx-auto">
-                Professionelle Balkonlösungen für{' '}
-                <span 
-                  className={`text-transparent bg-clip-text bg-gradient-to-r ${texts[currentTextIndex].color} transition-all duration-500`}
-                  style={{ display: 'inline-block', minWidth: '300px' }}
-                >
-                  {texts[currentTextIndex].text}
-                </span>
+                Gewerbe: <span className="text-white">Balkonprojekte strukturiert anfragen und umsetzen</span>
               </h1>
               
-              <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-                Ihr Partner für Mehrfamilienhäuser, Bauträger-Projekte und institutionelle Bauherren
-              </p>
-
-              {/* Trust Indicators - von Startseite übernommen */}
-              <div className="flex flex-wrap justify-center gap-8 mt-12">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-green-300" />
-                  </div>
-                  <div className="text-left">
-                    <div className="font-bold text-lg">Geprüfte Partner</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-blue-300" />
-                  </div>
-                  <div className="text-left">
-                    <div className="font-bold text-lg">DSGVO konform</div>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center">
-                    <Star className="w-6 h-6 text-yellow-300" />
-                  </div>
-                  <div className="text-left">
-                    <div className="font-bold text-lg">{'>850 glückliche Balkonkunden'}</div>
-                  </div>
-                </div>
+              <div className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-8 space-y-3">
+                <p>
+                  BalkonFuchs unterstützt Unternehmen dabei, Balkonprojekte strukturiert vorzubereiten und effizient umzusetzen – von der ersten Klärung bis zur Planung.
+                </p>
+                <p>
+                  Sie erhalten einen klaren Prozess, transparente Anforderungen und die passenden nächsten Schritte.
+                </p>
               </div>
+
+              {/* CTAs */}
+              <div className="flex flex-wrap justify-center gap-4 mb-4">
+                <a 
+                  href="#anfrage" 
+                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
+                >
+                  Anfrage starten
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+                <a 
+                  href="#ablauf" 
+                  className="inline-flex items-center gap-2 border border-white/30 text-white hover:border-white/50 px-6 py-3 rounded-lg font-medium transition-all duration-300"
+                >
+                  Ablauf ansehen
+                </a>
+              </div>
+
+              {/* Microcopy */}
+              <p className="text-sm text-blue-100 mb-4">
+                In 5 Schritten zur Anfrage. Dauer: ca. 2–3 Minuten.
+              </p>
+              <p className="text-xs text-blue-200/80 mb-8">
+                Unverbindlich. Klare Eckdaten genügen für den Start.
+              </p>
             </div>
           </div>
         </section>
@@ -324,96 +318,9 @@ export default function GewerbeFunnel() {
           </section>
         ) : (
           <>
-            {/* SEO-optimierte Einführung - nur auf Schritt 1 anzeigen */}
-            {currentStep === 1 && (
-              <section className="py-16 bg-gray-900">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                  Gewerbliche <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Balkonlösungen</span> für Ihr Projekt
-                </h2>
-                <p className="text-xl text-gray-300 leading-relaxed">
-                  Von der ersten Anfrage bis zur finalen Umsetzung - Ihr professioneller Partner für gewerbliche Balkonprojekte in Deutschland
-                </p>
-              </div>
-
-              {/* W-Fragen für SEO */}
-              <div className="space-y-8">
-                {/* Warum */}
-                <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border-2 border-blue-500/30 rounded-2xl p-6 hover:border-blue-500/50 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">?</span>
-                    </div>
-                    Warum BALKONFUCHS für gewerbliche Balkonprojekte?
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed ml-10">
-                    Als spezialisierter Partner für gewerbliche Balkonprojekte verbinden wir Bauträger, Wohnbaugesellschaften und Investoren mit qualifizierten Fachbetrieben. Unsere Expertise umfasst Neubau, Sanierung und Modernisierung von Balkonanlagen für Mehrfamilienhäuser und Großprojekte. Mit über 850 erfolgreich vermittelten Projekten und geprüften Partnern garantieren wir höchste Qualitätsstandards nach DIN-Normen.
-                  </p>
-                </div>
-
-                {/* Wie */}
-                <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/30 rounded-2xl p-6 hover:border-green-500/50 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">?</span>
-                    </div>
-                    Wie läuft die Anfrage für gewerbliche Balkone ab?
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed ml-10">
-                    In nur 5 einfachen Schritten zu Ihrem individuellen Angebot: (1) Projektart definieren - Neubau, Sanierung oder Bestandsmodernisierung, (2) Projektumfang angeben - Anzahl der Einheiten und gewünschte Balkontypen, (3) Zeitrahmen und Budgetvorstellung mitteilen, (4) Unternehmensdaten hinterlegen, (5) Anfrage absenden und innerhalb von 24 Stunden ein maßgeschneidertes Angebot erhalten.
-                  </p>
-                </div>
-
-                {/* Was */}
-                <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border-2 border-purple-500/30 rounded-2xl p-6 hover:border-purple-500/50 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">?</span>
-                    </div>
-                    Was umfasst unser Service für Gewerbeprojekte?
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed ml-10">
-                    Unser umfassender Service beinhaltet: Kostenlose Erstberatung und Projektanalyse, Vermittlung geprüfter Fachbetriebe für alle Balkontypen (Anbaubalkon, Vorstellbalkon, Hängebalkon, Loggia), transparente Angebotserstellung, Projektbegleitung von der Planung bis zur Abnahme, DIN-konforme Ausführung mit Gewährleistung, sowie flexible Finanzierungslösungen für Großprojekte.
-                  </p>
-                </div>
-
-                {/* Wer */}
-                <div className="bg-gradient-to-br from-orange-500/10 to-red-500/10 border-2 border-orange-500/30 rounded-2xl p-6 hover:border-orange-500/50 transition-all duration-300">
-                  <h3 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-white font-bold text-sm">?</span>
-                    </div>
-                    Für wen eignet sich unser Gewerbe-Service?
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed ml-10">
-                    Unser spezialisierter Service richtet sich an: Bauträger und Projektentwickler für Neubauprojekte, Wohnbaugesellschaften und Immobilienverwalter für Portfolio-Modernisierungen, institutionelle Investoren für renditestarke Bestandsaufwertungen, Architekten und Planungsbüros für Großprojekte, sowie Eigentümergemeinschaften bei umfangreichen Sanierungsvorhaben.
-                  </p>
-                </div>
-              </div>
-
-              {/* Call-to-Action */}
-              <div className="mt-12 text-center bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl p-8 border-2 border-blue-400/50 shadow-2xl">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Bereit für Ihr Balkonprojekt?</h3>
-                <p className="text-blue-100 mb-6 text-lg max-w-2xl mx-auto">
-                  Starten Sie jetzt Ihre kostenlose Anfrage und erhalten Sie binnen 24 Stunden ein maßgeschneidertes Angebot
-                </p>
-                <button
-                  onClick={() => window.scrollTo({ top: document.getElementById('formular')?.offsetTop || 0, behavior: 'smooth' })}
-                  className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-110"
-                >
-                  Jetzt Anfrage starten
-                  <ArrowRight className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-            )}
 
         {/* Progress Bar */}
-        <div id="formular" className="bg-gray-800 border-b border-gray-700 sticky top-16 z-40">
+        <div id="anfrage" className="bg-gray-800 border-b border-gray-700 sticky top-16 z-40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-white">Schritt {currentStep} von {totalSteps}</span>
@@ -421,7 +328,7 @@ export default function GewerbeFunnel() {
             </div>
             <div className="w-full bg-gray-700 rounded-full h-2">
               <div 
-                className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
+                className="bg-blue-600 h-2 rounded-full transition-all duration-500"
                 style={{ width: `${(currentStep / totalSteps) * 100}%` }}
               ></div>
             </div>
@@ -449,11 +356,11 @@ export default function GewerbeFunnel() {
                       }}
                       className={`p-6 rounded-xl border-2 transition-all duration-300 text-left ${
                         formData.projekttyp === 'neubau' 
-                          ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50' 
-                          : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
+                          ? 'border-blue-500 bg-blue-500/10' 
+                          : 'border-gray-600 bg-gray-700/50 hover:border-blue-400'
                       }`}
                     >
-                      <Building2 className={`w-12 h-12 mb-4 ${formData.projekttyp === 'neubau' ? 'text-blue-400' : 'text-gray-400'}`} />
+                      <Building2 className={`w-12 h-12 mb-4 ${formData.projekttyp === 'neubau' ? 'text-blue-500' : 'text-gray-400'}`} />
                       <h3 className="text-xl font-bold text-white mb-2">Neubau</h3>
                       <p className="text-gray-300">Balkonlösungen für Neubauprojekte und Projektentwicklungen</p>
                     </button>
@@ -469,7 +376,7 @@ export default function GewerbeFunnel() {
                           : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
                       }`}
                     >
-                      <Home className={`w-12 h-12 mb-4 ${formData.projekttyp === 'sanierung' ? 'text-blue-400' : 'text-gray-400'}`} />
+                      <Home className={`w-12 h-12 mb-4 ${formData.projekttyp === 'sanierung' ? 'text-blue-500' : 'text-gray-400'}`} />
                       <h3 className="text-xl font-bold text-white mb-2">Sanierung / Modernisierung</h3>
                       <p className="text-gray-300">Balkonsanierung oder Nachrüstung im Bestand</p>
                     </button>
@@ -485,7 +392,7 @@ export default function GewerbeFunnel() {
                           : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
                       }`}
                     >
-                      <Users className={`w-12 h-12 mb-4 ${formData.projekttyp === 'wohnbaugesellschaft' ? 'text-blue-400' : 'text-gray-400'}`} />
+                      <Users className={`w-12 h-12 mb-4 ${formData.projekttyp === 'wohnbaugesellschaft' ? 'text-blue-500' : 'text-gray-400'}`} />
                       <h3 className="text-xl font-bold text-white mb-2">Wohnbaugesellschaft</h3>
                       <p className="text-gray-300">Portfolio-Projekte für Wohnungsbaugesellschaften</p>
                     </button>
@@ -501,7 +408,7 @@ export default function GewerbeFunnel() {
                           : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
                       }`}
                     >
-                      <TrendingUp className={`w-12 h-12 mb-4 ${formData.projekttyp === 'bautraeger' ? 'text-blue-400' : 'text-gray-400'}`} />
+                      <TrendingUp className={`w-12 h-12 mb-4 ${formData.projekttyp === 'bautraeger' ? 'text-blue-500' : 'text-gray-400'}`} />
                       <h3 className="text-xl font-bold text-white mb-2">Bauträger</h3>
                       <p className="text-gray-300">Großprojekte für Bauträger und Projektentwickler</p>
                     </button>
@@ -580,8 +487,8 @@ export default function GewerbeFunnel() {
                           }}
                           className={`p-4 rounded-lg border-2 font-semibold transition-all duration-300 ${
                             formData.anzahlBalkone === range
-                              ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50 text-blue-400'
-                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md text-white'
+                              ? 'border-blue-500 bg-blue-500/10 text-blue-400'
+                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 text-white'
                           }`}
                         >
                           {range}
@@ -609,8 +516,8 @@ export default function GewerbeFunnel() {
                           onClick={() => handleBalkonTypToggle(typ.value)}
                           className={`p-4 rounded-lg border-2 text-left transition-all duration-300 ${
                             formData.balkontyp.includes(typ.value)
-                              ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50'
-                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
+                              ? 'border-blue-500 bg-blue-500/10'
+                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400'
                           }`}
                         >
                           <div className="flex items-start justify-between">
@@ -619,7 +526,7 @@ export default function GewerbeFunnel() {
                               <div className="text-sm text-gray-300 mt-1">{typ.desc}</div>
                             </div>
                             {formData.balkontyp.includes(typ.value) && (
-                              <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                              <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0" />
                             )}
                           </div>
                         </button>
@@ -658,11 +565,11 @@ export default function GewerbeFunnel() {
                             onClick={() => handleInputChange('zeitrahmen', option.value)}
                             className={`p-4 rounded-lg border-2 flex items-center gap-3 transition-all duration-300 ${
                               formData.zeitrahmen === option.value
-                                ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50'
-                                : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md'
+                                ? 'border-blue-500 bg-blue-500/10'
+                                : 'border-gray-600 bg-gray-700/50 hover:border-blue-400'
                             }`}
                           >
-                            <Icon className={`w-6 h-6 ${formData.zeitrahmen === option.value ? 'text-blue-400' : 'text-gray-400'}`} />
+                            <Icon className={`w-6 h-6 ${formData.zeitrahmen === option.value ? 'text-blue-500' : 'text-gray-400'}`} />
                             <span className="font-semibold text-white">{option.label}</span>
                           </button>
                         );
@@ -692,8 +599,8 @@ export default function GewerbeFunnel() {
                           onClick={() => handleInputChange('budgetrahmen', budget)}
                           className={`p-4 rounded-lg border-2 font-semibold transition-all duration-300 ${
                             formData.budgetrahmen === budget
-                              ? 'border-blue-500 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 shadow-lg shadow-blue-500/50 text-blue-400'
-                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 hover:shadow-md text-white'
+                              ? 'border-blue-500 bg-blue-500/10 text-blue-400'
+                              : 'border-gray-600 bg-gray-700/50 hover:border-blue-400 text-white'
                           }`}
                         >
                           {budget}
@@ -1201,7 +1108,7 @@ export default function GewerbeFunnel() {
                       (currentStep === 2 && canProceedStep2) ||
                       (currentStep === 3 && canProceedStep3) ||
                       (currentStep === 4 && canProceedStep4)
-                        ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:shadow-lg transform hover:scale-105'
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
@@ -1214,7 +1121,7 @@ export default function GewerbeFunnel() {
                     disabled={!canSubmit}
                     className={`ml-auto flex items-center gap-2 px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
                       canSubmit
-                        ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:shadow-lg transform hover:scale-105'
+                        ? 'bg-blue-600 hover:bg-blue-700 text-white'
                         : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                     }`}
                   >
@@ -1228,7 +1135,7 @@ export default function GewerbeFunnel() {
         </section>
 
         {/* Benefits Section */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -1241,32 +1148,32 @@ export default function GewerbeFunnel() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Target className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Target className="w-8 h-8 text-gray-700" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Maßgeschneidert</h3>
                 <p className="text-gray-600">Individuelle Lösungen für Ihr Projekt</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8 text-gray-700" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Zertifiziert</h3>
                 <p className="text-gray-600">DIN-Normen & Baurecht konform</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="w-8 h-8 text-purple-600" />
+                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Clock className="w-8 h-8 text-gray-700" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Termingenau</h3>
                 <p className="text-gray-600">Verlässliche Projektabwicklung</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calculator className="w-8 h-8 text-orange-600" />
+                <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Calculator className="w-8 h-8 text-gray-700" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">Transparent</h3>
                 <p className="text-gray-600">Klare Kostenstruktur ohne versteckte Kosten</p>
@@ -1275,26 +1182,300 @@ export default function GewerbeFunnel() {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Bereit für Ihr nächstes Großprojekt?
-            </h2>
-            <p className="text-xl text-blue-100 mb-8">
-              Unsere Experten beraten Sie gerne persönlich und erstellen Ihnen ein individuelles Angebot.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="mailto:post@balkonfuchs.de"
-                className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                <Mail className="w-5 h-5" />
-                post@balkonfuchs.de
-              </a>
-            </div>
+        {/* Content Sections für SEO - nur auf Schritt 1 anzeigen */}
+        {currentStep === 1 && (
+          <div className="max-w-7xl mx-auto px-4 py-16 space-y-16 bg-gray-900">
+            
+            {/* A) Section: Für wen ist das geeignet? */}
+            <section id="zielgruppen">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Für wen ist das geeignet?</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">Hausverwaltungen</h3>
+                  <p className="text-gray-300 text-sm">Für Hausverwaltungen, die Balkonprojekte für mehrere Objekte strukturiert planen und umsetzen möchten.</p>
+                </div>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">Bestandshalter / Immobilienunternehmen</h3>
+                  <p className="text-gray-300 text-sm">Für Immobilienunternehmen, die Bestandsgebäude modernisieren oder Balkone nachträglich anbauen möchten.</p>
+                </div>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">Projektentwickler</h3>
+                  <p className="text-gray-300 text-sm">Für Projektentwickler, die Neubauprojekte mit Balkonen planen und umsetzen.</p>
+                </div>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">Architekten / Planungsbüros</h3>
+                  <p className="text-gray-300 text-sm">Für Architekten und Planungsbüros, die Unterstützung bei der Balkonplanung für ihre Projekte benötigen.</p>
+                </div>
+                <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <h3 className="text-xl font-bold text-white mb-3">Gewerbliche Eigentümer</h3>
+                  <p className="text-gray-300 text-sm">Für gewerbliche Eigentümer, die Balkone für ihre Immobilien strukturiert planen möchten.</p>
+                </div>
+              </div>
+            </section>
+
+            {/* B) Section: Was Sie erhalten */}
+            <section id="nutzen">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Was Sie erhalten</h2>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Strukturierte Bedarfsklärung:</strong> Systematische Erfassung Ihrer Projektanforderungen</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Klare Datengrundlage für Angebote:</strong> Vollständige Projektinformationen für präzise Angebote</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Variantenvergleich:</strong> Kosten, Planung und Visualisierung verschiedener Optionen</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Orientierung zu Rahmenbedingungen:</strong> Erste Einschätzung zu Genehmigung, WEG und anderen Anforderungen</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Definierte nächste Schritte:</strong> Klarer Zeitplan und Ablauf für die Umsetzung</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Konsistente Dokumentation:</strong> Strukturierte Erfassung aller Projekteckdaten</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="mb-4">
+                <p className="text-gray-300 mb-3"><strong className="text-white">Hilfreiche Tools:</strong></p>
+                <div className="flex flex-wrap gap-4">
+                  <a href="/kalkulator/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                    Balkonkosten berechnen
+                    <span>→</span>
+                  </a>
+                  <a href="/planer/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                    Balkon planen
+                    <span>→</span>
+                  </a>
+                  <a href="/balkon-konfigurator/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                    Balkon konfigurieren
+                    <span>→</span>
+                  </a>
+                  <a href="/genehmigung/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+                    Genehmigung prüfen
+                    <span>→</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            {/* C) Section: So läuft die Zusammenarbeit ab */}
+            <section id="ablauf" className="py-16 bg-gray-900">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">So läuft die Zusammenarbeit ab</h2>
+                <div className="space-y-6 max-w-3xl">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl font-bold text-white">1</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Anfrage & Eckdaten</h3>
+                      <p className="text-gray-300 leading-relaxed">Sie übermitteln Ihre Projektanfrage mit den wichtigsten Eckdaten: Projektart, Standort, Anzahl der Balkone und grobe Rahmenbedingungen.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl font-bold text-white">2</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Klärung Anforderungen</h3>
+                      <p className="text-gray-300 leading-relaxed">Gemeinsam klären wir Balkontyp, Maße, Materialwünsche und Rahmenbedingungen wie Genehmigung, WEG oder Denkmalschutz.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl font-bold text-white">3</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Varianten & Vorbereitung</h3>
+                      <p className="text-gray-300 leading-relaxed">Sie können verschiedene Varianten mit unseren Tools vergleichen: Kosten im Kalkulator, Planung im Planer und Visualisierung im Konfigurator.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                      <span className="text-xl font-bold text-white">4</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">Übergabe in Umsetzung</h3>
+                      <p className="text-gray-300 leading-relaxed">Nach der Klärung der Anforderungen und Variantenauswahl erfolgt die Übergabe an qualifizierte Partner für die Detailplanung und Umsetzung.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* D) Section: Welche Angaben helfen? */}
+            <section id="anforderungen">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Welche Angaben helfen für eine schnelle Einschätzung?</h2>
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-4">
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Standort / Objektadresse:</strong> Mindestens Stadt/PLZ, idealerweise vollständige Adresse</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Objektart:</strong> MFH, Gewerbe, Bestand, Neubau</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Anzahl Balkone / Etagen:</strong> Wie viele Balkone sollen geplant werden?</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Grobe Maße oder Raster:</strong> Breite und Tiefe der geplanten Balkone</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Wunsch-Balkontyp(en):</strong> Vorstell-, Anlehn- oder Hängebalkon</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Fotos der Fassade / Bestand:</strong> Aktuelle Fotos helfen bei der Einschätzung</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Pläne:</strong> Falls vorhanden: Grundrisse, Fassadenpläne oder ähnliche Unterlagen</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Rahmenbedingungen:</strong> WEG, Denkmalschutz oder andere besondere Anforderungen (falls relevant)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Montagezugang / Baustellensituation:</strong> Erschwerte Zugänglichkeit oder besondere Bedingungen</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Zeitlicher Rahmen / Zieltermin:</strong> Wann soll das Projekt umgesetzt werden?</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span><strong className="text-white">Ansprechpartner / Entscheidungsweg:</strong> Wer ist der Ansprechpartner und wie läuft die Entscheidung?</span>
+                  </li>
+                </ul>
+              </div>
+              <p className="text-gray-300 text-sm italic">
+                Wenn Sie nicht alle Daten vorliegen haben, reichen die wichtigsten Eckdaten für den Start.
+              </p>
+            </section>
+
+            {/* E) FAQ Section */}
+            <section id="faq">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">Häufige Fragen zu Gewerbeprojekten</h2>
+              <div className="space-y-4">
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6" open>
+                  <summary className="text-lg font-bold text-white cursor-pointer">Warum BALKONFUCHS für gewerbliche Balkonprojekte?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Als spezialisierter Partner für gewerbliche Balkonprojekte verbinden wir Bauträger, Wohnbaugesellschaften und Investoren mit qualifizierten Fachbetrieben. Unsere Expertise umfasst Neubau, Sanierung und Modernisierung von Balkonanlagen für Mehrfamilienhäuser und Großprojekte. Mit über 850 erfolgreich vermittelten Projekten und geprüften Partnern garantieren wir höchste Qualitätsstandards nach DIN-Normen.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Wie läuft die Anfrage für gewerbliche Balkone ab?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    In nur 5 einfachen Schritten zu Ihrem individuellen Angebot: (1) Projektart definieren - Neubau, Sanierung oder Bestandsmodernisierung, (2) Projektumfang angeben - Anzahl der Einheiten und gewünschte Balkontypen, (3) Zeitrahmen und Budgetvorstellung mitteilen, (4) Unternehmensdaten hinterlegen, (5) Anfrage absenden und innerhalb von 24 Stunden ein maßgeschneidertes Angebot erhalten.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Was umfasst unser Service für Gewerbeprojekte?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Unser umfassender Service beinhaltet: Kostenlose Erstberatung und Projektanalyse, Vermittlung geprüfter Fachbetriebe für alle Balkontypen (Anbaubalkon, Vorstellbalkon, Hängebalkon, Loggia), transparente Angebotserstellung, Projektbegleitung von der Planung bis zur Abnahme, DIN-konforme Ausführung mit Gewährleistung, sowie flexible Finanzierungslösungen für Großprojekte.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Für wen eignet sich unser Gewerbe-Service?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Unser spezialisierter Service richtet sich an: Bauträger und Projektentwickler für Neubauprojekte, Wohnbaugesellschaften und Immobilienverwalter für Portfolio-Modernisierungen, institutionelle Investoren für renditestarke Bestandsaufwertungen, Architekten und Planungsbüros für Großprojekte, sowie Eigentümergemeinschaften bei umfangreichen Sanierungsvorhaben.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Für welche Projektgrößen ist BalkonFuchs geeignet?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    BalkonFuchs eignet sich für Projekte verschiedener Größen – von einzelnen Objekten bis zu größeren Mehrfamilienhaus-Projekten. Die Tools und der Prozess skalieren je nach Projektumfang.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Wie schnell erhalte ich eine erste Rückmeldung?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Nach Ihrer Anfrage erhalten Sie in der Regel innerhalb von 24 Stunden eine erste Rückmeldung. Bei komplexeren Projekten kann die Bearbeitung etwas länger dauern.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Welche Unterlagen sind für eine Einschätzung hilfreich?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Hilfreich sind grobe Maße, Fotos der Fassade, Informationen zum Gebäude und zum Projektumfang. Wenn Sie nicht alle Unterlagen vorliegen haben, reichen die wichtigsten Eckdaten für den Start. Nutzen Sie für die strukturierte Vorbereitung den <a href="/planer/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Planer</a>.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Können mehrere Objekte gebündelt werden?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Ja. Wenn Sie mehrere Objekte planen, können diese in einer Anfrage gebündelt werden. Dies ermöglicht eine effiziente Bearbeitung und kann bei der Planung und Umsetzung Vorteile bieten.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Wie läuft die Abstimmung mit Hausverwaltung/WEG?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Die Abstimmung mit Hausverwaltung oder WEG liegt in Ihrer Verantwortung. Wir unterstützen Sie dabei, die relevanten Informationen zu sammeln und strukturiert aufzubereiten, damit Sie die Abstimmung effizient durchführen können.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Wie belastbar ist eine Kostenschätzung?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Eine erste Kostenschätzung ist eine Orientierung auf Basis typischer Annahmen. Für eine belastbare Kalkulation sind projektspezifische Details nötig. Nutzen Sie für eine erste Einschätzung den <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a>.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Welche nächsten Schritte folgen nach der Anfrage?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Nach Ihrer Anfrage analysieren wir Ihre Projektanforderungen und wählen passende Partner aus. Sie erhalten ein individuelles Angebot und gemeinsam planen wir die nächsten Schritte für Ihr Balkonprojekt.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Wie werden Daten und Unterlagen behandelt?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Ihre Daten werden DSGVO-konform behandelt und nur für die Bearbeitung Ihrer Anfrage verwendet. Weitere Informationen finden Sie in unserer <a href="/datenschutz/" className="text-orange-400 hover:text-orange-300 underline">Datenschutzerklärung</a>.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Können Varianten (Typ/Material/Geländer) verglichen werden?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Ja. Sie können verschiedene Varianten mit unseren Tools vergleichen: Kosten im <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a>, Planung im <a href="/planer/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Planer</a> und Visualisierung im <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a>.
+                  </p>
+                </details>
+                
+                <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                  <summary className="text-lg font-bold text-white cursor-pointer">Wie unterstützt BalkonFuchs bei Zeitplanung und Ablauf?</summary>
+                  <p className="text-gray-300 mt-4 leading-relaxed">
+                    Wir unterstützen Sie dabei, einen realistischen Zeitplan zu entwickeln und die wichtigsten Meilensteine zu definieren. Dies umfasst die Klärung der Rahmenbedingungen, die Planung und die Abstimmung der Umsetzung.
+                  </p>
+                </details>
+              </div>
+            </section>
+
+
           </div>
-        </section>
+        )}
+
           </>
         )}
 

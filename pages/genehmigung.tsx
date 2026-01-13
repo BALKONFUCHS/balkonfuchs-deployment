@@ -610,7 +610,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">🎨 Deinen Balkon planen</h4>
+              <h4 className="text-xl font-bold text-white mb-3">🎨 Ihren Balkon planen</h4>
               <p className="text-gray-400 mb-4">
                 Visualisieren Sie Ihren Traum-Balkon mit unserem Planer
               </p>
@@ -1217,8 +1217,8 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
   return (
     <>
       <Head>
-        <title>Balkon Genehmigungscheck - Benötigen Sie eine Baugenehmigung für Ihren Balkon? | BALKONFUCHS</title>
-        <meta name="description" content="Rechtssicherheit von Anfang an! Unser Genehmigungscheck analysiert anhand Ihres Standorts und Projektdetails, ob Sie eine Baugenehmigung benötigen." />
+        <title>Balkon Genehmigung prüfen: Genehmigungscheck & nächste Schritte</title>
+        <meta name="description" content="Prüfen Sie online, ob Ihr Balkon voraussichtlich genehmigungspflichtig ist. Orientierung nach typischen Faktoren (z. B. Bundesland, Gebäude, WEG). Inklusive nächster Schritte: Kosten, Planung und 3D-Konfigurator." />
         <meta name="keywords" content="balkon genehmigung bundesland, balkonbau genehmigungsfrei, baugenehmigung balkon, balkon verfahrensfrei" />
         <meta name="author" content="BALKONFUCHS" />
         <meta name="robots" content="index, follow" />
@@ -1237,19 +1237,23 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
       <section id="funnel-start" className="bg-gray-800 border-b border-gray-700 py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">
-            <span className="text-purple-400">Genehmigungspflicht prüfen</span>
-            <span className="text-white"> in 1 Minute</span>
+            <span className="text-purple-400">Balkon Genehmigung prüfen</span>
+            <span className="text-white"> mit dem Genehmigungscheck</span>
           </h1>
-          <h2 className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-4 sm:mb-6">
-            Bundesweite Übersicht: Benötigen Sie eine Baugenehmigung für Ihren Balkon?
-          </h2>
-          <h3 className="text-lg text-purple-400 mb-4 font-semibold">
-            Balkon Genehmigungscheck - Rechtssichere Prüfung für alle Bundesländer
-          </h3>
-          <p className="text-gray-400 text-lg leading-relaxed max-w-3xl mx-auto">
-            <span className="text-purple-400 font-semibold">Rechtssicherheit von Anfang an!</span> Unser <span className="text-purple-400 font-semibold">Genehmigungscheck</span> analysiert anhand Ihres <span className="text-purple-400 font-semibold">Standorts</span> 
-            und <span className="text-purple-400 font-semibold">Projektdetails</span>, ob Sie eine <span className="text-purple-400 font-semibold">Baugenehmigung</span> benötigen.
-          </p>
+          <div className="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-4 space-y-3">
+            <p>
+              Mit dem Genehmigungscheck erhalten Sie eine erste Einschätzung, ob Ihr Balkon voraussichtlich genehmigungspflichtig ist. Die Ergebnisse sind eine Orientierung und ersetzen keine Prüfung durch Behörde oder Fachplanung.
+            </p>
+            <p>
+              Nutzen Sie den Check als Startpunkt für die nächsten Schritte.
+            </p>
+          </div>
+          <div className="mt-6">
+            <a href="#check" className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 text-lg font-medium transition-colors">
+              In 60 Sekunden einschätzen
+              <span>→</span>
+            </a>
+          </div>
         </div>
       </section>
       
@@ -1280,7 +1284,7 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
       {/* Main Content */}
       <main className="py-8 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl shadow-lg overflow-hidden">
+          <div id="check" className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl shadow-lg overflow-hidden">
             <div className="p-4 md:p-8">
               {renderCurrentStep()}
             </div>
@@ -1318,6 +1322,217 @@ const BALKONFUCHSGenehmigungscheckFunnel = () => {
           )}
         </div>
       </main>
+
+      {/* Content Sections für SEO */}
+      <div className="max-w-7xl mx-auto px-4 py-16 space-y-16 bg-gray-900">
+        
+        {/* A) Section: Wann ist ein Balkon genehmigungspflichtig? */}
+        <section id="genehmigungspflicht">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Wann ist ein Balkon genehmigungspflichtig?</h2>
+          <div className="space-y-4 text-gray-300 leading-relaxed max-w-3xl">
+            <p>
+              Ob ein Balkon genehmigungspflichtig ist, hängt von verschiedenen Faktoren ab. Typischerweise spielen das Bundesland, die Art des Gebäudes, der Balkontyp, die Größe und die örtlichen Gegebenheiten eine Rolle.
+            </p>
+            <p>
+              In vielen Fällen sind kleinere Balkone unter bestimmten Voraussetzungen genehmigungsfrei, während größere Balkone oder solche mit besonderen Konstruktionen häufig eine Genehmigung erfordern. Die genauen Regelungen variieren je nach Bundesland und können sich auch innerhalb eines Bundeslandes unterscheiden.
+            </p>
+            <p>
+              Da die Vorgaben komplex sein können und sich ändern können, ist eine verbindliche Aussage nur durch die zuständigen Behörden oder Fachplaner möglich. Der Genehmigungscheck gibt Ihnen eine erste Orientierung.
+            </p>
+          </div>
+        </section>
+
+        {/* B) Section: Welche Faktoren sind entscheidend? */}
+        <section id="faktoren">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Welche Faktoren sind entscheidend?</h2>
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Bundesland und lokale Vorgaben:</strong> Die Bauordnungen der Bundesländer können unterschiedliche Regelungen enthalten.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Balkontyp und Konstruktion:</strong> Vorstell-, Anlehn- oder Hängebalkon können unterschiedliche Anforderungen haben.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Gebäudeart / Bestand / Denkmalschutz:</strong> Bestandsgebäude, Denkmalschutz oder besondere Gebäudearten können zusätzliche Anforderungen haben.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Abstandsflächen / Grenzabstände:</strong> Der Abstand zur Grundstücksgrenze kann eine Rolle spielen.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">WEG / Zustimmung:</strong> In Wohnungseigentümergemeinschaften kann zusätzlich eine Zustimmung erforderlich sein.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Eingriffe an Fassade/Statik:</strong> Umfangreiche Eingriffe an der Fassade oder statische Veränderungen können genehmigungspflichtig sein.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Montage-/Zugangssituation:</strong> Erschwerte Zugänglichkeit kann zusätzliche Anforderungen mit sich bringen.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        {/* C) Section: Welche Unterlagen helfen? */}
+        <section id="unterlagen">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Welche Unterlagen helfen für die Prüfung?</h2>
+          <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6 mb-6">
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Grobe Maße:</strong> Breite und Tiefe des geplanten Balkons</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Fotos:</strong> Fotos der Fassade und der Umgebung</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Lageplan:</strong> Grober Lageplan oder Skizze der Gebäudeposition</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Gebäudedaten:</strong> Informationen zum Gebäude (Baujahr, Art, Denkmalschutz)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Skizze/Visualisierung:</strong> Grobe Skizze oder Visualisierung des geplanten Balkons</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">WEG-Informationen:</strong> Falls relevant: Informationen zur Wohnungseigentümergemeinschaft</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Grenzabstände:</strong> Grobe Angaben zum Abstand zur Grundstücksgrenze</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FileText className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+                <span><strong className="text-white">Balkontyp:</strong> Vorstell-, Anlehn- oder Hängebalkon</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <a href="/planer/" className="inline-flex items-center gap-1 text-orange-400 hover:text-orange-300 text-sm font-medium transition-colors">
+              Balkon planen
+              <span>→</span>
+            </a>
+          </div>
+        </section>
+
+        {/* D) Section: Nächste Schritte */}
+        <section id="naechste-schritte">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Nächste Schritte</h2>
+          <div className="flex flex-wrap gap-4">
+            <a href="/kalkulator/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Balkonkosten berechnen
+            </a>
+            <a href="/balkon-konfigurator/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Balkon in 3D konfigurieren
+            </a>
+            <a href="/planer/" className="inline-flex items-center gap-2 border-2 border-gray-600 text-gray-300 hover:border-orange-500 hover:text-orange-400 px-6 py-3 rounded-lg font-medium transition-all duration-300">
+              Balkon planen
+            </a>
+          </div>
+        </section>
+
+        {/* E) FAQ Section */}
+        <section>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">FAQ zur Balkon-Genehmigung</h2>
+          <div className="space-y-4">
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6" open>
+              <summary className="text-lg font-bold text-white cursor-pointer">Wofür ist der Genehmigungscheck gedacht?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Der Genehmigungscheck gibt Ihnen eine erste Orientierung, ob Ihr Balkon voraussichtlich genehmigungspflichtig ist. Er ersetzt keine verbindliche Prüfung durch Behörde oder Fachplanung.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Ist ein Balkon immer genehmigungspflichtig?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Das hängt von Bundesland, Gebäudesituation und Bauart ab. Häufig spielen Balkontyp, Eingriffe an der Fassade und örtliche Vorgaben eine Rolle.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Informationen berücksichtigt der Check typischerweise?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Der Check orientiert sich an typischen Faktoren wie Balkontyp, groben Maßen und Rahmenbedingungen rund um Gebäude und Umfeld. Je nach Projekt sind zusätzliche Details entscheidend.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Reicht das Ergebnis des Genehmigungschecks für eine verbindliche Aussage?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Nein. Das Ergebnis ist eine Orientierung. Für verbindliche Aussagen sind die zuständigen Stellen und ggf. Fachplaner erforderlich.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Rolle spielt das Bundesland?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Vorgaben und Verfahren können je nach Bundesland unterschiedlich sein. Daher ist der Standort ein wichtiger Faktor in der Einschätzung.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Was ist bei WEG oder Zustimmung durch Dritte zu beachten?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Wenn Sie in einer Wohnungseigentümergemeinschaft sind oder Rechte Dritter betroffen sind, kann zusätzlich eine Zustimmung erforderlich sein. Das ist unabhängig von der behördlichen Genehmigung zu prüfen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche Unterlagen sollte ich vorbereiten?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Hilfreich sind grobe Maße, Fotos der Fassade, eine Skizze sowie Informationen zum Gebäude. Für die strukturierte Vorbereitung können Sie den <a href="/planer/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Planer</a> nutzen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Hilft mir der Genehmigungscheck auch bei der Wahl des Balkontyps?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Der Genehmigungscheck unterstützt die Orientierung. Für die Variantenwahl und Visualisierung nutzen viele zusätzlich den <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a>.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Kann ich nach dem Check auch die Kosten einschätzen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Ja. Nach der ersten Einschätzung können Sie die Balkonkosten im <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a> grob berechnen und Varianten vergleichen.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Welche typischen Punkte werden bei Genehmigungen oft übersehen?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Häufig werden Abstandsflächen, Eingriffe an der Fassade, Denkmalschutz, WEG-Themen und Montage-/Zugangssituationen zu spät berücksichtigt.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Was ist der beste nächste Schritt nach dem Check?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Als nächster Schritt lohnt sich eine strukturierte Planung und Kostenschätzung. Nutzen Sie dafür den <a href="/planer/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Planer</a> und den <a href="/kalkulator/" className="text-orange-400 hover:text-orange-300 underline">Balkon-Kalkulator</a>.
+              </p>
+            </details>
+            
+            <details className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+              <summary className="text-lg font-bold text-white cursor-pointer">Wie geht es von der Orientierung zur Umsetzung?</summary>
+              <p className="text-gray-300 mt-4 leading-relaxed">
+                Wenn die Rahmenbedingungen klarer sind, können Sie Ihren Balkon im <a href="/balkon-konfigurator/" className="text-orange-400 hover:text-orange-300 underline">Balkonkonfigurator</a> konfigurieren und mit Ihren Angaben in die Detailplanung gehen.
+              </p>
+            </details>
+          </div>
+        </section>
+
+      </div>
       
       <Footer />
       

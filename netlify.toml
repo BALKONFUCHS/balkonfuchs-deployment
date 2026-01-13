@@ -95,6 +95,42 @@
   to = "/blogs/post/balkon-bauantrag-genehmigung"
   status = 301
 
+# Berlin Edition redirects (to unified city page)
+[[redirects]]
+  from = "/partner-info-berlin"
+  to = "/partner/berlin/"
+  status = 301
+
+[[redirects]]
+  from = "/partner-info-berlin/"
+  to = "/partner/berlin/"
+  status = 301
+
+[[redirects]]
+  from = "/partner-info-berlin/*"
+  to = "/partner/berlin/"
+  status = 301
+
+[[redirects]]
+  from = "/partner-info"
+  to = "/partner/berlin/"
+  status = 301
+
+[[redirects]]
+  from = "/partner-info/"
+  to = "/partner/berlin/"
+  status = 301
+
+[[redirects]]
+  from = "/berlin-balkonbau-partner-werden"
+  to = "/partner/berlin/"
+  status = 301
+
+[[redirects]]
+  from = "/berlin-balkonbau-partner-werden/"
+  to = "/partner/berlin/"
+  status = 301
+
 # ============================================
 # PRIORITY 2: COST ARTICLES
 # ============================================
