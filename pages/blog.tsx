@@ -207,8 +207,8 @@ const Blog = () => {
             
             {/* Trust Badge */}
             <div style={{textAlign: 'center', marginBottom: '1.5rem'}}>
-              <div style={{display: 'inline-flex', alignItems: 'center', background: 'rgba(249, 115, 22, 0.1)', color: '#fb923c', padding: '0.5rem 1rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: 500, border: '1px solid rgba(249, 115, 22, 0.2)'}}>
-                📚 Seit 2018 • 47 Expertenartikel • 12.400+ Leser/Monat
+              <div style={{display: 'inline-flex', alignItems: 'center', background: 'rgba(55, 65, 81, 0.5)', color: '#9ca3af', padding: '0.5rem 1rem', borderRadius: '9999px', fontSize: '0.875rem', fontWeight: 500, border: '1px solid rgba(75, 85, 99, 0.5)'}}>
+                Seit 2018 • 47 Expertenartikel • 12.400+ Leser/Monat
               </div>
             </div>
             
@@ -243,7 +243,6 @@ const Blog = () => {
             <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '3rem'}}>
               
               <a href="#genehmigung" className="hero-topic-card" style={{background: 'rgba(17, 24, 39, 0.5)', border: '1px solid #374151', borderRadius: '1rem', padding: '1.5rem', textDecoration: 'none', transition: 'all 0.3s', display: 'block'}}>
-                <div style={{fontSize: '2rem', marginBottom: '0.75rem'}}>📋</div>
                 <h3 style={{fontWeight: 'bold', color: 'white', marginBottom: '0.5rem'}}>Genehmigung & Recht</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6}}>
                   Wann brauchen Sie eine Baugenehmigung? Alle 16 Bundesländer im Vergleich
@@ -251,7 +250,6 @@ const Blog = () => {
               </a>
               
               <a href="#kosten" className="hero-topic-card" style={{background: 'rgba(17, 24, 39, 0.5)', border: '1px solid #374151', borderRadius: '1rem', padding: '1.5rem', textDecoration: 'none', transition: 'all 0.3s', display: 'block'}}>
-                <div style={{fontSize: '2rem', marginBottom: '0.75rem'}}>💰</div>
                 <h3 style={{fontWeight: 'bold', color: 'white', marginBottom: '0.5rem'}}>Kosten & Finanzierung</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6}}>
                   Was kostet ein Balkon wirklich? Kalkulation, Förderungen, Spartipps
@@ -259,7 +257,6 @@ const Blog = () => {
               </a>
               
               <a href="#konstruktion" className="hero-topic-card" style={{background: 'rgba(17, 24, 39, 0.5)', border: '1px solid #374151', borderRadius: '1rem', padding: '1.5rem', textDecoration: 'none', transition: 'all 0.3s', display: 'block'}}>
-                <div style={{fontSize: '2rem', marginBottom: '0.75rem'}}>🏗️</div>
                 <h3 style={{fontWeight: 'bold', color: 'white', marginBottom: '0.5rem'}}>Planung & Konstruktion</h3>
                 <p style={{color: '#9ca3af', fontSize: '0.875rem', lineHeight: 1.6}}>
                   Welcher Balkontyp passt zu Ihrem Haus? Schritt-für-Schritt-Anleitungen
@@ -269,9 +266,9 @@ const Blog = () => {
             </div>
             
             {/* Update-Hinweis */}
-            <div style={{textAlign: 'center', background: 'rgba(249, 115, 22, 0.1)', border: '1px solid rgba(249, 115, 22, 0.2)', borderRadius: '0.75rem', padding: '1rem', maxWidth: '48rem', margin: '0 auto'}}>
-              <p style={{color: '#fb923c', fontSize: '0.875rem', margin: 0}}>
-                ✨ <strong>Neu überarbeitet 2026:</strong> Unsere Artikel werden kontinuierlich aktualisiert, damit Sie immer die neuesten Informationen zu Baurecht, Kosten und Technologien erhalten.
+            <div style={{textAlign: 'center', background: 'rgba(55, 65, 81, 0.3)', border: '1px solid rgba(75, 85, 99, 0.5)', borderRadius: '0.75rem', padding: '1rem', maxWidth: '48rem', margin: '0 auto'}}>
+              <p style={{color: '#d1d5db', fontSize: '0.875rem', margin: 0}}>
+                <strong>Neu überarbeitet 2026:</strong> Unsere Artikel werden kontinuierlich aktualisiert, damit Sie immer die neuesten Informationen zu Baurecht, Kosten und Technologien erhalten.
               </p>
             </div>
             
@@ -293,68 +290,34 @@ const Blog = () => {
               }).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((post) => (
                 <article
                   key={post.id}
-                  className="bg-gray-800/50 border border-gray-700 rounded-2xl overflow-hidden hover:border-orange-500/50 transition-all duration-300 group"
+                  className="bg-gray-800/50 border border-gray-700 rounded-2xl overflow-hidden hover:border-gray-600 transition-all duration-300 group"
                 >
                   {/* Thumbnail */}
                   <Link href={`/blogs/post/${post.slug}`}>
-                    <a className="block relative h-56 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 overflow-hidden group/thumbnail">
-                      {/* Category Icon based on category */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="relative w-24 h-24">
-                          {/* Gradient Background Circle */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-orange-500/30 to-red-500/30 rounded-full blur-xl"></div>
-                          {/* Icon Container */}
-                          <div className="relative w-24 h-24 bg-gradient-to-br from-orange-500/40 to-red-500/40 rounded-full flex items-center justify-center border-2 border-orange-500/30 group-hover/thumbnail:scale-110 transition-transform duration-300">
-                            {/* Category-specific Icons */}
-                            {post.category === 'Genehmigung' && (
-                              <span className="text-5xl">🏛️</span>
-                            )}
-                            {post.category === 'Kosten' && (
-                              <span className="text-5xl">💰</span>
-                            )}
-                            {post.category === 'Planung' && (
-                              <span className="text-5xl">📐</span>
-                            )}
-                            {post.category === 'Förderung' && (
-                              <span className="text-5xl">💵</span>
-                            )}
-                            {post.category === 'Tipps & Wissenswertes' && (
-                              <span className="text-5xl">💡</span>
-                            )}
-                            {!['Genehmigung', 'Kosten', 'Planung', 'Förderung', 'Tipps & Wissenswertes'].includes(post.category) && (
-                              <span className="text-5xl">📝</span>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                      
-                      {/* Thumbnail Image (if available) - overlays the icon */}
+                    <a className="block relative h-56 bg-gray-800 overflow-hidden group/thumbnail">
+                      {/* Thumbnail Image (if available) */}
                       {post.thumbnail && (
                         <img
                           src={post.thumbnail}
                           alt={post.title}
-                          className="absolute inset-0 w-full h-full object-cover group-hover/thumbnail:scale-105 transition-transform duration-300 opacity-90"
+                          className="absolute inset-0 w-full h-full object-cover group-hover/thumbnail:scale-105 transition-transform duration-300 opacity-80"
                           loading="lazy"
                           onError={(e) => {
-                            // Hide image if it fails to load, show icon instead
+                            // Hide image if it fails to load
                             (e.target as HTMLImageElement).style.display = 'none';
                           }}
                         />
                       )}
                       
                       {/* Gradient Overlay for better text readability */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent"></div>
                       
                       {/* Category Badge */}
                       <div className="absolute top-4 right-4 z-10">
-                        <span className="bg-orange-500/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                        <span className="bg-gray-800/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold border border-gray-600">
                           {post.category}
                         </span>
                       </div>
-                      
-                      {/* Decorative Elements */}
-                      <div className="absolute top-0 left-0 w-32 h-32 bg-orange-500/5 rounded-full blur-3xl"></div>
-                      <div className="absolute bottom-0 right-0 w-32 h-32 bg-red-500/5 rounded-full blur-3xl"></div>
                     </a>
                   </Link>
 
@@ -379,7 +342,7 @@ const Blog = () => {
                     {/* Title */}
                     <Link href={`/blogs/post/${post.slug}`}>
                       <a>
-                        <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors line-clamp-2">
+                        <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
                           {post.title}
                         </h2>
                       </a>
@@ -392,7 +355,7 @@ const Blog = () => {
 
                     {/* Read More */}
                     <Link href={`/blogs/post/${post.slug}`}>
-                      <a className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold group/link">
+                      <a className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold group/link">
                         Weiterlesen
                         <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                       </a>
@@ -403,7 +366,7 @@ const Blog = () => {
             </div>
 
             {/* Balkonbrief CTA */}
-            <div className="mt-16 bg-gradient-to-r from-orange-500/10 to-red-500/10 border border-orange-500/30 rounded-2xl p-8 text-center">
+            <div className="mt-16 bg-gray-800/50 border border-gray-700 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold text-white mb-4">
                 Bleiben Sie auf dem Laufenden
               </h3>
@@ -412,7 +375,7 @@ const Blog = () => {
               </p>
               <a
                 href="/kontakt/"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300"
               >
                 Balkonbrief abonnieren
                 <ArrowRight className="w-5 h-5" />
@@ -440,10 +403,7 @@ const Blog = () => {
         }
         
         .gradient-text {
-          background: linear-gradient(135deg, #fb923c, #ea580c);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          color: #fb923c;
         }
         
         /* Hover-Effekte für Blog Hero Themen-Karten */
@@ -452,9 +412,9 @@ const Blog = () => {
         }
         
         .hero-topic-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(249, 115, 22, 0.2);
-          border-color: #f97316 !important;
+          transform: translateY(-4px);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+          border-color: #4b5563 !important;
         }
         
         /* Mobile Optimierung für Blog Hero */

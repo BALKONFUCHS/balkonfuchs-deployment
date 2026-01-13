@@ -45,16 +45,16 @@ const blogPosts: Record<string, BlogPost> = {
         <h3 style="margin-top: 0; color: #111827;"><strong style="color: #111827;">In 60 Sekunden zur Antwort:</strong></h3>
         <p style="color: #374151;">Unser kostenloser <strong style="color: #111827;">Baugenehmigungscheck</strong> berücksichtigt automatisch:</p>
         <ul style="text-align: left; max-width: 600px; margin: 20px auto; color: #374151;">
-          <li style="color: #374151;">📍 Deine Bundesland-spezifischen Vorschriften</li>
-          <li style="color: #374151;">🏠 Deine Projektsituation (Neubau/Bestand)</li>
-          <li style="color: #374151;">📏 Größe und Art deines geplanten Balkons</li>
+          <li style="color: #374151;">📍 Ihre Bundesland-spezifischen Vorschriften</li>
+          <li style="color: #374151;">🏠 Ihre Projektsituation (Neubau/Bestand)</li>
+          <li style="color: #374151;">📏 Größe und Art Ihres geplanten Balkons</li>
           <li style="color: #374151;">🗺️ Bebauungsplan-Situation</li>
         </ul>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/genehmigung/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen in 60 Sekunden</a></strong></p>
         <p style="font-size: 0.9em; color: #6b7280;"><em>Über 3.400 Nutzer haben ihre Genehmigungsfrage bereits geklärt.</em></p>
       </div>
 
-      <h2 id="grundlagen" style="color: #ffffff;">1. Das musst du wissen: Grundlagen der Baugenehmigung</h2>
+      <h2 id="grundlagen" style="color: #ffffff;">1. Das sollten Sie wissen: Grundlagen der Baugenehmigung</h2>
       
       <h3 style="color: #f3f4f6;">Die wichtigste Regel vorweg:</h3>
       <blockquote style="border-left: 4px solid #f97316; padding-left: 20px; margin: 20px 0; font-style: italic; color: #e5e7eb;">
@@ -81,13 +81,13 @@ const blogPosts: Record<string, BlogPost> = {
 
       <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚖️ Rechtslage eindeutig:</h4>
-        <p style="color: #374151;">Du <strong style="color: #111827;">musst</strong> den nachträglichen Balkonanbau immer im Vorfeld beim Bauamt mit einem <strong style="color: #111827;">Bauantrag anzeigen</strong>. Dann entscheiden:</p>
+        <p style="color: #374151;">Sie <strong style="color: #111827;">müssen</strong> den nachträglichen Balkonanbau immer im Vorfeld beim Bauamt mit einem <strong style="color: #111827;">Bauantrag anzeigen</strong>. Dann entscheiden:</p>
         <ol style="color: #374151;">
           <li style="color: #374151;">Die äußeren Umstände</li>
           <li style="color: #374151;">Das zuständige Bauamt</li>
-          <li style="color: #374151;">Die Landesbauordnung deines Bundeslandes</li>
+          <li style="color: #374151;">Die Landesbauordnung Ihres Bundeslandes</li>
         </ol>
-        <p style="color: #374151;">...in welcher Form eine Genehmigung für deinen Balkon erteilt werden kann.</p>
+        <p style="color: #374151;">...in welcher Form eine Genehmigung für Ihren Balkon erteilt werden kann.</p>
       </div>
 
       <h3 style="color: #f3f4f6;">Warum sind Balkone genehmigungspflichtig?</h3>
@@ -158,28 +158,28 @@ const blogPosts: Record<string, BlogPost> = {
         <strong style="color: #991b1b;">❌ NICHT:</strong> Sie sind von allen Vorschriften befreit</p>
         <p style="color: #374151;"><strong style="color: #065f46;">✅ SONDERN:</strong> Ein vereinfachtes Verfahren mit weniger Prüfung durch das Bauamt, ABER:</p>
         <ul style="color: #374151;">
-          <li style="color: #374151;">Du musst ALLE Unterlagen einreichen</li>
-          <li style="color: #374151;">Du trägst die VOLLE Verantwortung</li>
+          <li style="color: #374151;">Sie müssen ALLE Unterlagen einreichen</li>
+          <li style="color: #374151;">Sie tragen die VOLLE Verantwortung</li>
           <li style="color: #374151;">ALLE Bauvorschriften müssen eingehalten werden</li>
         </ul>
       </div>
 
       <h3 style="color: #f3f4f6;">Die 6 Voraussetzungen für Genehmigungsfreistellung:</h3>
 
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Damit dein Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong style="color: #ffffff;">ALLE</strong> dieser Punkte erfüllt sein:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Damit Ihr Balkonprojekt überhaupt für eine Genehmigungsfreistellung infrage kommt, müssen <strong style="color: #ffffff;">ALLE</strong> dieser Punkte erfüllt sein:</p>
 
       <h4 style="color: #f3f4f6;">✅ 1. Gültiger Bebauungsplan</h4>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Dein Grundstück muss sich innerhalb eines Gebietes mit einem <strong style="color: #ffffff;">rechtskräftigen Bebauungsplan</strong> befinden.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ihr Grundstück muss sich innerhalb eines Gebietes mit einem <strong style="color: #ffffff;">rechtskräftigen Bebauungsplan</strong> befinden.</p>
       
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">So prüfst du das:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">So prüfen Sie das:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Kontakt zum örtlichen Bauamt</li>
         <li style="color: #e5e7eb;">Fragen nach &quot;Bebauungsplan-Geltungsbereich&quot;</li>
-        <li style="color: #e5e7eb;">Oder nutze Online-Geoportale deiner Stadt</li>
+        <li style="color: #e5e7eb;">Oder nutzen Sie Online-Geoportale Ihrer Stadt</li>
       </ul>
 
       <h4 style="color: #f3f4f6;">✅ 2. Gebäudeklasse 1-3 (manchmal 4)</h4>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Dein Gebäude muss in die richtige Gebäudeklasse fallen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ihr Gebäude muss in die richtige Gebäudeklasse fallen:</p>
       
       <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
         <thead>
@@ -219,7 +219,7 @@ const blogPosts: Record<string, BlogPost> = {
       </table>
 
       <h4 style="color: #f3f4f6;">✅ 3. Übereinstimmung mit Bebauungsplan</h4>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Dein Balkon muss <strong style="color: #ffffff;">exakt</strong> den Vorgaben des B-Plans entsprechen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ihr Balkon muss <strong style="color: #ffffff;">exakt</strong> den Vorgaben des B-Plans entsprechen:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bauweise (offen/geschlossen)</li>
         <li style="color: #e5e7eb;">Baugrenzen und Baulinien</li>
@@ -274,10 +274,10 @@ const blogPosts: Record<string, BlogPost> = {
             </tr>
           </tbody>
         </table>
-        <p style="color: #374151;"><strong style="color: #111827;">Wenn du innerhalb von 4 Wochen nichts vom Bauamt hörst = Du darfst bauen.</strong></p>
+        <p style="color: #374151;"><strong style="color: #111827;">Wenn Sie innerhalb von 4 Wochen nichts vom Bauamt hören = Sie dürfen bauen.</strong></p>
 
         <h4 style="margin-top: 20px; color: #111827; font-weight: bold;">📄 Weniger Unterlagen?</h4>
-        <p style="color: #374151;"><strong style="color: #111827;">NEIN!</strong> Du musst die gleichen Unterlagen einreichen:</p>
+        <p style="color: #374151;"><strong style="color: #111827;">NEIN!</strong> Sie müssen die gleichen Unterlagen einreichen:</p>
         <ul style="color: #374151;">
           <li style="color: #374151;">Bauantragsformulare</li>
           <li style="color: #374151;">Baupläne (Grundrisse, Ansichten, Schnitte)</li>
@@ -301,19 +301,19 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #374151;"><strong style="color: #111827;">Wann lohnt sich Genehmigungsfreistellung?</strong></p>
         <p style="color: #374151;"><strong style="color: #065f46;">✅ JA, wenn:</strong></p>
         <ul style="color: #374151;">
-          <li style="color: #374151;">Du in einem klaren B-Plan-Gebiet bist</li>
-          <li style="color: #374151;">Deine Planung 100% sicher den Vorgaben entspricht</li>
-          <li style="color: #374151;">Du einen erfahrenen Planer hast</li>
+          <li style="color: #374151;">Sie in einem klaren B-Plan-Gebiet sind</li>
+          <li style="color: #374151;">Ihre Planung 100% sicher den Vorgaben entspricht</li>
+          <li style="color: #374151;">Sie einen erfahrenen Planer haben</li>
           <li style="color: #374151;">Zeit der kritische Faktor ist</li>
         </ul>
         <p style="color: #374151;"><strong style="color: #991b1b;">❌ NEIN, wenn:</strong></p>
         <ul style="color: #374151;">
-          <li style="color: #374151;">Dein Projekt auch nur leicht &quot;grenzwertig&quot; ist</li>
+          <li style="color: #374151;">Ihr Projekt auch nur leicht &quot;grenzwertig&quot; ist</li>
           <li style="color: #374151;">Unsicherheiten bei Abstandsflächen bestehen</li>
           <li style="color: #374151;">Der B-Plan Interpretationsspielraum lässt</li>
-          <li style="color: #374151;">Du maximale Rechtssicherheit willst</li>
+          <li style="color: #374151;">Sie maximale Rechtssicherheit wollen</li>
         </ul>
-        <p style="color: #374151;"><strong style="color: #111827;">Warum?</strong> Bei der regulären Genehmigung prüft das Bauamt alles. Bei Freistellung trägst <strong style="color: #111827;">DU</strong> das volle Risiko fehlerhafter Planung!</p>
+        <p style="color: #374151;"><strong style="color: #111827;">Warum?</strong> Bei der regulären Genehmigung prüft das Bauamt alles. Bei Freistellung tragen <strong style="color: #111827;">Sie</strong> das volle Risiko fehlerhafter Planung!</p>
       </div>
 
       <h2 id="praxisbeispiele" style="color: #ffffff;">3. Praxis-Beispiele: So lief es bei anderen</h2>
@@ -400,8 +400,8 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <div style="background: #fff8e1; padding: 20px; margin: 20px 0; border-left: 4px solid #ff9800; border-radius: 4px; color: #111827;">
-        <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">💼 Brauchst du Unterstützung bei deinem Bauantrag?</h4>
-        <p style="color: #374151;">Mit unserem <strong style="color: #111827;">BalkonPlaner</strong> strukturierst du dein Projekt professionell und hast alle Unterlagen für den Bauantrag bereits vorbereitet.</p>
+        <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">💼 Benötigen Sie Unterstützung bei Ihrem Bauantrag?</h4>
+        <p style="color: #374151;">Mit unserem <strong style="color: #111827;">BalkonPlaner</strong> strukturieren Sie Ihr Projekt professionell und haben alle Unterlagen für den Bauantrag bereits vorbereitet.</p>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Zum BalkonPlaner</a></strong> — Projekt in 15 Minuten durchplanen</p>
       </div>
 
@@ -409,7 +409,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 1: Projekt definieren ⏱️ 1-2 Tage</h3>
       
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was du tun musst:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was Sie tun müssen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Balkontyp festlegen (Vorstellbalkon, Anbaubalkon, Kragarmbalkon)</li>
         <li style="color: #e5e7eb;">Größe bestimmen</li>
@@ -423,7 +423,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 2: Genehmigungspflicht prüfen ⏱️ 5 Minuten</h3>
       
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was du tun musst:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Was Sie tun müssen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bundesland prüfen</li>
         <li style="color: #e5e7eb;">Gebäudesituation einschätzen</li>
@@ -436,7 +436,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">Schritt 3: Planer beauftragen ⏱️ 1-2 Wochen</h3>
       
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wen du brauchst:</strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wen Sie brauchen:</strong></p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Architekt (mit Bauvorlageberechtigung) ODER</li>
         <li style="color: #e5e7eb;">Bauingenieur (mit Bauvorlageberechtigung) ODER</li>
@@ -493,7 +493,7 @@ const blogPosts: Record<string, BlogPost> = {
       
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Wo einreichen:</strong></p>
       <ul style="color: #e5e7eb;">
-        <li style="color: #e5e7eb;">Zuständiges Bauamt deiner Stadt/Gemeinde</li>
+        <li style="color: #e5e7eb;">Zuständiges Bauamt Ihrer Stadt/Gemeinde</li>
         <li style="color: #e5e7eb;">Oft online möglich</li>
         <li style="color: #e5e7eb;">Persönliche Abgabe oder per Post</li>
       </ul>
@@ -730,8 +730,8 @@ const blogPosts: Record<string, BlogPost> = {
       </table>
 
       <div style="background: #e3f2fd; padding: 20px; margin: 20px 0; text-align: center; border-radius: 4px; color: #111827;">
-        <h3 style="margin-top: 0; color: #1e40af; font-weight: bold;">🔍 Dein Bundesland ist nicht dabei oder du brauchst Details?</h3>
-        <p style="color: #374151;">Unser <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> kennt die Vorschriften ALLER 16 Bundesländer und gibt dir eine präzise Einschätzung für dein Projekt.</p>
+        <h3 style="margin-top: 0; color: #1e40af; font-weight: bold;">🔍 Ihr Bundesland ist nicht dabei oder Sie benötigen Details?</h3>
+        <p style="color: #374151;">Unser <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> kennt die Vorschriften ALLER 16 Bundesländer und gibt Ihnen eine präzise Einschätzung für Ihr Projekt.</p>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen</a></strong></p>
       </div>
 
@@ -850,7 +850,7 @@ const blogPosts: Record<string, BlogPost> = {
       </ul>
 
       <div style="background: #fff3cd; padding: 20px; margin: 20px 0; border-radius: 4px; color: #111827;">
-        <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">✅ Wo du sparen kannst:</h4>
+        <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">✅ Wo Sie sparen können:</h4>
         <ol style="color: #374151;">
           <li style="color: #374151;"><strong style="color: #111827;">Systembalkon statt Individual-Lösung</strong> - Ersparnis: 500-1.000€ bei Planung/Statik</li>
           <li style="color: #374151;"><strong style="color: #111827;">Genehmigungsfreistellung nutzen</strong> - Ersparnis: ~150€ Gebühren (aber nur wenn Voraussetzungen 100% passen)</li>
@@ -867,7 +867,7 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
 
       <div style="background: #e8f5e9; padding: 20px; margin: 20px 0; text-align: center; border-radius: 4px; color: #111827;">
-        <h3 style="margin-top: 0; color: #065f46; font-weight: bold;">🧮 Gesamtkosten für dein Projekt berechnen</h3>
+        <h3 style="margin-top: 0; color: #065f46; font-weight: bold;">🧮 Gesamtkosten für Ihr Projekt berechnen</h3>
         <p style="color: #374151;">Nutze unseren <strong style="color: #111827;">BalkonKalkulator</strong> für eine detaillierte Kostenübersicht — inkl. Genehmigungskosten, Baukosten und allen Nebenkosten.</p>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/kalkulator/" style="color: #16a34a; text-decoration: underline; font-weight: bold;">Jetzt Kosten berechnen</a></strong> (2 Minuten)</p>
       </div>
@@ -1020,14 +1020,14 @@ const blogPosts: Record<string, BlogPost> = {
       <div style="background: #ffebee; padding: 20px; margin: 20px 0; border-radius: 4px; color: #111827;">
         <p style="color: #374151;"><strong style="color: #111827;">Typisches Szenario:</strong> Handwerksbetrieb verspricht: <em>&quot;Das geht auch ohne Genehmigung, machen wir ständig so...&quot;</em></p>
         <p style="color: #374151;"><strong style="color: #111827;">Warum das gefährlich ist:</strong> Handwerker haftet NICHT für fehlende Genehmigung. Du als Bauherr trägst volle Verantwortung!</p>
-        <p style="color: #374151;"><strong style="color: #065f46;">✅ Richtige Vorgehensweise:</strong> Lass dir schriftlich bestätigen, dass Genehmigung eingeholt wurde. Zahl erst nach Genehmigungsvorlage die Schlusszahlung.</p>
+        <p style="color: #374151;"><strong style="color: #065f46;">✅ Richtige Vorgehensweise:</strong> Lassen Sie sich schriftlich bestätigen, dass Genehmigung eingeholt wurde. Zahlen Sie erst nach Genehmigungsvorlage die Schlusszahlung.</p>
       </div>
 
       <h3 style="color: #f3f4f6;">❌ Fehler 4: Nachbarn nicht informieren</h3>
       
       <div style="background: #ffebee; padding: 20px; margin: 20px 0; border-radius: 4px; color: #111827;">
         <p style="color: #374151;">Auch wenn rechtlich nicht zwingend nötig, können verärgerte Nachbarn beim Bauamt Beschwerde einlegen, Widerspruch einlegen und Verfahren verzögern.</p>
-        <p style="color: #374151;"><strong style="color: #065f46;">✅ Praxis-Tipp:</strong> Informiere Nachbarn frühzeitig, zeige Pläne und erkläre das Projekt. Hole dir schriftliche Zustimmung.</p>
+        <p style="color: #374151;"><strong style="color: #065f46;">✅ Praxis-Tipp:</strong> Informieren Sie Nachbarn frühzeitig, zeigen Sie Pläne und erklären Sie das Projekt. Holen Sie sich schriftliche Zustimmung.</p>
       </div>
 
       <h3 style="color: #f3f4f6;">❌ Fehler 5: Billigst-Angebot ohne Prüfung annehmen</h3>
@@ -1053,14 +1053,14 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">🔍 Allgemeine Fragen</h3>
 
       <h4 style="color: #f3f4f6;">❓ Brauche ich für jeden Balkon eine Baugenehmigung?</h4>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja, für <strong style="color: #ffffff;">nachträglich angebaute</strong> Balkone benötigst du in den allermeisten Fällen eine Baugenehmigung bzw. musst den Balkon beim Bauamt anzeigen.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Ja, für <strong style="color: #ffffff;">nachträglich angebaute</strong> Balkone benötigen Sie in den allermeisten Fällen eine Baugenehmigung bzw. müssen den Balkon beim Bauamt anzeigen.</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Ausnahmen sind extrem selten</strong> und betreffen meist:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Balkone in Neubauten (bereits im Bauantrag des Hauses enthalten)</li>
         <li style="color: #e5e7eb;">Winzige Balkone unter 1m² (in manchen Bundesländern)</li>
         <li style="color: #e5e7eb;">Reine Instandsetzung bestehender Balkone (ohne Vergrößerung)</li>
       </ul>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Prüfe dein Projekt kostenlos</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Prüfen Sie Ihr Projekt kostenlos</a></strong></p>
 
       <h4 style="color: #f3f4f6;">❓ Wie lange dauert das Genehmigungsverfahren?</h4>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Die Dauer variiert nach Bundesland und Verfahrensart:</p>
@@ -1088,7 +1088,7 @@ const blogPosts: Record<string, BlogPost> = {
       <h4 style="color: #f3f4f6;">❓ Kann ich den Bauantrag selbst stellen?</h4>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Theoretisch ja, praktisch meist nein.</strong></p>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Bauanträge erfordern Unterschrift eines &quot;Bauvorlageberechtigten&quot; (Architekten, Bauingenieure, bestimmte Handwerksmeister). Ohne diese Qualifikation wird der Antrag nicht angenommen.</p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> kannst du dein Projekt strukturieren und hast alle Unterlagen bereits vorbereitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> können Sie Ihr Projekt strukturieren und haben alle Unterlagen bereits vorbereitet.</p>
 
       <h4 style="color: #f3f4f6;">❓ Was ist, wenn mein Balkon abgelehnt wird?</h4>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Eine Ablehnung ist selten, aber möglich. Deine Optionen:</p>
@@ -1149,25 +1149,25 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Unser Rat:</strong> Lieber von Anfang an richtig machen!</p>
 
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 40px 0; border-radius: 10px;">
-        <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Du hast jetzt das komplette Wissen. Zeit für die Umsetzung!</h3>
+        <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Sie haben jetzt das komplette Wissen. Zeit für die Umsetzung!</h3>
         
         <h4 style="color: #ffffff; font-weight: bold; margin-top: 20px;">1️⃣ Genehmigung prüfen (60 Sekunden)</h4>
-        <p style="color: #ffffff;">Nutze unseren <a href="/genehmigung/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Baugenehmigungscheck</a> und erfahre sofort, ob du eine Genehmigung brauchst und welches Verfahren für dich gilt.</p>
+        <p style="color: #ffffff;">Nutzen Sie unseren <a href="/genehmigung/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Baugenehmigungscheck</a> und erfahren Sie sofort, ob Sie eine Genehmigung brauchen und welches Verfahren für Sie gilt.</p>
         <p style="color: #ffffff;"><strong>→ <a href="/genehmigung/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen</a></strong></p>
         
         <h4 style="color: #ffffff; font-weight: bold; margin-top: 20px;">2️⃣ Kosten kalkulieren (2 Minuten)</h4>
-        <p style="color: #ffffff;">Mit dem <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonKalkulator</a> erhältst du eine detaillierte Kostenübersicht: Baukosten nach Balkontyp, Genehmigungskosten, alle Nebenkosten, Fördermöglichkeiten.</p>
+        <p style="color: #ffffff;">Mit dem <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonKalkulator</a> erhalten Sie eine detaillierte Kostenübersicht: Baukosten nach Balkontyp, Genehmigungskosten, alle Nebenkosten, Fördermöglichkeiten.</p>
         <p style="color: #ffffff;"><strong>→ <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Jetzt Kosten berechnen</a></strong></p>
         
         <h4 style="color: #ffffff; font-weight: bold; margin-top: 20px;">3️⃣ Projekt professionell planen (15 Minuten)</h4>
-        <p style="color: #ffffff;">Der <a href="/planer/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> hilft dir, dein Projekt strukturiert anzugehen: Schritt-für-Schritt durch alle Phasen, Checklisten für Unterlagen, Zeitplan erstellen, Handwerker-Auswahl.</p>
+        <p style="color: #ffffff;">Der <a href="/planer/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> hilft Ihnen, Ihr Projekt strukturiert anzugehen: Schritt-für-Schritt durch alle Phasen, Checklisten für Unterlagen, Zeitplan erstellen, Handwerker-Auswahl.</p>
         <p style="color: #ffffff;"><strong>→ <a href="/planer/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Zum BalkonPlaner</a></strong></p>
       </div>
 
       <h2 style="color: #ffffff; margin-top: 60px;">📚 Weiterführende Informationen</h2>
 
       <div style="background: #f5f5f5; padding: 30px; margin: 30px 0; border-radius: 8px; color: #111827;">
-        <h3 style="margin-top: 0; color: #111827; font-weight: bold;">Vertiefe dein Wissen:</h3>
+        <h3 style="margin-top: 0; color: #111827; font-weight: bold;">Vertiefen Sie Ihr Wissen:</h3>
         
         <h4 style="color: #111827; font-weight: bold; margin-top: 20px;">📖 Ausführliche Ratgeber:</h4>
         <ul style="color: #374151;">
@@ -1203,10 +1203,10 @@ const blogPosts: Record<string, BlogPost> = {
 
         <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
           <h4 style="color: #991b1b; font-weight: bold;">Rechtlicher Hinweis</h4>
-          <p style="color: #374151;">Dieser Artikel dient der allgemeinen Information und ersetzt keine individuelle Rechtsberatung. Baurecht ist Ländersache und kann sich ändern. Für dein konkretes Projekt:</p>
+          <p style="color: #374151;">Dieser Artikel dient der allgemeinen Information und ersetzt keine individuelle Rechtsberatung. Baurecht ist Ländersache und kann sich ändern. Für Ihr konkretes Projekt:</p>
           <ul style="color: #374151;">
             <li style="color: #374151;">Konsultiere einen Architekten oder Bauingenieur</li>
-            <li style="color: #374151;">Kontaktiere dein zuständiges Bauamt</li>
+            <li style="color: #374151;">Kontaktieren Sie Ihr zuständiges Bauamt</li>
             <li style="color: #374151;">Nutze unsere Tools für eine erste Einschätzung</li>
           </ul>
           <p style="color: #374151;"><strong style="color: #111827;">Alle Angaben ohne Gewähr. Stand: Januar 2026.</strong></p>
@@ -1238,7 +1238,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
         <h3 style="margin-top: 0; color: #111827;"><strong style="color: #111827;">In 60 Sekunden zur Antwort:</strong></h3>
-        <p style="color: #374151;">Unser kostenloser <strong style="color: #111827;">Baugenehmigungscheck</strong> sagt dir sofort, wie groß dein Balkon sein darf.</p>
+        <p style="color: #374151;">Unser kostenloser <strong style="color: #111827;">Baugenehmigungscheck</strong> sagt Ihnen sofort, wie groß Ihr Balkon sein darf.</p>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/genehmigung/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen in 60 Sekunden</a></strong></p>
         <p style="font-size: 0.9em; color: #6b7280;"><em>Über 3.400 Nutzer haben ihre Genehmigungsfrage bereits geklärt.</em></p>
       </div>
@@ -1364,8 +1364,8 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
 
       <div style="background: #eff6ff; padding: 20px; margin: 30px 0; text-align: center; border-radius: 8px; color: #111827; border: 2px solid #3b82f6;">
-        <h3 style="color: #1e40af; font-weight: bold;">🔍 Brauchst du Details für dein Bundesland?</h3>
-        <p style="color: #374151;">Unser <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> berücksichtigt automatisch deine Bundesland-spezifischen Vorschriften und gibt dir eine präzise Einschätzung.</p>
+        <h3 style="color: #1e40af; font-weight: bold;">🔍 Benötigen Sie Details für Ihr Bundesland?</h3>
+        <p style="color: #374151;">Unser <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> berücksichtigt automatisch Ihre Bundesland-spezifischen Vorschriften und gibt Ihnen eine präzise Einschätzung.</p>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen</a></strong></p>
       </div>
 
@@ -1413,7 +1413,7 @@ const blogPosts: Record<string, BlogPost> = {
           <li style="color: #374151;">✅ Abstandsflächen beachten</li>
           <li style="color: #374151;">✅ Statik nachweisen</li>
         </ul>
-        <p style="color: #374151;"><strong style="color: #111827;">Der Unterschied:</strong> Das Verfahren ist schneller und weniger aufwendig, aber <strong style="color: #111827;">du musst trotzdem alles richtig machen!</strong></p>
+        <p style="color: #374151;"><strong style="color: #111827;">Der Unterschied:</strong> Das Verfahren ist schneller und weniger aufwendig, aber <strong style="color: #111827;">Sie müssen trotzdem alles richtig machen!</strong></p>
       </div>
 
       <h3 style="color: #f3f4f6;">Die häufigste Fehlannahme</h3>
@@ -1581,7 +1581,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h2 id="voraussetzungen-immer" style="color: #ffffff;">4. Diese Voraussetzungen gelten IMMER</h2>
 
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Auch wenn dein Balkon unter der verfahrensfreien Größe liegt, musst du <strong style="color: #ffffff;">ALLE</strong> diese Punkte beachten:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Auch wenn Ihr Balkon unter der verfahrensfreien Größe liegt, müssen Sie <strong style="color: #ffffff;">ALLE</strong> diese Punkte beachten:</p>
 
       <h3 style="color: #f3f4f6;">✅ 1. Abstandsflächen einhalten</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Der Grenzabstand muss eingehalten werden. In den meisten Bundesländern gilt:</p>
@@ -1684,7 +1684,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">💸 Gesamtkosten:</strong> ~2.200€ (Bauantrag 350€ + Statik 850€ + Architekt 1.000€)</p>
 
       <div style="background: #ecfdf5; padding: 20px; margin: 20px 0; border-left: 4px solid #10b981; border-radius: 4px; color: #111827;">
-        <h4 style="margin-top: 0; color: #065f46; font-weight: bold;">✅ So machst du es richtig:</h4>
+        <h4 style="margin-top: 0; color: #065f46; font-weight: bold;">✅ So machen Sie es richtig:</h4>
         <ol style="color: #374151;">
           <li style="color: #374151;">Bauamt VOR Baubeginn kontaktieren</li>
           <li style="color: #374151;">Alle Unterlagen vollständig einreichen</li>
@@ -1718,13 +1718,13 @@ const blogPosts: Record<string, BlogPost> = {
       <div style="background: #fee2e2; padding: 20px; margin: 20px 0; border-left: 4px solid #ef4444; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #991b1b; font-weight: bold;">🚨 Wichtige Regel:</h4>
         <p style="color: #374151;"><strong style="color: #111827;">Berlin, Hamburg, Bremen:</strong> In diesen Bundesländern gibt es <strong style="color: #111827;">KEINE verfahrensfreien Balkone</strong>. Jeder Balkon, egal wie klein, braucht eine vollständige Baugenehmigung!</p>
-        <p style="color: #374151;">Plane deshalb immer 3-4 Monate Vorlaufzeit ein, wenn du in einem dieser Bundesländer wohnst.</p>
+        <p style="color: #374151;">Planen Sie deshalb immer 3-4 Monate Vorlaufzeit ein, wenn Sie in einem dieser Bundesländer wohnen.</p>
       </div>
 
       <h2 id="faq" style="color: #ffffff;">6. FAQ: Deine Fragen beantwortet</h2>
 
       <h3 style="color: #f3f4f6;">❓ Wie groß darf ein Balkon ohne Genehmigung sein?</h3>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Das hängt von deinem Bundesland ab:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Das hängt von Ihrem Bundesland ab:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Berlin, Hamburg, Bremen:</strong> ❌ Keine verfahrensfreie Größe</li>
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Bayern, Hessen, Brandenburg:</strong> Bis 10m²</li>
@@ -1733,11 +1733,11 @@ const blogPosts: Record<string, BlogPost> = {
         <li style="color: #e5e7eb;"><strong style="color: #ffffff;">Niedersachsen, Sachsen:</strong> Bis 15m² (liberalste Regelung)</li>
       </ul>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">⚠️ Wichtig:</strong> &quot;Ohne Genehmigung&quot; bedeutet hier &quot;verfahrensfrei&quot;. Du musst trotzdem beim Bauamt anzeigen!</p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Jetzt für dein Bundesland prüfen</a></strong></p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">→ <a href="/genehmigung/" style="color: #f97316; text-decoration: underline; font-weight: bold;">Jetzt für Ihr Bundesland prüfen</a></strong></p>
 
       <h3 style="color: #f3f4f6;">❓ Bedeutet verfahrensfrei, dass ich ohne Bauamt bauen kann?</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort: NEIN!</strong></p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Verfahrensfrei bedeutet nur, dass das <strong style="color: #ffffff;">Verfahren vereinfacht</strong> ist, nicht dass du ohne Bauamt bauen kannst.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Verfahrensfrei bedeutet nur, dass das <strong style="color: #ffffff;">Verfahren vereinfacht</strong> ist, nicht dass Sie ohne Bauamt bauen können.</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Du musst trotzdem:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">✅ Beim Bauamt anzeigen</li>
@@ -1758,7 +1758,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;">Die Größen-Grenzen gelten für alle Typen gleich, aber das <strong style="color: #ffffff;">Verfahren</strong> kann bei komplexeren Typen schwieriger sein.</p>
 
       <h3 style="color: #f3f4f6;">❓ Was passiert, wenn mein Balkon größer ist?</h3>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Dann brauchst du eine vollständige Baugenehmigung:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Dann brauchen Sie eine vollständige Baugenehmigung:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Normales Genehmigungsverfahren (8-16 Wochen)</li>
         <li style="color: #e5e7eb;">Alle Unterlagen müssen vollständig sein</li>
@@ -1769,7 +1769,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">❓ Kann ich einen Balkon unter der Grenze einfach bauen?</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort: NEIN!</strong></p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Auch verfahrensfreie Balkone müssen beim Bauamt angezeigt werden. Wenn du einfach baust ohne Anzeige, ist das <strong style="color: #ffffff;">Schwarzbau</strong> und hat harte Konsequenzen:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Auch verfahrensfreie Balkone müssen beim Bauamt angezeigt werden. Wenn Sie einfach bauen ohne Anzeige, ist das <strong style="color: #ffffff;">Schwarzbau</strong> und hat harte Konsequenzen:</p>
       <ul style="color: #e5e7eb;">
         <li style="color: #e5e7eb;">Bußgeld: 2.000-50.000€ (je nach Bundesland)</li>
         <li style="color: #e5e7eb;">Rückbau-Anordnung möglich</li>
@@ -1779,7 +1779,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <h3 style="color: #f3f4f6;">❓ Wie lange dauert das verfahrensfreie Verfahren?</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Bei Genehmigungsfreistellung: 4 Wochen</p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Wenn du innerhalb von 4 Wochen nichts vom Bauamt hörst, darfst du bauen. ABER: Du musst trotzdem <strong style="color: #ffffff;">vor Baubeginn</strong> alle Unterlagen eingereicht haben!</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Wenn Sie innerhalb von 4 Wochen nichts vom Bauamt hören, dürfen Sie bauen. ABER: Sie müssen trotzdem <strong style="color: #ffffff;">vor Baubeginn</strong> alle Unterlagen eingereicht haben!</p>
 
       <h3 style="color: #f3f4f6;">❓ Was kostet ein verfahrensfreier Balkon?</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Auch verfahrensfreie Balkone kosten bei der Genehmigung:</p>
@@ -1796,7 +1796,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;">Die strengsten Bundesländer sind Berlin, Hamburg und Bremen, wo es keine verfahrensfreien Balkone gibt.</p>
 
       <h3 style="color: #f3f4f6;">❓ Was, wenn mein Balkon genau an der Grenze liegt?</h3>
-      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Wenn dein Balkon <strong style="color: #ffffff;">genau</strong> an der Grenze liegt (z.B. genau 10m² in Bayern), gilt er meist noch als verfahrensfrei.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Wenn Ihr Balkon <strong style="color: #ffffff;">genau</strong> an der Grenze liegt (z.B. genau 10m² in Bayern), gilt er meist noch als verfahrensfrei.</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;">ABER: Bei <strong style="color: #ffffff;">10,1m²</strong> gilt er als zu groß und braucht eine vollständige Genehmigung!</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Tipp:</strong> Plane lieber 5-10% kleiner, um auf der sicheren Seite zu sein.</p>
 
@@ -1805,18 +1805,18 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;">ABER: Bei geschlossenen Loggien kann das Volumen wichtiger sein als die Grundfläche. Prüfe deshalb beides!</p>
 
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 40px; margin: 40px 0; border-radius: 10px;">
-        <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Du willst sichergehen? Lass es prüfen!</h3>
+        <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Sie möchten sichergehen? Lassen Sie es prüfen!</h3>
         
         <h4 style="color: #ffffff; font-weight: bold; margin-top: 20px;">1️⃣ Genehmigungspflicht prüfen (60 Sekunden)</h4>
-        <p style="color: #ffffff;">Unser <a href="/genehmigung/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Baugenehmigungscheck</a> berücksichtigt automatisch deine Bundesland-spezifischen Vorschriften und sagt dir sofort, ob dein Balkon verfahrensfrei ist.</p>
+        <p style="color: #ffffff;">Unser <a href="/genehmigung/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Baugenehmigungscheck</a> berücksichtigt automatisch Ihre Bundesland-spezifischen Vorschriften und sagt Ihnen sofort, ob Ihr Balkon verfahrensfrei ist.</p>
         <p style="color: #ffffff;"><strong>→ <a href="/genehmigung/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Jetzt kostenlos prüfen</a></strong></p>
         
         <h4 style="color: #ffffff; font-weight: bold; margin-top: 20px;">2️⃣ Kosten kalkulieren (2 Minuten)</h4>
-        <p style="color: #ffffff;">Mit dem <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonKalkulator</a> erhältst du eine detaillierte Kostenübersicht inkl. Genehmigungskosten.</p>
+        <p style="color: #ffffff;">Mit dem <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonKalkulator</a> erhalten Sie eine detaillierte Kostenübersicht inkl. Genehmigungskosten.</p>
         <p style="color: #ffffff;"><strong>→ <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Jetzt Kosten berechnen</a></strong></p>
         
         <h4 style="color: #ffffff; font-weight: bold; margin-top: 20px;">3️⃣ Projekt professionell planen (15 Minuten)</h4>
-        <p style="color: #ffffff;">Der <a href="/planer/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> hilft dir, dein Projekt strukturiert anzugehen und alle Unterlagen für den Bauantrag vorzubereiten.</p>
+        <p style="color: #ffffff;">Der <a href="/planer/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> hilft Ihnen, Ihr Projekt strukturiert anzugehen und alle Unterlagen für den Bauantrag vorzubereiten.</p>
         <p style="color: #ffffff;"><strong>→ <a href="/planer/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Zum BalkonPlaner</a></strong></p>
       </div>
     `,
@@ -1845,17 +1845,17 @@ const blogPosts: Record<string, BlogPost> = {
       </div>
 
       <div style="background: #f0f9ff; border: 2px solid #0066cc; padding: 30px; text-align: center; margin: 30px 0; border-radius: 8px; color: #111827;">
-        <h3 style="margin-top: 0; color: #111827;"><strong style="color: #111827;">Vereinfache deinen Bauantrag:</strong></h3>
-        <p style="color: #374151;">Unser <strong style="color: #111827;">BalkonPlaner</strong> strukturiert dein Projekt professionell und bereitet alle Unterlagen vor, die du für den Bauantrag brauchst.</p>
+        <h3 style="margin-top: 0; color: #111827;"><strong style="color: #111827;">Vereinfachen Sie Ihren Bauantrag:</strong></h3>
+        <p style="color: #374151;">Unser <strong style="color: #111827;">BalkonPlaner</strong> strukturiert Ihr Projekt professionell und bereitet alle Unterlagen vor, die Sie für den Bauantrag brauchen.</p>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/planer/" style="color: #0066cc; text-decoration: underline; font-weight: bold;">Zum BalkonPlaner</a></strong> (15 Minuten Setup)</p>
         <p style="font-size: 0.9em; color: #6b7280;"><em>Über 450 Nutzer haben ihren Bauantrag damit vorbereitet.</em></p>
       </div>
 
-      <h2 id="grundlagen" style="color: #ffffff;">1. Bauantrag: Was du wissen musst</h2>
-
-      <h3 style="color: #f3f4f6;">Wann brauchst du einen Bauantrag?</h3>
-
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Für nachträglich angebaute Balkone benötigst du in den allermeisten Fällen einen Bauantrag. Es gibt nur sehr wenige Ausnahmen.</p>
+      <h2 id="grundlagen" style="color: #ffffff;">1. Bauantrag: Was Sie wissen müssen</h2>
+      
+      <h3 style="color: #f3f4f6;">Wann brauchen Sie einen Bauantrag?</h3>
+      
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Für nachträglich angebaute Balkone benötigen Sie in den allermeisten Fällen einen Bauantrag. Es gibt nur sehr wenige Ausnahmen.</p>
 
       <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚖️ Rechtliche Grundlage:</h4>
@@ -1905,12 +1905,12 @@ const blogPosts: Record<string, BlogPost> = {
       <div style="background: #ecfdf5; padding: 20px; margin: 20px 0; border-left: 4px solid #10b981; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #065f46; font-weight: bold;">💡 Praxis-Tipp aus 850+ Projekten:</h4>
         <p style="color: #374151;">Die häufigste Fehlannahme: <em>&quot;Genehmigungsfreistellung = Weniger Unterlagen&quot;</em></p>
-        <p style="color: #374151;"><strong style="color: #111827;">Tatsache:</strong> Auch bei Genehmigungsfreistellung musst du <strong style="color: #111827;">ALLE</strong> Unterlagen einreichen! Der Unterschied ist nur, dass das Bauamt weniger prüft – du trägst mehr Verantwortung.</p>
+        <p style="color: #374151;"><strong style="color: #111827;">Tatsache:</strong> Auch bei Genehmigungsfreistellung müssen Sie <strong style="color: #111827;">ALLE</strong> Unterlagen einreichen! Der Unterschied ist nur, dass das Bauamt weniger prüft – Sie tragen mehr Verantwortung.</p>
       </div>
 
       <h2 id="checkliste" style="color: #ffffff;">2. Die komplette Unterlagen-Checkliste</h2>
 
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Diese Unterlagen benötigst du für einen vollständigen Bauantrag:</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Diese Unterlagen benötigen Sie für einen vollständigen Bauantrag:</p>
 
       <h3 style="color: #f3f4f6;">Pflicht-Unterlagen (IMMER erforderlich)</h3>
 
@@ -2034,7 +2034,7 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #374151; margin: 0;">Nutze unseren <a href="/planer/" style="color: #16a34a; text-decoration: underline; font-weight: bold;">BalkonPlaner</a>, um alle Unterlagen strukturiert zu sammeln und nichts zu vergessen.</p>
       </div>
 
-      <h2 id="schritt-fuer-schritt" style="color: #ffffff;">3. Schritt-für-Schritt: So stellst du den Bauantrag</h2>
+      <h2 id="schritt-fuer-schritt" style="color: #ffffff;">3. Schritt-für-Schritt: So stellen Sie den Bauantrag</h2>
 
       <div style="background: #e8f5e9; padding: 20px; margin: 20px 0; border-left: 4px solid #16a34a; border-radius: 4px; color: #111827;">
         <h3 style="margin-top: 0; color: #065f46; font-weight: bold;">🎯 Timeline: 8-12 Wochen gesamt</h3>
@@ -2065,7 +2065,7 @@ const blogPosts: Record<string, BlogPost> = {
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Dauer:</strong> 1 Tag</p>
 
       <div style="background: #eff6ff; padding: 15px; margin: 15px 0; border-radius: 4px; color: #111827;">
-        <p style="color: #374151; margin: 0;"><strong style="color: #111827;">🛠️ Hilfreich:</strong> <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> — Prüfe in 60 Sekunden, welches Verfahren für dich gilt</p>
+        <p style="color: #374151; margin: 0;"><strong style="color: #111827;">🛠️ Hilfreich:</strong> <a href="/genehmigung/" style="color: #2563eb; text-decoration: underline; font-weight: bold;">Genehmigungscheck</a> — Prüfen Sie in 60 Sekunden, welches Verfahren für Sie gilt</p>
       </div>
 
       <h3 style="color: #f3f4f6;">Phase 2: Planung & Dokumentation (Woche 3-5)</h3>
@@ -2107,8 +2107,8 @@ const blogPosts: Record<string, BlogPost> = {
 
       <div style="background: #fffbeb; padding: 20px; margin: 20px 0; border-left: 4px solid #f59e0b; border-radius: 4px; color: #111827;">
         <h4 style="margin-top: 0; color: #92400e; font-weight: bold;">⚠️ Wichtig:</h4>
-        <p style="color: #374151;">Viele Bauämter akzeptieren nur noch <strong style="color: #111827;">komplette Anträge</strong>. Wenn Unterlagen fehlen, wird der Antrag nicht angenommen und du musst ihn neu einreichen. Das kann Wochen kosten!</p>
-        <p style="color: #374151;"><strong style="color: #111827;">Tipp:</strong> Nutze unsere Checkliste und lasse sie von deinem Planer gegenchecken.</p>
+        <p style="color: #374151;">Viele Bauämter akzeptieren nur noch <strong style="color: #111827;">komplette Anträge</strong>. Wenn Unterlagen fehlen, wird der Antrag nicht angenommen und Sie müssen ihn neu einreichen. Das kann Wochen kosten!</p>
+        <p style="color: #374151;"><strong style="color: #111827;">Tipp:</strong> Nutzen Sie unsere Checkliste und lassen Sie sie von Ihrem Planer gegenchecken.</p>
       </div>
 
       <h3 style="color: #f3f4f6;">Phase 4: Bearbeitung (Woche 7-14)</h3>
@@ -2281,7 +2281,7 @@ const blogPosts: Record<string, BlogPost> = {
       </table>
 
       <div style="background: #e8f5e9; padding: 20px; margin: 20px 0; text-align: center; border-radius: 4px; color: #111827;">
-        <h3 style="margin-top: 0; color: #065f46; font-weight: bold;">🧮 Gesamtkosten für dein Projekt berechnen</h3>
+        <h3 style="margin-top: 0; color: #065f46; font-weight: bold;">🧮 Gesamtkosten für Ihr Projekt berechnen</h3>
         <p style="color: #374151;">Nutze unseren <strong style="color: #111827;">BalkonKalkulator</strong> für eine detaillierte Kostenübersicht — inkl. Genehmigungskosten, Baukosten und allen Nebenkosten.</p>
         <p style="color: #111827;"><strong style="color: #111827;">→ <a href="/kalkulator/" style="color: #16a34a; text-decoration: underline; font-weight: bold;">Jetzt Kosten berechnen</a></strong> (2 Minuten)</p>
       </div>
@@ -2354,7 +2354,7 @@ const blogPosts: Record<string, BlogPost> = {
       <h3 style="color: #f3f4f6;">❓ Kann ich den Bauantrag selbst stellen?</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;"><strong style="color: #ffffff;">Antwort:</strong> Theoretisch ja, praktisch meist nein.</p>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Bauanträge erfordern die Unterschrift eines &quot;Bauvorlageberechtigten&quot; (Architekten, Bauingenieure, bestimmte Handwerksmeister). Ohne diese Qualifikation wird der Antrag nicht angenommen.</p>
-      <p style="color: #e5e7eb; margin-bottom: 16px;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> kannst du dein Projekt strukturieren und hast alle Unterlagen bereits vorbereitet.</p>
+      <p style="color: #e5e7eb; margin-bottom: 16px;">Mit unserem <a href="/planer/" style="color: #f97316; text-decoration: underline; font-weight: bold;">BalkonPlaner</a> können Sie Ihr Projekt strukturieren und haben alle Unterlagen bereits vorbereitet.</p>
 
       <h3 style="color: #f3f4f6;">❓ Wie lange dauert das Bauantragsverfahren?</h3>
       <p style="color: #e5e7eb; margin-bottom: 16px;">Die Dauer variiert nach Bundesland und Verfahrensart:</p>
@@ -2448,7 +2448,7 @@ const blogPosts: Record<string, BlogPost> = {
         <p style="color: #ffffff;"><strong>→ <a href="/planer/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Zum BalkonPlaner</a></strong> (15 Minuten Setup)</p>
         
         <h4 style="color: #ffffff; font-weight: bold; margin-top: 20px;">2️⃣ Kosten kalkulieren</h4>
-        <p style="color: #ffffff;">Mit dem <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonKalkulator</a> erhältst du eine detaillierte Kostenübersicht inkl. Genehmigungskosten.</p>
+        <p style="color: #ffffff;">Mit dem <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">BalkonKalkulator</a> erhalten Sie eine detaillierte Kostenübersicht inkl. Genehmigungskosten.</p>
         <p style="color: #ffffff;"><strong>→ <a href="/kalkulator/" style="color: #ffd700; text-decoration: underline; font-weight: bold;">Jetzt Kosten berechnen</a></strong> (2 Minuten)</p>
       </div>
     `,
@@ -4218,7 +4218,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
               <h1 className="text-4xl font-bold text-white mb-4">Artikel nicht gefunden</h1>
               <p className="text-gray-300 mb-6">Der angeforderte Artikel konnte nicht gefunden werden.</p>
               <Link href="/blog">
-                <a className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 font-semibold">
+                <a className="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-semibold">
                   <ArrowLeft className="w-4 h-4" />
                   Zurück zum Blog
                 </a>
@@ -4315,11 +4315,11 @@ const BlogPost = ({ slug }: BlogPostProps) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <nav className="flex items-center gap-2 text-sm text-gray-400">
               <Link href="/">
-                <a className="hover:text-orange-400 transition-colors">Startseite</a>
+                <a className="hover:text-blue-400 transition-colors">Startseite</a>
               </Link>
               <span>/</span>
               <Link href="/blog">
-                <a className="hover:text-orange-400 transition-colors">Blog</a>
+                <a className="hover:text-blue-400 transition-colors">Blog</a>
               </Link>
               <span>/</span>
               <span className="text-gray-300">{post.category}</span>
@@ -4334,17 +4334,17 @@ const BlogPost = ({ slug }: BlogPostProps) => {
               {/* Main Content */}
               <article className="lg:col-span-2">
                 {/* Back Link */}
-                <Link href="/blog">
-                  <a className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-400 transition-colors mb-6">
-                    <ArrowLeft className="w-4 h-4" />
-                    Zurück zum Blog
-                  </a>
-                </Link>
+                  <Link href="/blog">
+                    <a className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-6">
+                      <ArrowLeft className="w-4 h-4" />
+                      Zurück zum Blog
+                    </a>
+                  </Link>
 
                 {/* Header */}
                 <header className="mb-8">
                   <div className="mb-4">
-                    <span className="bg-orange-500/20 text-orange-400 px-4 py-2 rounded-full text-sm font-semibold">
+                    <span className="bg-gray-800/50 text-gray-300 border border-gray-700 px-4 py-2 rounded-full text-sm font-semibold">
                       {post.category}
                     </span>
                   </div>
@@ -4411,8 +4411,8 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                 {/* Author Box */}
                 <div className="mt-12 bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                   <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">🦊</span>
+                    <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                      <User className="w-8 h-8 text-gray-400" />
                     </div>
                     <div>
                       <h4 className="text-xl font-bold text-white mb-1">{post.author}</h4>
@@ -4430,14 +4430,14 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                   {/* Quick Links */}
                   <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                      <FileText className="w-5 h-5 text-orange-400" />
+                      <FileText className="w-5 h-5 text-gray-400" />
                       Unsere Tools
                     </h3>
                     <ul className="space-y-3">
                       <li>
                         <a
                           href="/kalkulator/"
-                          className="flex items-center gap-3 text-gray-300 hover:text-orange-400 transition-colors p-2 rounded-lg hover:bg-gray-700/50"
+                          className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-gray-700/50"
                         >
                           <Calculator className="w-5 h-5" />
                           <span>Balkon Kalkulator</span>
@@ -4446,7 +4446,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                       <li>
                         <a
                           href="/planer/"
-                          className="flex items-center gap-3 text-gray-300 hover:text-orange-400 transition-colors p-2 rounded-lg hover:bg-gray-700/50"
+                          className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-gray-700/50"
                         >
                           <CalendarIcon className="w-5 h-5" />
                           <span>Balkon Planer</span>
@@ -4455,7 +4455,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                       <li>
                         <a
                           href="/genehmigung/"
-                          className="flex items-center gap-3 text-gray-300 hover:text-orange-400 transition-colors p-2 rounded-lg hover:bg-gray-700/50"
+                          className="flex items-center gap-3 text-gray-300 hover:text-blue-400 transition-colors p-2 rounded-lg hover:bg-gray-700/50"
                         >
                           <CheckCircle className="w-5 h-5" />
                           <span>Genehmigungscheck</span>
@@ -4465,7 +4465,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                   </div>
 
                   {/* CTA Box */}
-                  <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 rounded-xl p-6">
+                  <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
                     <h3 className="text-xl font-bold text-white mb-3">
                       Brauchen Sie Hilfe?
                     </h3>
@@ -4474,7 +4474,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                     </p>
                     <a
                       href="/kontakt/"
-                      className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 transform hover:scale-105 w-full justify-center"
+                      className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 w-full justify-center"
                     >
                       Kostenlose Beratung
                       <ArrowRight className="w-5 h-5" />
@@ -4491,7 +4491,7 @@ const BlogPost = ({ slug }: BlogPostProps) => {
                         {relatedPosts.map((relatedPost) => (
                           <li key={relatedPost.id}>
                             <Link href={`/blogs/post/${relatedPost.slug}`}>
-                              <a className="block text-gray-300 hover:text-orange-400 transition-colors">
+                              <a className="block text-gray-300 hover:text-blue-400 transition-colors">
                                 <h4 className="font-semibold mb-1 line-clamp-2">
                                   {relatedPost.title}
                                 </h4>
