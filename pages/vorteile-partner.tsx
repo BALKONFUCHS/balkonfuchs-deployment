@@ -70,7 +70,7 @@ export default function VorteilePartner() {
             {/* Hero Section */}
             <section className="text-center mb-16">
               <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 mb-8 inline-block">
-                <p className="text-orange-400 font-semibold">⭐ 4.8/5 Sterne von über 850 Balkonbau-Kunden</p>
+                <p className="text-orange-400 font-semibold">⭐ >850 glückliche Balkonkunden</p>
               </div>
               <h1 className="text-5xl font-bold text-white mb-6">
                 <span className="text-orange-400">Balkonbau Partner</span> werden
@@ -267,7 +267,7 @@ export default function VorteilePartner() {
                   </div>
                   <div className="flex items-center">
                     <span className="text-orange-400 mr-2">⭐</span>
-                    <span>4.8/5 Sterne</span>
+                    <span>>850 glückliche Balkonkunden</span>
                   </div>
                   <div className="flex space-x-4">
                     <Link href="/impressum" className="hover:text-orange-400 transition-colors">Impressum</Link>

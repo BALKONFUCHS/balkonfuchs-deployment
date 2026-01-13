@@ -261,7 +261,7 @@ const StartseiteFarbtest = () => {
                 <div className="w-12 h-12 bg-yellow-500/20 rounded-full flex items-center justify-center mr-3">
                   <Star className="w-6 h-6 text-yellow-400" />
                 </div>
-                <span className="text-lg">4.8/5 Sterne von über 850 Kunden</span>
+                <span className="text-lg">>850 glückliche Balkonkunden</span>
               </div>
             </div>
 
@@ -777,8 +777,7 @@ const StartseiteFarbtest = () => {
                   <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                     <Star className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">4.8/5 Sterne</h3>
-                  <p className="text-gray-300">von über 850 Kunden</p>
+                  <h3 className="text-xl font-bold text-white mb-2">>850 glückliche Balkonkunden</h3>
                 </div>
                 <div className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
@@ -927,8 +926,8 @@ const StartseiteFarbtest = () => {
             <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 rounded-2xl p-8">
               <div className="grid md:grid-cols-4 gap-8 text-center">
                 <div>
-                  <div className="text-4xl font-bold text-orange-400 mb-2">4.8/5</div>
-                  <div className="text-gray-300">Kundenbewertung</div>
+                  <div className="text-4xl font-bold text-orange-400 mb-2">>850</div>
+                  <div className="text-gray-300">glückliche Balkonkunden</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold text-orange-400 mb-2">850+</div>

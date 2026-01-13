@@ -239,8 +239,7 @@ export default function GewerbeFunnel() {
                     <Star className="w-6 h-6 text-yellow-300" />
                   </div>
                   <div className="text-left">
-                    <div className="font-bold text-lg">4.8/5 Sterne</div>
-                    <div className="text-blue-200 text-sm">von über 850 Kunden</div>
+                    <div className="font-bold text-lg">>850 glückliche Balkonkunden</div>
                   </div>
                 </div>
               </div>

@@ -86,7 +86,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <Award className="w-4 h-4 text-yellow-400" />
-                <span className="text-sm">4.8/5 Sterne</span>
+                <span className="text-sm">>850 glückliche Balkonkunden</span>
               </div>
             </div>
 

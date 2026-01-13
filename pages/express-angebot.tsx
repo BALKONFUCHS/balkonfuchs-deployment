@@ -1216,7 +1216,7 @@ const BALKONFUCHSExpressAngebotFunnel = () => {
               </div>
               <div className="flex items-center">
                 <span className="text-orange-400 mr-2">⭐</span>
-                <span>4.8/5 Sterne</span>
+                <span>>850 glückliche Balkonkunden</span>
               </div>
               <div className="flex space-x-4">
                 <a href="/impressum" className="hover:text-orange-400 transition-colors">Impressum</a>
