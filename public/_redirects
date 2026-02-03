@@ -10,9 +10,10 @@
 # --------------------------------------------
 
 # Konfigurator -> Balkon-Konfigurator (HIGH PRIORITY - must be before catch-all)
-/konfigurator  /balkon-konfigurator/  301
-/konfigurator/  /balkon-konfigurator/  301
-/konfigurator/*  /balkon-konfigurator/  301
+# ! = force redirect even when route/page exists (avoids 200 then client redirect)
+/konfigurator  /balkon-konfigurator/  301!
+/konfigurator/  /balkon-konfigurator/  301!
+/konfigurator/*  /balkon-konfigurator/:splat  301!
 
 # Main baurecht article (top performer: ~450-960 visits/month)
 # Handle all variants: URL-encoded (%C3%A4 = ä), with/without trailing slash

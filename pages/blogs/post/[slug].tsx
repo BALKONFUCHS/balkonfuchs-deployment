@@ -3355,7 +3355,7 @@ const blogPosts: Record<string, BlogPost> = {
 
       <div style="background: #fff8e1; padding: 20px; margin: 20px 0; border-left: 4px solid #ff9800; border-radius: 8px; color: #111827;">
         <h4 style="margin-top: 0; font-weight: bold; color: #111827;">💡 Schnellstart</h4>
-        <p style="margin-bottom: 0; color: #374151;">Sie möchten sofort starten? Nutzen Sie den <a href="/konfigurator" style="color: #0066cc; font-weight: bold;">BalkonFuchs 3D-Konfigurator</a> und sehen Sie in 15 Minuten, wie Ihr Balkon aussieht und was er kostet.</p>
+        <p style="margin-bottom: 0; color: #374151;">Sie möchten sofort starten? Nutzen Sie den <a href="/balkon-konfigurator/" style="color: #0066cc; font-weight: bold;">BalkonFuchs 3D-Konfigurator</a> und sehen Sie in 15 Minuten, wie Ihr Balkon aussieht und was er kostet.</p>
       </div>
 
       <h2 style="color: #ffffff;">Die 10 ultimativen Vorteile eines 3D-Balkonkonfigurators</h2>
@@ -3590,7 +3590,7 @@ const blogPosts: Record<string, BlogPost> = {
       <div style="background: #e3f2fd; padding: 30px; margin: 30px 0; border-radius: 8px; text-align: center; color: #111827;">
         <h3 style="margin-top: 0; color: #111827;">Bereit, Ihren Balkon zu konfigurieren?</h3>
         <p style="color: #374151;">Starten Sie jetzt mit dem BalkonFuchs 3D-Konfigurator und sehen Sie in 15 Minuten, wie Ihr Traumbalkon aussieht und was er kostet.</p>
-        <a href="/konfigurator" style="display: inline-block; background: #0066cc; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px;">Jetzt Balkon konfigurieren →</a>
+        <a href="/balkon-konfigurator/" style="display: inline-block; background: #0066cc; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 10px;">Jetzt Balkon konfigurieren →</a>
       </div>
 
       <h2 style="color: #ffffff;">Häufige Fragen zum Balkon konfigurieren</h2>
@@ -4113,7 +4113,7 @@ const blogPosts: Record<string, BlogPost> = {
         <h3 style="margin-top: 0; color: #ffffff; font-weight: bold;">Und wenn Sie 2026 über Ihren Balkon nachdenken...</h3>
         <p style="color: #ffffff;">Vielleicht ist es Zeit für einen NEUEN Balkon? Mit sicherem Geländer, modernem Design und professioneller Planung?</p>
         <p style="color: #ffffff;">Nutzen Sie den BalkonFuchs 3D-Konfigurator und planen Sie in 15 Minuten Ihren Traumbalkon – natürlich mit TÜV-geprüften Sicherheitsstandards, damit nie wieder etwas Ungewolltes runterfällt.</p>
-        <p style="margin-top: 20px;"><a href="/konfigurator" style="display: inline-block; background: white; color: #667eea; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">→ Zum Balkon-Konfigurator</a></p>
+        <p style="margin-top: 20px;"><a href="/balkon-konfigurator/" style="display: inline-block; background: white; color: #667eea; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold;">→ Zum Balkon-Konfigurator</a></p>
       </div>
 
       <h2 id="faq" style="color: #ffffff;">HÄUFIG GESTELLTE FRAGEN</h2>
